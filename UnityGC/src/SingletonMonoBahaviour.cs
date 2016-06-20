@@ -2,6 +2,10 @@
 
 namespace GameCanvas
 {
+    /// <summary>
+    /// シングルトン版MonoBehaviour
+    /// </summary>
+    /// <typeparam name="T">シングルトンにしたい型</typeparam>
     public class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBehaviour<T>
     {
         protected static T instance;
@@ -11,7 +15,7 @@ namespace GameCanvas
             {
                 if (instance == null)
                 {
-                    instance = (T)FindObjectOfType(typeof(T));
+                    instance = FindObjectOfType<T>();
 
                     if (instance == null)
                     {

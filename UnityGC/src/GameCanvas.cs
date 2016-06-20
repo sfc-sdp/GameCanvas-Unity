@@ -3,92 +3,416 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace GameCanvas
 {
+    /// <summary>
+    /// GameCanvasの様々な機能を取りまとめたクラスです。
+    /// </summary>
+    /// <author>
+    /// 2010 kuro    (shift→sega)
+    /// 2010 fujieda (shift→ntt)
+    /// 2016 seibe   (shift→nintendo)
+    /// </author>
     public class GameCanvas : SingletonMonoBehaviour<GameCanvas>
     {
-        /// <summary>画面の幅</summary>
-        public const int WIDTH = 640;
-        /// <summary>画面の高さ</summary>
-        public const int HEIGHT = 480;
-        /// <summary>フレームレート(FPS)</summary>
-        public const int CONFIG_FPS = 30;
+        /*******************************
+            メンバー変数
+        *******************************/
 
-        /// <summary>[非推奨] 上ボタン</summary>
-        public const KeyCode KEY_UP = KeyCode.UpArrow;
-        /// <summary>[非推奨] 右ボタン</summary>
-        public const KeyCode KEY_RIGHT = KeyCode.RightArrow;
-        /// <summary>[非推奨] 下ボタン</summary>
-        public const KeyCode KEY_DOWN = KeyCode.DownArrow;
-        /// <summary>[非推奨] 左ボタン</summary>
-        public const KeyCode KEY_LEFT = KeyCode.LeftArrow;
+        private int _canvasWidth;
+        private int _canvasHeight;
 
-        /// <summary>[非推奨] Zボタン</summary>
-        public const KeyCode KEY_Z = KeyCode.Z;
-        /// <summary>[非推奨] Xボタン</summary>
-        public const KeyCode KEY_X = KeyCode.X;
-        /// <summary>[非推奨] Cボタン</summary>
-        public const KeyCode KEY_C = KeyCode.C;
-        /// <summary>[非推奨] Vボタン</summary>
-        public const KeyCode KEY_V = KeyCode.V;
-
-        /// <summary>[非推奨] ENTERキー</summary>
-        public const KeyCode KEY_ENTER = KeyCode.Return;
-        /// <summary>[非推奨] ENTERキー</summary>
-        public const KeyCode KEY_SPACE = KeyCode.Space;
-
-        /// <summary>[非推奨] 白色</summary>
-        public static readonly Color COLOR_WHITE = Color.white;
-        /// <summary>[非推奨] 黒色</summary>
-        public static readonly Color COLOR_BLACK = Color.black;
-        /// <summary>[非推奨] 灰色</summary>
-        public static readonly Color COLOR_GRAY = Color.gray;
-        /// <summary>[非推奨] 赤色</summary>
-        public static readonly Color COLOR_RED = Color.red;
-        /// <summary>[非推奨] 黄色</summary>
-        public static readonly Color COLOR_BLUE = Color.blue;
-        /// <summary>[非推奨] 緑色</summary>
-        public static readonly Color COLOR_GREEN = Color.green;
-        /// <summary>[非推奨] 黄色</summary>
-        public static readonly Color COLOR_YELLOW = Color.yellow;
-        /// <summary>[非推奨] 紫色</summary>
-        public static readonly Color COLOR_PURPLE = new Color(1, 0, 1);
-        /// <summary>[非推奨] シアン</summary>
-        public static readonly Color COLOR_CYAN = Color.cyan;
-        /// <summary>[非推奨] みずいろ</summary>
-        public static readonly Color COLOR_AQUA = new Color(0.5f, 0.5f, 1);
+        private Camera _camera;
+        private Canvas _canvas;
+        private CanvasScaler _canvasScaler;
+        private RawImage _canvasRawImage;
+        private Texture2D _canvasRawImageTexture;
 
 
         /*******************************
-            後方互換 - 基本
+            初期化処理
         *******************************/
 
-        public void init()
+        /// <summary>
+        /// 構築処理
+        /// </summary>
+        private new void Awake()
+        {
+            // インスタンス作成
+            base.Awake();
+            name = "GameCanvas";
+
+            // 変数の初期化
+            _canvasWidth = 640;
+            _canvasHeight = 480;
+
+            // アプリの初期設定
+            Application.targetFrameRate = 30;
+            Screen.fullScreen = false;
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            Screen.orientation = ScreenOrientation.Landscape;
+
+            // Main Camera
+            {
+                var camArray = UnityEngine.Object.FindObjectsOfType<Camera>();
+                foreach (Camera cam in camArray)
+                {
+                    UnityEngine.Object.DestroyImmediate(cam.gameObject);
+                }
+
+                var obj = new GameObject("Camera");
+                obj.tag = "MainCamera";
+                obj.transform.parent = baseTransform;
+
+                _camera = obj.AddComponent<Camera>();
+                _camera.transform.localPosition = new Vector3(0.0f, 0.0f, -10.0f);
+                _camera.clearFlags = CameraClearFlags.SolidColor;
+                _camera.backgroundColor = Color.black;
+                _camera.orthographic = true;
+                _camera.orthographicSize = 5;
+                _camera.depth = -1;
+
+                obj.AddComponent<AudioListener>();
+            }
+
+            // UI.Canvas
+            {
+                var obj = new GameObject("Canvas");
+                obj.transform.parent = baseTransform;
+
+                _canvas = obj.AddComponent<Canvas>();
+                _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+                _canvasScaler = obj.AddComponent<CanvasScaler>();
+                _canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                _canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
+                _canvasScaler.referenceResolution = new Vector2(_canvasWidth, _canvasHeight);
+            }
+
+            // UI.Canvas Screen
+            {
+                var obj = new GameObject("RawImage");
+                obj.transform.parent = _canvas.transform;
+
+                _canvasRawImageTexture = Texture2D.whiteTexture;
+
+                _canvasRawImage = obj.AddComponent<RawImage>();
+                _canvasRawImage.color = Color.white;
+                _canvasRawImage.texture = _canvasRawImageTexture;
+                _canvasRawImage.rectTransform.anchoredPosition = Vector2.zero;
+                _canvasRawImage.rectTransform.anchorMin = Vector2.one * 0.5f;
+                _canvasRawImage.rectTransform.anchorMax = Vector2.one * 0.5f;
+                _canvasRawImage.rectTransform.sizeDelta = new Vector2(_canvasWidth, _canvasHeight);
+            }
+
+            // UI.EventSystem
+            {
+                var obj = new GameObject("EventSystem");
+                obj.transform.parent = baseTransform;
+
+                obj.AddComponent<EventSystem>();
+                obj.AddComponent<StandaloneInputModule>();
+            }
+        }
+
+
+        /*******************************
+            グラフィック
+        *******************************/
+
+        /// <summary>
+        /// FPS（1秒あたりのフレーム更新回数）
+        /// </summary>
+        public int frameRate
+        {
+            set
+            {
+                Application.targetFrameRate = value;
+            }
+            get
+            {
+                return Application.targetFrameRate;
+            }
+        }
+
+        /// <summary>
+        /// 画面X軸方向のゲーム解像度（幅）
+        /// </summary>
+        public int screenWidth
+        {
+            get
+            {
+                return _canvasWidth;
+            }
+        }
+
+        /// <summary>
+        /// 画面Y軸方向のゲーム解像度（高さ）
+        /// </summary>
+        public int screenHeight
+        {
+            get
+            {
+                return _canvasHeight;
+            }
+        }
+
+        /// <summary>
+        /// フルスクリーンかどうか
+        /// </summary>
+        public bool isFullScreen
+        {
+            set
+            {
+                Screen.fullScreen = value;
+            }
+            get
+            {
+                return Screen.fullScreen;
+            }
+        }
+
+        /// <summary>
+        /// ゲーム画面が端末の向きに合わせて自動回転するかどうか
+        /// </summary>
+        public bool isScreenAutoRotation
+        {
+            set
+            {
+                if (value)
+                {
+                    Screen.orientation = ScreenOrientation.AutoRotation;
+                }
+                else
+                {
+                    Screen.orientation = isPortrait ? ScreenOrientation.Portrait : ScreenOrientation.Landscape;
+                }
+            }
+            get
+            {
+                return Screen.orientation == ScreenOrientation.AutoRotation;
+            }
+        }
+
+        /// <summary>
+        /// ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定します
+        /// </summary>
+        public bool isPortrait
+        {
+            get
+            {
+                return _canvasWidth <= _canvasHeight;
+            }
+        }
+
+        /// <summary>
+        /// 端末の解像度。この値はゲーム解像度とは関係ありません
+        /// </summary>
+        public Resolution deviceResolution
+        {
+            get
+            {
+                return Screen.currentResolution;
+            }
+        }
+
+        /// <summary>
+        /// ゲームの解像度を設定します
+        /// </summary>
+        /// <param name="width">X軸方向の解像度（幅）</param>
+        /// <param name="height">Y軸方向の解像度（高さ）</param>
+        public void SetResolution(int width, int height)
+        {
+            _canvasWidth = width;
+            _canvasHeight = height;
+            var size = new Vector2(_canvasWidth, _canvasHeight);
+            isScreenAutoRotation = isScreenAutoRotation;
+
+            _canvasScaler.referenceResolution = size;
+            _canvasRawImage.rectTransform.sizeDelta = size;
+            _canvasRawImageTexture.Resize(_canvasWidth, _canvasHeight);
+        }
+
+        /// <summary>
+        /// 画面を白で塗りつぶします
+        /// </summary>
+        public void ClearScreen()
         {
             //
         }
 
-        public void finalize()
+        /// <summary>
+        /// 画像を描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="x">スクリーン左上を原点とするX座標</param>
+        /// <param name="y">スクリーン左上を原点とするY座標</param>
+        public void DrawImage(int id, int x, int y)
         {
             //
         }
 
-        public void setGraphics(object gr, object img)
+        /// <summary>
+        /// 文字列を描画します
+        /// </summary>
+        /// <param name="str">描画する文字列</param>
+        /// <param name="x">スクリーン左上を原点とするX座標</param>
+        /// <param name="y">スクリーン左上を原点とするY座標</param>
+        public void DrawString(string str, int x, int y)
         {
             //
         }
 
-        public bool writeScreenImage(string filename)
-        {
-            return false;
-        }
-
-        public void setWindowTitle(string title)
+        /// <summary>
+        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+        /// </summary>
+        /// <param name="color">塗りの色</param>
+        public void SetColor(Color color)
         {
             //
         }
 
+        /// <summary>
+        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+        /// </summary>
+        /// <param name="red">R成分</param>
+        /// <param name="green">G成分</param>
+        /// <param name="blue">B成分</param>
+        public void SetColor(int red, int green, int blue)
+        {
+            //
+        }
+
+
+        /*******************************
+            後方互換 - 定数
+        *******************************/
+
+        /// <summary>[非推奨] 画面の幅</summary>
+        [Obsolete("gc.screenWidth を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public int WIDTH
+        {
+            get { return (int)_canvasScaler.referenceResolution.x; }
+        }
+        /// <summary>[非推奨] 画面の高さ</summary>
+        [Obsolete("gc.screenHeight を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public int HEIGHT
+        {
+            get { return (int)_canvasScaler.referenceResolution.y; }
+        }
+        /// <summary>[非推奨] フレームレート(FPS)</summary>
+        [Obsolete("gc.frameRate を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public int CONFIG_FPS
+        {
+            get { return Application.targetFrameRate; }
+        }
+
+        /// <summary>[非推奨] 上ボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_UP = KeyCode.UpArrow;
+        /// <summary>[非推奨] 右ボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_RIGHT = KeyCode.RightArrow;
+        /// <summary>[非推奨] 下ボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_DOWN = KeyCode.DownArrow;
+        /// <summary>[非推奨] 左ボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_LEFT = KeyCode.LeftArrow;
+
+        /// <summary>[非推奨] Zボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_Z = KeyCode.Z;
+        /// <summary>[非推奨] Xボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_X = KeyCode.X;
+        /// <summary>[非推奨] Cボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_C = KeyCode.C;
+        /// <summary>[非推奨] Vボタン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_V = KeyCode.V;
+
+        /// <summary>[非推奨] ENTERキー</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_ENTER = KeyCode.Return;
+        /// <summary>[非推奨] ENTERキー</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly KeyCode KEY_SPACE = KeyCode.Space;
+
+        /// <summary>[非推奨] 白色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_WHITE = Color.white;
+        /// <summary>[非推奨] 黒色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_BLACK = Color.black;
+        /// <summary>[非推奨] 灰色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_GRAY = Color.gray;
+        /// <summary>[非推奨] 赤色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_RED = Color.red;
+        /// <summary>[非推奨] 黄色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_BLUE = Color.blue;
+        /// <summary>[非推奨] 緑色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_GREEN = Color.green;
+        /// <summary>[非推奨] 黄色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_YELLOW = Color.yellow;
+        /// <summary>[非推奨] 紫色</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_PURPLE = new Color(1, 0, 1);
+        /// <summary>[非推奨] シアン</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_CYAN = Color.cyan;
+        /// <summary>[非推奨] みずいろ</summary>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly Color COLOR_AQUA = new Color(0.5f, 0.5f, 1);
+
+
+        /*******************************
+            後方互換 - グラフィック
+        *******************************/
+
+        /// <summary>
+        /// [非推奨] 現在のゲーム画面をキャプチャ―して保存します。
+        /// </summary>
+        /// <param name="filename">拡張子を除いたファイル名</param>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void writeScreenImage(string filename)
+        {
+            Application.CaptureScreenshot(filename + ".png");
+        }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void init(object _f, object g) { }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void finalize() { }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void setGraphics(object gr, object img) { }
+
+        /// <summary>[使用禁止]</summary>
+        /// <param name="title">ウィンドウタイトルに指定する文字列</param>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void setWindowTitle(string title) { }
+
+        /// <summary>
+        /// [非推奨] 文字列を描画します
+        /// </summary>
+        /// <param name="str">描画する文字列</param>
+        /// <param name="x">画面左上を原点とするX座標</param>
+        /// <param name="y">画面左上を原点とするY座標</param>
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawString(string str, int x, int y)
         {
             //
@@ -117,11 +441,6 @@ namespace GameCanvas
         public int getStringWidth(string str)
         {
             return -1;
-        }
-
-        public void setColor(Color color)
-        {
-            //
         }
 
         public void setColor(int color)
@@ -204,6 +523,8 @@ namespace GameCanvas
             //
         }
 
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void resetGameInstancle(object g)
         {
             //
@@ -214,6 +535,8 @@ namespace GameCanvas
             //
         }
 
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawMessage()
         {
             //
@@ -415,67 +738,132 @@ namespace GameCanvas
             アクセスを無効化する
         *******************************/
 
+        // Object
+        private new HideFlags hideFlags
+        {
+            set { base.hideFlags = value; }
+            get { return base.hideFlags;  }
+        }
+
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void Destroy(UnityEngine.Object obj) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void Destroy(UnityEngine.Object obj, float t) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void DestroyImmediate(UnityEngine.Object obj) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void DestroyImmediate(UnityEngine.Object obj, bool allowDestroyingAssets) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void DestroyObject(UnityEngine.Object obj) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void DestroyObject(UnityEngine.Object obj, float t) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void DontDestroyOnLoad(UnityEngine.Object target) { }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static UnityEngine.Object FindObjectOfType(Type type) { return null; }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static T FindObjectOfType<T>() where T : UnityEngine.Object { return null; }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static UnityEngine.Object[] FindObjectsOfType(Type type) { return null; }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static T[] FindObjectsOfType<T>() where T : UnityEngine.Object { return null; }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static UnityEngine.Object Instantiate(UnityEngine.Object original) { return null; }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static UnityEngine.Object Instantiate(UnityEngine.Object original, Vector3 position, Quaternion rotation) { return null; }
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static T Instantiate<T>(T original) where T : UnityEngine.Object { return null; }
+
         // Component
+        private GameObject baseGameObject
+        {
+            get { return base.gameObject; }
+        }
+        private string baseTag
+        {
+            set { base.tag = value; }
+            get { return base.tag; }
+        }
+        private Transform baseTransform
+        {
+            get { return base.transform; }
+        }
+
         /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component animation;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component audio;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component camera;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component collider;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component collider2D;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component constantForce;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new GameObject gameObject;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component guiElement;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component guiText;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component guiTexture;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component hingeJoint;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component light;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component networkView;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component particleEmitter;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component particleSystem;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component renderer;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component rigidbody;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new UnityEngine.Component rigidbody2D;
-        /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new string tag;
         /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component animation;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component audio;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component camera;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component collider;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component collider2D;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component constantForce;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component guiElement;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component guiText;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component guiTexture;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component hingeJoint;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component light;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component networkView;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component particleEmitter;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component particleSystem;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component renderer;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component rigidbody;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new UnityEngine.Component rigidbody2D;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new GameObject gameObject;
+        /// <summary>使用禁止</summary>
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new Transform transform;
+
         /// <summary>使用禁止</summary>
         [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void BroadcastMessage(string methodName) { }
@@ -589,20 +977,27 @@ namespace GameCanvas
         public new void SendMessageUpwards(string methodName, object value, SendMessageOptions options) { }
 
         // Behaviour
+
+        private bool baseEnabled
+        {
+            set { base.enabled = value; }
+            get { return base.enabled;  }
+        }
+        
         /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool enabled;
         /// <summary>使用禁止</summary>
-        [NonSerialized, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool isActiveAndEnabled;
 
         // MonoBehaviour
         /// <summary>使用禁止</summary>
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool useGUILayout;
         /// <summary>使用禁止</summary>
-        [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new static void print(object message) { }
+        //[Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        //public new static void print(object message) { }
         /// <summary>使用禁止</summary>
         [Obsolete("このメソッドをGCから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void CancelInvoke() { }

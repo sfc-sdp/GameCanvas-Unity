@@ -1,42 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameCanvas
 {
-    public class GameBase : MonoBehaviour
+    /// <summary>
+    /// 内部に GameCanvas インスタンスを持つ MonoBehaviour
+    /// </summary>
+    public abstract class GameBase : MonoBehaviour
     {
+        /// <summary>
+        /// GameCanvasへの参照
+        /// </summary>
         protected GameCanvas gc;
-
+        
         private void Awake()
         {
             gc = GameCanvas.Instance;
         }
-
-        private void Start()
-        {
-            initGame();
-        }
-
-        private void Update()
-        {
-            updateGame();
-        }
-
-        private void Draw()
-        {
-            drawGame();
-        }
-
-        private void OnDestroy()
-        {
-            finalGame();
-        }
-
-        public virtual void initGame() { }
-
-        public virtual void updateGame() { }
-
-        public virtual void drawGame() { }
-
-        public virtual void finalGame() { }
     }
 }
