@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnityGC</name>
+    </assembly>
+    <members>
+        <member name="T:GameCanvas.GameBase">
+            <summary>
+            内部に GameCanvas インスタンスを持つ MonoBehaviour
+            </summary>
+        </member>
+        <member name="F:GameCanvas.GameBase.gc">
+            <summary>
+            GameCanvasへの参照
+            </summary>
+        </member>
+        <member name="T:GameCanvas.GameCanvas">
+            <summary>
+            GameCanvasの様々な機能を取りまとめたクラスです。
+            </summary>
+            <author>
+            2010 kuro    (shift→sega)
+            2010 fujieda (shift→ntt)
+            2016 seibe   (shift→nintendo)
+            </author>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Awake">
+            <summary>
+            構築処理
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.frameRate">
+            <summary>
+            FPS（1秒あたりのフレーム更新回数）
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.screenWidth">
+            <summary>
+            画面X軸方向のゲーム解像度（幅）
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.screenHeight">
+            <summary>
+            画面Y軸方向のゲーム解像度（高さ）
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isFullScreen">
+            <summary>
+            フルスクリーンかどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isScreenAutoRotation">
+            <summary>
+            ゲーム画面が端末の向きに合わせて自動回転するかどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isPortrait">
+            <summary>
+            ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.deviceResolution">
+            <summary>
+            端末の解像度。この値はゲーム解像度とは関係ありません
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetResolution(System.Int32,System.Int32)">
+            <summary>
+            ゲームの解像度を設定します
+            </summary>
+            <param name="width">X軸方向の解像度（幅）</param>
+            <param name="height">Y軸方向の解像度（高さ）</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.ClearScreen">
+            <summary>
+            画面を白で塗りつぶします
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            画像を描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">スクリーン左上を原点とするX座標</param>
+            <param name="y">スクリーン左上を原点とするY座標</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawString(System.String,System.Int32,System.Int32)">
+            <summary>
+            文字列を描画します
+            </summary>
+            <param name="str">描画する文字列</param>
+            <param name="x">スクリーン左上を原点とするX座標</param>
+            <param name="y">スクリーン左上を原点とするY座標</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetColor(UnityEngine.Color)">
+            <summary>
+            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+            </summary>
+            <param name="color">塗りの色</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetColor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+            </summary>
+            <param name="red">R成分</param>
+            <param name="green">G成分</param>
+            <param name="blue">B成分</param>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.WIDTH">
+            <summary>[非推奨] 画面の幅</summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.HEIGHT">
+            <summary>[非推奨] 画面の高さ</summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.CONFIG_FPS">
+            <summary>[非推奨] フレームレート(FPS)</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_UP">
+            <summary>[非推奨] 上ボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_RIGHT">
+            <summary>[非推奨] 右ボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_DOWN">
+            <summary>[非推奨] 下ボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_LEFT">
+            <summary>[非推奨] 左ボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_Z">
+            <summary>[非推奨] Zボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_X">
+            <summary>[非推奨] Xボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_C">
+            <summary>[非推奨] Cボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_V">
+            <summary>[非推奨] Vボタン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_ENTER">
+            <summary>[非推奨] ENTERキー</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.KEY_SPACE">
+            <summary>[非推奨] ENTERキー</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_WHITE">
+            <summary>[非推奨] 白色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_BLACK">
+            <summary>[非推奨] 黒色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_GRAY">
+            <summary>[非推奨] 灰色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_RED">
+            <summary>[非推奨] 赤色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_BLUE">
+            <summary>[非推奨] 黄色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_GREEN">
+            <summary>[非推奨] 緑色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_YELLOW">
+            <summary>[非推奨] 黄色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_PURPLE">
+            <summary>[非推奨] 紫色</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_CYAN">
+            <summary>[非推奨] シアン</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.COLOR_AQUA">
+            <summary>[非推奨] みずいろ</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.writeScreenImage(System.String)">
+            <summary>
+            [非推奨] 現在のゲーム画面をキャプチャ―して保存します。
+            </summary>
+            <param name="filename">拡張子を除いたファイル名</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.init(System.Object,System.Object)">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.finalize">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.setGraphics(System.Object,System.Object)">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.setWindowTitle(System.String)">
+            <summary>[使用禁止]</summary>
+            <param name="title">ウィンドウタイトルに指定する文字列</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.drawString(System.String,System.Int32,System.Int32)">
+            <summary>
+            [非推奨] 文字列を描画します
+            </summary>
+            <param name="str">描画する文字列</param>
+            <param name="x">画面左上を原点とするX座標</param>
+            <param name="y">画面左上を原点とするY座標</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.resetGameInstancle(System.Object)">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.drawMessage">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Destroy(UnityEngine.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Destroy(UnityEngine.Object,System.Single)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DestroyImmediate(UnityEngine.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DestroyImmediate(UnityEngine.Object,System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DestroyObject(UnityEngine.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DestroyObject(UnityEngine.Object,System.Single)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DontDestroyOnLoad(UnityEngine.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FindObjectOfType(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FindObjectOfType``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FindObjectsOfType(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FindObjectsOfType``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Instantiate(UnityEngine.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Instantiate(UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Instantiate``1(``0)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.tag">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.animation">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.audio">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.camera">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.collider">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.collider2D">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.constantForce">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.guiElement">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.guiText">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.guiTexture">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.hingeJoint">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.light">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.networkView">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.particleEmitter">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.particleSystem">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.renderer">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.rigidbody">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.rigidbody2D">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.gameObject">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.transform">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.BroadcastMessage(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.BroadcastMessage(System.String,System.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.BroadcastMessage(System.String,UnityEngine.SendMessageOptions)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.BroadcastMessage(System.String,System.Object,UnityEngine.SendMessageOptions)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CompareTag(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponent(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponent(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponent``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentInChildren(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentInChildren(System.Type,System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentInChildren``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentInChildren``1(System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentInParent(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentInParent``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponents(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponents(System.Type,System.Collections.Generic.List{UnityEngine.Component})">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponents``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponents``1(System.Collections.Generic.List{``0})">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInChildren(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInChildren(System.Type,System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInChildren``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInChildren``1(System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInChildren``1(System.Collections.Generic.List{``0})">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInChildren``1(System.Boolean,System.Collections.Generic.List{``0})">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInParent(System.Type)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInParent(System.Type,System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInParent``1">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInParent``1(System.Boolean)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetComponentsInParent``1(System.Boolean,System.Collections.Generic.List{``0})">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessage(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessage(System.String,System.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessage(System.String,UnityEngine.SendMessageOptions)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessage(System.String,System.Object,UnityEngine.SendMessageOptions)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessageUpwards(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessageUpwards(System.String,UnityEngine.SendMessageOptions)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessageUpwards(System.String,System.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendMessageUpwards(System.String,System.Object,UnityEngine.SendMessageOptions)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.enabled">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.isActiveAndEnabled">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="F:GameCanvas.GameCanvas.useGUILayout">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CancelInvoke">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CancelInvoke(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Invoke(System.String,System.Single)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.InvokeRepeating(System.String,System.Single,System.Single)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.IsInvoking">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.IsInvoking(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StartCoroutine(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StartCoroutine(System.String,System.Object)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StartCoroutine_Auto(System.Collections.IEnumerator)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StopAllCoroutines">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StopCoroutine(System.String)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StopCoroutine(System.Collections.IEnumerator)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.StopCoroutine(UnityEngine.Coroutine)">
+            <summary>使用禁止</summary>
+        </member>
+        <member name="T:GameCanvas.SingletonMonoBehaviour`1">
+            <summary>
+            シングルトン版MonoBehaviour
+            </summary>
+            <typeparam name="T">シングルトンにしたい型</typeparam>
+        </member>
+    </members>
+</doc>
