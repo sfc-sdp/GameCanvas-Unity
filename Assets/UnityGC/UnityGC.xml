@@ -14,6 +14,31 @@
             GameCanvasへの参照
             </summary>
         </member>
+        <member name="M:GameCanvas.GameBase.Start">
+            <summary>
+            ゲームの初期化処理
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameBase.Calc">
+            <summary>
+            ゲームの更新処理
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameBase.Draw">
+            <summary>
+            ゲームの描画処理
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameBase.Pause">
+            <summary>
+            ゲームの中断処理
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameBase.Final">
+            <summary>
+            ゲームの終了処理
+            </summary>
+        </member>
         <member name="T:GameCanvas.GameCanvas">
             <summary>
             GameCanvasの様々な機能を取りまとめたクラスです。
@@ -76,13 +101,56 @@
             画面を白で塗りつぶします
             </summary>
         </member>
+        <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            中抜きの円を描画します
+            </summary>
+            <param name="x">中心点のX座標</param>
+            <param name="y">中心点のY座標</param>
+            <param name="radius">半径</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FillCircle(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            塗りつぶしの円を描画します
+            </summary>
+            <param name="x">中心点のX座標</param>
+            <param name="y">中心点のY座標</param>
+            <param name="radius">半径</param>
+        </member>
         <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
             <summary>
             画像を描画します
             </summary>
             <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
-            <param name="x">スクリーン左上を原点とするX座標</param>
-            <param name="y">スクリーン左上を原点とするY座標</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            線分を描画します
+            </summary>
+            <param name="startX"></param>
+            <param name="startY"></param>
+            <param name="endX"></param>
+            <param name="endY"></param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            中抜きの長方形を描画します
+            </summary>
+            <param name="x">左上のX座標</param>
+            <param name="y">左上のY座標</param>
+            <param name="width">横幅</param>
+            <param name="height">縦幅</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            塗りつぶしの長方形を描画します
+            </summary>
+            <param name="x">左上のX座標</param>
+            <param name="y">左上のY座標</param>
+            <param name="width">横幅</param>
+            <param name="height">縦幅</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawString(System.String,System.Int32,System.Int32)">
             <summary>
@@ -205,7 +273,16 @@
         <member name="M:GameCanvas.GameCanvas.resetGameInstancle(System.Object)">
             <summary>[使用禁止]</summary>
         </member>
+        <member name="M:GameCanvas.GameCanvas.updatMessage">
+            <summary>[使用禁止]</summary>
+        </member>
         <member name="M:GameCanvas.GameCanvas.drawMessage">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.showYesNoDialog(System.String)">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.showInputDialog(System.String,System.String)">
             <summary>[使用禁止]</summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.Destroy(UnityEngine.Object)">

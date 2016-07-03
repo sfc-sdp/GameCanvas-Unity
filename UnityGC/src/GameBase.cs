@@ -17,5 +17,46 @@ namespace GameCanvas
         {
             gc = GameCanvas.Instance;
         }
+
+        private void Update()
+        {
+            Calc();
+            Draw();
+        }
+
+        private void OnApplicationPause()
+        {
+            Pause();
+        }
+
+        private void OnApplicationQuit()
+        {
+            Final();
+        }
+
+        /// <summary>
+        /// ゲームの初期化処理
+        /// </summary>
+        abstract public void Start();
+
+        /// <summary>
+        /// ゲームの更新処理
+        /// </summary>
+        abstract public void Calc();
+
+        /// <summary>
+        /// ゲームの描画処理
+        /// </summary>
+        abstract public void Draw();
+
+        /// <summary>
+        /// ゲームの中断処理
+        /// </summary>
+        abstract public void Pause();
+
+        /// <summary>
+        /// ゲームの終了処理
+        /// </summary>
+        abstract public void Final();
     }
 }
