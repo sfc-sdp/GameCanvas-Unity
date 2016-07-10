@@ -18,7 +18,7 @@ public class Game : GameBase
         // 画面を白で塗りつぶします
         gc.ClearScreen();
 
-        // 画像0を描画します
+        // 2番の画像を描画します
         gc.DrawImage(2, 0, 0);
 
         // 赤い長方形（塗り）を描画します
@@ -38,7 +38,7 @@ public class Game : GameBase
         gc.DrawCircle(320, 240, 200);
     }
 
-    public override void Pause()
+    override public void Pause()
     {
         //
     }
