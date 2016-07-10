@@ -174,6 +174,42 @@
             <param name="green">G成分</param>
             <param name="blue">B成分</param>
         </member>
+        <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">
+            <summary>
+            cosを求めます
+            </summary>
+            <param name="angle">角度（度数法）</param>
+            <returns>計算結果</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Sin(System.Single)">
+            <summary>
+            sinを求めます
+            </summary>
+            <param name="angle">角度（度数法）</param>
+            <returns>計算結果</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Atan2(System.Single,System.Single)">
+            <summary>
+            atan2 あるいは ベクトルの角度を求めます
+            </summary>
+            <param name="x">X</param>
+            <param name="y">Y</param>
+            <returns>角度（度数法）</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Deg2Rad(System.Single)">
+            <summary>
+            角度を弧度法から度数法に変換します
+            </summary>
+            <param name="deg">角度（弧度法）</param>
+            <returns>角度（度数法）</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Rad2Deg(System.Single)">
+            <summary>
+            角度を度数法から弧度法に変換します
+            </summary>
+            <param name="rad">角度（度数法）</param>
+            <returns>角度（弧度法）</returns>
+        </member>
         <member name="P:GameCanvas.GameCanvas.WIDTH">
             <summary>[非推奨] 画面の幅</summary>
         </member>
@@ -284,6 +320,18 @@
         </member>
         <member name="M:GameCanvas.GameCanvas.showInputDialog(System.String,System.String)">
             <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.sqrt(System.Single)">
+            <summary>[非推奨] 平方根(√)を求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.cos(System.Single)">
+            <summary>[非推奨] cosを求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.sin(System.Single)">
+            <summary>[非推奨] sinを求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.atan2(System.Single,System.Single)">
+            <summary>[非推奨] atan2(ベクトルの角度)を求めます</summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.Destroy(UnityEngine.Object)">
             <summary>使用禁止</summary>

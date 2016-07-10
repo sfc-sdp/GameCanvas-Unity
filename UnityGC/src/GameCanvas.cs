@@ -24,6 +24,7 @@ namespace GameCanvas
 
         private int _canvasWidth;
         private int _canvasHeight;
+        private Color _palletColor;
 
         private Camera _camera;
         private Canvas _canvas;
@@ -31,8 +32,6 @@ namespace GameCanvas
         private RawImage _canvasRawImage;
         private Texture2D _canvasTexture;
         private Color[] _canvasColorArray;
-
-        private Color _palletColor;
 
 
         /*******************************
@@ -51,6 +50,7 @@ namespace GameCanvas
             // 変数の初期化
             _canvasWidth = 640;
             _canvasHeight = 480;
+            _palletColor = Color.black;
 
             // アプリの初期設定
             Application.targetFrameRate = 30;
@@ -273,7 +273,44 @@ namespace GameCanvas
         /// <param name="radius">半径</param>
         public void DrawCircle(int x, int y, int radius)
         {
-            //
+            float d = 0.25f - radius;
+            int dy = radius;
+            int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
+            int j;
+            int size = _canvasWidth * _canvasHeight;
+
+            for (int dx = 0; dx <= dxe; ++dx)
+            {
+                j = (x + dx) + (y + dy) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x + dx) + (y - dy) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x - dx) + (y + dy) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x - dx) + (y - dy) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x + dy) + (y + dx) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x - dy) + (y + dx) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x + dy) + (y - dx) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                j = (x - dy) + (y - dx) * _canvasWidth;
+                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+
+                d += 2 * dx + 1;
+                if (d > 0)
+                {
+                    d += 2 - 2 * dy--;
+                }
+            }
         }
 
         /// <summary>
@@ -284,7 +321,7 @@ namespace GameCanvas
         /// <param name="radius">半径</param>
         public void FillCircle(int x, int y, int radius)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         /// <summary>
@@ -295,7 +332,7 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         public void DrawImage(int id, int x, int y)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         /// <summary>
@@ -307,7 +344,75 @@ namespace GameCanvas
         /// <param name="endY"></param>
         public void DrawLine(int startX, int startY, int endX, int endY)
         {
-            //
+            float fraction = 0;
+            int dx = endX - startX;
+            int dy = endY - startY;
+            int stepX, stepY;
+
+            if (dx < 0)
+            {
+                dx = -dx;
+                stepX = -1;
+            }
+            else
+            {
+                stepX = 1;
+            }
+
+            if (dy < 0)
+            {
+                dy = -dy;
+                stepY = -1;
+            }
+            else
+            {
+                stepY = 1;
+            }
+
+            dx <<= 1;
+            dy <<= 1;
+
+            int size = _canvasWidth * _canvasHeight;
+            int i = startX + startY * _canvasWidth;
+            if (i >= 0 && i < size) {
+                _canvasColorArray[i] = _palletColor;
+            }
+            if (dx > dy)
+            {
+                fraction = dy - (dx >> 1);
+                while (Mathf.Abs(startX - endX) > 1)
+                {
+                    if (fraction >= 0)
+                    {
+                        startY += stepY;
+                        fraction -= dx;
+                    }
+                    startX += stepX;
+                    fraction += dy;
+                    i = startX + startY * _canvasWidth;
+                    if (i >= 0 && i < size) {
+                        _canvasColorArray[i] = _palletColor;
+                    }
+                }
+            }
+            else
+            {
+                fraction = dx - (dy >> 1);
+                while (Mathf.Abs(startY - endY) > 1)
+                {
+                    if (fraction >= 0)
+                    {
+                        startX += stepX;
+                        fraction -= dy;
+                    }
+                    startY += stepY;
+                    fraction += dx;
+                    i = startX + startY * _canvasWidth;
+                    if (i >= 0 && i < size) {
+                        _canvasColorArray[i] = _palletColor;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -319,7 +424,7 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         public void DrawRect(int x, int y, int width, int height)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         /// <summary>
@@ -331,12 +436,12 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         public void FillRect(int x, int y, int width, int height)
         {
-            Debug.Assert(x >= 0 && y >= 0 && width > 0 && height > 0, "不正な値です");
+            Debug.Assert(x >= 0 && y >= 0 && width > 0 && height > 0);
 
             int rx = x + width;
             int by = y + height;
 
-            Debug.Assert(rx <= _canvasWidth && by <= _canvasHeight, "不正な値です");
+            Debug.Assert(rx <= _canvasWidth && by <= _canvasHeight);
 
             for (int i = x; i < rx; ++i)
             {
@@ -355,7 +460,7 @@ namespace GameCanvas
         /// <param name="y">スクリーン左上を原点とするY座標</param>
         public void DrawString(string str, int x, int y)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         /// <summary>
@@ -376,6 +481,62 @@ namespace GameCanvas
         public void SetColor(int red, int green, int blue)
         {
             SetColor(new Color(red, green, blue));
+        }
+
+
+        /*******************************
+            数学
+        *******************************/
+
+        /// <summary>
+        /// cosを求めます
+        /// </summary>
+        /// <param name="angle">角度（度数法）</param>
+        /// <returns>計算結果</returns>
+        public float Cos(float angle)
+        {
+            return Mathf.Cos(angle * Mathf.Deg2Rad);
+        }
+
+        /// <summary>
+        /// sinを求めます
+        /// </summary>
+        /// <param name="angle">角度（度数法）</param>
+        /// <returns>計算結果</returns>
+        public float Sin(float angle)
+        {
+            return Mathf.Sin(angle * Mathf.Deg2Rad);
+        }
+
+        /// <summary>
+        /// atan2 あるいは ベクトルの角度を求めます
+        /// </summary>
+        /// <param name="x">X</param>
+        /// <param name="y">Y</param>
+        /// <returns>角度（度数法）</returns>
+        public float Atan2(float x, float y)
+        {
+            return Mathf.Atan2(x, y) * Mathf.Rad2Deg;
+        }
+
+        /// <summary>
+        /// 角度を弧度法から度数法に変換します
+        /// </summary>
+        /// <param name="deg">角度（弧度法）</param>
+        /// <returns>角度（度数法）</returns>
+        public float Deg2Rad(float deg)
+        {
+            return deg * Mathf.Deg2Rad;
+        }
+
+        /// <summary>
+        /// 角度を度数法から弧度法に変換します
+        /// </summary>
+        /// <param name="rad">角度（度数法）</param>
+        /// <returns>角度（弧度法）</returns>
+        public float Rad2Deg(float rad)
+        {
+            return rad * Mathf.Rad2Deg;
         }
 
 
@@ -507,117 +668,117 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawString(string str, int x, int y)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         public void drawCenterString(string str, int x, int y)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         public void drawRightString(string str, int x, int y)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         public void setFont(string fontName, int fontStyle, int fontSize)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         public void setFontSize(int fontSize)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         public int getStringWidth(string str)
         {
+            Debug.LogWarning("ToDo");
             return -1;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setColor(int color)
         {
-            //
+            SetColor(new Color(color, color, color));
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setColor(int red, int green, int blue)
         {
-            //
+            SetColor(new Color(red, green, blue));
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawLine(int sx, int sy, int ex, int ey)
         {
-            //
+            DrawLine(sx, sy, ex, ey);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawRect(int x, int y, int w, int h)
         {
-            //
+            DrawRect(x, y, w, h);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void fillRect(int x, int y, int w, int h)
         {
-            //
+            FillRect(x, y, w, h);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawCircle(int x, int y, int r)
         {
-            //
+            DrawCircle(x, y, r);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void fillCircle(int x, int y, int r)
         {
-            //
+            FillCircle(x, y, r);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawImage(int id, int x, int y)
         {
-            //
+            DrawImage(id, x, y);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawClipImage(int id, int x, int y, int u, int v, int w, int h)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate, double px, double py)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getImageWidth(int id)
         {
+            Debug.LogWarning("ToDo");
             return -1;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getImageHeight(int id)
         {
+            Debug.LogWarning("ToDo");
             return -1;
         }
 
-        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void setSeed(int seed)
-        {
-            //
-        }
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void setSeed(int seed) { }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int rand(int min, int max)
@@ -628,55 +789,40 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void resetGame()
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void resetGameInstancle(object g)
-        {
-            //
-        }
+        public void resetGameInstancle(object g) { }
 
         /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void updatMessage()
-        {
-            //
-        }
+        public void updatMessage() { }
 
         /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawMessage()
-        {
-            //
-        }
+        public void drawMessage() { }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void clearScreen()
         {
-            //
+            ClearScreen();
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void exitApp()
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public bool showYesNoDialog(string message)
-        {
-            return true;
-        }
+        public bool showYesNoDialog(string message) { return false; }
 
         /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public string showInputDialog(string message, string defaultInput)
-        {
-            return "";
-        }
+        public string showInputDialog(string message, string defaultInput) { return ""; }
 
 
         /*******************************
@@ -686,61 +832,61 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void playBGM(int id)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void playBGM(int id, bool loop)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void changeBGMVolume(int volume)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void stopBGM()
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void pauseBGM()
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void playSE(int id)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void playSE(int id, bool loop)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void changeSEVolume(int volume)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void stopSE()
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void pauseSE()
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
 
@@ -751,60 +897,70 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getKeyPressLength(KeyCode key)
         {
+            Debug.LogWarning("ToDo");
             return 0;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isKeyPress(KeyCode key)
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isKeyPushed(KeyCode key)
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isKeyReleased(KeyCode key)
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getMouseX()
         {
+            Debug.LogWarning("ToDo");
             return 0;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getMouseY()
         {
+            Debug.LogWarning("ToDo");
             return 0;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getMouseClickLength()
         {
+            Debug.LogWarning("ToDo");
             return 0;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isMousePushed()
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isMouseReleased()
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isMousePress()
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
@@ -816,13 +972,14 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int load(int idx)
         {
+            Debug.LogWarning("ToDo");
             return -1;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void save(int idx, int param)
         {
-            //
+            Debug.LogWarning("ToDo");
         }
 
 
@@ -833,18 +990,21 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitImage(int img1, int x1, int y1, int img2, int x2, int y2)
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2)
         {
+            Debug.LogWarning("ToDo");
             return false;
         }
 
@@ -853,28 +1013,32 @@ namespace GameCanvas
             後方互換 - 数学
         *******************************/
 
+        /// <summary>[非推奨] 平方根(√)を求めます</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float sqrt(float data)
         {
             return Mathf.Sqrt(data);
         }
 
+        /// <summary>[非推奨] cosを求めます</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float cos(float angle)
         {
-            return Mathf.Cos(angle * Mathf.PI / 180.0f);
+            return Cos(angle);
         }
 
+        /// <summary>[非推奨] sinを求めます</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float sin(float angle)
         {
-            return Mathf.Sin(angle * Mathf.PI / 180.0f);
+            return Sin(angle);
         }
 
+        /// <summary>[非推奨] atan2(ベクトルの角度)を求めます</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float atan2(float x, float y)
         {
-            return Mathf.Atan2(x, y) * 180.0f / Mathf.PI;
+            return Atan2(x, y);
         }
 
 
