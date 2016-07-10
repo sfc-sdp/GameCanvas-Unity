@@ -101,7 +101,7 @@
             画面を白で塗りつぶします
             </summary>
         </member>
-        <member name="M:GameCanvas.GameCanvas.FillAt(System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.DrawPoint(System.Int32,System.Int32)">
             <summary>
             指定された座標1点を塗りつぶします
             </summary>
