@@ -101,6 +101,13 @@
             画面を白で塗りつぶします
             </summary>
         </member>
+        <member name="M:GameCanvas.GameCanvas.FillAt(System.Int32,System.Int32)">
+            <summary>
+            指定された座標1点を塗りつぶします
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
         <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Int32,System.Int32,System.Int32)">
             <summary>
             中抜きの円を描画します
@@ -129,10 +136,10 @@
             <summary>
             線分を描画します
             </summary>
-            <param name="startX"></param>
-            <param name="startY"></param>
-            <param name="endX"></param>
-            <param name="endY"></param>
+            <param name="startX">開始点のX座標</param>
+            <param name="startY">開始点のY座標</param>
+            <param name="endX">終了点のX座標</param>
+            <param name="endY">終了点のY座標</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>

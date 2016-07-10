@@ -266,6 +266,19 @@ namespace GameCanvas
         }
 
         /// <summary>
+        /// 指定された座標1点を塗りつぶします
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public void DrawPoint(int x, int y)
+        {
+            // 範囲外は無視する
+            if (x < 0 || y < 0 || x >= _canvasWidth || y >= _canvasHeight) return;
+
+            _canvasColorArray[x + y * _canvasWidth] = _palletColor;
+        }
+
+        /// <summary>
         /// 中抜きの円を描画します
         /// </summary>
         /// <param name="x">中心点のX座標</param>
@@ -273,6 +286,13 @@ namespace GameCanvas
         /// <param name="radius">半径</param>
         public void DrawCircle(int x, int y, int radius)
         {
+            if (radius < 1)
+            {
+                // 負の半径は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
             float d = 0.25f - radius;
             int dy = radius;
             int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
@@ -281,29 +301,14 @@ namespace GameCanvas
 
             for (int dx = 0; dx <= dxe; ++dx)
             {
-                j = (x + dx) + (y + dy) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x + dx) + (y - dy) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x - dx) + (y + dy) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x - dx) + (y - dy) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x + dy) + (y + dx) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x - dy) + (y + dx) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x + dy) + (y - dx) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
-
-                j = (x - dy) + (y - dx) * _canvasWidth;
-                if (j >= 0 && j < size) _canvasColorArray[j] = _palletColor;
+                DrawPoint(x + dx, y + dy);
+                DrawPoint(x + dx, y - dy);
+                DrawPoint(x - dx, y + dy);
+                DrawPoint(x - dx, y - dy);
+                DrawPoint(x + dy, y + dx);
+                DrawPoint(x - dy, y + dx);
+                DrawPoint(x + dy, y - dx);
+                DrawPoint(x - dy, y - dx);
 
                 d += 2 * dx + 1;
                 if (d > 0)
@@ -321,6 +326,13 @@ namespace GameCanvas
         /// <param name="radius">半径</param>
         public void FillCircle(int x, int y, int radius)
         {
+            if (radius < 1)
+            {
+                // 負の半径は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
             Debug.LogWarning("ToDo");
         }
 
@@ -338,79 +350,100 @@ namespace GameCanvas
         /// <summary>
         /// 線分を描画します
         /// </summary>
-        /// <param name="startX"></param>
-        /// <param name="startY"></param>
-        /// <param name="endX"></param>
-        /// <param name="endY"></param>
+        /// <param name="startX">開始点のX座標</param>
+        /// <param name="startY">開始点のY座標</param>
+        /// <param name="endX">終了点のX座標</param>
+        /// <param name="endY">終了点のY座標</param>
         public void DrawLine(int startX, int startY, int endX, int endY)
         {
             float fraction = 0;
+            int x = startX;
+            int y = startY;
             int dx = endX - startX;
             int dy = endY - startY;
             int stepX, stepY;
 
             if (dx < 0)
             {
+                // 右から左
                 dx = -dx;
                 stepX = -1;
             }
             else
             {
+                // 左から右
                 stepX = 1;
             }
 
             if (dy < 0)
             {
+                // 下から上
                 dy = -dy;
                 stepY = -1;
             }
             else
             {
+                // 上から下
                 stepY = 1;
             }
 
+            // 直線の場合
+            if (dx == 0)
+            {
+                // 縦直線
+                DrawPoint(x, y);
+                while (y != endY)
+                {
+                    y += stepY;
+                    DrawPoint(x, y);
+                }
+                return;
+            }
+            else if (dy == 0)
+            {
+                // 横直線
+                DrawPoint(x, y);
+                while (x != endX)
+                {
+                    x += stepX;
+                    DrawPoint(x, y);
+                }
+                return;
+            }
+
+            // 斜め線の場合
             dx <<= 1;
             dy <<= 1;
 
-            int size = _canvasWidth * _canvasHeight;
-            int i = startX + startY * _canvasWidth;
-            if (i >= 0 && i < size) {
-                _canvasColorArray[i] = _palletColor;
-            }
+            DrawPoint(x, y);
             if (dx > dy)
             {
                 fraction = dy - (dx >> 1);
-                while (Mathf.Abs(startX - endX) > 1)
+                while (Mathf.Abs(x - endX) > 1)
                 {
                     if (fraction >= 0)
                     {
-                        startY += stepY;
+                        y += stepY;
                         fraction -= dx;
                     }
-                    startX += stepX;
+                    x += stepX;
                     fraction += dy;
-                    i = startX + startY * _canvasWidth;
-                    if (i >= 0 && i < size) {
-                        _canvasColorArray[i] = _palletColor;
-                    }
+                    DrawPoint(x, y);
                 }
             }
             else
             {
                 fraction = dx - (dy >> 1);
-                while (Mathf.Abs(startY - endY) > 1)
+                while (Mathf.Abs(y - endY) > 1)
                 {
                     if (fraction >= 0)
                     {
-                        startX += stepX;
+                        x += stepX;
                         fraction -= dy;
                     }
-                    startY += stepY;
+                    y += stepY;
                     fraction += dx;
-                    i = startX + startY * _canvasWidth;
-                    if (i >= 0 && i < size) {
-                        _canvasColorArray[i] = _palletColor;
-                    }
+                    DrawPoint(x, y);
                 }
             }
         }
@@ -424,7 +457,17 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         public void DrawRect(int x, int y, int width, int height)
         {
-            Debug.LogWarning("ToDo");
+            if (width < 1 || height < 1)
+            {
+                // 負の幅は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            DrawLine(x, y, x + width, y);
+            DrawLine(x, y + height, x + width, y + height);
+            DrawLine(x, y, x, y + height);
+            DrawLine(x + width, y, x + width, y + height);
         }
 
         /// <summary>
@@ -436,16 +479,35 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         public void FillRect(int x, int y, int width, int height)
         {
-            Debug.Assert(x >= 0 && y >= 0 && width > 0 && height > 0);
-
-            int rx = x + width;
-            int by = y + height;
-
-            Debug.Assert(rx <= _canvasWidth && by <= _canvasHeight);
-
-            for (int i = x; i < rx; ++i)
+            if (width < 1 || height < 1)
             {
-                for (int j = y; j < by; ++j)
+                // 負の幅は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            // -MEMO-
+            // 最適化のため DrawPoint() は用いない
+
+            int sx = x;
+            int sy = y;
+            int ex = x + width;
+            int ey = y + height;
+
+            if (sx < 0) sx = 0;
+            if (sy < 0) sy = 0;
+            if (ex >= _canvasWidth) ex = _canvasWidth - 1;
+            if (ey >= _canvasHeight) ey = _canvasHeight - 1;
+
+            if (sx >= _canvasWidth || sy >= _canvasHeight || ex < 0 || ey < 0)
+            {
+                // 描画範囲外である
+                return;
+            }
+
+            for (int i = sx; i < ex; ++i)
+            {
+                for (int j = sy; j < ey; ++j)
                 {
                     _canvasColorArray[i + j * _canvasWidth] = _palletColor;
                 }
