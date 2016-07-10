@@ -12,7 +12,8 @@ namespace GameCanvas
                 // インポートした画像を、スクリプトから読み込み可能にします
                 TextureImporter textureImporter = (TextureImporter)assetImporter;
                 textureImporter.textureType = TextureImporterType.Advanced;
-                textureImporter.textureFormat = TextureImporterFormat.RGB24;
+                textureImporter.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+                textureImporter.mipmapEnabled = false;
                 textureImporter.isReadable = true;
             }
         }

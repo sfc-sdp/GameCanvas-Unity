@@ -411,7 +411,12 @@ namespace GameCanvas
             {
                 for (int j = 0; j < ph; ++j)
                 {
-                    _canvasColorArray[(x + i) + (y + j) * _canvasWidth] = img[i + (phc - j - 1) * pwc];
+                    Color c = img[i + (phc - j - 1) * pwc];
+                    if (c.a != 0f)
+                    {
+                        c.a = 1f;
+                        _canvasColorArray[(x + i) + (y + j) * _canvasWidth] = c;
+                    }
                 }
             }
         }

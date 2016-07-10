@@ -21,6 +21,9 @@ public class Game : GameBase
         // 2番の画像を描画します
         gc.DrawImage(2, 0, 0);
 
+        // 0番の画像を描画します
+        gc.DrawImage(0, 400, 160);
+
         // 赤い長方形（塗り）を描画します
         gc.SetColor(255, 0, 0);
         gc.FillRect(100, 100, 120, 120);
