@@ -16,8 +16,10 @@ This project is work in progress.<br>
 * isScreenAutoRotation
 * SetResolution()
 * ClearScreen()
+* DrawRect()
 * DrawCircle()
 * DrawLine()
+* DrawPoint()
 * FillRect()
 * SetColor()
 
