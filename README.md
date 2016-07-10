@@ -20,6 +20,7 @@ This project is work in progress.<br>
 * DrawCircle()
 * DrawLine()
 * DrawPoint()
+* DrawImage()
 * FillRect()
 * FillCircle()
 * SetColor()

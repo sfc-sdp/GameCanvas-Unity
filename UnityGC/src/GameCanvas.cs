@@ -25,6 +25,8 @@ namespace GameCanvas
         private int _canvasWidth;
         private int _canvasHeight;
         private Color _palletColor;
+        private int _numImage;
+        private int _numAudio;
 
         private Camera _camera;
         private Canvas _canvas;
@@ -32,6 +34,8 @@ namespace GameCanvas
         private RawImage _canvasRawImage;
         private Texture2D _canvasTexture;
         private Color[] _canvasColorArray;
+        private Texture2D[] _imageArray;
+        private AudioClip[] _audioArray;
 
 
         /*******************************
@@ -51,6 +55,7 @@ namespace GameCanvas
             _canvasWidth = 640;
             _canvasHeight = 480;
             _palletColor = Color.black;
+            _numImage = 0;
 
             // アプリの初期設定
             Application.targetFrameRate = 30;
@@ -124,6 +129,17 @@ namespace GameCanvas
 
             // キャンバスの初期化
             SetResolution(_canvasWidth, _canvasHeight);
+
+            // リソース読み込み
+            {
+                _imageArray = Resources.LoadAll<Texture2D>("");
+                _numImage = _imageArray.Length;
+                Debug.Log("Load Images (" + _numImage + ")");
+
+                _audioArray = Resources.LoadAll<AudioClip>("");
+                _numAudio = _audioArray.Length;
+                Debug.Log("Load Sounds (" + _numAudio + ")");
+            }
         }
 
         private void LateUpdate()
@@ -370,7 +386,34 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         public void DrawImage(int id, int x, int y)
         {
-            Debug.LogWarning("ToDo");
+            if (id >= _numImage)
+            {
+                Debug.LogWarning("存在しないファイルが指定されました");
+                return;
+            }
+
+            if (x >= _canvasWidth || y >= _canvasHeight)
+            {
+                // 描画範囲外である
+                return;
+            }
+
+            int pw = _imageArray[id].width;
+            int ph = _imageArray[id].height;
+            int pwc = pw;
+            int phc = ph;
+            if (x + pw > _canvasWidth) pw = _canvasWidth - x;
+            if (y + ph > _canvasWidth) ph = _canvasHeight - y;
+
+            Color[] img = _imageArray[id].GetPixels();
+
+            for (int i = 0; i < pw; ++i)
+            {
+                for (int j = 0; j < ph; ++j)
+                {
+                    _canvasColorArray[(x + i) + (y + j) * _canvasWidth] = img[i + (phc - j - 1) * pwc];
+                }
+            }
         }
 
         /// <summary>
