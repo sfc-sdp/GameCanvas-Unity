@@ -31,3 +31,12 @@ This project is work in progress.<br>
 * Atan2()
 * Deg2Rad()
 * Rad2Deg()
+
+## 実装メモ
+
+### 今後の実装予定
+* 文字描画API
+  * ビットマップフォント方式で
+* 入力、センサーAPI
+* 描画最適化
+  * 差分判定でTexture2Dの更新負荷を下げる
