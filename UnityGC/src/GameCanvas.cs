@@ -292,11 +292,10 @@ namespace GameCanvas
                 Debug.LogWarning("引数の値が不正です");
                 return;
             }
-
+            
             float d = 0.25f - radius;
             int dy = radius;
             int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
-            int j;
             int size = _canvasWidth * _canvasHeight;
 
             for (int dx = 0; dx <= dxe; ++dx)
@@ -333,7 +332,34 @@ namespace GameCanvas
                 return;
             }
 
-            Debug.LogWarning("ToDo");
+            float d = 0.25f - radius;
+            int dy = radius;
+            int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
+            int size = _canvasWidth * _canvasHeight;
+
+            for (int dx = 0; dx <= dxe; ++dx)
+            {
+                for (int i = 0; i < dy; ++i)
+                {
+                    DrawPoint(x + dx, y + i);
+                    DrawPoint(x + dx, y - i);
+                    DrawPoint(x - dx, y + i);
+                    DrawPoint(x - dx, y - i);
+                }
+                for (int i = dxe; i < dy; ++i)
+                {
+                    DrawPoint(x + i, y + dx);
+                    DrawPoint(x + i, y - dx);
+                    DrawPoint(x - i, y + dx);
+                    DrawPoint(x - i, y - dx);
+                }
+
+                d += 2 * dx + 1;
+                if (d > 0)
+                {
+                    d += 2 - 2 * dy--;
+                }
+            }
         }
 
         /// <summary>

@@ -21,6 +21,7 @@ This project is work in progress.<br>
 * DrawLine()
 * DrawPoint()
 * FillRect()
+* FillCircle()
 * SetColor()
 
 ### その他
