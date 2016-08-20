@@ -1,16 +1,21 @@
 ﻿using System;
 using GameCanvas;
+using UnityEngine;
 
 public class Game : GameBase
 {
+    private int frame;
+
     override public void Start()
     {
-        //
+        frame = 0;
     }
 
     override public void Calc()
     {
-        //
+        ++frame;
+
+        if (frame > 50) frame = 0;
     }
 
     override public void Draw()
@@ -38,7 +43,14 @@ public class Game : GameBase
 
         // 緑の円を描画します
         gc.SetColor(0, 64, 0);
-        gc.DrawCircle(320, 240, 200);
+        gc.DrawCircle(320, 240, 150 + frame);
+
+        // タッチ位置に赤い円を描画します
+        if (gc.isTouch)
+        {
+            gc.SetColor(255, 0, 0);
+            gc.DrawCircle(gc.touchX, gc.touchY, 10);
+        }
     }
 
     override public void Pause()

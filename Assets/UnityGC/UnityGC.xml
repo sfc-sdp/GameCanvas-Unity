@@ -41,17 +41,27 @@
         </member>
         <member name="T:GameCanvas.GameCanvas">
             <summary>
-            GameCanvasの様々な機能を取りまとめたクラスです。
+            GameCanvasの様々な機能を取りまとめたクラス
             </summary>
             <author>
-            2010 kuro    (shift→sega)
-            2010 fujieda (shift→ntt)
-            2016 seibe   (shift→nintendo)
+            2010 kuro    (shift→sega)     ※Java版
+            2010 fujieda (shift→ntt)      ※Java版
+            2016 seibe   (shift→nintendo) ※Unity版
             </author>
         </member>
         <member name="M:GameCanvas.GameCanvas.Awake">
             <summary>
             構築処理
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Update">
+            <summary>
+            更新処理
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.LateUpdate">
+            <summary>
+            描画確定処理
             </summary>
         </member>
         <member name="P:GameCanvas.GameCanvas.frameRate">
@@ -81,12 +91,7 @@
         </member>
         <member name="P:GameCanvas.GameCanvas.isPortrait">
             <summary>
-            ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定します
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.deviceResolution">
-            <summary>
-            端末の解像度。この値はゲーム解像度とは関係ありません
+            ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定されます
             </summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.SetResolution(System.Int32,System.Int32)">
@@ -124,14 +129,6 @@
             <param name="y">中心点のY座標</param>
             <param name="radius">半径</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            画像を描画します
-            </summary>
-            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
-            <param name="x">X座標</param>
-            <param name="y">Y座標</param>
-        </member>
         <member name="M:GameCanvas.GameCanvas.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             線分を描画します
@@ -167,6 +164,28 @@
             <param name="x">スクリーン左上を原点とするX座標</param>
             <param name="y">スクリーン左上を原点とするY座標</param>
         </member>
+        <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            画像を描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetImageWidth(System.Int32)">
+            <summary>
+            指定された画像の横幅を返します。画像が見つからない場合 0 を返します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <returns>指定された画像の横幅</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetImageHeight(System.Int32)">
+            <summary>
+            指定された画像の高さを返します。画像が見つからない場合 0 を返します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <returns>指定された画像の高さ</returns>
+        </member>
         <member name="M:GameCanvas.GameCanvas.SetColor(UnityEngine.Color)">
             <summary>
             DrawString や DrawRect などで塗りつぶしに用いる色を指定します
@@ -180,6 +199,92 @@
             <param name="red">R成分</param>
             <param name="green">G成分</param>
             <param name="blue">B成分</param>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isTouch">
+            <summary>
+            タッチされた状態かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isTouchBegan">
+            <summary>
+            タッチを始めた瞬間かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isTouchEnded">
+            <summary>
+            タッチを終えた瞬間かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isTouchHold">
+            <summary>
+            ホールド（指で触れたまま静止）された状態かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isTap">
+            <summary>
+            タップ（指で軽く触れる）された瞬間かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isFlick">
+            <summary>
+            フリック（指で軽くはじく）された瞬間かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchPoint">
+            <summary>
+            タッチされている座標。タッチされていないときは、最後にタッチされた座標を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchX">
+            <summary>
+            タッチされている座標X。タッチされていないときは、最後にタッチされた座標を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchY">
+            <summary>
+            タッチされている座標Y。タッチされていないときは、最後にタッチされた座標を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchCount">
+            <summary>
+            同時にタッチされている数
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchTimeLength">
+            <summary>
+            タッチされている時間
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isPinchInOut">
+            <summary>
+            ピンチインまたはピンチアウトされた状態かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isPinchIn">
+            <summary>
+            ピンチインされた状態かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isPinchOut">
+            <summary>
+            ピンチアウトされた状態かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.pinchRatio">
+            <summary>
+            ピンチインアウトの拡縮率。ピンチインアウトされていない場合、0を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.pinchRatioDiff">
+            <summary>
+            前回フレームを基準としたピンチインアウトの拡縮率。ピンチインアウトされていない場合、0を返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetTouchPoint(System.Int32)">
+            <summary>
+            タッチの詳細情報。タッチされていないときは(-1, -1)を返します
+            </summary>
+            <param name="index">fingerId</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">
             <summary>
@@ -216,6 +321,30 @@
             </summary>
             <param name="rad">角度（度数法）</param>
             <returns>角度（弧度法）</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Trace(System.String)">
+            <summary>
+            コンソールにログメッセージを出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            </summary>
+            <param name="message">ログメッセージ</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Trace(UnityEngine.Vector2)">
+            <summary>
+            コンソールにベクトル値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            </summary>
+            <param name="value">ベクトル値</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Trace(System.Collections.IEnumerable)">
+            <summary>
+            コンソールに数値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            </summary>
+            <param name="value">数値</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Trace(System.Boolean)">
+            <summary>
+            コンソールに真偽値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            </summary>
+            <param name="value">真偽値</param>
         </member>
         <member name="P:GameCanvas.GameCanvas.WIDTH">
             <summary>[非推奨] 画面の幅</summary>

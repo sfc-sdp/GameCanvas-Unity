@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 165be8fa568786c4e979cce443a00598
-timeCreated: 1466262212
+timeCreated: 1471441521
 licenseType: Free
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
-  executionOrder: {}
+  executionOrder:
+    GameCanvas.GameCanvas: -100
   isPreloaded: 0
   platformData:
     Any:
