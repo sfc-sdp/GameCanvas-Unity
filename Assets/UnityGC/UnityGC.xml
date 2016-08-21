@@ -94,12 +94,40 @@
             ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定されます
             </summary>
         </member>
+        <member name="M:GameCanvas.GameCanvas.GetImageWidth(System.Int32)">
+            <summary>
+            指定された画像の横幅を返します。画像が見つからない場合 0 を返します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <returns>指定された画像の横幅</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetImageHeight(System.Int32)">
+            <summary>
+            指定された画像の高さを返します。画像が見つからない場合 0 を返します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <returns>指定された画像の高さ</returns>
+        </member>
         <member name="M:GameCanvas.GameCanvas.SetResolution(System.Int32,System.Int32)">
             <summary>
             ゲームの解像度を設定します
             </summary>
             <param name="width">X軸方向の解像度（幅）</param>
             <param name="height">Y軸方向の解像度（高さ）</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetColor(UnityEngine.Color)">
+            <summary>
+            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+            </summary>
+            <param name="color">塗りの色</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetColor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+            </summary>
+            <param name="red">R成分</param>
+            <param name="green">G成分</param>
+            <param name="blue">B成分</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.ClearScreen">
             <summary>
@@ -116,14 +144,6 @@
         <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Int32,System.Int32,System.Int32)">
             <summary>
             中抜きの円を描画します
-            </summary>
-            <param name="x">中心点のX座標</param>
-            <param name="y">中心点のY座標</param>
-            <param name="radius">半径</param>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.FillCircle(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            塗りつぶしの円を描画します
             </summary>
             <param name="x">中心点のX座標</param>
             <param name="y">中心点のY座標</param>
@@ -147,23 +167,6 @@
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            塗りつぶしの長方形を描画します
-            </summary>
-            <param name="x">左上のX座標</param>
-            <param name="y">左上のY座標</param>
-            <param name="width">横幅</param>
-            <param name="height">縦幅</param>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.DrawString(System.String,System.Int32,System.Int32)">
-            <summary>
-            文字列を描画します
-            </summary>
-            <param name="str">描画する文字列</param>
-            <param name="x">スクリーン左上を原点とするX座標</param>
-            <param name="y">スクリーン左上を原点とするY座標</param>
-        </member>
         <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
             <summary>
             画像を描画します
@@ -172,33 +175,22 @@
             <param name="x">X座標</param>
             <param name="y">Y座標</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.GetImageWidth(System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.FillCircle(System.Int32,System.Int32,System.Int32)">
             <summary>
-            指定された画像の横幅を返します。画像が見つからない場合 0 を返します
+            塗りつぶしの円を描画します
             </summary>
-            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
-            <returns>指定された画像の横幅</returns>
+            <param name="x">中心点のX座標</param>
+            <param name="y">中心点のY座標</param>
+            <param name="radius">半径</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.GetImageHeight(System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            指定された画像の高さを返します。画像が見つからない場合 0 を返します
+            塗りつぶしの長方形を描画します
             </summary>
-            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
-            <returns>指定された画像の高さ</returns>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.SetColor(UnityEngine.Color)">
-            <summary>
-            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
-            </summary>
-            <param name="color">塗りの色</param>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.SetColor(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
-            </summary>
-            <param name="red">R成分</param>
-            <param name="green">G成分</param>
-            <param name="blue">B成分</param>
+            <param name="x">左上のX座標</param>
+            <param name="y">左上のY座標</param>
+            <param name="width">横幅</param>
+            <param name="height">縦幅</param>
         </member>
         <member name="P:GameCanvas.GameCanvas.isTouch">
             <summary>
@@ -215,7 +207,7 @@
             タッチを終えた瞬間かどうか
             </summary>
         </member>
-        <member name="P:GameCanvas.GameCanvas.isTouchHold">
+        <member name="P:GameCanvas.GameCanvas.isHold">
             <summary>
             ホールド（指で触れたまま静止）された状態かどうか
             </summary>
@@ -228,31 +220,6 @@
         <member name="P:GameCanvas.GameCanvas.isFlick">
             <summary>
             フリック（指で軽くはじく）された瞬間かどうか
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.touchPoint">
-            <summary>
-            タッチされている座標。タッチされていないときは、最後にタッチされた座標を返します
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.touchX">
-            <summary>
-            タッチされている座標X。タッチされていないときは、最後にタッチされた座標を返します
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.touchY">
-            <summary>
-            タッチされている座標Y。タッチされていないときは、最後にタッチされた座標を返します
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.touchCount">
-            <summary>
-            同時にタッチされている数
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.touchTimeLength">
-            <summary>
-            タッチされている時間
             </summary>
         </member>
         <member name="P:GameCanvas.GameCanvas.isPinchInOut">
@@ -270,12 +237,37 @@
             ピンチアウトされた状態かどうか
             </summary>
         </member>
+        <member name="P:GameCanvas.GameCanvas.touchX">
+            <summary>
+            タッチされている座標X。タッチされていないときは、最後にタッチされた座標を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchY">
+            <summary>
+            タッチされている座標Y。タッチされていないときは、最後にタッチされた座標を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchPoint">
+            <summary>
+            タッチされている座標。タッチされていないときは、最後にタッチされた座標を返します
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchCount">
+            <summary>
+            同時にタッチされている数
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.touchTimeLength">
+            <summary>
+            タッチされている時間
+            </summary>
+        </member>
         <member name="P:GameCanvas.GameCanvas.pinchRatio">
             <summary>
             ピンチインアウトの拡縮率。ピンチインアウトされていない場合、0を返します
             </summary>
         </member>
-        <member name="P:GameCanvas.GameCanvas.pinchRatioDiff">
+        <member name="P:GameCanvas.GameCanvas.pinchRatioInstant">
             <summary>
             前回フレームを基準としたピンチインアウトの拡縮率。ピンチインアウトされていない場合、0を返します
             </summary>
@@ -284,7 +276,7 @@
             <summary>
             タッチの詳細情報。タッチされていないときは(-1, -1)を返します
             </summary>
-            <param name="index">fingerId</param>
+            <param name="fingerId">fingerId</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">
             <summary>
@@ -321,6 +313,11 @@
             </summary>
             <param name="rad">角度（度数法）</param>
             <returns>角度（弧度法）</returns>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isDebug">
+            <summary>
+            デバッグ環境あるいはデバッグビルドで実行されている場合に真を返します
+            </summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.Trace(System.String)">
             <summary>

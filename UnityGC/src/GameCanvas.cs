@@ -9,18 +9,8 @@ using UnityEngine.UI;
 
 namespace GameCanvas
 {
-    /***********************************
-        エイリアス
-    ***********************************/
-
     using ColorArrRoc = ReadOnlyCollection<Color[]>;
-
-
-
-    /***********************************
-        クラス
-    ***********************************/
-
+    
     /// <summary>
     /// GameCanvasの様々な機能を取りまとめたクラス
     /// </summary>
@@ -31,9 +21,9 @@ namespace GameCanvas
     /// </author>
     public class GameCanvas : SingletonMonoBehaviour<GameCanvas>
     {
-        /*******************************
-            定数
-        *******************************/
+        /* ---------------------------------------------------------------------------------------------------- */
+
+        #region UnityGC：定数
 
         private const float MAX_TAP_TIME_LENGTH     = 0.3f;         // タッチ：タップ判定時間長
         private const float MIN_FLICK_DISTANCE      = 3f;           // タッチ：フリック判定移動量
@@ -41,12 +31,10 @@ namespace GameCanvas
         private const float MAX_PINCH_IN_SCALE      = 0.95f;        // ピンチ：ピンチイン判定縮小率
         private const float MIN_PINCH_OUT_SCALE     = 1.05f;        // ピンチ：ピンチアウト判定拡大率
 
+        #endregion
 
+        #region UnityGC：変数
 
-        /*******************************
-            メンバー変数
-        *******************************/
-        
         private int         _deviceWidth            = 640;          // 画面解像度：横幅
         private int         _deviceHeight           = 480;          // 画面解像度：縦幅
         private int         _canvasWidth            = 640;          // 描画解像度：横幅
@@ -88,11 +76,12 @@ namespace GameCanvas
         private RawImage    _canvasRawImage         = null;         // コンポーネント：RawImage
         private Texture2D   _canvasTexture          = null;         // コンポーネント：Texture2D
 
+        #endregion
 
 
-        /*******************************
-            初期化処理
-        *******************************/
+        /* ---------------------------------------------------------------------------------------------------- */
+
+        #region Unity：イベント関数
 
         /// <summary>
         /// 構築処理
@@ -331,42 +320,17 @@ namespace GameCanvas
         /// </summary>
         private void LateUpdate()
         {
-#if false
-            // 描画の更新範囲を確定する
-            int top    = _canvasHeight;
-            int left   = _canvasWidth;
-            int right  = -1;
-            int bottom = -1;
-            for (int x = 0; x < _canvasWidth; ++x)
-            {
-                for (int y = 0; y < _canvasHeight; ++y)
-                {
-                    var index = x + y * _canvasWidth;
-                    if (_canvasPrevColorArray[index] != _canvasColorArray[index])
-                    {
-                        if (top    > y) top    = y;
-                        if (left   > x) left   = x;
-                        if (right  < x) right  = x;
-                        if (bottom < y) bottom = y;
-
-                        _canvasPrevColorArray[index] = _canvasColorArray[index];
-                    }
-                }
-            }
-
-            // 更新すべきピクセルが1つもなければ処理を終了する
-            if (right == -1) return;
-#endif
             // キャンバスの描画更新
             _canvasTexture.SetPixels(_canvasColorArray);
             _canvasTexture.Apply();
         }
 
+        #endregion
 
 
-        /*******************************
-            グラフィック
-        *******************************/
+        /* ---------------------------------------------------------------------------------------------------- */
+
+        #region UnityGC：グラフィックAPI (基本図形)
 
         /// <summary>
         /// FPS（1秒あたりのフレーム更新回数）
@@ -413,6 +377,7 @@ namespace GameCanvas
             set
             {
                 Screen.fullScreen = value;
+                SetResolution(_canvasWidth, _canvasHeight);
             }
             get
             {
@@ -452,7 +417,39 @@ namespace GameCanvas
                 return _canvasWidth <= _canvasHeight;
             }
         }
-        
+
+        /// <summary>
+        /// 指定された画像の横幅を返します。画像が見つからない場合 0 を返します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <returns>指定された画像の横幅</returns>
+        public int GetImageWidth(int id)
+        {
+            if (id >= _numImage)
+            {
+                Debug.LogWarning("存在しないファイルが指定されました");
+                return 0;
+            }
+
+            return _imageArray[id].width;
+        }
+
+        /// <summary>
+        /// 指定された画像の高さを返します。画像が見つからない場合 0 を返します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <returns>指定された画像の高さ</returns>
+        public int GetImageHeight(int id)
+        {
+            if (id >= _numImage)
+            {
+                Debug.LogWarning("存在しないファイルが指定されました");
+                return 0;
+            }
+
+            return _imageArray[id].height;
+        }
+
         /// <summary>
         /// ゲームの解像度を設定します
         /// </summary>
@@ -487,6 +484,26 @@ namespace GameCanvas
             _canvasColorArray = _canvasTexture.GetPixels();
             _canvasPrevColorArray = new Color[_canvasColorArray.Length];
             ClearScreen();
+        }
+
+        /// <summary>
+        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+        /// </summary>
+        /// <param name="color">塗りの色</param>
+        public void SetColor(Color color)
+        {
+            _palletColor = color;
+        }
+
+        /// <summary>
+        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+        /// </summary>
+        /// <param name="red">R成分</param>
+        /// <param name="green">G成分</param>
+        /// <param name="blue">B成分</param>
+        public void SetColor(int red, int green, int blue)
+        {
+            SetColor(new Color(red, green, blue));
         }
 
         /// <summary>
@@ -546,51 +563,6 @@ namespace GameCanvas
                 DrawPoint(x - dy, y + dx);
                 DrawPoint(x + dy, y - dx);
                 DrawPoint(x - dy, y - dx);
-
-                d += 2 * dx + 1;
-                if (d > 0)
-                {
-                    d += 2 - 2 * dy--;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 塗りつぶしの円を描画します
-        /// </summary>
-        /// <param name="x">中心点のX座標</param>
-        /// <param name="y">中心点のY座標</param>
-        /// <param name="radius">半径</param>
-        public void FillCircle(int x, int y, int radius)
-        {
-            if (radius < 1)
-            {
-                // 負の半径は許容しない
-                Debug.LogWarning("引数の値が不正です");
-                return;
-            }
-
-            float d = 0.25f - radius;
-            int dy = radius;
-            int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
-            int size = _canvasWidth * _canvasHeight;
-
-            for (int dx = 0; dx <= dxe; ++dx)
-            {
-                for (int i = 0; i < dy; ++i)
-                {
-                    DrawPoint(x + dx, y + i);
-                    DrawPoint(x + dx, y - i);
-                    DrawPoint(x - dx, y + i);
-                    DrawPoint(x - dx, y - i);
-                }
-                for (int i = dxe; i < dy; ++i)
-                {
-                    DrawPoint(x + i, y + dx);
-                    DrawPoint(x + i, y - dx);
-                    DrawPoint(x - i, y + dx);
-                    DrawPoint(x - i, y - dx);
-                }
 
                 d += 2 * dx + 1;
                 if (d > 0)
@@ -724,61 +696,6 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// 塗りつぶしの長方形を描画します
-        /// </summary>
-        /// <param name="x">左上のX座標</param>
-        /// <param name="y">左上のY座標</param>
-        /// <param name="width">横幅</param>
-        /// <param name="height">縦幅</param>
-        public void FillRect(int x, int y, int width, int height)
-        {
-            if (width < 1 || height < 1)
-            {
-                // 負の幅は許容しない
-                Debug.LogWarning("引数の値が不正です");
-                return;
-            }
-
-            // -MEMO-
-            // 最適化のため DrawPoint() は用いない
-
-            int sx = x;
-            int sy = y;
-            int ex = x + width;
-            int ey = y + height;
-
-            if (sx < 0) sx = 0;
-            if (sy < 0) sy = 0;
-            if (ex >= _canvasWidth ) ex = _canvasWidth  - 1;
-            if (ey >= _canvasHeight) ey = _canvasHeight - 1;
-
-            if (sx >= _canvasWidth || sy >= _canvasHeight || ex < 0 || ey < 0)
-            {
-                // 描画範囲外である
-                return;
-            }
-
-            for (int i = sx; i < ex; ++i)
-            {
-                for (int j = sy; j < ey; ++j)
-                {
-                    _canvasColorArray[i + j * _canvasWidth] = _palletColor;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 文字列を描画します
-        /// </summary>
-        /// <param name="str">描画する文字列</param>
-        /// <param name="x">スクリーン左上を原点とするX座標</param>
-        /// <param name="y">スクリーン左上を原点とするY座標</param>
-        public void DrawString(string str, int x, int y)
-        {
-            Debug.LogWarning("ToDo");
-        }
-
-        /// <summary>
         /// 画像を描画します
         /// </summary>
         /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
@@ -834,78 +751,98 @@ namespace GameCanvas
             }
         }
 
-        public void DrawClipImage(int id, int x, int y, int u, int v, int w, int h)
-        {
-            Debug.LogWarning("ToDo");
-        }
-        
-        public void DrawScaledRotateImage(int id, int x, int y, int xsize, int ysize, float rotate)
-        {
-            Debug.LogWarning("ToDo");
-        }
-        
-        public void DrawScaledRotateImage(int id, int x, int y, int xsize, int ysize, float rotate, float px, float py)
-        {
-            Debug.LogWarning("ToDo");
-        }
-
         /// <summary>
-        /// 指定された画像の横幅を返します。画像が見つからない場合 0 を返します
+        /// 塗りつぶしの円を描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
-        /// <returns>指定された画像の横幅</returns>
-        public int GetImageWidth(int id)
+        /// <param name="x">中心点のX座標</param>
+        /// <param name="y">中心点のY座標</param>
+        /// <param name="radius">半径</param>
+        public void FillCircle(int x, int y, int radius)
         {
-            if (id >= _numImage)
+            if (radius < 1)
             {
-                Debug.LogWarning("存在しないファイルが指定されました");
-                return 0;
+                // 負の半径は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
             }
 
-            return _imageArray[id].width;
+            float d = 0.25f - radius;
+            int dy = radius;
+            int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
+            int size = _canvasWidth * _canvasHeight;
+
+            for (int dx = 0; dx <= dxe; ++dx)
+            {
+                for (int i = 0; i < dy; ++i)
+                {
+                    DrawPoint(x + dx, y + i);
+                    DrawPoint(x + dx, y - i);
+                    DrawPoint(x - dx, y + i);
+                    DrawPoint(x - dx, y - i);
+                }
+                for (int i = dxe; i < dy; ++i)
+                {
+                    DrawPoint(x + i, y + dx);
+                    DrawPoint(x + i, y - dx);
+                    DrawPoint(x - i, y + dx);
+                    DrawPoint(x - i, y - dx);
+                }
+
+                d += 2 * dx + 1;
+                if (d > 0)
+                {
+                    d += 2 - 2 * dy--;
+                }
+            }
         }
 
         /// <summary>
-        /// 指定された画像の高さを返します。画像が見つからない場合 0 を返します
+        /// 塗りつぶしの長方形を描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
-        /// <returns>指定された画像の高さ</returns>
-        public int GetImageHeight(int id)
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        /// <param name="width">横幅</param>
+        /// <param name="height">縦幅</param>
+        public void FillRect(int x, int y, int width, int height)
         {
-            if (id >= _numImage)
+            if (width < 1 || height < 1)
             {
-                Debug.LogWarning("存在しないファイルが指定されました");
-                return 0;
+                // 負の幅は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
             }
 
-            return _imageArray[id].height;
+            // -MEMO-
+            // 最適化のため DrawPoint() は用いない
+
+            int sx = x;
+            int sy = y;
+            int ex = x + width;
+            int ey = y + height;
+
+            if (sx < 0) sx = 0;
+            if (sy < 0) sy = 0;
+            if (ex >= _canvasWidth ) ex = _canvasWidth  - 1;
+            if (ey >= _canvasHeight) ey = _canvasHeight - 1;
+
+            if (sx >= _canvasWidth || sy >= _canvasHeight || ex < 0 || ey < 0)
+            {
+                // 描画範囲外である
+                return;
+            }
+
+            for (int i = sx; i < ex; ++i)
+            {
+                for (int j = sy; j < ey; ++j)
+                {
+                    _canvasColorArray[i + j * _canvasWidth] = _palletColor;
+                }
+            }
         }
 
-        /// <summary>
-        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
-        /// </summary>
-        /// <param name="color">塗りの色</param>
-        public void SetColor(Color color)
-        {
-            _palletColor = color;
-        }
+        #endregion
 
-        /// <summary>
-        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
-        /// </summary>
-        /// <param name="red">R成分</param>
-        /// <param name="green">G成分</param>
-        /// <param name="blue">B成分</param>
-        public void SetColor(int red, int green, int blue)
-        {
-            SetColor(new Color(red, green, blue));
-        }
-
-
-
-        /*******************************
-            入力：タッチ
-        *******************************/
+        #region UnityGC：入力API (タッチ)
 
         /// <summary>
         /// タッチされた状態かどうか
@@ -943,7 +880,7 @@ namespace GameCanvas
         /// <summary>
         /// ホールド（指で触れたまま静止）された状態かどうか
         /// </summary>
-        public bool isTouchHold
+        public bool isHold
         {
             get
             {
@@ -970,64 +907,6 @@ namespace GameCanvas
             get
             {
                 return _isFlicked;
-            }
-        }
-
-        /// <summary>
-        /// タッチされている座標。タッチされていないときは、最後にタッチされた座標を返します
-        /// </summary>
-        public Vector2 touchPoint
-        {
-            get
-            {
-                return _scaledTouchPoint;
-            }
-        }
-
-        /// <summary>
-        /// タッチされている座標X。タッチされていないときは、最後にタッチされた座標を返します
-        /// </summary>
-        public int touchX
-        {
-            get
-            {
-                return (int)touchPoint.x;
-            }
-        }
-
-        /// <summary>
-        /// タッチされている座標Y。タッチされていないときは、最後にタッチされた座標を返します
-        /// </summary>
-        public int touchY
-        {
-            get
-            {
-                return (int)touchPoint.y;
-            }
-        }
-
-        /// <summary>
-        /// 同時にタッチされている数
-        /// </summary>
-        public int touchCount
-        {
-            get
-            {
-                if (_touchSupported)
-                    return Input.touchCount;
-                else
-                    return _isTouch ? 1 : 0;
-            }
-        }
-
-        /// <summary>
-        /// タッチされている時間
-        /// </summary>
-        public float touchTimeLength
-        {
-            get
-            {
-                return _touchTimeLength;
             }
         }
 
@@ -1065,6 +944,64 @@ namespace GameCanvas
         }
 
         /// <summary>
+        /// タッチされている座標X。タッチされていないときは、最後にタッチされた座標を返します
+        /// </summary>
+        public int touchX
+        {
+            get
+            {
+                return (int)touchPoint.x;
+            }
+        }
+
+        /// <summary>
+        /// タッチされている座標Y。タッチされていないときは、最後にタッチされた座標を返します
+        /// </summary>
+        public int touchY
+        {
+            get
+            {
+                return (int)touchPoint.y;
+            }
+        }
+
+        /// <summary>
+        /// タッチされている座標。タッチされていないときは、最後にタッチされた座標を返します
+        /// </summary>
+        public Vector2 touchPoint
+        {
+            get
+            {
+                return _scaledTouchPoint;
+            }
+        }
+
+        /// <summary>
+        /// 同時にタッチされている数
+        /// </summary>
+        public int touchCount
+        {
+            get
+            {
+                if (_touchSupported)
+                    return Input.touchCount;
+                else
+                    return _isTouch ? 1 : 0;
+            }
+        }
+
+        /// <summary>
+        /// タッチされている時間
+        /// </summary>
+        public float touchTimeLength
+        {
+            get
+            {
+                return _touchTimeLength;
+            }
+        }
+
+        /// <summary>
         /// ピンチインアウトの拡縮率。ピンチインアウトされていない場合、0を返します
         /// </summary>
         public float pinchRatio
@@ -1078,7 +1015,7 @@ namespace GameCanvas
         /// <summary>
         /// 前回フレームを基準としたピンチインアウトの拡縮率。ピンチインアウトされていない場合、0を返します
         /// </summary>
-        public float pinchRatioDiff
+        public float pinchRatioInstant
         {
             get
             {
@@ -1089,17 +1026,15 @@ namespace GameCanvas
         /// <summary>
         /// タッチの詳細情報。タッチされていないときは(-1, -1)を返します
         /// </summary>
-        /// <param name="index">fingerId</param>
-        public Vector2 GetTouchPoint(int index)
+        /// <param name="fingerId">fingerId</param>
+        public Vector2 GetTouchPoint(int fingerId)
         {
-            return Input.touchCount > index ? Input.GetTouch(index).position : -Vector2.one;
+            return Input.touchCount > fingerId ? Input.GetTouch(fingerId).position : -Vector2.one;
         }
 
+        #endregion
 
-
-        /*******************************
-            数学
-        *******************************/
+        #region UnityGC：数学API
 
         /// <summary>
         /// cosを求めます
@@ -1152,11 +1087,20 @@ namespace GameCanvas
             return rad * Mathf.Rad2Deg;
         }
 
+        #endregion
 
+        #region UnityGC：デバッグAPI
 
-        /*******************************
-            その他
-        *******************************/
+        /// <summary>
+        /// デバッグ環境あるいはデバッグビルドで実行されている場合に真を返します
+        /// </summary>
+        public bool isDebug
+        {
+            get
+            {
+                return Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.OSXEditor || Debug.isDebugBuild;
+            }
+        }
 
         /// <summary>
         /// コンソールにログメッセージを出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
@@ -1164,7 +1108,7 @@ namespace GameCanvas
         /// <param name="message">ログメッセージ</param>
         public void Trace(string message)
         {
-            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.OSXEditor || Debug.isDebugBuild)
+            if (isDebug)
             {
                 Debug.Log(message);
             }
@@ -1197,8 +1141,13 @@ namespace GameCanvas
             Trace(value ? "True" : "False");
         }
 
+        #endregion
 
 
+        /* ---------------------------------------------------------------------------------------------------- */
+
+        #region UnityJava後方互換：定数
+        
         /*******************************
             後方互換 - 定数
         *******************************/
@@ -1286,10 +1235,9 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_AQUA = new Color(0.5f, 0.5f, 1);
 
+        #endregion
 
-        /*******************************
-            後方互換 - グラフィック
-        *******************************/
+        #region UnityJava後方互換：グラフィックAPI
 
         /// <summary>
         /// [非推奨] 現在のゲーム画面をキャプチャ―して保存します。
@@ -1407,19 +1355,19 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawClipImage(int id, int x, int y, int u, int v, int w, int h)
         {
-            DrawClipImage(id, x, y, u, v, w, h);
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate)
         {
-            DrawScaledRotateImage(id, x, y, xsize, ysize, (float)rotate);
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate, double px, double py)
         {
-            DrawScaledRotateImage(id, x, y, xsize, ysize, (float)rotate, (float)px, (float)py);
+            Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1481,10 +1429,9 @@ namespace GameCanvas
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public string showInputDialog(string message, string defaultInput) { return ""; }
 
+        #endregion
 
-        /*******************************
-            後方互換 - サウンド
-        *******************************/
+        #region UnityJava後方互換：サウンドAPI
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void playBGM(int id)
@@ -1546,10 +1493,9 @@ namespace GameCanvas
             Debug.LogWarning("ToDo");
         }
 
+        #endregion
 
-        /*******************************
-            後方互換 - 入力
-        *******************************/
+        #region UnityJava後方互換：入力API
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getKeyPressLength(KeyCode key)
@@ -1615,10 +1561,9 @@ namespace GameCanvas
             return isTouch;
         }
 
+        #endregion
 
-        /*******************************
-            後方互換 - セーブデータ
-        *******************************/
+        #region UnityJava後方互換：セーブデータAPI
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int load(int idx)
@@ -1633,10 +1578,9 @@ namespace GameCanvas
             Debug.LogWarning("ToDo");
         }
 
+        #endregion
 
-        /*******************************
-            後方互換 - 当たり判定
-        *******************************/
+        #region UnityJava後方互換：当たり判定API
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
@@ -1659,10 +1603,9 @@ namespace GameCanvas
             return false;
         }
 
+        #endregion
 
-        /*******************************
-            後方互換 - 数学
-        *******************************/
+        #region UnityJava後方互換：数学API
 
         /// <summary>[非推奨] 平方根(√)を求めます</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1692,11 +1635,13 @@ namespace GameCanvas
             return Atan2(x, y);
         }
 
+        #endregion
 
-        /*******************************
-            親クラスのメンバーへの
-            アクセスを無効化する
-        *******************************/
+
+        /* ---------------------------------------------------------------------------------------------------- */
+
+        #region 継承元メンバーへのアクセス無効化措置
+        // 親クラスのメンバーへのアクセスを無効化する
 
         // Object
         private new HideFlags hideFlags
@@ -2000,5 +1945,7 @@ namespace GameCanvas
         /// <summary>使用禁止</summary>
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void StopCoroutine(Coroutine routine) { }
+
+        #endregion
     }
 }
