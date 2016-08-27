@@ -1053,23 +1053,23 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// 角度を弧度法から度数法に変換します
+        /// 角度を度数法から弧度法に変換します
         /// </summary>
-        /// <param name="deg">角度（弧度法）</param>
-        /// <returns>角度（度数法）</returns>
-        public float Deg2Rad(float deg)
+        /// <param name="degree">角度（度数法）</param>
+        /// <returns>角度（弧度法）</returns>
+        public float Deg2Rad(float degree)
         {
-            return deg * Mathf.Deg2Rad;
+            return degree * Mathf.Deg2Rad;
         }
 
         /// <summary>
-        /// 角度を度数法から弧度法に変換します
+        /// 角度を弧度法から度数法に変換します
         /// </summary>
-        /// <param name="rad">角度（度数法）</param>
-        /// <returns>角度（弧度法）</returns>
-        public float Rad2Deg(float rad)
+        /// <param name="radian">角度（弧度法）</param>
+        /// <returns>角度（度数法）</returns>
+        public float Rad2Deg(float radian)
         {
-            return rad * Mathf.Rad2Deg;
+            return radian * Mathf.Rad2Deg;
         }
 
         #endregion
@@ -1136,87 +1136,64 @@ namespace GameCanvas
         /*******************************
             後方互換 - 定数
         *******************************/
-
-        /// <summary>[非推奨] 画面の幅</summary>
+        
         [Obsolete("gc.screenWidth を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int WIDTH
         {
             get { return _canvasWidth; }
         }
-        /// <summary>[非推奨] 画面の高さ</summary>
         [Obsolete("gc.screenHeight を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int HEIGHT
         {
             get { return _canvasHeight; }
         }
-        /// <summary>[非推奨] フレームレート(FPS)</summary>
         [Obsolete("gc.frameRate を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int CONFIG_FPS
         {
             get { return Application.targetFrameRate; }
         }
-
-        /// <summary>[非推奨] 上ボタン</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_UP = KeyCode.UpArrow;
-        /// <summary>[非推奨] 右ボタン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_RIGHT = KeyCode.RightArrow;
-        /// <summary>[非推奨] 下ボタン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_DOWN = KeyCode.DownArrow;
-        /// <summary>[非推奨] 左ボタン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_LEFT = KeyCode.LeftArrow;
-
-        /// <summary>[非推奨] Zボタン</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_Z = KeyCode.Z;
-        /// <summary>[非推奨] Xボタン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_X = KeyCode.X;
-        /// <summary>[非推奨] Cボタン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_C = KeyCode.C;
-        /// <summary>[非推奨] Vボタン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_V = KeyCode.V;
-
-        /// <summary>[非推奨] ENTERキー</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_ENTER = KeyCode.Return;
-        /// <summary>[非推奨] ENTERキー</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly KeyCode KEY_SPACE = KeyCode.Space;
-
-        /// <summary>[非推奨] 白色</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_WHITE = Color.white;
-        /// <summary>[非推奨] 黒色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_BLACK = Color.black;
-        /// <summary>[非推奨] 灰色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_GRAY = Color.gray;
-        /// <summary>[非推奨] 赤色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_RED = Color.red;
-        /// <summary>[非推奨] 黄色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_BLUE = Color.blue;
-        /// <summary>[非推奨] 緑色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_GREEN = Color.green;
-        /// <summary>[非推奨] 黄色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_YELLOW = Color.yellow;
-        /// <summary>[非推奨] 紫色</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_PURPLE = new Color(1, 0, 1);
-        /// <summary>[非推奨] シアン</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_CYAN = Color.cyan;
-        /// <summary>[非推奨] みずいろ</summary>
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public readonly Color COLOR_AQUA = new Color(0.5f, 0.5f, 1);
 
@@ -1229,20 +1206,16 @@ namespace GameCanvas
         {
             Application.CaptureScreenshot(filename + ".png");
         }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void init(object _f, object g) { }
 
-        /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void finalize() { }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setGraphics(object gr, object img) { }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setWindowTitle(string title) { }
         
@@ -1546,29 +1519,25 @@ namespace GameCanvas
         #endregion
 
         #region UnityJava後方互換：数学API
-
-        /// <summary>[非推奨] 平方根(√)を求めます</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float sqrt(float data)
         {
             return Mathf.Sqrt(data);
         }
-
-        /// <summary>[非推奨] cosを求めます</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float cos(float angle)
         {
             return Cos(angle);
         }
-
-        /// <summary>[非推奨] sinを求めます</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float sin(float angle)
         {
             return Sin(angle);
         }
-
-        /// <summary>[非推奨] atan2(ベクトルの角度)を求めます</summary>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public float atan2(float x, float y)
         {
@@ -1584,24 +1553,19 @@ namespace GameCanvas
         #endregion
 
         #region UnityJava後方互換：その他
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setSeed(int seed) { }
         
-        /// <summary>[使用禁止]</summary>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void resetGame() { }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void resetGameInstancle(object g) { }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void updatMessage() { }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawMessage() { }
 
@@ -1610,12 +1574,10 @@ namespace GameCanvas
         {
             Application.Quit();
         }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool showYesNoDialog(string message) { return false; }
-
-        /// <summary>[使用禁止]</summary>
+        
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public string showInputDialog(string message, string defaultInput) { return ""; }
 
@@ -1633,47 +1595,46 @@ namespace GameCanvas
             set { base.hideFlags = value; }
             get { return base.hideFlags;  }
         }
-
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void Destroy(UnityEngine.Object obj) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void Destroy(UnityEngine.Object obj, float t) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void DestroyImmediate(UnityEngine.Object obj) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void DestroyImmediate(UnityEngine.Object obj, bool allowDestroyingAssets) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void DestroyObject(UnityEngine.Object obj) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void DestroyObject(UnityEngine.Object obj, float t) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static void DontDestroyOnLoad(UnityEngine.Object target) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static UnityEngine.Object FindObjectOfType(Type type) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static T FindObjectOfType<T>() where T : UnityEngine.Object { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static UnityEngine.Object[] FindObjectsOfType(Type type) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static T[] FindObjectsOfType<T>() where T : UnityEngine.Object { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static UnityEngine.Object Instantiate(UnityEngine.Object original) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static UnityEngine.Object Instantiate(UnityEngine.Object original, Vector3 position, Quaternion rotation) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static T Instantiate<T>(T original) where T : UnityEngine.Object { return null; }
 
@@ -1691,242 +1652,237 @@ namespace GameCanvas
         {
             get { return base.transform; }
         }
-
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new string tag;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component animation;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component audio;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component camera;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component collider;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component collider2D;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component constantForce;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component guiElement;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component guiText;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component guiTexture;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component hingeJoint;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component light;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component networkView;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component particleEmitter;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component particleSystem;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component renderer;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component rigidbody;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component rigidbody2D;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new GameObject gameObject;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new Transform transform;
-
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void BroadcastMessage(string methodName) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void BroadcastMessage(string methodName, object parameter) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void BroadcastMessage(string methodName, SendMessageOptions options) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void BroadcastMessage(string methodName, object parameter, SendMessageOptions options) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool CompareTag(string tag) { return false; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component GetComponent(Type type) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component GetComponent(string type) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T GetComponent<T>() { return default(T); }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component GetComponentInChildren(Type t) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component GetComponentInChildren(Type t, bool includeInactive) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T GetComponentInChildren<T>() { return default(T); }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T GetComponentInChildren<T>(bool includeInactive) { return default(T); }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component GetComponentInParent(Type t) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T GetComponentInParent<T>() { return default(T); }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component[] GetComponents(Type type) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void GetComponents(Type type, List<UnityEngine.Component> results) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T[] GetComponents<T>() { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void GetComponents<T>(List<T> results) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component[] GetComponentsInChildren(Type t) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component[] GetComponentsInChildren(Type t, bool includeInactive) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T[] GetComponentsInChildren<T>() { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T[] GetComponentsInChildren<T>(bool includeInactive) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void GetComponentsInChildren<T>(List<T> results) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void GetComponentsInChildren<T>(bool includeInactive, List<T> result) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component[] GetComponentsInParent(Type t) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new UnityEngine.Component[] GetComponentsInParent(Type t, bool includeInactive) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T[] GetComponentsInParent<T>() { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new T[] GetComponentsInParent<T>(bool includeInactive) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void GetComponentsInParent<T>(bool includeInactive, List<T> results) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessage(string methodName) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessage(string methodName, object value) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessage(string methodName, SendMessageOptions options) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessage(string methodName, object value, SendMessageOptions options) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessageUpwards(string methodName) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessageUpwards(string methodName, SendMessageOptions options) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessageUpwards(string methodName, object value) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void SendMessageUpwards(string methodName, object value, SendMessageOptions options) { }
 
         // Behaviour
-
         private bool baseEnabled
         {
             set { base.enabled = value; }
             get { return base.enabled;  }
         }
         
-        /// <summary>使用禁止</summary>
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool enabled;
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool isActiveAndEnabled;
 
         // MonoBehaviour
-        /// <summary>使用禁止</summary>
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool useGUILayout;
-        /// <summary>使用禁止</summary>
-        //[Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        //public new static void print(object message) { }
-        /// <summary>使用禁止</summary>
+        
+        [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new static void print(object message) { }
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void CancelInvoke() { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void CancelInvoke(string methodName) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void Invoke(string methodName, float time) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void InvokeRepeating(string methodName, float time, float repeatRate) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool IsInvoking() { return false; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool IsInvoking(string methodName) { return false; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new Coroutine StartCoroutine(IEnumerator routine) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new Coroutine StartCoroutine(string methodName) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new Coroutine StartCoroutine(string methodName, object value) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new Coroutine StartCoroutine_Auto(IEnumerator routine) { return null; }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void StopAllCoroutines() { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void StopCoroutine(string methodName) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void StopCoroutine(IEnumerator routine) { }
-        /// <summary>使用禁止</summary>
+        
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new void StopCoroutine(Coroutine routine) { }
 
