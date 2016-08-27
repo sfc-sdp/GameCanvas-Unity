@@ -16,10 +16,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Bb]uild/
-*.csproj
+GameCanvas-Unity.*.csproj
 *.pidb
 *.unityproj
-*.sln
+GameCanvas-Unity.sln
 *.user
 *.userprefs
 *.suo
