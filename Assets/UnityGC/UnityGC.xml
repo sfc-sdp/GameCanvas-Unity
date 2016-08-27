@@ -370,6 +370,21 @@
             </summary>
             <param name="fingerId">fingerId</param>
         </member>
+        <member name="P:GameCanvas.GameCanvas.acceX">
+            <summary>
+            加速度センサーのX軸の値
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.acceY">
+            <summary>
+            加速度センサーのY軸の値
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.acceZ">
+            <summary>
+            加速度センサーのZ軸の値
+            </summary>
+        </member>
         <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">
             <summary>
             cosを求めます

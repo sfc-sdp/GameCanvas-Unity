@@ -1019,6 +1019,34 @@ namespace GameCanvas
 
         #endregion
 
+        #region UnityGC：入力API (加速度)
+
+        /// <summary>
+        /// 加速度センサーのX軸の値
+        /// </summary>
+        public float acceX
+        {
+            get { return Input.acceleration.x; }
+        }
+
+        /// <summary>
+        /// 加速度センサーのY軸の値
+        /// </summary>
+        public float acceY
+        {
+            get { return Input.acceleration.y; }
+        }
+
+        /// <summary>
+        /// 加速度センサーのZ軸の値
+        /// </summary>
+        public float acceZ
+        {
+            get { return Input.acceleration.z; }
+        }
+
+        #endregion
+
         #region UnityGC：数学API
 
         /// <summary>
