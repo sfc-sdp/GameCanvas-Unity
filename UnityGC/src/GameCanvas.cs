@@ -35,20 +35,18 @@ namespace GameCanvas
 
         #region UnityGC：変数
 
-        private int         _deviceWidth            = 640;          // 画面解像度：横幅
-        private int         _deviceHeight           = 480;          // 画面解像度：縦幅
-        private int         _canvasWidth            = 640;          // 描画解像度：横幅
-        private int         _canvasHeight           = 480;          // 描画解像度：縦幅
+        private int         _deviceWidth            = 0;            // 画面解像度：横幅
+        private int         _deviceHeight           = 0;            // 画面解像度：縦幅
+        private int         _canvasWidth            = 0;            // 描画解像度：横幅
+        private int         _canvasHeight           = 0;            // 描画解像度：縦幅
         private float       _canvasDisplayScale     = 1f;           // キャンバス解像度 / デバイス解像度
         private Vector2     _canvasBorderSize       = Vector2.zero; // キャンバス左・上の黒縁の大きさ
 
         private Color       _palletColor            = Color.black;  // 現在のパレットカラー
-        private Color[]     _canvasColorArray       = null;         // 各ピクセルの色情報
-        private Color[]     _canvasPrevColorArray   = null;         // 各ピクセルの色情報：前回フレーム
+        private int         _lineWidth              = 1;            // 現在の線の太さ
 
         private int         _numImage               = 0;            // 認識済みの画像：数量
         private Texture2D[] _imageArray             = null;         // 認識済みの画像：データ配列
-        private ColorArrRoc _imagePixelArrayList    = null;         // 認識済みの画像：データ配列：画素
         private int         _numAudio               = 0;            // 認識済みの音源：数量
         private AudioClip[] _audioArray             = null;         // 認識済みの音源：データ配列
 
@@ -69,12 +67,14 @@ namespace GameCanvas
         private float       _pinchScale             = 0f;           // ピンチインアウト：拡縮率：前フレーム差分
         private float       _pinchScaleBegan        = 0f;           // ピンチインアウト：拡縮率：タッチ開始時から
         private Vector2     _mousePrevPoint         = -Vector2.one; // マウス互換：前回マウス位置
-
+        
+        private Material    _materialInit           = null;         // マテリアル：初期化
+        private Material    _materialDrawCircle     = null;         // マテリアル：図形描画：円
+        private Material    _materialDrawRect       = null;         // マテリアル：図形描画：矩形
+        private Material    _materialDrawImage      = null;         // マテリアル：画像描画
+        private RenderTexture _canvasRender         = null;         // レンダーテクスチャー
+        private MeshRenderer _quad                  = null;         // プリミティブ：Quad
         private Camera      _camera                 = null;         // コンポーネント：Camera
-        private Canvas      _canvas                 = null;         // コンポーネント：Canvas
-        private CanvasScaler _canvasScaler          = null;         // コンポーネント：CanvasScaler
-        private RawImage    _canvasRawImage         = null;         // コンポーネント：RawImage
-        private Texture2D   _canvasTexture          = null;         // コンポーネント：Texture2D
 
         #endregion
 
@@ -122,71 +122,36 @@ namespace GameCanvas
                 _camera.clearFlags = CameraClearFlags.SolidColor;
                 _camera.backgroundColor = Color.black;
                 _camera.orthographic = true;
-                _camera.orthographicSize = 5;
+                _camera.orthographicSize = Screen.height * 0.5f;
                 _camera.depth = -1;
 
                 obj.AddComponent<AudioListener>();
             }
 
-            // Canvasコンポーネントの配置
+            // Quadプリミティブの配置。2D描画の表示先として用いる
             {
-                var obj                 = new GameObject("Canvas");
-                obj.transform.parent    = baseTransform;
+                var obj = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                obj.name = "Canvas";
+                obj.transform.parent = baseTransform;
+                
+                _materialInit       = new Material(Shader.Find("Custom/GameCanvas/Init"));
+                _materialDrawCircle = new Material(Shader.Find("Custom/GameCanvas/DrawCircle"));
+                _materialDrawRect   = new Material(Shader.Find("Custom/GameCanvas/DrawRect"));
+                _materialDrawImage  = new Material(Shader.Find("Custom/GameCanvas/DrawImage"));
 
-                _canvas                 = obj.AddComponent<Canvas>();
-                _canvas.renderMode      = RenderMode.ScreenSpaceOverlay;
-
-                _canvasScaler                     = obj.AddComponent<CanvasScaler>();
-                _canvasScaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                _canvasScaler.screenMatchMode     = CanvasScaler.ScreenMatchMode.Expand;
-                _canvasScaler.referenceResolution = new Vector2(_canvasWidth, _canvasHeight);
-            }
-
-            // UI.RawImageコンポーネントの配置。2D描画に用いる
-            {
-                var obj                 = new GameObject("RawImage");
-                obj.transform.parent    = _canvas.transform;
-
-                _canvasTexture          = Texture2D.whiteTexture;
-                _canvasColorArray       = _canvasTexture.GetPixels();
-
-                _canvasRawImage         = obj.AddComponent<RawImage>();
-                _canvasRawImage.color   = Color.white;
-                _canvasRawImage.texture = _canvasTexture;
-
-                var rect                = _canvasRawImage.rectTransform;
-                rect.anchoredPosition   = Vector2.zero;
-                rect.anchorMin          = Vector2.one * 0.5f;
-                rect.anchorMax          = Vector2.one * 0.5f;
-                rect.sizeDelta          = new Vector2(_canvasWidth, _canvasHeight);
-                rect.localScale         = new Vector3(1, -1, 1);
-            }
-
-            // UI.EventSystemコンポーネントの配置。タッチ情報の取得に用いる
-            {
-                var obj                 = new GameObject("EventSystem");
-                obj.transform.parent    = baseTransform;
-
-                obj.AddComponent<EventSystem>();
+                _quad = obj.GetComponent<MeshRenderer>();
+                _quad.material.shader = Shader.Find("Sprites/Default");
+                // [memo] SetResolution()で設定する
+                // _quad.material.mainTexture = _canvasRender;
             }
 
             // キャンバスの初期化
-            SetResolution(_canvasWidth, _canvasHeight);
+            SetResolution(640, 480);
 
             // 外部画像・音源データの読み込み
             {
                 _imageArray = Resources.LoadAll<Texture2D>("");
                 _numImage   = _imageArray.Length;
-                var list = new List<Color[]>(_numImage);
-                for (int i = 0; i < _numImage; ++i)
-                {
-                    if (_imageArray[i].width * _imageArray[i].height > 120 * 120)
-                    {
-                        Debug.LogWarningFormat("画像{0}の画素数が多いため、実行性能が大幅に低下する可能性があります", i);
-                    }
-                    list.Add(_imageArray[i].GetPixels());
-                }
-                _imagePixelArrayList = list.AsReadOnly();
                 Debug.Log("Load Images (" + _numImage + ")");
 
                 _audioArray = Resources.LoadAll<AudioClip>("");
@@ -200,6 +165,12 @@ namespace GameCanvas
         /// </summary>
         private void Update()
         {
+            // 画面サイズ判定
+            if (_deviceWidth != Screen.width || _deviceHeight != Screen.height)
+            {
+                UpdateDisplayScale();
+            }
+
             // 初期化
             _isTouchBegan = false;
             _isTouchEnded = false;
@@ -315,14 +286,19 @@ namespace GameCanvas
             }
         }
 
-        /// <summary>
-        /// 描画確定処理
-        /// </summary>
-        private void LateUpdate()
+        private void UpdateDisplayScale()
         {
-            // キャンバスの描画更新
-            _canvasTexture.SetPixels(_canvasColorArray);
-            _canvasTexture.Apply();
+            // 表示倍率と黒縁サイズの計算
+            _deviceWidth  = Screen.width;
+            _deviceHeight = Screen.height;
+            var scaleW = (float)_canvasWidth  / _deviceWidth;
+            var scaleH = (float)_canvasHeight / _deviceHeight;
+            _canvasDisplayScale = Mathf.Max(scaleW, scaleH);
+            _canvasBorderSize.x = (_deviceWidth  - _canvasWidth  / _canvasDisplayScale) * 0.5f;
+            _canvasBorderSize.y = (_deviceHeight - _canvasHeight / _canvasDisplayScale) * 0.5f;
+
+            // カメラ倍率
+            _camera.orthographicSize = _deviceHeight * _canvasDisplayScale * 0.5f;
         }
 
         #endregion
@@ -457,37 +433,28 @@ namespace GameCanvas
         /// <param name="height">Y軸方向の解像度（高さ）</param>
         public void SetResolution(int width, int height)
         {
-            // 実行解像度の変更
-            // Screen.SetResolution(width, height, true);
+            if (_canvasWidth == width && _canvasHeight == height) return;
 
-            // キャンバス解像度の再設定
             _canvasWidth = width;
             _canvasHeight = height;
-            var size = new Vector2(_canvasWidth, _canvasHeight);
-            _canvasScaler.referenceResolution = size;
-            _canvasRawImage.rectTransform.sizeDelta = size;
-
-            var screenW = Screen.width;
-            var screenH = Screen.height;
-            var scaleW = (float)_canvasWidth  / screenW;
-            var scaleH = (float)_canvasHeight / screenH;
-            _canvasDisplayScale = Mathf.Max(scaleW, scaleH);
-            _canvasBorderSize.x = (screenW - _canvasWidth  / _canvasDisplayScale) * 0.5f;
-            _canvasBorderSize.y = (screenH - _canvasHeight / _canvasDisplayScale) * 0.5f;
 
             // 自動回転の再設定。回転固定設定は引き継がれる
             isScreenAutoRotation = isScreenAutoRotation;
 
-            // 2Dテクスチャの再生成。色情報は引き継がれない
-            _canvasTexture = new Texture2D(_canvasWidth, _canvasHeight, TextureFormat.RGB24, false);
-            _canvasRawImage.texture = _canvasTexture;
-            _canvasColorArray = _canvasTexture.GetPixels();
-            _canvasPrevColorArray = new Color[_canvasColorArray.Length];
+            UpdateDisplayScale();
+
+            // キャンバスの再生成
+            if (_canvasRender != null) _canvasRender.Release();
+            _canvasRender = new RenderTexture(_canvasWidth, _canvasHeight, 0);
+            _canvasRender.Create();
+            _quad.transform.localScale = new Vector3(_canvasWidth, -_canvasHeight, 1f);
+            _quad.material.mainTexture = _canvasRender;
+
             ClearScreen();
         }
 
         /// <summary>
-        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+        /// DrawString や DrawRect などで用いる色を指定します
         /// </summary>
         /// <param name="color">塗りの色</param>
         public void SetColor(Color color)
@@ -496,14 +463,45 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+        /// DrawString や DrawRect などで用いる色を指定します
         /// </summary>
-        /// <param name="red">R成分</param>
-        /// <param name="green">G成分</param>
-        /// <param name="blue">B成分</param>
-        public void SetColor(int red, int green, int blue)
+        /// <param name="red">赤成分 [0～1]</param>
+        /// <param name="green">緑成分 [0～1]</param>
+        /// <param name="blue">青成分 [0～1]</param>
+        /// <param name="alpha">不透明度 [0～1]</param>
+        public void SetColor(float red, float green, float blue, float alpha = 1f)
         {
-            SetColor(new Color(red, green, blue));
+            SetColor(new Color(red, green, blue, alpha));
+        }
+
+        /// <summary>
+        /// DrawString や DrawRect などで用いる色を、HSV色空間で指定します
+        /// </summary>
+        /// <param name="h">hue [0～1]</param>
+        /// <param name="s">saturation [0～1]</param>
+        /// <param name="v">calue [0～1]</param>
+        /// <param name="alpha">不透明度 [0～1]</param>
+        public void SetColorHSV(float h, float s, float v, float alpha = 1f)
+        {
+            var c = Color.HSVToRGB(h, s, v);
+            c.a = alpha;
+            SetColor(c);
+        }
+
+        /// <summary>
+        /// DrawRect や DrawCircle などに用いる線の太さを指定します
+        /// </summary>
+        /// <param name="lineWidth"></param>
+        public void SetLineWidth(int lineWidth)
+        {
+            if (lineWidth <= 0)
+            {
+                // 0以下は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            _lineWidth = lineWidth;
         }
 
         /// <summary>
@@ -511,26 +509,7 @@ namespace GameCanvas
         /// </summary>
         public void ClearScreen()
         {
-            var num = _canvasWidth * _canvasHeight;
-            var white = Color.white;
-            for (int i = 0; i < num; ++i)
-            {
-                _canvasColorArray[i] = white;
-            }
-        }
-
-        /// <summary>
-        /// 指定された座標1点を塗りつぶします
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        public void DrawPoint(int x, int y)
-        {
-            // 範囲外は無視する
-            if (x >= 0 && y >= 0 && x < _canvasWidth && y < _canvasHeight)
-            {
-                _canvasColorArray[x + y * _canvasWidth] = _palletColor;
-            }
+            Graphics.Blit(null, _canvasRender, _materialInit);
         }
 
         /// <summary>
@@ -539,37 +518,27 @@ namespace GameCanvas
         /// <param name="x">中心点のX座標</param>
         /// <param name="y">中心点のY座標</param>
         /// <param name="radius">半径</param>
+        /// <param name="lineWidth">線の太さ</param>
         public void DrawCircle(int x, int y, int radius)
         {
-            if (radius < 1)
+            if (radius <= 0)
             {
-                // 負の半径は許容しない
+                // 0以下は許容しない
                 Debug.LogWarning("引数の値が不正です");
                 return;
             }
-            
-            var d    = 0.25f - radius;
-            var dy   = radius;
-            var dxe  = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
-            var size = _canvasWidth * _canvasHeight;
 
-            for (int dx = 0; dx <= dxe; ++dx)
-            {
-                DrawPoint(x + dx, y + dy);
-                DrawPoint(x + dx, y - dy);
-                DrawPoint(x - dx, y + dy);
-                DrawPoint(x - dx, y - dy);
-                DrawPoint(x + dy, y + dx);
-                DrawPoint(x - dy, y + dx);
-                DrawPoint(x + dy, y - dx);
-                DrawPoint(x - dy, y - dx);
+            var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(radius, radius, 1f));
 
-                d += 2 * dx + 1;
-                if (d > 0)
-                {
-                    d += 2 - 2 * dy--;
-                }
-            }
+            _materialDrawCircle.SetColor("_Color", _palletColor);
+            _materialDrawCircle.SetMatrix("_Matrix", mat.inverse);
+            _materialDrawCircle.SetFloat("_IsFill", 0);
+            _materialDrawCircle.SetFloat("_LineWidth", (float)_lineWidth / radius * 0.5f);
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawCircle);
+            RenderTexture.ReleaseTemporary(temp);
         }
 
         /// <summary>
@@ -581,96 +550,9 @@ namespace GameCanvas
         /// <param name="endY">終了点のY座標</param>
         public void DrawLine(int startX, int startY, int endX, int endY)
         {
-            var fraction = 0f;
-            var x  = startX;
-            var y  = startY;
-            var dx = endX - startX;
-            var dy = endY - startY;
-            int stepX, stepY;
-
-            if (dx < 0)
-            {
-                // 右から左
-                dx = -dx;
-                stepX = -1;
-            }
-            else
-            {
-                // 左から右
-                stepX = 1;
-            }
-
-            if (dy < 0)
-            {
-                // 下から上
-                dy = -dy;
-                stepY = -1;
-            }
-            else
-            {
-                // 上から下
-                stepY = 1;
-            }
-
-            // 直線の場合
-            if (dx == 0)
-            {
-                // 縦直線
-                DrawPoint(x, y);
-                while (y != endY)
-                {
-                    y += stepY;
-                    DrawPoint(x, y);
-                }
-                return;
-            }
-            else if (dy == 0)
-            {
-                // 横直線
-                DrawPoint(x, y);
-                while (x != endX)
-                {
-                    x += stepX;
-                    DrawPoint(x, y);
-                }
-                return;
-            }
-
-            // 斜め線の場合
-            dx <<= 1;
-            dy <<= 1;
-
-            DrawPoint(x, y);
-            if (dx > dy)
-            {
-                fraction = dy - (dx >> 1);
-                while ((x > endX ? x - endX : endX - x) > 1)
-                {
-                    if (fraction >= 0)
-                    {
-                        y += stepY;
-                        fraction -= dx;
-                    }
-                    x += stepX;
-                    fraction += dy;
-                    DrawPoint(x, y);
-                }
-            }
-            else
-            {
-                fraction = dx - (dy >> 1);
-                while ((y > endY ? y - endY : endY - y) > 1)
-                {
-                    if (fraction >= 0)
-                    {
-                        x += stepX;
-                        fraction -= dy;
-                    }
-                    y += stepY;
-                    fraction += dx;
-                    DrawPoint(x, y);
-                }
-            }
+            var diffX = endX - startX;
+            var diffY = endY - startY;
+            FillRotatedRect(startX, startY, Mathf.RoundToInt(Mathf.Sqrt(diffX * diffX + diffY * diffY)), _lineWidth, Atan2(diffX, diffY), 0f, _lineWidth * 0.5f);
         }
 
         /// <summary>
@@ -682,6 +564,21 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         public void DrawRect(int x, int y, int width, int height)
         {
+            DrawRotatedRect(x, y, width, height, 0);
+        }
+
+        /// <summary>
+        /// 中抜きの回転させた長方形を描画します
+        /// </summary>
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        /// <param name="width">横幅</param>
+        /// <param name="height">縦幅</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
+        /// <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+        public void DrawRotatedRect(int x, int y, int width, int height, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
             if (width < 1 || height < 1)
             {
                 // 負の幅は許容しない
@@ -689,10 +586,26 @@ namespace GameCanvas
                 return;
             }
 
-            DrawLine(x, y, x + width, y);
-            DrawLine(x, y + height, x + width, y + height);
-            DrawLine(x, y, x, y + height);
-            DrawLine(x + width, y, x + width, y + height);
+            Matrix4x4 mat;
+            if (rotationX == 0 && rotationY == 0)
+            {
+                mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.AngleAxis(angle, Vector3.forward), new Vector3(width, height, 1f));
+            }
+            else
+            {
+                mat = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.AngleAxis(angle, Vector3.forward), Vector3.one);
+                mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(width, height, 1f));
+            }
+
+            _materialDrawRect.SetColor("_Color", _palletColor);
+            _materialDrawRect.SetMatrix("_Matrix", mat.inverse);
+            _materialDrawRect.SetFloat("_IsFill", 0);
+            _materialDrawRect.SetFloat("_LineWidth", _lineWidth);
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawRect);
+            RenderTexture.ReleaseTemporary(temp);
         }
 
         /// <summary>
@@ -703,9 +616,101 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         public void DrawImage(int id, int x, int y)
         {
+            DrawImageSRT(id, x, y, 1f, 1f, 0f);
+        }
+
+        /// <summary>
+        /// 一部分を切り取った画像を描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="clipTop">画像上側の切り取る縦幅</param>
+        /// <param name="clipRight">画像右側の切り取る横幅</param>
+        /// <param name="clipBottom">画像下側の切り取る縦幅</param>
+        /// <param name="clipLeft">画像左側の切り取る横幅</param>
+        public void DrawClippedImage(int id, int x, int y, int clipTop, int clipRight, int clipBottom, int clipLeft)
+        {
+            DrawClippedImageSRT(id, x, y, clipTop, clipRight, clipBottom, clipLeft, 1f, 1f, 0f);
+        }
+
+        /// <summary>
+        /// 大きさを変えた画像を描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="scaleH">横の拡縮率</param>
+        /// <param name="scaleV">縦の拡縮率</param>
+        public void DrawScaledImage(int id, int x, int y, float scaleH, float scaleV)
+        {
+            DrawImageSRT(id, x, y, scaleH, scaleV, 0f);
+        }
+
+        /// <summary>
+        /// 回転させた画像を描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        public void DrawRotatedImage(int id, int x, int y, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            DrawImageSRT(id, x, y, 1f, 1f, angle, rotationX, rotationY);
+        }
+
+        /// <summary>
+        /// 画像を位置・拡縮率・回転角度を指定して描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="scaleH">縦の拡縮率</param>
+        /// <param name="scaleV">横の拡縮率</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        public void DrawImageSRT(int id, int x, int y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            DrawClippedImageSRT(id, x, y, 0, 0, 0, 0, scaleH, scaleV, angle, rotationX, rotationY);
+        }
+
+        /// <summary>
+        /// 一部分を切り取った画像を、位置・拡縮率・回転角度を指定して描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="clipTop">画像上側の切り取る縦幅</param>
+        /// <param name="clipRight">画像右側の切り取る横幅</param>
+        /// <param name="clipBottom">画像下側の切り取る縦幅</param>
+        /// <param name="clipLeft">画像左側の切り取る横幅</param>
+        /// <param name="scaleH">縦の拡縮率</param>
+        /// <param name="scaleV">横の拡縮率</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        public void DrawClippedImageSRT(int id, int x, int y, int clipTop, int clipRight, int clipBottom, int clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
             if (id >= _numImage)
             {
                 Debug.LogWarning("存在しないファイルが指定されました");
+                return;
+            }
+
+            if (clipLeft < 0 || clipTop < 0 || clipRight < 0 || clipBottom < 0)
+            {
+                // 負の切り取り幅は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            if (scaleH == 0 || scaleV == 0)
+            {
+                // ゼロの拡縮率は許容しない
+                Debug.LogWarning("引数の値が不正です");
                 return;
             }
 
@@ -715,40 +720,26 @@ namespace GameCanvas
                 return;
             }
 
-            int pw = _imageArray[id].width;
-            int ph = _imageArray[id].height;
-            int pwc = pw;
-            int phc = ph;
-            if (x + pw > _canvasWidth) pw = _canvasWidth - x;
-            if (y + ph > _canvasWidth) ph = _canvasHeight - y;
-
-            var img = _imagePixelArrayList[id];
-
-            for (int i = 0; i < pw; ++i)
+            Matrix4x4 mat;
+            if (rotationX == 0 && rotationY == 0)
             {
-                // 範囲外は無視する
-                var rx = x + i;
-                if (rx >= _canvasWidth) break;
-                if (rx < 0) continue;
-
-                for (int j = 0; j < ph; ++j)
-                {
-                    // 範囲外は無視する
-                    var ry = y + j;
-                    if (ry >= _canvasHeight) break;
-                    if (ry < 0) continue;
-
-                    var color = img[i + (phc - j - 1) * pwc];
-                    if (color.a != 0f)
-                    {
-                        color.a = 1f;
-
-                        // -MEMO-
-                        // 処理最適化のため DrawPoint() は用いない
-                        _canvasColorArray[rx + ry * _canvasWidth] = color;
-                    }
-                }
+                mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.AngleAxis(angle, Vector3.forward), new Vector3(scaleH, scaleV, 1f));
             }
+            else
+            {
+                mat = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.AngleAxis(angle, Vector3.forward), Vector3.one);
+                mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(scaleH, scaleV, 1f));
+            }
+
+            _materialDrawImage.SetTexture("_ImageTex", _imageArray[id]);
+            _materialDrawImage.SetColor("_Color", _palletColor);
+            _materialDrawImage.SetMatrix("_Matrix", mat.inverse);
+            _materialDrawImage.SetVector("_Clip", new Vector4(clipLeft, clipTop, clipRight, clipBottom));
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawImage);
+            RenderTexture.ReleaseTemporary(temp);
         }
 
         /// <summary>
@@ -766,34 +757,16 @@ namespace GameCanvas
                 return;
             }
 
-            float d = 0.25f - radius;
-            int dy = radius;
-            int dxe = Mathf.CeilToInt(radius / Mathf.Sqrt(2));
-            int size = _canvasWidth * _canvasHeight;
+            var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(radius, radius, 1f));
 
-            for (int dx = 0; dx <= dxe; ++dx)
-            {
-                for (int i = 0; i < dy; ++i)
-                {
-                    DrawPoint(x + dx, y + i);
-                    DrawPoint(x + dx, y - i);
-                    DrawPoint(x - dx, y + i);
-                    DrawPoint(x - dx, y - i);
-                }
-                for (int i = dxe; i < dy; ++i)
-                {
-                    DrawPoint(x + i, y + dx);
-                    DrawPoint(x + i, y - dx);
-                    DrawPoint(x - i, y + dx);
-                    DrawPoint(x - i, y - dx);
-                }
+            _materialDrawCircle.SetColor("_Color", _palletColor);
+            _materialDrawCircle.SetMatrix("_Matrix", mat.inverse);
+            _materialDrawCircle.SetFloat("_IsFill", 1);
 
-                d += 2 * dx + 1;
-                if (d > 0)
-                {
-                    d += 2 - 2 * dy--;
-                }
-            }
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawCircle);
+            RenderTexture.ReleaseTemporary(temp);
         }
 
         /// <summary>
@@ -805,6 +778,21 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         public void FillRect(int x, int y, int width, int height)
         {
+            FillRotatedRect(x, y, width, height, 0);
+        }
+
+        /// <summary>
+        /// 塗りつぶしの回転させた長方形を描画します
+        /// </summary>
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        /// <param name="width">横幅</param>
+        /// <param name="height">縦幅</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
+        /// <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+        public void FillRotatedRect(int x, int y, int width, int height, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
             if (width < 1 || height < 1)
             {
                 // 負の幅は許容しない
@@ -812,32 +800,25 @@ namespace GameCanvas
                 return;
             }
 
-            // -MEMO-
-            // 最適化のため DrawPoint() は用いない
-
-            int sx = x;
-            int sy = y;
-            int ex = x + width;
-            int ey = y + height;
-
-            if (sx < 0) sx = 0;
-            if (sy < 0) sy = 0;
-            if (ex >= _canvasWidth ) ex = _canvasWidth  - 1;
-            if (ey >= _canvasHeight) ey = _canvasHeight - 1;
-
-            if (sx >= _canvasWidth || sy >= _canvasHeight || ex < 0 || ey < 0)
+            Matrix4x4 mat;
+            if (rotationX == 0 && rotationY == 0)
             {
-                // 描画範囲外である
-                return;
+                mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.AngleAxis(angle, Vector3.forward), new Vector3(width, height, 1f));
+            }
+            else
+            {
+                mat = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.AngleAxis(angle, Vector3.forward), Vector3.one);
+                mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(width, height, 1f));
             }
 
-            for (int i = sx; i < ex; ++i)
-            {
-                for (int j = sy; j < ey; ++j)
-                {
-                    _canvasColorArray[i + j * _canvasWidth] = _palletColor;
-                }
-            }
+            _materialDrawRect.SetColor("_Color", _palletColor);
+            _materialDrawRect.SetMatrix("_Matrix", mat.inverse);
+            _materialDrawRect.SetFloat("_IsFill", 1);
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawRect);
+            RenderTexture.ReleaseTemporary(temp);
         }
 
         #endregion
@@ -1064,7 +1045,7 @@ namespace GameCanvas
         /// <returns>角度（度数法）</returns>
         public float Atan2(float x, float y)
         {
-            return Mathf.Atan2(x, y) * Mathf.Rad2Deg;
+            return Mathf.Atan2(y, x) * Mathf.Rad2Deg;
         }
 
         /// <summary>
@@ -1156,13 +1137,13 @@ namespace GameCanvas
         [Obsolete("gc.screenWidth を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int WIDTH
         {
-            get { return (int)_canvasScaler.referenceResolution.x; }
+            get { return _canvasWidth; }
         }
         /// <summary>[非推奨] 画面の高さ</summary>
         [Obsolete("gc.screenHeight を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int HEIGHT
         {
-            get { return (int)_canvasScaler.referenceResolution.y; }
+            get { return _canvasHeight; }
         }
         /// <summary>[非推奨] フレームレート(FPS)</summary>
         [Obsolete("gc.frameRate を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1238,11 +1219,7 @@ namespace GameCanvas
         #endregion
 
         #region UnityJava後方互換：グラフィックAPI
-
-        /// <summary>
-        /// [非推奨] 現在のゲーム画面をキャプチャ―して保存します。
-        /// </summary>
-        /// <param name="filename">拡張子を除いたファイル名</param>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void writeScreenImage(string filename)
         {
@@ -1262,42 +1239,40 @@ namespace GameCanvas
         public void setGraphics(object gr, object img) { }
 
         /// <summary>[使用禁止]</summary>
-        /// <param name="title">ウィンドウタイトルに指定する文字列</param>
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setWindowTitle(string title) { }
-
-        /// <summary>
-        /// [非推奨] 文字列を描画します
-        /// </summary>
-        /// <param name="str">描画する文字列</param>
-        /// <param name="x">画面左上を原点とするX座標</param>
-        /// <param name="y">画面左上を原点とするY座標</param>
+        
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawString(string str, int x, int y)
         {
             Debug.LogWarning("ToDo");
         }
 
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawCenterString(string str, int x, int y)
         {
             Debug.LogWarning("ToDo");
         }
 
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawRightString(string str, int x, int y)
         {
             Debug.LogWarning("ToDo");
         }
 
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setFont(string fontName, int fontStyle, int fontSize)
         {
             Debug.LogWarning("ToDo");
         }
 
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setFontSize(int fontSize)
         {
             Debug.LogWarning("ToDo");
         }
 
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getStringWidth(string str)
         {
             Debug.LogWarning("ToDo");
@@ -1307,13 +1282,15 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setColor(int color)
         {
-            SetColor(new Color(color, color, color));
+            var c = (float)color / 255;
+            SetColor(new Color(c, c, c));
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setColor(int red, int green, int blue)
         {
-            SetColor(new Color(red, green, blue));
+            var k = 1f / 255;
+            SetColor(new Color(red * k, green * k, blue * k));
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1355,19 +1332,19 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawClipImage(int id, int x, int y, int u, int v, int w, int h)
         {
-            Debug.LogWarning("ToDo");
+            DrawClippedImage(id, x, y, u, v, GetImageWidth(id) - w - u, GetImageHeight(id) - h - v);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate)
         {
-            Debug.LogWarning("ToDo");
+            DrawImageSRT(id, x, y, xsize * 0.01f, ysize * 0.01f, (float)rotate);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate, double px, double py)
         {
-            Debug.LogWarning("ToDo");
+            DrawImageSRT(id, x, y, xsize * 0.01f, ysize * 0.01f, (float)rotate, (int)px, (int)py);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1382,52 +1359,11 @@ namespace GameCanvas
             return GetImageHeight(id);
         }
 
-        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void setSeed(int seed) { }
-
-        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public int rand(int min, int max)
-        {
-            return Mathf.FloorToInt(min + UnityEngine.Random.Range(0, 1) * (max - min + 1));
-        }
-
-        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void resetGame()
-        {
-            Debug.LogWarning("ToDo");
-        }
-
-        /// <summary>[使用禁止]</summary>
-        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void resetGameInstancle(object g) { }
-
-        /// <summary>[使用禁止]</summary>
-        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void updatMessage() { }
-
-        /// <summary>[使用禁止]</summary>
-        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawMessage() { }
-
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void clearScreen()
         {
             ClearScreen();
         }
-
-        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void exitApp()
-        {
-            Debug.LogWarning("ToDo");
-        }
-
-        /// <summary>[使用禁止]</summary>
-        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public bool showYesNoDialog(string message) { return false; }
-
-        /// <summary>[使用禁止]</summary>
-        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public string showInputDialog(string message, string defaultInput) { return ""; }
 
         #endregion
 
@@ -1634,6 +1570,50 @@ namespace GameCanvas
         {
             return Atan2(x, y);
         }
+
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public int rand(int min, int max)
+        {
+            return Mathf.FloorToInt(min + UnityEngine.Random.value * (max - min + 1));
+        }
+
+        #endregion
+
+        #region UnityJava後方互換：その他
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void setSeed(int seed) { }
+        
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void resetGame() { }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void resetGameInstancle(object g) { }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void updatMessage() { }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void drawMessage() { }
+
+        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void exitApp()
+        {
+            Application.Quit();
+        }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public bool showYesNoDialog(string message) { return false; }
+
+        /// <summary>[使用禁止]</summary>
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public string showInputDialog(string message, string defaultInput) { return ""; }
 
         #endregion
 

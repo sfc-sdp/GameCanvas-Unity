@@ -10,11 +10,13 @@ namespace GameCanvas
             void OnPreprocessTexture()
             {
                 // インポートした画像を、スクリプトから読み込み可能にします
-                TextureImporter textureImporter = (TextureImporter)assetImporter;
-                textureImporter.textureType = TextureImporterType.Advanced;
-                textureImporter.textureFormat = TextureImporterFormat.AutomaticTruecolor;
-                textureImporter.mipmapEnabled = false;
-                textureImporter.isReadable = true;
+                TextureImporter textureImporter     = (TextureImporter)assetImporter;
+                textureImporter.textureType         = TextureImporterType.Advanced;
+                textureImporter.textureFormat       = TextureImporterFormat.AutomaticTruecolor;
+                textureImporter.filterMode          = FilterMode.Point;
+                textureImporter.spritePixelsPerUnit = 1f;
+                textureImporter.mipmapEnabled       = false;
+                textureImporter.isReadable          = true;
             }
         }
     }

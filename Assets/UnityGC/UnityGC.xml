@@ -16,27 +16,27 @@
         </member>
         <member name="M:GameCanvas.GameBase.Start">
             <summary>
-            ゲームの初期化処理
+            初期化処理
             </summary>
         </member>
         <member name="M:GameCanvas.GameBase.Calc">
             <summary>
-            ゲームの更新処理
+            更新処理
             </summary>
         </member>
         <member name="M:GameCanvas.GameBase.Draw">
             <summary>
-            ゲームの描画処理
+            描画処理
             </summary>
         </member>
         <member name="M:GameCanvas.GameBase.Pause">
             <summary>
-            ゲームの中断処理
+            中断処理
             </summary>
         </member>
         <member name="M:GameCanvas.GameBase.Final">
             <summary>
-            ゲームの終了処理
+            終了処理
             </summary>
         </member>
         <member name="T:GameCanvas.GameCanvas">
@@ -57,11 +57,6 @@
         <member name="M:GameCanvas.GameCanvas.Update">
             <summary>
             更新処理
-            </summary>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.LateUpdate">
-            <summary>
-            描画確定処理
             </summary>
         </member>
         <member name="P:GameCanvas.GameCanvas.frameRate">
@@ -117,29 +112,38 @@
         </member>
         <member name="M:GameCanvas.GameCanvas.SetColor(UnityEngine.Color)">
             <summary>
-            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+            DrawString や DrawRect などで用いる色を指定します
             </summary>
             <param name="color">塗りの色</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.SetColor(System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.SetColor(System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            DrawString や DrawRect などで塗りつぶしに用いる色を指定します
+            DrawString や DrawRect などで用いる色を指定します
             </summary>
-            <param name="red">R成分</param>
-            <param name="green">G成分</param>
-            <param name="blue">B成分</param>
+            <param name="red">赤成分 [0～1]</param>
+            <param name="green">緑成分 [0～1]</param>
+            <param name="blue">青成分 [0～1]</param>
+            <param name="alpha">不透明度 [0～1]</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetColorHSV(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            DrawString や DrawRect などで用いる色を、HSV色空間で指定します
+            </summary>
+            <param name="h">hue [0～1]</param>
+            <param name="s">saturation [0～1]</param>
+            <param name="v">calue [0～1]</param>
+            <param name="alpha">不透明度 [0～1]</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetLineWidth(System.Int32)">
+            <summary>
+            DrawRect や DrawCircle などに用いる線の太さを指定します
+            </summary>
+            <param name="lineWidth"></param>
         </member>
         <member name="M:GameCanvas.GameCanvas.ClearScreen">
             <summary>
             画面を白で塗りつぶします
             </summary>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.DrawPoint(System.Int32,System.Int32)">
-            <summary>
-            指定された座標1点を塗りつぶします
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -148,6 +152,7 @@
             <param name="x">中心点のX座標</param>
             <param name="y">中心点のY座標</param>
             <param name="radius">半径</param>
+            <param name="lineWidth">線の太さ</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -167,6 +172,18 @@
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
         </member>
+        <member name="M:GameCanvas.GameCanvas.DrawRotatedRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+            <summary>
+            中抜きの回転させた長方形を描画します
+            </summary>
+            <param name="x">左上のX座標</param>
+            <param name="y">左上のY座標</param>
+            <param name="width">横幅</param>
+            <param name="height">縦幅</param>
+            <param name="angle">回転角度 (度数法)</param>
+            <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
+            <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+        </member>
         <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
             <summary>
             画像を描画します
@@ -174,6 +191,69 @@
             <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
             <param name="x">X座標</param>
             <param name="y">Y座標</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawClippedImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            一部分を切り取った画像を描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+            <param name="clipTop">画像上側の切り取る縦幅</param>
+            <param name="clipRight">画像右側の切り取る横幅</param>
+            <param name="clipBottom">画像下側の切り取る縦幅</param>
+            <param name="clipLeft">画像左側の切り取る横幅</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawScaledImage(System.Int32,System.Int32,System.Int32,System.Single,System.Single)">
+            <summary>
+            大きさを変えた画像を描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+            <param name="scaleH">横の拡縮率</param>
+            <param name="scaleV">縦の拡縮率</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawRotatedImage(System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+            <summary>
+            回転させた画像を描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+            <param name="angle">回転角度 (度数法)</param>
+            <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
+            <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawImageSRT(System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            画像を位置・拡縮率・回転角度を指定して描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+            <param name="scaleH">縦の拡縮率</param>
+            <param name="scaleV">横の拡縮率</param>
+            <param name="angle">回転角度 (度数法)</param>
+            <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
+            <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawClippedImageSRT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            一部分を切り取った画像を、位置・拡縮率・回転角度を指定して描画します
+            </summary>
+            <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+            <param name="clipTop">画像上側の切り取る縦幅</param>
+            <param name="clipRight">画像右側の切り取る横幅</param>
+            <param name="clipBottom">画像下側の切り取る縦幅</param>
+            <param name="clipLeft">画像左側の切り取る横幅</param>
+            <param name="scaleH">縦の拡縮率</param>
+            <param name="scaleV">横の拡縮率</param>
+            <param name="angle">回転角度 (度数法)</param>
+            <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
+            <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.FillCircle(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -191,6 +271,18 @@
             <param name="y">左上のY座標</param>
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.FillRotatedRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+            <summary>
+            塗りつぶしの回転させた長方形を描画します
+            </summary>
+            <param name="x">左上のX座標</param>
+            <param name="y">左上のY座標</param>
+            <param name="width">横幅</param>
+            <param name="height">縦幅</param>
+            <param name="angle">回転角度 (度数法)</param>
+            <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
+            <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
         </member>
         <member name="P:GameCanvas.GameCanvas.isTouch">
             <summary>
@@ -412,12 +504,6 @@
         <member name="F:GameCanvas.GameCanvas.COLOR_AQUA">
             <summary>[非推奨] みずいろ</summary>
         </member>
-        <member name="M:GameCanvas.GameCanvas.writeScreenImage(System.String)">
-            <summary>
-            [非推奨] 現在のゲーム画面をキャプチャ―して保存します。
-            </summary>
-            <param name="filename">拡張子を除いたファイル名</param>
-        </member>
         <member name="M:GameCanvas.GameCanvas.init(System.Object,System.Object)">
             <summary>[使用禁止]</summary>
         </member>
@@ -429,15 +515,24 @@
         </member>
         <member name="M:GameCanvas.GameCanvas.setWindowTitle(System.String)">
             <summary>[使用禁止]</summary>
-            <param name="title">ウィンドウタイトルに指定する文字列</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.drawString(System.String,System.Int32,System.Int32)">
-            <summary>
-            [非推奨] 文字列を描画します
-            </summary>
-            <param name="str">描画する文字列</param>
-            <param name="x">画面左上を原点とするX座標</param>
-            <param name="y">画面左上を原点とするY座標</param>
+        <member name="M:GameCanvas.GameCanvas.sqrt(System.Single)">
+            <summary>[非推奨] 平方根(√)を求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.cos(System.Single)">
+            <summary>[非推奨] cosを求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.sin(System.Single)">
+            <summary>[非推奨] sinを求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.atan2(System.Single,System.Single)">
+            <summary>[非推奨] atan2(ベクトルの角度)を求めます</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.setSeed(System.Int32)">
+            <summary>[使用禁止]</summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.resetGame">
+            <summary>[使用禁止]</summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.resetGameInstancle(System.Object)">
             <summary>[使用禁止]</summary>
@@ -453,18 +548,6 @@
         </member>
         <member name="M:GameCanvas.GameCanvas.showInputDialog(System.String,System.String)">
             <summary>[使用禁止]</summary>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.sqrt(System.Single)">
-            <summary>[非推奨] 平方根(√)を求めます</summary>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.cos(System.Single)">
-            <summary>[非推奨] cosを求めます</summary>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.sin(System.Single)">
-            <summary>[非推奨] sinを求めます</summary>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.atan2(System.Single,System.Single)">
-            <summary>[非推奨] atan2(ベクトルの角度)を求めます</summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.Destroy(UnityEngine.Object)">
             <summary>使用禁止</summary>
