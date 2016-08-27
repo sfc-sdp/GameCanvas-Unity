@@ -6,26 +6,35 @@ This project is work in progress.<br>
 
 ## 現在利用可能な機能
 
-### グラフィックAPI
+### グラフィックAPI (基本図形)
+* GetImageWidth()
+* GetImageHeight()
+* SetColor()
+* SetColorHSV()
+* SetLineWidth()
+* DrawLine()
+* DrawCircle()
+* DrawRect()
+* DrawRotatedRect()
+* DrawImage()
+* DrawClippedImage()
+* DrawScaledImage()
+* DrawRotatedImage()
+* DrawImageSRT()
+* DrawClippedImageSRT()
+* FillCircle()
+* FillRect()
+* FillRotatedRect()
+
+### グラフィックAPI (その他)
 * `read only` screenWidth
 * `read only` screenHeight
 * `read only` isPortrait
-* `read only` deviceResolution
 * frameRate
 * isFullScreen
 * isScreenAutoRotation
-* GetImageWidth()
-* GetImageHeight()
 * SetResolution()
-* SetColor()
 * ClearScreen()
-* DrawPoint()
-* DrawCircle()
-* DrawLine()
-* DrawRect()
-* DrawImage()
-* FillCircle()
-* FillRect()
 
 ### タッチ入力API
 * `read only` isTouch
@@ -73,5 +82,3 @@ This project is work in progress.<br>
 * ネットワークAPI
   * テキストDL
   * 画像DL
-* 描画最適化
-  * CPU処理をシェーダーによるGPU処理に変更

@@ -59,36 +59,6 @@
             更新処理
             </summary>
         </member>
-        <member name="P:GameCanvas.GameCanvas.frameRate">
-            <summary>
-            FPS（1秒あたりのフレーム更新回数）
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.screenWidth">
-            <summary>
-            画面X軸方向のゲーム解像度（幅）
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.screenHeight">
-            <summary>
-            画面Y軸方向のゲーム解像度（高さ）
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.isFullScreen">
-            <summary>
-            フルスクリーンかどうか
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.isScreenAutoRotation">
-            <summary>
-            ゲーム画面が端末の向きに合わせて自動回転するかどうか
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.isPortrait">
-            <summary>
-            ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定されます
-            </summary>
-        </member>
         <member name="M:GameCanvas.GameCanvas.GetImageWidth(System.Int32)">
             <summary>
             指定された画像の横幅を返します。画像が見つからない場合 0 を返します
@@ -102,13 +72,6 @@
             </summary>
             <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
             <returns>指定された画像の高さ</returns>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.SetResolution(System.Int32,System.Int32)">
-            <summary>
-            ゲームの解像度を設定します
-            </summary>
-            <param name="width">X軸方向の解像度（幅）</param>
-            <param name="height">Y軸方向の解像度（高さ）</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.SetColor(UnityEngine.Color)">
             <summary>
@@ -140,10 +103,14 @@
             </summary>
             <param name="lineWidth"></param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.ClearScreen">
+        <member name="M:GameCanvas.GameCanvas.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-            画面を白で塗りつぶします
+            線分を描画します
             </summary>
+            <param name="startX">開始点のX座標</param>
+            <param name="startY">開始点のY座標</param>
+            <param name="endX">終了点のX座標</param>
+            <param name="endY">終了点のY座標</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -153,15 +120,6 @@
             <param name="y">中心点のY座標</param>
             <param name="radius">半径</param>
             <param name="lineWidth">線の太さ</param>
-        </member>
-        <member name="M:GameCanvas.GameCanvas.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            線分を描画します
-            </summary>
-            <param name="startX">開始点のX座標</param>
-            <param name="startY">開始点のY座標</param>
-            <param name="endX">終了点のX座標</param>
-            <param name="endY">終了点のY座標</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -283,6 +241,48 @@
             <param name="angle">回転角度 (度数法)</param>
             <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
             <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.frameRate">
+            <summary>
+            FPS（1秒あたりのフレーム更新回数）
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.screenWidth">
+            <summary>
+            画面X軸方向のゲーム解像度（幅）
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.screenHeight">
+            <summary>
+            画面Y軸方向のゲーム解像度（高さ）
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isFullScreen">
+            <summary>
+            フルスクリーンかどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isScreenAutoRotation">
+            <summary>
+            ゲーム画面が端末の向きに合わせて自動回転するかどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isPortrait">
+            <summary>
+            ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定されます
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetResolution(System.Int32,System.Int32)">
+            <summary>
+            ゲームの解像度を設定します
+            </summary>
+            <param name="width">X軸方向の解像度（幅）</param>
+            <param name="height">Y軸方向の解像度（高さ）</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.ClearScreen">
+            <summary>
+            画面を白で塗りつぶします
+            </summary>
         </member>
         <member name="P:GameCanvas.GameCanvas.isTouch">
             <summary>

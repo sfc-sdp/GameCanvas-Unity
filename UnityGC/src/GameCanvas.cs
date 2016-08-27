@@ -309,92 +309,6 @@ namespace GameCanvas
         #region UnityGC：グラフィックAPI (基本図形)
 
         /// <summary>
-        /// FPS（1秒あたりのフレーム更新回数）
-        /// </summary>
-        public int frameRate
-        {
-            set
-            {
-                Application.targetFrameRate = value;
-            }
-            get
-            {
-                return Application.targetFrameRate;
-            }
-        }
-
-        /// <summary>
-        /// 画面X軸方向のゲーム解像度（幅）
-        /// </summary>
-        public int screenWidth
-        {
-            get
-            {
-                return _canvasWidth;
-            }
-        }
-
-        /// <summary>
-        /// 画面Y軸方向のゲーム解像度（高さ）
-        /// </summary>
-        public int screenHeight
-        {
-            get
-            {
-                return _canvasHeight;
-            }
-        }
-
-        /// <summary>
-        /// フルスクリーンかどうか
-        /// </summary>
-        public bool isFullScreen
-        {
-            set
-            {
-                Screen.fullScreen = value;
-                SetResolution(_canvasWidth, _canvasHeight);
-            }
-            get
-            {
-                return Screen.fullScreen;
-            }
-        }
-
-        /// <summary>
-        /// ゲーム画面が端末の向きに合わせて自動回転するかどうか
-        /// </summary>
-        public bool isScreenAutoRotation
-        {
-            set
-            {
-                if (value)
-                {
-                    Screen.orientation = ScreenOrientation.AutoRotation;
-                }
-                else
-                {
-                    Screen.orientation = isPortrait ? ScreenOrientation.Portrait : ScreenOrientation.Landscape;
-                }
-            }
-            get
-            {
-                return Screen.orientation == ScreenOrientation.AutoRotation;
-            }
-        }
-
-        /// <summary>
-        /// ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定されます
-        /// </summary>
-        public bool isPortrait
-        {
-            get
-            {
-                return _canvasWidth <= _canvasHeight;
-            }
-        }
-
-        /// <summary>
         /// 指定された画像の横幅を返します。画像が見つからない場合 0 を返します
         /// </summary>
         /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
@@ -424,33 +338,6 @@ namespace GameCanvas
             }
 
             return _imageArray[id].height;
-        }
-
-        /// <summary>
-        /// ゲームの解像度を設定します
-        /// </summary>
-        /// <param name="width">X軸方向の解像度（幅）</param>
-        /// <param name="height">Y軸方向の解像度（高さ）</param>
-        public void SetResolution(int width, int height)
-        {
-            if (_canvasWidth == width && _canvasHeight == height) return;
-
-            _canvasWidth = width;
-            _canvasHeight = height;
-
-            // 自動回転の再設定。回転固定設定は引き継がれる
-            isScreenAutoRotation = isScreenAutoRotation;
-
-            UpdateDisplayScale();
-
-            // キャンバスの再生成
-            if (_canvasRender != null) _canvasRender.Release();
-            _canvasRender = new RenderTexture(_canvasWidth, _canvasHeight, 0);
-            _canvasRender.Create();
-            _quad.transform.localScale = new Vector3(_canvasWidth, -_canvasHeight, 1f);
-            _quad.material.mainTexture = _canvasRender;
-
-            ClearScreen();
         }
 
         /// <summary>
@@ -505,11 +392,17 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// 画面を白で塗りつぶします
+        /// 線分を描画します
         /// </summary>
-        public void ClearScreen()
+        /// <param name="startX">開始点のX座標</param>
+        /// <param name="startY">開始点のY座標</param>
+        /// <param name="endX">終了点のX座標</param>
+        /// <param name="endY">終了点のY座標</param>
+        public void DrawLine(int startX, int startY, int endX, int endY)
         {
-            Graphics.Blit(null, _canvasRender, _materialInit);
+            var diffX = endX - startX;
+            var diffY = endY - startY;
+            FillRotatedRect(startX, startY, Mathf.RoundToInt(Mathf.Sqrt(diffX * diffX + diffY * diffY)), _lineWidth, Atan2(diffX, diffY), 0f, _lineWidth * 0.5f);
         }
 
         /// <summary>
@@ -539,20 +432,6 @@ namespace GameCanvas
             Graphics.Blit(_canvasRender, temp);
             Graphics.Blit(temp, _canvasRender, _materialDrawCircle);
             RenderTexture.ReleaseTemporary(temp);
-        }
-
-        /// <summary>
-        /// 線分を描画します
-        /// </summary>
-        /// <param name="startX">開始点のX座標</param>
-        /// <param name="startY">開始点のY座標</param>
-        /// <param name="endX">終了点のX座標</param>
-        /// <param name="endY">終了点のY座標</param>
-        public void DrawLine(int startX, int startY, int endX, int endY)
-        {
-            var diffX = endX - startX;
-            var diffY = endY - startY;
-            FillRotatedRect(startX, startY, Mathf.RoundToInt(Mathf.Sqrt(diffX * diffX + diffY * diffY)), _lineWidth, Atan2(diffX, diffY), 0f, _lineWidth * 0.5f);
         }
 
         /// <summary>
@@ -821,6 +700,131 @@ namespace GameCanvas
             RenderTexture.ReleaseTemporary(temp);
         }
 
+        #endregion
+
+        #region UnityGC：グラフィックAPI (その他)
+
+        /// <summary>
+        /// FPS（1秒あたりのフレーム更新回数）
+        /// </summary>
+        public int frameRate
+        {
+            set
+            {
+                Application.targetFrameRate = value;
+            }
+            get
+            {
+                return Application.targetFrameRate;
+            }
+        }
+
+        /// <summary>
+        /// 画面X軸方向のゲーム解像度（幅）
+        /// </summary>
+        public int screenWidth
+        {
+            get
+            {
+                return _canvasWidth;
+            }
+        }
+
+        /// <summary>
+        /// 画面Y軸方向のゲーム解像度（高さ）
+        /// </summary>
+        public int screenHeight
+        {
+            get
+            {
+                return _canvasHeight;
+            }
+        }
+
+        /// <summary>
+        /// フルスクリーンかどうか
+        /// </summary>
+        public bool isFullScreen
+        {
+            set
+            {
+                Screen.fullScreen = value;
+                SetResolution(_canvasWidth, _canvasHeight);
+            }
+            get
+            {
+                return Screen.fullScreen;
+            }
+        }
+
+        /// <summary>
+        /// ゲーム画面が端末の向きに合わせて自動回転するかどうか
+        /// </summary>
+        public bool isScreenAutoRotation
+        {
+            set
+            {
+                if (value)
+                {
+                    Screen.orientation = ScreenOrientation.AutoRotation;
+                }
+                else
+                {
+                    Screen.orientation = isPortrait ? ScreenOrientation.Portrait : ScreenOrientation.Landscape;
+                }
+            }
+            get
+            {
+                return Screen.orientation == ScreenOrientation.AutoRotation;
+            }
+        }
+
+        /// <summary>
+        /// ゲーム画面が縦向きかどうか。この値はゲーム解像度によって自動的に決定されます
+        /// </summary>
+        public bool isPortrait
+        {
+            get
+            {
+                return _canvasWidth <= _canvasHeight;
+            }
+        }
+
+        /// <summary>
+        /// ゲームの解像度を設定します
+        /// </summary>
+        /// <param name="width">X軸方向の解像度（幅）</param>
+        /// <param name="height">Y軸方向の解像度（高さ）</param>
+        public void SetResolution(int width, int height)
+        {
+            if (_canvasWidth == width && _canvasHeight == height) return;
+
+            _canvasWidth = width;
+            _canvasHeight = height;
+
+            // 自動回転の再設定。回転固定設定は引き継がれる
+            isScreenAutoRotation = isScreenAutoRotation;
+
+            UpdateDisplayScale();
+
+            // キャンバスの再生成
+            if (_canvasRender != null) _canvasRender.Release();
+            _canvasRender = new RenderTexture(_canvasWidth, _canvasHeight, 0);
+            _canvasRender.Create();
+            _quad.transform.localScale = new Vector3(_canvasWidth, -_canvasHeight, 1f);
+            _quad.material.mainTexture = _canvasRender;
+
+            ClearScreen();
+        }
+
+        /// <summary>
+        /// 画面を白で塗りつぶします
+        /// </summary>
+        public void ClearScreen()
+        {
+            Graphics.Blit(null, _canvasRender, _materialInit);
+        }
+        
         #endregion
 
         #region UnityGC：入力API (タッチ)
