@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace GameCanvas
 {
-    using ColorArrRoc = ReadOnlyCollection<Color[]>;
-    
     /// <summary>
     /// GameCanvasの様々な機能を取りまとめたクラス
     /// </summary>
@@ -140,7 +135,7 @@ namespace GameCanvas
                 _materialDrawImage  = new Material(Shader.Find("Custom/GameCanvas/DrawImage"));
 
                 _quad = obj.GetComponent<MeshRenderer>();
-                _quad.material.shader = Shader.Find("Sprites/Default");
+                _quad.material.shader = Shader.Find("Unlit/Texture");
                 // [memo] SetResolution()で設定する
                 // _quad.material.mainTexture = _canvasRender;
             }
