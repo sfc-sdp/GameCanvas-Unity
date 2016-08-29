@@ -37,26 +37,26 @@ namespace GameCanvas
         /// <summary>
         /// 初期化処理
         /// </summary>
-        abstract public void Start();
+        virtual public void Start() { }
 
         /// <summary>
         /// 更新処理
         /// </summary>
-        abstract public void Calc();
+        virtual public void Calc() { }
 
         /// <summary>
         /// 描画処理
         /// </summary>
-        abstract public void Draw();
+        virtual public void Draw() { }
 
         /// <summary>
         /// 中断処理
         /// </summary>
-        abstract public void Pause();
+        virtual public void Pause() { }
 
         /// <summary>
         /// 終了処理
         /// </summary>
-        abstract public void Final();
+        virtual public void Final() { }
     }
 }

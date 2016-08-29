@@ -393,7 +393,7 @@ namespace GameCanvas
         /// <param name="startY">開始点のY座標</param>
         /// <param name="endX">終了点のX座標</param>
         /// <param name="endY">終了点のY座標</param>
-        public void DrawLine(int startX, int startY, int endX, int endY)
+        public void DrawLine(float startX, float startY, float endX, float endY)
         {
             var diffX = endX - startX;
             var diffY = endY - startY;
@@ -407,7 +407,7 @@ namespace GameCanvas
         /// <param name="y">中心点のY座標</param>
         /// <param name="radius">半径</param>
         /// <param name="lineWidth">線の太さ</param>
-        public void DrawCircle(int x, int y, int radius)
+        public void DrawCircle(float x, float y, int radius)
         {
             if (radius <= 0)
             {
@@ -436,7 +436,7 @@ namespace GameCanvas
         /// <param name="y">左上のY座標</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
-        public void DrawRect(int x, int y, int width, int height)
+        public void DrawRect(float x, float y, float width, float height)
         {
             DrawRotatedRect(x, y, width, height, 0);
         }
@@ -451,7 +451,7 @@ namespace GameCanvas
         /// <param name="angle">回転角度 (度数法)</param>
         /// <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
         /// <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
-        public void DrawRotatedRect(int x, int y, int width, int height, float angle, float rotationX = 0f, float rotationY = 0f)
+        public void DrawRotatedRect(float x, float y, float width, float height, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             if (width < 1 || height < 1)
             {
@@ -488,7 +488,7 @@ namespace GameCanvas
         /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
-        public void DrawImage(int id, int x, int y)
+        public void DrawImage(int id, float x, float y)
         {
             DrawImageSRT(id, x, y, 1f, 1f, 0f);
         }
@@ -503,7 +503,7 @@ namespace GameCanvas
         /// <param name="clipRight">画像右側の切り取る横幅</param>
         /// <param name="clipBottom">画像下側の切り取る縦幅</param>
         /// <param name="clipLeft">画像左側の切り取る横幅</param>
-        public void DrawClippedImage(int id, int x, int y, int clipTop, int clipRight, int clipBottom, int clipLeft)
+        public void DrawClippedImage(int id, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft)
         {
             DrawClippedImageSRT(id, x, y, clipTop, clipRight, clipBottom, clipLeft, 1f, 1f, 0f);
         }
@@ -516,7 +516,7 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="scaleH">横の拡縮率</param>
         /// <param name="scaleV">縦の拡縮率</param>
-        public void DrawScaledImage(int id, int x, int y, float scaleH, float scaleV)
+        public void DrawScaledImage(int id, float x, float y, float scaleH, float scaleV)
         {
             DrawImageSRT(id, x, y, scaleH, scaleV, 0f);
         }
@@ -530,7 +530,7 @@ namespace GameCanvas
         /// <param name="angle">回転角度 (度数法)</param>
         /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
         /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
-        public void DrawRotatedImage(int id, int x, int y, float angle, float rotationX = 0f, float rotationY = 0f)
+        public void DrawRotatedImage(int id, float x, float y, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             DrawImageSRT(id, x, y, 1f, 1f, angle, rotationX, rotationY);
         }
@@ -546,7 +546,7 @@ namespace GameCanvas
         /// <param name="angle">回転角度 (度数法)</param>
         /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
         /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
-        public void DrawImageSRT(int id, int x, int y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        public void DrawImageSRT(int id, float x, float y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             DrawClippedImageSRT(id, x, y, 0, 0, 0, 0, scaleH, scaleV, angle, rotationX, rotationY);
         }
@@ -566,7 +566,7 @@ namespace GameCanvas
         /// <param name="angle">回転角度 (度数法)</param>
         /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
         /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
-        public void DrawClippedImageSRT(int id, int x, int y, int clipTop, int clipRight, int clipBottom, int clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        public void DrawClippedImageSRT(int id, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             if (id >= _numImage)
             {
@@ -622,7 +622,7 @@ namespace GameCanvas
         /// <param name="x">中心点のX座標</param>
         /// <param name="y">中心点のY座標</param>
         /// <param name="radius">半径</param>
-        public void FillCircle(int x, int y, int radius)
+        public void FillCircle(float x, float y, int radius)
         {
             if (radius < 1)
             {
@@ -650,7 +650,7 @@ namespace GameCanvas
         /// <param name="y">左上のY座標</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
-        public void FillRect(int x, int y, int width, int height)
+        public void FillRect(float x, float y, float width, float height)
         {
             FillRotatedRect(x, y, width, height, 0);
         }
@@ -665,7 +665,7 @@ namespace GameCanvas
         /// <param name="angle">回転角度 (度数法)</param>
         /// <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
         /// <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
-        public void FillRotatedRect(int x, int y, int width, int height, float angle, float rotationX = 0f, float rotationY = 0f)
+        public void FillRotatedRect(float x, float y, float width, float height, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             if (width < 1 || height < 1)
             {
@@ -1029,7 +1029,7 @@ namespace GameCanvas
         /// </summary>
         public float acceY
         {
-            get { return Input.acceleration.y; }
+            get { return -Input.acceleration.y; }
         }
 
         /// <summary>
@@ -1037,7 +1037,7 @@ namespace GameCanvas
         /// </summary>
         public float acceZ
         {
-            get { return Input.acceleration.z; }
+            get { return -Input.acceleration.z; }
         }
 
         #endregion
@@ -1135,7 +1135,7 @@ namespace GameCanvas
         /// コンソールに数値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
         /// </summary>
         /// <param name="value">数値</param>
-        public void Trace(IEnumerable value)
+        public void Trace(IComparable value)
         {
             Trace(value.ToString());
         }
@@ -1243,19 +1243,19 @@ namespace GameCanvas
         public void setWindowTitle(string title) { }
         
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawString(string str, int x, int y)
+        public void drawString(string str, float x, float y)
         {
             Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawCenterString(string str, int x, int y)
+        public void drawCenterString(string str, float x, float y)
         {
             Debug.LogWarning("ToDo");
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawRightString(string str, int x, int y)
+        public void drawRightString(string str, float x, float y)
         {
             Debug.LogWarning("ToDo");
         }
@@ -1300,49 +1300,49 @@ namespace GameCanvas
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawRect(int x, int y, int w, int h)
+        public void drawRect(float x, float y, int w, int h)
         {
             DrawRect(x, y, w, h);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void fillRect(int x, int y, int w, int h)
+        public void fillRect(float x, float y, int w, int h)
         {
             FillRect(x, y, w, h);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawCircle(int x, int y, int r)
+        public void drawCircle(float x, float y, int r)
         {
             DrawCircle(x, y, r);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void fillCircle(int x, int y, int r)
+        public void fillCircle(float x, float y, int r)
         {
             FillCircle(x, y, r);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawImage(int id, int x, int y)
+        public void drawImage(int id, float x, float y)
         {
             DrawImage(id, x, y);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawClipImage(int id, int x, int y, int u, int v, int w, int h)
+        public void drawClipImage(int id, float x, float y, int u, int v, int w, int h)
         {
             DrawClippedImage(id, x, y, u, v, GetImageWidth(id) - w - u, GetImageHeight(id) - h - v);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate)
+        public void drawScaledRotateImage(int id, float x, float y, int xsize, int ysize, double rotate)
         {
             DrawImageSRT(id, x, y, xsize * 0.01f, ysize * 0.01f, (float)rotate);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void drawScaledRotateImage(int id, int x, int y, int xsize, int ysize, double rotate, double px, double py)
+        public void drawScaledRotateImage(int id, float x, float y, int xsize, int ysize, double rotate, double px, double py)
         {
             DrawImageSRT(id, x, y, xsize * 0.01f, ysize * 0.01f, (float)rotate, (int)px, (int)py);
         }

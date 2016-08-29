@@ -103,7 +103,7 @@
             </summary>
             <param name="lineWidth"></param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.DrawLine(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             線分を描画します
             </summary>
@@ -112,7 +112,7 @@
             <param name="endX">終了点のX座標</param>
             <param name="endY">終了点のY座標</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.DrawCircle(System.Single,System.Single,System.Int32)">
             <summary>
             中抜きの円を描画します
             </summary>
@@ -121,7 +121,7 @@
             <param name="radius">半径</param>
             <param name="lineWidth">線の太さ</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.DrawRect(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             中抜きの長方形を描画します
             </summary>
@@ -130,7 +130,7 @@
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawRotatedRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+        <member name="M:GameCanvas.GameCanvas.DrawRotatedRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             中抜きの回転させた長方形を描画します
             </summary>
@@ -142,7 +142,7 @@
             <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
             <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Single,System.Single)">
             <summary>
             画像を描画します
             </summary>
@@ -150,7 +150,7 @@
             <param name="x">X座標</param>
             <param name="y">Y座標</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawClippedImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.DrawClippedImage(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             一部分を切り取った画像を描画します
             </summary>
@@ -162,7 +162,7 @@
             <param name="clipBottom">画像下側の切り取る縦幅</param>
             <param name="clipLeft">画像左側の切り取る横幅</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawScaledImage(System.Int32,System.Int32,System.Int32,System.Single,System.Single)">
+        <member name="M:GameCanvas.GameCanvas.DrawScaledImage(System.Int32,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             大きさを変えた画像を描画します
             </summary>
@@ -172,7 +172,7 @@
             <param name="scaleH">横の拡縮率</param>
             <param name="scaleV">縦の拡縮率</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawRotatedImage(System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+        <member name="M:GameCanvas.GameCanvas.DrawRotatedImage(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             回転させた画像を描画します
             </summary>
@@ -183,7 +183,7 @@
             <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
             <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawImageSRT(System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:GameCanvas.GameCanvas.DrawImageSRT(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             画像を位置・拡縮率・回転角度を指定して描画します
             </summary>
@@ -196,7 +196,7 @@
             <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
             <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.DrawClippedImageSRT(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:GameCanvas.GameCanvas.DrawClippedImageSRT(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             一部分を切り取った画像を、位置・拡縮率・回転角度を指定して描画します
             </summary>
@@ -213,7 +213,7 @@
             <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
             <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.FillCircle(System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.FillCircle(System.Single,System.Single,System.Int32)">
             <summary>
             塗りつぶしの円を描画します
             </summary>
@@ -221,7 +221,7 @@
             <param name="y">中心点のY座標</param>
             <param name="radius">半径</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.FillRect(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             塗りつぶしの長方形を描画します
             </summary>
@@ -230,7 +230,7 @@
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.FillRotatedRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+        <member name="M:GameCanvas.GameCanvas.FillRotatedRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             塗りつぶしの回転させた長方形を描画します
             </summary>
@@ -438,7 +438,7 @@
             </summary>
             <param name="value">ベクトル値</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.Trace(System.Collections.IEnumerable)">
+        <member name="M:GameCanvas.GameCanvas.Trace(System.IComparable)">
             <summary>
             コンソールに数値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
             </summary>
