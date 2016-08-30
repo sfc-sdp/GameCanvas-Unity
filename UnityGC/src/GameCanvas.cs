@@ -1145,7 +1145,7 @@ namespace GameCanvas
         /// <summary>
         /// 位置情報の測定を開始します。この操作は一般に多くの電力を消費します
         /// </summary>
-        public void startLocationService()
+        public void StartLocationService()
         {
             Input.location.Start(5f, 5f);
         }
@@ -1153,7 +1153,7 @@ namespace GameCanvas
         /// <summary>
         /// 位置情報の測定を終了します
         /// </summary>
-        public void stopLocationService()
+        public void StopLocationService()
         {
             Input.location.Stop();
         }

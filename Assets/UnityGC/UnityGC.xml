@@ -440,12 +440,12 @@
             最後に位置情報を取得した時間から現在までの経過秒数
             </summary>
         </member>
-        <member name="M:GameCanvas.GameCanvas.startLocationService">
+        <member name="M:GameCanvas.GameCanvas.StartLocationService">
             <summary>
             位置情報の測定を開始します。この操作は一般に多くの電力を消費します
             </summary>
         </member>
-        <member name="M:GameCanvas.GameCanvas.stopLocationService">
+        <member name="M:GameCanvas.GameCanvas.StopLocationService">
             <summary>
             位置情報の測定を終了します
             </summary>
