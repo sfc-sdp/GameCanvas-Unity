@@ -16,8 +16,8 @@ public class AcceleratorExample : GameBase
         ballHeight = gc.GetImageHeight(0);
 
         // 画面の中心にボールを置きます
-        ballX = 320 - ballWidth / 2;
-        ballY = 240 - ballHeight / 2;
+        ballX = (gc.screenWidth - ballWidth) / 2;
+        ballY = (gc.screenHeight - ballHeight) / 2;
 
         // ボールの初速はゼロ（静止）にします
         ballSpeedX = 0;
