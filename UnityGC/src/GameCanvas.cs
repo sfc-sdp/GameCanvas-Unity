@@ -1042,6 +1042,43 @@ namespace GameCanvas
 
         #endregion
 
+        #region UnityGC：入力API (ジャイロスコープ)
+
+        /// <summary>
+        /// ジャイロスコープが有効かどうか
+        /// </summary>
+        public bool enabledGyro
+        {
+            set { Input.gyro.enabled = value; }
+            get { return Input.gyro.enabled;  }
+        }
+
+        /// <summary>
+        /// ジャイロスコープで測定されたX軸の回転率
+        /// </summary>
+        public float gyroX
+        {
+            get { return Input.gyro.rotationRateUnbiased.x; }
+        }
+
+        /// <summary>
+        /// ジャイロスコープで測定されたY軸の回転率
+        /// </summary>
+        public float gyroY
+        {
+            get { return Input.gyro.rotationRateUnbiased.y; }
+        }
+
+        /// <summary>
+        /// ジャイロスコープで測定されたZ軸の回転率
+        /// </summary>
+        public float gyroZ
+        {
+            get { return Input.gyro.rotationRateUnbiased.z; }
+        }
+
+        #endregion
+
         #region UnityGC：数学API
 
         /// <summary>

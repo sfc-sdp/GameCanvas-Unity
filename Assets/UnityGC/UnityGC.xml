@@ -385,6 +385,26 @@
             加速度センサーのZ軸の値
             </summary>
         </member>
+        <member name="P:GameCanvas.GameCanvas.enabledGyro">
+            <summary>
+            ジャイロスコープが有効かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.gyroX">
+            <summary>
+            ジャイロスコープで測定されたX軸の回転率
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.gyroY">
+            <summary>
+            ジャイロスコープで測定されたY軸の回転率
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.gyroZ">
+            <summary>
+            ジャイロスコープで測定されたZ軸の回転率
+            </summary>
+        </member>
         <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">
             <summary>
             cosを求めます
