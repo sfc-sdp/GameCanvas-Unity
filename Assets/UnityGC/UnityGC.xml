@@ -372,20 +372,20 @@
         </member>
         <member name="P:GameCanvas.GameCanvas.acceX">
             <summary>
-            加速度センサーのX軸の値
+            加速度センサーで測定されたX軸の加速度
             </summary>
         </member>
         <member name="P:GameCanvas.GameCanvas.acceY">
             <summary>
-            加速度センサーのY軸の値
+            加速度センサーで測定されたY軸の加速度
             </summary>
         </member>
         <member name="P:GameCanvas.GameCanvas.acceZ">
             <summary>
-            加速度センサーのZ軸の値
+            加速度センサーで測定されたZ軸の加速度
             </summary>
         </member>
-        <member name="P:GameCanvas.GameCanvas.enabledGyro">
+        <member name="P:GameCanvas.GameCanvas.isGyroEnabled">
             <summary>
             ジャイロスコープが有効かどうか
             </summary>
@@ -403,6 +403,51 @@
         <member name="P:GameCanvas.GameCanvas.gyroZ">
             <summary>
             ジャイロスコープで測定されたZ軸の回転率
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isCompassEnabled">
+            <summary>
+            地磁気センサーが有効かどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.compass">
+            <summary>
+            地磁気センサーで測定された磁北極方向への回転角度 (度数法)
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isLocationEnabled">
+            <summary>
+            位置情報の取得が有効かどうか。有効でない場合、ユーザーに許可を求めるダイアログが表示される場合があります
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isRunningLocaltionService">
+            <summary>
+            位置情報の取得が正常に行われているかどうか
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.lastLocationLatitude">
+            <summary>
+            最後に測定した場所の緯度情報
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.lastLocationLongitude">
+            <summary>
+            最後に測定した場所の経度情報
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.lastLocationTime">
+            <summary>
+            最後に位置情報を取得した時間から現在までの経過秒数
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.startLocationService">
+            <summary>
+            位置情報の測定を開始します。この操作は一般に多くの電力を消費します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.stopLocationService">
+            <summary>
+            位置情報の測定を終了します
             </summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">

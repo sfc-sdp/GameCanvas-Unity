@@ -11,7 +11,7 @@ public class GyroscopeExample : GameBase
     override public void Start()
     {
         // ジャイロスコープを有効化します
-        gc.enabledGyro = true;
+        gc.isGyroEnabled = true;
 
         // ボール3つ分の変数を用意します
         ballX = new float[NUM_BALL];

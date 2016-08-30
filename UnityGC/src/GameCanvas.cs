@@ -1017,7 +1017,7 @@ namespace GameCanvas
         #region UnityGC：入力API (加速度)
 
         /// <summary>
-        /// 加速度センサーのX軸の値
+        /// 加速度センサーで測定されたX軸の加速度
         /// </summary>
         public float acceX
         {
@@ -1025,7 +1025,7 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// 加速度センサーのY軸の値
+        /// 加速度センサーで測定されたY軸の加速度
         /// </summary>
         public float acceY
         {
@@ -1033,7 +1033,7 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// 加速度センサーのZ軸の値
+        /// 加速度センサーで測定されたZ軸の加速度
         /// </summary>
         public float acceZ
         {
@@ -1047,7 +1047,7 @@ namespace GameCanvas
         /// <summary>
         /// ジャイロスコープが有効かどうか
         /// </summary>
-        public bool enabledGyro
+        public bool isGyroEnabled
         {
             set { Input.gyro.enabled = value; }
             get { return Input.gyro.enabled;  }
@@ -1075,6 +1075,87 @@ namespace GameCanvas
         public float gyroZ
         {
             get { return Input.gyro.rotationRateUnbiased.z; }
+        }
+
+        #endregion
+
+        #region UnityGC：入力API (コンパス)
+
+        /// <summary>
+        /// 地磁気センサーが有効かどうか
+        /// </summary>
+        public bool isCompassEnabled
+        {
+            set { Input.compass.enabled = value; }
+            get { return Input.compass.enabled;  }
+        }
+
+        /// <summary>
+        /// 地磁気センサーで測定された磁北極方向への回転角度 (度数法)
+        /// </summary>
+        public float compass
+        {
+            get { return Input.compass.magneticHeading; }
+        }
+
+        #endregion
+
+        #region UnityGC：入力API (位置情報)
+
+        /// <summary>
+        /// 位置情報の取得が有効かどうか。有効でない場合、ユーザーに許可を求めるダイアログが表示される場合があります
+        /// </summary>
+        public bool isLocationEnabled
+        {
+            get { return Input.location.isEnabledByUser; }
+        }
+
+        /// <summary>
+        /// 位置情報の取得が正常に行われているかどうか
+        /// </summary>
+        public bool isRunningLocaltionService
+        {
+            get { return Input.location.status == LocationServiceStatus.Running; }
+        }
+
+        /// <summary>
+        /// 最後に測定した場所の緯度情報
+        /// </summary>
+        public float lastLocationLatitude
+        {
+            get { return Input.location.lastData.latitude; }
+        }
+
+        /// <summary>
+        /// 最後に測定した場所の経度情報
+        /// </summary>
+        public float lastLocationLongitude
+        {
+            get { return Input.location.lastData.longitude; }
+        }
+
+        /// <summary>
+        /// 最後に位置情報を取得した時間から現在までの経過秒数
+        /// </summary>
+        public float lastLocationTime
+        {
+            get { return (float)(DateTime.Now.Subtract(new DateTime(1970, 1, 1)).TotalSeconds - Input.location.lastData.timestamp); }
+        }
+
+        /// <summary>
+        /// 位置情報の測定を開始します。この操作は一般に多くの電力を消費します
+        /// </summary>
+        public void startLocationService()
+        {
+            Input.location.Start(5f, 5f);
+        }
+
+        /// <summary>
+        /// 位置情報の測定を終了します
+        /// </summary>
+        public void stopLocationService()
+        {
+            Input.location.Stop();
         }
 
         #endregion
