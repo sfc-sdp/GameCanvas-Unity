@@ -15,7 +15,6 @@ This project is work in progress.<br>
   * かな文字
 * 入力API
   * カメラ映像
-  * 加速度・ジャイロ
   * GPS・コンパス
   * キー(デバッグ用)
 * 当たり判定API
