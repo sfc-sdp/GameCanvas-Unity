@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Text;
 using UnityEngine;
 
 namespace GameCanvas
@@ -21,8 +23,8 @@ namespace GameCanvas
         #region UnityGC：定数
 
         private const float MAX_TAP_TIME_LENGTH     = 0.3f;         // タッチ：タップ判定時間長
-        private const float MIN_FLICK_DISTANCE      = 3f;           // タッチ：フリック判定移動量
-        private const int   MIN_HOLD_FRAME          = 8;            // タッチ：ホールド判定フレーム数
+        private const float MIN_FLICK_DISTANCE      = 30f;          // タッチ：フリック判定移動量
+        private const float MIN_HOLD_TIME_LENGTH    = 0.5f;         // タッチ：ホールド判定フレーム数
         private const float MAX_PINCH_IN_SCALE      = 0.95f;        // ピンチ：ピンチイン判定縮小率
         private const float MIN_PINCH_OUT_SCALE     = 1.05f;        // ピンチ：ピンチアウト判定拡大率
 
@@ -45,15 +47,17 @@ namespace GameCanvas
         private int         _numAudio               = 0;            // 認識済みの音源：数量
         private AudioClip[] _audioArray             = null;         // 認識済みの音源：データ配列
 
+        private SerializableDictionary<string, string> _save = null;
+
         private bool        _touchSupported         = false;        // タッチ：実行環境がタッチ操作対応かどうか
         private bool        _isTouch                = false;        // タッチ：タッチされているかどうか
         private bool        _isTouchBegan           = false;        // タッチ：タッチされ始めた瞬間かどうか
         private bool        _isTouchEnded           = false;        // タッチ：タッチされ終えた瞬間かどうか
         private bool        _isTapped               = false;        // タッチ：タップされた瞬間かどうか
         private bool        _isFlicked              = false;        // タッチ：フリックされた瞬間かどうか
-        private float       _touchBeganTime         = -1f;          // タッチ：開始時刻(アプリ開始からの経過時間:秒)
-        private Vector2     _touchPoint             = -Vector2.one; // タッチ：座標
-        private Vector2     _scaledTouchPoint       = -Vector2.one; // タッチ：キャンバスピクセルに対応する座標
+        private float       _touchBeganTime         = -1f;          // タッチ：開始時刻(ゲーム開始からの経過時間:秒)
+        private Vector2     _unscaledTouchPoint     = -Vector2.one; // タッチ：座標
+        private Vector2     _touchPoint             = -Vector2.one; // タッチ：キャンバスピクセルに対応する座標
         private Vector2     _touchBeganPoint        = -Vector2.one; // タッチ：開始座標
         private float       _touchTimeLength        = 0f;           // タッチ：連続時間(秒)
         private float       _touchHoldTimeLength    = 0f;           // タッチ：連続静止時間(秒)
@@ -92,7 +96,7 @@ namespace GameCanvas
             base.Awake();
             name = "GameCanvas";
 
-            // アプリの設定
+            // アプリケーションの設定
             Application.targetFrameRate     = 60;
             Screen.fullScreen               = false;
             Screen.sleepTimeout             = SleepTimeout.NeverSleep;
@@ -166,6 +170,12 @@ namespace GameCanvas
                 UpdateDisplayScale();
             }
 
+            // タッチ情報更新
+            UpdateTouches();
+        }
+        
+        private void UpdateTouches()
+        {
             // 初期化
             _isTouchBegan = false;
             _isTouchEnded = false;
@@ -184,30 +194,30 @@ namespace GameCanvas
                 if (_touchSupported)
                 {
                     var t0 = Input.GetTouch(0);
-                    _touchPoint   = t0.position;
-                    _touchPoint.y = Screen.height - _touchPoint.y;
+                    _unscaledTouchPoint   = t0.position;
+                    _unscaledTouchPoint.y = Screen.height - _unscaledTouchPoint.y;
                     phase = t0.phase;
                 }
                 else
                 {
-                    _touchPoint   = Input.mousePosition;
-                    _touchPoint.y = Screen.height - _touchPoint.y;
-                    if      (Input.GetMouseButtonDown(0)   ) { phase = TouchPhase.Began; _mousePrevPoint = _touchPoint;  }
+                    _unscaledTouchPoint   = Input.mousePosition;
+                    _unscaledTouchPoint.y = Screen.height - _unscaledTouchPoint.y;
+                    if      (Input.GetMouseButtonDown(0)   ) { phase = TouchPhase.Began; _mousePrevPoint = _unscaledTouchPoint;  }
                     else if (Input.GetMouseButtonUp(0)     ) { phase = TouchPhase.Ended; _mousePrevPoint = -Vector2.one; }
-                    else if (_mousePrevPoint != _touchPoint) { phase = TouchPhase.Moved; _mousePrevPoint = _touchPoint;  }
+                    else if (_mousePrevPoint != _unscaledTouchPoint) { phase = TouchPhase.Moved; _mousePrevPoint = _unscaledTouchPoint;  }
                     else                                     { phase = TouchPhase.Stationary;                            }
                 }
 
                 // タッチ座標の変換
-                _scaledTouchPoint = (_touchPoint - _canvasBorderSize) * _canvasDisplayScale;
+                _touchPoint = (_unscaledTouchPoint - _canvasBorderSize) * _canvasDisplayScale;
 
                 // タッチ関連挙動の検出
                 switch (phase)
                 {
                     case TouchPhase.Began:
                         // 開始時間を記録
-                        _touchBeganTime  = Time.realtimeSinceStartup;
-                        _touchBeganPoint = _touchPoint;
+                        _touchBeganTime  = Time.time;
+                        _touchBeganPoint = _unscaledTouchPoint;
                         _isTouchBegan    = true;
                         break;
 
@@ -216,7 +226,7 @@ namespace GameCanvas
                         // タップ・フリック判定
                         if (_touchHoldTimeLength <= MAX_TAP_TIME_LENGTH)
                         {
-                            var diff   = Vector2.Distance(_touchBeganPoint, _touchPoint);
+                            var diff   = Vector2.Distance(_touchBeganPoint, _unscaledTouchPoint);
                             _isFlicked = diff > MIN_FLICK_DISTANCE;
                             _isTapped  = !_isFlicked;
                         }
@@ -449,8 +459,8 @@ namespace GameCanvas
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="angle">回転角度 (度数法)</param>
-        /// <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
-        /// <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+        /// <param name="rotationX">長方形の左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">長方形の左上を原点としたときの回転の中心位置Y</param>
         public void DrawRotatedRect(float x, float y, float width, float height, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             if (width < 1 || height < 1)
@@ -528,8 +538,8 @@ namespace GameCanvas
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="angle">回転角度 (度数法)</param>
-        /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
-        /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
         public void DrawRotatedImage(int id, float x, float y, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             DrawImageSRT(id, x, y, 1f, 1f, angle, rotationX, rotationY);
@@ -544,8 +554,8 @@ namespace GameCanvas
         /// <param name="scaleH">縦の拡縮率</param>
         /// <param name="scaleV">横の拡縮率</param>
         /// <param name="angle">回転角度 (度数法)</param>
-        /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
-        /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
         public void DrawImageSRT(int id, float x, float y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             DrawClippedImageSRT(id, x, y, 0, 0, 0, 0, scaleH, scaleV, angle, rotationX, rotationY);
@@ -564,8 +574,8 @@ namespace GameCanvas
         /// <param name="scaleH">縦の拡縮率</param>
         /// <param name="scaleV">横の拡縮率</param>
         /// <param name="angle">回転角度 (度数法)</param>
-        /// <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
-        /// <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
         public void DrawClippedImageSRT(int id, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             if (id >= _numImage)
@@ -663,8 +673,8 @@ namespace GameCanvas
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="angle">回転角度 (度数法)</param>
-        /// <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
-        /// <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+        /// <param name="rotationX">長方形の左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">長方形の左上を原点としたときの回転の中心位置Y</param>
         public void FillRotatedRect(float x, float y, float width, float height, float angle, float rotationX = 0f, float rotationY = 0f)
         {
             if (width < 1 || height < 1)
@@ -864,7 +874,7 @@ namespace GameCanvas
         {
             get
             {
-                return _touchHoldTimeLength >= MIN_HOLD_FRAME;
+                return _touchHoldTimeLength >= MIN_HOLD_TIME_LENGTH;
             }
         }
 
@@ -952,7 +962,7 @@ namespace GameCanvas
         {
             get
             {
-                return _scaledTouchPoint;
+                return _touchPoint;
             }
         }
 
@@ -1066,7 +1076,7 @@ namespace GameCanvas
         /// </summary>
         public float gyroY
         {
-            get { return Input.gyro.rotationRateUnbiased.y; }
+            get { return -Input.gyro.rotationRateUnbiased.y; }
         }
 
         /// <summary>
@@ -1074,7 +1084,7 @@ namespace GameCanvas
         /// </summary>
         public float gyroZ
         {
-            get { return Input.gyro.rotationRateUnbiased.z; }
+            get { return -Input.gyro.rotationRateUnbiased.z; }
         }
 
         #endregion
@@ -1095,7 +1105,7 @@ namespace GameCanvas
         /// </summary>
         public float compass
         {
-            get { return Input.compass.magneticHeading; }
+            get { return -Input.compass.magneticHeading; }
         }
 
         #endregion
@@ -1160,6 +1170,222 @@ namespace GameCanvas
 
         #endregion
 
+        #region UnityGC：入力API (その他)
+
+        /// <summary>
+        /// 戻るボタンが押されたかどうか (Androidのみ)
+        /// </summary>
+        public bool isBackKeyPushed
+        {
+            get { return Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape); }
+        }
+
+        #endregion
+
+        #region UnityGC：永続化API
+
+        /// <summary>
+        /// セーブデータから整数値を取り出します。存在しなかった場合 0 を返します
+        /// </summary>
+        /// <param name="key">キー</param>
+        public int LoadAsInt(string key)
+        {
+            var value = Load(key);
+            
+            if (!string.IsNullOrEmpty(value))
+            {
+                int number;
+                if (int.TryParse(value, out number))
+                {
+                    // 整数値が存在した
+                    return number;
+                }
+            }
+
+            // 存在しない または 整数値ではなかった
+            return 0;
+        }
+        
+        /// <summary>
+        /// セーブデータから数値を取り出します。存在しなかった場合 0 を返します
+        /// </summary>
+        /// <param name="key">キー</param>
+        public float LoadAsNumber(string key)
+        {
+            var value = Load(key);
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                float number;
+                if (float.TryParse(value, out number))
+                {
+                    // 数値が存在した
+                    return number;
+                }
+            }
+
+            // 存在しない または 数値ではなかった
+            return 0f;
+        }
+
+        /// <summary>
+        /// セーブデータから文字列を取り出します。存在しなかった場合 null を返します
+        /// </summary>
+        /// <param name="key">キー</param>
+        public string Load(string key)
+        {
+            string value;
+            if (_save.TryGetValue(key, out value))
+            {
+                return value;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// セーブデータに整数値を追加します
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <param name="value">保存する整数値</param>
+        public void SaveAsInt(string key, int value)
+        {
+            Save(key, value.ToString());
+        }
+
+        /// <summary>
+        /// セーブデータに数値を追加します
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <param name="value">保存する数値</param>
+        public void SaveAsNumber(string key, float value)
+        {
+            Save(key, value.ToString());
+        }
+
+        /// <summary>
+        /// セーブデータに文字列を追加します
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <param name="value">保存する文字列</param>
+        public void Save(string key, string value)
+        {
+            _save.Add(key, value, true);
+        }
+
+        /// <summary>
+        /// セーブデータから指定されたキーのデータを削除します
+        /// </summary>
+        /// <param name="key">キー</param>
+        public void DeleteData(string key)
+        {
+            _save.Remove(key);
+        }
+
+        /// <summary>
+        /// セーブデータを空にします
+        /// </summary>
+        public void DeleteDataAll()
+        {
+            _save.Clear();
+        }
+
+        /// <summary>
+        /// ストレージからセーブデータを読み取ります。この関数はゲーム起動時に自動で実行されます
+        /// </summary>
+        public void ReadDataByStorage()
+        {
+            var path = Application.persistentDataPath;
+            var fileName = "save.txt";
+            var filePath = Path.Combine(path, fileName);
+
+            if (File.Exists(filePath))
+            {
+                var reader = new StreamReader(filePath, Encoding.GetEncoding("utf-8"));
+                var json = reader.ReadToEnd();
+                _save = new SerializableDictionary<string, string>(json);
+            }
+            else
+            {
+                _save = new SerializableDictionary<string, string>();
+            }
+        }
+
+        /// <summary>
+        /// ストレージにセーブデータを書き込みます。この関数はゲーム終了時に自動で実行されます
+        /// </summary>
+        public void WriteDataToStorage()
+        {
+            var path = Application.persistentDataPath;
+            var fileName = "save.txt";
+            var filePath = Path.Combine(path, fileName);
+
+            var writer = new StreamWriter(filePath, false, Encoding.GetEncoding("utf-8"));
+            var json = _save.ToJson();
+            writer.WriteLine(json);
+        }
+
+        #endregion
+
+        #region UnityGC：衝突判定API
+
+        /// <summary>
+        /// 2つの矩形が衝突しているかどうかを調べます
+        /// </summary>
+        /// <param name="x1">矩形1のX座標</param>
+        /// <param name="y1">矩形1のY座標</param>
+        /// <param name="w1">矩形1の横幅</param>
+        /// <param name="h1">矩形1の縦幅</param>
+        /// <param name="x2">矩形2のX座標</param>
+        /// <param name="y2">矩形2のY座標</param>
+        /// <param name="w2">矩形2の横幅</param>
+        /// <param name="h2">矩形2の縦幅</param>
+        /// <returns>衝突しているかどうか</returns>
+        public bool CheckHitRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2)
+        {
+            var a = new Rect(x1, y1, w1, h1);
+            var b = new Rect(x2, y2, w2, h2);
+            return a.Overlaps(b);
+        }
+
+        /// <summary>
+        /// 2つの円が衝突しているかどうかを調べます
+        /// </summary>
+        /// <param name="x1">円1のX座標</param>
+        /// <param name="y1">円1のY座標</param>
+        /// <param name="r1">円1の半径</param>
+        /// <param name="x2">円2のX座標</param>
+        /// <param name="y2">円2のY座標</param>
+        /// <param name="r2">円2の半径</param>
+        /// <returns>衝突しているかどうか</returns>
+        public bool CheckHitCircle(float x1, float y1, float r1, float x2, float y2, float r2)
+        {
+            var a = new Vector2(x1, y1);
+            var b = new Vector2(x2, y2);
+            return Vector2.Distance(a, b) <= r1 + r2;
+        }
+
+        /// <summary>
+        /// 2つの画像が衝突しているかどうかを調べます
+        /// </summary>
+        /// <param name="img1">画像1のID</param>
+        /// <param name="x1">画像1のX座標</param>
+        /// <param name="y1">画像1のY座標</param>
+        /// <param name="img2">画像2のID</param>
+        /// <param name="x2">画像2のX座標</param>
+        /// <param name="y2">画像2のY座標</param>
+        /// <returns>衝突しているかどうか</returns>
+        public bool CheckHitImage(int img1, float x1, float y1, int img2, float x2, float y2)
+        {
+            var w1 = GetImageWidth (img1);
+            var h1 = GetImageHeight(img1);
+            var w2 = GetImageWidth (img2);
+            var h2 = GetImageHeight(img2);
+            return CheckHitRect(x1, y1, w1, h1, x2, y2, w2, h2);
+        }
+
+        #endregion
+
         #region UnityGC：数学API
 
         /// <summary>
@@ -1215,12 +1441,116 @@ namespace GameCanvas
 
         #endregion
 
+        #region UnityGC：時間API
+
+        /// <summary>
+        /// ゲームが起動してから現在のフレームまでの経過秒数
+        /// </summary>
+        public float time
+        {
+            get { return Time.time; }
+        }
+
+        /// <summary>
+        /// 前回のフレームから現在のフレームまでの経過秒数
+        /// </summary>
+        public float deltaTime
+        {
+            get { return Time.deltaTime; }
+        }
+
+        /// <summary>
+        /// 今日が西暦何年かを 0～9999 の数値で返します
+        /// </summary>
+        public int GetYear()
+        {
+            return DateTime.Now.Year;
+        }
+
+        /// <summary>
+        /// 今日が何月かを 1～12 の数値で返します
+        /// </summary>
+        public int GetMonth()
+        {
+            return DateTime.Now.Month;
+        }
+
+        /// <summary>
+        /// 今日の日付を 1～31 の数値で返します
+        /// </summary>
+        /// <returns></returns>
+        public int GetDay()
+        {
+            return DateTime.Now.Day;
+        }
+
+        /// <summary>
+        /// 今日の曜日を 0～6 の数値で返します。0が日曜日、6が土曜日です
+        /// </summary>
+        public int GetDayOfWeek()
+        {
+            return (int)DateTime.Now.DayOfWeek;
+        }
+
+        /// <summary>
+        /// 今日の曜日を 月火水木金土日 の漢字で返します
+        /// </summary>
+        public string GetDayOfWeekKanji()
+        {
+            switch (DateTime.Now.DayOfWeek)
+            {
+                case DayOfWeek.Sunday   : return "日";
+                case DayOfWeek.Monday   : return "月";
+                case DayOfWeek.Tuesday  : return "火";
+                case DayOfWeek.Wednesday: return "水";
+                case DayOfWeek.Thursday : return "木";
+                case DayOfWeek.Friday   : return "金";
+                case DayOfWeek.Saturday : return "土";
+                default                 : return "？";
+            }
+        }
+
+        /// <summary>
+        /// いま何時かを 0～23 の数値で返します
+        /// </summary>
+        public int GetHour()
+        {
+            return DateTime.Now.Hour;
+        }
+
+        /// <summary>
+        /// いま何分かを 0～59 の数値で返します
+        /// </summary>
+        public int GetMinute()
+        {
+            return DateTime.Now.Minute;
+        }
+
+        /// <summary>
+        /// いま何秒かを 0～59 の数値で返します
+        /// </summary>
+        public int GetSecond()
+        {
+            return DateTime.Now.Second;
+        }
+
+        /// <summary>
+        /// いま何ミリ秒かを 0～999 で返します
+        /// </summary>
+        /// <returns></returns>
+        public int GetMilliSecond()
+        {
+            return DateTime.Now.Millisecond;
+        }
+
+        #endregion
+
         #region UnityGC：デバッグAPI
 
         /// <summary>
         /// デバッグ環境あるいはデバッグビルドで実行されている場合に真を返します
         /// </summary>
-        public bool isDebug
+        public bool isDevelop
         {
             get
             {
@@ -1229,19 +1559,19 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// コンソールにログメッセージを出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+        /// コンソールにログメッセージを出力します。この関数は isDevelop が真の時のみ動作します
         /// </summary>
         /// <param name="message">ログメッセージ</param>
         public void Trace(string message)
         {
-            if (isDebug)
+            if (isDevelop)
             {
                 Debug.Log(message);
             }
         }
 
         /// <summary>
-        /// コンソールにベクトル値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+        /// コンソールにベクトル値を出力します。この関数は isDevelop が真の時のみ動作します
         /// </summary>
         /// <param name="value">ベクトル値</param>
         public void Trace(Vector2 value)
@@ -1250,7 +1580,7 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// コンソールに数値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+        /// コンソールに数値を出力します。この関数は isDevelop が真の時のみ動作します
         /// </summary>
         /// <param name="value">数値</param>
         public void Trace(IComparable value)
@@ -1259,12 +1589,54 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// コンソールに真偽値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+        /// コンソールに真偽値を出力します。この関数は isDevelop が真の時のみ動作します
         /// </summary>
         /// <param name="value">真偽値</param>
         public void Trace(bool value)
         {
             Trace(value ? "True" : "False");
+        }
+
+        /// <summary>
+        /// 指定したキーが押されているかどうか。この関数は isDevelop が真の時のみ動作します
+        /// </summary>
+        /// <param name="key">調べたいキー</param>
+        /// <returns>押されているかどうか</returns>
+        public bool GetIsKeyPress(string key)
+        {
+            return isDevelop && Input.GetKey(key);
+        }
+
+        /// <summary>
+        /// 指定したキーが押された瞬間かどうか。この関数は isDevelop が真の時のみ動作します
+        /// </summary>
+        /// <param name="key">調べたいキー</param>
+        /// <returns>押された瞬間かどうか</returns>
+        public bool GetIsKeyPushed(string key)
+        {
+            return isDevelop && Input.GetKeyDown(key);
+        }
+
+        /// <summary>
+        /// 指定したキーが離された瞬間かどうか。この関数は isDevelop が真の時のみ動作します
+        /// </summary>
+        /// <param name="key">調べたいキー</param>
+        /// <returns>離された瞬間かどうか</returns>
+        public bool GetIsKeyReleased(string key)
+        {
+            return isDevelop && Input.GetKeyUp(key);
+        }
+
+        #endregion
+
+        #region UnityGC：その他のAPI
+
+        /// <summary>
+        /// アプリケーションを終了します
+        /// </summary>
+        public void ExitApp()
+        {
+            Application.Quit();
         }
 
         #endregion
@@ -1273,11 +1645,7 @@ namespace GameCanvas
         /* ---------------------------------------------------------------------------------------------------- */
 
         #region UnityJava後方互換：定数
-        
-        /*******************************
-            後方互換 - 定数
-        *******************************/
-        
+
         [Obsolete("gc.screenWidth を使用してください"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int WIDTH
         {
@@ -1551,32 +1919,25 @@ namespace GameCanvas
 
         #region UnityJava後方互換：入力API
 
-        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public int getKeyPressLength(KeyCode key)
-        {
-            Debug.LogWarning("ToDo");
-            return 0;
-        }
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public int getKeyPressLength(KeyCode key) { return 0; }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isKeyPress(KeyCode key)
         {
-            Debug.LogWarning("ToDo");
-            return false;
+            return Input.GetKey(key);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isKeyPushed(KeyCode key)
         {
-            Debug.LogWarning("ToDo");
-            return false;
+            return Input.GetKeyDown(key);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool isKeyReleased(KeyCode key)
         {
-            Debug.LogWarning("ToDo");
-            return false;
+            return Input.GetKeyUp(key);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1617,19 +1978,18 @@ namespace GameCanvas
 
         #endregion
 
-        #region UnityJava後方互換：セーブデータAPI
+        #region UnityJava後方互換：永続化API
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int load(int idx)
         {
-            Debug.LogWarning("ToDo");
-            return -1;
+            return LoadAsInt(idx.ToString());
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void save(int idx, int param)
         {
-            Debug.LogWarning("ToDo");
+            SaveAsInt(idx.ToString(), param);
         }
 
         #endregion
@@ -1639,22 +1999,19 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
         {
-            Debug.LogWarning("ToDo");
-            return false;
+            return CheckHitRect(x1, y1, w1, h1, x2, y2, w2, h2);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitImage(int img1, int x1, int y1, int img2, int x2, int y2)
         {
-            Debug.LogWarning("ToDo");
-            return false;
+            return CheckHitImage(img1, x1, y1, img2, x2, y2);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2)
         {
-            Debug.LogWarning("ToDo");
-            return false;
+            return CheckHitCircle(x1, y1, r1, x2, y2, r2);
         }
 
         #endregion
@@ -1713,7 +2070,7 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void exitApp()
         {
-            Application.Quit();
+            ExitApp();
         }
         
         [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -1778,6 +2135,12 @@ namespace GameCanvas
         
         [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new static T Instantiate<T>(T original) where T : UnityEngine.Object { return null; }
+
+        [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new int GetInstanceID() { return 0; }
+
+        [Obsolete("このメソッドをGameCanvasから呼び出してはいけません", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new int GetHashCode() { return 0; }
 
         // Component
         private GameObject baseGameObject

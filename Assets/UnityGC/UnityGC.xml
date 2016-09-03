@@ -139,8 +139,8 @@
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
             <param name="angle">回転角度 (度数法)</param>
-            <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
-            <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+            <param name="rotationX">長方形の左上を原点としたときの回転の中心位置X</param>
+            <param name="rotationY">長方形の左上を原点としたときの回転の中心位置Y</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawImage(System.Int32,System.Single,System.Single)">
             <summary>
@@ -180,8 +180,8 @@
             <param name="x">X座標</param>
             <param name="y">Y座標</param>
             <param name="angle">回転角度 (度数法)</param>
-            <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
-            <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+            <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+            <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawImageSRT(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
@@ -193,8 +193,8 @@
             <param name="scaleH">縦の拡縮率</param>
             <param name="scaleV">横の拡縮率</param>
             <param name="angle">回転角度 (度数法)</param>
-            <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
-            <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+            <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+            <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawClippedImageSRT(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
@@ -210,8 +210,8 @@
             <param name="scaleH">縦の拡縮率</param>
             <param name="scaleV">横の拡縮率</param>
             <param name="angle">回転角度 (度数法)</param>
-            <param name="rotationX">画像の横幅を1としたときの回転の中心位置X</param>
-            <param name="rotationY">画像の高さを1としたときの回転の中心位置Y</param>
+            <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+            <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.FillCircle(System.Single,System.Single,System.Int32)">
             <summary>
@@ -239,8 +239,8 @@
             <param name="width">横幅</param>
             <param name="height">縦幅</param>
             <param name="angle">回転角度 (度数法)</param>
-            <param name="rotationX">長方形の横幅を1としたときの回転の中心位置X</param>
-            <param name="rotationY">長方形の高さを1としたときの回転の中心位置Y</param>
+            <param name="rotationX">長方形の左上を原点としたときの回転の中心位置X</param>
+            <param name="rotationY">長方形の左上を原点としたときの回転の中心位置Y</param>
         </member>
         <member name="P:GameCanvas.GameCanvas.frameRate">
             <summary>
@@ -450,6 +450,109 @@
             位置情報の測定を終了します
             </summary>
         </member>
+        <member name="P:GameCanvas.GameCanvas.isBackKeyPushed">
+            <summary>
+            戻るボタンが押されたかどうか (Androidのみ)
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.LoadAsInt(System.String)">
+            <summary>
+            セーブデータから整数値を取り出します。存在しなかった場合 0 を返します
+            </summary>
+            <param name="key">キー</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.LoadAsNumber(System.String)">
+            <summary>
+            セーブデータから数値を取り出します。存在しなかった場合 0 を返します
+            </summary>
+            <param name="key">キー</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Load(System.String)">
+            <summary>
+            セーブデータから文字列を取り出します。存在しなかった場合 null を返します
+            </summary>
+            <param name="key">キー</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SaveAsInt(System.String,System.Int32)">
+            <summary>
+            セーブデータに整数値を追加します
+            </summary>
+            <param name="key">キー</param>
+            <param name="value">保存する整数値</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SaveAsNumber(System.String,System.Single)">
+            <summary>
+            セーブデータに数値を追加します
+            </summary>
+            <param name="key">キー</param>
+            <param name="value">保存する数値</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Save(System.String,System.String)">
+            <summary>
+            セーブデータに文字列を追加します
+            </summary>
+            <param name="key">キー</param>
+            <param name="value">保存する文字列</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DeleteData(System.String)">
+            <summary>
+            セーブデータから指定されたキーのデータを削除します
+            </summary>
+            <param name="key">キー</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DeleteDataAll">
+            <summary>
+            セーブデータを空にします
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.ReadDataByStorage">
+            <summary>
+            ストレージからセーブデータを読み取ります。この関数はゲーム起動時に自動で実行されます
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.WriteDataToStorage">
+            <summary>
+            ストレージにセーブデータを書き込みます。この関数はゲーム終了時に自動で実行されます
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CheckHitRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            2つの矩形が衝突しているかどうかを調べます
+            </summary>
+            <param name="x1">矩形1のX座標</param>
+            <param name="y1">矩形1のY座標</param>
+            <param name="w1">矩形1の横幅</param>
+            <param name="h1">矩形1の縦幅</param>
+            <param name="x2">矩形2のX座標</param>
+            <param name="y2">矩形2のY座標</param>
+            <param name="w2">矩形2の横幅</param>
+            <param name="h2">矩形2の縦幅</param>
+            <returns>衝突しているかどうか</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CheckHitCircle(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            2つの円が衝突しているかどうかを調べます
+            </summary>
+            <param name="x1">円1のX座標</param>
+            <param name="y1">円1のY座標</param>
+            <param name="r1">円1の半径</param>
+            <param name="x2">円2のX座標</param>
+            <param name="y2">円2のY座標</param>
+            <param name="r2">円2の半径</param>
+            <returns>衝突しているかどうか</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CheckHitImage(System.Int32,System.Single,System.Single,System.Int32,System.Single,System.Single)">
+            <summary>
+            2つの画像が衝突しているかどうかを調べます
+            </summary>
+            <param name="img1">画像1のID</param>
+            <param name="x1">画像1のX座標</param>
+            <param name="y1">画像1のY座標</param>
+            <param name="img2">画像2のID</param>
+            <param name="x2">画像2のX座標</param>
+            <param name="y2">画像2のY座標</param>
+            <returns>衝突しているかどうか</returns>
+        </member>
         <member name="M:GameCanvas.GameCanvas.Cos(System.Single)">
             <summary>
             cosを求めます
@@ -486,34 +589,194 @@
             <param name="radian">角度（弧度法）</param>
             <returns>角度（度数法）</returns>
         </member>
-        <member name="P:GameCanvas.GameCanvas.isDebug">
+        <member name="P:GameCanvas.GameCanvas.time">
+            <summary>
+            ゲームが起動してから現在のフレームまでの経過秒数
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.deltaTime">
+            <summary>
+            前回のフレームから現在のフレームまでの経過秒数
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetYear">
+            <summary>
+            今日が西暦何年かを 0～9999 の数値で返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetMonth">
+            <summary>
+            今日が何月かを 1～12 の数値で返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetDay">
+            <summary>
+            今日の日付を 1～31 の数値で返します
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetDayOfWeek">
+            <summary>
+            今日の曜日を 0～6 の数値で返します。0が日曜日、6が土曜日です
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetDayOfWeekKanji">
+            <summary>
+            今日の曜日を 月火水木金土日 の漢字で返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetHour">
+            <summary>
+            いま何時かを 0～23 の数値で返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetMinute">
+            <summary>
+            いま何分かを 0～59 の数値で返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetSecond">
+            <summary>
+            いま何秒かを 0～59 の数値で返します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetMilliSecond">
+            <summary>
+            いま何ミリ秒かを 0～999 で返します
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isDevelop">
             <summary>
             デバッグ環境あるいはデバッグビルドで実行されている場合に真を返します
             </summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.Trace(System.String)">
             <summary>
-            コンソールにログメッセージを出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            コンソールにログメッセージを出力します。この関数は isDevelop が真の時のみ動作します
             </summary>
             <param name="message">ログメッセージ</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.Trace(UnityEngine.Vector2)">
             <summary>
-            コンソールにベクトル値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            コンソールにベクトル値を出力します。この関数は isDevelop が真の時のみ動作します
             </summary>
             <param name="value">ベクトル値</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.Trace(System.IComparable)">
             <summary>
-            コンソールに数値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            コンソールに数値を出力します。この関数は isDevelop が真の時のみ動作します
             </summary>
             <param name="value">数値</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.Trace(System.Boolean)">
             <summary>
-            コンソールに真偽値を出力します。ただし、スマートデバイス実機かつリリースビルドの場合は出力されません
+            コンソールに真偽値を出力します。この関数は isDevelop が真の時のみ動作します
             </summary>
             <param name="value">真偽値</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetIsKeyPress(System.String)">
+            <summary>
+            指定したキーが押されているかどうか。この関数は isDevelop が真の時のみ動作します
+            </summary>
+            <param name="key">調べたいキー</param>
+            <returns>押されているかどうか</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetIsKeyPushed(System.String)">
+            <summary>
+            指定したキーが押された瞬間かどうか。この関数は isDevelop が真の時のみ動作します
+            </summary>
+            <param name="key">調べたいキー</param>
+            <returns>押された瞬間かどうか</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetIsKeyReleased(System.String)">
+            <summary>
+            指定したキーが離された瞬間かどうか。この関数は isDevelop が真の時のみ動作します
+            </summary>
+            <param name="key">調べたいキー</param>
+            <returns>離された瞬間かどうか</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.ExitApp">
+            <summary>
+            アプリケーションを終了します
+            </summary>
+        </member>
+        <member name="T:GameCanvas.SerializableDictionary`2">
+            <summary>
+            永続化可能な連想配列（ディレクショナリー）
+            </summary>
+            <typeparam name="TKey">キーの型</typeparam>
+            <typeparam name="TValue">値の型</typeparam>
+        </member>
+        <member name="P:GameCanvas.SerializableDictionary`2.Count">
+            <summary>
+            格納されているデータの数
+            </summary>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.#ctor(System.Collections.Generic.Dictionary{`0,`1})">
+            <summary>
+            コンストラクタ。既存のDictionaryインスタンスを元にデータを初期化します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.#ctor(System.String)">
+            <summary>
+            コンストラクタ。Json記法の文字列を元にデータを復元します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.ToDictionary">
+            <summary>
+            Dictionary型に変換します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.ToJson">
+            <summary>
+            Json記法で永続化します
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.FromDictionary(System.Collections.Generic.Dictionary{`0,`1})">
+            <summary>
+            既存のDictionaryインスタンスで自身を上書きします
+            </summary>
+            <param name="dictionary"></param>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.FromJson(System.String)">
+            <summary>
+            Json記法の文字列から復元したデータで自身を上書きします
+            </summary>
+            <param name="json"></param>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.Add(`0,`1,System.Boolean)">
+            <summary>
+            データを追加します
+            </summary>
+            <param name="key">キー</param>
+            <param name="value">値</param>
+            <param name="overwrite">上書きを許すかどうか</param>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.Clear">
+            <summary>
+            データを初期化します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.Remove(`0)">
+            <summary>
+            キーで検索し該当するデータを削除します
+            </summary>
+            <param name="key">キー</param>
+        </member>
+        <member name="M:GameCanvas.SerializableDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            キーで検索し該当するデータを返します
+            </summary>
+            <param name="key">キー</param>
+            <param name="value">値（存在した場合）</param>
+            <returns>キーが存在したかどうか</returns>
         </member>
         <member name="T:GameCanvas.SingletonMonoBehaviour`1">
             <summary>

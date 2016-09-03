@@ -16,6 +16,7 @@ namespace GameCanvas
         private void Awake()
         {
             gc = GameCanvas.Instance;
+            gc.ReadDataByStorage();
         }
 
         private void Update()
@@ -32,6 +33,7 @@ namespace GameCanvas
         private void OnApplicationQuit()
         {
             Final();
+            gc.WriteDataToStorage();
         }
 
         /// <summary>
