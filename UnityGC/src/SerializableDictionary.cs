@@ -89,12 +89,20 @@ namespace GameCanvas
         public void FromJson(string json)
         {
             _dict = JsonUtility.FromJson< Dictionary<TKey, TValue> >(json);
-
-            var num = Math.Min(Keys.Count, Values.Count);
-            _dict = new Dictionary<TKey, TValue>(num);
-            for (var i = 0; i < num; ++i)
+            if (_dict != null)
             {
-                _dict.Add(Keys[i], Values[i]);
+                var num = Math.Min(Keys.Count, Values.Count);
+                _dict   = new Dictionary<TKey, TValue>(num);
+                for (var i = 0; i < num; ++i)
+                {
+                    _dict.Add(Keys[i], Values[i]);
+                }
+            }
+            else
+            {
+                _dict  = new Dictionary<TKey, TValue>();
+                Keys   = new List<TKey>();
+                Values = new List<TValue>();
             }
         }
 
