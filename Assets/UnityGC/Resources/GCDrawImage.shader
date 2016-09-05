@@ -29,8 +29,8 @@
 				{
 					half2 uv = half2(pi.x * _ImageTex_TexelSize.x, 1 - pi.y * _ImageTex_TexelSize.y);
 					fixed4 c = tex2D(_ImageTex, uv);
-					if (c.a != 1 || _Color.a != 1)
-						return fixed4(lerp(tex2D(_MainTex, i.uv).rgb, c.rgb * _Color.rgb, c.a * _Color.a), 1);
+					if (c.a != 1)
+						return fixed4(lerp(tex2D(_MainTex, i.uv).rgb, c.rgb, c.a), 1);
 					else
 						return c;
 				}

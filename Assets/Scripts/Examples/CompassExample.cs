@@ -14,10 +14,9 @@ public class CompassExample : GameBase
         gc.ClearScreen();
 
         // 背景画像を描画します
-        gc.SetColor(1f, 1f, 1f);
-        gc.DrawImage(2, 0, 0);
+        gc.DrawImage(0, 0, 0);
 
         // ボールを描画します
-        gc.DrawRotatedImage(0, 308, 228, gc.compass, 12, 12);
+        gc.DrawRotatedImage(1, 308, 228, gc.compass, 12, 12);
     }
 }

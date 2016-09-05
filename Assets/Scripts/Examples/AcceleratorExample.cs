@@ -12,8 +12,8 @@ public class AcceleratorExample : GameBase
     override public void Start()
     {
         // ボールの大きさを取得します
-        ballWidth = gc.GetImageWidth(0);
-        ballHeight = gc.GetImageHeight(0);
+        ballWidth = gc.GetImageWidth(1);
+        ballHeight = gc.GetImageHeight(1);
 
         // 画面の中心にボールを置きます
         ballX = (gc.screenWidth - ballWidth) / 2;
@@ -73,11 +73,9 @@ public class AcceleratorExample : GameBase
         gc.ClearScreen();
 
         // 背景画像を描画します
-        gc.SetColor(1f, 1f, 1f);
-        gc.DrawImage(2, 0, 0);
+        gc.DrawImage(0, 0, 0);
 
         // ボールを描画します
-        gc.SetColor(1f, 1f, 1f);
-        gc.DrawImage(0, ballX, ballY);
+        gc.DrawImage(1, ballX, ballY);
     }
 }

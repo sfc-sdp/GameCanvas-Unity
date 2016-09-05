@@ -21,10 +21,10 @@
 
 			fixed4 frag(v2f_img i) : COLOR
 			{
-				half2 pb = i.uv * _MainTex_TexelSize.zw;   // 処理するピクセル座標
-				half2 pa = mul(_Matrix, float4(pb, 0, 1)); // 対応する画像データのピクセル座標
+				float2 pb = i.uv * _MainTex_TexelSize.zw;   // 処理するピクセル座標
+				float2 pa = mul(_Matrix, float4(pb, 0, 1)); // 対応する画像データのピクセル座標
 
-				float inside = pa.x >= 0 && pa.x <= 1 && pa.y >= 0 && pa.y <= 1;
+				int inside = pa.x >= 0 && pa.x <= 1 && pa.y >= 0 && pa.y <= 1;
 				if ( inside && (_IsFill || ( !_IsFill && (abs(pa.x) <= _MainTex_TexelSize.x || abs(pa.x - 1) <= _MainTex_TexelSize.x)
 								                      || (abs(pa.y) <= _MainTex_TexelSize.y || abs(pa.y - 1) <= _MainTex_TexelSize.y) )) )
 				{

@@ -16,7 +16,6 @@ namespace GameCanvas
                 textureImporter.filterMode          = FilterMode.Point;
                 textureImporter.spritePixelsPerUnit = 1f;
                 textureImporter.mipmapEnabled       = false;
-                textureImporter.isReadable          = true;
             }
         }
     }

@@ -41,13 +41,12 @@ public class GyroscopeExample : GameBase
         gc.ClearScreen();
 
         // 背景画像を描画します
-        gc.SetColor(1f, 1f, 1f);
-        gc.DrawImage(2, 0, 0);
+        gc.DrawImage(0, 0, 0);
 
         // ボールを3つ描画します
         for (int i = 0; i < NUM_BALL; ++i)
         {
-            gc.DrawRotatedImage(i % 2, ballX[i], ballY[i], ballDegree[i], 12, 12);
+            gc.DrawRotatedImage(i % 2 + 1, ballX[i], ballY[i], ballDegree[i], 12, 12);
         }
     }
 }
