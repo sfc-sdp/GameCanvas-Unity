@@ -97,7 +97,7 @@
             <param name="v">calue [0～1]</param>
             <param name="alpha">不透明度 [0～1]</param>
         </member>
-        <member name="M:GameCanvas.GameCanvas.SetLineWidth(System.Int32)">
+        <member name="M:GameCanvas.GameCanvas.SetLineWidth(System.Single)">
             <summary>
             DrawRect や DrawCircle などに用いる線の太さを指定します
             </summary>
@@ -241,6 +241,19 @@
             <param name="angle">回転角度 (度数法)</param>
             <param name="rotationX">長方形の左上を原点としたときの回転の中心位置X</param>
             <param name="rotationY">長方形の左上を原点としたときの回転の中心位置Y</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetFontSize(System.Single)">
+            <summary>
+            文字描画におけるフォントサイズを設定します。10の倍数だと綺麗に表示されます
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.DrawString(System.Single,System.Single,System.String)">
+            <summary>
+            文字列を描画します
+            </summary>
+            <param name="x">X座標</param>
+            <param name="y">Y座標</param>
+            <param name="str">文字列 (最長128文字)</param>
         </member>
         <member name="P:GameCanvas.GameCanvas.frameRate">
             <summary>

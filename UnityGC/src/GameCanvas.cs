@@ -40,14 +40,16 @@ namespace GameCanvas
         private Vector2     _canvasBorderSize       = Vector2.zero; // キャンバス左・上の黒縁の大きさ
 
         private Color       _palletColor            = Color.black;  // 現在のパレットカラー
-        private int         _lineWidth              = 1;            // 現在の線の太さ
+        private float       _lineWidth              = 1f;           // 現在の線の太さ
+        private float       _fontSize               = 20;           // 現在のフォントサイズ
 
+        private Texture2D   _bitmapFontTexture      = null;         // ビットマップフォント画像
         private int         _numImage               = 0;            // 認識済みの画像：数量
         private Texture2D[] _imageArray             = null;         // 認識済みの画像：データ配列
         private int         _numAudio               = 0;            // 認識済みの音源：数量
         private AudioClip[] _audioArray             = null;         // 認識済みの音源：データ配列
 
-        private SerializableDictionary<string, string> _save = null;
+        private SerializableDictionary<string, string> _save = null;// セーブデータ
 
         private bool        _touchSupported         = false;        // タッチ：実行環境がタッチ操作対応かどうか
         private bool        _isTouch                = false;        // タッチ：タッチされているかどうか
@@ -71,6 +73,7 @@ namespace GameCanvas
         private Material    _materialDrawCircle     = null;         // マテリアル：図形描画：円
         private Material    _materialDrawRect       = null;         // マテリアル：図形描画：矩形
         private Material    _materialDrawImage      = null;         // マテリアル：画像描画
+        private Material    _materialDrawString     = null;         // マテリアル：文字描画
         private RenderTexture _canvasRender         = null;         // レンダーテクスチャー
         private MeshRenderer _quad                  = null;         // プリミティブ：Quad
         private Camera      _camera                 = null;         // コンポーネント：Camera
@@ -137,6 +140,10 @@ namespace GameCanvas
                 _materialDrawCircle = new Material(Shader.Find("Custom/GameCanvas/DrawCircle"));
                 _materialDrawRect   = new Material(Shader.Find("Custom/GameCanvas/DrawRect"));
                 _materialDrawImage  = new Material(Shader.Find("Custom/GameCanvas/DrawImage"));
+                _materialDrawString = new Material(Shader.Find("Custom/GameCanvas/DrawString"));
+
+                _bitmapFontTexture = Resources.Load<Texture2D>("PixelMplus10");
+                _materialDrawString.SetTexture("_CharTex", _bitmapFontTexture);
 
                 _quad = obj.GetComponent<MeshRenderer>();
                 _quad.material.shader = Shader.Find("Unlit/Texture");
@@ -149,11 +156,11 @@ namespace GameCanvas
 
             // 外部画像・音源データの読み込み
             {
-                _imageArray = Resources.LoadAll<Texture2D>("");
+                _imageArray = Resources.LoadAll<Texture2D>("Images");
                 _numImage   = _imageArray.Length;
                 Debug.Log("Load Images (" + _numImage + ")");
 
-                _audioArray = Resources.LoadAll<AudioClip>("");
+                _audioArray = Resources.LoadAll<AudioClip>("Sounds");
                 _numAudio   = _audioArray.Length;
                 Debug.Log("Load Sounds (" + _numAudio + ")");
             }
@@ -384,9 +391,9 @@ namespace GameCanvas
         /// DrawRect や DrawCircle などに用いる線の太さを指定します
         /// </summary>
         /// <param name="lineWidth"></param>
-        public void SetLineWidth(int lineWidth)
+        public void SetLineWidth(float lineWidth)
         {
-            if (lineWidth <= 0)
+            if (lineWidth <= 0f)
             {
                 // 0以下は許容しない
                 Debug.LogWarning("引数の値が不正です");
@@ -431,7 +438,7 @@ namespace GameCanvas
             _materialDrawCircle.SetColor("_Color", _palletColor);
             _materialDrawCircle.SetMatrix("_Matrix", mat.inverse);
             _materialDrawCircle.SetFloat("_IsFill", 0);
-            _materialDrawCircle.SetFloat("_LineWidth", (float)_lineWidth / radius * 0.5f);
+            _materialDrawCircle.SetFloat("_LineWidth", _lineWidth / radius * 0.5f);
 
             var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
             Graphics.Blit(_canvasRender, temp);
@@ -702,6 +709,119 @@ namespace GameCanvas
             var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
             Graphics.Blit(_canvasRender, temp);
             Graphics.Blit(temp, _canvasRender, _materialDrawRect);
+            RenderTexture.ReleaseTemporary(temp);
+        }
+
+        #endregion
+
+        #region UnityGC：グラフィックAPI (文字描画)
+
+        /// <summary>
+        /// 文字描画におけるフォントサイズを設定します。10の倍数だと綺麗に表示されます
+        /// </summary>
+        public void SetFontSize(float fontSize)
+        {
+            if (fontSize < 0f)
+            {
+                // 0以下は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            _fontSize = fontSize;
+        }
+
+        /// <summary>
+        /// 文字列を描画します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="str">文字列 (最長128文字)</param>
+        public void DrawString(float x, float y, string str)
+        {
+            var strlen = Mathf.Min(str.Length, 128);
+            var charList = new List<float>(strlen);
+
+            for (var i = 0; i < strlen; ++i)
+            {
+                int n;
+                var c = str[i];
+
+                if      (c == '\n' || c == '\r') continue;           // 改行(無視)
+                else if (c == ' '  || c == '　') n = 0;              // スペース
+                else if (c >= '!'  && c <= '~' ) n = c - '!'  + 1;   // 基本ラテン文字(半角)
+                else if (c >= '！' && c <= '～') n = c - '！' + 1;   // 基本ラテン文字(全角)
+                else if (c >= '、' && c <= '〕') n = c - '、' + 101; // 日本語記号
+                else if (c == '〝')              n = 122;            // 〝
+                else if (c == '〟')              n = 123;            // 〟
+                else if (c == '〠')              n = 124;            // ドクロ
+                else if (c >= 'ぁ' && c <= 'ゞ') n = c - 'ぁ' + 125; // ひらがな
+                else if (c == '“')              n = 221;            // “
+                else if (c == '”')              n = 222;            // ”
+                else if (c == '‘')              n = 223;            // ‘
+                else if (c == '’')              n = 224;            // ’
+                else if (c >= 'ァ' && c <= 'ヿ') n = c - 'ァ' + 225; // カタカナ＋中黒＋長音
+                else if (c == '･' )              n = 315;            // 中黒(半角)
+                else if (c >= '①' && c <= '⑳') n = c - '①' + 330; // 囲み数字
+                else if (c == '￥')              n = 325;            // ￥
+                else if (c >= '←' && c <= '↓') n = c - '←' + 326; // 矢印
+                else if (c >= 'Ⅰ' && c <= 'Ⅹ') n = c - 'Ⅰ' + 350; // ローマ数字
+                else if (c == '∞')              n = 360;            // ∞
+                else if (c == '≪')              n = 361;            // ≪
+                else if (c == '≫')              n = 362;            // ≫
+                else if (c == '√')              n = 363;            // √
+                else if (c == '♪')              n = 364;            // ♪
+                else if (c == '♭')              n = 365;            // ♭
+                else if (c == '♯')              n = 366;            // ♯
+                else if (c == '♂')              n = 367;            // ♂
+                else if (c == '♀')              n = 368;            // ♀
+                else if (c == '℃')              n = 369;            // ℃
+                else if (c == '☆')              n = 370;            // ☆
+                else if (c == '★')              n = 371;            // ★
+                else if (c == '○' || c == '〇') n = 372;            // ○
+                else if (c == '●')              n = 373;            // ●
+                else if (c == '◎')              n = 374;            // ◎
+                else if (c == '◇')              n = 375;            // ◇
+                else if (c == '◆')              n = 376;            // ◆
+                else if (c == '□')              n = 377;            // □
+                else if (c == '■')              n = 378;            // ■
+                else if (c == '△')              n = 379;            // △
+                else if (c == '▲')              n = 380;            // ▲
+                else if (c == '▽')              n = 381;            // ▽
+                else if (c == '▼')              n = 382;            // ▼
+                else if (c == '♠'  || c == '♤' ) n = 383;            // ♠♤(スペード)
+                else if (c == '♣'  || c == '♧' ) n = 384;            // ♣♧(クローバー)
+                else if (c == '♥'  || c == '♡' ) n = 385;            // ♥♡(ハート)
+                else if (c == '♦'  || c == '♢' ) n = 386;            // ♦♢(ダイヤ)
+                else if (c == '※')              n = 387;            // ※
+                else if (c == '…')              n = 388;            // …
+                else if (c == '─')              n = 389;            // ─
+                else if (c == '│')              n = 390;            // │
+                else if (c == '┌')              n = 391;            // ┌
+                else if (c == '┐')              n = 392;            // ┐
+                else if (c == '└')              n = 393;            // └
+                else if (c == '┘')              n = 394;            // ┘
+                else if (c == '├')              n = 395;            // ├
+                else if (c == '┤')              n = 396;            // ┤
+                else if (c == '┬')              n = 397;            // ┬
+                else if (c == '┴')              n = 398;            // ┴
+                else if (c == '┼')              n = 399;            // ┼
+                else                             n = 599;            // その他(豆腐に置き換え)
+
+                charList.Add(n);
+            }
+
+            var scale = _fontSize * 0.1f;
+            var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(scale, scale, 1f));
+
+            _materialDrawString.SetColor("_Color", _palletColor);
+            _materialDrawString.SetMatrix("_Matrix", mat.inverse);
+            _materialDrawString.SetFloat("_TextLength", strlen);
+            _materialDrawString.SetFloatArray("_Text", charList.ToArray());
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawString);
             RenderTexture.ReleaseTemporary(temp);
         }
 
@@ -1731,38 +1851,34 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawString(string str, float x, float y)
         {
-            Debug.LogWarning("ToDo");
+            DrawString(x, y, str);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawCenterString(string str, float x, float y)
         {
-            Debug.LogWarning("ToDo");
+            DrawString(x - str.Length * _fontSize * 0.5f, y, str);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void drawRightString(string str, float x, float y)
         {
-            Debug.LogWarning("ToDo");
+            DrawString(x - str.Length * _fontSize, y, str);
         }
 
-        [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void setFont(string fontName, int fontStyle, int fontSize)
-        {
-            Debug.LogWarning("ToDo");
-        }
+        [Obsolete("Java版GameCanvas固有のメソッドです", true), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public void setFont(string fontName, int fontStyle, int fontSize) { }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public void setFontSize(int fontSize)
         {
-            Debug.LogWarning("ToDo");
+            SetFontSize(fontSize);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int getStringWidth(string str)
         {
-            Debug.LogWarning("ToDo");
-            return -1;
+            return Mathf.FloorToInt(str.Length * _fontSize);
         }
 
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
