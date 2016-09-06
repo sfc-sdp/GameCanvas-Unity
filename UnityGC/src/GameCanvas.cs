@@ -45,9 +45,9 @@ namespace GameCanvas
 
         private Texture2D   _bitmapFontTexture      = null;         // ビットマップフォント画像
         private int         _numImage               = 0;            // 認識済みの画像：数量
-        private Texture2D[] _imageArray             = null;         // 認識済みの画像：データ配列
-        private int         _numAudio               = 0;            // 認識済みの音源：数量
-        private AudioClip[] _audioArray             = null;         // 認識済みの音源：データ配列
+        private List<Texture2D> _imageList          = null;         // 認識済みの画像：データ配列
+        private int         _numSound               = 0;            // 認識済みの音源：数量
+        private List<AudioClip> _soundList          = null;         // 認識済みの音源：データ配列
 
         private SerializableDictionary<string, string> _save = null;// セーブデータ
 
@@ -156,13 +156,29 @@ namespace GameCanvas
 
             // 外部画像・音源データの読み込み
             {
-                _imageArray = Resources.LoadAll<Texture2D>("Images");
-                _numImage   = _imageArray.Length;
-                Debug.Log("Load Images (" + _numImage + ")");
+                _imageList = new List<Texture2D>();
+                var i = 0;
+                while (true)
+                {
+                    var img = Resources.Load<Texture2D>( string.Format("img{0}", i) );
+                    if (img == null) break;
 
-                _audioArray = Resources.LoadAll<AudioClip>("Sounds");
-                _numAudio   = _audioArray.Length;
-                Debug.Log("Load Sounds (" + _numAudio + ")");
+                    _imageList.Add(img);
+                    ++i;
+                }
+                _numImage = i;
+
+                _soundList = new List<AudioClip>();
+                i = 0;
+                while (true)
+                {
+                    var snd = Resources.Load<AudioClip>(string.Format("snd{0}", i));
+                    if (snd == null) break;
+
+                    _soundList.Add(snd);
+                    ++i;
+                }
+                _numSound = i;
             }
         }
 
@@ -190,7 +206,7 @@ namespace GameCanvas
             _isFlicked    = false;
 
             // タッチ判定
-            _isTouch = _touchSupported ? Input.touchCount > 0 : Input.GetMouseButton(0);
+            _isTouch = _touchSupported ? Input.touchCount > 0 : Input.GetMouseButton(0) || Input.GetMouseButtonUp(0);
             if (_isTouch)
             {
                 // 連続時間を記録
@@ -333,7 +349,7 @@ namespace GameCanvas
                 return 0;
             }
 
-            return _imageArray[id].width;
+            return _imageList[id].width;
         }
 
         /// <summary>
@@ -349,7 +365,7 @@ namespace GameCanvas
                 return 0;
             }
 
-            return _imageArray[id].height;
+            return _imageList[id].height;
         }
 
         /// <summary>
@@ -622,7 +638,7 @@ namespace GameCanvas
                 mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(scaleH, scaleV, 1f));
             }
 
-            _materialDrawImage.SetTexture("_ImageTex", _imageArray[id]);
+            _materialDrawImage.SetTexture("_ImageTex", _imageList[id]);
             _materialDrawImage.SetColor("_Color", _palletColor);
             _materialDrawImage.SetMatrix("_Matrix", mat.inverse);
             _materialDrawImage.SetVector("_Clip", new Vector4(clipLeft, clipTop, clipRight, clipBottom));
