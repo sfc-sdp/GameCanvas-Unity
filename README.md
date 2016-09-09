@@ -10,9 +10,9 @@ This project is work in progress.<br>
 ## 実装メモ
 
 ### 今後の実装予定
-* サウンドAPI
 * カメラAPI
   * 映像処理
 * ネットワークAPI
   * テキストDL
   * 画像DL
+  * リアルタイム通信
