@@ -19,17 +19,7 @@ namespace GameCanvas
     public class GameCanvas : SingletonMonoBehaviour<GameCanvas>
     {
         /* ---------------------------------------------------------------------------------------------------- */
-
-        #region UnityGC：定数
-
-        private const float MAX_TAP_TIME_LENGTH     = 0.3f;         // タッチ：タップ判定時間長
-        private const float MIN_FLICK_DISTANCE      = 30f;          // タッチ：フリック判定移動量
-        private const float MIN_HOLD_TIME_LENGTH    = 0.5f;         // タッチ：ホールド判定フレーム数
-        private const float MAX_PINCH_IN_SCALE      = 0.95f;        // ピンチ：ピンチイン判定縮小率
-        private const float MIN_PINCH_OUT_SCALE     = 1.05f;        // ピンチ：ピンチアウト判定拡大率
-
-        #endregion
-
+        
         #region UnityGC：変数
 
         private int         _deviceWidth            = 0;            // 画面解像度：横幅
@@ -63,12 +53,18 @@ namespace GameCanvas
         private Vector2     _touchBeganPoint        = -Vector2.one; // タッチ：開始座標
         private float       _touchTimeLength        = 0f;           // タッチ：連続時間(秒)
         private float       _touchHoldTimeLength    = 0f;           // タッチ：連続静止時間(秒)
+        private float       _maxTapTimeLength       = 0.2f;         // タッチ：タップ判定時間長
+        private float       _minFlickDistance       = 1f;           // タッチ：フリック判定移動量
+        private float       _maxTapDistance         = 0.9f;         // タッチ：タップ判定移動量
+        private float       _minHoldTimeLength      = 0.4f;         // タッチ：ホールド判定フレーム数
         private float       _pinchLength            = 0f;           // ピンチインアウト：2点間距離
         private float       _pinchLengthBegan       = 0f;           // ピンチインアウト：2点間距離：タッチ開始時
         private float       _pinchScale             = 0f;           // ピンチインアウト：拡縮率：前フレーム差分
         private float       _pinchScaleBegan        = 0f;           // ピンチインアウト：拡縮率：タッチ開始時から
+        private float       _maxPinchInScale        = 0.95f;        // ピンチインアウト：ピンチイン判定縮小率
+        private float       _minPinchOutScale       = 1.05f;        // ピンチインアウト：ピンチアウト判定拡大率
         private Vector2     _mousePrevPoint         = -Vector2.one; // マウス互換：前回マウス位置
-        
+
         private Material    _materialInit           = null;         // マテリアル：初期化
         private Material    _materialDrawCircle     = null;         // マテリアル：図形描画：円
         private Material    _materialDrawRect       = null;         // マテリアル：図形描画：矩形
@@ -77,6 +73,8 @@ namespace GameCanvas
         private RenderTexture _canvasRender         = null;         // レンダーテクスチャー
         private MeshRenderer _quad                  = null;         // プリミティブ：Quad
         private Camera      _camera                 = null;         // コンポーネント：Camera
+        private AudioSource _audioSE                = null;         // コンポーネント：AudioClip
+        private AudioSource _audioBGM               = null;         // コンポーネント：AudioClip
 
         #endregion
 
@@ -130,6 +128,22 @@ namespace GameCanvas
                 obj.AddComponent<AudioListener>();
             }
 
+            // AudioSourceコンポーネントの配置。サウンドの再生に用いる
+            {
+                var obj = new GameObject("Sound");
+                obj.transform.parent = baseTransform;
+
+                _audioSE = obj.AddComponent<AudioSource>();
+                _audioSE.loop = false;
+                _audioSE.playOnAwake = false;
+                _audioSE.spatialBlend = 0f;
+
+                _audioBGM = obj.AddComponent<AudioSource>();
+                _audioBGM.loop = true;
+                _audioBGM.playOnAwake = false;
+                _audioBGM.spatialBlend = 0f;
+            }
+
             // Quadプリミティブの配置。2D描画の表示先として用いる
             {
                 var obj = GameObject.CreatePrimitive(PrimitiveType.Quad);
@@ -174,7 +188,7 @@ namespace GameCanvas
                 {
                     var snd = Resources.Load<AudioClip>(string.Format("snd{0}", i));
                     if (snd == null) break;
-
+                    
                     _soundList.Add(snd);
                     ++i;
                 }
@@ -247,12 +261,13 @@ namespace GameCanvas
                     case TouchPhase.Canceled:
                     case TouchPhase.Ended:
                         // タップ・フリック判定
-                        if (_touchHoldTimeLength <= MAX_TAP_TIME_LENGTH)
+                        if (_touchHoldTimeLength <= _maxTapTimeLength)
                         {
-                            var diff   = Vector2.Distance(_touchBeganPoint, _unscaledTouchPoint);
-                            _isFlicked = diff > MIN_FLICK_DISTANCE;
-                            _isTapped  = !_isFlicked;
+                            var diff   = Vector2.Distance(_touchBeganPoint, _unscaledTouchPoint) / Screen.dpi;
+                            _isFlicked = diff >= _minFlickDistance;
+                            _isTapped  = diff <= _maxTapDistance;
                         }
+                        Debug.Log(Screen.dpi);
 
                         // 初期化
                         _touchBeganTime      = -1f;
@@ -339,7 +354,7 @@ namespace GameCanvas
         /// <summary>
         /// 指定された画像の横幅を返します。画像が見つからない場合 0 を返します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <returns>指定された画像の横幅</returns>
         public int GetImageWidth(int id)
         {
@@ -355,7 +370,7 @@ namespace GameCanvas
         /// <summary>
         /// 指定された画像の高さを返します。画像が見つからない場合 0 を返します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <returns>指定された画像の高さ</returns>
         public int GetImageHeight(int id)
         {
@@ -518,7 +533,7 @@ namespace GameCanvas
         /// <summary>
         /// 画像を描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         public void DrawImage(int id, float x, float y)
@@ -529,7 +544,7 @@ namespace GameCanvas
         /// <summary>
         /// 一部分を切り取った画像を描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="clipTop">画像上側の切り取る縦幅</param>
@@ -544,7 +559,7 @@ namespace GameCanvas
         /// <summary>
         /// 大きさを変えた画像を描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="scaleH">横の拡縮率</param>
@@ -557,7 +572,7 @@ namespace GameCanvas
         /// <summary>
         /// 回転させた画像を描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="angle">回転角度 (度数法)</param>
@@ -571,7 +586,7 @@ namespace GameCanvas
         /// <summary>
         /// 画像を位置・拡縮率・回転角度を指定して描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="scaleH">縦の拡縮率</param>
@@ -587,7 +602,7 @@ namespace GameCanvas
         /// <summary>
         /// 一部分を切り取った画像を、位置・拡縮率・回転角度を指定して描画します
         /// </summary>
-        /// <param name="id">描画する画像のID。例えば、ファイル名が img0.png ならば、画像IDは 0</param>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="clipTop">画像上側の切り取る縦幅</param>
@@ -965,7 +980,89 @@ namespace GameCanvas
         {
             Graphics.Blit(null, _canvasRender, _materialInit);
         }
-        
+
+        #endregion
+
+        #region UnityGC：サウンドAPI
+
+        /// <summary>
+        /// BGMを再生します。すでに再生しているBGMは停止します
+        /// </summary>
+        /// <param name="id">再生する音声のID。snd0.png ならば 0 を指定します</param>
+        /// <param name="isLoop">ループするかどうか。真の場合、StopBGM()を呼ぶまでループ再生します</param>
+        public void PlayBGM(int id, bool isLoop = true)
+        {
+            if (id >= _numSound)
+            {
+                Debug.LogWarning("存在しないファイルが指定されました");
+                return;
+            }
+
+            if (_audioBGM.isPlaying)
+            {
+                _audioBGM.Stop();
+            }
+
+            _audioBGM.clip = _soundList[id];
+            _audioBGM.loop = isLoop;
+            _audioBGM.Play();
+        }
+
+        /// <summary>
+        /// BGMの再生を一時停止します。PlayBGM()で同じ音声を指定することで途中から再生できます
+        /// </summary>
+        public void PauseBGM()
+        {
+            if (_audioBGM.isPlaying)
+            {
+                _audioBGM.Pause();
+            }
+        }
+
+        /// <summary>
+        /// BGMの再生を終了します
+        /// </summary>
+        public void StopBGM()
+        {
+            if (_audioBGM.isPlaying)
+            {
+                _audioBGM.Stop();
+            }
+        }
+
+        /// <summary>
+        /// BGMの音量を変更します
+        /// </summary>
+        /// <param name="volume">音量 (0～1)</param>
+        public void ChangeBGMVolume(float volume)
+        {
+            _audioBGM.volume = Mathf.Clamp01(volume);
+        }
+
+        /// <summary>
+        /// SEを再生します。すでに再生しているSEは停止しません
+        /// </summary>
+        /// <param name="id">再生する音声のID。snd0.png ならば 0 を指定します</param>
+        public void PlaySE(int id)
+        {
+            if (id >= _numSound)
+            {
+                Debug.LogWarning("存在しないファイルが指定されました");
+                return;
+            }
+
+            _audioSE.PlayOneShot(_soundList[id]);
+        }
+
+        /// <summary>
+        /// SEの音量を変更します
+        /// </summary>
+        /// <param name="volume">音量 (0～1)</param>
+        public void ChangeSEVolume(float volume)
+        {
+            _audioSE.volume = Mathf.Clamp01(volume);
+        }
+
         #endregion
 
         #region UnityGC：入力API (タッチ)
@@ -1010,7 +1107,7 @@ namespace GameCanvas
         {
             get
             {
-                return _touchHoldTimeLength >= MIN_HOLD_TIME_LENGTH;
+                return _touchHoldTimeLength >= _minHoldTimeLength;
             }
         }
 
@@ -1147,6 +1244,60 @@ namespace GameCanvas
             {
                 return _pinchScale;
             }
+        }
+
+        /// <summary>
+        /// タップと判定する最長連続タッチ時間（秒）。0 より大きい値である必要があります
+        /// </summary>
+        public float maxTapTimeLength
+        {
+            set { if (value > 0f) _maxTapTimeLength = value; }
+            get { return _maxTapTimeLength; }
+        }
+
+        /// <summary>
+        /// フリックと判定する最短移動距離。0 より大きい値である必要があります
+        /// </summary>
+        public float minFlickDistance
+        {
+            set { if(value > 0f) _minFlickDistance = value; }
+            get { return _minFlickDistance; }
+        }
+
+        /// <summary>
+        /// タップと判定する最長移動距離。0 より大きい値である必要があります
+        /// </summary>
+        public float maxTapDistance
+        {
+            set { if (value > 0f) _maxTapDistance = value; }
+            get { return _maxTapDistance; }
+        }
+
+        /// <summary>
+        /// ホールドと判定する最短タッチ時間（秒）。0 より大きい値である必要があります
+        /// </summary>
+        public float minHoldTimeLength
+        {
+            set { if (value > 0f) _minHoldTimeLength = value; }
+            get { return _minHoldTimeLength; }
+        }
+
+        /// <summary>
+        /// ピンチインと判定する最大縮小率。0 より大きく 1 より小さい値である必要があります
+        /// </summary>
+        public float maxPinchInScale
+        {
+            set { if (value > 0f && value < 1f) _maxPinchInScale = value; }
+            get { return _maxPinchInScale; }
+        }
+
+        /// <summary>
+        /// ピンチアウトと判定する最小拡大率。1 より大きい値である必要があります
+        /// </summary>
+        public float minPinchOutScale
+        {
+            set { if (value > 1f) _minPinchOutScale = value; }
+            get { return _minPinchOutScale; }
         }
 
         /// <summary>
