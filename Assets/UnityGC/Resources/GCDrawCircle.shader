@@ -22,10 +22,10 @@
 
 			fixed4 frag(v2f_img i) : COLOR
 			{
-				half2 pb = i.uv * _MainTex_TexelSize.zw;   // 処理するピクセル座標
-				half2 pa = mul(_Matrix, float4(pb, 0, 1)); // 対応する画像データのピクセル座標
+				float2 pb = i.uv * _MainTex_TexelSize.zw;   // 処理するピクセル座標
+				float2 pa = mul(_Matrix, float4(pb, 0, 1)); // 対応する画像データのピクセル座標
 
-				half d = length(pa);
+				float d = length(pa);
 				if ((_IsFill && d <= 1)  || (!_IsFill && abs(d - 1) <= _LineWidth))
 					return _Color;
 				else
