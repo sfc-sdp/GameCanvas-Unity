@@ -1,4 +1,12 @@
-﻿using GameCanvas;
+﻿/**
+ * GameCanvas Sound Example
+ * 
+ * Copyright (c) 2016 Seibe TAKAHASHI
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+using GameCanvas;
 
 public class SoundExample : GameBase
 {

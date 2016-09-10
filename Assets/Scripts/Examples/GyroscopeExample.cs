@@ -1,4 +1,12 @@
-﻿using GameCanvas;
+﻿/**
+ * GameCanvas Gyroscope Example
+ * 
+ * Copyright (c) 2016 Seibe TAKAHASHI
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+using GameCanvas;
 
 public class GyroscopeExample : GameBase
 {
