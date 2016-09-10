@@ -13,21 +13,13 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using UnityEngine;
-using UnityEngine.Events;
 using WebSocketSharp;
+
+using Function = UnityEngine.Events.UnityAction;
+using MessageFunction = UnityEngine.Events.UnityAction<string>;
 
 namespace GameCanvas
 {
-    /// <summary>
-    /// 汎用コールバック
-    /// </summary>
-    public class Event : UnityEvent { }
-
-    /// <summary>
-    /// メッセージを受け取るためのコールバック
-    /// </summary>
-    public class MessageEvent : UnityEvent<string> { }
-
     /// <summary>
     /// GameCanvasの様々な機能を取りまとめたクラス
     /// </summary>
@@ -62,10 +54,6 @@ namespace GameCanvas
         private SerializableDictionary<string, string> _save = null;// セーブデータ
 
         private WebSocket   _ws                     = null;         // WebSocket
-        private Event       _onOpenWS               = null;         // WebSocket：接続ハンドラー
-        private Event       _onCloseWS              = null;         // WebSocket：切断ハンドラー
-        private MessageEvent _onMessageWS           = null;         // WebSocket：受信ハンドラー
-        private MessageEvent _onErrorWS             = null;         // WebSocket：エラーハンドラー
 
         private bool        _touchSupported         = false;        // タッチ：実行環境がタッチ操作対応かどうか
         private bool        _isTouch                = false;        // タッチ：タッチされているかどうか
@@ -184,6 +172,7 @@ namespace GameCanvas
 
                 _bitmapFontTexture = Resources.Load<Texture2D>("PixelMplus10");
                 _materialDrawString.SetTexture("_CharTex", _bitmapFontTexture);
+                _materialDrawString.SetFloatArray("_Text", new float[128]);
 
                 _quad = obj.GetComponent<MeshRenderer>();
                 _quad.material.shader = Shader.Find("Unlit/Texture");
@@ -219,14 +208,6 @@ namespace GameCanvas
                     ++i;
                 }
                 _numSound = i;
-            }
-
-            // ネットワークイベントハンドラの初期化
-            {
-                _onOpenWS    = new Event();
-                _onCloseWS   = new Event();
-                _onMessageWS = new MessageEvent();
-                _onErrorWS   = new MessageEvent();
             }
         }
 
@@ -301,7 +282,6 @@ namespace GameCanvas
                             _isFlicked = diff >= _minFlickDistance;
                             _isTapped  = diff <= _maxTapDistance;
                         }
-                        Debug.Log(Screen.dpi);
 
                         // 初期化
                         _touchBeganTime      = -1f;
@@ -1506,47 +1486,35 @@ namespace GameCanvas
         #region UnityGC：ネットワークAPI (WebSocket)
 
         /// <summary>
-        /// WebSocketの接続イベント
-        /// </summary>
-        public Event onOpenWS { get { return _onOpenWS; } }
-
-        /// <summary>
-        /// WebSocketのメッセージ受信イベント。引数にメッセージが渡されます。文字列以外のメッセージを受信すると null が渡されます
-        /// </summary>
-        public MessageEvent onMessageWS { get { return _onMessageWS; } }
-
-        /// <summary>
-        /// WebSocketのエラーイベント。引数にエラーメッセージが渡されます
-        /// </summary>
-        public MessageEvent onErrorWS { get { return _onErrorWS; } }
-
-        /// <summary>
-        /// WebSocketの切断イベント
-        /// </summary>
-        public Event onCloseWS { get { return _onCloseWS; } }
-
-        /// <summary>
         /// WebSocketがサーバーと接続状態にあるかどうか
         /// </summary>
-        public bool isConnectingWS { get { return _ws != null && _ws.ReadyState == WebSocketState.Connecting; } }
+        public bool isOpenWS { get { return _ws != null && _ws.ReadyState == WebSocketState.Open; } }
 
         /// <summary>
         /// WebSocketサーバーに接続します
         /// </summary>
-        /// <param name="url"></param>
-        public void OpenWS(string url)
+        /// <param name="url">WebSocketサーバーのURL</param>
+        /// <param name="onOpen">WebSocketサーバーに接続したときに呼ばれる関数</param>
+        /// <param name="onMessage">WebSocketサーバーからのメッセージを受け取る関数</param>
+        /// <param name="onClose">WebSocketサーバーから切断したときに呼ばれる関数</param>
+        /// <param name="onError">WebSocketサーバーとの接続でエラーが発生したときに呼ばれる関数</param>
+        public void OpenWS(string url, Function onOpen = null, MessageFunction onMessage = null, Function onClose = null, MessageFunction onError = null)
         {
-            if (isConnectingWS)
+            if (isOpenWS)
             {
                 _ws.Close(CloseStatusCode.Away);
                 _ws = null;
             }
 
             _ws = new WebSocket(url);
-            _ws.OnOpen    += (sender, e) => _onOpenWS   .Invoke();
-            _ws.OnMessage += (sender, e) => _onMessageWS.Invoke(e.IsText ? e.Data : null);
-            _ws.OnError   += (sender, e) => _onErrorWS  .Invoke(e.Message);
-            _ws.OnClose   += (sender, e) => { _onCloseWS.Invoke(); _ws = null; };
+
+            if (onOpen    != null) { _ws.OnOpen    += (sender, e) => onOpen.Invoke();                            }
+            if (onMessage != null) { _ws.OnMessage += (sender, e) => onMessage.Invoke(e.IsText ? e.Data : null); }
+            if (onError   != null) { _ws.OnError   += (sender, e) => onError.Invoke(e.Message);                  }
+            _ws.OnClose   += (sender, e) => {
+                if (onClose != null) onClose.Invoke();
+                _ws = null;
+            };
 
             _ws.ConnectAsync();
         }
@@ -1556,7 +1524,7 @@ namespace GameCanvas
         /// </summary>
         public void CloseWS()
         {
-            if (!isConnectingWS) return;
+            if (!isOpenWS) return;
 
             _ws.Close(CloseStatusCode.Normal);
             _ws = null;
@@ -1568,9 +1536,18 @@ namespace GameCanvas
         /// <param name="message">メッセージ</param>
         public void SendWS(string message)
         {
-            if (!isConnectingWS) return;
+            if (!isOpenWS) return;
 
             _ws.SendAsync(message, null);
+        }
+
+        /// <summary>
+        /// WebSocketサーバーにメッセージを送信します
+        /// </summary>
+        /// <param name="obj">メッセージオブジェクト</param>
+        public void SendWS(object obj)
+        {
+            SendWS(ConvertToJson(obj));
         }
 
         #endregion
@@ -1716,6 +1693,27 @@ namespace GameCanvas
             var writer = new StreamWriter(filePath, false, Encoding.GetEncoding("utf-8"));
             var json = _save.ToJson();
             writer.WriteLine(json);
+        }
+
+        /// <summary>
+        /// オブジェクトをJSON形式の文字列に変換します
+        /// </summary>
+        /// <param name="obj">オブジェクト</param>
+        /// <returns>JSON形式の文字列</returns>
+        public string ConvertToJson(object obj)
+        {
+            return JsonUtility.ToJson(obj);
+        }
+
+        /// <summary>
+        /// JSON形式の文字列からオブジェクトを復元します
+        /// </summary>
+        /// <typeparam name="T">復元するオブジェクトの型</typeparam>
+        /// <param name="json">JSON形式の文字列</param>
+        /// <returns>復元されたオブジェクト</returns>
+        public T ConvertFromJson<T>(string json)
+        {
+            return JsonUtility.FromJson<T>(json);
         }
 
         #endregion

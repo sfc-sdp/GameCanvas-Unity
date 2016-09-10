@@ -39,16 +39,6 @@
             終了処理
             </summary>
         </member>
-        <member name="T:GameCanvas.Event">
-            <summary>
-            汎用コールバック
-            </summary>
-        </member>
-        <member name="T:GameCanvas.MessageEvent">
-            <summary>
-            メッセージを受け取るためのコールバック
-            </summary>
-        </member>
         <member name="T:GameCanvas.GameCanvas">
             <summary>
             GameCanvasの様々な機能を取りまとめたクラス
@@ -543,36 +533,20 @@
             戻るボタンが押されたかどうか (Androidのみ)
             </summary>
         </member>
-        <member name="P:GameCanvas.GameCanvas.onOpenWS">
-            <summary>
-            WebSocketの接続イベント
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.onMessageWS">
-            <summary>
-            WebSocketのメッセージ受信イベント。引数にメッセージが渡されます。文字列以外のメッセージを受信すると null が渡されます
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.onErrorWS">
-            <summary>
-            WebSocketのエラーイベント。引数にエラーメッセージが渡されます
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.onCloseWS">
-            <summary>
-            WebSocketの切断イベント
-            </summary>
-        </member>
-        <member name="P:GameCanvas.GameCanvas.isConnectingWS">
+        <member name="P:GameCanvas.GameCanvas.isOpenWS">
             <summary>
             WebSocketがサーバーと接続状態にあるかどうか
             </summary>
         </member>
-        <member name="M:GameCanvas.GameCanvas.OpenWS(System.String)">
+        <member name="M:GameCanvas.GameCanvas.OpenWS(System.String,UnityEngine.Events.UnityAction,UnityEngine.Events.UnityAction{System.String},UnityEngine.Events.UnityAction,UnityEngine.Events.UnityAction{System.String})">
             <summary>
             WebSocketサーバーに接続します
             </summary>
-            <param name="url"></param>
+            <param name="url">WebSocketサーバーのURL</param>
+            <param name="onOpen">WebSocketサーバーに接続したときに呼ばれる関数</param>
+            <param name="onMessage">WebSocketサーバーからのメッセージを受け取る関数</param>
+            <param name="onClose">WebSocketサーバーから切断したときに呼ばれる関数</param>
+            <param name="onError">WebSocketサーバーとの接続でエラーが発生したときに呼ばれる関数</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.CloseWS">
             <summary>
@@ -584,6 +558,12 @@
             WebSocketサーバーにメッセージを送信します
             </summary>
             <param name="message">メッセージ</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendWS(System.Object)">
+            <summary>
+            WebSocketサーバーにメッセージを送信します
+            </summary>
+            <param name="obj">メッセージオブジェクト</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.LoadAsInt(System.String)">
             <summary>
@@ -644,6 +624,21 @@
             <summary>
             ストレージにセーブデータを書き込みます。この関数はゲーム終了時に自動で実行されます
             </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.ConvertToJson(System.Object)">
+            <summary>
+            オブジェクトをJSON形式の文字列に変換します
+            </summary>
+            <param name="obj">オブジェクト</param>
+            <returns>JSON形式の文字列</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.ConvertFromJson``1(System.String)">
+            <summary>
+            JSON形式の文字列からオブジェクトを復元します
+            </summary>
+            <typeparam name="T">復元するオブジェクトの型</typeparam>
+            <param name="json">JSON形式の文字列</param>
+            <returns>復元されたオブジェクト</returns>
         </member>
         <member name="M:GameCanvas.GameCanvas.CheckHitRect(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
