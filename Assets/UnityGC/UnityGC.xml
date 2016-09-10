@@ -39,6 +39,16 @@
             終了処理
             </summary>
         </member>
+        <member name="T:GameCanvas.Event">
+            <summary>
+            汎用コールバック
+            </summary>
+        </member>
+        <member name="T:GameCanvas.MessageEvent">
+            <summary>
+            メッセージを受け取るためのコールバック
+            </summary>
+        </member>
         <member name="T:GameCanvas.GameCanvas">
             <summary>
             GameCanvasの様々な機能を取りまとめたクラス
@@ -532,6 +542,48 @@
             <summary>
             戻るボタンが押されたかどうか (Androidのみ)
             </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.onOpenWS">
+            <summary>
+            WebSocketの接続イベント
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.onMessageWS">
+            <summary>
+            WebSocketのメッセージ受信イベント。引数にメッセージが渡されます。文字列以外のメッセージを受信すると null が渡されます
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.onErrorWS">
+            <summary>
+            WebSocketのエラーイベント。引数にエラーメッセージが渡されます
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.onCloseWS">
+            <summary>
+            WebSocketの切断イベント
+            </summary>
+        </member>
+        <member name="P:GameCanvas.GameCanvas.isConnectingWS">
+            <summary>
+            WebSocketがサーバーと接続状態にあるかどうか
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.OpenWS(System.String)">
+            <summary>
+            WebSocketサーバーに接続します
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.CloseWS">
+            <summary>
+            WebSocketサーバーから切断します
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SendWS(System.String)">
+            <summary>
+            WebSocketサーバーにメッセージを送信します
+            </summary>
+            <param name="message">メッセージ</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.LoadAsInt(System.String)">
             <summary>

@@ -1,13 +1,33 @@
-﻿using System;
+﻿/**
+ * GameCanvas for Unity
+ * 
+ * Copyright (c) 2015-2016 Seibe TAKAHASHI
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Events;
+using WebSocketSharp;
 
 namespace GameCanvas
 {
+    /// <summary>
+    /// 汎用コールバック
+    /// </summary>
+    public class Event : UnityEvent { }
+
+    /// <summary>
+    /// メッセージを受け取るためのコールバック
+    /// </summary>
+    public class MessageEvent : UnityEvent<string> { }
+
     /// <summary>
     /// GameCanvasの様々な機能を取りまとめたクラス
     /// </summary>
@@ -40,6 +60,12 @@ namespace GameCanvas
         private List<AudioClip> _soundList          = null;         // 認識済みの音源：データ配列
 
         private SerializableDictionary<string, string> _save = null;// セーブデータ
+
+        private WebSocket   _ws                     = null;         // WebSocket
+        private Event       _onOpenWS               = null;         // WebSocket：接続ハンドラー
+        private Event       _onCloseWS              = null;         // WebSocket：切断ハンドラー
+        private MessageEvent _onMessageWS           = null;         // WebSocket：受信ハンドラー
+        private MessageEvent _onErrorWS             = null;         // WebSocket：エラーハンドラー
 
         private bool        _touchSupported         = false;        // タッチ：実行環境がタッチ操作対応かどうか
         private bool        _isTouch                = false;        // タッチ：タッチされているかどうか
@@ -193,6 +219,14 @@ namespace GameCanvas
                     ++i;
                 }
                 _numSound = i;
+            }
+
+            // ネットワークイベントハンドラの初期化
+            {
+                _onOpenWS    = new Event();
+                _onCloseWS   = new Event();
+                _onMessageWS = new MessageEvent();
+                _onErrorWS   = new MessageEvent();
             }
         }
 
@@ -1465,6 +1499,78 @@ namespace GameCanvas
         public bool isBackKeyPushed
         {
             get { return Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape); }
+        }
+
+        #endregion
+
+        #region UnityGC：ネットワークAPI (WebSocket)
+
+        /// <summary>
+        /// WebSocketの接続イベント
+        /// </summary>
+        public Event onOpenWS { get { return _onOpenWS; } }
+
+        /// <summary>
+        /// WebSocketのメッセージ受信イベント。引数にメッセージが渡されます。文字列以外のメッセージを受信すると null が渡されます
+        /// </summary>
+        public MessageEvent onMessageWS { get { return _onMessageWS; } }
+
+        /// <summary>
+        /// WebSocketのエラーイベント。引数にエラーメッセージが渡されます
+        /// </summary>
+        public MessageEvent onErrorWS { get { return _onErrorWS; } }
+
+        /// <summary>
+        /// WebSocketの切断イベント
+        /// </summary>
+        public Event onCloseWS { get { return _onCloseWS; } }
+
+        /// <summary>
+        /// WebSocketがサーバーと接続状態にあるかどうか
+        /// </summary>
+        public bool isConnectingWS { get { return _ws != null && _ws.ReadyState == WebSocketState.Connecting; } }
+
+        /// <summary>
+        /// WebSocketサーバーに接続します
+        /// </summary>
+        /// <param name="url"></param>
+        public void OpenWS(string url)
+        {
+            if (isConnectingWS)
+            {
+                _ws.Close(CloseStatusCode.Away);
+                _ws = null;
+            }
+
+            _ws = new WebSocket(url);
+            _ws.OnOpen    += (sender, e) => _onOpenWS   .Invoke();
+            _ws.OnMessage += (sender, e) => _onMessageWS.Invoke(e.IsText ? e.Data : null);
+            _ws.OnError   += (sender, e) => _onErrorWS  .Invoke(e.Message);
+            _ws.OnClose   += (sender, e) => { _onCloseWS.Invoke(); _ws = null; };
+
+            _ws.ConnectAsync();
+        }
+
+        /// <summary>
+        /// WebSocketサーバーから切断します
+        /// </summary>
+        public void CloseWS()
+        {
+            if (!isConnectingWS) return;
+
+            _ws.Close(CloseStatusCode.Normal);
+            _ws = null;
+        }
+
+        /// <summary>
+        /// WebSocketサーバーにメッセージを送信します
+        /// </summary>
+        /// <param name="message">メッセージ</param>
+        public void SendWS(string message)
+        {
+            if (!isConnectingWS) return;
+
+            _ws.SendAsync(message, null);
         }
 
         #endregion

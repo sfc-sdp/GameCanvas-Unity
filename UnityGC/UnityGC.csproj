@@ -73,6 +73,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>..\Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="WebSocketSharp">
+      <HintPath>..\Assets\UnityGC\WebSocketSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
