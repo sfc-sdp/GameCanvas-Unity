@@ -22,4 +22,4 @@ iOS や Android への書き出しなど、より詳しい解説は、[スマー
 ## LICENSE
 Copyright (c) 2015-2016 Smart Device Programming.
 
-This software is released under the MIT License, see LICENSE.txt.
+This software is released under the MIT License, see LICENSE.
