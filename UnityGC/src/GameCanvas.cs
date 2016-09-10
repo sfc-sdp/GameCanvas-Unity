@@ -1507,6 +1507,7 @@ namespace GameCanvas
             }
 
             _ws = new WebSocket(url);
+            _ws.SslConfiguration.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => { return true; };
 
             if (onOpen    != null) { _ws.OnOpen    += (sender, e) => onOpen.Invoke();                            }
             if (onMessage != null) { _ws.OnMessage += (sender, e) => onMessage.Invoke(e.IsText ? e.Data : null); }
