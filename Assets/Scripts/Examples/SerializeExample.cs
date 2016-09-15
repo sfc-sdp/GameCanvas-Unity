@@ -1,5 +1,5 @@
 ﻿/**
- * GameCanvas SerializeExample Example
+ * GameCanvas Serialize Example
  * 
  * Copyright (c) 2016 Seibe TAKAHASHI
  * 
