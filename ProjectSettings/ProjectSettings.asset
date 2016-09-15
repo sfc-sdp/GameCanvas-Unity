@@ -101,7 +101,7 @@ PlayerSettings:
   singlePassStereoRendering: 0
   protectGraphicsMemory: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
+  AndroidMinSdkVersion: 16
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   apiCompatibilityLevel: 2
