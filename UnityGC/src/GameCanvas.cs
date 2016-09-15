@@ -45,6 +45,8 @@ namespace GameCanvas
         private float       _lineWidth              = 1f;           // 現在の線の太さ
         private float       _fontSize               = 20;           // 現在のフォントサイズ
 
+        private bool        _isLoaded               = false;        //
+        private Function    _onStart                = null;         // リソース読み込み完了コールバック
         private Texture2D   _bitmapFontTexture      = null;         // ビットマップフォント画像
         private int         _numImage               = 0;            // 認識済みの画像：数量
         private List<Texture2D> _imageList          = null;         // 認識済みの画像：データ配列
@@ -170,11 +172,8 @@ namespace GameCanvas
                 _materialDrawImage  = new Material(Shader.Find("Custom/GameCanvas/DrawImage"));
                 _materialDrawString = new Material(Shader.Find("Custom/GameCanvas/DrawString"));
 
-                _bitmapFontTexture = Resources.Load<Texture2D>("PixelMplus10");
-                _materialDrawString.SetTexture("_CharTex", _bitmapFontTexture);
-                _materialDrawString.SetFloatArray("_Text", new float[128]);
-
                 _quad = obj.GetComponent<MeshRenderer>();
+                _quad.enabled = false;
                 _quad.material.shader = Shader.Find("Unlit/Texture");
                 // [memo] SetResolution()で設定する
                 // _quad.material.mainTexture = _canvasRender;
@@ -184,31 +183,85 @@ namespace GameCanvas
             SetResolution(640, 480);
 
             // 外部画像・音源データの読み込み
+            _isLoaded = false;
+            base.StartCoroutine(LoadResourceAll());
+        }
+
+        private IEnumerator LoadResourceAll()
+        {
+            var fontReq = Resources.LoadAsync<Texture2D>("PixelMplus10");
+
+            var imageReqList = new List<ResourceRequest>();
+            var soundReqList = new List<ResourceRequest>();
+
+            _numImage = 0;
+            while (true)
             {
-                _imageList = new List<Texture2D>();
-                var i = 0;
-                while (true)
-                {
-                    var img = Resources.Load<Texture2D>( string.Format("img{0}", i) );
-                    if (img == null) break;
+                var img = Resources.LoadAsync<Texture2D>(string.Format("img{0}", _numImage));
+                if (img == null || (img.isDone && img.asset == null)) break;
 
-                    _imageList.Add(img);
-                    ++i;
-                }
-                _numImage = i;
-
-                _soundList = new List<AudioClip>();
-                i = 0;
-                while (true)
-                {
-                    var snd = Resources.Load<AudioClip>(string.Format("snd{0}", i));
-                    if (snd == null) break;
-                    
-                    _soundList.Add(snd);
-                    ++i;
-                }
-                _numSound = i;
+                imageReqList.Add(img);
+                ++_numImage;
             }
+
+            _numSound = 0;
+            while (true)
+            {
+                var snd = Resources.LoadAsync<AudioClip>(string.Format("snd{0}", _numSound));
+                if (snd == null || (snd.isDone && snd.asset == null)) break;
+
+                soundReqList.Add(snd);
+                ++_numSound;
+            }
+
+            _imageList = new List<Texture2D>(_numImage);
+            _soundList = new List<AudioClip>(_numSound);
+
+            var numImageReq = _numImage;
+            var numSoundReq = _numSound;
+
+            while (numImageReq > 0 || numSoundReq > 0)
+            {
+                for (var i = numImageReq - 1; i >= 0; --i)
+                {
+                    var req = imageReqList[i];
+                    if (req.isDone)
+                    {
+                        _imageList.Insert(0, req.asset as Texture2D);
+                        imageReqList.Remove(req);
+                        --numImageReq;
+                    }
+                }
+
+                for (var i = numSoundReq - 1; i >= 0; --i)
+                {
+                    var req = soundReqList[i];
+                    if (req.isDone)
+                    {
+                        _soundList.Insert(0, req.asset as AudioClip);
+                        soundReqList.Remove(req);
+                        --numSoundReq;
+                    }
+                }
+
+                yield return 0;
+            }
+
+            while (!fontReq.isDone)
+            {
+                yield return 0;
+            }
+
+            _bitmapFontTexture = fontReq.asset as Texture2D;
+            _materialDrawString.SetTexture("_CharTex", _bitmapFontTexture);
+            _materialDrawString.SetFloatArray("_Text", new float[128]);
+
+            if (_onStart != null) _onStart.Invoke();
+
+            yield return 0;
+
+            _isLoaded = true;
+            _quad.enabled = true;
         }
 
         /// <summary>
@@ -1672,9 +1725,8 @@ namespace GameCanvas
 
             if (File.Exists(filePath))
             {
-                var reader = new StreamReader(filePath, Encoding.GetEncoding("utf-8"));
-                var json = reader.ReadToEnd();
-                _save = new SerializableDictionary<string, string>(json);
+                var json = File.ReadAllText(filePath, Encoding.UTF8);
+                _save = SerializableDictionary<string, string>.FromJson(json);
             }
             else
             {
@@ -1683,17 +1735,16 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// ストレージにセーブデータを書き込みます。この関数はゲーム終了時に自動で実行されます
+        /// ストレージにセーブデータを書き込みます
         /// </summary>
         public void WriteDataToStorage()
         {
             var path = Application.persistentDataPath;
             var fileName = "save.txt";
             var filePath = Path.Combine(path, fileName);
-
-            var writer = new StreamWriter(filePath, false, Encoding.GetEncoding("utf-8"));
+            
             var json = _save.ToJson();
-            writer.WriteLine(json);
+            File.WriteAllText(filePath, json, Encoding.UTF8);
         }
 
         /// <summary>
@@ -1829,6 +1880,37 @@ namespace GameCanvas
         public float Rad2Deg(float radian)
         {
             return radian * Mathf.Rad2Deg;
+        }
+
+        /// <summary>
+        /// min 以上 max 以下のランダムな整数値を返します
+        /// </summary>
+        /// <param name="min">最小の数</param>
+        /// <param name="max">最大の数</param>
+        /// <returns></returns>
+        public int Random(int min, int max)
+        {
+            return Mathf.FloorToInt(UnityEngine.Random.Range(min, max + 1));
+        }
+
+        /// <summary>
+        /// 0 以上 1 以下のランダムな数値を返します
+        /// </summary>
+        /// <returns></returns>
+        public float Random()
+        {
+            return UnityEngine.Random.value;
+        }
+
+        /// <summary>
+        /// min 以上 max 以下のランダムな数値を返します
+        /// </summary>
+        /// <param name="min">最小の数</param>
+        /// <param name="max">最大の数</param>
+        /// <returns></returns>
+        public float Random(float min, float max)
+        {
+            return UnityEngine.Random.Range(min, max);
         }
 
         #endregion
@@ -2022,6 +2104,23 @@ namespace GameCanvas
         #endregion
 
         #region UnityGC：その他のAPI
+
+        /// <summary>
+        /// 画像・音声の読み込みが終わっているかどうか
+        /// </summary>
+        public bool isLoaded
+        {
+            get { return _isLoaded; }
+        }
+
+        /// <summary>
+        /// GameCanvasが画像・音声の読み込みを終えたときに呼び出されるコールバック関数を登録します
+        /// </summary>
+        /// <param name="onStart"></param>
+        public void SetOnStart(Function onStart)
+        {
+            _onStart = onStart;
+        }
 
         /// <summary>
         /// アプリケーションを終了します
@@ -2433,7 +2532,7 @@ namespace GameCanvas
         [Obsolete, Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public int rand(int min, int max)
         {
-            return Mathf.FloorToInt(min + UnityEngine.Random.value * (max - min + 1));
+            return Random(min, max);
         }
 
         #endregion

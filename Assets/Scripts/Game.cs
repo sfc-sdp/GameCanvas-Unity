@@ -22,14 +22,4 @@ public class Game : GameBase
         gc.DrawString(60, 60, "この モジ と Blue Sky が");
         gc.DrawString(60, 86, "みえていれば せいこう です ↑↑");
     }
-
-    override public void Pause()
-    {
-        // ここに中断処理を書きます
-    }
-
-    override public void Final()
-    {
-        // ここに終了処理を書きます
-    }
 }

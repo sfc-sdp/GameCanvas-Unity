@@ -43,14 +43,6 @@ namespace GameCanvas
             FromDictionary(dictionary);
         }
 
-        /// <summary>
-        /// コンストラクタ。Json記法の文字列を元にデータを復元します
-        /// </summary>
-        public SerializableDictionary(string json)
-        {
-            FromJson(json);
-        }
-
 
         /* ---------------------------------------------------------------------------------------------------- */
 
@@ -83,27 +75,19 @@ namespace GameCanvas
         }
 
         /// <summary>
-        /// Json記法の文字列から復元したデータで自身を上書きします
+        /// Json記法の文字列からインスタンスを復元します
         /// </summary>
         /// <param name="json"></param>
-        public void FromJson(string json)
+        public static SerializableDictionary<TKey, TValue> FromJson(string json)
         {
-            _dict = JsonUtility.FromJson< Dictionary<TKey, TValue> >(json);
-            if (_dict != null)
+            var ret = JsonUtility.FromJson<SerializableDictionary<TKey, TValue>>(json);
+            ret._dict = new Dictionary<TKey, TValue>(ret.Keys.Count);
+            for (var i = 0; i < ret.Keys.Count; ++i)
             {
-                var num = Math.Min(Keys.Count, Values.Count);
-                _dict   = new Dictionary<TKey, TValue>(num);
-                for (var i = 0; i < num; ++i)
-                {
-                    _dict.Add(Keys[i], Values[i]);
-                }
+                ret._dict[ret.Keys[i]] = ret.Values[i];
             }
-            else
-            {
-                _dict  = new Dictionary<TKey, TValue>();
-                Keys   = new List<TKey>();
-                Values = new List<TValue>();
-            }
+
+            return ret;
         }
 
 

@@ -29,16 +29,6 @@
             描画処理
             </summary>
         </member>
-        <member name="M:GameCanvas.GameBase.Pause">
-            <summary>
-            中断処理
-            </summary>
-        </member>
-        <member name="M:GameCanvas.GameBase.Final">
-            <summary>
-            終了処理
-            </summary>
-        </member>
         <member name="T:GameCanvas.GameCanvas">
             <summary>
             GameCanvasの様々な機能を取りまとめたクラス
@@ -622,7 +612,7 @@
         </member>
         <member name="M:GameCanvas.GameCanvas.WriteDataToStorage">
             <summary>
-            ストレージにセーブデータを書き込みます。この関数はゲーム終了時に自動で実行されます
+            ストレージにセーブデータを書き込みます
             </summary>
         </member>
         <member name="M:GameCanvas.GameCanvas.ConvertToJson(System.Object)">
@@ -713,6 +703,28 @@
             </summary>
             <param name="radian">角度（弧度法）</param>
             <returns>角度（度数法）</returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Random(System.Int32,System.Int32)">
+            <summary>
+            min 以上 max 以下のランダムな整数値を返します
+            </summary>
+            <param name="min">最小の数</param>
+            <param name="max">最大の数</param>
+            <returns></returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Random">
+            <summary>
+            0 以上 1 以下のランダムな数値を返します
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.Random(System.Single,System.Single)">
+            <summary>
+            min 以上 max 以下のランダムな数値を返します
+            </summary>
+            <param name="min">最小の数</param>
+            <param name="max">最大の数</param>
+            <returns></returns>
         </member>
         <member name="P:GameCanvas.GameCanvas.time">
             <summary>
@@ -821,6 +833,17 @@
             <param name="key">調べたいキー</param>
             <returns>離された瞬間かどうか</returns>
         </member>
+        <member name="P:GameCanvas.GameCanvas.isLoaded">
+            <summary>
+            画像・音声の読み込みが終わっているかどうか
+            </summary>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.SetOnStart(UnityEngine.Events.UnityAction)">
+            <summary>
+            GameCanvasが画像・音声の読み込みを終えたときに呼び出されるコールバック関数を登録します
+            </summary>
+            <param name="onStart"></param>
+        </member>
         <member name="M:GameCanvas.GameCanvas.ExitApp">
             <summary>
             アプリケーションを終了します
@@ -848,11 +871,6 @@
             コンストラクタ。既存のDictionaryインスタンスを元にデータを初期化します
             </summary>
         </member>
-        <member name="M:GameCanvas.SerializableDictionary`2.#ctor(System.String)">
-            <summary>
-            コンストラクタ。Json記法の文字列を元にデータを復元します
-            </summary>
-        </member>
         <member name="M:GameCanvas.SerializableDictionary`2.ToDictionary">
             <summary>
             Dictionary型に変換します
@@ -872,7 +890,7 @@
         </member>
         <member name="M:GameCanvas.SerializableDictionary`2.FromJson(System.String)">
             <summary>
-            Json記法の文字列から復元したデータで自身を上書きします
+            Json記法の文字列からインスタンスを復元します
             </summary>
             <param name="json"></param>
         </member>

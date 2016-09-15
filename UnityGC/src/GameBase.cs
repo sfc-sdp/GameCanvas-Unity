@@ -16,23 +16,15 @@ namespace GameCanvas
         {
             gc = GameCanvas.Instance;
             gc.ReadDataByStorage();
+
+            gc.SetOnStart(() => { enabled = true; });
+            enabled = false;
         }
 
         private void Update()
         {
             Calc();
             Draw();
-        }
-
-        private void OnApplicationPause()
-        {
-            Pause();
-        }
-
-        private void OnApplicationQuit()
-        {
-            Final();
-            gc.WriteDataToStorage();
         }
 
         /// <summary>
@@ -49,15 +41,5 @@ namespace GameCanvas
         /// 描画処理
         /// </summary>
         virtual public void Draw() { }
-
-        /// <summary>
-        /// 中断処理
-        /// </summary>
-        virtual public void Pause() { }
-
-        /// <summary>
-        /// 終了処理
-        /// </summary>
-        virtual public void Final() { }
     }
 }
