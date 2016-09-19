@@ -76,6 +76,8 @@ proguard/
 *.vsp
 *.vspx
 *.sap
+.vs
+.vscode
 
 # Nodejs, npm
 node_modules/
