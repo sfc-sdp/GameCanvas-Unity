@@ -81,10 +81,13 @@ namespace GameCanvas
         public static SerializableDictionary<TKey, TValue> FromJson(string json)
         {
             var ret = JsonUtility.FromJson<SerializableDictionary<TKey, TValue>>(json);
-            ret._dict = new Dictionary<TKey, TValue>(ret.Keys.Count);
-            for (var i = 0; i < ret.Keys.Count; ++i)
+            if (ret != null)
             {
-                ret._dict[ret.Keys[i]] = ret.Values[i];
+                ret._dict = new Dictionary<TKey, TValue>(ret.Keys.Count);
+                for (var i = 0; i < ret.Keys.Count; ++i)
+                {
+                    ret._dict[ret.Keys[i]] = ret.Values[i];
+                }
             }
 
             return ret;

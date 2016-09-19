@@ -1728,7 +1728,8 @@ namespace GameCanvas
                 var json = File.ReadAllText(filePath, Encoding.UTF8);
                 _save = SerializableDictionary<string, string>.FromJson(json);
             }
-            else
+
+            if (_save == null)
             {
                 _save = new SerializableDictionary<string, string>();
             }
