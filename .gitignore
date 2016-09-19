@@ -78,6 +78,10 @@ proguard/
 *.sap
 .vs
 .vscode
+Assembly-CSharp*.csproj
+Assets/UnityVS/Editor*
+VSCode.*
+Assets/VSCode/Editor*
 
 # Nodejs, npm
 node_modules/
