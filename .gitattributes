@@ -1,0 +1,2 @@
+*.bat encoding=cp932 diff=sjis
+*.cmd encoding=cp932 siff=sjis
