@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnityGCEditor</name>
+    </assembly>
+    <members>
+        <member name="T:GameCanvas.Editor.Builder">
+            <summary>
+            アプリケーションビルダー
+            </summary>
+        </member>
+        <member name="T:GameCanvas.Editor.Builder.Option">
+            <summary>
+            ビルドオプション
+            </summary>
+        </member>
+        <member name="M:GameCanvas.Editor.Builder.Option.#ctor(UnityEditor.BuildTarget,System.Boolean)">
+            <summary>
+            ビルドオプション
+            </summary>
+            <param name="target">ビルドターゲット</param>
+            <param name="isDevelop">開発モードでビルドするかどうか</param>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.scenePathList">
+            <summary>ビルドに含めるシーンファイルのリスト。プロジェクトルートからの相対パスで記述してください</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.bundleIdentifier">
+            <summary>アプリごとに固有の識別子</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.bundleVersion">
+            <summary>バージョン情報。`0.10.2`のように3つの数字をドットで繋げた文字列で表現してください</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.productName">
+            <summary>英数字のみで表したアプリケーション名</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.companyName">
+            <summary>アプリケーションを開発した組織の名称</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.outFilePath">
+            <summary>アプリケーションを書き出す先のファイルパス</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.target">
+            <summary>ビルドターゲット</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.isDevelopment">
+            <summary>開発モードでビルドするかどうか</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.connectProfiler">
+            <summary>Unityプロファイラーを使用するかどうか</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.allowDebugging">
+            <summary>スクリプトデバッギングを許容するかどうか</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.il2cpp">
+            <summary>IL2CPPビルドを行うかどうか</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.minAndroidSdkVersion">
+            <summary>最小Android SDKバージョン (Android限定)</summary>
+        </member>
+        <member name="F:GameCanvas.Editor.Builder.Option.iOSSdkVersion">
+            <summary>実機向けかシミュレーター向けか (iOS限定)</summary>
+        </member>
+        <member name="M:GameCanvas.Editor.Builder.DebugBuildApk">
+            <summary>
+            アプリケーションをAndroid向けに開発モードでビルドします
+            </summary>
+        </member>
+        <member name="M:GameCanvas.Editor.Builder.BuildApk">
+            <summary>
+            アプリケーションをAndroid向けにビルドします
+            </summary>
+        </member>
+        <member name="M:GameCanvas.Editor.Builder.Run(GameCanvas.Editor.Builder.Option)">
+            <summary>
+            ビルドを実行する
+            </summary>
+            <param name="option">ビルドオプション</param>
+        </member>
+        <member name="M:GameCanvas.Editor.Builder.OverrideOptionByCommandLine(GameCanvas.Editor.Builder.Option@)">
+            <summary>
+            コマンドライン引数を読み取り、ビルドオプションを上書きします
+            </summary>
+            <param name="option"></param>
+        </member>
+        <member name="M:GameCanvas.Editor.Builder.GetEnabledScenePathList">
+            <summary>
+            現在有効なシーンの一覧を取得します
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
