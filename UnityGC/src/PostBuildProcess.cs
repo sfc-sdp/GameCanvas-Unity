@@ -1,5 +1,5 @@
 ﻿/**
- * GameCanvas for Unity [Post ProcessBuild]
+ * GameCanvas for Unity [Post Build Process]
  * 
  * Copyright (c) 2015-2016 Seibe TAKAHASHI
  * 
@@ -8,10 +8,6 @@
  */
 using UnityEditor;
 using UnityEditor.Callbacks;
-
-#if UNITY_IOS
-using UnityEditor.iOS.Xcode;
-#endif
 using System.IO;
 
 /// <summary>
@@ -19,12 +15,10 @@ using System.IO;
 /// </summary>
 public class PostProcessBuild
 {
-    [PostProcessBuild]
+    [PostProcessBuild(1)]
     static void OnPostprocessBuild(BuildTarget buildTarget, string pathToBuiltProject)
     {
-#if UNITY_IOS
         DisableAutorotateAssertion(buildTarget, pathToBuiltProject);
-#endif
     }
 
     /// <remarks>
@@ -32,26 +26,21 @@ public class PostProcessBuild
     /// </remarks>
     static void DisableAutorotateAssertion(BuildTarget buildTarget, string pathToBuiltProject)
     {
-        if (buildTarget == BuildTarget.iOS)
-        {
-#if UNITY_5_3_OR_NEWER && !UNITY_5_3_0
-            var viewControllerFileName = "UnityViewControllerBaseiOS.mm";
-#else
-            var viewControllerFileName = "UnityViewControllerBase.mm";
-#endif
+        if (buildTarget != BuildTarget.iOS) return;
+
+        var viewControllerFileName = "UnityViewControllerBaseiOS.mm";
             
-            var targetString = "\tNSAssert(UnityShouldAutorotate()";
-            var filePath = Path.Combine(pathToBuiltProject, "Classes");
-            filePath = Path.Combine(filePath, "UI");
-            filePath = Path.Combine(filePath, viewControllerFileName);
-            if (File.Exists(filePath))
+        var targetString = "\tNSAssert(UnityShouldAutorotate()";
+        var filePath = Path.Combine(pathToBuiltProject, "Classes");
+        filePath = Path.Combine(filePath, "UI");
+        filePath = Path.Combine(filePath, viewControllerFileName);
+        if (File.Exists(filePath))
+        {
+            var classFile = File.ReadAllText(filePath);
+            var newClassFile = classFile.Replace(targetString, "\t//NSAssert(UnityShouldAutorotate()");
+            if (classFile.Length != newClassFile.Length)
             {
-                string classFile = File.ReadAllText(filePath);
-                string newClassFile = classFile.Replace(targetString, "\t//NSAssert(UnityShouldAutorotate()");
-                if (classFile.Length != newClassFile.Length)
-                {
-                    File.WriteAllText(filePath, newClassFile);
-                }
+                File.WriteAllText(filePath, newClassFile);
             }
         }
     }
