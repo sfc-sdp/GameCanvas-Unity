@@ -88,5 +88,15 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:PostProcessBuild">
+            <summary>
+            ビルド後処理
+            </summary>
+        </member>
+        <member name="M:PostProcessBuild.DisableAutorotateAssertion(UnityEditor.BuildTarget,System.String)">
+            <remarks>
+            community.unity.com/t5/iOS-tvOS/UnityDefaultViewController-should-be-used-only-if-unity-is-set/td-p/2112497
+            </remarks>
+        </member>
     </members>
 </doc>
