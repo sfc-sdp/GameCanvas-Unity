@@ -95,7 +95,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: jp.ac.keio.sfc.sdp
-  bundleVersion: 1.0
+  bundleVersion: 1.0.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   xboxOneDisableKinectGpuReservation: 0
@@ -181,7 +181,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: de3e4b117763aa749b686aedd32e8dfd, type: 3}
+      m_Icon: {fileID: 2800000, guid: 164825494f4230949a43b90df3a576c6, type: 3}
       m_Width: 128
       m_Height: 128
   - m_BuildTarget: Android
@@ -191,7 +191,7 @@ PlayerSettings:
       m_Width: 192
       m_Height: 192
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: de3e4b117763aa749b686aedd32e8dfd, type: 3}
+      m_Icon: {fileID: 2800000, guid: 164825494f4230949a43b90df3a576c6, type: 3}
       m_Width: 144
       m_Height: 144
     - serializedVersion: 2
@@ -199,7 +199,7 @@ PlayerSettings:
       m_Width: 96
       m_Height: 96
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: dd8969ddff07f2f4eb6f53811a3f57e4, type: 3}
+      m_Icon: {fileID: 2800000, guid: 9755c5ef6a3e7c64d80ab940127f8fea, type: 3}
       m_Width: 72
       m_Height: 72
     - serializedVersion: 2
@@ -207,9 +207,47 @@ PlayerSettings:
       m_Width: 48
       m_Height: 48
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 60924836ef0be9b459516db1d5874b11, type: 3}
+      m_Icon: {fileID: 2800000, guid: 71c450e58468b5f408badc7792ed2fd6, type: 3}
       m_Width: 36
       m_Height: 36
+  - m_BuildTarget: iPhone
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 180
+      m_Height: 180
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 167
+      m_Height: 167
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 152
+      m_Height: 152
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 144
+      m_Height: 144
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 74805ccc3f766bc4d9a9f11e121c24e1, type: 3}
+      m_Width: 120
+      m_Height: 120
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 114
+      m_Height: 114
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 76
+      m_Height: 76
+    - serializedVersion: 2
+      m_Icon: {fileID: 0}
+      m_Width: 72
+      m_Height: 72
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 23d5cfff073b0c14b80d96c0a13ba272, type: 3}
+      m_Width: 57
+      m_Height: 57
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer

@@ -1,4 +1,4 @@
-![GameCanvas](Assets/UnityGC/Icons/GameCanvas_144.png)
+![GameCanvas](Assets/UnityGC/Icons/icon_android_full.png)
 
 ## GameCanvas にようこそ！
 
