@@ -49,6 +49,11 @@
             更新処理
             </summary>
         </member>
+        <member name="M:GameCanvas.GameCanvas.LateUpdate">
+            <summary>
+            遅延更新処理
+            </summary>
+        </member>
         <member name="M:GameCanvas.GameCanvas.GetImageWidth(System.Int32)">
             <summary>
             指定された画像の横幅を返します。画像が見つからない場合 0 を返します

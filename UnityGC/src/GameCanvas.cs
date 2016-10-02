@@ -31,7 +31,75 @@ namespace GameCanvas
     public class GameCanvas : SingletonMonoBehaviour<GameCanvas>
     {
         /* ---------------------------------------------------------------------------------------------------- */
-        
+
+        #region UnityGC：構造体・定数
+
+        private const int MAX_GRAPHIC_ARRAY = 64;
+        private const int MAX_STRING_ARRAY = 128;
+
+        private static readonly Vector4 zeroVector = Vector4.zero;
+        private static readonly Color   zeroColor  = Color.black;
+
+        private enum DrawType
+        {
+            Circle, FilledCircle, Rect, FilledRect, Image, String
+        }
+
+        private struct DrawInfo
+        {
+            public DrawInfo(DrawType type, Matrix4x4 matrix, Color color, float lineWidthX, float lineWidthY)
+            {
+                if (type == DrawType.Image || type != DrawType.String) new Exception("DrawInfo type error.");
+
+                this.type       = type;
+                this.matrix     = matrix;
+                this.color      = color;
+                this.lineWidthX = lineWidthX;
+                this.lineWidthY = lineWidthY;
+
+                imageId  = 0;
+                clip     = zeroVector;
+                charList = null;
+            }
+
+            public DrawInfo(int imageId, Matrix4x4 matrix, Vector4 clip)
+            {
+                this.matrix  = matrix;
+                this.imageId = imageId;
+                this.clip    = clip;
+
+                type       = DrawType.Image;
+                color      = zeroColor;
+                lineWidthX = 0;
+                lineWidthY = 0;
+                charList   = null;
+            }
+
+            public DrawInfo(List<float> charList, Matrix4x4 matrix, Color color)
+            {
+                this.charList = charList;
+                this.matrix   = matrix;
+                this.color    = color;
+
+                type       = DrawType.String;
+                lineWidthX = 0;
+                lineWidthY = 0;
+                imageId    = 0;
+                clip       = zeroVector;
+            }
+
+            public DrawType     type;
+            public Matrix4x4    matrix;
+            public Color        color;
+            public float        lineWidthX;
+            public float        lineWidthY;
+            public int          imageId;
+            public Vector4      clip;
+            public List<float>  charList;
+        }
+
+        #endregion
+
         #region UnityGC：変数
 
         private int         _deviceWidth            = 0;            // 画面解像度：横幅
@@ -42,7 +110,7 @@ namespace GameCanvas
         private Vector2     _canvasBorderSize       = Vector2.zero; // キャンバス左・上の黒縁の大きさ
 
         private Color       _palletColor            = Color.black;  // 現在のパレットカラー
-        private float       _lineWidth              = 1f;           // 現在の線の太さ
+        private float       _lineWidth              = 2f;           // 現在の線の太さ
         private float       _fontSize               = 20;           // 現在のフォントサイズ
 
         private bool        _isLoaded               = false;        //
@@ -82,10 +150,26 @@ namespace GameCanvas
         private Vector2     _mousePrevPoint         = -Vector2.one; // マウス互換：前回マウス位置
 
         private Material    _materialInit           = null;         // マテリアル：初期化
-        private Material    _materialDrawCircle     = null;         // マテリアル：図形描画：円
-        private Material    _materialDrawRect       = null;         // マテリアル：図形描画：矩形
+        private Material    _materialDraw           = null;         // マテリアル：図形描画
         private Material    _materialDrawImage      = null;         // マテリアル：画像描画
         private Material    _materialDrawString     = null;         // マテリアル：文字描画
+        private Queue<DrawInfo> _drawQueue          = null;         // 描画情報キュー
+        private float[]     _graphicTypeArray       = new float[MAX_GRAPHIC_ARRAY];     // 図形情報リスト：図形種別
+        private Color[]     _graphicColorArray      = new Color[MAX_GRAPHIC_ARRAY];     // 図形情報リスト：描画色
+        private Matrix4x4[] _graphicMatrixArray     = new Matrix4x4[MAX_GRAPHIC_ARRAY]; // 図形情報リスト：マトリックス
+        private float[]     _graphicLineWidthArray  = new float[MAX_GRAPHIC_ARRAY];     // 図形情報リスト：線の太さ
+        private int         _mapPropMainTex         = 0;
+        private int         _matPropColor           = 0;
+        private int         _matPropDrawCalls       = 0;
+        private int         _matPropType            = 0;
+        private int         _matPropMatrix          = 0;
+        private int         _matPropLineWidth       = 0;
+        private int         _matPropImageTex        = 0;
+        private int         _matPropClip            = 0;
+        private int         _matPropCharTex         = 0;
+        private int         _matPropTextLength      = 0;
+        private int         _matPropText            = 0;
+
         private RenderTexture _canvasRender         = null;         // レンダーテクスチャー
         private MeshRenderer _quad                  = null;         // プリミティブ：Quad
         private Camera      _camera                 = null;         // コンポーネント：Camera
@@ -167,10 +251,29 @@ namespace GameCanvas
                 obj.transform.parent = baseTransform;
                 
                 _materialInit       = new Material(Shader.Find("Custom/GameCanvas/Init"));
-                _materialDrawCircle = new Material(Shader.Find("Custom/GameCanvas/DrawCircle"));
-                _materialDrawRect   = new Material(Shader.Find("Custom/GameCanvas/DrawRect"));
+                _materialDraw       = new Material(Shader.Find("Custom/GameCanvas/Draw"));
                 _materialDrawImage  = new Material(Shader.Find("Custom/GameCanvas/DrawImage"));
                 _materialDrawString = new Material(Shader.Find("Custom/GameCanvas/DrawString"));
+
+                _mapPropMainTex     = Shader.PropertyToID("_MainTex");
+                _matPropColor       = Shader.PropertyToID("_Color");
+                _matPropDrawCalls   = Shader.PropertyToID("_DrawCalls");
+                _matPropType        = Shader.PropertyToID("_Type");
+                _matPropMatrix      = Shader.PropertyToID("_Matrix");
+                _matPropLineWidth   = Shader.PropertyToID("_LineWidth");
+                _matPropImageTex    = Shader.PropertyToID("_ImageTex");
+                _matPropClip        = Shader.PropertyToID("_Clip");
+                _matPropCharTex     = Shader.PropertyToID("_CharTex");
+                _matPropTextLength  = Shader.PropertyToID("_TextLength");
+                _matPropText        = Shader.PropertyToID("_Text");
+
+                _materialDraw.SetFloatArray(_matPropType, new float[MAX_GRAPHIC_ARRAY]);
+                _materialDraw.SetColorArray(_matPropColor, new Color[MAX_GRAPHIC_ARRAY]);
+                _materialDraw.SetMatrixArray(_matPropMatrix, new Matrix4x4[MAX_GRAPHIC_ARRAY]);
+                _materialDraw.SetFloatArray(_matPropLineWidth, new float[MAX_GRAPHIC_ARRAY*2]);
+                _materialDrawString.SetFloatArray(_matPropText, new float[MAX_STRING_ARRAY]);
+
+                _drawQueue = new Queue<DrawInfo>();
 
                 _quad = obj.GetComponent<MeshRenderer>();
                 _quad.enabled = false;
@@ -253,8 +356,7 @@ namespace GameCanvas
             }
 
             _bitmapFontTexture = fontReq.asset as Texture2D;
-            _materialDrawString.SetTexture("_CharTex", _bitmapFontTexture);
-            _materialDrawString.SetFloatArray("_Text", new float[128]);
+            _materialDrawString.SetTexture(_matPropCharTex, _bitmapFontTexture);
 
             if (_onStart != null) _onStart.Invoke();
 
@@ -277,6 +379,103 @@ namespace GameCanvas
 
             // タッチ情報更新
             UpdateTouches();
+        }
+
+        /// <summary>
+        /// 遅延更新処理
+        /// </summary>
+        private void LateUpdate()
+        {
+            var count = _drawQueue.Count;
+            var numGraphics = 0;
+
+            for (var i = 0; i < count; ++i)
+            {
+                var info = _drawQueue.Dequeue();
+
+                switch (info.type)
+                {
+                    case DrawType.Circle:
+                    case DrawType.FilledCircle:
+                    case DrawType.Rect:
+                    case DrawType.FilledRect:
+                        _graphicTypeArray[numGraphics] = (int)info.type;
+                        _graphicColorArray[numGraphics] = info.color;
+                        _graphicMatrixArray[numGraphics] = info.matrix;
+                        _graphicLineWidthArray[numGraphics*2] = info.lineWidthX;
+                        _graphicLineWidthArray[numGraphics*2+1] = info.lineWidthY;
+                        ++numGraphics;
+                        if (numGraphics == MAX_GRAPHIC_ARRAY) FlushDrawGraphic(ref numGraphics);
+                        break;
+
+                    case DrawType.Image:
+                        FlushDrawGraphic(ref numGraphics);
+                        FlushDrawImage(info);
+                        break;
+
+                    case DrawType.String:
+                        FlushDrawGraphic(ref numGraphics);
+                        FlushDrawString(info);
+                        break;
+
+                    default:
+                        new Exception("Unknown DrawType");
+                        return;
+                }
+            }
+
+            FlushDrawGraphic(ref numGraphics);
+
+            // 描画情報キューをクリアする
+            _drawQueue.Clear();
+        }
+
+        private void FlushDrawGraphic(ref int drawCalls)
+        {
+            if (drawCalls == 0) return;
+            if (drawCalls > MAX_GRAPHIC_ARRAY) new Exception("max number of drawCall is " + MAX_GRAPHIC_ARRAY.ToString());
+
+            _materialDraw.SetFloat      ( _matPropDrawCalls, drawCalls              );
+            _materialDraw.SetFloatArray ( _matPropType     , _graphicTypeArray      );
+            _materialDraw.SetColorArray ( _matPropColor    , _graphicColorArray     );
+            _materialDraw.SetMatrixArray( _matPropMatrix   , _graphicMatrixArray    );
+            _materialDraw.SetFloatArray ( _matPropLineWidth, _graphicLineWidthArray );
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDraw);
+            RenderTexture.ReleaseTemporary(temp);
+
+            drawCalls = 0;
+        }
+
+        private void FlushDrawImage(DrawInfo info)
+        {
+            if (info.type != DrawType.Image) Debug.LogAssertion("`info.type == DrawType.Image` failed");
+
+            _materialDrawImage.SetTexture(_matPropImageTex, _imageList[info.imageId]);
+            _materialDrawImage.SetMatrix (_matPropMatrix  , info.matrix             );
+            _materialDrawImage.SetVector (_matPropClip    , info.clip               );
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawImage);
+            RenderTexture.ReleaseTemporary(temp);
+        }
+
+        private void FlushDrawString(DrawInfo info)
+        {
+            if (info.type != DrawType.String) Debug.LogAssertion("`info.type == DrawType.String` failed");
+
+            _materialDrawString.SetColor     (_matPropColor     , info.color             );
+            _materialDrawString.SetMatrix    (_matPropMatrix    , info.matrix            );
+            _materialDrawString.SetFloat     (_matPropTextLength, info.charList.Count    );
+            _materialDrawString.SetFloatArray(_matPropText      , info.charList.ToArray());
+
+            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
+            Graphics.Blit(_canvasRender, temp);
+            Graphics.Blit(temp, _canvasRender, _materialDrawString);
+            RenderTexture.ReleaseTemporary(temp);
         }
         
         private void UpdateTouches()
@@ -532,16 +731,7 @@ namespace GameCanvas
             }
 
             var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(radius, radius, 1f));
-
-            _materialDrawCircle.SetColor("_Color", _palletColor);
-            _materialDrawCircle.SetMatrix("_Matrix", mat.inverse);
-            _materialDrawCircle.SetFloat("_IsFill", 0);
-            _materialDrawCircle.SetFloat("_LineWidth", _lineWidth / radius * 0.5f);
-
-            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
-            Graphics.Blit(_canvasRender, temp);
-            Graphics.Blit(temp, _canvasRender, _materialDrawCircle);
-            RenderTexture.ReleaseTemporary(temp);
+            _drawQueue.Enqueue(new DrawInfo(DrawType.Circle, mat.inverse, _palletColor, _lineWidth / radius, 0));
         }
 
         /// <summary>
@@ -586,15 +776,7 @@ namespace GameCanvas
                 mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(width, height, 1f));
             }
 
-            _materialDrawRect.SetColor("_Color", _palletColor);
-            _materialDrawRect.SetMatrix("_Matrix", mat.inverse);
-            _materialDrawRect.SetFloat("_IsFill", 0);
-            _materialDrawRect.SetFloat("_LineWidth", _lineWidth);
-
-            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
-            Graphics.Blit(_canvasRender, temp);
-            Graphics.Blit(temp, _canvasRender, _materialDrawRect);
-            RenderTexture.ReleaseTemporary(temp);
+            _drawQueue.Enqueue(new DrawInfo(DrawType.Rect, mat.inverse, _palletColor, _lineWidth / width, _lineWidth / height));
         }
 
         /// <summary>
@@ -720,15 +902,8 @@ namespace GameCanvas
                 mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(scaleH, scaleV, 1f));
             }
 
-            _materialDrawImage.SetTexture("_ImageTex", _imageList[id]);
-            _materialDrawImage.SetColor("_Color", _palletColor);
-            _materialDrawImage.SetMatrix("_Matrix", mat.inverse);
-            _materialDrawImage.SetVector("_Clip", new Vector4(clipLeft, clipTop, clipRight, clipBottom));
-
-            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
-            Graphics.Blit(_canvasRender, temp);
-            Graphics.Blit(temp, _canvasRender, _materialDrawImage);
-            RenderTexture.ReleaseTemporary(temp);
+            var clip = new Vector4(clipLeft, clipTop, clipRight, clipBottom);
+            _drawQueue.Enqueue(new DrawInfo(id, mat.inverse, clip));
         }
 
         /// <summary>
@@ -748,14 +923,7 @@ namespace GameCanvas
 
             var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(radius, radius, 1f));
 
-            _materialDrawCircle.SetColor("_Color", _palletColor);
-            _materialDrawCircle.SetMatrix("_Matrix", mat.inverse);
-            _materialDrawCircle.SetFloat("_IsFill", 1);
-
-            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
-            Graphics.Blit(_canvasRender, temp);
-            Graphics.Blit(temp, _canvasRender, _materialDrawCircle);
-            RenderTexture.ReleaseTemporary(temp);
+            _drawQueue.Enqueue(new DrawInfo(DrawType.FilledCircle, mat.inverse, _palletColor, 0, 0));
         }
 
         /// <summary>
@@ -800,14 +968,7 @@ namespace GameCanvas
                 mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(width, height, 1f));
             }
 
-            _materialDrawRect.SetColor("_Color", _palletColor);
-            _materialDrawRect.SetMatrix("_Matrix", mat.inverse);
-            _materialDrawRect.SetFloat("_IsFill", 1);
-
-            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
-            Graphics.Blit(_canvasRender, temp);
-            Graphics.Blit(temp, _canvasRender, _materialDrawRect);
-            RenderTexture.ReleaseTemporary(temp);
+            _drawQueue.Enqueue(new DrawInfo(DrawType.FilledRect, mat.inverse, _palletColor, 0, 0));
         }
 
         #endregion
@@ -837,7 +998,7 @@ namespace GameCanvas
         /// <param name="str">文字列 (最長128文字)</param>
         public void DrawString(float x, float y, string str)
         {
-            var strlen = Mathf.Min(str.Length, 128);
+            var strlen = Mathf.Min(str.Length, MAX_STRING_ARRAY);
             var charList = new List<float>(strlen);
 
             for (var i = 0; i < strlen; ++i)
@@ -912,6 +1073,9 @@ namespace GameCanvas
             var scale = _fontSize * 0.1f;
             var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(scale, scale, 1f));
 
+            _drawQueue.Enqueue(new DrawInfo(charList, mat.inverse, _palletColor));
+
+            /*
             _materialDrawString.SetColor("_Color", _palletColor);
             _materialDrawString.SetMatrix("_Matrix", mat.inverse);
             _materialDrawString.SetFloat("_TextLength", strlen);
@@ -921,6 +1085,7 @@ namespace GameCanvas
             Graphics.Blit(_canvasRender, temp);
             Graphics.Blit(temp, _canvasRender, _materialDrawString);
             RenderTexture.ReleaseTemporary(temp);
+            */
         }
 
         #endregion
@@ -1045,6 +1210,7 @@ namespace GameCanvas
         /// </summary>
         public void ClearScreen()
         {
+            _drawQueue.Clear();
             Graphics.Blit(null, _canvasRender, _materialInit);
         }
 

@@ -2,7 +2,6 @@
 	Properties{
 		_MainTex ("キャンバス", 2D) = "white" {}
 		_ImageTex("画像データ", 2D) = "white" {}
-		_Color("パレットカラー", Color) = (1, 1, 1, 1)
 		_Clip("切り抜き範囲 (left, top, right, bottom)", Vector) = (0, 0, 0, 0)
 	}
 	SubShader {
@@ -15,7 +14,6 @@
 
 			sampler2D _MainTex, _ImageTex;
 			half4 _MainTex_TexelSize, _ImageTex_TexelSize;
-			fixed4 _Color;
 			float4 _Clip;
 			float4x4 _Matrix;
 
