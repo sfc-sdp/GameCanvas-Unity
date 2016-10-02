@@ -2,6 +2,8 @@
 
 public class Game : GameBase
 {
+    // ここに変数の宣言を書きます
+
     override public void Start()
     {
         // ここに初期化処理を書きます
