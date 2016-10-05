@@ -1,0 +1,48 @@
+﻿/**
+ * GameCanvas for Unity [GameCanvas Menu]
+ * 
+ * Copyright (c) 2015-2016 Seibe TAKAHASHI
+ * 
+ * This software is released under the MIT License.
+ * http://opensource.org/licenses/mit-license.php
+ */
+using UnityEditor;
+using UnityEngine;
+using System.IO;
+
+namespace GameCanvas.Editor
+{
+    /// <summary>
+    /// ビルド後処理
+    /// </summary>
+    public class Menu
+    {
+        [MenuItem("GameCanvas/Game.cs をクリップボードにコピー", false, 100)]
+        static void CopyScript()
+        {
+            var targetPath = Path.Combine(Application.dataPath, "Scripts/Game.cs");
+            if (!File.Exists(targetPath))
+            {
+                EditorUtility.DisplayDialog("Game.cs が見つかりません", "Game.csが既定の場所にないのでコピーできませんでした", "OK");
+                return;
+            }
+
+            var content = File.ReadAllText(targetPath);
+            EditorGUIUtility.systemCopyBuffer = content;
+            Debug.Log("クリップボードに Game.cs の内容をコピーしました");
+        }
+
+        [MenuItem("GameCanvas/UnityPackage の書き出し", false, 101)]
+        static void ExportUnityPackage()
+        {
+            EditorApplication.ExecuteMenuItem("Assets/Export Package...");
+        }
+
+        [MenuItem("GameCanvas/About GameCanvas", false, 1000)]
+        static void OpenAbout()
+        {
+            var message = Env.Copyright + "\n\nAuthors: " + string.Join(", ", Env.Authors);
+            EditorUtility.DisplayDialog("GameCanvas " + Env.Version, message, "OK");
+        }
+    }
+}

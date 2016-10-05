@@ -54,6 +54,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\AssetProcessor.cs" />
     <Compile Include="src\Builder.cs" />
+    <Compile Include="src\GameCanvasEnv.cs" />
+    <Compile Include="src\GameCanvasMenu.cs" />
     <Compile Include="src\PostBuildProcess.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
