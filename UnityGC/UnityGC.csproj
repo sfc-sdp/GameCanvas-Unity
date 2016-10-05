@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\GameBase.cs" />
     <Compile Include="src\GameCanvas.cs" />
+    <Compile Include="src\GameCanvasEnv.cs" />
     <Compile Include="src\SerializableDictionary.cs" />
     <Compile Include="src\SingletonMonoBahaviour.cs" />
   </ItemGroup>

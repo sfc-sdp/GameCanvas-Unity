@@ -6,21 +6,18 @@
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
-using UnityEditor;
-using UnityEngine;
-using System.IO;
 
-namespace GameCanvas.Editor
+namespace GameCanvas
 {
     /// <summary>
-    /// ビルド後処理
+    /// 環境変数
     /// </summary>
     public class Env
     {
         /// <summary>
         /// GameCanvas のバージョン情報
         /// </summary>
-        public const string Version = "v1.0.3";
+        public const string Version = "v1.0.4";
 
         /// <summary>
         /// GameCanvas API のバージョン情報

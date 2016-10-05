@@ -49,12 +49,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityGC, Version=1.0.6123.2600, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assets\UnityGC\UnityGC.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\AssetProcessor.cs" />
     <Compile Include="src\Builder.cs" />
-    <Compile Include="src\GameCanvasEnv.cs" />
     <Compile Include="src\GameCanvasMenu.cs" />
     <Compile Include="src\PostBuildProcess.cs" />
   </ItemGroup>

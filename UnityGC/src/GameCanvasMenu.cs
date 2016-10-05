@@ -13,7 +13,7 @@ using System.IO;
 namespace GameCanvas.Editor
 {
     /// <summary>
-    /// ビルド後処理
+    /// エディターメニュー
     /// </summary>
     public class Menu
     {

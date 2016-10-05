@@ -88,34 +88,9 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:GameCanvas.Editor.Env">
-            <summary>
-            ビルド後処理
-            </summary>
-        </member>
-        <member name="F:GameCanvas.Editor.Env.Version">
-            <summary>
-            GameCanvas のバージョン情報
-            </summary>
-        </member>
-        <member name="F:GameCanvas.Editor.Env.APIVersion">
-            <summary>
-            GameCanvas API のバージョン情報
-            </summary>
-        </member>
-        <member name="F:GameCanvas.Editor.Env.Copyright">
-            <summary>
-            GameCanvas の著作権表記
-            </summary>
-        </member>
-        <member name="F:GameCanvas.Editor.Env.Authors">
-            <summary>
-            GameCanvas の制作者情報
-            </summary>
-        </member>
         <member name="T:GameCanvas.Editor.Menu">
             <summary>
-            ビルド後処理
+            エディターメニュー
             </summary>
         </member>
         <member name="T:PostProcessBuild">
