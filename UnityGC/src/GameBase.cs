@@ -5,6 +5,7 @@ namespace GameCanvas
     /// <summary>
     /// 内部に GameCanvas インスタンスを持つ MonoBehaviour
     /// </summary>
+    [DisallowMultipleComponent()]
     public abstract class GameBase : MonoBehaviour
     {
         /// <summary>

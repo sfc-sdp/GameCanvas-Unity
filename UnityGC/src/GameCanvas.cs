@@ -28,6 +28,7 @@ namespace GameCanvas
     /// 2010 fujieda (shift→ntt)      ※Java版
     /// 2016 seibe   (shift→nintendo) ※Unity版
     /// </author>
+    [DisallowMultipleComponent()]
     public class GameCanvas : SingletonMonoBehaviour<GameCanvas>
     {
         /* ---------------------------------------------------------------------------------------------------- */
@@ -157,7 +158,7 @@ namespace GameCanvas
         private float[]     _graphicTypeArray       = new float[MAX_GRAPHIC_ARRAY];     // 図形情報リスト：図形種別
         private Color[]     _graphicColorArray      = new Color[MAX_GRAPHIC_ARRAY];     // 図形情報リスト：描画色
         private Matrix4x4[] _graphicMatrixArray     = new Matrix4x4[MAX_GRAPHIC_ARRAY]; // 図形情報リスト：マトリックス
-        private float[]     _graphicLineWidthArray  = new float[MAX_GRAPHIC_ARRAY];     // 図形情報リスト：線の太さ
+        private float[]     _graphicLineWidthArray  = new float[MAX_GRAPHIC_ARRAY*2];   // 図形情報リスト：線の太さ
         private int         _mapPropMainTex         = 0;
         private int         _matPropColor           = 0;
         private int         _matPropDrawCalls       = 0;
