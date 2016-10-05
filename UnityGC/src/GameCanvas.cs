@@ -1197,7 +1197,11 @@ namespace GameCanvas
             UpdateDisplayScale();
 
             // キャンバスの再生成
-            if (_canvasRender != null) _canvasRender.Release();
+            if (_canvasRender != null)
+            {
+                RenderTexture.active = null;
+                _canvasRender.Release();
+            }
             _canvasRender = new RenderTexture(_canvasWidth, _canvasHeight, 0);
             _canvasRender.Create();
             _quad.transform.localScale = new Vector3(_canvasWidth, -_canvasHeight, 1f);
