@@ -10,7 +10,7 @@
 
 ## 導入方法
 1. [Unity 5.4.1p2](https://unity3d.com/jp/unity/qa/patch-releases?version=5.4) を入手し、インストールします
-1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases) を入手し、解凍して適当なフォルダに配置します
+1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) を入手し、解凍して適当なフォルダに配置します
 1. Unity を起動し、先ほど配置したフォルダを開きます
 1. Assets/Scenes/Game.scene を開いて再生ボタンを押せば、すぐにサンプルが実行されます
 1. [Assets/Scripts/Game.cs](Assets/Scripts/Game.cs) を編集して、自分だけのオリジナルゲームを作りましょう
