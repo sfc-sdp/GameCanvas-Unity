@@ -444,6 +444,7 @@ namespace GameCanvas
 
             var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
             Graphics.Blit(_canvasRender, temp);
+            _canvasRender.DiscardContents();
             Graphics.Blit(temp, _canvasRender, _materialDraw);
             RenderTexture.ReleaseTemporary(temp);
 
@@ -460,6 +461,7 @@ namespace GameCanvas
 
             var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
             Graphics.Blit(_canvasRender, temp);
+            _canvasRender.DiscardContents();
             Graphics.Blit(temp, _canvasRender, _materialDrawImage);
             RenderTexture.ReleaseTemporary(temp);
         }
@@ -475,6 +477,7 @@ namespace GameCanvas
 
             var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
             Graphics.Blit(_canvasRender, temp);
+            _canvasRender.DiscardContents();
             Graphics.Blit(temp, _canvasRender, _materialDrawString);
             RenderTexture.ReleaseTemporary(temp);
         }
@@ -1216,6 +1219,7 @@ namespace GameCanvas
         public void ClearScreen()
         {
             _drawQueue.Clear();
+            _canvasRender.DiscardContents();
             Graphics.Blit(null, _canvasRender, _materialInit);
         }
 
