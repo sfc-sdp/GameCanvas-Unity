@@ -93,6 +93,31 @@
             エディターメニュー
             </summary>
         </member>
+        <member name="T:GameCanvas.Env">
+            <summary>
+            環境変数
+            </summary>
+        </member>
+        <member name="F:GameCanvas.Env.Version">
+            <summary>
+            GameCanvas のバージョン情報
+            </summary>
+        </member>
+        <member name="F:GameCanvas.Env.APIVersion">
+            <summary>
+            GameCanvas API のバージョン情報
+            </summary>
+        </member>
+        <member name="F:GameCanvas.Env.Copyright">
+            <summary>
+            GameCanvas の著作権表記
+            </summary>
+        </member>
+        <member name="F:GameCanvas.Env.Authors">
+            <summary>
+            GameCanvas の制作者情報
+            </summary>
+        </member>
         <member name="T:PostProcessBuild">
             <summary>
             ビルド後処理

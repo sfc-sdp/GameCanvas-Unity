@@ -24,9 +24,6 @@
     <RootNamespace>GameCanvas</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>..\Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -42,8 +39,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>..\Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="WebSocketSharp">
-      <HintPath>..\Assets\UnityGC\WebSocketSharp.dll</HintPath>
+    <Reference Include="websocket-sharp, Version=1.0.2.19624, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assets\UnityGC\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
