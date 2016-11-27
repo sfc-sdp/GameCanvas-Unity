@@ -1,11 +1,12 @@
-﻿/**
- * GameCanvas for Unity [Post Build Process]
- * 
- * Copyright (c) 2015-2016 Seibe TAKAHASHI
- * 
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- */
+﻿/*------------------------------------------------------------*/
+/// <summary>GameCanvas for Unity [Post Process Build]</summary>
+/// <author>Seibe TAKAHASHI</author>
+/// <remarks>
+/// (c) 2015-2016 Smart Device Programming.
+/// This software is released under the MIT License.
+/// http://opensource.org/licenses/mit-license.php
+/// </remarks>
+/*------------------------------------------------------------*/
 using UnityEditor;
 using UnityEditor.Callbacks;
 using System.IO;

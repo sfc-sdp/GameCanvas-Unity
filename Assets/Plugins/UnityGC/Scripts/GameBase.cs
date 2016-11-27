@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*------------------------------------------------------------*/
+/// <summary>GameGanvas Base Class</summary>
+/// <author>Seibe TAKAHASHI</author>
+/// <remarks>
+/// (c) 2015-2016 Smart Device Programming.
+/// This software is released under the MIT License.
+/// http://opensource.org/licenses/mit-license.php
+/// </remarks>
+/*------------------------------------------------------------*/
+using UnityEngine;
 
 namespace GameCanvas
 {

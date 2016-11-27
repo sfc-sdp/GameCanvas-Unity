@@ -1,11 +1,12 @@
-﻿/**
- * GameCanvas for Unity [GameCanvas Env]
- * 
- * Copyright (c) 2015-2016 Seibe TAKAHASHI
- * 
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- */
+﻿/*------------------------------------------------------------*/
+/// <summary>GameCanvas for Unity [Env]</summary>
+/// <author>Seibe TAKAHASHI</author>
+/// <remarks>
+/// (c) 2015-2016 Smart Device Programming.
+/// This software is released under the MIT License.
+/// http://opensource.org/licenses/mit-license.php
+/// </remarks>
+/*------------------------------------------------------------*/
 
 namespace GameCanvas
 {
@@ -17,12 +18,12 @@ namespace GameCanvas
         /// <summary>
         /// GameCanvas のバージョン情報
         /// </summary>
-        public const string Version = "v1.0.6";
+        public const string Version = "v1.1.0";
 
         /// <summary>
         /// GameCanvas API のバージョン情報
         /// </summary>
-        public const string APIVersion = "v1.0";
+        public const string APIVersion = "v1.1";
 
         /// <summary>
         /// GameCanvas の著作権表記

@@ -1,11 +1,12 @@
-﻿/**
- * GameCanvas for Unity
- * 
- * Copyright (c) 2015-2016 Seibe TAKAHASHI
- * 
- * This software is released under the MIT License.
- * http://opensource.org/licenses/mit-license.php
- */
+﻿/*------------------------------------------------------------*/
+/// <summary>GameCanvas for Unity</summary>
+/// <author>Seibe TAKAHASHI</author>
+/// <remarks>
+/// (c) 2015-2016 Smart Device Programming.
+/// This software is released under the MIT License.
+/// http://opensource.org/licenses/mit-license.php
+/// </remarks>
+/*------------------------------------------------------------*/
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace GameCanvas
     [DisallowMultipleComponent()]
     public class GameCanvas : SingletonMonoBehaviour<GameCanvas>
     {
-        /* ---------------------------------------------------------------------------------------------------- */
+        /*------------------------------------------------------------*/
 
         #region UnityGC：構造体・定数
 
@@ -46,7 +47,7 @@ namespace GameCanvas
             Circle, FilledCircle, Rect, FilledRect, Image, String
         }
 
-        private struct DrawInfo
+        private class DrawInfo
         {
             public DrawInfo(DrawType type, Matrix4x4 matrix, Color color, float lineWidthX, float lineWidthY)
             {
@@ -61,19 +62,21 @@ namespace GameCanvas
                 imageId  = 0;
                 clip     = zeroVector;
                 charList = null;
+                texture   = null;
             }
 
-            public DrawInfo(int imageId, Matrix4x4 matrix, Vector4 clip)
+            public DrawInfo(Texture texture, Matrix4x4 matrix, Vector4 clip)
             {
-                this.matrix  = matrix;
-                this.imageId = imageId;
-                this.clip    = clip;
+                this.texture = texture;
+                this.matrix = matrix;
+                this.clip = clip;
 
-                type       = DrawType.Image;
-                color      = zeroColor;
+                type = DrawType.Image;
+                color = zeroColor;
+                imageId = 0;
                 lineWidthX = 0;
                 lineWidthY = 0;
-                charList   = null;
+                charList = null;
             }
 
             public DrawInfo(List<float> charList, Matrix4x4 matrix, Color color)
@@ -87,6 +90,7 @@ namespace GameCanvas
                 lineWidthY = 0;
                 imageId    = 0;
                 clip       = zeroVector;
+                texture     = null;
             }
 
             public DrawType     type;
@@ -97,6 +101,7 @@ namespace GameCanvas
             public int          imageId;
             public Vector4      clip;
             public List<float>  charList;
+            public Texture      texture;
         }
 
         #endregion
@@ -121,8 +126,12 @@ namespace GameCanvas
         private List<Texture2D> _imageList          = null;         // 認識済みの画像：データ配列
         private int         _numSound               = 0;            // 認識済みの音源：数量
         private List<AudioClip> _soundList          = null;         // 認識済みの音源：データ配列
+        
+        private WebCamTexture _cameraTexture        = null;         // 映像入力
 
         private SerializableDictionary<string, string> _save = null;// セーブデータ
+
+        private Dictionary<string, object> _webCache = null;        // ネットワークリソースキャッシュ
 
         private WebSocket   _ws                     = null;         // WebSocket
 
@@ -180,7 +189,7 @@ namespace GameCanvas
         #endregion
 
 
-        /* ---------------------------------------------------------------------------------------------------- */
+        /*------------------------------------------------------------*/
 
         #region Unity：イベント関数
 
@@ -289,6 +298,9 @@ namespace GameCanvas
             // 外部画像・音源データの読み込み
             _isLoaded = false;
             base.StartCoroutine(LoadResourceAll());
+
+            // WebCacheの用意
+            _webCache = new Dictionary<string, object>();
         }
 
         private IEnumerator LoadResourceAll()
@@ -455,9 +467,9 @@ namespace GameCanvas
         {
             if (info.type != DrawType.Image) Debug.LogAssertion("`info.type == DrawType.Image` failed");
 
-            _materialDrawImage.SetTexture(_matPropImageTex, _imageList[info.imageId]);
-            _materialDrawImage.SetMatrix (_matPropMatrix  , info.matrix             );
-            _materialDrawImage.SetVector (_matPropClip    , info.clip               );
+            _materialDrawImage.SetTexture(_matPropImageTex, info.texture);
+            _materialDrawImage.SetMatrix (_matPropMatrix  , info.matrix );
+            _materialDrawImage.SetVector (_matPropClip    , info.clip   );
 
             var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
             Graphics.Blit(_canvasRender, temp);
@@ -481,7 +493,7 @@ namespace GameCanvas
             Graphics.Blit(temp, _canvasRender, _materialDrawString);
             RenderTexture.ReleaseTemporary(temp);
         }
-        
+
         private void UpdateTouches()
         {
             // 初期化
@@ -617,7 +629,7 @@ namespace GameCanvas
         #endregion
 
 
-        /* ---------------------------------------------------------------------------------------------------- */
+        /*------------------------------------------------------------*/
 
         #region UnityGC：グラフィックAPI (基本図形)
 
@@ -907,7 +919,7 @@ namespace GameCanvas
             }
 
             var clip = new Vector4(clipLeft, clipTop, clipRight, clipBottom);
-            _drawQueue.Enqueue(new DrawInfo(id, mat.inverse, clip));
+            _drawQueue.Enqueue(new DrawInfo(_imageList[id], mat.inverse, clip));
         }
 
         /// <summary>
@@ -1090,6 +1102,196 @@ namespace GameCanvas
             Graphics.Blit(temp, _canvasRender, _materialDrawString);
             RenderTexture.ReleaseTemporary(temp);
             */
+        }
+
+        #endregion
+
+        #region UnityGC：グラフィックAPI (カメラ映像)
+        
+        /// <summary>
+        /// カメラ映像の画素数（横幅）
+        /// </summary>
+        public int cameraImageWidth
+        {
+            get { return _cameraTexture == null ? 0 : _cameraTexture.width; }
+        }
+
+        /// <summary>
+        /// カメラ映像の画素数（高さ）
+        /// </summary>
+        public int cameraImageHeight
+        {
+            get { return _cameraTexture == null ? 0 : _cameraTexture.height; }
+        }
+
+        /// <summary>
+        /// カメラ映像入力を有効にします
+        /// </summary>
+        /// <param name="isFrontFacing">前面カメラを優先するかどうか</param>
+        /// <param name="requestedWidth">カメラ映像の要求画素数（幅）</param>
+        /// <param name="requestedHeight">カメラ映像の要求画素数（高さ）</param>
+        /// <param name="requestedFPS">カメラ映像の要求フレームレート</param>
+        public void StartCameraService(bool isFrontFacing = false, int requestedWidth = 320, int requestedHeight = 240, int requestedFPS = 30)
+        {
+            var devices = WebCamTexture.devices;
+            if (devices.Length == 0)
+            {
+                Debug.LogWarning("カメラ映像入力を検出できません");
+                return;
+            }
+
+            var targetDeviceName = devices[0].name;
+            foreach (var device in devices)
+            {
+                if (device.isFrontFacing == isFrontFacing)
+                {
+                    targetDeviceName = device.name;
+                    break;
+                }
+            }
+
+            _cameraTexture = new WebCamTexture(targetDeviceName, requestedWidth, requestedHeight, requestedFPS);
+            if (_cameraTexture == null)
+            {
+                Debug.LogWarning("要求されたカメラ映像が見つかりません");
+                return;
+            }
+
+            _cameraTexture.Play();
+        }
+
+        /// <summary>
+        /// カメラ映像入力を無効にします
+        /// </summary>
+        public void StopCameraService()
+        {
+            _cameraTexture.Stop();
+            _cameraTexture = null;
+        }
+
+        /// <summary>
+        /// カメラ映像を描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        public void DrawCameraImage(float x, float y)
+        {
+            DrawCameraImageSRT(x, y, 1f, 1f, 0f);
+        }
+
+        /// <summary>
+        /// カメラ映像を一部分を切り取って描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="clipTop">画像上側の切り取る縦幅</param>
+        /// <param name="clipRight">画像右側の切り取る横幅</param>
+        /// <param name="clipBottom">画像下側の切り取る縦幅</param>
+        /// <param name="clipLeft">画像左側の切り取る横幅</param>
+        public void DrawClippedCameraImage(float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft)
+        {
+            DrawClippedCameraImageSRT(x, y, clipTop, clipRight, clipBottom, clipLeft, 1f, 1f, 0f);
+        }
+
+        /// <summary>
+        /// カメラ映像を大きさを変えて描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="scaleH">横の拡縮率</param>
+        /// <param name="scaleV">縦の拡縮率</param>
+        public void DrawScaledCameraImage(float x, float y, float scaleH, float scaleV)
+        {
+            DrawCameraImageSRT(x, y, scaleH, scaleV, 0f);
+        }
+
+        /// <summary>
+        /// カメラ映像を回転させて描画します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
+        public void DrawRotatedCameraImage(float x, float y, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            DrawCameraImageSRT(x, y, 1f, 1f, angle, rotationX, rotationY);
+        }
+
+        /// <summary>
+        /// カメラ映像を位置・拡縮率・回転角度を指定して描画します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="scaleH">縦の拡縮率</param>
+        /// <param name="scaleV">横の拡縮率</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
+        public void DrawCameraImageSRT(float x, float y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            DrawClippedCameraImageSRT(x, y, 0, 0, 0, 0, scaleH, scaleV, angle, rotationX, rotationY);
+        }
+
+
+        /// <summary>
+        /// カメラ映像の一部分を切り取り、位置・拡縮率・回転角度を指定して描画します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="clipTop">画像上側の切り取る縦幅</param>
+        /// <param name="clipRight">画像右側の切り取る横幅</param>
+        /// <param name="clipBottom">画像下側の切り取る縦幅</param>
+        /// <param name="clipLeft">画像左側の切り取る横幅</param>
+        /// <param name="scaleH">縦の拡縮率</param>
+        /// <param name="scaleV">横の拡縮率</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
+        public void DrawClippedCameraImageSRT(float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            if (_cameraTexture == null)
+            {
+                Debug.LogWarning("カメラ映像入力が無効です");
+                return;
+            }
+
+            if (clipLeft < 0 || clipTop < 0 || clipRight < 0 || clipBottom < 0)
+            {
+                // 負の切り取り幅は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            if (scaleH == 0 || scaleV == 0)
+            {
+                // ゼロの拡縮率は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            if (x >= _canvasWidth || y >= _canvasHeight)
+            {
+                // 描画範囲外である
+                return;
+            }
+
+            Matrix4x4 mat;
+            if (rotationX == 0 && rotationY == 0)
+            {
+                mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.AngleAxis(angle, Vector3.forward), new Vector3(scaleH, scaleV, 1f));
+            }
+            else
+            {
+                mat = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.AngleAxis(angle, Vector3.forward), Vector3.one);
+                mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(scaleH, scaleV, 1f));
+            }
+
+            var clip = new Vector4(clipLeft, clipTop, clipRight, clipBottom);
+            _drawQueue.Enqueue(new DrawInfo(_cameraTexture, mat.inverse, clip));
         }
 
         #endregion
@@ -1711,6 +1913,183 @@ namespace GameCanvas
 
         #endregion
 
+        #region UnityGC：ネットワークAPI (HTTP Download)
+
+        /// <summary>
+        /// ネットワーク上のテキストを取得します
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public string GetTextFromNet(string url)
+        {
+            if (_webCache.ContainsKey(url))
+            {
+                return _webCache[url] as string;
+            }
+
+            var www = new WWW(url);
+            while (!www.isDone) { }
+            _webCache.Add(url, www.text);
+            return www.text;
+        }
+
+        /// <summary>
+        /// ネットワーク上の画像を取得し描画します
+        /// </summary>
+        /// <param name="url">画像のURL</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        public void DrawImageFromNet(string url, float x, float y)
+        {
+            DrawClippedImageSRTFromNet(url, x, y, 0, 0, 0, 0, 1, 1, 0);
+        }
+
+        /// <summary>
+        /// ネットワーク上の画像を取得し一部分を切り取って描画します
+        /// </summary>
+        /// <param name="url">画像のURL</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="clipTop">画像上側の切り取る縦幅</param>
+        /// <param name="clipRight">画像右側の切り取る横幅</param>
+        /// <param name="clipBottom">画像下側の切り取る縦幅</param>
+        /// <param name="clipLeft">画像左側の切り取る横幅</param>
+        public void DrawClippedImageFromNet(string url, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft)
+        {
+            DrawClippedImageSRTFromNet(url, x, y, clipTop, clipRight, clipBottom, clipLeft, 1f, 1f, 0f);
+        }
+
+        /// <summary>
+        /// ネットワーク上の画像を取得し大きさを変えて描画します
+        /// </summary>
+        /// <param name="url">画像のURL</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="scaleH">横の拡縮率</param>
+        /// <param name="scaleV">縦の拡縮率</param>
+        public void DrawScaledImageFromNet(string url, float x, float y, float scaleH, float scaleV)
+        {
+            DrawImageSRTFromNet(url, x, y, scaleH, scaleV, 0f);
+        }
+
+        /// <summary>
+        /// ネットワーク上の画像を取得し回転させて描画します
+        /// </summary>
+        /// <param name="url">画像のURL</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
+        public void DrawRotatedImageFromNet(string url, float x, float y, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            DrawImageSRTFromNet(url, x, y, 1f, 1f, angle, rotationX, rotationY);
+        }
+
+        /// <summary>
+        /// ネットワーク上の画像を取得し位置・拡縮率・回転角度を指定して描画します
+        /// </summary>
+        /// <param name="url">画像のURL</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="scaleH">縦の拡縮率</param>
+        /// <param name="scaleV">横の拡縮率</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
+        public void DrawImageSRTFromNet(string url, float x, float y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            DrawClippedImageSRTFromNet(url, x, y, 0, 0, 0, 0, scaleH, scaleV, angle, rotationX, rotationY);
+        }
+
+        /// <summary>
+        /// ネットワーク上の画像取得し、一部分を切り取りながら位置・拡縮率・回転角度を指定して描画します
+        /// </summary>
+        /// <param name="url">画像のURL</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="clipTop">画像上側の切り取る縦幅</param>
+        /// <param name="clipRight">画像右側の切り取る横幅</param>
+        /// <param name="clipBottom">画像下側の切り取る縦幅</param>
+        /// <param name="clipLeft">画像左側の切り取る横幅</param>
+        /// <param name="scaleH">縦の拡縮率</param>
+        /// <param name="scaleV">横の拡縮率</param>
+        /// <param name="angle">回転角度 (度数法)</param>
+        /// <param name="rotationX">画像左上を原点としたときの回転の中心位置X</param>
+        /// <param name="rotationY">画像左上を原点としたときの回転の中心位置Y</param>
+        public void DrawClippedImageSRTFromNet(string url, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
+        {
+            if (url == null || url.IndexOf("http") != 0)
+            {
+                Debug.LogWarning("無効なURLです");
+                return;
+            }
+
+            if (!_webCache.ContainsKey(url))
+            {
+                // ダウンロード
+                _webCache.Add(url, null);
+                base.StartCoroutine(DownloadWebImage(url));
+                return;
+            }
+
+            if (_webCache[url] == null)
+            {
+                // ダウンロード完了待ち
+                return;
+            }
+
+            if (clipLeft < 0 || clipTop < 0 || clipRight < 0 || clipBottom < 0)
+            {
+                // 負の切り取り幅は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            if (scaleH == 0 || scaleV == 0)
+            {
+                // ゼロの拡縮率は許容しない
+                Debug.LogWarning("引数の値が不正です");
+                return;
+            }
+
+            if (x >= _canvasWidth || y >= _canvasHeight)
+            {
+                // 描画範囲外である
+                return;
+            }
+
+            var texture = _webCache[url] as Texture;
+            if (texture == null)
+            {
+                return;
+            }
+
+            Matrix4x4 mat;
+            if (rotationX == 0 && rotationY == 0)
+            {
+                mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.AngleAxis(angle, Vector3.forward), new Vector3(scaleH, scaleV, 1f));
+            }
+            else
+            {
+                mat = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.AngleAxis(angle, Vector3.forward), Vector3.one);
+                mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(scaleH, scaleV, 1f));
+            }
+
+            var clip = new Vector4(clipLeft, clipTop, clipRight, clipBottom);
+            _drawQueue.Enqueue(new DrawInfo(texture, mat.inverse, clip));
+        }
+        
+        private IEnumerator DownloadWebImage(string url)
+        {
+            var www = new WWW(url);
+            yield return www;
+
+            _webCache[url] = www.texture;
+        }
+
+        #endregion
+
         #region UnityGC：ネットワークAPI (WebSocket)
 
         /// <summary>
@@ -2309,7 +2688,7 @@ namespace GameCanvas
         #endregion
 
 
-        /* ---------------------------------------------------------------------------------------------------- */
+        /*------------------------------------------------------------*/
 
         #region UnityJava後方互換：定数
 
@@ -2745,7 +3124,7 @@ namespace GameCanvas
         #endregion
 
 
-        /* ---------------------------------------------------------------------------------------------------- */
+        /*------------------------------------------------------------*/
 
         #region 継承元メンバーへのアクセス無効化措置
         // 親クラスのメンバーへのアクセスを無効化する

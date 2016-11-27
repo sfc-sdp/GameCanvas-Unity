@@ -1,18 +1,19 @@
 fileFormatVersion: 2
-guid: b9ed469e632e2764db791de396d8022f
-timeCreated: 1474708230
+guid: 165be8fa568786c4e979cce443a00598
+timeCreated: 1480244514
 licenseType: Free
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
-  executionOrder: {}
+  executionOrder:
+    GameCanvas.GameCanvas: -100
   isPreloaded: 0
   platformData:
     Any:
-      enabled: 0
+      enabled: 1
       settings: {}
     Editor:
-      enabled: 1
+      enabled: 0
       settings:
         DefaultValueInitialized: true
     WindowsStoreApps:
