@@ -1014,6 +1014,11 @@ namespace GameCanvas
         /// <param name="str">文字列 (最長128文字)</param>
         public void DrawString(float x, float y, string str)
         {
+            if (string.IsNullOrEmpty(str))
+            {
+                return;
+            }
+
             var strlen = Mathf.Min(str.Length, MAX_STRING_ARRAY);
             var charList = new List<float>(strlen);
 

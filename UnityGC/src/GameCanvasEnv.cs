@@ -18,7 +18,7 @@ namespace GameCanvas
         /// <summary>
         /// GameCanvas のバージョン情報
         /// </summary>
-        public const string Version = "v1.1.1";
+        public const string Version = "v1.1.2";
 
         /// <summary>
         /// GameCanvas API のバージョン情報
