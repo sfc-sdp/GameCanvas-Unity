@@ -595,12 +595,23 @@
             戻るボタンが押されたかどうか (Androidのみ)
             </summary>
         </member>
+        <member name="M:GameCanvas.GameCanvas.ClearDownloadCache">
+            <summary>
+            ネットワークキャッシュをクリアします
+            </summary>
+        </member>
         <member name="M:GameCanvas.GameCanvas.GetTextFromNet(System.String)">
             <summary>
-            ネットワーク上のテキストを取得します
+            ネットワーク上のテキストを取得します（同期処理）
             </summary>
-            <param name="url"></param>
-            <returns></returns>
+            <param name="url">URL</param>
+        </member>
+        <member name="M:GameCanvas.GameCanvas.GetTextFromNetAsync(System.String,System.Action{System.String})">
+            <summary>
+            ネットワーク上のテキストを取得します（非同期処理）
+            </summary>
+            <param name="url">URL</param>
+            <param name="callback">コールバック</param>
         </member>
         <member name="M:GameCanvas.GameCanvas.DrawImageFromNet(System.String,System.Single,System.Single)">
             <summary>

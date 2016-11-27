@@ -1916,10 +1916,17 @@ namespace GameCanvas
         #region UnityGC：ネットワークAPI (HTTP Download)
 
         /// <summary>
-        /// ネットワーク上のテキストを取得します
+        /// ネットワークキャッシュをクリアします
         /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
+        public void ClearDownloadCache()
+        {
+            _webCache.Clear();
+        }
+
+        /// <summary>
+        /// ネットワーク上のテキストを取得します（同期処理）
+        /// </summary>
+        /// <param name="url">URL</param>
         public string GetTextFromNet(string url)
         {
             if (_webCache.ContainsKey(url))
@@ -1931,6 +1938,17 @@ namespace GameCanvas
             while (!www.isDone) { }
             _webCache.Add(url, www.text);
             return www.text;
+        }
+
+        /// <summary>
+        /// ネットワーク上のテキストを取得します（非同期処理）
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <param name="callback">コールバック</param>
+        public void GetTextFromNetAsync(string url, Action<string> callback)
+        {
+            _webCache.Add(url, null);
+            base.StartCoroutine(DownloadWebText(url, callback));
         }
 
         /// <summary>
@@ -2080,6 +2098,23 @@ namespace GameCanvas
             _drawQueue.Enqueue(new DrawInfo(texture, mat.inverse, clip));
         }
         
+        private IEnumerator DownloadWebText(string url, Action<string> callback)
+        {
+            if (_webCache.ContainsKey(url))
+            {
+                callback(_webCache[url] as string);
+                yield return null;
+            }
+            else
+            {
+                var www = new WWW(url);
+                yield return www;
+
+                _webCache[url] = www.text;
+                callback(www.text);
+            }
+        }
+
         private IEnumerator DownloadWebImage(string url)
         {
             var www = new WWW(url);
