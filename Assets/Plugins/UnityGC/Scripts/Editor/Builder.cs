@@ -122,6 +122,7 @@ namespace GameCanvas.Editor
             EditorUserBuildSettings.development     = option.isDevelopment;
             if (option.target == BuildTarget.Android)
             {
+#if UNITY_ANDROID
                 if (Path.GetExtension(option.outFilePath) != "apk")
                 {
                     option.outFilePath += ".apk";
@@ -136,15 +137,25 @@ namespace GameCanvas.Editor
                 {
                     File.Move(option.outFilePath, option.outFilePath.Remove(option.outFilePath.Length - 4) + "." + File.GetLastWriteTime(option.outFilePath).ToString("MMddHHmmss") + ".apk");
                 }
+#else
+                return;
+#endif
             }
             if (option.target == BuildTarget.iOS)
             {
+#if !UNITY_IOS
+#if UNITY_5_4_2 || UNITY_5_4_3
                 PlayerSettings.iOS.cameraUsageDescription     = "For education";
                 PlayerSettings.iOS.locationUsageDescription   = "For education";
                 PlayerSettings.iOS.microphoneUsageDescription = "For education";
+                PlayerSettings.iOS.allowHTTPDownload = true;
+#endif
                 PlayerSettings.iOS.sdkVersion = option.iOSSdkVersion;
                 PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
                 PlayerSettings.iOS.targetOSVersion = iOSTargetOSVersion.Unknown;
+#else
+                return;
+#endif
             }
 
             // ビルドを実行する
