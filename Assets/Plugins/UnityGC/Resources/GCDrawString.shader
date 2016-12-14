@@ -17,8 +17,8 @@
 			half4 _MainTex_TexelSize, _CharTex_TexelSize;
 			fixed4 _Color;
 			float4x4 _Matrix;
-			half _TextLength;
-			half _Text[128];
+			fixed _TextLength;
+			float _Text[128];
 
 			fixed4 frag(v2f_img i) : COLOR
 			{
@@ -28,12 +28,10 @@
 				if (pa.x >= 0 && pa.x <= 10 * _TextLength && pa.y >= 0 && pa.y <= 11)
 				{
 					float index = floor(pa.x * 0.1);
-					float n = _Text[index];
+					float n = _Text[index] + 0.0001;
 
-					float sx = floor(pa.x - 10 * index);
-					float sy = floor(pa.y);
-					float py = 11 * floor(n * 0.04) + pa.y;
-					float px = 10 * fmod(n, 25) + (pa.x - 10 * index);
+					float py = 11.0 * floor(n * 0.04) + pa.y;
+					float px = 10.0 * fmod(n, 25) + (pa.x - 10.0 * index);
 					float2 uv = float2(px * _CharTex_TexelSize.x, 1 - py * _CharTex_TexelSize.y);
 
 					if (tex2D(_CharTex, uv).r != 0)
