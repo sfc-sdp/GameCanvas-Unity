@@ -1,7 +1,7 @@
 ﻿Shader "Custom/GameCanvas/Draw" {
     Properties{
         _MainTex ("キャンバス", 2D) = "white" {}
-        _DrawCalls ("描画命令数 (最多64)", Float) = 0
+        _DrawCalls ("描画命令数 (最多24)", Float) = 0
     }
     SubShader {
         Pass {
@@ -13,12 +13,12 @@
 
             sampler2D _MainTex;         // キャンバス
             half4 _MainTex_TexelSize;   // キャンバス情報
-            fixed     _DrawCalls;       // 描画命令数 (最多64)
+            fixed     _DrawCalls;       // 描画命令数 (最多24)
 
-            fixed     _Type[64];        // 描画種別 (0: 中抜き円, 1: 円塗り, 2: 中抜き矩形, 3: 矩形塗り)
-            fixed4    _Color[64];       // 基本描画色
-            float4x4  _Matrix[64];      // マトリックス
-            float     _LineWidth[64*2]; // 線の幅 (中抜きのみ)
+            fixed     _Type[24];        // 描画種別 (0: 中抜き円, 1: 円塗り, 2: 中抜き矩形, 3: 矩形塗り)
+            fixed4    _Color[24];       // 基本描画色
+            float4x4  _Matrix[24];      // マトリックス
+            float     _LineWidth[24*2]; // 線の幅 (中抜きのみ)
 
             fixed4 frag(v2f_img img) : COLOR
             {
@@ -51,9 +51,10 @@
                     else if (_Type[i] == 2)
                     {
                         // 中抜き矩形
-                        float2 lineWidth = float2(_LineWidth[i * 2], _LineWidth[i * 2 + 1]) * 0.5;
-                        if (( (abs(scaledXY.x) <= lineWidth.x || abs(scaledXY.x - 1) <= lineWidth.x) && scaledXY.y + lineWidth.y >= 0.0 && scaledXY.y - lineWidth.y <= 1.0 ) ||
-                            ( (abs(scaledXY.y) <= lineWidth.y || abs(scaledXY.y - 1) <= lineWidth.y) && scaledXY.x + lineWidth.x >= 0.0 && scaledXY.x - lineWidth.x <= 1.0) )
+                        float lineWidthX = _LineWidth[i * 2] * 0.5;
+                        float lineWidthY = _LineWidth[i * 2 + 1] * 0.5;
+                        if (( (abs(scaledXY.x) <= lineWidthX || abs(scaledXY.x - 1) <= lineWidthX) && scaledXY.y + lineWidthY >= 0.0 && scaledXY.y - lineWidthY <= 1.0 ) ||
+                            ( (abs(scaledXY.y) <= lineWidthY || abs(scaledXY.y - 1) <= lineWidthY) && scaledXY.x + lineWidthX >= 0.0 && scaledXY.x - lineWidthX <= 1.0) )
                         {
                             ret = fixed4(lerp(ret.rgb, _Color[i].rgb, _Color[i].a), 1);
                         }

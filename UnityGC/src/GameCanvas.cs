@@ -36,7 +36,7 @@ namespace GameCanvas
 
         #region UnityGC：構造体・定数
 
-        private const int MAX_GRAPHIC_ARRAY = 64;
+        private const int MAX_GRAPHIC_ARRAY = 24;
         private const int MAX_STRING_ARRAY = 128;
 
         private static readonly Vector4 zeroVector = Vector4.zero;
@@ -1095,18 +1095,6 @@ namespace GameCanvas
             var mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.identity, new Vector3(scale, scale, 1f));
 
             _drawQueue.Enqueue(new DrawInfo(charList, mat.inverse, _palletColor));
-
-            /*
-            _materialDrawString.SetColor("_Color", _palletColor);
-            _materialDrawString.SetMatrix("_Matrix", mat.inverse);
-            _materialDrawString.SetFloat("_TextLength", strlen);
-            _materialDrawString.SetFloatArray("_Text", charList.ToArray());
-
-            var temp = RenderTexture.GetTemporary(_canvasWidth, _canvasHeight, 0);
-            Graphics.Blit(_canvasRender, temp);
-            Graphics.Blit(temp, _canvasRender, _materialDrawString);
-            RenderTexture.ReleaseTemporary(temp);
-            */
         }
 
         #endregion
