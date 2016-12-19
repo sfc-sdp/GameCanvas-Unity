@@ -95,6 +95,26 @@ namespace GameCanvas.Editor
         }
 
         /// <summary>
+        /// アプリケーションをiOS向けにビルドします
+        /// </summary>
+        public static void DebugBuildXcodeProj()
+        {
+            var option = new Option(BuildTarget.iOS, true);
+            OverrideOptionByCommandLine(ref option);
+            Run(option);
+        }
+
+        /// <summary>
+        /// アプリケーションをiOS向けにビルドします
+        /// </summary>
+        public static void BuildXcodeProj()
+        {
+            var option = new Option(BuildTarget.iOS);
+            OverrideOptionByCommandLine(ref option);
+            Run(option);
+        }
+
+        /// <summary>
         /// ビルドを実行する
         /// </summary>
         /// <param name="option">ビルドオプション</param>
@@ -143,7 +163,7 @@ namespace GameCanvas.Editor
             }
             if (option.target == BuildTarget.iOS)
             {
-#if !UNITY_IOS
+#if UNITY_IOS
 #if UNITY_5_4_2 || UNITY_5_4_3
                 PlayerSettings.iOS.cameraUsageDescription     = "For education";
                 PlayerSettings.iOS.locationUsageDescription   = "For education";
