@@ -18,7 +18,13 @@ namespace GameCanvas.Editor
     /// </summary>
     public class Menu
     {
-        [MenuItem("GameCanvas/Game.cs をクリップボードにコピー", false, 100)]
+        [MenuItem("GameCanvas/アプリをビルドする", false, 100)]
+        static void OpenBuilder()
+        {
+            BuildWindow.Open();
+        }
+
+        [MenuItem("GameCanvas/Game.cs をクリップボードにコピー", false, 200)]
         static void CopyScript()
         {
             var targetPath = Path.Combine(Application.dataPath, "Scripts/Game.cs");
@@ -33,7 +39,7 @@ namespace GameCanvas.Editor
             Debug.Log("クリップボードに Game.cs の内容をコピーしました");
         }
 
-        [MenuItem("GameCanvas/UnityPackage の書き出し", false, 101)]
+        [MenuItem("GameCanvas/UnityPackage の書き出し", false, 201)]
         static void ExportUnityPackage()
         {
             EditorApplication.ExecuteMenuItem("Assets/Export Package...");
