@@ -1,4 +1,4 @@
-[![v1.1.4](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v1.1](https://img.shields.io/badge/GameCanvas%20API-v1.1-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/doc/class_game_canvas_1_1_game_canvas.html)
+[![v1.2.0](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v1.2](https://img.shields.io/badge/GameCanvas%20API-v1.2-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html)
 [<img alt="GameCanvas" align="right" src="Assets/Plugins/UnityGC/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
@@ -18,7 +18,7 @@
 iOS や Android への書き出しなど、より詳しい解説は、[スマートデバイスプログラミング 講義ページ](http://web.sfc.keio.ac.jp/~wadari/sdp/) を参照してください
 
 ## API ドキュメント
-最新の仕様は [GameCanvas for Unity API ドキュメント](https://sfc-sdp.github.io/GameCanvas-Unity/doc/class_game_canvas_1_1_game_canvas.html) で確認できます
+最新の仕様は [GameCanvas for Unity API ドキュメント](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html) で確認できます
 
 ## 質問・バグ報告
 GameCanvasに対する質問やバグ報告は [![Issues](https://img.shields.io/github/issues/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/issues) で受け付けています

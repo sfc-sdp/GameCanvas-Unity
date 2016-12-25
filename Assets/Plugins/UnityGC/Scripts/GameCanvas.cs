@@ -16,6 +16,9 @@ namespace GameCanvas
     using TransformList = System.Collections.Generic.List<Transform>;
     using StringHash = System.Collections.Generic.Dictionary<string, object>;
 
+    /// <summary>
+    /// GameCanvas 本体
+    /// </summary>
     public class GameCanvas
     {
         #region Singleton
@@ -71,7 +74,6 @@ namespace GameCanvas
         private const int   cCircleResolution       = 24;
         private readonly int cShaderClip;
         private readonly int cShaderMainTex;
-        private readonly int cShaderMainTexST;
         private readonly Vector2[] cCirclePoints;
         private static readonly Vector2 cVec2Zero   = Vector2.zero;
         private static readonly Vector2 cVec2One    = Vector2.one;
@@ -231,7 +233,6 @@ namespace GameCanvas
                 mSpriteTransforms = new TransformList(cInitSpriteSize);
                 cShaderClip = Shader.PropertyToID("_Clip");
                 cShaderMainTex = Shader.PropertyToID("_MainTex");
-                cShaderMainTexST = Shader.PropertyToID("_MainTex_ST");
 
                 mLineIndex = 0;
                 mLines = new LineRendererList(cInitLineSize);
