@@ -42,7 +42,7 @@ public class LocationExample : GameBase
             "http://maps.googleapis.com/maps/api/staticmap?center={0},{1}&zoom=15&format=png&sensor=false&size={2}x{3}&maptype=roadmap&markers={0},{1}",
             lat, lng, gc.screenWidth, gc.screenHeight
         );
-        gc.DrawImageFromNet(url, 0, 0);
+        gc.DrawOnlineImage(url, 0, 0);
         
         if (!gc.isLocationEnabled || !gc.isRunningLocaltionService)
         {

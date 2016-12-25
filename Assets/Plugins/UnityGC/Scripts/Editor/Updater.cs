@@ -37,6 +37,7 @@ namespace GameCanvas.Editor
             EditorUtility.DisplayDialog("Required Unity 5.4.3", "Unityのバージョンが古いです。5.4.3以降をインストールしてください", "OK");
 #else
             Debug.LogFormat("GameCanvas {0}", Env.Version);
+            AssetProcessor.RebuildAssetDatabase();
 #endif
         }
 

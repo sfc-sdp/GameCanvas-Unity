@@ -24,17 +24,14 @@ namespace GameCanvas
         
         private void Awake()
         {
-            gc = GameCanvas.Instance;
-            gc.ReadDataByStorage();
-
-            gc.SetOnStart(() => { enabled = true; });
             enabled = false;
+            gc = GameCanvas.CreateInstance();
+            gc.Regist(Ready, Calc, Draw);
         }
 
-        private void Update()
+        private void Ready()
         {
-            Calc();
-            Draw();
+            enabled = true;
         }
 
         /// <summary>

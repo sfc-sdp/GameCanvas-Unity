@@ -53,9 +53,20 @@ namespace GameCanvas
         /// <summary>
         /// 生成処理
         /// </summary>
-        protected void Awake()
+        protected virtual void Awake()
         {
             Validate();
+        }
+
+        /// <summary>
+        /// 破棄処理
+        /// </summary>
+        protected virtual void OnDestroy()
+        {
+            if (this == instance)
+            {
+                instance = null;
+            }
         }
 
         /// <summary>

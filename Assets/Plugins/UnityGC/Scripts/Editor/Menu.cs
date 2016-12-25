@@ -45,6 +45,13 @@ namespace GameCanvas.Editor
             EditorApplication.ExecuteMenuItem("Assets/Export Package...");
         }
 
+        [MenuItem("GameCanvas/アセットデータベースの強制更新", false, 202)]
+        static void ForceRebuildDatabase()
+        {
+            AssetProcessor.RebuildAssetDatabase();
+            AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
+        }
+
         [MenuItem("GameCanvas/About GameCanvas", false, 1000)]
         static void OpenAbout()
         {
