@@ -1058,11 +1058,18 @@ namespace GameCanvas
             }
 
             mLines[i].enabled = true;
+#if UNITY_5_4
             mLines[i].SetColors(color, color);
             mLines[i].SetWidth(lineWidth, lineWidth);
             mLines[i].SetVertexCount(verts.Length);
+#else
+            mLines[i].startColor = color;
+            mLines[i].endColor = color;
+            mLines[i].startWidth = lineWidth;
+            mLines[i].endWidth = lineWidth;
+            mLines[i].numPositions = verts.Length;
+#endif
             mLines[i].SetPositions(verts);
-
             if (angle == 0f || (rotationX == 0f && rotationY == 0f))
             {
                 var pos = mLineTransforms[i].position;
@@ -1126,7 +1133,14 @@ namespace GameCanvas
             renderer.receiveShadows = false;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             renderer.sharedMaterial = _assetDB.material;
+#if UNITY_5_4
+            renderer.motionVectors = false;
             renderer.SetColors(cColorWhite, cColorWhite);
+#else
+            renderer.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
+            renderer.startColor = cColorWhite;
+            renderer.endColor = cColorWhite;
+#endif
             renderer.useWorldSpace = false;
             mLines.Add(renderer);
             mLineTransforms.Add(obj.transform);

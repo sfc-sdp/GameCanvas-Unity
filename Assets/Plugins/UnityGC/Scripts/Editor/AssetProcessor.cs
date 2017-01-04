@@ -39,9 +39,33 @@ namespace GameCanvas.Editor
                 // インポートした画像をパッキングタグ付きスプライトにします
                 var importer = (TextureImporter)assetImporter;
                 importer.textureType = TextureImporterType.Sprite;
+#if UNITY_5_4
                 importer.textureFormat = TextureImporterFormat.AutomaticCompressed;
                 importer.SetPlatformTextureSettings("Android", 2048, TextureImporterFormat.ETC2_RGBA8, 80, true);
                 importer.SetPlatformTextureSettings("iPhone", 2048, TextureImporterFormat.PVRTC_RGBA4, 80, true);
+#else
+                importer.textureCompression = TextureImporterCompression.CompressedHQ;
+                importer.SetPlatformTextureSettings(new TextureImporterPlatformSettings()
+                {
+                    name = "Android",
+                    maxTextureSize = 2048,
+                    format = TextureImporterFormat.ETC2_RGBA8,
+                    compressionQuality = 80,
+                    textureCompression = TextureImporterCompression.CompressedHQ,
+                    allowsAlphaSplitting = true,
+                    overridden = true
+                });
+                importer.SetPlatformTextureSettings(new TextureImporterPlatformSettings()
+                {
+                    name = "iPhone",
+                    maxTextureSize = 2048,
+                    format = TextureImporterFormat.PVRTC_RGBA4,
+                    compressionQuality = 80,
+                    textureCompression = TextureImporterCompression.CompressedHQ,
+                    allowsAlphaSplitting = true,
+                    overridden = true
+                });
+#endif
                 importer.filterMode = FilterMode.Point;
                 importer.mipmapEnabled = false;
                 importer.spriteImportMode = SpriteImportMode.Single;
@@ -67,11 +91,37 @@ namespace GameCanvas.Editor
                 // インポートした画像をパッキングタグ付きスプライトにします
                 var importer = (TextureImporter)assetImporter;
                 importer.textureType = TextureImporterType.Sprite;
+#if UNITY_5_4
                 importer.textureFormat = TextureImporterFormat.AutomaticCompressed;
                 importer.SetPlatformTextureSettings("Android", 2048, TextureImporterFormat.ETC2_RGBA8, 80, true);
                 importer.SetPlatformTextureSettings("iPhone", 2048, TextureImporterFormat.PVRTC_RGBA4, 80, true);
+#else
+                importer.textureCompression = TextureImporterCompression.CompressedHQ;
+                importer.SetPlatformTextureSettings(new TextureImporterPlatformSettings()
+                {
+                    name = "Android",
+                    maxTextureSize = 2048,
+                    format = TextureImporterFormat.ETC2_RGBA8,
+                    compressionQuality = 80,
+                    textureCompression = TextureImporterCompression.CompressedHQ,
+                    allowsAlphaSplitting = true,
+                    overridden = true
+                });
+                importer.SetPlatformTextureSettings(new TextureImporterPlatformSettings()
+                {
+                    name = "iPhone",
+                    maxTextureSize = 2048,
+                    format = TextureImporterFormat.PVRTC_RGBA4,
+                    compressionQuality = 80,
+                    textureCompression = TextureImporterCompression.CompressedHQ,
+                    allowsAlphaSplitting = true,
+                    overridden = true
+                });
+#endif
                 importer.filterMode = FilterMode.Point;
                 importer.mipmapEnabled = false;
+                importer.spriteImportMode = path.Contains("Circle") ? SpriteImportMode.Polygon :
+                                            path.Contains("PixelMplus10") ? SpriteImportMode.Multiple : SpriteImportMode.Single;
                 importer.spritePackingTag = path.Contains("Dummy") ? string.Empty : PackingTag;
             }
         }
