@@ -2,7 +2,7 @@
 /// <summary>Singleton MonoBehaviour</summary>
 /// <author>Seibe TAKAHASHI</author>
 /// <remarks>
-/// (c) 2015-2016 Smart Device Programming.
+/// (c) 2015-2017 Smart Device Programming.
 /// This software is released under the MIT License.
 /// http://opensource.org/licenses/mit-license.php
 /// </remarks>

@@ -2,7 +2,7 @@
 # -------------------------------------------------
 # GameCanvas for Unity [iOS: Release Build]
 # 
-# Copyright (c) 2015-2016 Seibe TAKAHASHI
+# Copyright (c) 2015-2017 Seibe TAKAHASHI
 # This software is released under the MIT License.
 # http://opensource.org/licenses/mit-license.php
 # -------------------------------------------------

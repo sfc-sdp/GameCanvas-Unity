@@ -1,4 +1,4 @@
-[![v1.2.0](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v1.2](https://img.shields.io/badge/GameCanvas%20API-v1.2-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html)
+[![v1.2.1](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v1.2](https://img.shields.io/badge/GameCanvas%20API-v1.2-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html)
 [<img alt="GameCanvas" align="right" src="Assets/Plugins/UnityGC/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
@@ -24,6 +24,6 @@ iOS や Android への書き出しなど、より詳しい解説は、[スマー
 GameCanvasに対する質問やバグ報告は [![Issues](https://img.shields.io/github/issues/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/issues) で受け付けています
 
 ## ライセンス
-Copyright (c) 2015-2016 Smart Device Programming.
+Copyright (c) 2015-2017 Smart Device Programming.
 
 This software is released under the MIT License, see [LICENSE](LICENSE).

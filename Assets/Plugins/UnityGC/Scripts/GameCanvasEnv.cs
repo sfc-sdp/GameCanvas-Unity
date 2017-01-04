@@ -2,7 +2,7 @@
 /// <summary>GameCanvas for Unity [Env]</summary>
 /// <author>Seibe TAKAHASHI</author>
 /// <remarks>
-/// (c) 2015-2016 Smart Device Programming.
+/// (c) 2015-2017 Smart Device Programming.
 /// This software is released under the MIT License.
 /// http://opensource.org/licenses/mit-license.php
 /// </remarks>
@@ -28,7 +28,7 @@ namespace GameCanvas
         /// <summary>
         /// GameCanvas の著作権表記
         /// </summary>
-        public const string Copyright = "Copyright (c) 2015-2016 Smart Device Programming.";
+        public const string Copyright = "Copyright (c) 2015-2017 Smart Device Programming.";
 
         /// <summary>
         /// GameCanvas の制作者情報
