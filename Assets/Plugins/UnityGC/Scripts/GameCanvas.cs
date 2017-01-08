@@ -31,6 +31,7 @@ namespace GameCanvas
 
     using SDrawList = System.Collections.Generic.List<UnityEngine.SpriteRenderer>;
     using LDrawList = System.Collections.Generic.List<UnityEngine.LineRenderer>;
+    using BlockList = System.Collections.Generic.List<UnityEngine.MaterialPropertyBlock>;
     using TransList = System.Collections.Generic.List<UnityEngine.Transform>;
     using StringHash= System.Collections.Generic.Dictionary<string, object>;
     using SaveData  = SerializableDictionary<string, string>;
@@ -325,6 +326,7 @@ namespace GameCanvas
             {
                 _AddLine();
             }
+            mAssetDB.material.SetVector(cShaderClip, UVec4.zero);
 
             mIsLoaded = true;
             if (mStart != null) mStart();
@@ -532,7 +534,7 @@ namespace GameCanvas
         /// <param name="radius">半径</param>
         /// <param name="lineWidth">線の太さ</param>
         /// <param name="priority">描画優先度 (-128～127)</param>
-        public void DrawCircle(float x, float y, int radius, sbyte priority = 0)
+        public void DrawCircle(float x, float y, float radius, sbyte priority = 0)
         {
             if (radius <= 0f)
             {
@@ -709,7 +711,7 @@ namespace GameCanvas
         /// <param name="x">中心点のX座標</param>
         /// <param name="y">中心点のY座標</param>
         /// <param name="radius">半径</param>
-        public void FillCircle(float x, float y, int radius, sbyte priority = 0)
+        public void FillCircle(float x, float y, float radius, sbyte priority = 0)
         {
             if (radius <= 0f)
             {
@@ -795,7 +797,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            _DrawSprite(mAssetDB.images[id], mRendererColor, x, y, 1f, 1f, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
+            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, 1f, 1f, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
         }
 
         /// <summary>
@@ -910,7 +912,7 @@ namespace GameCanvas
                 return;
             }
 
-            _DrawSprite(mAssetDB.images[id], mRendererColor, x, y, scaleH, scaleV, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
+            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, scaleH, scaleV, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
         }
 
         /// <summary>
@@ -1087,10 +1089,10 @@ namespace GameCanvas
                 var w = sprite.rect.width;
                 var h = sprite.rect.height;
                 if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
-                var cl = (mCanvasBorder.x + x) * mCanvasScale;
-                var ct = (mCanvasBorder.y + y) * mCanvasScale;
-                var cr = (mCanvasBorder.x + x + w - clipLeft - clipRight) * mCanvasScale;
-                var cb = (mCanvasBorder.y + y + h - clipTop - clipBottom) * mCanvasScale;
+                var cl = (mCanvasBorder.x + x) / mCanvasScale;
+                var ct = (mCanvasBorder.y + y) / mCanvasScale;
+                var cr = (mCanvasBorder.x + x + w - clipRight) / mCanvasScale;
+                var cb = (mCanvasBorder.y + y + h - clipBottom) / mCanvasScale;
                 mSpriteBlock.SetVector(cShaderClip, new UVec4(cl, ct, cr, cb));
             }
             mSprites[i].SetPropertyBlock(mSpriteBlock);
