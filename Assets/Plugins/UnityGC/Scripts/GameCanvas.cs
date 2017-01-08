@@ -7,14 +7,34 @@
 /// http://opensource.org/licenses/mit-license.php
 /// </remarks>
 /*------------------------------------------------------------*/
-using UnityEngine;
 
 namespace GameCanvas
 {
-    using SpriteRendererList = System.Collections.Generic.List<SpriteRenderer>;
-    using LineRendererList = System.Collections.Generic.List<LineRenderer>;
-    using TransformList = System.Collections.Generic.List<Transform>;
-    using StringHash = System.Collections.Generic.Dictionary<string, object>;
+    using Function  = System.Action;
+    using WebSocket = WebSocketSharp.WebSocket;
+    using UObj      = UnityEngine.Object;
+    using UGameObj  = UnityEngine.GameObject;
+    using URect     = UnityEngine.Rect;
+    using UVec2     = UnityEngine.Vector2;
+    using UVec3     = UnityEngine.Vector3;
+    using UVec4     = UnityEngine.Vector4;
+    using UQuat     = UnityEngine.Quaternion;
+    using UMtrx     = UnityEngine.Matrix4x4;
+    using UColor    = UnityEngine.Color;
+    using UBlock    = UnityEngine.MaterialPropertyBlock;
+    using UTrans    = UnityEngine.Transform;
+    using UCamera   = UnityEngine.Camera;
+    using UAudio    = UnityEngine.AudioSource;
+    using USprite   = UnityEngine.Sprite;
+    using UCamTex   = UnityEngine.WebCamTexture;
+    using UDebug    = UnityEngine.Debug;
+
+    using SDrawList = System.Collections.Generic.List<UnityEngine.SpriteRenderer>;
+    using LDrawList = System.Collections.Generic.List<UnityEngine.LineRenderer>;
+    using TransList = System.Collections.Generic.List<UnityEngine.Transform>;
+    using StringHash= System.Collections.Generic.Dictionary<string, object>;
+    using SaveData  = SerializableDictionary<string, string>;
+    using GCAssetDB = GameCanvasAssetDB;
 
     /// <summary>
     /// GameCanvas 本体
@@ -44,9 +64,9 @@ namespace GameCanvas
 
         #region Member Classes
 
-        private class GameCanvasInternal : SingletonMonoBehaviour<GameCanvasInternal>
+        private class GCInternal : SingletonMonoBehaviour<GCInternal>
         {
-            private System.Action mUpdate;
+            private Function mUpdate;
 
             protected override void Awake()
             {
@@ -59,7 +79,7 @@ namespace GameCanvas
                 if (mUpdate != null) mUpdate();
             }
 
-            public void Regist(System.Action update)
+            public void Regist(Function update)
             {
                 mUpdate = update;
             }
@@ -67,28 +87,40 @@ namespace GameCanvas
 
         #endregion
 
+        #region Const/Static Properties
+
+        private const int       cInitSpriteSize     = 32;
+        private const int       cInitLineSize       = 16;
+        private const int       cCircleResolution   = 24;
+
+        private static readonly UVec2   cVec2Zero   = UVec2.zero;
+        private static readonly UVec2   cVec2One    = UVec2.one;
+        private static readonly UVec3   cVec3Zero   = UVec3.zero;
+        private static readonly UVec3   cVec3One    = UVec3.one;
+        private static readonly UQuat   cQuatZero   = UQuat.identity;
+        private static readonly UColor  cColorWhite = UColor.white;
+        private static readonly UColor  cColorBlack = UColor.black;
+
+        #endregion
+
         #region Member Properties
+        
+        private readonly int        cShaderClip     = 0;
+        private readonly int        cShaderMainTex  = 0;
+        private readonly UVec2[]    cCirclePoints   = null;
 
-        private const int   cInitSpriteSize         = 32;
-        private const int   cInitLineSize           = 16;
-        private const int   cCircleResolution       = 24;
-        private readonly int cShaderClip;
-        private readonly int cShaderMainTex;
-        private readonly Vector2[] cCirclePoints;
-        private static readonly Vector2 cVec2Zero   = Vector2.zero;
-        private static readonly Vector2 cVec2One    = Vector2.one;
-        private static readonly Vector3 cVec3Zero   = Vector3.zero;
-        private static readonly Vector3 cVec3One    = Vector3.one;
-        private static readonly Quaternion cQuatZero= Quaternion.identity;
-        private static readonly Color   cColorWhite = Color.white;
-        private static readonly Color   cColorBlack = Color.black;
+        private Function    mStart                  = null;
+        private Function    mCalc                   = null;
+        private Function    mDraw                   = null;
+        private bool        mIsLoaded               = false;
 
-        private GameCanvasInternal mGCInternal      = null;
-        private Transform   mTransform              = null;
-
-        private System.Action mStart                = null;
-        private System.Action mCalc                 = null;
-        private System.Action mDraw                 = null;
+        private GCAssetDB   mAssetDB                = null;         // アセットデータベース
+        private int         mNumImage               = 0;            // 認識済みの画像：数量
+        private int         mNumSound               = 0;            // 認識済みの音源：数量
+        private UCamTex     mWebCamTexture          = null;         // 映像入力
+        private SaveData    mSaveData               = null;         // セーブデータ
+        private StringHash  mWebCache               = null;         // ネットワークリソースキャッシュ
+        private WebSocket   mWs                     = null;         // WebSocket
 
         private int         mDeviceWidth            = 0;            // 端末解像度：横幅
         private int         mDeviceHeight           = 0;            // 端末解像度：縦幅
@@ -97,60 +129,52 @@ namespace GameCanvas
         private int         mCanvasWidth            = 0;            // 描画解像度：横幅
         private int         mCanvasHeight           = 0;            // 描画解像度：縦幅
         private float       mCanvasScale            = 1f;           // キャンバス解像度 / デバイス解像度
-        private Vector2     mCanvasBorder           = cVec2Zero;    // キャンバス左・上の黒縁の大きさ
+        private UVec2       mCanvasBorder           = cVec2Zero;    // キャンバス左・上の黒縁の大きさ
 
-        private int         mRendererIndex          = 0;            // 現在の描画インデックス
-        private int         mRendererMax            = 0;            // 描画インデックスの暫定最大値（前フレームの2倍）
-        private Color       mRendererColor          = cColorBlack;  // 現在のパレットカラー
-        private int         mSpriteIndex            = 0;            // 現在のスプライトインデックス
-        private MaterialPropertyBlock mSpriteBlock  = null;         // マテリアルプロパティーブロック
-        private SpriteRendererList mSprites         = null;         // スプライトレンダラーキャッシュ
-        private TransformList mSpriteTransforms     = null;         // スプライトトランスフォームキャッシュ
-        private int         mLineIndex              = 0;            // 現在のラインインデックス
-        private LineRendererList mLines             = null;         // ラインレンダラーキャッシュ
-        private TransformList mLineTransforms       = null;         // ライントランスフォームキャッシュ
-        private float       mLineWidth              = 2f;           // 現在の線の太さ
-        private float       mFontSize               = 20;           // 現在のフォントサイズ
+        private int         mRendererIndex          = 0;            // 描画：現在の描画インデックス
+        private int         mRendererMax            = 0;            // 描画：描画インデックスの暫定最大値（前フレームの2倍）
+        private UColor      mRendererColor          = cColorBlack;  // 描画：現在のパレットカラー
+        private int         mSpriteIndex            = 0;            // 塗り描画：現在のスプライトインデックス
+        private UBlock      mSpriteBlock            = null;         // 塗り描画：マテリアルプロパティーブロック
+        private SDrawList   mSprites                = null;         // 塗り描画：スプライトレンダラーキャッシュ
+        private TransList   mSpriteTransforms       = null;         // 塗り描画：スプライトトランスフォームキャッシュ
+        private int         mLineIndex              = 0;            // 線描画：現在のラインインデックス
+        private LDrawList   mLines                  = null;         // 線描画：ラインレンダラーキャッシュ
+        private TransList   mLineTransforms         = null;         // 線描画：ライントランスフォームキャッシュ
+        private float       mLineWidth              = 2f;           // 線描画：現在の線の太さ
+        private float       mFontSize               = 20;           // 文字描画：現在のフォントサイズ
+        private float       mTextLineHeight         = 1.65f;        // 文字描画：フォントサイズに対するテキスト1行の高さ倍率
+        private float       mTextTracking           = 1.0f;         // 文字描画：トラッキング（字送り）
+        private float       mTextHorizontalRatio    = 1.0f;         // 文字描画：水平比率
 
-        private bool        _isLoaded               = false;        //
-        private GameCanvasAssetDB _assetDB              = null;         // アセットデータベース
-        private int         _numImage               = 0;            // 認識済みの画像：数量
-        private int         _numSound               = 0;            // 認識済みの音源：数量
-
-        private WebCamTexture mWebCamTexture        = null;         // 映像入力
-
-        private SerializableDictionary<string, string> _save = null;// セーブデータ
-
-        private StringHash  _webCache               = null;         // ネットワークリソースキャッシュ
-
-        private WebSocketSharp.WebSocket _ws        = null;         // WebSocket
-
-        private bool        _touchSupported         = false;        // タッチ：実行環境がタッチ操作対応かどうか
-        private bool        _isTouch                = false;        // タッチ：タッチされているかどうか
-        private bool        _isTouchBegan           = false;        // タッチ：タッチされ始めた瞬間かどうか
-        private bool        _isTouchEnded           = false;        // タッチ：タッチされ終えた瞬間かどうか
-        private bool        _isTapped               = false;        // タッチ：タップされた瞬間かどうか
-        private bool        _isFlicked              = false;        // タッチ：フリックされた瞬間かどうか
-        private Vector2     _unscaledTouchPoint     = -cVec2One;    // タッチ：座標
-        private Vector2     _touchPoint             = -cVec2One;    // タッチ：キャンバスピクセルに対応する座標
-        private Vector2     _touchBeganPoint        = -cVec2One;    // タッチ：開始座標
-        private float       _touchTimeLength        = 0f;           // タッチ：連続時間(秒)
-        private float       _touchHoldTimeLength    = 0f;           // タッチ：連続静止時間(秒)
-        private float       _maxTapTimeLength       = 0.2f;         // タッチ：タップ判定時間長
-        private float       _minFlickDistance       = 1f;           // タッチ：フリック判定移動量
-        private float       _maxTapDistance         = 0.9f;         // タッチ：タップ判定移動量
-        private float       _minHoldTimeLength      = 0.4f;         // タッチ：ホールド判定フレーム数
-        private float       _pinchLength            = 0f;           // ピンチインアウト：2点間距離
-        private float       _pinchLengthBegan       = 0f;           // ピンチインアウト：2点間距離：タッチ開始時
-        private float       _pinchScale             = 0f;           // ピンチインアウト：拡縮率：前フレーム差分
-        private float       _pinchScaleBegan        = 0f;           // ピンチインアウト：拡縮率：タッチ開始時から
-        private float       _maxPinchInScale        = 0.95f;        // ピンチインアウト：ピンチイン判定縮小率
-        private float       _minPinchOutScale       = 1.05f;        // ピンチインアウト：ピンチアウト判定拡大率
-        private Vector2     _mousePrevPoint         = -cVec2One;    // マウス互換：前回マウス位置
+        private bool        mTouchSupported         = false;        // タッチ：実行環境がタッチ操作対応かどうか
+        private bool        mIsTouch                = false;        // タッチ：タッチされているかどうか
+        private bool        mIsTouchBegan           = false;        // タッチ：タッチされ始めた瞬間かどうか
+        private bool        mIsTouchEnded           = false;        // タッチ：タッチされ終えた瞬間かどうか
+        private bool        mIsTapped               = false;        // タッチ：タップされた瞬間かどうか
+        private bool        mIsFlicked              = false;        // タッチ：フリックされた瞬間かどうか
+        private UVec2       mUnscaledTouchPoint     = -cVec2One;    // タッチ：座標
+        private UVec2       mTouchPoint             = -cVec2One;    // タッチ：キャンバスピクセルに対応する座標
+        private UVec2       mTouchBeganPoint        = -cVec2One;    // タッチ：開始座標
+        private float       mTouchTimeLength        = 0f;           // タッチ：連続時間(秒)
+        private float       mTouchHoldTimeLength    = 0f;           // タッチ：連続静止時間(秒)
+        private float       mMaxTapTimeLength       = 0.2f;         // タッチ：タップ判定時間長
+        private float       mMinFlickDistance       = 1f;           // タッチ：フリック判定移動量
+        private float       mMaxTapDistance         = 0.9f;         // タッチ：タップ判定移動量
+        private float       mMinHoldTimeLength      = 0.4f;         // タッチ：ホールド判定フレーム数
+        private float       mPinchLength            = 0f;           // ピンチインアウト：2点間距離
+        private float       mPinchLengthBegan       = 0f;           // ピンチインアウト：2点間距離：タッチ開始時
+        private float       mPinchScale             = 0f;           // ピンチインアウト：拡縮率：前フレーム差分
+        private float       mPinchScaleBegan        = 0f;           // ピンチインアウト：拡縮率：タッチ開始時から
+        private float       mMaxPinchInScale        = 0.95f;        // ピンチインアウト：ピンチイン判定縮小率
+        private float       mMinPinchOutScale       = 1.05f;        // ピンチインアウト：ピンチアウト判定拡大率
+        private UVec2       mMousePrevPoint         = -cVec2One;    // マウス互換：前回マウス位置
         
-        private Camera      _camera                 = null;         // コンポーネント：Camera
-        private AudioSource _audioSE                = null;         // コンポーネント：AudioClip
-        private AudioSource _audioBGM               = null;         // コンポーネント：AudioClip
+        private GCInternal  mGCInternal             = null;         // MonoBehaviour
+        private UTrans      mTransform              = null;         // コンポーネント：Transform
+        private UCamera     mMainCamera             = null;         // コンポーネント：Camera
+        private UAudio      mAudioSE                = null;         // コンポーネント：AudioClip
+        private UAudio      mAudioBGM               = null;         // コンポーネント：AudioClip
         
         #endregion
 
@@ -159,66 +183,66 @@ namespace GameCanvas
         private GameCanvas()
         {
             // 実行環境の記録
-            mDeviceWidth = Screen.width;
-            mDeviceHeight = Screen.height;
-            _touchSupported = Input.touchSupported;
+            mDeviceWidth = UnityEngine.Screen.width;
+            mDeviceHeight = UnityEngine.Screen.height;
+            mTouchSupported = UnityEngine.Input.touchSupported;
 
             // アプリケーションの設定
-            Application.targetFrameRate = 60;
-            Screen.fullScreen = false;
-            Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            Screen.orientation = ScreenOrientation.Landscape;
-            Input.multiTouchEnabled = true;
-            Input.simulateMouseWithTouches = true;
+            UnityEngine.Application.targetFrameRate = 60;
+            UnityEngine.Screen.fullScreen = false;
+            UnityEngine.Screen.sleepTimeout = UnityEngine.SleepTimeout.NeverSleep;
+            UnityEngine.Screen.orientation = UnityEngine.ScreenOrientation.Landscape;
+            UnityEngine.Input.multiTouchEnabled = true;
+            UnityEngine.Input.simulateMouseWithTouches = true;
 
             // セーブデータの読み込み
             ReadDataByStorage();
 
             // ルートオブジェクトの生成
-            mGCInternal = GameCanvasInternal.Instance;
+            mGCInternal = GCInternal.Instance;
             mGCInternal.Regist(_Update);
             mTransform = mGCInternal.transform;
 
             // Cameraコンポーネントの配置。既に配置されているCameraは問答無用で抹消する
             {
-                var camArray = Object.FindObjectsOfType<Camera>();
-                foreach (Camera cam in camArray)
+                var camArray = UObj.FindObjectsOfType<UCamera>();
+                foreach (UCamera cam in camArray)
                 {
-                    Object.DestroyImmediate(cam.gameObject);
+                    UObj.DestroyImmediate(cam.gameObject);
                 }
 
-                var obj = new GameObject("Camera");
+                var obj = new UGameObj("Camera");
                 obj.tag = "MainCamera";
                 obj.transform.parent = mTransform;
 
-                _camera = obj.AddComponent<Camera>();
+                mMainCamera = obj.AddComponent<UCamera>();
 
-                _camera.clearFlags = CameraClearFlags.Depth;
-                _camera.orthographic = true;
-                var pos = _camera.transform.position;
+                mMainCamera.clearFlags = UnityEngine.CameraClearFlags.Depth;
+                mMainCamera.orthographic = true;
+                var pos = mMainCamera.transform.position;
                 pos.x = 0f;
                 pos.y = 0f;
                 pos.z = 10f;
-                _camera.transform.position = pos;
-                _camera.transform.localRotation = Quaternion.Euler(180f, 0f, 0f);
+                mMainCamera.transform.position = pos;
+                mMainCamera.transform.localRotation = UQuat.Euler(180f, 0f, 0f);
 
-                obj.AddComponent<AudioListener>();
+                obj.AddComponent<UnityEngine.AudioListener>();
             }
 
             // AudioSourceコンポーネントの配置。サウンドの再生に用いる
             {
-                var obj = new GameObject("Sound");
+                var obj = new UGameObj("Sound");
                 obj.transform.parent = mTransform;
 
-                _audioSE = obj.AddComponent<AudioSource>();
-                _audioSE.loop = false;
-                _audioSE.playOnAwake = false;
-                _audioSE.spatialBlend = 0f;
+                mAudioSE = obj.AddComponent<UAudio>();
+                mAudioSE.loop = false;
+                mAudioSE.playOnAwake = false;
+                mAudioSE.spatialBlend = 0f;
 
-                _audioBGM = obj.AddComponent<AudioSource>();
-                _audioBGM.loop = true;
-                _audioBGM.playOnAwake = false;
-                _audioBGM.spatialBlend = 0f;
+                mAudioBGM = obj.AddComponent<UAudio>();
+                mAudioBGM.loop = true;
+                mAudioBGM.playOnAwake = false;
+                mAudioBGM.spatialBlend = 0f;
             }
 
             // キャンバスの初期化
@@ -228,15 +252,15 @@ namespace GameCanvas
                 mRendererMax = (cInitSpriteSize + cInitLineSize) * 2;
 
                 mSpriteIndex = 0;
-                mSpriteBlock = new MaterialPropertyBlock();
-                mSprites = new SpriteRendererList(cInitSpriteSize);
-                mSpriteTransforms = new TransformList(cInitSpriteSize);
-                cShaderClip = Shader.PropertyToID("_Clip");
-                cShaderMainTex = Shader.PropertyToID("_MainTex");
+                mSpriteBlock = new UBlock();
+                mSprites = new SDrawList(cInitSpriteSize);
+                mSpriteTransforms = new TransList(cInitSpriteSize);
+                cShaderClip = UnityEngine.Shader.PropertyToID("_Clip");
+                cShaderMainTex = UnityEngine.Shader.PropertyToID("_MainTex");
 
                 mLineIndex = 0;
-                mLines = new LineRendererList(cInitLineSize);
-                mLineTransforms = new TransformList(cInitLineSize);
+                mLines = new LDrawList(cInitLineSize);
+                mLineTransforms = new TransList(cInitLineSize);
 
                 SetResolution(640, 480);
 
@@ -244,21 +268,21 @@ namespace GameCanvas
             }
 
             // 円弧の事前計算
-            cCirclePoints = new Vector2[cCircleResolution];
-            var step = Mathf.PI * 2 / cCircleResolution;
+            cCirclePoints = new UVec2[cCircleResolution];
+            var step = UnityEngine.Mathf.PI * 2 / cCircleResolution;
             for (var i = 0; i < 24; ++i)
             {
-                var rx = Mathf.Sin(i * step);
-                var ry = Mathf.Cos(i * step);
-                cCirclePoints[i] = new Vector2(rx, ry);
+                var rx = UnityEngine.Mathf.Sin(i * step);
+                var ry = UnityEngine.Mathf.Cos(i * step);
+                cCirclePoints[i] = new UVec2(rx, ry);
             }
 
             // 外部画像・音源データの読み込み
-            _isLoaded = false;
+            mIsLoaded = false;
             mGCInternal.StartCoroutine(_LoadResourceAll());
 
             // WebCacheの用意
-            _webCache = new StringHash();
+            mWebCache = new StringHash();
         }
 
         #endregion
@@ -267,7 +291,13 @@ namespace GameCanvas
 
         #region UnityGC：イベントAPI
 
-        public void Regist(System.Action start, System.Action calc, System.Action draw)
+        /// <summary>
+        /// イベントを登録します
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="calc"></param>
+        /// <param name="draw"></param>
+        public void Regist(Function start, Function calc, Function draw)
         {
             mStart = start;
             mCalc = calc;
@@ -276,15 +306,15 @@ namespace GameCanvas
 
         private System.Collections.IEnumerator _LoadResourceAll()
         {
-            var assetDBReq = Resources.LoadAsync<GameCanvasAssetDB>("GCAssetDB");
+            var assetDBReq = UnityEngine.Resources.LoadAsync<GameCanvasAssetDB>("GCAssetDB");
 
             while (!assetDBReq.isDone)
             {
                 yield return null;
             }
-            _assetDB = assetDBReq.asset as GameCanvasAssetDB;
-            _numImage = _assetDB.images.Length;
-            _numSound = _assetDB.sounds.Length;
+            mAssetDB = assetDBReq.asset as GameCanvasAssetDB;
+            mNumImage = mAssetDB.images.Length;
+            mNumSound = mAssetDB.sounds.Length;
 
             // レンダラーの初期化
             for (var i = 0; i < cInitSpriteSize; ++i)
@@ -296,16 +326,16 @@ namespace GameCanvas
                 _AddLine();
             }
 
-            _isLoaded = true;
+            mIsLoaded = true;
             if (mStart != null) mStart();
         }
 
         private void _Update()
         {
-            if(!_isLoaded) return;
+            if(!mIsLoaded) return;
 
             // 画面サイズ判定
-            if (mDeviceWidth != Screen.width || mDeviceHeight != Screen.height)
+            if (mDeviceWidth != UnityEngine.Screen.width || mDeviceHeight != UnityEngine.Screen.height)
             {
                 _UpdateDisplayScale();
             }
@@ -359,14 +389,14 @@ namespace GameCanvas
 
             _UpdateDisplayScale();
 
-            if (_isLoaded) ClearScreen();
+            if (mIsLoaded) ClearScreen();
         }
 
         /// <summary>
         /// DrawString や DrawRect などで用いる色を指定します
         /// </summary>
         /// <param name="color">塗りの色</param>
-        public void SetColor(Color color)
+        public void SetColor(UColor color)
         {
             mRendererColor = color;
         }
@@ -395,7 +425,7 @@ namespace GameCanvas
         /// <param name="alpha">不透明度 [0～1]</param>
         public void SetColorHSV(float h, float s, float v, float alpha = 1f)
         {
-            var c = Color.HSVToRGB(h, s, v);
+            var c = UColor.HSVToRGB(h, s, v);
             c.a = alpha;
             SetColor(c);
         }
@@ -416,7 +446,7 @@ namespace GameCanvas
         }
         
         /// <summary>
-        /// 文字描画におけるフォントサイズを設定します。10の倍数だと綺麗に表示されます
+        /// 文字描画におけるフォントサイズを設定します。初期値は`20`です
         /// </summary>
         public void SetFontSize(float fontSize)
         {
@@ -428,13 +458,52 @@ namespace GameCanvas
 
             mFontSize = fontSize;
         }
-        
+
+        /// <summary>
+        /// 文字描画における行の高さを、フォントサイズに対する比率で指定します。`1.0f`を指定した場合、行間は無くなります。初期値は`1.65f`です
+        /// </summary>
+        /// <param name="lineHeight">行の高さ（フォントサイズに対する比率）</param>
+        public void SetTextLineHeight(float lineHeight)
+        {
+            if (lineHeight <= 0f)
+            {
+                // 0以下は許容しない
+                throw new System.ArgumentOutOfRangeException("lineHeight", "0未満の数値は設定できません");
+            }
+
+            mTextLineHeight = lineHeight;
+        }
+
+        /// <summary>
+        /// 文字描画におけるトラッキング（字送り）を設定します。初期値は`1.0f`です
+        /// </summary>
+        /// <param name="tracking">トラッキング（字送り）</param>
+        public void SetTextTracking(float tracking)
+        {
+            mTextTracking = tracking;
+        }
+
+        /// <summary>
+        /// 文字の水平比率を設定します。1より大きくすると幅広に、1より小さくすると縦長になります。初期値は`1.0f`です
+        /// </summary>
+        /// <param name="ratio">文字の水平比率</param>
+        public void SetTextHorizontalRatio(float ratio)
+        {
+            if (ratio == 0f)
+            {
+                // 0は許容しない
+                throw new System.ArgumentOutOfRangeException("ratio", "0は設定できません");
+            }
+
+            mTextHorizontalRatio = ratio;
+        }
+
         /// <summary>
         /// 画面を白で塗りつぶします
         /// </summary>
         public void ClearScreen()
         {
-            _DrawSprite(_assetDB.rect, cColorWhite, 0, 0, mCanvasWidth, mCanvasHeight, -128);
+            _DrawSprite(mAssetDB.rect, cColorWhite, 0, 0, mCanvasWidth, mCanvasHeight, -128);
         }
 
         /// <summary>
@@ -447,10 +516,10 @@ namespace GameCanvas
         /// <param name="priority">描画優先度 (-128～127)</param>
         public void DrawLine(float startX, float startY, float endX, float endY, sbyte priority = 0)
         {
-            var verts = new Vector3[2]
+            var verts = new UVec3[2]
             {
                 cVec3Zero,
-                new Vector3(endX - startX, endY - startY, 0)
+                new UVec3(endX - startX, endY - startY, 0)
             };
             _DrawLine(verts, mRendererColor, startX, startY, mLineWidth, priority);
         }
@@ -471,12 +540,12 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("radius", "0以下の数値は設定できません");
             }
 
-            var verts = new Vector3[cCircleResolution+1];
+            var verts = new UVec3[cCircleResolution+1];
             for (var i = 0; i < cCircleResolution; ++i)
             {
                 var rx = cCirclePoints[i].x * radius;
                 var ry = cCirclePoints[i].y * radius;
-                verts[i] = new Vector3(rx, ry, 0);
+                verts[i] = new UVec3(rx, ry, 0);
             }
             verts[cCircleResolution] = verts[0];
             _DrawLine(verts, mRendererColor, x, y, mLineWidth, priority);
@@ -514,16 +583,16 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         public void DrawImage(int id, float x, float y, sbyte priority = 0)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            _DrawSprite(_assetDB.images[id], cColorWhite, x, y, 1, 1, priority, true);
+            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, 1, 1, priority, true);
         }
         
         /// <summary>
-        /// 文字列を描画します
+        /// 文字列を描画します。改行文字は無視されます
         /// </summary>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
@@ -537,6 +606,8 @@ namespace GameCanvas
             }
 
             var strlen = str.Length;
+            var scaleX = mFontSize * mTextHorizontalRatio;
+            var tracking = scaleX * mTextTracking ;
 
             for (var i = 0; i < strlen; ++i)
             {
@@ -604,10 +675,34 @@ namespace GameCanvas
                 else if (c == '┼') n = 399;             // ┼
                 else n = 400; // その他(豆腐に置き換え)
 
-                _DrawSprite(_assetDB.characters[n], mRendererColor, x + i * mFontSize, y, mFontSize, mFontSize, priority, true);
+                _DrawSprite(mAssetDB.characters[n], mRendererColor, x + i * tracking, y, scaleX, mFontSize, priority, true);
             }
         }
-        
+
+        /// <summary>
+        /// 文字列を描画します。改行文字が含まれる場合、複数行で描画します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="str">文字列</param>
+        /// <param name="priority">描画優先度 (-128～127)</param>
+        public void DrawMultiLineString(float x, float y, string str, sbyte priority = 0)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return;
+            }
+
+            var addY = 0f;
+            var lineHeight = mFontSize * mTextLineHeight;
+
+            foreach (var line in str.Split('\n'))
+            {
+                DrawString(x, y + addY, line, priority);
+                addY += lineHeight;
+            }
+        }
+
         /// <summary>
         /// 塗りつぶしの円を描画します
         /// </summary>
@@ -622,7 +717,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("radius", "0以下の数値は設定できません");
             }
 
-            _DrawSprite(_assetDB.circle, mRendererColor, x, y, radius * 2, radius * 2, priority);
+            _DrawSprite(mAssetDB.circle, mRendererColor, x, y, radius * 2, radius * 2, priority);
         }
 
         /// <summary>
@@ -645,7 +740,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("height", "0以下の数値は設定できません");
             }
 
-            _DrawSprite(_assetDB.rect, mRendererColor, x, y, width, height, priority);
+            _DrawSprite(mAssetDB.rect, mRendererColor, x, y, width, height, priority);
         }
 
         /// <summary>
@@ -672,12 +767,12 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("height", "0以下の数値は設定できません");
             }
 
-            var verts = new Vector3[5]
+            var verts = new UVec3[5]
             {
                 cVec3Zero,
-                new Vector2(width, 0),
-                new Vector2(width, height),
-                new Vector2(0, height),
+                new UVec2(width, 0),
+                new UVec2(width, height),
+                new UVec2(0, height),
                 cVec3Zero
             };
             _DrawLine(verts, mRendererColor, x, y, mLineWidth, angle, rotationX, rotationY, priority);
@@ -695,12 +790,12 @@ namespace GameCanvas
         /// <param name="priority">描画優先度 (-128～127)</param>
         public void DrawRotatedImage(int id, float x, float y, float angle, float rotationX = 0f, float rotationY = 0f, sbyte priority = 0)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            _DrawSprite(_assetDB.images[id], mRendererColor, x, y, 1f, 1f, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
+            _DrawSprite(mAssetDB.images[id], mRendererColor, x, y, 1f, 1f, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
         }
 
         /// <summary>
@@ -727,7 +822,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("height", "0以下の数値は設定できません");
             }
 
-            _DrawSprite(_assetDB.rect, mRendererColor, x, y, width, height, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority);
+            _DrawSprite(mAssetDB.rect, mRendererColor, x, y, width, height, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority);
         }
 
         /// <summary>
@@ -743,7 +838,7 @@ namespace GameCanvas
         /// <param name="priority">描画優先度 (-128～127)</param>
         public void DrawClippedImage(int id, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority = 0)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
@@ -764,7 +859,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("clipLeft", "0未満の切り取り幅は指定できません");
             }
 
-            _DrawSprite(_assetDB.images[id], cColorWhite, x, y, 1f, 1f, 0f, 0f, 0f, clipTop, clipRight, clipBottom, clipLeft, priority, true);
+            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, 1f, 1f, 0f, 0f, 0f, clipTop, clipRight, clipBottom, clipLeft, priority, true);
         }
 
         /// <summary>
@@ -778,7 +873,7 @@ namespace GameCanvas
         /// <param name="priority">描画優先度 (-128～127)</param>
         public void DrawScaledImage(int id, float x, float y, float scaleH, float scaleV, sbyte priority = 0)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
@@ -788,7 +883,7 @@ namespace GameCanvas
                 return;
             }
 
-            _DrawSprite(_assetDB.images[id], cColorWhite, x, y, scaleH, scaleV, priority, true);
+            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, scaleH, scaleV, priority, true);
         }
 
         /// <summary>
@@ -805,7 +900,7 @@ namespace GameCanvas
         /// <param name="priority">描画優先度 (-128～127)</param>
         public void DrawImageSRT(int id, float x, float y, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f, sbyte priority = 0)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
@@ -815,7 +910,7 @@ namespace GameCanvas
                 return;
             }
 
-            _DrawSprite(_assetDB.images[id], mRendererColor, x, y, scaleH, scaleV, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
+            _DrawSprite(mAssetDB.images[id], mRendererColor, x, y, scaleH, scaleV, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
         }
 
         /// <summary>
@@ -846,12 +941,12 @@ namespace GameCanvas
         /// <returns>指定された画像の横幅</returns>
         public int GetImageWidth(int id)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            return (int)_assetDB.images[id].rect.width;
+            return (int)mAssetDB.images[id].rect.width;
         }
 
         /// <summary>
@@ -861,12 +956,12 @@ namespace GameCanvas
         /// <returns>指定された画像の高さ</returns>
         public int GetImageHeight(int id)
         {
-            if (id < 0 || id >= _numImage)
+            if (id < 0 || id >= mNumImage)
             {
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            return (int)_assetDB.images[id].rect.height;
+            return (int)mAssetDB.images[id].rect.height;
         }
 
         /// <summary>
@@ -876,11 +971,11 @@ namespace GameCanvas
         {
             set
             {
-                Application.targetFrameRate = value;
+                UnityEngine.Application.targetFrameRate = value;
             }
             get
             {
-                return Application.targetFrameRate;
+                return UnityEngine.Application.targetFrameRate;
             }
         }
 
@@ -913,12 +1008,12 @@ namespace GameCanvas
         {
             set
             {
-                Screen.fullScreen = value;
+                UnityEngine.Screen.fullScreen = value;
                 SetResolution(mCanvasWidth, mCanvasHeight);
             }
             get
             {
-                return Screen.fullScreen;
+                return UnityEngine.Screen.fullScreen;
             }
         }
 
@@ -931,16 +1026,16 @@ namespace GameCanvas
             {
                 if (value)
                 {
-                    Screen.orientation = ScreenOrientation.AutoRotation;
+                    UnityEngine.Screen.orientation = UnityEngine.ScreenOrientation.AutoRotation;
                 }
                 else
                 {
-                    Screen.orientation = isPortrait ? ScreenOrientation.Portrait : ScreenOrientation.Landscape;
+                    UnityEngine.Screen.orientation = isPortrait ? UnityEngine.ScreenOrientation.Portrait : UnityEngine.ScreenOrientation.Landscape;
                 }
             }
             get
             {
-                return Screen.orientation == ScreenOrientation.AutoRotation;
+                return UnityEngine.Screen.orientation == UnityEngine.ScreenOrientation.AutoRotation;
             }
         }
 
@@ -959,22 +1054,22 @@ namespace GameCanvas
         {
             if (mCanvasBorder.x > 0)
             {
-                _DrawSprite(_assetDB.rect, cColorBlack, -mCanvasBorder.x, 0, mCanvasBorder.x, mCanvasHeight, 127);
-                _DrawSprite(_assetDB.rect, cColorBlack, mCanvasWidth, 0, mCanvasBorder.x, mCanvasHeight, 127);
+                _DrawSprite(mAssetDB.rect, cColorBlack, -mCanvasBorder.x, 0, mCanvasBorder.x, mCanvasHeight, 127);
+                _DrawSprite(mAssetDB.rect, cColorBlack, mCanvasWidth, 0, mCanvasBorder.x, mCanvasHeight, 127);
             }
             else if (mCanvasBorder.y > 0)
             {
-                _DrawSprite(_assetDB.rect, cColorBlack, 0, -mCanvasBorder.y, mCanvasWidth, mCanvasBorder.y, 127);
-                _DrawSprite(_assetDB.rect, cColorBlack, 0, mCanvasHeight, mCanvasWidth, mCanvasBorder.y, 127);
+                _DrawSprite(mAssetDB.rect, cColorBlack, 0, -mCanvasBorder.y, mCanvasWidth, mCanvasBorder.y, 127);
+                _DrawSprite(mAssetDB.rect, cColorBlack, 0, mCanvasHeight, mCanvasWidth, mCanvasBorder.y, 127);
             }
         }
 
-        private void _DrawSprite(Sprite sprite, Color color, float x, float y, float scaleX, float scaleY, sbyte priority, bool flipY = false)
+        private void _DrawSprite(USprite sprite, UColor color, float x, float y, float scaleX, float scaleY, sbyte priority, bool flipY = false)
         {
             _DrawSprite(sprite, color, x, y, scaleX, scaleY, 0f, 0f, 0, 0f, 0f, 0f, 0f, priority, flipY);
         }
 
-        private void _DrawSprite(Sprite sprite, Color color, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority, bool flipY = false)
+        private void _DrawSprite(USprite sprite, UColor color, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority, bool flipY = false)
         {
             var i = mSpriteIndex;
 
@@ -986,7 +1081,7 @@ namespace GameCanvas
 
             // クリッピング
             mSprites[i].GetPropertyBlock(mSpriteBlock);
-            mSpriteBlock.SetVector(cShaderClip, Vector4.zero);
+            mSpriteBlock.SetVector(cShaderClip, UVec4.zero);
             if (clipLeft != 0f || clipTop != 0f || clipRight != 0f || clipBottom != 0f)
             {
                 var w = sprite.rect.width;
@@ -996,12 +1091,12 @@ namespace GameCanvas
                 var ct = (mCanvasBorder.y + y) * mCanvasScale;
                 var cr = (mCanvasBorder.x + x + w - clipLeft - clipRight) * mCanvasScale;
                 var cb = (mCanvasBorder.y + y + h - clipTop - clipBottom) * mCanvasScale;
-                mSpriteBlock.SetVector(cShaderClip, new Vector4(cl, ct, cr, cb));
+                mSpriteBlock.SetVector(cShaderClip, new UVec4(cl, ct, cr, cb));
             }
             mSprites[i].SetPropertyBlock(mSpriteBlock);
 
             mSprites[i].enabled = true;
-            mSprites[i].sharedMaterial = _assetDB.material;
+            mSprites[i].sharedMaterial = mAssetDB.material;
             mSprites[i].sprite = sprite;
             mSprites[i].color = color;
             mSprites[i].flipY = flipY;
@@ -1018,36 +1113,36 @@ namespace GameCanvas
 
                 mSpriteTransforms[i].rotation = angle == 0f
                     ? cQuatZero
-                    : Quaternion.Euler(0f, 0f, angle);
+                    : UQuat.Euler(0f, 0f, angle);
             }
             else
             {
-                var m = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.Euler(0f, 0f, angle), cVec3One);
-                m *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), cQuatZero, new Vector3(scaleX, scaleY, 1f));
+                var m = UMtrx.TRS(new UVec3(x + rotationX, y + rotationY, 0f), UQuat.Euler(0f, 0f, angle), cVec3One);
+                m *= UMtrx.TRS(new UVec3(-rotationX, -rotationY, 0f), cQuatZero, new UVec3(scaleX, scaleY, 1f));
 
                 var pos = mSpriteTransforms[i].position;
                 pos.Set(mCanvasBorder.x + m.m03, mCanvasBorder.y + m.m13, _CalcTransformZ(priority));
                 mSpriteTransforms[i].position = pos;
 
                 var scale = mSpriteTransforms[i].localScale;
-                var sX = Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);
-                var sY = Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);
+                var sX = UnityEngine.Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);
+                var sY = UnityEngine.Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);
                 scale.Set(sX, sY, 1f);
                 mSpriteTransforms[i].localScale = scale;
 
-                mSpriteTransforms[i].rotation = Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));
+                mSpriteTransforms[i].rotation = UQuat.LookRotation(m.GetColumn(2), m.GetColumn(1));
             }
 
             ++mRendererIndex;
             ++mSpriteIndex;
         }
 
-        private void _DrawLine(Vector3[] verts, Color color, float x, float y, float lineWidth, sbyte priority)
+        private void _DrawLine(UVec3[] verts, UColor color, float x, float y, float lineWidth, sbyte priority)
         {
             _DrawLine(verts, color, x, y, lineWidth, 0f, 0f, 0f, priority);
         }
 
-        private void _DrawLine(Vector3[] verts, Color color, float x, float y, float lineWidth, float angle, float rotationX, float rotationY, sbyte priority)
+        private void _DrawLine(UVec3[] verts, UColor color, float x, float y, float lineWidth, float angle, float rotationX, float rotationY, sbyte priority)
         {
             var i = mLineIndex;
             
@@ -1080,12 +1175,12 @@ namespace GameCanvas
 
                 mLineTransforms[i].rotation = angle == 0f
                     ? cQuatZero
-                    : Quaternion.Euler(0f, 0f, angle);
+                    : UQuat.Euler(0f, 0f, angle);
             }
             else
             {
-                var m = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.Euler(0f, 0f, angle), cVec3One);
-                m *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), cQuatZero, cVec3One);
+                var m = UMtrx.TRS(new UVec3(x + rotationX, y + rotationY, 0f), UQuat.Euler(0f, 0f, angle), cVec3One);
+                m *= UMtrx.TRS(new UVec3(-rotationX, -rotationY, 0f), cQuatZero, cVec3One);
 
                 var pos = mLineTransforms[i].position;
                 pos.x = mCanvasBorder.x + m.m03;
@@ -1093,7 +1188,7 @@ namespace GameCanvas
                 pos.z = _CalcTransformZ(priority);
                 mLineTransforms[i].position = pos;
 
-                mLineTransforms[i].rotation = Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));
+                mLineTransforms[i].rotation = UQuat.LookRotation(m.GetColumn(2), m.GetColumn(1));
             }
 
             ++mRendererIndex;
@@ -1107,15 +1202,15 @@ namespace GameCanvas
 
         private void _AddSprite()
         {
-            var obj = new GameObject("SpriteRenderer");
+            var obj = new UGameObj("SpriteRenderer");
             obj.transform.parent = mTransform;
-            var renderer = obj.AddComponent<SpriteRenderer>();
+            var renderer = obj.AddComponent<UnityEngine.SpriteRenderer>();
             renderer.enabled = false;
             renderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             renderer.receiveShadows = false;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            renderer.sharedMaterial = _assetDB.material;
+            renderer.sharedMaterial = mAssetDB.material;
             renderer.sprite = null;
             renderer.color = cColorWhite;
             mSprites.Add(renderer);
@@ -1124,15 +1219,15 @@ namespace GameCanvas
 
         private void _AddLine()
         {
-            var obj = new GameObject("LineRenderer");
+            var obj = new UGameObj("LineRenderer");
             obj.transform.parent = mTransform;
-            var renderer = obj.AddComponent<LineRenderer>();
+            var renderer = obj.AddComponent<UnityEngine.LineRenderer>();
             renderer.enabled = false;
             renderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             renderer.receiveShadows = false;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            renderer.sharedMaterial = _assetDB.material;
+            renderer.sharedMaterial = mAssetDB.material;
 #if UNITY_5_4
             renderer.motionVectors = false;
             renderer.SetColors(cColorWhite, cColorWhite);
@@ -1149,27 +1244,27 @@ namespace GameCanvas
         private void _UpdateDisplayScale()
         {
             // 表示倍率の計算
-            mDeviceWidth = Screen.width;
-            mDeviceHeight = Screen.height;
+            mDeviceWidth = UnityEngine.Screen.width;
+            mDeviceHeight = UnityEngine.Screen.height;
             var scaleWidth = (float)mCanvasWidth / mDeviceWidth;
             var scaleHeight = (float)mCanvasHeight / mDeviceHeight;
-            mCanvasScale = Mathf.Max(scaleWidth, scaleHeight);
+            mCanvasScale = UnityEngine.Mathf.Max(scaleWidth, scaleHeight);
 
             // 実効解像度の変更
-            mCanvasWidthWB = Mathf.FloorToInt(Screen.width * mCanvasScale);
-            mCanvasHeightWB = Mathf.FloorToInt(Screen.height * mCanvasScale);
-            //Screen.SetResolution(_canvasWidthWB, _canvasHeightWB, isFullScreen);
+            mCanvasWidthWB = UnityEngine.Mathf.FloorToInt(UnityEngine.Screen.width * mCanvasScale);
+            mCanvasHeightWB = UnityEngine.Mathf.FloorToInt(UnityEngine.Screen.height * mCanvasScale);
+            //UnityEngine.Screen.SetResolution(_canvasWidthWB, _canvasHeightWB, isFullScreen);
 
             // 黒縁の計算
             mCanvasBorder.x = (mCanvasWidthWB - mCanvasWidth) * 0.5f;
             mCanvasBorder.y = (mCanvasHeightWB - mCanvasHeight) * 0.5f;
 
             // カメラ倍率
-            _camera.orthographicSize = mCanvasHeightWB * 0.5f;
-            var cameraPos = _camera.transform.position;
+            mMainCamera.orthographicSize = mCanvasHeightWB * 0.5f;
+            var cameraPos = mMainCamera.transform.position;
             cameraPos.x = mCanvasBorder.x + mCanvasWidth / 2;
             cameraPos.y = mCanvasBorder.y + mCanvasHeight / 2;
-            _camera.transform.position = cameraPos;
+            mMainCamera.transform.position = cameraPos;
         }
 
         #endregion
@@ -1201,10 +1296,10 @@ namespace GameCanvas
         /// <param name="requestedFPS">カメラ映像の要求フレームレート</param>
         public void StartCameraService(bool isFrontFacing = false, int requestedWidth = 320, int requestedHeight = 240, int requestedFPS = 30)
         {
-            var devices = WebCamTexture.devices;
+            var devices = UCamTex.devices;
             if (devices.Length == 0)
             {
-                Debug.LogWarning("カメラ映像入力を検出できません");
+                UDebug.LogWarning("カメラ映像入力を検出できません");
                 return;
             }
 
@@ -1218,10 +1313,10 @@ namespace GameCanvas
                 }
             }
 
-            mWebCamTexture = new WebCamTexture(targetDeviceName, requestedWidth, requestedHeight, requestedFPS);
+            mWebCamTexture = new UCamTex(targetDeviceName, requestedWidth, requestedHeight, requestedFPS);
             if (mWebCamTexture == null)
             {
-                Debug.LogWarning("要求されたカメラ映像が見つかりません");
+                UDebug.LogWarning("要求されたカメラ映像が見つかりません");
                 return;
             }
 
@@ -1395,12 +1490,12 @@ namespace GameCanvas
             */
         }
 
-        private void _DrawWebCamTexture(WebCamTexture webcam, Color color, float x, float y, float scaleX, float scaleY, sbyte priority)
+        private void _DrawWebCamTexture(UCamTex webcam, UColor color, float x, float y, float scaleX, float scaleY, sbyte priority)
         {
             _DrawWebCamTexture(webcam, color, x, y, scaleX, scaleY, 0f, 0f, 0f, 0f, 0f, 0f, 0f, priority);
         }
 
-        private void _DrawWebCamTexture(WebCamTexture webcam, Color color, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority)
+        private void _DrawWebCamTexture(UCamTex webcam, UColor color, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority)
         {
             var i = mSpriteIndex;
             var w = webcam.width;
@@ -1414,7 +1509,7 @@ namespace GameCanvas
 
             // クリッピング
             mSprites[i].GetPropertyBlock(mSpriteBlock);
-            mSpriteBlock.SetVector(cShaderClip, Vector4.zero);
+            mSpriteBlock.SetVector(cShaderClip, UVec4.zero);
             if (clipLeft != 0f || clipTop != 0f || clipRight != 0f || clipBottom != 0f)
             {
                 if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
@@ -1422,12 +1517,12 @@ namespace GameCanvas
                 var ct = (mCanvasBorder.y + y) * mCanvasScale;
                 var cr = (mCanvasBorder.x + x + w - clipLeft - clipRight) * mCanvasScale;
                 var cb = (mCanvasBorder.y + y + h - clipTop - clipBottom) * mCanvasScale;
-                mSpriteBlock.SetVector(cShaderClip, new Vector4(cl, ct, cr, cb));
+                mSpriteBlock.SetVector(cShaderClip, new UVec4(cl, ct, cr, cb));
             }
             mSprites[i].SetPropertyBlock(mSpriteBlock);
             
             mSprites[i].enabled = true;
-            mSprites[i].sprite = _assetDB.dummy;
+            mSprites[i].sprite = mAssetDB.dummy;
             mSprites[i].color = color;
             mSprites[i].flipY = true;
             mSprites[i].GetPropertyBlock(mSpriteBlock);
@@ -1446,24 +1541,24 @@ namespace GameCanvas
 
                 mSpriteTransforms[i].rotation = angle == 0f
                     ? cQuatZero
-                    : Quaternion.Euler(0f, 0f, angle);
+                    : UQuat.Euler(0f, 0f, angle);
             }
             else
             {
-                var m = Matrix4x4.TRS(new Vector3(x + rotationX * scaleX, y + rotationY * scaleY, 0f), Quaternion.Euler(0f, 0f, angle), cVec3One);
-                m *= Matrix4x4.TRS(new Vector3(-rotationX * scaleX, -rotationY * scaleY, 0f), cQuatZero, new Vector3(scaleX, scaleY, 1f));
+                var m = UMtrx.TRS(new UVec3(x + rotationX * scaleX, y + rotationY * scaleY, 0f), UQuat.Euler(0f, 0f, angle), cVec3One);
+                m *= UMtrx.TRS(new UVec3(-rotationX * scaleX, -rotationY * scaleY, 0f), cQuatZero, new UVec3(scaleX, scaleY, 1f));
 
                 var pos = mSpriteTransforms[i].position;
                 pos.Set(mCanvasBorder.x + m.m03, mCanvasBorder.y + m.m13, _CalcTransformZ(priority));
                 mSpriteTransforms[i].position = pos;
 
                 var scale = mSpriteTransforms[i].localScale;
-                var sX = w * Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);
-                var sY = h * Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);
+                var sX = w * UnityEngine.Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);
+                var sY = h * UnityEngine.Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);
                 scale.Set(sX, sY, 1f);
                 mSpriteTransforms[i].localScale = scale;
 
-                mSpriteTransforms[i].rotation = Quaternion.LookRotation(m.GetColumn(2), m.GetColumn(1));
+                mSpriteTransforms[i].rotation = UQuat.LookRotation(m.GetColumn(2), m.GetColumn(1));
             }
 
             ++mRendererIndex;
@@ -1481,20 +1576,20 @@ namespace GameCanvas
         /// <param name="isLoop">ループするかどうか。真の場合、StopBGM()を呼ぶまでループ再生します</param>
         public void PlayBGM(int id, bool isLoop = true)
         {
-            if (id < 0 || id >= _numSound)
+            if (id < 0 || id >= mNumSound)
             {
-                Debug.LogWarning("存在しないファイルが指定されました");
+                UDebug.LogWarning("存在しないファイルが指定されました");
                 return;
             }
 
-            if (_audioBGM.isPlaying)
+            if (mAudioBGM.isPlaying)
             {
-                _audioBGM.Stop();
+                mAudioBGM.Stop();
             }
 
-            _audioBGM.clip = _assetDB.sounds[id];
-            _audioBGM.loop = isLoop;
-            _audioBGM.Play();
+            mAudioBGM.clip = mAssetDB.sounds[id];
+            mAudioBGM.loop = isLoop;
+            mAudioBGM.Play();
         }
 
         /// <summary>
@@ -1502,9 +1597,9 @@ namespace GameCanvas
         /// </summary>
         public void PauseBGM()
         {
-            if (_audioBGM.isPlaying)
+            if (mAudioBGM.isPlaying)
             {
-                _audioBGM.Pause();
+                mAudioBGM.Pause();
             }
         }
 
@@ -1513,9 +1608,9 @@ namespace GameCanvas
         /// </summary>
         public void StopBGM()
         {
-            if (_audioBGM.isPlaying)
+            if (mAudioBGM.isPlaying)
             {
-                _audioBGM.Stop();
+                mAudioBGM.Stop();
             }
         }
 
@@ -1525,7 +1620,7 @@ namespace GameCanvas
         /// <param name="volume">音量 (0～1)</param>
         public void ChangeBGMVolume(float volume)
         {
-            _audioBGM.volume = Mathf.Clamp01(volume);
+            mAudioBGM.volume = UnityEngine.Mathf.Clamp01(volume);
         }
 
         /// <summary>
@@ -1534,13 +1629,13 @@ namespace GameCanvas
         /// <param name="id">再生する音声のID。snd0.png ならば 0 を指定します</param>
         public void PlaySE(int id)
         {
-            if (id < 0 || id >= _numSound)
+            if (id < 0 || id >= mNumSound)
             {
-                Debug.LogWarning("存在しないファイルが指定されました");
+                UDebug.LogWarning("存在しないファイルが指定されました");
                 return;
             }
 
-            _audioSE.PlayOneShot(_assetDB.sounds[id]);
+            mAudioSE.PlayOneShot(mAssetDB.sounds[id]);
         }
 
         /// <summary>
@@ -1549,7 +1644,7 @@ namespace GameCanvas
         /// <param name="volume">音量 (0～1)</param>
         public void ChangeSEVolume(float volume)
         {
-            _audioSE.volume = Mathf.Clamp01(volume);
+            mAudioSE.volume = UnityEngine.Mathf.Clamp01(volume);
         }
 
         #endregion
@@ -1563,7 +1658,7 @@ namespace GameCanvas
         {
             get
             {
-                return _isTouch;
+                return mIsTouch;
             }
         }
 
@@ -1574,7 +1669,7 @@ namespace GameCanvas
         {
             get
             {
-                return _isTouchBegan;
+                return mIsTouchBegan;
             }
         }
 
@@ -1585,7 +1680,7 @@ namespace GameCanvas
         {
             get
             {
-                return _isTouchEnded;
+                return mIsTouchEnded;
             }
         }
 
@@ -1596,7 +1691,7 @@ namespace GameCanvas
         {
             get
             {
-                return _touchHoldTimeLength >= _minHoldTimeLength;
+                return mTouchHoldTimeLength >= mMinHoldTimeLength;
             }
         }
 
@@ -1607,7 +1702,7 @@ namespace GameCanvas
         {
             get
             {
-                return _isTapped;
+                return mIsTapped;
             }
         }
 
@@ -1618,7 +1713,7 @@ namespace GameCanvas
         {
             get
             {
-                return _isFlicked;
+                return mIsFlicked;
             }
         }
 
@@ -1640,7 +1735,7 @@ namespace GameCanvas
         {
             get
             {
-                return _pinchScale != 0f && _pinchScaleBegan < 0.95f;
+                return mPinchScale != 0f && mPinchScaleBegan < 0.95f;
             }
         }
 
@@ -1651,7 +1746,7 @@ namespace GameCanvas
         {
             get
             {
-                return _pinchScale != 0f && _pinchScaleBegan > 1.05f;
+                return mPinchScale != 0f && mPinchScaleBegan > 1.05f;
             }
         }
 
@@ -1680,11 +1775,11 @@ namespace GameCanvas
         /// <summary>
         /// タッチされている座標。タッチされていないときは、最後にタッチされた座標を返します
         /// </summary>
-        public Vector2 touchPoint
+        public UVec2 touchPoint
         {
             get
             {
-                return _touchPoint;
+                return mTouchPoint;
             }
         }
 
@@ -1695,10 +1790,10 @@ namespace GameCanvas
         {
             get
             {
-                if (_touchSupported)
-                    return Input.touchCount;
+                if (mTouchSupported)
+                    return UnityEngine.Input.touchCount;
                 else
-                    return _isTouch ? 1 : 0;
+                    return mIsTouch ? 1 : 0;
             }
         }
 
@@ -1709,7 +1804,7 @@ namespace GameCanvas
         {
             get
             {
-                return _touchTimeLength;
+                return mTouchTimeLength;
             }
         }
 
@@ -1720,7 +1815,7 @@ namespace GameCanvas
         {
             get
             {
-                return _pinchScaleBegan;
+                return mPinchScaleBegan;
             }
         }
 
@@ -1731,7 +1826,7 @@ namespace GameCanvas
         {
             get
             {
-                return _pinchScale;
+                return mPinchScale;
             }
         }
 
@@ -1740,8 +1835,8 @@ namespace GameCanvas
         /// </summary>
         public float maxTapTimeLength
         {
-            set { if (value > 0f) _maxTapTimeLength = value; }
-            get { return _maxTapTimeLength; }
+            set { if (value > 0f) mMaxTapTimeLength = value; }
+            get { return mMaxTapTimeLength; }
         }
 
         /// <summary>
@@ -1749,8 +1844,8 @@ namespace GameCanvas
         /// </summary>
         public float minFlickDistance
         {
-            set { if (value > 0f) _minFlickDistance = value; }
-            get { return _minFlickDistance; }
+            set { if (value > 0f) mMinFlickDistance = value; }
+            get { return mMinFlickDistance; }
         }
 
         /// <summary>
@@ -1758,8 +1853,8 @@ namespace GameCanvas
         /// </summary>
         public float maxTapDistance
         {
-            set { if (value > 0f) _maxTapDistance = value; }
-            get { return _maxTapDistance; }
+            set { if (value > 0f) mMaxTapDistance = value; }
+            get { return mMaxTapDistance; }
         }
 
         /// <summary>
@@ -1767,8 +1862,8 @@ namespace GameCanvas
         /// </summary>
         public float minHoldTimeLength
         {
-            set { if (value > 0f) _minHoldTimeLength = value; }
-            get { return _minHoldTimeLength; }
+            set { if (value > 0f) mMinHoldTimeLength = value; }
+            get { return mMinHoldTimeLength; }
         }
 
         /// <summary>
@@ -1776,8 +1871,8 @@ namespace GameCanvas
         /// </summary>
         public float maxPinchInScale
         {
-            set { if (value > 0f && value < 1f) _maxPinchInScale = value; }
-            get { return _maxPinchInScale; }
+            set { if (value > 0f && value < 1f) mMaxPinchInScale = value; }
+            get { return mMaxPinchInScale; }
         }
 
         /// <summary>
@@ -1785,127 +1880,127 @@ namespace GameCanvas
         /// </summary>
         public float minPinchOutScale
         {
-            set { if (value > 1f) _minPinchOutScale = value; }
-            get { return _minPinchOutScale; }
+            set { if (value > 1f) mMinPinchOutScale = value; }
+            get { return mMinPinchOutScale; }
         }
 
         /// <summary>
         /// タッチの詳細情報。タッチされていないときは(-1, -1)を返します
         /// </summary>
         /// <param name="fingerId">fingerId</param>
-        public Vector2 GetTouchPoint(int fingerId)
+        public UVec2 GetTouchPoint(int fingerId)
         {
-            return Input.touchCount > fingerId ? Input.GetTouch(fingerId).position : -Vector2.one;
+            return UnityEngine.Input.touchCount > fingerId ? UnityEngine.Input.GetTouch(fingerId).position : -UVec2.one;
         }
         
         private void _UpdateTouches()
         {
             // 初期化
-            _isTouchBegan = false;
-            _isTouchEnded = false;
-            _isTapped = false;
-            _isFlicked = false;
+            mIsTouchBegan = false;
+            mIsTouchEnded = false;
+            mIsTapped = false;
+            mIsFlicked = false;
 
             // タッチ判定
-            _isTouch = _touchSupported ? Input.touchCount > 0 : Input.GetMouseButton(0) || Input.GetMouseButtonUp(0);
-            if (_isTouch)
+            mIsTouch = mTouchSupported ? UnityEngine.Input.touchCount > 0 : UnityEngine.Input.GetMouseButton(0) || UnityEngine.Input.GetMouseButtonUp(0);
+            if (mIsTouch)
             {
                 // 連続時間を記録
-                _touchTimeLength += Time.deltaTime;
+                mTouchTimeLength += UnityEngine.Time.deltaTime;
 
                 // タッチ・マウス互換処理
-                TouchPhase phase;
-                if (_touchSupported)
+                UnityEngine.TouchPhase phase;
+                if (mTouchSupported)
                 {
-                    var t0 = Input.GetTouch(0);
-                    _unscaledTouchPoint = t0.position;
-                    _unscaledTouchPoint.y = Screen.height - _unscaledTouchPoint.y;
+                    var t0 = UnityEngine.Input.GetTouch(0);
+                    mUnscaledTouchPoint = t0.position;
+                    mUnscaledTouchPoint.y = UnityEngine.Screen.height - mUnscaledTouchPoint.y;
                     phase = t0.phase;
                 }
                 else
                 {
-                    _unscaledTouchPoint = Input.mousePosition;
-                    _unscaledTouchPoint.y = Screen.height - _unscaledTouchPoint.y;
-                    if (Input.GetMouseButtonDown(0)) { phase = TouchPhase.Began; _mousePrevPoint = _unscaledTouchPoint; }
-                    else if (Input.GetMouseButtonUp(0)) { phase = TouchPhase.Ended; _mousePrevPoint = -Vector2.one; }
-                    else if (_mousePrevPoint != _unscaledTouchPoint) { phase = TouchPhase.Moved; _mousePrevPoint = _unscaledTouchPoint; }
-                    else { phase = TouchPhase.Stationary; }
+                    mUnscaledTouchPoint = UnityEngine.Input.mousePosition;
+                    mUnscaledTouchPoint.y = UnityEngine.Screen.height - mUnscaledTouchPoint.y;
+                    if (UnityEngine.Input.GetMouseButtonDown(0)) { phase = UnityEngine.TouchPhase.Began; mMousePrevPoint = mUnscaledTouchPoint; }
+                    else if (UnityEngine.Input.GetMouseButtonUp(0)) { phase = UnityEngine.TouchPhase.Ended; mMousePrevPoint = -UVec2.one; }
+                    else if (mMousePrevPoint != mUnscaledTouchPoint) { phase = UnityEngine.TouchPhase.Moved; mMousePrevPoint = mUnscaledTouchPoint; }
+                    else { phase = UnityEngine.TouchPhase.Stationary; }
                 }
 
                 // タッチ座標の変換
-                _touchPoint = _unscaledTouchPoint * mCanvasScale - mCanvasBorder;
+                mTouchPoint = mUnscaledTouchPoint * mCanvasScale - mCanvasBorder;
 
                 // タッチ関連挙動の検出
                 switch (phase)
                 {
-                    case TouchPhase.Began:
+                    case UnityEngine.TouchPhase.Began:
                         // 開始時間を記録
-                        _touchBeganPoint = _unscaledTouchPoint;
-                        _isTouchBegan = true;
+                        mTouchBeganPoint = mUnscaledTouchPoint;
+                        mIsTouchBegan = true;
                         break;
 
-                    case TouchPhase.Canceled:
-                    case TouchPhase.Ended:
+                    case UnityEngine.TouchPhase.Canceled:
+                    case UnityEngine.TouchPhase.Ended:
                         // タップ・フリック判定
-                        if (_touchHoldTimeLength <= _maxTapTimeLength)
+                        if (mTouchHoldTimeLength <= mMaxTapTimeLength)
                         {
-                            var diff = Vector2.Distance(_touchBeganPoint, _unscaledTouchPoint) / Screen.dpi;
-                            _isFlicked = diff >= _minFlickDistance;
-                            _isTapped = diff <= _maxTapDistance;
+                            var diff = UVec2.Distance(mTouchBeganPoint, mUnscaledTouchPoint) / UnityEngine.Screen.dpi;
+                            mIsFlicked = diff >= mMinFlickDistance;
+                            mIsTapped = diff <= mMaxTapDistance;
                         }
 
                         // 初期化
-                        _touchBeganPoint = -Vector2.one;
-                        _touchTimeLength = 0f;
-                        _touchHoldTimeLength = 0f;
-                        _isTouchEnded = true;
+                        mTouchBeganPoint = -UVec2.one;
+                        mTouchTimeLength = 0f;
+                        mTouchHoldTimeLength = 0f;
+                        mIsTouchEnded = true;
                         break;
 
-                    case TouchPhase.Moved:
+                    case UnityEngine.TouchPhase.Moved:
                         // 初期化
-                        _touchHoldTimeLength = 0;
+                        mTouchHoldTimeLength = 0;
                         break;
 
-                    case TouchPhase.Stationary:
+                    case UnityEngine.TouchPhase.Stationary:
                         // 連続静止時間を記録
-                        _touchHoldTimeLength += Time.deltaTime;
+                        mTouchHoldTimeLength += UnityEngine.Time.deltaTime;
                         break;
                 }
 
                 // ピンチイン・アウト判定
-                if (Input.touchCount > 1)
+                if (UnityEngine.Input.touchCount > 1)
                 {
-                    var t0 = Input.GetTouch(0);
-                    var t1 = Input.GetTouch(1);
+                    var t0 = UnityEngine.Input.GetTouch(0);
+                    var t1 = UnityEngine.Input.GetTouch(1);
 
                     switch (t1.phase)
                     {
-                        case TouchPhase.Began:
+                        case UnityEngine.TouchPhase.Began:
                             // 2点間の距離を記録
-                            _pinchLength = Vector2.Distance(t0.position, t1.position);
-                            _pinchLengthBegan = _pinchLength;
-                            _pinchScale = 1f;
-                            _pinchScaleBegan = 1f;
+                            mPinchLength = UVec2.Distance(t0.position, t1.position);
+                            mPinchLengthBegan = mPinchLength;
+                            mPinchScale = 1f;
+                            mPinchScaleBegan = 1f;
                             break;
 
-                        case TouchPhase.Canceled:
-                        case TouchPhase.Ended:
+                        case UnityEngine.TouchPhase.Canceled:
+                        case UnityEngine.TouchPhase.Ended:
                             // 初期化
-                            _pinchLength = 0f;
-                            _pinchLengthBegan = 0f;
-                            _pinchScale = 0f;
-                            _pinchScaleBegan = 0f;
+                            mPinchLength = 0f;
+                            mPinchLengthBegan = 0f;
+                            mPinchScale = 0f;
+                            mPinchScaleBegan = 0f;
                             break;
 
-                        case TouchPhase.Moved:
-                        case TouchPhase.Stationary:
+                        case UnityEngine.TouchPhase.Moved:
+                        case UnityEngine.TouchPhase.Stationary:
                             // ピンチインアウト処理
-                            if (t0.phase == TouchPhase.Moved || t1.phase == TouchPhase.Moved)
+                            if (t0.phase == UnityEngine.TouchPhase.Moved || t1.phase == UnityEngine.TouchPhase.Moved)
                             {
-                                var length = Vector2.Distance(t0.position, t1.position);
-                                _pinchScale = length / _pinchLength;
-                                _pinchScaleBegan = length / _pinchLengthBegan;
-                                _pinchLength = length;
+                                var length = UVec2.Distance(t0.position, t1.position);
+                                mPinchScale = length / mPinchLength;
+                                mPinchScaleBegan = length / mPinchLengthBegan;
+                                mPinchLength = length;
                             }
                             break;
                     }
@@ -1922,7 +2017,7 @@ namespace GameCanvas
         /// </summary>
         public float acceX
         {
-            get { return Input.acceleration.x; }
+            get { return UnityEngine.Input.acceleration.x; }
         }
 
         /// <summary>
@@ -1930,7 +2025,7 @@ namespace GameCanvas
         /// </summary>
         public float acceY
         {
-            get { return -Input.acceleration.y; }
+            get { return -UnityEngine.Input.acceleration.y; }
         }
 
         /// <summary>
@@ -1938,7 +2033,7 @@ namespace GameCanvas
         /// </summary>
         public float acceZ
         {
-            get { return -Input.acceleration.z; }
+            get { return -UnityEngine.Input.acceleration.z; }
         }
 
         #endregion
@@ -1950,8 +2045,8 @@ namespace GameCanvas
         /// </summary>
         public bool isGyroEnabled
         {
-            set { Input.gyro.enabled = value; }
-            get { return Input.gyro.enabled; }
+            set { UnityEngine.Input.gyro.enabled = value; }
+            get { return UnityEngine.Input.gyro.enabled; }
         }
 
         /// <summary>
@@ -1959,7 +2054,7 @@ namespace GameCanvas
         /// </summary>
         public float gyroX
         {
-            get { return Input.gyro.rotationRateUnbiased.x; }
+            get { return UnityEngine.Input.gyro.rotationRateUnbiased.x; }
         }
 
         /// <summary>
@@ -1967,7 +2062,7 @@ namespace GameCanvas
         /// </summary>
         public float gyroY
         {
-            get { return -Input.gyro.rotationRateUnbiased.y; }
+            get { return -UnityEngine.Input.gyro.rotationRateUnbiased.y; }
         }
 
         /// <summary>
@@ -1975,7 +2070,7 @@ namespace GameCanvas
         /// </summary>
         public float gyroZ
         {
-            get { return -Input.gyro.rotationRateUnbiased.z; }
+            get { return -UnityEngine.Input.gyro.rotationRateUnbiased.z; }
         }
 
         #endregion
@@ -1987,8 +2082,8 @@ namespace GameCanvas
         /// </summary>
         public bool isCompassEnabled
         {
-            set { Input.compass.enabled = value; }
-            get { return Input.compass.enabled; }
+            set { UnityEngine.Input.compass.enabled = value; }
+            get { return UnityEngine.Input.compass.enabled; }
         }
 
         /// <summary>
@@ -1996,7 +2091,7 @@ namespace GameCanvas
         /// </summary>
         public float compass
         {
-            get { return -Input.compass.magneticHeading; }
+            get { return -UnityEngine.Input.compass.magneticHeading; }
         }
 
         #endregion
@@ -2008,7 +2103,7 @@ namespace GameCanvas
         /// </summary>
         public bool isLocationEnabled
         {
-            get { return Input.location.isEnabledByUser; }
+            get { return UnityEngine.Input.location.isEnabledByUser; }
         }
 
         /// <summary>
@@ -2016,7 +2111,7 @@ namespace GameCanvas
         /// </summary>
         public bool isRunningLocaltionService
         {
-            get { return Input.location.status == LocationServiceStatus.Running; }
+            get { return UnityEngine.Input.location.status == UnityEngine.LocationServiceStatus.Running; }
         }
 
         /// <summary>
@@ -2024,7 +2119,7 @@ namespace GameCanvas
         /// </summary>
         public float lastLocationLatitude
         {
-            get { return Input.location.lastData.latitude; }
+            get { return UnityEngine.Input.location.lastData.latitude; }
         }
 
         /// <summary>
@@ -2032,7 +2127,7 @@ namespace GameCanvas
         /// </summary>
         public float lastLocationLongitude
         {
-            get { return Input.location.lastData.longitude; }
+            get { return UnityEngine.Input.location.lastData.longitude; }
         }
 
         /// <summary>
@@ -2040,7 +2135,7 @@ namespace GameCanvas
         /// </summary>
         public float lastLocationTime
         {
-            get { return (float)(System.DateTime.Now.Subtract(new System.DateTime(1970, 1, 1)).TotalSeconds - Input.location.lastData.timestamp); }
+            get { return (float)(System.DateTime.Now.Subtract(new System.DateTime(1970, 1, 1)).TotalSeconds - UnityEngine.Input.location.lastData.timestamp); }
         }
 
         /// <summary>
@@ -2048,7 +2143,7 @@ namespace GameCanvas
         /// </summary>
         public void StartLocationService()
         {
-            Input.location.Start(5f, 5f);
+            UnityEngine.Input.location.Start(5f, 5f);
         }
 
         /// <summary>
@@ -2056,7 +2151,7 @@ namespace GameCanvas
         /// </summary>
         public void StopLocationService()
         {
-            Input.location.Stop();
+            UnityEngine.Input.location.Stop();
         }
 
         #endregion
@@ -2068,7 +2163,7 @@ namespace GameCanvas
         /// </summary>
         public bool isBackKeyPushed
         {
-            get { return Application.platform == RuntimePlatform.Android && Input.GetKeyDown(KeyCode.Escape); }
+            get { return UnityEngine.Application.platform == UnityEngine.RuntimePlatform.Android && UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.Escape); }
         }
 
         #endregion
@@ -2080,7 +2175,7 @@ namespace GameCanvas
         /// </summary>
         public void ClearDownloadCache()
         {
-            _webCache.Clear();
+            mWebCache.Clear();
         }
 
         /// <summary>
@@ -2089,14 +2184,14 @@ namespace GameCanvas
         /// <param name="url">URL</param>
         public string GetTextFromNet(string url)
         {
-            if (_webCache.ContainsKey(url))
+            if (mWebCache.ContainsKey(url))
             {
-                return _webCache[url] as string;
+                return mWebCache[url] as string;
             }
 
-            var www = new WWW(url);
+            var www = new UnityEngine.WWW(url);
             while (!www.isDone) { }
-            _webCache.Add(url, www.text);
+            mWebCache.Add(url, www.text);
             return www.text;
         }
 
@@ -2107,7 +2202,7 @@ namespace GameCanvas
         /// <param name="callback">コールバック</param>
         public void GetTextFromNetAsync(string url, System.Action<string> callback)
         {
-            _webCache.Add(url, null);
+            mWebCache.Add(url, null);
             mGCInternal.StartCoroutine(_DownloadWebText(url, callback));
         }
 
@@ -2122,7 +2217,7 @@ namespace GameCanvas
         {
             if (url == null || url.IndexOf("http") != 0)
             {
-                Debug.LogWarning("無効なURLです");
+                UDebug.LogWarning("無効なURLです");
                 return;
             }
 
@@ -2142,7 +2237,7 @@ namespace GameCanvas
         {
             if (url == null || url.IndexOf("http") != 0)
             {
-                Debug.LogWarning("無効なURLです");
+                UDebug.LogWarning("無効なURLです");
                 return;
             }
 
@@ -2163,7 +2258,7 @@ namespace GameCanvas
         {
             if (url == null || url.IndexOf("http") != 0)
             {
-                Debug.LogWarning("無効なURLです");
+                UDebug.LogWarning("無効なURLです");
                 return;
             }
 
@@ -2185,7 +2280,7 @@ namespace GameCanvas
         {
             if (url == null || url.IndexOf("http") != 0)
             {
-                Debug.LogWarning("無効なURLです");
+                UDebug.LogWarning("無効なURLです");
                 return;
             }
 
@@ -2208,7 +2303,7 @@ namespace GameCanvas
         {
             if (url == null || url.IndexOf("http") != 0)
             {
-                Debug.LogWarning("無効なURLです");
+                UDebug.LogWarning("無効なURLです");
                 return;
             }
 
@@ -2222,9 +2317,9 @@ namespace GameCanvas
         /// <returns>指定された画像の横幅</returns>
         public int GetOnlineImageWidth(string url)
         {
-            if (!_webCache.ContainsKey(url)) return 0;
+            if (!mWebCache.ContainsKey(url)) return 0;
 
-            var sprite = _webCache[url] as Sprite;
+            var sprite = mWebCache[url] as USprite;
             if (sprite == null) return 0;
 
             return (int)sprite.rect.width;
@@ -2237,9 +2332,9 @@ namespace GameCanvas
         /// <returns>指定された画像の高さ</returns>
         public int GetOnlineImageHeight(string url)
         {
-            if (!_webCache.ContainsKey(url)) return 0;
+            if (!mWebCache.ContainsKey(url)) return 0;
 
-            var sprite = _webCache[url] as Sprite;
+            var sprite = mWebCache[url] as USprite;
             if (sprite == null) return 0;
 
             return (int)sprite.rect.height;
@@ -2251,11 +2346,13 @@ namespace GameCanvas
         /// <param name="url">画像のURL</param>
         public bool isDownloadedImage(string url)
         {
-            if (!_webCache.ContainsKey(url)) return false;
+            if (!mWebCache.ContainsKey(url)) return false;
 
-            var sprite = _webCache[url] as Sprite;
+            var sprite = mWebCache[url] as USprite;
             return sprite != null;
         }
+
+        #region 廃止された関数
 
         [System.Obsolete("DrawOnlineImage() に名称変更されました")]
         public void DrawImageFromNet(string url, float x, float y, sbyte priority = 0)
@@ -2290,6 +2387,8 @@ namespace GameCanvas
         [System.Obsolete("DrawClippedImageSRTFromNet() は廃止されました", true)]
         public void DrawClippedImageSRTFromNet(string url, float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f) { }
 
+        #endregion
+
         private void _DrawOnlineSprite(string url, float x, float y, float scaleX, float scaleY, sbyte priority)
         {
             _DrawOnlineSprite(url, x, y, scaleX, scaleY, 0f, 0f, 0f, 0f, 0f, 0f, 0f, priority);
@@ -2297,15 +2396,15 @@ namespace GameCanvas
 
         private void _DrawOnlineSprite(string url, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority)
         {
-            if (!_webCache.ContainsKey(url))
+            if (!mWebCache.ContainsKey(url))
             {
                 // ダウンロード
-                _webCache.Add(url, null);
+                mWebCache.Add(url, null);
                 mGCInternal.StartCoroutine(_DownloadWebImage(url));
                 return;
             }
 
-            if (_webCache[url] == null)
+            if (mWebCache[url] == null)
             {
                 // ダウンロード完了待ち
                 return;
@@ -2313,7 +2412,7 @@ namespace GameCanvas
 
             if (scaleX == 0 || scaleY == 0) return;
 
-            var sprite = _webCache[url] as Sprite;
+            var sprite = mWebCache[url] as USprite;
             if (sprite == null)
             {
                 return;
@@ -2324,34 +2423,34 @@ namespace GameCanvas
 
         private System.Collections.IEnumerator _DownloadWebText(string url, System.Action<string> callback)
         {
-            if (_webCache.ContainsKey(url))
+            if (mWebCache.ContainsKey(url))
             {
-                callback(_webCache[url] as string);
+                callback(mWebCache[url] as string);
                 yield return null;
             }
             else
             {
-                var www = new WWW(url);
+                var www = new UnityEngine.WWW(url);
                 yield return www;
 
-                _webCache[url] = www.text;
+                mWebCache[url] = www.text;
                 callback(www.text);
             }
         }
 
         private System.Collections.IEnumerator _DownloadWebImage(string url)
         {
-            var www = new WWW(url);
+            var www = new UnityEngine.WWW(url);
             yield return www;
 
             var texture = www.texture;
             if (texture == null)
             {
-                Debug.LogWarningFormat("{0} からの画像ダウンロードに失敗しました", www.url);
-                _webCache.Remove(url);
+                UDebug.LogWarningFormat("{0} からの画像ダウンロードに失敗しました", www.url);
+                mWebCache.Remove(url);
             }
 
-            _webCache[url] = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0f, 1f), 1f);
+            mWebCache[url] = USprite.Create(texture, new URect(0, 0, texture.width, texture.height), new UVec2(0f, 1f), 1f);
         }
 
         #endregion
@@ -2361,7 +2460,7 @@ namespace GameCanvas
         /// <summary>
         /// WebSocketがサーバーと接続状態にあるかどうか
         /// </summary>
-        public bool isOpenWS { get { return _ws != null && _ws.ReadyState == WebSocketSharp.WebSocketState.Open; } }
+        public bool isOpenWS { get { return mWs != null && mWs.ReadyState == WebSocketSharp.WebSocketState.Open; } }
 
         /// <summary>
         /// WebSocketサーバーに接続します
@@ -2371,26 +2470,26 @@ namespace GameCanvas
         /// <param name="onMessage">WebSocketサーバーからのメッセージを受け取る関数</param>
         /// <param name="onClose">WebSocketサーバーから切断したときに呼ばれる関数</param>
         /// <param name="onError">WebSocketサーバーとの接続でエラーが発生したときに呼ばれる関数</param>
-        public void OpenWS(string url, System.Action onOpen = null, System.Action<string> onMessage = null, System.Action onClose = null, System.Action<string> onError = null)
+        public void OpenWS(string url, Function onOpen = null, System.Action<string> onMessage = null, Function onClose = null, System.Action<string> onError = null)
         {
             if (isOpenWS)
             {
-                _ws.Close(WebSocketSharp.CloseStatusCode.Away);
-                _ws = null;
+                mWs.Close(WebSocketSharp.CloseStatusCode.Away);
+                mWs = null;
             }
 
-            _ws = new WebSocketSharp.WebSocket(url);
-            _ws.SslConfiguration.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => { return true; };
+            mWs = new WebSocketSharp.WebSocket(url);
+            mWs.SslConfiguration.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => { return true; };
 
-            if (onOpen != null) { _ws.OnOpen += (sender, e) => onOpen.Invoke(); }
-            if (onMessage != null) { _ws.OnMessage += (sender, e) => onMessage.Invoke(e.IsText ? e.Data : null); }
-            if (onError != null) { _ws.OnError += (sender, e) => onError.Invoke(e.Message); }
-            _ws.OnClose += (sender, e) => {
+            if (onOpen != null) { mWs.OnOpen += (sender, e) => onOpen.Invoke(); }
+            if (onMessage != null) { mWs.OnMessage += (sender, e) => onMessage.Invoke(e.IsText ? e.Data : null); }
+            if (onError != null) { mWs.OnError += (sender, e) => onError.Invoke(e.Message); }
+            mWs.OnClose += (sender, e) => {
                 if (onClose != null) onClose.Invoke();
-                _ws = null;
+                mWs = null;
             };
 
-            _ws.ConnectAsync();
+            mWs.ConnectAsync();
         }
 
         /// <summary>
@@ -2400,8 +2499,8 @@ namespace GameCanvas
         {
             if (!isOpenWS) return;
 
-            _ws.Close(WebSocketSharp.CloseStatusCode.Normal);
-            _ws = null;
+            mWs.Close(WebSocketSharp.CloseStatusCode.Normal);
+            mWs = null;
         }
 
         /// <summary>
@@ -2412,7 +2511,7 @@ namespace GameCanvas
         {
             if (!isOpenWS) return;
 
-            _ws.SendAsync(message, null);
+            mWs.SendAsync(message, null);
         }
 
         /// <summary>
@@ -2479,7 +2578,7 @@ namespace GameCanvas
         public string Load(string key)
         {
             string value;
-            if (_save.TryGetValue(key, out value))
+            if (mSaveData.TryGetValue(key, out value))
             {
                 return value;
             }
@@ -2514,7 +2613,7 @@ namespace GameCanvas
         /// <param name="value">保存する文字列</param>
         public void Save(string key, string value)
         {
-            _save.Add(key, value, true);
+            mSaveData.Add(key, value, true);
         }
 
         /// <summary>
@@ -2523,7 +2622,7 @@ namespace GameCanvas
         /// <param name="key">キー</param>
         public void DeleteData(string key)
         {
-            _save.Remove(key);
+            mSaveData.Remove(key);
         }
 
         /// <summary>
@@ -2531,7 +2630,7 @@ namespace GameCanvas
         /// </summary>
         public void DeleteDataAll()
         {
-            _save.Clear();
+            mSaveData.Clear();
         }
 
         /// <summary>
@@ -2539,19 +2638,19 @@ namespace GameCanvas
         /// </summary>
         public void ReadDataByStorage()
         {
-            var path = Application.persistentDataPath;
+            var path = UnityEngine.Application.persistentDataPath;
             var fileName = "save.txt";
             var filePath = System.IO.Path.Combine(path, fileName);
 
             if (System.IO.File.Exists(filePath))
             {
                 var json = System.IO.File.ReadAllText(filePath, System.Text.Encoding.UTF8);
-                _save = SerializableDictionary<string, string>.FromJson(json);
+                mSaveData = SerializableDictionary<string, string>.FromJson(json);
             }
 
-            if (_save == null)
+            if (mSaveData == null)
             {
-                _save = new SerializableDictionary<string, string>();
+                mSaveData = new SerializableDictionary<string, string>();
             }
         }
 
@@ -2560,11 +2659,11 @@ namespace GameCanvas
         /// </summary>
         public void WriteDataToStorage()
         {
-            var path = Application.persistentDataPath;
+            var path = UnityEngine.Application.persistentDataPath;
             var fileName = "save.txt";
             var filePath = System.IO.Path.Combine(path, fileName);
 
-            var json = _save.ToJson();
+            var json = mSaveData.ToJson();
             System.IO.File.WriteAllText(filePath, json, System.Text.Encoding.UTF8);
         }
 
@@ -2575,7 +2674,7 @@ namespace GameCanvas
         /// <returns>JSON形式の文字列</returns>
         public string ConvertToJson(object obj)
         {
-            return JsonUtility.ToJson(obj);
+            return UnityEngine.JsonUtility.ToJson(obj);
         }
 
         /// <summary>
@@ -2586,7 +2685,7 @@ namespace GameCanvas
         /// <returns>復元されたオブジェクト</returns>
         public T ConvertFromJson<T>(string json)
         {
-            return JsonUtility.FromJson<T>(json);
+            return UnityEngine.JsonUtility.FromJson<T>(json);
         }
 
         #endregion
@@ -2607,8 +2706,8 @@ namespace GameCanvas
         /// <returns>衝突しているかどうか</returns>
         public bool CheckHitRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2)
         {
-            var a = new Rect(x1, y1, w1, h1);
-            var b = new Rect(x2, y2, w2, h2);
+            var a = new URect(x1, y1, w1, h1);
+            var b = new URect(x2, y2, w2, h2);
             return a.Overlaps(b);
         }
 
@@ -2624,9 +2723,9 @@ namespace GameCanvas
         /// <returns>衝突しているかどうか</returns>
         public bool CheckHitCircle(float x1, float y1, float r1, float x2, float y2, float r2)
         {
-            var a = new Vector2(x1, y1);
-            var b = new Vector2(x2, y2);
-            return Vector2.Distance(a, b) <= r1 + r2;
+            var a = new UVec2(x1, y1);
+            var b = new UVec2(x2, y2);
+            return UVec2.Distance(a, b) <= r1 + r2;
         }
 
         /// <summary>
@@ -2659,7 +2758,7 @@ namespace GameCanvas
         /// <returns>計算結果</returns>
         public float Cos(float angle)
         {
-            return Mathf.Cos(angle * Mathf.Deg2Rad);
+            return UnityEngine.Mathf.Cos(angle * UnityEngine.Mathf.Deg2Rad);
         }
 
         /// <summary>
@@ -2669,7 +2768,7 @@ namespace GameCanvas
         /// <returns>計算結果</returns>
         public float Sin(float angle)
         {
-            return Mathf.Sin(angle * Mathf.Deg2Rad);
+            return UnityEngine.Mathf.Sin(angle * UnityEngine.Mathf.Deg2Rad);
         }
 
         /// <summary>
@@ -2680,7 +2779,7 @@ namespace GameCanvas
         /// <returns>角度（度数法）</returns>
         public float Atan2(float x, float y)
         {
-            return Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+            return UnityEngine.Mathf.Atan2(y, x) * UnityEngine.Mathf.Rad2Deg;
         }
 
         /// <summary>
@@ -2690,7 +2789,7 @@ namespace GameCanvas
         /// <returns>角度（弧度法）</returns>
         public float Deg2Rad(float degree)
         {
-            return degree * Mathf.Deg2Rad;
+            return degree * UnityEngine.Mathf.Deg2Rad;
         }
 
         /// <summary>
@@ -2700,7 +2799,7 @@ namespace GameCanvas
         /// <returns>角度（度数法）</returns>
         public float Rad2Deg(float radian)
         {
-            return radian * Mathf.Rad2Deg;
+            return radian * UnityEngine.Mathf.Rad2Deg;
         }
 
         /// <summary>
@@ -2711,7 +2810,7 @@ namespace GameCanvas
         /// <returns></returns>
         public int Random(int min, int max)
         {
-            return Mathf.FloorToInt(UnityEngine.Random.Range(min, max + 1));
+            return UnityEngine.Mathf.FloorToInt(UnityEngine.Random.Range(min, max + 1));
         }
 
         /// <summary>
@@ -2743,7 +2842,7 @@ namespace GameCanvas
         /// </summary>
         public float time
         {
-            get { return Time.time; }
+            get { return UnityEngine.Time.time; }
         }
 
         /// <summary>
@@ -2751,7 +2850,7 @@ namespace GameCanvas
         /// </summary>
         public float deltaTime
         {
-            get { return Time.deltaTime; }
+            get { return UnityEngine.Time.deltaTime; }
         }
 
         /// <summary>
@@ -2849,7 +2948,7 @@ namespace GameCanvas
         {
             get
             {
-                return Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.OSXEditor || Debug.isDebugBuild;
+                return UnityEngine.Application.platform == UnityEngine.RuntimePlatform.WindowsEditor || UnityEngine.Application.platform == UnityEngine.RuntimePlatform.OSXEditor || UDebug.isDebugBuild;
             }
         }
 
@@ -2861,7 +2960,7 @@ namespace GameCanvas
         {
             if (isDevelop)
             {
-                Debug.Log(message);
+                UDebug.Log(message);
             }
         }
 
@@ -2869,7 +2968,7 @@ namespace GameCanvas
         /// コンソールにベクトル値を出力します。この関数は isDevelop が真の時のみ動作します
         /// </summary>
         /// <param name="value">ベクトル値</param>
-        public void Trace(Vector2 value)
+        public void Trace(UVec2 value)
         {
             Trace(string.Format("x: {0}, y: {1}", value.x, value.y));
         }
@@ -2899,7 +2998,7 @@ namespace GameCanvas
         /// <returns>押されているかどうか</returns>
         public bool GetIsKeyPress(string key)
         {
-            return isDevelop && Input.GetKey(key);
+            return isDevelop && UnityEngine.Input.GetKey(key);
         }
 
         /// <summary>
@@ -2909,7 +3008,7 @@ namespace GameCanvas
         /// <returns>押された瞬間かどうか</returns>
         public bool GetIsKeyPushed(string key)
         {
-            return isDevelop && Input.GetKeyDown(key);
+            return isDevelop && UnityEngine.Input.GetKeyDown(key);
         }
 
         /// <summary>
@@ -2919,7 +3018,7 @@ namespace GameCanvas
         /// <returns>離された瞬間かどうか</returns>
         public bool GetIsKeyReleased(string key)
         {
-            return isDevelop && Input.GetKeyUp(key);
+            return isDevelop && UnityEngine.Input.GetKeyUp(key);
         }
 
         #endregion
@@ -2931,7 +3030,7 @@ namespace GameCanvas
         /// </summary>
         public bool isLoaded
         {
-            get { return _isLoaded; }
+            get { return mIsLoaded; }
         }
 
         /// <summary>
@@ -2939,7 +3038,7 @@ namespace GameCanvas
         /// </summary>
         public void ExitApp()
         {
-            Application.Quit();
+            UnityEngine.Application.Quit();
         }
 
         #endregion
