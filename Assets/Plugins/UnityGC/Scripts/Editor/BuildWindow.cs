@@ -1,9 +1,20 @@
-﻿using UnityEditor;
+﻿/*------------------------------------------------------------*/
+/// <summary>GameCanvas for Unity [Build Window]</summary>
+/// <author>Seibe TAKAHASHI</author>
+/// <remarks>
+/// (c) 2015-2017 Smart Device Programming.
+/// This software is released under the MIT License.
+/// http://opensource.org/licenses/mit-license.php
+/// </remarks>
+/*------------------------------------------------------------*/
+using UnityEditor;
 using UnityEngine;
-using System.Collections;
 
 namespace GameCanvas.Editor
 {
+    /// <summary>
+    /// ビルドウィンドウ
+    /// </summary>
     public class BuildWindow : EditorWindow
     {
         [SerializeField]

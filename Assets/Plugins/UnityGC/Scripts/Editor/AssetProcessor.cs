@@ -15,6 +15,9 @@ using System.Linq;
 
 namespace GameCanvas.Editor
 {
+    /// <summary>
+    /// アセットの後処理
+    /// </summary>
     public class AssetProcessor : AssetPostprocessor
     {
         const string ResourceDir        = "Assets/Res";
