@@ -1091,8 +1091,8 @@ namespace GameCanvas
                 if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
                 var cl = (mCanvasBorder.x + x) / mCanvasScale;
                 var ct = (mCanvasBorder.y + y) / mCanvasScale;
-                var cr = (mCanvasBorder.x + x + w - clipRight) / mCanvasScale;
-                var cb = (mCanvasBorder.y + y + h - clipBottom) / mCanvasScale;
+                var cr = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
+                var cb = (mCanvasBorder.y + y + h - clipTop - clipBottom) / mCanvasScale;
                 mSpriteBlock.SetVector(cShaderClip, new UVec4(cl, ct, cr, cb));
             }
             mSprites[i].SetPropertyBlock(mSpriteBlock);
