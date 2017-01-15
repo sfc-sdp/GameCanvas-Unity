@@ -203,10 +203,9 @@ public class GraphicTest : GameBase
         gc.DrawScaledImage(1, 156, 105, 2f, 2f);
         gc.DrawImageSRT(2, 228, 105, 2f, 2f, wave * 360, 24, 24);
 
-        gc.DrawClippedImage(0, 40, 615, 0, 340, 240, 0);
-        gc.DrawClippedImage(0, 360, 615, 0, 0, 260, 320);
-        gc.DrawClippedImage(0, 40, 875, 260, 320, 0, 0);
-        gc.DrawClippedImage(0, 380, 855, 240, 0, 0, 340);
+        var wave2 = 1f - wave;
+        gc.DrawClippedImage(0, 40, 615, 0, 640 * wave, 480 * wave, 0);
+        gc.DrawClippedImage(0, 40 + 640 * wave2, 615 + 480 * wave2, 480 * wave2, 0, 0, 640 * wave2);
     }
 
     private void _DrawFooter()
