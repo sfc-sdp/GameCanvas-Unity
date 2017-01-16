@@ -1241,7 +1241,7 @@ namespace GameCanvas
             renderer.motionVectors = false;
             renderer.SetColors(cColorWhite, cColorWhite);
 #else
-            renderer.motionVectorGenerationMode = MotionVectorGenerationMode.ForceNoMotion;
+            renderer.motionVectorGenerationMode = UnityEngine.MotionVectorGenerationMode.ForceNoMotion;
             renderer.startColor = cColorWhite;
             renderer.endColor = cColorWhite;
 #endif
