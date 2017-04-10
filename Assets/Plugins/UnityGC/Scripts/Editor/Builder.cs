@@ -19,8 +19,46 @@ namespace GameCanvas.Editor
     /// </summary>
     public enum MobilePlatform
     {
+        Invalid,
         Android = BuildTarget.Android,
         iOS = BuildTarget.iOS
+    }
+
+    public static class MobilePlatformExtension
+    {
+        public static BuildTarget ToBuildTarget(this MobilePlatform platform)
+        {
+            return (BuildTarget)platform;
+        }
+
+        public static BuildTargetGroup ToBuildTargetGroup(this MobilePlatform platform)
+        {
+            switch (platform)
+            {
+                case MobilePlatform.Android: return BuildTargetGroup.Android;
+                case MobilePlatform.iOS: return BuildTargetGroup.iOS;
+                default: return BuildTargetGroup.Unknown;
+            }
+        }
+
+        public static MobilePlatform ToMobilePlatform(this BuildTarget target)
+        {
+            switch (target)
+            {
+                case BuildTarget.Android: return MobilePlatform.Android;
+                case BuildTarget.iOS: return MobilePlatform.iOS;
+                default: return MobilePlatform.Invalid;
+            }
+        }
+
+        public static void SwitchActiveBuildTarget(this MobilePlatform platform)
+        {
+#if UNITY_5_6_OR_NEWER
+            EditorUserBuildSettings.SwitchActiveBuildTarget(platform.ToBuildTargetGroup(), platform.ToBuildTarget());
+#else
+            EditorUserBuildSettings.SwitchActiveBuildTarget(platform.ToBuildTarget());
+#endif
+        }
     }
 
     /// <summary>
@@ -45,13 +83,17 @@ namespace GameCanvas.Editor
             connectProfiler = isDevelop;
             allowDebugging = false;
             il2cpp = target == MobilePlatform.iOS;
-            minAndroidSdkVersion = AndroidSdkVersions.AndroidApiLevel10;
+            minAndroidSdkVersion = AndroidSdkVersions.AndroidApiLevel16;
             iOSSdkVersion = iOSSdkVersion.DeviceSDK;
         }
 
         public BuildOption()
         {
+#if UNITY_5_6_OR_NEWER
+            bundleIdentifier = PlayerSettings.applicationIdentifier;
+#else
             bundleIdentifier = PlayerSettings.bundleIdentifier;
+#endif
             bundleVersion = PlayerSettings.bundleVersion;
             productName = PlayerSettings.productName;
             companyName = "Keio University";
@@ -61,7 +103,7 @@ namespace GameCanvas.Editor
             connectProfiler = false;
             allowDebugging = false;
             il2cpp = target == MobilePlatform.iOS;
-            minAndroidSdkVersion = AndroidSdkVersions.AndroidApiLevel10;
+            minAndroidSdkVersion = AndroidSdkVersions.AndroidApiLevel16;
             iOSSdkVersion = iOSSdkVersion.DeviceSDK;
         }
 
@@ -143,27 +185,38 @@ namespace GameCanvas.Editor
         internal static void Run(BuildOption option)
         {
             // 現在のビルド設定を控えておく
-            var prevTarget          = EditorUserBuildSettings.activeBuildTarget;
-            var prevAllowDebuggin   = EditorUserBuildSettings.allowDebugging;
+            var prevTarget = EditorUserBuildSettings.activeBuildTarget;
+#if UNITY_5_6_OR_NEWER
+            var prevTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+#endif
+            var prevAllowDebuggin = EditorUserBuildSettings.allowDebugging;
             var prevConnectProfiler = EditorUserBuildSettings.connectProfiler;
-            var prevDevelopment     = EditorUserBuildSettings.development;
+            var prevDevelopment = EditorUserBuildSettings.development;
 
             // ビルド設定を上書きする
+#if UNITY_5_6_OR_NEWER
+            PlayerSettings.applicationIdentifier = option.bundleIdentifier;
+#else
             PlayerSettings.bundleIdentifier         = option.bundleIdentifier;
-            PlayerSettings.bundleVersion            = option.bundleVersion;
-            PlayerSettings.productName              = option.productName;
-            PlayerSettings.companyName              = option.companyName;
-            EditorUserBuildSettings.allowDebugging  = option.allowDebugging;
+#endif
+            PlayerSettings.bundleVersion = option.bundleVersion;
+            PlayerSettings.productName = option.productName;
+            PlayerSettings.companyName = option.companyName;
+            EditorUserBuildSettings.allowDebugging = option.allowDebugging;
             EditorUserBuildSettings.connectProfiler = option.connectProfiler;
-            EditorUserBuildSettings.development     = option.isDevelopment;
-            var buildTarget = (BuildTarget)option.target;
+            EditorUserBuildSettings.development = option.isDevelopment;
+            var buildTarget = option.target.ToBuildTarget();
             if (prevTarget != buildTarget)
             {
-                EditorUserBuildSettings.SwitchActiveBuildTarget(buildTarget);
+                option.target.SwitchActiveBuildTarget();
             }
 
             var outFilePath = option.outFolderPath + option.productName;
 
+
+#if !UNITY_ANDROID && !UNITY_IOS
+#error Please switch platform for Android or iOS!
+#else
             switch (buildTarget)
             {
 #if UNITY_ANDROID
@@ -197,10 +250,10 @@ namespace GameCanvas.Editor
                     PlayerSettings.iOS.targetOSVersion = iOSTargetOSVersion.Unknown;
                     break;
 #endif
-
                 default:
                     return;
-            }
+        }
+#endif
 
             // ビルドを実行する
             var errorMessage = BuildPipeline.BuildPlayer(
@@ -211,10 +264,14 @@ namespace GameCanvas.Editor
             );
 
             // ビルド前の設定に戻す
+#if UNITY_5_6_OR_NEWER
+            EditorUserBuildSettings.SwitchActiveBuildTarget(prevTargetGroup, prevTarget);
+#else
             EditorUserBuildSettings.SwitchActiveBuildTarget(prevTarget);
-            EditorUserBuildSettings.allowDebugging  = prevAllowDebuggin;
+#endif
+            EditorUserBuildSettings.allowDebugging = prevAllowDebuggin;
             EditorUserBuildSettings.connectProfiler = prevConnectProfiler;
-            EditorUserBuildSettings.development     = prevDevelopment;
+            EditorUserBuildSettings.development = prevDevelopment;
 
             // エラー出力
             if (!string.IsNullOrEmpty(errorMessage))
@@ -319,7 +376,7 @@ namespace GameCanvas.Editor
                 }
             }
         }
-        
+
         /// <summary>
         /// 現在有効なシーンの一覧を取得します
         /// </summary>
@@ -327,12 +384,12 @@ namespace GameCanvas.Editor
         internal static string[] GetEnabledScenePaths()
         {
             var scenePathList = new List<string>();
-            
+
             foreach (var scene in EditorBuildSettings.scenes)
             {
                 if (scene.enabled) scenePathList.Add(scene.path);
             }
-            
+
             return scenePathList.ToArray();
         }
     }

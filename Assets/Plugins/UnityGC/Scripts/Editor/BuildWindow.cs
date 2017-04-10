@@ -63,7 +63,7 @@ namespace GameCanvas.Editor
             if (target != option.target)
             {
                 option.target = target;
-                EditorUserBuildSettings.SwitchActiveBuildTarget((BuildTarget)option.target);
+                option.target.SwitchActiveBuildTarget();
             }
             switch (option.target)
             {

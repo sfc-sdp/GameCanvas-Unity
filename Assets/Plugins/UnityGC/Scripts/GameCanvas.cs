@@ -1089,7 +1089,7 @@ namespace GameCanvas
                 var w = sprite.rect.width;
                 var h = sprite.rect.height;
                 if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+#if !UNITY_5_6_OR_NEWER && (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN)
                 var minX = (mCanvasBorder.x + x) / mCanvasScale;
                 var minY = (mCanvasBorder.y + y) / mCanvasScale;
                 var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
@@ -1171,8 +1171,12 @@ namespace GameCanvas
             mLines[i].endColor = color;
             mLines[i].startWidth = lineWidth;
             mLines[i].endWidth = lineWidth;
+#if UNITY_5_6_OR_NEWER
+            mLines[i].positionCount = verts.Length;
+#else
             mLines[i].numPositions = verts.Length;
-#endif
+#endif // UNITY_5_6_OR_NEWER
+#endif // UNITY_5_4
             mLines[i].SetPositions(verts);
             if (angle == 0f || (rotationX == 0f && rotationY == 0f))
             {

@@ -1,4 +1,4 @@
-[![v1.2.5](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v1.2](https://img.shields.io/badge/GameCanvas%20API-v1.2-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html)
+[![v1.2.6](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v1.2](https://img.shields.io/badge/GameCanvas%20API-v1.2-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html)
 [<img alt="GameCanvas" align="right" src="Assets/Plugins/UnityGC/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
@@ -9,7 +9,7 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [Unity 5.5.1f1](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします
+1. [Unity 5.6.0f3](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします
 1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) を入手し、解凍して適当なフォルダに配置します
 1. Unity を起動し、先ほど配置したフォルダを開きます
 1. Assets/Scenes/Game.scene を開いて再生ボタンを押せば、すぐにサンプルが実行されます
