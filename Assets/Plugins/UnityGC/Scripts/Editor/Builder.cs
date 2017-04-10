@@ -236,7 +236,7 @@ namespace GameCanvas.Editor
                         File.Move(outFilePath, outFilePath.Remove(outFilePath.Length - 4) + "." + File.GetLastWriteTime(outFilePath).ToString("MMddHHmmss") + ".apk");
                     }
                     break;
-#endif
+#endif // UNITY_ANDROID
 #if UNITY_IOS
                 case BuildTarget.iOS:
 #if UNITY_5_4_2 || UNITY_5_4_3
@@ -244,16 +244,20 @@ namespace GameCanvas.Editor
                     PlayerSettings.iOS.locationUsageDescription = "For education";
                     PlayerSettings.iOS.microphoneUsageDescription = "For education";
                     PlayerSettings.iOS.allowHTTPDownload = true;
-#endif
+#endif // UNITY_5_4_2 || UNITY_5_4_3
                     PlayerSettings.iOS.sdkVersion = option.iOSSdkVersion;
                     PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
+#if UNITY_5_6_OR_NEWER
+                    PlayerSettings.iOS.targetOSVersionString = string.Empty;
+#else
                     PlayerSettings.iOS.targetOSVersion = iOSTargetOSVersion.Unknown;
+#endif // UNITY_5_6_OR_NEWER
                     break;
-#endif
+#endif // UNITY_IOS
                 default:
                     return;
         }
-#endif
+#endif // !UNITY_ANDROID && !UNITY_IOS
 
             // ビルドを実行する
             var errorMessage = BuildPipeline.BuildPlayer(
