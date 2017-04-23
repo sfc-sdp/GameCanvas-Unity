@@ -8,20 +8,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e70f38cd37a4c43912f158d9f99b51, type: 3}
-  m_Name: GCAssetDB
+  m_Script: {fileID: -831496532, guid: 22fd051f798480a4db662301e31ede0e, type: 3}
+  m_Name: AssetHolder
   m_EditorClassIdentifier: 
-  images:
+  Images:
   - {fileID: 21300000, guid: 3212428bff945a84cb1e2c2aaf887e2d, type: 3}
   - {fileID: 21300000, guid: b7fd20551d34df04684ac005d1b54c14, type: 3}
   - {fileID: 21300000, guid: 42005afb256654d4db0ccb3704572942, type: 3}
-  sounds:
+  Sounds:
   - {fileID: 8300000, guid: 1de15e589d7a8b34390587825cc89503, type: 3}
   - {fileID: 8300000, guid: 13e0b0a1605f21946a2b1f667b0a9091, type: 3}
-  rect: {fileID: 21300000, guid: f9168052039556c4282c34d1cc07f3c1, type: 3}
-  circle: {fileID: 21300000, guid: be3ca278384e1734f8b6050f2a376f5d, type: 3}
-  dummy: {fileID: 21300000, guid: 5a5bada820dddfa488b8cc6441535cfa, type: 3}
-  characters:
+  Rect: {fileID: 21300000, guid: f9168052039556c4282c34d1cc07f3c1, type: 3}
+  Circle: {fileID: 21300000, guid: be3ca278384e1734f8b6050f2a376f5d, type: 3}
+  Dummy: {fileID: 21300000, guid: 5a5bada820dddfa488b8cc6441535cfa, type: 3}
+  Characters:
   - {fileID: 21300000, guid: 9f34ff1f0eed0204a855984c2b4d6269, type: 3}
   - {fileID: 21300002, guid: 9f34ff1f0eed0204a855984c2b4d6269, type: 3}
   - {fileID: 21300004, guid: 9f34ff1f0eed0204a855984c2b4d6269, type: 3}
@@ -423,4 +423,4 @@ MonoBehaviour:
   - {fileID: 21300796, guid: 9f34ff1f0eed0204a855984c2b4d6269, type: 3}
   - {fileID: 21300798, guid: 9f34ff1f0eed0204a855984c2b4d6269, type: 3}
   - {fileID: 21300800, guid: 9f34ff1f0eed0204a855984c2b4d6269, type: 3}
-  material: {fileID: 2100000, guid: bb9aac5cca705f04e9568e14ae9aed7b, type: 2}
+  Material: {fileID: 2100000, guid: bb9aac5cca705f04e9568e14ae9aed7b, type: 2}

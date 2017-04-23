@@ -1,5 +1,5 @@
 ﻿/*------------------------------------------------------------*/
-/// <summary>GameCanvas</summary>
+/// <summary>GameCanvas for Unity</summary>
 /// <author>Seibe TAKAHASHI</author>
 /// <remarks>
 /// (c) 2015-2017 Smart Device Programming.
@@ -31,11 +31,9 @@ namespace GameCanvas
 
     using SDrawList = System.Collections.Generic.List<UnityEngine.SpriteRenderer>;
     using LDrawList = System.Collections.Generic.List<UnityEngine.LineRenderer>;
-    using BlockList = System.Collections.Generic.List<UnityEngine.MaterialPropertyBlock>;
     using TransList = System.Collections.Generic.List<UnityEngine.Transform>;
     using StringHash= System.Collections.Generic.Dictionary<string, object>;
     using SaveData  = SerializableDictionary<string, string>;
-    using GCAssetDB = GameCanvasAssetDB;
 
     /// <summary>
     /// GameCanvas 本体
@@ -115,7 +113,7 @@ namespace GameCanvas
         private Function    mDraw                   = null;
         private bool        mIsLoaded               = false;
 
-        private GCAssetDB   mAssetDB                = null;         // アセットデータベース
+        private AssetHolder   mAssetDB                = null;         // アセットデータベース
         private int         mNumImage               = 0;            // 認識済みの画像：数量
         private int         mNumSound               = 0;            // 認識済みの音源：数量
         private UCamTex     mWebCamTexture          = null;         // 映像入力
@@ -307,15 +305,15 @@ namespace GameCanvas
 
         private System.Collections.IEnumerator _LoadResourceAll()
         {
-            var assetDBReq = UnityEngine.Resources.LoadAsync<GameCanvasAssetDB>("GCAssetDB");
+            var assetDBReq = UnityEngine.Resources.LoadAsync<AssetHolder>("AssetHolder");
 
             while (!assetDBReq.isDone)
             {
                 yield return null;
             }
-            mAssetDB = assetDBReq.asset as GameCanvasAssetDB;
-            mNumImage = mAssetDB.images.Length;
-            mNumSound = mAssetDB.sounds.Length;
+            mAssetDB = assetDBReq.asset as AssetHolder;
+            mNumImage = mAssetDB.Images.Length;
+            mNumSound = mAssetDB.Sounds.Length;
 
             // レンダラーの初期化
             for (var i = 0; i < cInitSpriteSize; ++i)
@@ -326,7 +324,7 @@ namespace GameCanvas
             {
                 _AddLine();
             }
-            mAssetDB.material.SetVector(cShaderClip, UVec4.zero);
+            mAssetDB.Material.SetVector(cShaderClip, UVec4.zero);
 
             mIsLoaded = true;
             if (mStart != null) mStart();
@@ -505,7 +503,7 @@ namespace GameCanvas
         /// </summary>
         public void ClearScreen()
         {
-            _DrawSprite(mAssetDB.rect, cColorWhite, 0, 0, mCanvasWidth, mCanvasHeight, -128);
+            _DrawSprite(mAssetDB.Rect, cColorWhite, 0, 0, mCanvasWidth, mCanvasHeight, -128);
         }
 
         /// <summary>
@@ -590,7 +588,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, 1, 1, priority, true);
+            _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, 1, 1, priority, true);
         }
         
         /// <summary>
@@ -677,7 +675,7 @@ namespace GameCanvas
                 else if (c == '┼') n = 399;             // ┼
                 else n = 400; // その他(豆腐に置き換え)
 
-                _DrawSprite(mAssetDB.characters[n], mRendererColor, x + i * tracking, y, scaleX, mFontSize, priority, true);
+                _DrawSprite(mAssetDB.Characters[n], mRendererColor, x + i * tracking, y, scaleX, mFontSize, priority, true);
             }
         }
 
@@ -719,7 +717,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("radius", "0以下の数値は設定できません");
             }
 
-            _DrawSprite(mAssetDB.circle, mRendererColor, x, y, radius * 2, radius * 2, priority);
+            _DrawSprite(mAssetDB.Circle, mRendererColor, x, y, radius * 2, radius * 2, priority);
         }
 
         /// <summary>
@@ -742,7 +740,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("height", "0以下の数値は設定できません");
             }
 
-            _DrawSprite(mAssetDB.rect, mRendererColor, x, y, width, height, priority);
+            _DrawSprite(mAssetDB.Rect, mRendererColor, x, y, width, height, priority);
         }
 
         /// <summary>
@@ -797,7 +795,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, 1f, 1f, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
+            _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, 1f, 1f, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
         }
 
         /// <summary>
@@ -824,7 +822,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("height", "0以下の数値は設定できません");
             }
 
-            _DrawSprite(mAssetDB.rect, mRendererColor, x, y, width, height, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority);
+            _DrawSprite(mAssetDB.Rect, mRendererColor, x, y, width, height, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority);
         }
 
         /// <summary>
@@ -861,7 +859,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("clipLeft", "0未満の切り取り幅は指定できません");
             }
 
-            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, 1f, 1f, 0f, 0f, 0f, clipTop, clipRight, clipBottom, clipLeft, priority, true);
+            _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, 1f, 1f, 0f, 0f, 0f, clipTop, clipRight, clipBottom, clipLeft, priority, true);
         }
 
         /// <summary>
@@ -885,7 +883,7 @@ namespace GameCanvas
                 return;
             }
 
-            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, scaleH, scaleV, priority, true);
+            _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, scaleH, scaleV, priority, true);
         }
 
         /// <summary>
@@ -912,7 +910,7 @@ namespace GameCanvas
                 return;
             }
 
-            _DrawSprite(mAssetDB.images[id], cColorWhite, x, y, scaleH, scaleV, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
+            _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, scaleH, scaleV, angle, rotationX, rotationY, 0f, 0f, 0f, 0f, priority, true);
         }
 
         /// <summary>
@@ -948,7 +946,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            return (int)mAssetDB.images[id].rect.width;
+            return (int)mAssetDB.Images[id].rect.width;
         }
 
         /// <summary>
@@ -963,7 +961,7 @@ namespace GameCanvas
                 throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
             }
 
-            return (int)mAssetDB.images[id].rect.height;
+            return (int)mAssetDB.Images[id].rect.height;
         }
 
         /// <summary>
@@ -1056,13 +1054,13 @@ namespace GameCanvas
         {
             if (mCanvasBorder.x > 0)
             {
-                _DrawSprite(mAssetDB.rect, cColorBlack, -mCanvasBorder.x, 0, mCanvasBorder.x, mCanvasHeight, 127);
-                _DrawSprite(mAssetDB.rect, cColorBlack, mCanvasWidth, 0, mCanvasBorder.x, mCanvasHeight, 127);
+                _DrawSprite(mAssetDB.Rect, cColorBlack, -mCanvasBorder.x, 0, mCanvasBorder.x, mCanvasHeight, 127);
+                _DrawSprite(mAssetDB.Rect, cColorBlack, mCanvasWidth, 0, mCanvasBorder.x, mCanvasHeight, 127);
             }
             else if (mCanvasBorder.y > 0)
             {
-                _DrawSprite(mAssetDB.rect, cColorBlack, 0, -mCanvasBorder.y, mCanvasWidth, mCanvasBorder.y, 127);
-                _DrawSprite(mAssetDB.rect, cColorBlack, 0, mCanvasHeight, mCanvasWidth, mCanvasBorder.y, 127);
+                _DrawSprite(mAssetDB.Rect, cColorBlack, 0, -mCanvasBorder.y, mCanvasWidth, mCanvasBorder.y, 127);
+                _DrawSprite(mAssetDB.Rect, cColorBlack, 0, mCanvasHeight, mCanvasWidth, mCanvasBorder.y, 127);
             }
         }
 
@@ -1105,7 +1103,7 @@ namespace GameCanvas
             mSprites[i].SetPropertyBlock(mSpriteBlock);
 
             mSprites[i].enabled = true;
-            mSprites[i].sharedMaterial = mAssetDB.material;
+            mSprites[i].sharedMaterial = mAssetDB.Material;
             mSprites[i].sprite = sprite;
             mSprites[i].color = color;
             mSprites[i].flipY = flipY;
@@ -1223,7 +1221,7 @@ namespace GameCanvas
             renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             renderer.receiveShadows = false;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            renderer.sharedMaterial = mAssetDB.material;
+            renderer.sharedMaterial = mAssetDB.Material;
             renderer.sprite = null;
             renderer.color = cColorWhite;
             mSprites.Add(renderer);
@@ -1240,7 +1238,7 @@ namespace GameCanvas
             renderer.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             renderer.receiveShadows = false;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            renderer.sharedMaterial = mAssetDB.material;
+            renderer.sharedMaterial = mAssetDB.Material;
 #if UNITY_5_4
             renderer.motionVectors = false;
             renderer.SetColors(cColorWhite, cColorWhite);
@@ -1535,7 +1533,7 @@ namespace GameCanvas
             mSprites[i].SetPropertyBlock(mSpriteBlock);
             
             mSprites[i].enabled = true;
-            mSprites[i].sprite = mAssetDB.dummy;
+            mSprites[i].sprite = mAssetDB.Dummy;
             mSprites[i].color = color;
             mSprites[i].flipY = true;
             mSprites[i].GetPropertyBlock(mSpriteBlock);
@@ -1600,7 +1598,7 @@ namespace GameCanvas
                 mAudioBGM.Stop();
             }
 
-            mAudioBGM.clip = mAssetDB.sounds[id];
+            mAudioBGM.clip = mAssetDB.Sounds[id];
             mAudioBGM.loop = isLoop;
             mAudioBGM.Play();
         }
@@ -1648,7 +1646,7 @@ namespace GameCanvas
                 return;
             }
 
-            mAudioSE.PlayOneShot(mAssetDB.sounds[id]);
+            mAudioSE.PlayOneShot(mAssetDB.Sounds[id]);
         }
 
         /// <summary>
