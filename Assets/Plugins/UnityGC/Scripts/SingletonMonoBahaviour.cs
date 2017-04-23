@@ -1,5 +1,5 @@
 ﻿/*------------------------------------------------------------*/
-/// <summary>Singleton MonoBehaviour</summary>
+/// <summary>GameCanvas for Unity</summary>
 /// <author>Seibe TAKAHASHI</author>
 /// <remarks>
 /// (c) 2015-2017 Smart Device Programming.
@@ -7,6 +7,7 @@
 /// http://opensource.org/licenses/mit-license.php
 /// </remarks>
 /*------------------------------------------------------------*/
+
 using UnityEngine;
 
 namespace GameCanvas

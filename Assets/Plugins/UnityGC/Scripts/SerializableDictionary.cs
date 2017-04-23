@@ -1,5 +1,5 @@
 ﻿/*------------------------------------------------------------*/
-/// <summary>Serializable Dictionary</summary>
+/// <summary>GameCanvas for Unity</summary>
 /// <author>Seibe TAKAHASHI</author>
 /// <remarks>
 /// (c) 2015-2017 Smart Device Programming.
@@ -7,6 +7,7 @@
 /// http://opensource.org/licenses/mit-license.php
 /// </remarks>
 /*------------------------------------------------------------*/
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,8 +40,8 @@ namespace GameCanvas
         /// </summary>
         public SerializableDictionary()
         {
-            _dict  = new Dictionary<TKey, TValue>();
-            Keys   = new List<TKey>();
+            _dict = new Dictionary<TKey, TValue>();
+            Keys = new List<TKey>();
             Values = new List<TValue>();
         }
 
@@ -78,8 +79,8 @@ namespace GameCanvas
         /// <param name="dictionary"></param>
         public void FromDictionary(Dictionary<TKey, TValue> dictionary)
         {
-            _dict  = dictionary;
-            Keys   = new List<TKey>(_dict.Keys);
+            _dict = dictionary;
+            Keys = new List<TKey>(_dict.Keys);
             Values = new List<TValue>(_dict.Values);
         }
 

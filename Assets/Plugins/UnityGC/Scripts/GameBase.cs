@@ -1,5 +1,5 @@
 ﻿/*------------------------------------------------------------*/
-/// <summary>GameGanvas Base Class</summary>
+/// <summary>GameCanvas for Unity</summary>
 /// <author>Seibe TAKAHASHI</author>
 /// <remarks>
 /// (c) 2015-2017 Smart Device Programming.
@@ -7,6 +7,7 @@
 /// http://opensource.org/licenses/mit-license.php
 /// </remarks>
 /*------------------------------------------------------------*/
+
 using UnityEngine;
 
 namespace GameCanvas
@@ -14,7 +15,7 @@ namespace GameCanvas
     /// <summary>
     /// 内部に GameCanvas インスタンスを持つ MonoBehaviour
     /// </summary>
-    [DisallowMultipleComponent()]
+    [DisallowMultipleComponent]
     public abstract class GameBase : MonoBehaviour
     {
         /// <summary>
@@ -37,16 +38,16 @@ namespace GameCanvas
         /// <summary>
         /// 初期化処理
         /// </summary>
-        virtual public void Start() { }
+        public virtual void Start() { }
 
         /// <summary>
         /// 更新処理
         /// </summary>
-        virtual public void Calc() { }
+        public virtual void Calc() { }
 
         /// <summary>
         /// 描画処理
         /// </summary>
-        virtual public void Draw() { }
+        public virtual void Draw() { }
     }
 }
