@@ -19,7 +19,6 @@ public class TextTest : GameBase
     private string[] text;
     private float[] textX;
     private float[] textY;
-    private int[] textLen;
     private float[] fontSize;
     private char[][] builder;
 
