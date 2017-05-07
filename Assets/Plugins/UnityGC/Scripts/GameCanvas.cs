@@ -113,7 +113,7 @@ namespace GameCanvas
         private Function    mDraw                   = null;
         private bool        mIsLoaded               = false;
 
-        private AssetHolder   mAssetDB                = null;         // アセットデータベース
+        private AssetHolder mAssetDB                = null;         // アセットデータベース
         private int         mNumImage               = 0;            // 認識済みの画像：数量
         private int         mNumSound               = 0;            // 認識済みの音源：数量
         private UCamTex     mWebCamTexture          = null;         // 映像入力
@@ -860,6 +860,46 @@ namespace GameCanvas
             }
 
             _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, 1f, 1f, 0f, 0f, 0f, clipTop, clipRight, clipBottom, clipLeft, priority, true);
+        }
+
+        /// <summary>
+        /// 一部分を切り取った画像を描画します
+        /// </summary>
+        /// <param name="id">描画する画像のID。img0.png ならば 0 を指定します</param>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="u">画像左側の切り取る横幅/param>
+        /// <param name="v">画像上側の切り取る縦幅</param>
+        /// <param name="w">描画する横幅</param>
+        /// <param name="h">描画する縦幅</param>
+        /// <param name="priority">描画優先度 (-128～127)</param>
+        public void DrawClippedImageUVWH(int id, float x, float y, float u, float v, float w, float h, sbyte priority = 0)
+        {
+            if (id < 0 || id >= mNumImage)
+            {
+                throw new System.ArgumentOutOfRangeException("id", "指定されたIDの画像は存在しません");
+            }
+            if (u < 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("u", "0未満の切り取り幅は指定できません");
+            }
+            if (v < 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("v", "0未満の切り取り幅は指定できません");
+            }
+            if (w < 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("w", "0未満の横幅は指定できません");
+            }
+            if (h < 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("h", "0未満の縦幅は指定できません");
+            }
+
+            var clipRight = GetImageWidth(id) - u - w;
+            var clipBottom = GetImageHeight(id) - v - h;
+
+            _DrawSprite(mAssetDB.Images[id], cColorWhite, x, y, 1f, 1f, 0f, 0f, 0f, v, clipRight, clipBottom, u, priority, true);
         }
 
         /// <summary>
