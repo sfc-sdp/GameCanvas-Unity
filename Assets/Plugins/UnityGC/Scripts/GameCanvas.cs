@@ -184,7 +184,11 @@ namespace GameCanvas
             // 実行環境の記録
             mDeviceWidth = UnityEngine.Screen.width;
             mDeviceHeight = UnityEngine.Screen.height;
+#if UNITY_EDITOR && GC_DISABLE_TOUCH
+            mTouchSupported = false;
+#else
             mTouchSupported = UnityEngine.Input.touchSupported;
+#endif
 
             // アプリケーションの設定
             UnityEngine.Application.targetFrameRate = 60;
