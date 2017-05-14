@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9f34ff1f0eed0204a855984c2b4d6269
-timeCreated: 1482051179
+timeCreated: 1494743969
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -635,11 +635,11 @@ TextureImporter:
     overridden: 0
   - buildTarget: iPhone
     maxTextureSize: 2048
-    textureFormat: 33
-    textureCompression: 2
-    compressionQuality: 80
+    textureFormat: 4
+    textureCompression: 0
+    compressionQuality: 50
     crunchedCompression: 0
-    allowsAlphaSplitting: 1
+    allowsAlphaSplitting: 0
     overridden: 1
   - buildTarget: Android
     maxTextureSize: 2048
@@ -647,8 +647,16 @@ TextureImporter:
     textureCompression: 2
     compressionQuality: 80
     crunchedCompression: 0
-    allowsAlphaSplitting: 1
+    allowsAlphaSplitting: 0
     overridden: 1
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -5867,6 +5875,6 @@ TextureImporter:
       tessellationDetail: 0
     outline: []
   spritePackingTag: GCAtlas
-  userData: 
+  userData: GameCanvas AssetImporter 1.3.2.7
   assetBundleName: 
   assetBundleVariant: 

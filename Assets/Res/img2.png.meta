@@ -64,15 +64,15 @@ TextureImporter:
     textureCompression: 2
     compressionQuality: 80
     crunchedCompression: 0
-    allowsAlphaSplitting: 1
+    allowsAlphaSplitting: 0
     overridden: 1
   - buildTarget: iPhone
     maxTextureSize: 2048
-    textureFormat: 33
-    textureCompression: 2
-    compressionQuality: 80
+    textureFormat: 4
+    textureCompression: 0
+    compressionQuality: 50
     crunchedCompression: 0
-    allowsAlphaSplitting: 1
+    allowsAlphaSplitting: 0
     overridden: 1
   - buildTarget: Standalone
     maxTextureSize: 2048
@@ -87,6 +87,6 @@ TextureImporter:
     sprites: []
     outline: []
   spritePackingTag: GCAtlas
-  userData: 
+  userData: GameCanvas AssetImporter 1.3.2.7
   assetBundleName: 
   assetBundleVariant: 
