@@ -26,6 +26,7 @@ bld/
 *.rar
 *.zip
 *.pdb
+*.pdb.meta
 *.apk
 *.dex
 
