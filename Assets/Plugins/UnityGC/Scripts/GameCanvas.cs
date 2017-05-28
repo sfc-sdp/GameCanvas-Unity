@@ -61,7 +61,7 @@ namespace GameCanvas
 
         #endregion
 
-        #region Member Classes
+        #region Member Structs
 
         private class GCInternal : SingletonMonoBehaviour<GCInternal>
         {
@@ -82,6 +82,43 @@ namespace GameCanvas
             {
                 mUpdate = update;
             }
+        }
+
+        /// <summary>
+        /// 色情報の塊
+        /// </summary>
+        public struct Colors
+        {
+            public Colors(UColor[] pixels, int cameraWidth, int cameraHeight)
+            {
+                mPixels = pixels;
+                mCameraWidth = cameraWidth;
+                mCameraHeight = cameraHeight;
+            }
+
+            /// <summary>
+            /// 指定した座標の色情報を取得します
+            /// </summary>
+            /// <param name="x">x座標</param>
+            /// <param name="y">y座標</param>
+            /// <returns></returns>
+            public UColor GetAt(int x, int y)
+            {
+                if (mCameraWidth > 0 && mCameraHeight > 0)
+                {
+                    var _y = mCameraHeight - y - 1;
+                    var pos = x + _y * mCameraWidth;
+                    if (mPixels != null && pos < mPixels.Length)
+                    {
+                        return mPixels[pos];
+                    }
+                }
+                return new UColor(0f, 0f, 0f);
+            }
+
+            private readonly UColor[] mPixels;
+            private readonly int mCameraWidth;
+            private readonly int mCameraHeight;
         }
 
         #endregion
@@ -1385,6 +1422,30 @@ namespace GameCanvas
         {
             mWebCamTexture.Stop();
             mWebCamTexture = null;
+        }
+
+        /// <summary>
+        /// カメラ映像の指定したピクセル座標から色情報を取得します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <returns></returns>
+        public UColor GetColorOfCameraImage(int x, int y)
+        {
+            if (mWebCamTexture == null || !mWebCamTexture.isPlaying) return new UColor(0f, 0f, 0f);
+
+            return mWebCamTexture.GetPixel(x, cameraImageHeight - y - 1);
+        }
+
+        /// <summary>
+        /// カメラ映像の全ピクセルの色情報を取得します
+        /// </summary>
+        /// <returns></returns>
+        public Colors GetColorsOfCameraImage()
+        {
+            if (mWebCamTexture == null || !mWebCamTexture.isPlaying) return default(Colors);
+
+            return new Colors(mWebCamTexture.GetPixels(), cameraImageWidth, cameraImageHeight);
         }
 
         /// <summary>

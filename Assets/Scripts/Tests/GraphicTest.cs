@@ -89,7 +89,7 @@ public class GraphicTest : GameBase
                 break;
 
             case 4:
-                gc.DrawCameraImage(10, 70);
+                _DrawCameraImage();
                 break;
         }
 
@@ -206,6 +206,21 @@ public class GraphicTest : GameBase
         var wave2 = 1f - wave;
         gc.DrawClippedImage(0, 40, 615, 0, 640 * wave, 480 * wave, 0);
         gc.DrawClippedImage(0, 40 + 640 * wave2, 615 + 480 * wave2, 480 * wave2, 0, 0, 640 * wave2);
+    }
+
+    private void _DrawCameraImage()
+    {
+        gc.DrawCameraImage(10, 70);
+
+        var camColors = gc.GetColorsOfCameraImage();
+        for (var x = 0; x < gc.cameraImageWidth; x += 16)
+        {
+            for (var y = 0; y < gc.cameraImageHeight; y += 16)
+            {
+                gc.SetColor(camColors.GetAt(x, y));
+                gc.FillRect(10 + x, 80 + y + gc.cameraImageHeight, 16, 16);
+            }
+        }
     }
 
     private void _DrawFooter()
