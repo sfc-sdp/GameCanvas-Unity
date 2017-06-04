@@ -1631,19 +1631,19 @@ namespace GameCanvas
             mSpriteBlock.SetVector(cShaderClip, UVec4.zero);
             if (clipLeft != 0f || clipTop != 0f || clipRight != 0f || clipBottom != 0f)
             {
-				if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
+                if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
 #if GAMECANVAS_REVERSE
                 var minX = (mCanvasBorder.x + x) / mCanvasScale;
                 var minY = (mCanvasBorder.y + y) / mCanvasScale;
                 var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
                 var maxY = (mCanvasBorder.y + y + h - clipTop - clipBottom) / mCanvasScale;
 #else
-				var minX = (mCanvasBorder.x + x) / mCanvasScale;
-				var minY = (mCanvasHeight - (mCanvasBorder.y + y + h - clipTop - clipBottom)) / mCanvasScale;
-				var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
-				var maxY = (mCanvasHeight - (mCanvasBorder.y + y)) / mCanvasScale;
+                var minX = (mCanvasBorder.x + x) / mCanvasScale;
+                var minY = (mCanvasHeight - (mCanvasBorder.y + y + h - clipTop - clipBottom)) / mCanvasScale;
+                var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
+                var maxY = (mCanvasHeight - (mCanvasBorder.y + y)) / mCanvasScale;
 #endif
-				mSpriteBlock.SetVector(cShaderClip, new UVec4(minX, minY, maxX, maxY));
+                mSpriteBlock.SetVector(cShaderClip, new UVec4(minX, minY, maxX, maxY));
             }
             mSprites[i].SetPropertyBlock(mSpriteBlock);
             
@@ -1674,7 +1674,7 @@ namespace GameCanvas
                 var m = UMtrx.TRS(new UVec3(x + rotationX * scaleX, y + rotationY * scaleY, 0f), UQuat.Euler(0f, 0f, angle), cVec3One);
                 m *= UMtrx.TRS(new UVec3(-rotationX * scaleX, -rotationY * scaleY, 0f), cQuatZero, new UVec3(scaleX, scaleY, 1f));
                 switch (camAngle)
-				{
+                {
 #if GAMECANVAS_REVERSE
                     case  90: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One); break;
                     case 180: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, 0f, 0f), cQuatZero, cVec3One); break;
