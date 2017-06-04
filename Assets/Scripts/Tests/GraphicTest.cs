@@ -210,7 +210,8 @@ public class GraphicTest : GameBase
 
     private void _DrawCameraImage()
     {
-        gc.DrawCameraImage(10, 70);
+        var scale = wave * 0.5f + 0.5f;
+        gc.DrawScaledCameraImage(10, 70, scale, scale);
 
         var camColors = gc.GetColorsOfCameraImage();
         for (var x = 0; x < gc.cameraImageWidth; x += 16)

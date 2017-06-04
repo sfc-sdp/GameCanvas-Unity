@@ -89,11 +89,13 @@ namespace GameCanvas
         /// </summary>
         public struct Colors
         {
-            public Colors(UColor[] pixels, int cameraWidth, int cameraHeight)
+            public Colors(UCamTex camTex)
             {
-                mPixels = pixels;
-                mCameraWidth = cameraWidth;
-                mCameraHeight = cameraHeight;
+                mPixels = camTex.GetPixels();
+                mAngle = camTex.videoRotationAngle;
+                mIsMirror = camTex.videoVerticallyMirrored;
+                mWidth = camTex.width;
+                mHeight = camTex.height;
             }
 
             /// <summary>
@@ -104,10 +106,9 @@ namespace GameCanvas
             /// <returns></returns>
             public UColor GetAt(int x, int y)
             {
-                if (mCameraWidth > 0 && mCameraHeight > 0)
+                if (mWidth > 0 && mHeight > 0)
                 {
-                    var _y = mCameraHeight - y - 1;
-                    var pos = x + _y * mCameraWidth;
+                    var pos = calcPos(x, y, mWidth, mHeight);
                     if (mPixels != null && pos < mPixels.Length)
                     {
                         return mPixels[pos];
@@ -116,9 +117,25 @@ namespace GameCanvas
                 return new UColor(0f, 0f, 0f);
             }
 
+            private int calcPos(int x, int y, int w, int h)
+            {
+                int _x, _y;
+                switch (mAngle)
+                {
+                    case  90: _x = y;               _y = x;               break;
+                    case 180: _x = mWidth  - x - 1; _y = y;               break;
+                    case 270: _x = mHeight - y - 1; _y = mWidth  - x - 1; break;
+                    default : _x = x;               _y = mHeight - y - 1; break;
+                }
+                if (mIsMirror) _y = mHeight - _y - 1;
+                return _x + _y * mWidth;
+            }
+
             private readonly UColor[] mPixels;
-            private readonly int mCameraWidth;
-            private readonly int mCameraHeight;
+            private readonly int mAngle;
+            private readonly bool mIsMirror;
+            private readonly int mWidth;
+            private readonly int mHeight;
         }
 
         #endregion
@@ -1368,7 +1385,15 @@ namespace GameCanvas
         /// </summary>
         public int cameraImageWidth
         {
-            get { return mWebCamTexture == null ? 0 : mWebCamTexture.width; }
+            get
+            {
+                if (mWebCamTexture != null)
+                {
+                    var rotate = mWebCamTexture.videoRotationAngle;
+                    return (rotate == 90 || rotate == 270) ? mWebCamTexture.height : mWebCamTexture.width;
+                }
+                return 0;
+            }
         }
 
         /// <summary>
@@ -1376,7 +1401,15 @@ namespace GameCanvas
         /// </summary>
         public int cameraImageHeight
         {
-            get { return mWebCamTexture == null ? 0 : mWebCamTexture.height; }
+            get
+            {
+                if (mWebCamTexture != null)
+                {
+                    var rotate = mWebCamTexture.videoRotationAngle;
+                    return (rotate == 90 || rotate == 270) ? mWebCamTexture.width : mWebCamTexture.height;
+                }
+                return 0;
+            }
         }
 
         /// <summary>
@@ -1445,7 +1478,7 @@ namespace GameCanvas
         {
             if (mWebCamTexture == null || !mWebCamTexture.isPlaying) return default(Colors);
 
-            return new Colors(mWebCamTexture.GetPixels(), cameraImageWidth, cameraImageHeight);
+            return new Colors(mWebCamTexture);
         }
 
         /// <summary>
@@ -1606,16 +1639,18 @@ namespace GameCanvas
             */
         }
 
-        private void _DrawWebCamTexture(UCamTex webcam, UColor color, float x, float y, float scaleX, float scaleY, sbyte priority)
+        private void _DrawWebCamTexture(UCamTex camTex, UColor color, float x, float y, float scaleX, float scaleY, sbyte priority)
         {
-            _DrawWebCamTexture(webcam, color, x, y, scaleX, scaleY, 0f, 0f, 0f, 0f, 0f, 0f, 0f, priority);
+            _DrawWebCamTexture(camTex, color, x, y, scaleX, scaleY, 0f, 0f, 0f, 0f, 0f, 0f, 0f, priority);
         }
 
-        private void _DrawWebCamTexture(UCamTex webcam, UColor color, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority)
+        private void _DrawWebCamTexture(UCamTex camTex, UColor color, float x, float y, float scaleX, float scaleY, float angle, float rotationX, float rotationY, float clipTop, float clipRight, float clipBottom, float clipLeft, sbyte priority)
         {
             var i = mSpriteIndex;
-            var w = webcam.width;
-            var h = webcam.height;
+            var w = camTex.width;
+            var h = camTex.height;
+            var camAngle = camTex.videoRotationAngle;
+            var flipY = !camTex.videoVerticallyMirrored;
 
             // オブジェクトが足りなければ補充
             if (i >= mSprites.Count)
@@ -1640,12 +1675,12 @@ namespace GameCanvas
             mSprites[i].enabled = true;
             mSprites[i].sprite = mAssetDB.Dummy;
             mSprites[i].color = color;
-            mSprites[i].flipY = true;
+            mSprites[i].flipY = flipY;
             mSprites[i].GetPropertyBlock(mSpriteBlock);
-            mSpriteBlock.SetTexture(cShaderMainTex, webcam);
+            mSpriteBlock.SetTexture(cShaderMainTex, camTex);
             mSprites[i].SetPropertyBlock(mSpriteBlock);
 
-            if (angle == 0f || (rotationX == 0f && rotationY == 0f))
+            if (camAngle == 0 && (angle == 0f || (rotationX == 0f && rotationY == 0f)))
             {
                 var pos = mSpriteTransforms[i].position;
                 pos.Set(mCanvasBorder.x + x - clipLeft, mCanvasBorder.y + y - clipTop, _CalcTransformZ(priority));
@@ -1663,6 +1698,12 @@ namespace GameCanvas
             {
                 var m = UMtrx.TRS(new UVec3(x + rotationX * scaleX, y + rotationY * scaleY, 0f), UQuat.Euler(0f, 0f, angle), cVec3One);
                 m *= UMtrx.TRS(new UVec3(-rotationX * scaleX, -rotationY * scaleY, 0f), cQuatZero, new UVec3(scaleX, scaleY, 1f));
+                switch (camAngle)
+                {
+                    case  90: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(0f, -h, 0f), cQuatZero, cVec3One); break;
+                    case 180: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, -h, 0f), cQuatZero, cVec3One); break;
+                    case 270: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, 0f, 0f), cQuatZero, cVec3One); break;
+                }
 
                 var pos = mSpriteTransforms[i].position;
                 pos.Set(mCanvasBorder.x + m.m03, mCanvasBorder.y + m.m13, _CalcTransformZ(priority));
