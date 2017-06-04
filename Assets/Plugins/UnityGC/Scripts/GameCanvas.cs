@@ -1,12 +1,16 @@
 ﻿/*------------------------------------------------------------*/
-/// <summary>GameCanvas for Unity</summary>
-/// <author>Seibe TAKAHASHI</author>
-/// <remarks>
-/// (c) 2015-2017 Smart Device Programming.
-/// This software is released under the MIT License.
-/// http://opensource.org/licenses/mit-license.php
-/// </remarks>
+// <summary>GameCanvas for Unity</summary>
+// <author>Seibe TAKAHASHI</author>
+// <remarks>
+// (c) 2015-2017 Smart Device Programming.
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+// </remarks>
 /*------------------------------------------------------------*/
+
+#if (UNITY_IOS && !UNITY_EDITOR) || (!UNITY_5_6_OR_NEWER && (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN))
+#define GAMECANVAS_REVERSE
+#endif
 
 namespace GameCanvas
 {
@@ -93,7 +97,11 @@ namespace GameCanvas
             {
                 mPixels = camTex.GetPixels();
                 mAngle = camTex.videoRotationAngle;
+#if GAMECANVAS_REVERSE
+                mIsMirror = !camTex.videoVerticallyMirrored;
+#else
                 mIsMirror = camTex.videoVerticallyMirrored;
+#endif
                 mWidth = camTex.width;
                 mHeight = camTex.height;
             }
@@ -1185,7 +1193,7 @@ namespace GameCanvas
                 var w = sprite.rect.width;
                 var h = sprite.rect.height;
                 if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
-#if (UNITY_IOS && !UNITY_EDITOR) || (!UNITY_5_6_OR_NEWER && (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN))
+#if GAMECANVAS_REVERSE
                 var minX = (mCanvasBorder.x + x) / mCanvasScale;
                 var minY = (mCanvasBorder.y + y) / mCanvasScale;
                 var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
@@ -1596,47 +1604,7 @@ namespace GameCanvas
         [System.Obsolete("DrawClippedCameraImageSRT() は廃止されました", true)]
         public void DrawClippedCameraImageSRT(float x, float y, float clipTop, float clipRight, float clipBottom, float clipLeft, float scaleH, float scaleV, float angle, float rotationX = 0f, float rotationY = 0f)
         {
-            /*
-            if (_cameraTexture == null)
-            {
-                Debug.LogWarning("カメラ映像入力が無効です");
-                return;
-            }
-
-            if (clipLeft < 0 || clipTop < 0 || clipRight < 0 || clipBottom < 0)
-            {
-                // 負の切り取り幅は許容しない
-                Debug.LogWarning("引数の値が不正です");
-                return;
-            }
-
-            if (scaleH == 0 || scaleV == 0)
-            {
-                // ゼロの拡縮率は許容しない
-                Debug.LogWarning("引数の値が不正です");
-                return;
-            }
-
-            if (x >= _canvasWidth || y >= _canvasHeight)
-            {
-                // 描画範囲外である
-                return;
-            }
-
-            Matrix4x4 mat;
-            if (rotationX == 0 && rotationY == 0)
-            {
-                mat = Matrix4x4.TRS(new Vector3(x, y, 0f), Quaternion.AngleAxis(angle, Vector3.forward), new Vector3(scaleH, scaleV, 1f));
-            }
-            else
-            {
-                mat = Matrix4x4.TRS(new Vector3(x + rotationX, y + rotationY, 0f), Quaternion.AngleAxis(angle, Vector3.forward), Vector3.one);
-                mat *= Matrix4x4.TRS(new Vector3(-rotationX, -rotationY, 0f), Quaternion.identity, new Vector3(scaleH, scaleV, 1f));
-            }
-
-            var clip = new Vector4(clipLeft, clipTop, clipRight, clipBottom);
-            _drawQueue.Enqueue(new DrawInfo(_cameraTexture, null, mat.inverse, clip));
-            */
+            // Obsolete
         }
 
         private void _DrawWebCamTexture(UCamTex camTex, UColor color, float x, float y, float scaleX, float scaleY, sbyte priority)
@@ -1663,12 +1631,19 @@ namespace GameCanvas
             mSpriteBlock.SetVector(cShaderClip, UVec4.zero);
             if (clipLeft != 0f || clipTop != 0f || clipRight != 0f || clipBottom != 0f)
             {
-                if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
-                var cl = (mCanvasBorder.x + x) * mCanvasScale;
-                var ct = (mCanvasBorder.y + y) * mCanvasScale;
-                var cr = (mCanvasBorder.x + x + w - clipLeft - clipRight) * mCanvasScale;
-                var cb = (mCanvasBorder.y + y + h - clipTop - clipBottom) * mCanvasScale;
-                mSpriteBlock.SetVector(cShaderClip, new UVec4(cl, ct, cr, cb));
+				if (clipLeft + clipRight > w || clipTop + clipBottom >= h) return;
+#if GAMECANVAS_REVERSE
+                var minX = (mCanvasBorder.x + x) / mCanvasScale;
+                var minY = (mCanvasBorder.y + y) / mCanvasScale;
+                var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
+                var maxY = (mCanvasBorder.y + y + h - clipTop - clipBottom) / mCanvasScale;
+#else
+				var minX = (mCanvasBorder.x + x) / mCanvasScale;
+				var minY = (mCanvasHeight - (mCanvasBorder.y + y + h - clipTop - clipBottom)) / mCanvasScale;
+				var maxX = (mCanvasBorder.x + x + w - clipLeft - clipRight) / mCanvasScale;
+				var maxY = (mCanvasHeight - (mCanvasBorder.y + y)) / mCanvasScale;
+#endif
+				mSpriteBlock.SetVector(cShaderClip, new UVec4(minX, minY, maxX, maxY));
             }
             mSprites[i].SetPropertyBlock(mSpriteBlock);
             
@@ -1699,10 +1674,16 @@ namespace GameCanvas
                 var m = UMtrx.TRS(new UVec3(x + rotationX * scaleX, y + rotationY * scaleY, 0f), UQuat.Euler(0f, 0f, angle), cVec3One);
                 m *= UMtrx.TRS(new UVec3(-rotationX * scaleX, -rotationY * scaleY, 0f), cQuatZero, new UVec3(scaleX, scaleY, 1f));
                 switch (camAngle)
-                {
+				{
+#if GAMECANVAS_REVERSE
+                    case  90: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One); break;
+                    case 180: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, 0f, 0f), cQuatZero, cVec3One); break;
+                    case 270: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, +h, 0f), cQuatZero, cVec3One); break;
+#else
                     case  90: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(0f, -h, 0f), cQuatZero, cVec3One); break;
                     case 180: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, -h, 0f), cQuatZero, cVec3One); break;
                     case 270: m *= UMtrx.TRS(cVec3Zero, UQuat.Euler(0f, 0f, camAngle), cVec3One) * UMtrx.TRS(new UVec3(+w, 0f, 0f), cQuatZero, cVec3One); break;
+#endif
                 }
 
                 var pos = mSpriteTransforms[i].position;
