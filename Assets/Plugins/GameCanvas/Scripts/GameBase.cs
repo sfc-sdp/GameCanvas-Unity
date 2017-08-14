@@ -8,10 +8,20 @@
 // </remarks>
 /*------------------------------------------------------------*/
 
-namespace GameCanvas
+public abstract class GameBase : GameCanvas.Behaviour
 {
-    public sealed class GameCanvas
-    {
-        // TODO
-    }
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    public override void initGame() { }
+
+    /// <summary>
+    /// 更新処理
+    /// </summary>
+    public override void updateGame() { }
+
+    /// <summary>
+    /// 描画処理
+    /// </summary>
+    public override void drawGame() { }
 }
