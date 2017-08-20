@@ -25,6 +25,11 @@ namespace GameCanvas
         [SerializeField]
         private int CanvasHeight = 1280;
 
+        [SerializeField]
+        private Shader ShaderOpaque;
+        [SerializeField]
+        private Shader ShaderTransparent;
+
         private Camera mCamera;
         private AudioListener mListener;
 
@@ -42,7 +47,8 @@ namespace GameCanvas
             mCamera = GetComponent<Camera>();
             mListener = GetComponent<AudioListener>();
 
-            mGraphic = new Graphic(mCamera);
+            mGraphic = new Graphic(mCamera, ShaderOpaque, ShaderTransparent);
+            mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mProxy = new Proxy(mGraphic);
 
             // TODO
@@ -81,10 +87,15 @@ namespace GameCanvas
             mGraphic.OnDisable();
         }
 
+        private void OnDestroy()
+        {
+            mGraphic.Dispose();
+        }
+
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            // TODO
+            mGraphic?.SetResolution(CanvasWidth, CanvasHeight);
         }
 #endif //UNITY_EDITOR
 
