@@ -30,7 +30,11 @@ namespace GameCanvas
         private readonly Material cMaterialTransparent;
         private readonly MaterialPropertyBlock cBlock;
         private readonly int cShaderPropColor;
+        private readonly int cShaderPropMainTex;
         private readonly Mesh cMeshQuad;
+        private readonly Mesh cMeshCircle;
+        private readonly System.Collections.Generic.List<TextGenerator> cTextGeneratorPool;
+        private readonly System.Collections.Generic.List<Mesh> cTextMeshPool;
 
         private bool mIsEnable;
         private bool mIsDispose;
@@ -40,6 +44,10 @@ namespace GameCanvas
         private Rect mRectScreen;
         private Matrix4x4 mMatrixView;
         private Color mColor;
+        private int mTextCount;
+        private Font mFont;
+        private FontStyle mFontStyle;
+        private int mFontSize;
 
         #endregion
 
@@ -65,7 +73,16 @@ namespace GameCanvas
             cMaterialTransparent = new Material(shaderTransparent);
             cBlock = new MaterialPropertyBlock();
             cShaderPropColor = Shader.PropertyToID("_Color");
+            cShaderPropMainTex = Shader.PropertyToID("_MainTex");
+            cTextGeneratorPool = new System.Collections.Generic.List<TextGenerator>(20);
+            cTextMeshPool = new System.Collections.Generic.List<Mesh>(20);
             initMeshAsQuad(out cMeshQuad);
+            initMeshAsCircle(out cMeshCircle);
+
+            mFontStyle = FontStyle.Normal;
+            mFontSize = 25;
+            Debug.Log(string.Join("\n", Font.GetOSInstalledFontNames()));
+            mFont = Font.CreateDynamicFontFromOSFont("Meiryo", mFontSize);
 
             mColor = cColorWhite;
             mCanvasSize = new Vector2(720, 1280);
@@ -113,6 +130,7 @@ namespace GameCanvas
             cBufferTransparent.Clear();
             cBufferTransparent.SetViewport(mRectScreen);
             cBufferTransparent.SetViewMatrix(mMatrixView);
+            mTextCount = 0;
         }
 
         public void SetResolution(int width, int height)
@@ -155,17 +173,50 @@ namespace GameCanvas
             mMatrixView = Matrix4x4.TRS(new Vector3(-1f, -1f, 0f), Quaternion.identity, new Vector3(2f / mCanvasSize.x, 2f / mCanvasSize.y, 1f));
         }
 
-        public void ClearScreen()
+        // 互換実装：文字列系
+
+        public void DrawString(ref string str, ref int x, ref int y)
         {
-            if (mIsDispose) return;
-            cBufferOpaque.ClearRenderTarget(true, true, cColorWhite);
+            drawStringInternal(ref str, ref x, ref y, TextAnchor.UpperLeft);
         }
+
+        public void DrawCenterString(ref string str, ref int x, ref int y)
+        {
+            drawStringInternal(ref str, ref x, ref y, TextAnchor.UpperCenter);
+        }
+
+        public void DrawRightString(ref string str, ref int x, ref int y)
+        {
+            drawStringInternal(ref str, ref x, ref y, TextAnchor.UpperRight);
+        }
+
+        public void SetFont(ref Font font, ref int fontStyle, ref int fontSize) { }
+
+        public void SetFontSize(ref int fontSize) { }
+
+        public int GetStringWidth(ref string str) { return 0; }
+
+        // 互換実装：図形系
+
+        public void SetColor(ref int color) { }
 
         public void SetColor(ref int r, ref int g, ref int b)
         {
             const float n = 1f / 255;
             mColor = new Color(r * n, g * n, b * n);
         }
+
+        public void DrawLine(ref int startX, ref int startY, ref int endX, ref int endY) { }
+
+        public void DrawRect(ref int x, ref int y, ref int width, ref int height) { }
+
+        public void FillRect(ref int x, ref int y, ref int width, ref int height) { }
+
+        public void DrawCircle(ref int x, ref int y, ref int radius) { }
+
+        public void FillCircle(ref int x, ref int y, ref int radius) { }
+
+        // 互換実装：画像系
 
         public void DrawImage(ref int imageId, ref int x, ref int y)
         {
@@ -174,11 +225,30 @@ namespace GameCanvas
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, new Color(1f, 0f, 0f));
 
-            var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(100f, 100f, 1f));
+            var matrix = calcMatrix(x, y, 100f, 100f);
             cBufferOpaque.DrawMesh(cMeshQuad, matrix, cMaterialOpaque, 0, -1, cBlock);
+            //cBufferOpaque.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
-        public void DrawString(ref string text, ref int x, ref int y) { }
+        public void DrawClipImage(ref int imageId, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height) { }
+
+        public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree) { }
+
+        public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree, ref double centerX, ref double centerY) { }
+
+        public int GetImageWidth(ref int imageId) { return 0; }
+
+        public int GetImageHeight(ref int imageId) { return 0; }
+
+        // 互換実装：その他
+
+        public void ClearScreen()
+        {
+            if (mIsDispose) return;
+            cBufferOpaque.ClearRenderTarget(true, true, cColorWhite);
+        }
+
+        public bool WriteScreenImage(ref string file) { return false; }
 
         #endregion
 
@@ -190,10 +260,10 @@ namespace GameCanvas
         {
             mesh = new Mesh();
             mesh.vertices = new[] {
-                new Vector3(0f, 0f), // 左下
-                new Vector3(1f, 0f), // 右下
-                new Vector3(0f, 1f), // 左上
-                new Vector3(1f, 1f)  // 右上
+                new Vector3(0f, -1f), // 左下
+                new Vector3(1f, -1f), // 右下
+                new Vector3(0f, 0f), // 左上
+                new Vector3(1f, 0f)  // 右上
             };
             mesh.triangles = new[] {
                 0, 2, 1,
@@ -211,6 +281,122 @@ namespace GameCanvas
                 new Vector2(0f, 1f), // 左上
                 new Vector2(1f, 1f)  // 右上
             };
+        }
+
+        private static void initMeshAsCircle(out Mesh mesh)
+        {
+            const int len = 20;
+            var vertices = new Vector3[len];
+            var triangles = new int[len * 3 - 6];
+            var normals = new Vector3[len];
+            for (var i = 0; i < len; ++i)
+            {
+                var rad = Mathf.PI * 2 * i / len;
+                var x = Mathf.Sin(rad);
+                var y = Mathf.Cos(rad);
+                vertices[i] = new Vector3(x, y);
+                if (i < len - 2)
+                {
+                    triangles[i * 3] = 0;
+                    triangles[i * 3 + 1] = i + 1;
+                    triangles[i * 3 + 2] = i + 2;
+                }
+                normals[i] = new Vector3(0f, 0f, -1f);
+            }
+
+            mesh = new Mesh();
+            mesh.vertices = vertices;
+            mesh.triangles = triangles;
+            mesh.normals = normals;
+        }
+
+        private static void genTextSetting(out TextGenerationSettings settings, ref Font font, ref FontStyle style, ref int size, ref Color color, ref TextAnchor anchor)
+        {
+            settings = new TextGenerationSettings()
+            {
+                textAnchor = anchor,
+                color = color,
+                font = font,
+                fontSize = size,
+                fontStyle = style,
+                verticalOverflow = VerticalWrapMode.Overflow,
+                horizontalOverflow = HorizontalWrapMode.Overflow,
+                alignByGeometry = true,
+                richText = false,
+                lineSpacing = 1f,
+                scaleFactor = 1f,
+                resizeTextForBestFit = false
+            };
+        }
+
+        private static void convertToMesh(ref Mesh mesh, ref TextGenerator generator)
+        {
+            var vertices = mesh.vertices;
+            var colors = mesh.colors;
+            //var normals = mesh.normals;
+            var uv = mesh.uv;
+            var triangles = mesh.triangles;
+            var vertexCount = generator.vertexCount;
+
+            if (vertices == null || vertices.Length != vertexCount) vertices = new Vector3[vertexCount];
+            if (colors == null || colors.Length != vertexCount) colors = new Color[vertexCount];
+            //if (normals == null || normals.Length != vertexCount) normals = new Vector3[vertexCount];
+            if (uv == null || uv.Length != vertexCount) uv = new Vector2[vertexCount];
+            if (triangles == null || triangles.Length != vertexCount * 6) triangles = new int[vertexCount * 6];
+
+            var uiverts = generator.verts;
+            for (var i = 0; i < vertices.Length; i += 4)
+            {
+                for (var j = 0; j < 4; ++j)
+                {
+                    var idx = i + j;
+                    vertices[idx] = uiverts[idx].position;
+                    colors[idx] = uiverts[idx].color;
+                    //normals[idx] = uiverts[idx].normal;
+                    uv[idx] = uiverts[idx].uv0;
+                }
+                triangles[i * 6] = i;
+                triangles[i * 6 + 1] = i + 1;
+                triangles[i * 6 + 2] = i + 2;
+                triangles[i * 6 + 3] = i + 2;
+                triangles[i * 6 + 4] = i + 3;
+                triangles[i * 6 + 5] = i;
+            }
+
+            mesh.vertices = vertices;
+            mesh.colors = colors;
+            //mesh.normals = normals;
+            mesh.uv = uv;
+            mesh.triangles = triangles;
+            mesh.RecalculateBounds();
+        }
+
+        private void drawStringInternal(ref string str, ref int x, ref int y, TextAnchor anchor)
+        {
+            if (mTextCount == cTextGeneratorPool.Count)
+            {
+                cTextGeneratorPool.Add(new TextGenerator(str.Length));
+                cTextMeshPool.Add(new Mesh());
+            }
+
+            var generator = cTextGeneratorPool[mTextCount];
+            var mesh = cTextMeshPool[mTextCount++];
+
+            TextGenerationSettings settings;
+            genTextSetting(out settings, ref mFont, ref mFontStyle, ref mFontSize, ref mColor, ref anchor);
+            generator.Populate(str, settings);
+            convertToMesh(ref mesh, ref generator);
+
+            var matrix = calcMatrix(x, y, 1f, 1f);
+            cBufferTransparent.DrawMesh(mesh, matrix, mFont.material);
+        }
+
+        private Matrix4x4 calcMatrix(float x, float y, float w, float h)
+        {
+            var t = new Vector3(x, mCanvasSize.y - y);
+            var r = Quaternion.identity;
+            var s = new Vector3(w, h, 1f);
+            return Matrix4x4.TRS(t, r, s);
         }
 
         #endregion
