@@ -195,6 +195,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanvasWidth: 720
   CanvasHeight: 1280
-  ShaderOpaque: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
-  ShaderTransparent: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
-  Font: {fileID: 12800000, guid: 86bc9d489ff7b104198dbd36a4cb03b3, type: 3}
+  Resource: {fileID: 11400000, guid: 31d824797e8c7ee4aa07013051b97b09, type: 2}

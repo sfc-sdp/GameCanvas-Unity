@@ -21,15 +21,14 @@ namespace GameCanvas
         //----------------------------------------------------------
 
         private static readonly Color cColorWhite = Color.white;
-        private static readonly Matrix4x4 cMatrixIdentity = Matrix4x4.identity;
 
+        private readonly Resource cRes;
         private readonly Camera cCamera;
         private readonly CommandBuffer cBufferOpaque;
         private readonly CommandBuffer cBufferTransparent;
         private readonly Material cMaterialOpaque;
         private readonly Material cMaterialTransparent;
         private readonly MaterialPropertyBlock cBlock;
-        private readonly Font cFontDefault;
         private readonly int cShaderPropColor;
         private readonly int cShaderPropMainTex;
         private readonly Mesh cMeshQuad;
@@ -45,10 +44,12 @@ namespace GameCanvas
         private Rect mRectScreen;
         private Matrix4x4 mMatrixView;
         private Color mColor;
-        private int mTextCount;
         private Font mFont;
         private FontStyle mFontStyle;
         private int mFontSize;
+
+        private int mCountDraw;
+        private int mCountText;
 
         #endregion
 
@@ -59,23 +60,23 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Graphic(Camera camera, Shader shaderOpaque, Shader shaderTransparent, Font fontDefault)
+        public Graphic(Resource res, Camera camera)
         {
+            Assert.IsNotNull(res);
             Assert.IsNotNull(camera);
-            Assert.IsNotNull(shaderOpaque);
-            Assert.IsNotNull(shaderTransparent);
-            Assert.IsNotNull(fontDefault);
 
+            cRes = res;
             cCamera = camera;
+            cCamera.clearFlags = CameraClearFlags.Depth;
+            cCamera.orthographic = true;
+            cCamera.orthographicSize = 5;
             cBufferOpaque = new CommandBuffer();
             cBufferOpaque.name = "GameCanvas Opaque";
             cBufferTransparent = new CommandBuffer();
             cBufferTransparent.name = "GameCanvas Transparent ";
-            cMaterialOpaque = new Material(shaderOpaque);
-            cMaterialTransparent = new Material(shaderTransparent);
+            cMaterialOpaque = new Material(res.ShaderOpaque);
+            cMaterialTransparent = new Material(res.ShaderTransparent);
             cBlock = new MaterialPropertyBlock();
-            cFontDefault = fontDefault;
-            cFontDefault.material.mainTexture.filterMode = FilterMode.Point;
             cShaderPropColor = Shader.PropertyToID("_Color");
             cShaderPropMainTex = Shader.PropertyToID("_MainTex");
             cTextGeneratorPool = new System.Collections.Generic.List<TextGenerator>(20);
@@ -85,7 +86,7 @@ namespace GameCanvas
 
             mFontStyle = FontStyle.Normal;
             mFontSize = 25;
-            mFont = cFontDefault;
+            mFont = cRes.GetFnt(0).Data ?? Font.CreateDynamicFontFromOSFont(new[] { ".Hiragino Kaku Gothic Interface", "MotoyaLMaru", "MotoyaLCedar", "RobotoSansFallback", "Droid Sans Fallback" }, mFontSize);
 
             mColor = cColorWhite;
             mCanvasSize = new Vector2(720, 1280);
@@ -133,7 +134,9 @@ namespace GameCanvas
             cBufferTransparent.Clear();
             cBufferTransparent.SetViewport(mRectScreen);
             cBufferTransparent.SetViewMatrix(mMatrixView);
-            mTextCount = 0;
+
+            mCountDraw = 0;
+            mCountText = 0;
         }
 
         public void SetResolution(int width, int height)
@@ -223,14 +226,16 @@ namespace GameCanvas
 
         public void DrawImage(ref int imageId, ref int x, ref int y)
         {
-            if (mIsDispose) return;
+            if (mIsDispose || cRes == null) return;
+
+            var img = cRes.GetImg(imageId);
+            if (img.Data == null) return;
 
             cBlock.Clear();
-            cBlock.SetColor(cShaderPropColor, new Color(1f, 0f, 0f));
+            cBlock.SetTexture(cShaderPropMainTex, img.Texture);
 
-            var matrix = calcMatrix(x, y, 100f, 100f);
-            cBufferOpaque.DrawMesh(cMeshQuad, matrix, cMaterialOpaque, 0, -1, cBlock);
-            //cBufferOpaque.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
+            var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
         public void DrawClipImage(ref int imageId, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height) { }
@@ -272,12 +277,12 @@ namespace GameCanvas
                 0, 2, 1,
                 2, 3, 1
             };
-            mesh.normals = new[] {
-                new Vector3(0f, 0f, -1f), // 左下
-                new Vector3(0f, 0f, -1f), // 右下
-                new Vector3(0f, 0f, -1f), // 左上
-                new Vector3(0f, 0f, -1f)  // 右上
-            };
+            //mesh.normals = new[] {
+            //    new Vector3(0f, 0f, -1f), // 左下
+            //    new Vector3(0f, 0f, -1f), // 右下
+            //    new Vector3(0f, 0f, -1f), // 左上
+            //    new Vector3(0f, 0f, -1f)  // 右上
+            //};
             mesh.uv = new[] {
                 new Vector2(0f, 0f), // 左下
                 new Vector2(1f, 0f), // 右下
@@ -376,25 +381,26 @@ namespace GameCanvas
 
         private void drawStringInternal(ref string str, ref int x, ref int y, TextAnchor anchor)
         {
-            if (mTextCount == cTextGeneratorPool.Count)
+            if (mCountText == cTextGeneratorPool.Count)
             {
                 cTextGeneratorPool.Add(new TextGenerator(str.Length));
                 cTextMeshPool.Add(new Mesh());
+                cTextMeshPool[mCountText].MarkDynamic();
             }
 
-            var generator = cTextGeneratorPool[mTextCount];
-            var mesh = cTextMeshPool[mTextCount++];
+            var generator = cTextGeneratorPool[mCountText];
+            var mesh = cTextMeshPool[mCountText++];
 
             TextGenerationSettings settings;
             genTextSetting(out settings, ref mFont, ref mFontStyle, ref mFontSize, ref mColor, ref anchor);
             generator.Populate(str, settings);
             convertToMesh(ref mesh, ref generator);
 
-            var matrix = calcMatrix(x, y, 1f, 1f);
+            var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(mesh, matrix, mFont.material);
         }
 
-        private Matrix4x4 calcMatrix(float x, float y, float w, float h)
+        private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h)
         {
             var t = new Vector3(x, mCanvasSize.y - y);
             var r = Quaternion.identity;

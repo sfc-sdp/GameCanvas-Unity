@@ -8,7 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 
-public abstract class GameBase : GameCanvas.Behaviour
+public abstract class GameBase : GameCanvas.BehaviourBase
 {
     /// <summary>
     /// 初期化処理

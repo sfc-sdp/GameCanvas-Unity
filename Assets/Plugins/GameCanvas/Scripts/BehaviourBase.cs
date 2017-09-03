@@ -8,13 +8,14 @@
 // </remarks>
 /*------------------------------------------------------------*/
 
-using UnityEngine;
-
 namespace GameCanvas
 {
+    using UnityEngine;
+    using UnityEngine.Assertions;
+
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera), typeof(AudioListener))]
-    public abstract class Behaviour : MonoBehaviour
+    public abstract class BehaviourBase : MonoBehaviour
     {
         //----------------------------------------------------------
         #region フィールド変数
@@ -24,13 +25,8 @@ namespace GameCanvas
         private int CanvasWidth = 720;
         [SerializeField]
         private int CanvasHeight = 1280;
-
         [SerializeField]
-        private Shader ShaderOpaque;
-        [SerializeField]
-        private Shader ShaderTransparent;
-        [SerializeField]
-        private Font Font;
+        private Resource Resource;
 
         private Camera mCamera;
         private AudioListener mListener;
@@ -48,8 +44,12 @@ namespace GameCanvas
         {
             mCamera = GetComponent<Camera>();
             mListener = GetComponent<AudioListener>();
+            Assert.IsNotNull(mCamera);
+            Assert.IsNotNull(mListener);
+            Assert.IsNotNull(Resource);
 
-            mGraphic = new Graphic(mCamera, ShaderOpaque, ShaderTransparent, Font);
+            Resource.Initialize();
+            mGraphic = new Graphic(Resource, mCamera);
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mProxy = new Proxy(mGraphic);
 
