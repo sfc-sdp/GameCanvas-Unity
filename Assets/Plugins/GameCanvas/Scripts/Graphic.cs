@@ -29,6 +29,7 @@ namespace GameCanvas
         private readonly Material cMaterialOpaque;
         private readonly Material cMaterialTransparent;
         private readonly MaterialPropertyBlock cBlock;
+        private readonly Font cFontDefault;
         private readonly int cShaderPropColor;
         private readonly int cShaderPropMainTex;
         private readonly Mesh cMeshQuad;
@@ -58,11 +59,12 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Graphic(Camera camera, Shader shaderOpaque, Shader shaderTransparent)
+        public Graphic(Camera camera, Shader shaderOpaque, Shader shaderTransparent, Font fontDefault)
         {
             Assert.IsNotNull(camera);
             Assert.IsNotNull(shaderOpaque);
             Assert.IsNotNull(shaderTransparent);
+            Assert.IsNotNull(fontDefault);
 
             cCamera = camera;
             cBufferOpaque = new CommandBuffer();
@@ -72,6 +74,8 @@ namespace GameCanvas
             cMaterialOpaque = new Material(shaderOpaque);
             cMaterialTransparent = new Material(shaderTransparent);
             cBlock = new MaterialPropertyBlock();
+            cFontDefault = fontDefault;
+            cFontDefault.material.mainTexture.filterMode = FilterMode.Point;
             cShaderPropColor = Shader.PropertyToID("_Color");
             cShaderPropMainTex = Shader.PropertyToID("_MainTex");
             cTextGeneratorPool = new System.Collections.Generic.List<TextGenerator>(20);
@@ -81,8 +85,7 @@ namespace GameCanvas
 
             mFontStyle = FontStyle.Normal;
             mFontSize = 25;
-            Debug.Log(string.Join("\n", Font.GetOSInstalledFontNames()));
-            mFont = Font.CreateDynamicFontFromOSFont("Meiryo", mFontSize);
+            mFont = cFontDefault;
 
             mColor = cColorWhite;
             mCanvasSize = new Vector2(720, 1280);

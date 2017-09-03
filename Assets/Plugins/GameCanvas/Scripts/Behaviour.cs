@@ -29,6 +29,8 @@ namespace GameCanvas
         private Shader ShaderOpaque;
         [SerializeField]
         private Shader ShaderTransparent;
+        [SerializeField]
+        private Font Font;
 
         private Camera mCamera;
         private AudioListener mListener;
@@ -47,7 +49,7 @@ namespace GameCanvas
             mCamera = GetComponent<Camera>();
             mListener = GetComponent<AudioListener>();
 
-            mGraphic = new Graphic(mCamera, ShaderOpaque, ShaderTransparent);
+            mGraphic = new Graphic(mCamera, ShaderOpaque, ShaderTransparent, Font);
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mProxy = new Proxy(mGraphic);
 
