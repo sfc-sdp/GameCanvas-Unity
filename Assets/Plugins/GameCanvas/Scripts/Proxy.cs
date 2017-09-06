@@ -50,7 +50,7 @@ namespace GameCanvas
         public void drawString(string str, int x, int y) => cGraphic.DrawString(ref str, ref x, ref y);
         public void drawCenterString(string str, int x, int y) => cGraphic.DrawCenterString(ref str, ref x, ref y);
         public void drawRightString(string str, int x, int y) => cGraphic.DrawRightString(ref str, ref x, ref y);
-        public void setFont(Font font, int fontStyle, int fontSize) => cGraphic.SetFont(ref font, ref fontStyle, ref fontSize);
+        public void setFont(int fontId, FontStyle fontStyle, int fontSize) => cGraphic.SetFont(ref fontId, ref fontStyle, ref fontSize);
         public void setFontSize(int fontSize) => cGraphic.SetFontSize(ref fontSize);
         public int getStringWidth(string str) => cGraphic.GetStringWidth(ref str);
 
@@ -77,6 +77,86 @@ namespace GameCanvas
 
         public void clearScreen() => cGraphic.ClearScreen();
         public bool writeScreenImage(string file) => cGraphic.WriteScreenImage(ref file);
+        public int WIDTH => cGraphic.CanvasWidth;
+        public int HEIGHT => cGraphic.CanvasHeight;
+        public int CONFIG_FPS => 30;
+
+        // 音声
+
+        public void playBGM(int soundId, bool loop = true) { }
+        public void changeBGMVolume(int volume) { }
+        public void stopBGM() { }
+        public void pauseBGM() { }
+        public void playSE(int soundId, bool loop = false) { }
+        public void changeSEVolume(int volume) { }
+        public void stopSE() { }
+        public void pauseSE() { }
+
+        // 入力
+
+        public int getMouseX() { return 0; }
+        public int getMouseY() { return 0; }
+        public int getMouseClickLength() { return 0; }
+        public bool isMousePushed() { return false; }
+        public bool isMouseReleased() { return false; }
+        public bool isMousePress() { return false; }
+        public bool showYesNoDialog(string message) { return false; }
+        public string showInputDialog(string message, string defaultInput) { return null; }
+
+        // 数学
+
+        public void setSeed(int seed) { }
+        public int rand(int min, int max) { return 0; }
+        public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) { return false; }
+        public bool checkHitImage(int imageId1, int x1, int y1, int imageId2, int x2, int y2) { return false; }
+        public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2) { return false; }
+        public double sqrt(double value) { return 0; }
+        public double cos(double degree) { return 0; }
+        public double sin(double degree) { return 0; }
+        public double atan2(double x, double y) { return 0; }
+
+        // その他
+
+        public int load(int key) { return 0; }
+        public void save(int key, int value) { }
+        public void resetGame() { }
+        public void exitApp() { }
+
+        // 廃止
+
+        [System.Obsolete]
+        public const int KEY_UP = 0;
+        [System.Obsolete]
+        public const int KEY_DOWN = 0;
+        [System.Obsolete]
+        public const int KEY_LEFT = 0;
+        [System.Obsolete]
+        public const int KEY_RIGHT = 0;
+        [System.Obsolete]
+        public const int KEY_Z = 0;
+        [System.Obsolete]
+        public const int KEY_X = 0;
+        [System.Obsolete]
+        public const int KEY_C = 0;
+        [System.Obsolete]
+        public const int KEY_V = 0;
+        [System.Obsolete]
+        public const int KEY_ENTER = 0;
+        [System.Obsolete]
+        public const int KEY_SPACE = 0;
+
+        [System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
+        public void setWindowTitle(string title) { }
+        [System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
+        public void setFont(string fontName, int fontStyle, int fontSize) { }
+        [System.Obsolete]
+        public int getKeyPressLength() { return 0; }
+        [System.Obsolete]
+        public bool isKeyPress() { return false; }
+        [System.Obsolete]
+        public bool isKeyPushed() { return false; }
+        [System.Obsolete]
+        public bool isKeyReleased() { return false; }
 
         #endregion
     }

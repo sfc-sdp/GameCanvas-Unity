@@ -10,6 +10,7 @@
 
 namespace GameCanvas
 {
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Assertions;
     using UnityEngine.Rendering;
@@ -31,10 +32,15 @@ namespace GameCanvas
         private readonly MaterialPropertyBlock cBlock;
         private readonly int cShaderPropColor;
         private readonly int cShaderPropMainTex;
-        private readonly Mesh cMeshQuad;
+        private readonly Mesh cMeshRect;
         private readonly Mesh cMeshCircle;
-        private readonly System.Collections.Generic.List<TextGenerator> cTextGeneratorPool;
-        private readonly System.Collections.Generic.List<Mesh> cTextMeshPool;
+        private readonly List<TextGenerator> cTextGeneratorPool;
+        private readonly List<Mesh> cTextMeshPool;
+
+        //private readonly List<Mesh[]> cMeshPool;
+        //private readonly Queue<UIVertex> cVertsPool;
+        //private readonly List<UIVertex> cVertsOpaque;
+        //private readonly Dictionary<Texture2D, List<UIVertex>> cVertsTransparent;
 
         private bool mIsEnable;
         private bool mIsDispose;
@@ -70,6 +76,8 @@ namespace GameCanvas
             cCamera.clearFlags = CameraClearFlags.Depth;
             cCamera.orthographic = true;
             cCamera.orthographicSize = 5;
+            cCamera.farClipPlane = 100;
+            cCamera.nearClipPlane = 0;
             cBufferOpaque = new CommandBuffer();
             cBufferOpaque.name = "GameCanvas Opaque";
             cBufferTransparent = new CommandBuffer();
@@ -79,9 +87,9 @@ namespace GameCanvas
             cBlock = new MaterialPropertyBlock();
             cShaderPropColor = Shader.PropertyToID("_Color");
             cShaderPropMainTex = Shader.PropertyToID("_MainTex");
-            cTextGeneratorPool = new System.Collections.Generic.List<TextGenerator>(20);
-            cTextMeshPool = new System.Collections.Generic.List<Mesh>(20);
-            initMeshAsQuad(out cMeshQuad);
+            cTextGeneratorPool = new List<TextGenerator>(20);
+            cTextMeshPool = new List<Mesh>(20);
+            initMeshAsRect(out cMeshRect);
             initMeshAsCircle(out cMeshCircle);
 
             mFontStyle = FontStyle.Normal;
@@ -108,8 +116,8 @@ namespace GameCanvas
             if (!mIsEnable && !mIsDispose)
             {
                 mIsEnable = true;
-                cCamera.AddCommandBuffer(CameraEvent.AfterForwardOpaque, cBufferOpaque);
-                cCamera.AddCommandBuffer(CameraEvent.AfterForwardAlpha, cBufferTransparent);
+                cCamera.AddCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
+                cCamera.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
             }
         }
 
@@ -118,8 +126,8 @@ namespace GameCanvas
             if (mIsEnable && !mIsDispose)
             {
                 mIsEnable = false;
-                cCamera.RemoveCommandBuffer(CameraEvent.AfterForwardOpaque, cBufferOpaque);
-                cCamera.RemoveCommandBuffer(CameraEvent.AfterForwardAlpha, cBufferTransparent);
+                cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
+                cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
             }
         }
 
@@ -179,6 +187,10 @@ namespace GameCanvas
             mMatrixView = Matrix4x4.TRS(new Vector3(-1f, -1f, 0f), Quaternion.identity, new Vector3(2f / mCanvasSize.x, 2f / mCanvasSize.y, 1f));
         }
 
+        public int CanvasWidth => (int)mCanvasSize.x;
+
+        public int CanvasHeight => (int)mCanvasSize.y;
+
         // 互換実装：文字列系
 
         public void DrawString(ref string str, ref int x, ref int y)
@@ -196,15 +208,49 @@ namespace GameCanvas
             drawStringInternal(ref str, ref x, ref y, TextAnchor.UpperRight);
         }
 
-        public void SetFont(ref Font font, ref int fontStyle, ref int fontSize) { }
+        public void SetFont(ref int fontId, ref FontStyle fontStyle, ref int fontSize)
+        {
+            var font = cRes.GetFnt(fontId);
+            if (font.Data == null) return;
 
-        public void SetFontSize(ref int fontSize) { }
+            mFont = font.Data;
+            mFontStyle = fontStyle;
+            mFontSize = fontSize;
+        }
 
-        public int GetStringWidth(ref string str) { return 0; }
+        public void SetFontSize(ref int fontSize)
+        {
+            mFontSize = fontSize;
+        }
+
+        public int GetStringWidth(ref string str)
+        {
+            if (mCountText == cTextGeneratorPool.Count)
+            {
+                cTextGeneratorPool.Add(new TextGenerator(str.Length));
+                cTextMeshPool.Add(new Mesh());
+                //cTextMeshPool[mCountText].MarkDynamic();
+            }
+
+            var generator = cTextGeneratorPool[mCountText];
+            var mesh = cTextMeshPool[mCountText];
+
+            TextGenerationSettings settings;
+            var anchor = TextAnchor.UpperLeft;
+            genTextSetting(out settings, ref mFont, ref mFontStyle, ref mFontSize, ref mColor, ref anchor);
+            return Mathf.CeilToInt(generator.GetPreferredWidth(str, settings));
+        }
 
         // 互換実装：図形系
 
-        public void SetColor(ref int color) { }
+        public void SetColor(ref int color)
+        {
+            const float n = 1f / 255;
+            var r = (color >> 16) & 0xFF;
+            var g = (color >> 8) & 0xFF;
+            var b = color & 0xFF;
+            mColor = new Color(r * n, g * n, b * n);
+        }
 
         public void SetColor(ref int r, ref int g, ref int b)
         {
@@ -216,17 +262,35 @@ namespace GameCanvas
 
         public void DrawRect(ref int x, ref int y, ref int width, ref int height) { }
 
-        public void FillRect(ref int x, ref int y, ref int width, ref int height) { }
+        public void FillRect(ref int x, ref int y, ref int width, ref int height)
+        {
+            if (mIsDispose) return;
+
+            cBlock.Clear();
+            cBlock.SetColor(cShaderPropColor, mColor);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, width, height);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
+        }
 
         public void DrawCircle(ref int x, ref int y, ref int radius) { }
 
-        public void FillCircle(ref int x, ref int y, ref int radius) { }
+        public void FillCircle(ref int x, ref int y, ref int radius)
+        {
+            if (mIsDispose) return;
+
+            cBlock.Clear();
+            cBlock.SetColor(cShaderPropColor, mColor);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, radius, radius);
+            cBufferTransparent.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
+        }
 
         // 互換実装：画像系
 
         public void DrawImage(ref int imageId, ref int x, ref int y)
         {
-            if (mIsDispose || cRes == null) return;
+            if (mIsDispose) return;
 
             var img = cRes.GetImg(imageId);
             if (img.Data == null) return;
@@ -244,9 +308,19 @@ namespace GameCanvas
 
         public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree, ref double centerX, ref double centerY) { }
 
-        public int GetImageWidth(ref int imageId) { return 0; }
+        public int GetImageWidth(ref int imageId)
+        {
+            var img = cRes.GetImg(imageId);
+            if (img.Data == null) return 0;
+            return Mathf.RoundToInt(img.Data.rect.width);
+        }
 
-        public int GetImageHeight(ref int imageId) { return 0; }
+        public int GetImageHeight(ref int imageId)
+        {
+            var img = cRes.GetImg(imageId);
+            if (img.Data == null) return 0;
+            return Mathf.RoundToInt(img.Data.rect.height);
+        }
 
         // 互換実装：その他
 
@@ -264,7 +338,7 @@ namespace GameCanvas
         #region プライベート関数
         //----------------------------------------------------------
 
-        private static void initMeshAsQuad(out Mesh mesh)
+        private static void initMeshAsRect(out Mesh mesh)
         {
             mesh = new Mesh();
             mesh.vertices = new[] {
@@ -385,7 +459,7 @@ namespace GameCanvas
             {
                 cTextGeneratorPool.Add(new TextGenerator(str.Length));
                 cTextMeshPool.Add(new Mesh());
-                cTextMeshPool[mCountText].MarkDynamic();
+                //cTextMeshPool[mCountText].MarkDynamic();
             }
 
             var generator = cTextGeneratorPool[mCountText];
@@ -396,13 +470,16 @@ namespace GameCanvas
             generator.Populate(str, settings);
             convertToMesh(ref mesh, ref generator);
 
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, mFont.material.mainTexture);
+
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferTransparent.DrawMesh(mesh, matrix, mFont.material);
+            cBufferTransparent.DrawMesh(mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
         private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h)
         {
-            var t = new Vector3(x, mCanvasSize.y - y);
+            var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
             var r = Quaternion.identity;
             var s = new Vector3(w, h, 1f);
             return Matrix4x4.TRS(t, r, s);
