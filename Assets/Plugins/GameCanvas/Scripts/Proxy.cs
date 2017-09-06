@@ -34,16 +34,16 @@ namespace GameCanvas
             cGraphic = graphic;
         }
 
-        public static readonly Color COLOR_WHITE = new Color(1f, 1f, 1f);
-        public static readonly Color COLOR_BLACK = new Color(0f, 0f, 0f);
-        public static readonly Color COLOR_GRAY = new Color(.5f, .5f, .5f);
-        public static readonly Color COLOR_RED = new Color(1f, 0f, 0f);
-        public static readonly Color COLOR_BLUE = new Color(0f, 0f, 1f);
-        public static readonly Color COLOR_GREEN = new Color(0f, 1f, 0f);
-        public static readonly Color COLOR_YELLOW = new Color(1f, 1f, 0f);
-        public static readonly Color COLOR_PURPLE = new Color(1f, 0f, 1f);
-        public static readonly Color COLOR_CYAN = new Color(0f, 1f, 1f);
-        public static readonly Color COLOR_AQUA = new Color(.5f, .5f, 1f);
+        public readonly Color COLOR_WHITE = new Color(1f, 1f, 1f);
+        public readonly Color COLOR_BLACK = new Color(0f, 0f, 0f);
+        public readonly Color COLOR_GRAY = new Color(.5f, .5f, .5f);
+        public readonly Color COLOR_RED = new Color(1f, 0f, 0f);
+        public readonly Color COLOR_BLUE = new Color(0f, 0f, 1f);
+        public readonly Color COLOR_GREEN = new Color(0f, 1f, 0f);
+        public readonly Color COLOR_YELLOW = new Color(1f, 1f, 0f);
+        public readonly Color COLOR_PURPLE = new Color(1f, 0f, 1f);
+        public readonly Color COLOR_CYAN = new Color(0f, 1f, 1f);
+        public readonly Color COLOR_AQUA = new Color(.5f, .5f, 1f);
 
         // 描画：文字列
 
@@ -125,25 +125,25 @@ namespace GameCanvas
         // 廃止
 
         [System.Obsolete]
-        public const int KEY_UP = 0;
+        public readonly int KEY_UP = 0;
         [System.Obsolete]
-        public const int KEY_DOWN = 0;
+        public readonly int KEY_DOWN = 0;
         [System.Obsolete]
-        public const int KEY_LEFT = 0;
+        public readonly int KEY_LEFT = 0;
         [System.Obsolete]
-        public const int KEY_RIGHT = 0;
+        public readonly int KEY_RIGHT = 0;
         [System.Obsolete]
-        public const int KEY_Z = 0;
+        public readonly int KEY_Z = 0;
         [System.Obsolete]
-        public const int KEY_X = 0;
+        public readonly int KEY_X = 0;
         [System.Obsolete]
-        public const int KEY_C = 0;
+        public readonly int KEY_C = 0;
         [System.Obsolete]
-        public const int KEY_V = 0;
+        public readonly int KEY_V = 0;
         [System.Obsolete]
-        public const int KEY_ENTER = 0;
+        public readonly int KEY_ENTER = 0;
         [System.Obsolete]
-        public const int KEY_SPACE = 0;
+        public readonly int KEY_SPACE = 0;
 
         [System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
         public void setWindowTitle(string title) { }
