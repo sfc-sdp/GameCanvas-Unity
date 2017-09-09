@@ -55,6 +55,14 @@ namespace GameCanvas.Engine
             cSource.volume = 1f;
         }
 
+        public void OnBeforeUpdate()
+        {
+            if (mPlayingId != -1 && !cSource.isPlaying)
+            {
+                mPlayingId = -1;
+            }
+        }
+
         public void Play(int soundId, bool loop)
         {
             if (mPlayingId == soundId) return;
