@@ -47,7 +47,7 @@ namespace GameCanvas.Engine
             cSource.ignoreListenerPause = true;
             cSource.ignoreListenerVolume = true;
             cSource.mute = false;
-            cSource.panStereo = 0.5f;
+            cSource.panStereo = 0f;
             cSource.pitch = 1f;
             cSource.clip = null;
             cSource.playOnAwake = false;
