@@ -106,10 +106,10 @@ namespace GameCanvas
 
         public int getMouseX() => cPointer.LastX;
         public int getMouseY() => cPointer.LastY;
-        public int getMouseClickLength() => cPointer.ActiveFrameCount;
-        public bool isMousePushed() => cPointer.IsDown;
-        public bool isMouseReleased() => cPointer.IsUp || cPointer.IsCancel;
-        public bool isMousePress() => cPointer.IsActive;
+        public int getMouseClickLength() => cPointer.FrameCount;
+        public bool isMousePushed() => cPointer.IsBegan;
+        public bool isMouseReleased() => cPointer.IsEnded;
+        public bool isMousePress() => cPointer.HasEvent;
         public bool showYesNoDialog(string message) { return false; } // TODO
         public string showInputDialog(string message, string defaultInput) { return null; } // TODO
 

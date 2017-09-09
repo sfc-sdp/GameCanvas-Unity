@@ -74,6 +74,7 @@ namespace GameCanvas
         {
             mGraphic.OnBeforeUpdate();
             mSound.OnBeforeUpdate();
+            mPointer.OnBeforeUpdate();
 
             updateGame();
             drawGame();
