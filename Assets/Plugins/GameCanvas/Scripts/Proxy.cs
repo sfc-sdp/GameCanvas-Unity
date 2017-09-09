@@ -11,6 +11,8 @@
 namespace GameCanvas
 {
     using UnityEngine;
+    using GameCanvas.Engine;
+    using GameCanvas.Input;
 
     public sealed class Proxy
     {
@@ -19,6 +21,8 @@ namespace GameCanvas
         //----------------------------------------------------------
 
         private readonly Graphic cGraphic;
+        private readonly Sound cSound;
+        private readonly Pointer cPointer;
 
         #endregion
 
@@ -29,9 +33,11 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Proxy(Graphic graphic)
+        public Proxy(Graphic graphic, Sound sound, Pointer pointer)
         {
             cGraphic = graphic;
+            cSound = sound;
+            cPointer = pointer;
         }
 
         public readonly Color COLOR_WHITE = new Color(1f, 1f, 1f);
@@ -79,48 +85,52 @@ namespace GameCanvas
         public bool writeScreenImage(string file) => cGraphic.WriteScreenImage(ref file);
         public int WIDTH => cGraphic.CanvasWidth;
         public int HEIGHT => cGraphic.CanvasHeight;
-        public int CONFIG_FPS => 30;
+        public int CONFIG_FPS => 30; // TODO
 
         // 音声
 
-        public void playBGM(int soundId, bool loop = true) { }
-        public void changeBGMVolume(int volume) { }
-        public void stopBGM() { }
-        public void pauseBGM() { }
-        public void playSE(int soundId, bool loop = false) { }
-        public void changeSEVolume(int volume) { }
-        public void stopSE() { }
-        public void pauseSE() { }
+        public void play(int soundId, bool loop = false) => cSound.Play(soundId, loop);
+        public void changeVolume(int volume) => cSound.ChangeVolume(volume);
+        public void stop() => cSound.Stop();
+        public void pause() => cSound.Pause();
+        public void playBGM(int midiId, bool loop = true) { } // TODO
+        public void changeBGMVolume(int volume) { } // TODO
+        public void stopBGM() { } // TODO
+        public void pauseBGM() { } // TODO
+        public void playSE(int soundId, bool loop = false) => cSound.Play(soundId, loop);
+        public void changeSEVolume(int volume) => cSound.ChangeVolume(volume);
+        public void stopSE() => cSound.Stop();
+        public void pauseSE() => cSound.Pause();
 
         // 入力
 
-        public int getMouseX() { return 0; }
-        public int getMouseY() { return 0; }
-        public int getMouseClickLength() { return 0; }
-        public bool isMousePushed() { return false; }
-        public bool isMouseReleased() { return false; }
-        public bool isMousePress() { return false; }
-        public bool showYesNoDialog(string message) { return false; }
-        public string showInputDialog(string message, string defaultInput) { return null; }
+        public int getMouseX() => cPointer.LastX;
+        public int getMouseY() => cPointer.LastY;
+        public int getMouseClickLength() => cPointer.ActiveFrameCount;
+        public bool isMousePushed() => cPointer.IsDown;
+        public bool isMouseReleased() => cPointer.IsUp || cPointer.IsCancel;
+        public bool isMousePress() => cPointer.IsActive;
+        public bool showYesNoDialog(string message) { return false; } // TODO
+        public string showInputDialog(string message, string defaultInput) { return null; } // TODO
 
         // 数学
 
-        public void setSeed(int seed) { }
-        public int rand(int min, int max) { return 0; }
-        public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) { return false; }
-        public bool checkHitImage(int imageId1, int x1, int y1, int imageId2, int x2, int y2) { return false; }
-        public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2) { return false; }
-        public double sqrt(double value) { return 0; }
-        public double cos(double degree) { return 0; }
-        public double sin(double degree) { return 0; }
-        public double atan2(double x, double y) { return 0; }
+        public void setSeed(int seed) { } // TODO
+        public int rand(int min, int max) { return 0; } // TODO
+        public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) { return false; } // TODO
+        public bool checkHitImage(int imageId1, int x1, int y1, int imageId2, int x2, int y2) { return false; } // TODO
+        public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2) { return false; } // TODO
+        public double sqrt(double value) { return 0; } // TODO
+        public double cos(double degree) { return 0; } // TODO
+        public double sin(double degree) { return 0; } // TODO
+        public double atan2(double x, double y) { return 0; } // TODO
 
         // その他
 
-        public int load(int key) { return 0; }
-        public void save(int key, int value) { }
-        public void resetGame() { }
-        public void exitApp() { }
+        public int load(int key) { return 0; } // TODO
+        public void save(int key, int value) { } // TODO
+        public void resetGame() { } // TODO
+        public void exitApp() { } // TODO
 
         // 廃止
 

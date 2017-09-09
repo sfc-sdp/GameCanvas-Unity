@@ -12,9 +12,11 @@ namespace GameCanvas
 {
     using UnityEngine;
     using UnityEngine.Assertions;
+    using GameCanvas.Engine;
+    using GameCanvas.Input;
 
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Camera), typeof(AudioListener))]
+    [RequireComponent(typeof(Camera), typeof(AudioListener), typeof(AudioSource))]
     public abstract class BehaviourBase : MonoBehaviour
     {
         //----------------------------------------------------------
@@ -30,8 +32,11 @@ namespace GameCanvas
 
         private Camera mCamera;
         private AudioListener mListener;
+        private AudioSource mAudioSource;
 
         private Graphic mGraphic;
+        private Sound mSound;
+        private Pointer mPointer;
         private Proxy mProxy;
 
         #endregion
@@ -44,14 +49,18 @@ namespace GameCanvas
         {
             mCamera = GetComponent<Camera>();
             mListener = GetComponent<AudioListener>();
+            mAudioSource = GetComponent<AudioSource>();
             Assert.IsNotNull(mCamera);
             Assert.IsNotNull(mListener);
+            Assert.IsNotNull(mAudioSource);
             Assert.IsNotNull(Resource);
 
             Resource.Initialize();
             mGraphic = new Graphic(Resource, mCamera);
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
-            mProxy = new Proxy(mGraphic);
+            mSound = new Sound(Resource, mAudioSource);
+            mPointer = new Pointer();
+            mProxy = new Proxy(mGraphic, mSound, mPointer);
 
             // TODO
         }

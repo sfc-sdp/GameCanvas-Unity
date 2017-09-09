@@ -8,7 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 
-namespace GameCanvas
+namespace GameCanvas.Engine
 {
     using System.Collections.Generic;
     using UnityEngine;
@@ -258,9 +258,15 @@ namespace GameCanvas
             mColor = new Color(r * n, g * n, b * n);
         }
 
-        public void DrawLine(ref int startX, ref int startY, ref int endX, ref int endY) { }
+        public void DrawLine(ref int startX, ref int startY, ref int endX, ref int endY)
+        {
+            // TODO
+        }
 
-        public void DrawRect(ref int x, ref int y, ref int width, ref int height) { }
+        public void DrawRect(ref int x, ref int y, ref int width, ref int height)
+        {
+            // TODO
+        }
 
         public void FillRect(ref int x, ref int y, ref int width, ref int height)
         {
@@ -273,7 +279,10 @@ namespace GameCanvas
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
-        public void DrawCircle(ref int x, ref int y, ref int radius) { }
+        public void DrawCircle(ref int x, ref int y, ref int radius)
+        {
+            // TODO
+        }
 
         public void FillCircle(ref int x, ref int y, ref int radius)
         {
@@ -302,11 +311,20 @@ namespace GameCanvas
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
-        public void DrawClipImage(ref int imageId, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height) { }
+        public void DrawClipImage(ref int imageId, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height)
+        {
+            // TODO
+        }
 
-        public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree) { }
+        public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree)
+        {
+            // TODO
+        }
 
-        public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree, ref double centerX, ref double centerY) { }
+        public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree, ref double centerX, ref double centerY)
+        {
+            // TODO
+        }
 
         public int GetImageWidth(ref int imageId)
         {
