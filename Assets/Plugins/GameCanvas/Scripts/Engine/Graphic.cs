@@ -45,6 +45,7 @@ namespace GameCanvas.Engine
 
         private bool mIsEnable;
         private bool mIsDispose;
+        private Vector2 mScreenSize;
         private Vector2 mCanvasSize;
         private Box mBoxViewport;
         private Box mBoxCanvas;
@@ -98,7 +99,9 @@ namespace GameCanvas.Engine
             mFont = cRes.GetFnt(0).Data ?? Font.CreateDynamicFontFromOSFont(new[] { ".Hiragino Kaku Gothic Interface", "MotoyaLMaru", "MotoyaLCedar", "RobotoSansFallback", "Droid Sans Fallback" }, mFontSize);
 
             mColor = cColorWhite;
+            mScreenSize = new Vector2(Screen.width, Screen.height);
             mCanvasSize = new Vector2(720, 1280);
+            Application.targetFrameRate = 30;
         }
 
         public void Dispose()
@@ -135,6 +138,12 @@ namespace GameCanvas.Engine
         public void OnBeforeUpdate()
         {
             if (mIsDispose) return;
+
+            if (mScreenSize.x != Screen.width || mScreenSize.y != Screen.height)
+            {
+                mScreenSize = new Vector2(Screen.width, Screen.height);
+                SetResolution((int)mCanvasSize.x, (int)mCanvasSize.y);
+            }
 
             cBufferOpaque.Clear();
             cBufferOpaque.SetViewport(mRectScreen);
