@@ -59,7 +59,7 @@ namespace GameCanvas
             mGraphic = new Graphic(Resource, mCamera);
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mSound = new Sound(Resource, mAudioSource);
-            mPointer = new Pointer();
+            mPointer = new Pointer(mGraphic);
             mProxy = new Proxy(mGraphic, mSound, mPointer);
 
             // TODO

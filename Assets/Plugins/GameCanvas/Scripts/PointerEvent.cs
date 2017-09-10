@@ -23,13 +23,13 @@ namespace GameCanvas
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// X座標
+        /// スクリーン座標 (X軸)
         /// </summary>
-        public readonly int X;
+        public readonly int ScreenX;
         /// <summary>
-        /// Y座標
+        /// スクリーン座標 (Y軸)
         /// </summary>
-        public readonly int Y;
+        public readonly int ScreenY;
         /// <summary>
         /// 段階
         /// </summary>
@@ -89,8 +89,8 @@ namespace GameCanvas
         public static bool operator ==(PointerEvent lh, PointerEvent rh)
         {
             return lh.Id == rh.Id
-                && lh.X == rh.X
-                && lh.Y == rh.Y
+                && lh.ScreenX == rh.ScreenX
+                && lh.ScreenY == rh.ScreenY
                 && lh.Phase == rh.Phase
                 && lh.Type == rh.Type
                 && lh.Pressure == rh.Pressure
@@ -106,8 +106,8 @@ namespace GameCanvas
         public PointerEvent(int id, int x, int y, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
         {
             Id = id;
-            X = x;
-            Y = y;
+            ScreenX = x;
+            ScreenY = y;
             Phase = phase;
             Type = type;
             TiltX = tiltX;
@@ -123,8 +123,8 @@ namespace GameCanvas
         public PointerEvent(ref Touch touch)
         {
             Id = touch.fingerId;
-            X = (int)touch.position.x;
-            Y = (int)touch.position.y;
+            ScreenX = (int)touch.position.x;
+            ScreenY = (int)touch.position.y;
             Phase = touch.phase == TouchPhase.Began ? EPhase.Began
                 : touch.phase == TouchPhase.Moved ? EPhase.Moved
                 : touch.phase == TouchPhase.Stationary ? EPhase.Stationary
@@ -146,7 +146,7 @@ namespace GameCanvas
         public override int GetHashCode()
         {
             return Id.GetHashCode()
-                & X.GetHashCode() & Y.GetHashCode()
+                & ScreenX.GetHashCode() & ScreenY.GetHashCode()
                 & Phase.GetHashCode() & Type.GetHashCode()
                 & TiltX.GetHashCode() & TiltY.GetHashCode()
                 & Pressure.GetHashCode();
@@ -155,8 +155,8 @@ namespace GameCanvas
         public override string ToString()
         {
             return (TiltX != 0f || TiltY != 0f)
-                ? $"{Id}: point: ({X}, {Y}), phase: {Phase}, tilt: ({TiltX}, {TiltY}), pressure: {Pressure}"
-                : $"{Id}: point: ({X}, {Y}), phase: {Phase}, pressure: {Pressure}";
+                ? $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, tilt: ({TiltX}, {TiltY}), pressure: {Pressure}"
+                : $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, pressure: {Pressure}";
         }
 
         #endregion

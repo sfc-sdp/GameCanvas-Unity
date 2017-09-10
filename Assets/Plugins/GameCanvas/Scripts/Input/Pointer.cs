@@ -12,6 +12,8 @@ namespace GameCanvas.Input
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.Assertions;
+    using GameCanvas.Engine;
 
     public sealed class Pointer
     {
@@ -24,6 +26,7 @@ namespace GameCanvas.Input
         private const int cIdMouseButton1 = 2;
         private const int cIdMouseButton2 = 3;
 
+        private readonly Graphic cGraphic;
         private readonly bool cIsTouchSupported;
         private readonly bool cIsTouchPressureSupported;
         private readonly PointerEvent[] cEvents;
@@ -46,8 +49,11 @@ namespace GameCanvas.Input
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Pointer()
+        public Pointer(Graphic graphic)
         {
+            Assert.IsNotNull(graphic);
+            cGraphic = graphic;
+
             cIsTouchSupported = Input.touchSupported && (Application.platform != RuntimePlatform.WindowsEditor);
             cIsTouchPressureSupported = cIsTouchPressureSupported && Input.touchPressureSupported;
 
@@ -106,8 +112,8 @@ namespace GameCanvas.Input
 
             if (mEventNum > 0)
             {
-                mLastX = cEvents[0].X;
-                mLastY = cEvents[0].Y;
+                mLastX = cGraphic.ScreenToCanvasX(cEvents[0].ScreenX);
+                mLastY = cGraphic.ScreenToCanvasY(cEvents[0].ScreenY);
 
                 var currentFrame = Time.frameCount;
                 var currentTime = Time.unscaledTime;
@@ -146,15 +152,15 @@ namespace GameCanvas.Input
         public int Count => mEventNum;
         public bool HasEvent => (mEventNum > 0);
         public PointerEvent GetRaw(int i) => (i < mEventNum) ? cEvents[i] : default(PointerEvent);
-        public int GetX(int i) => (i < mEventNum) ? cEvents[i].X : 0;
-        public int GetY(int i) => (i < mEventNum) ? cEvents[i].Y : 0;
+        public int GetX(int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasX(cEvents[i].ScreenX) : 0;
+        public int GetY(int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasY(cEvents[i].ScreenY) : 0;
         public bool GetIsBegan(int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Began) : false;
         public bool GetIsEnded(int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Ended) : false;
         public int GetFrameCount(int i) => (i < mEventNum) ? cEventFrameCounts[i] : 0;
         public float GetDulation(int i) => (i < mEventNum) ? cEventDulations[i] : 0f;
 
-        public int X => HasEvent ? cEvents[0].X : 0;
-        public int Y => HasEvent ? cEvents[0].Y : 0;
+        public int X => HasEvent ? cGraphic.ScreenToCanvasX(cEvents[0].ScreenX) : 0;
+        public int Y => HasEvent ? cGraphic.ScreenToCanvasY(cEvents[0].ScreenY) : 0;
         public bool IsBegan => (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Began);
         public bool IsEnded => (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Ended);
         public int FrameCount => HasEvent ? cEventFrameCounts[0] : 0;
@@ -176,7 +182,7 @@ namespace GameCanvas.Input
             var phase = PointerEvent.EPhase.Began;
             if (prev.HasValue)
             {
-                phase = (prev.Value.X == mousePos.x && prev.Value.Y == mousePos.y)
+                phase = (prev.Value.ScreenX == mousePos.x && prev.Value.ScreenY == mousePos.y)
                     ? PointerEvent.EPhase.Stationary
                     : PointerEvent.EPhase.Moved;
             }

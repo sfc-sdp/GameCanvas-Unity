@@ -21,6 +21,7 @@ namespace GameCanvas.Engine
         #region フィールド変数
         //----------------------------------------------------------
 
+        private static readonly Vector2 cVectorRight = Vector2.right;
         private static readonly Color cColorWhite = Color.white;
 
         private readonly Resource cRes;
@@ -187,6 +188,29 @@ namespace GameCanvas.Engine
             mMatrixView = Matrix4x4.TRS(new Vector3(-1f, -1f, 0f), Quaternion.identity, new Vector3(2f / mCanvasSize.x, 2f / mCanvasSize.y, 1f));
         }
 
+        public int ScreenToCanvasX(int screenX)
+        {
+            return Mathf.RoundToInt((screenX - mRectScreen.xMin) * mCanvasSize.x / mRectScreen.width);
+        }
+
+        public int ScreenToCanvasY(int screenY)
+        {
+            return Mathf.RoundToInt(mCanvasSize.y - (screenY - mRectScreen.yMin) * mCanvasSize.y / mRectScreen.height);
+        }
+
+        public void ScreenToCanvas(out int canvasX, out int canvasY, ref int screenX, ref int screenY)
+        {
+            canvasX = ScreenToCanvasX(screenX);
+            canvasY = ScreenToCanvasY(screenY);
+        }
+
+        public Vector2 ScreenToCanvas(ref Vector2 screen)
+        {
+            var canvasX = (screen.x - mRectScreen.xMin) * mCanvasSize.x / mRectScreen.width;
+            var canvasY = mCanvasSize.y - (screen.y - mRectScreen.yMin) * mCanvasSize.y / mRectScreen.height;
+            return new Vector2(canvasX, canvasY);
+        }
+
         public int CanvasWidth => (int)mCanvasSize.x;
 
         public int CanvasHeight => (int)mCanvasSize.y;
@@ -260,7 +284,17 @@ namespace GameCanvas.Engine
 
         public void DrawLine(ref int startX, ref int startY, ref int endX, ref int endY)
         {
-            // TODO
+            if (mIsDispose) return;
+
+            cBlock.Clear();
+            cBlock.SetColor(cShaderPropColor, mColor);
+
+            var p0 = new Vector2(startX, mCanvasSize.y - startY);
+            var p1 = new Vector2(endX, mCanvasSize.y - endY);
+            var distance = Vector2.Distance(p0, p1);
+            var degree = Vector2.SignedAngle(cVectorRight, p1 - p0);
+            var matrix = calcMatrix(mCountDraw++, startX, startY, distance, 1f, degree);
+            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
         public void DrawRect(ref int x, ref int y, ref int width, ref int height)
@@ -276,7 +310,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, width, height);
-            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
         public void DrawCircle(ref int x, ref int y, ref int radius)
@@ -292,7 +326,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, radius, radius);
-            cBufferTransparent.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
         // 互換実装：画像系
@@ -495,10 +529,10 @@ namespace GameCanvas.Engine
             cBufferTransparent.DrawMesh(mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
-        private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h)
+        private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h, float degree = 0f)
         {
             var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
-            var r = Quaternion.identity;
+            var r = degree != 0f ? Quaternion.Euler(0f, 0f, degree) : Quaternion.identity;
             var s = new Vector3(w, h, 1f);
             return Matrix4x4.TRS(t, r, s);
         }
