@@ -146,10 +146,12 @@ namespace GameCanvas.Engine
             }
 
             cBufferOpaque.Clear();
+            cBufferOpaque.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
             cBufferOpaque.SetViewport(mRectScreen);
             cBufferOpaque.SetViewMatrix(mMatrixView);
 
             cBufferTransparent.Clear();
+            cBufferTransparent.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
             cBufferTransparent.SetViewport(mRectScreen);
             cBufferTransparent.SetViewMatrix(mMatrixView);
 
