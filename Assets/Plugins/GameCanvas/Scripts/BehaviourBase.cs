@@ -37,6 +37,7 @@ namespace GameCanvas
         private Graphic mGraphic;
         private Sound mSound;
         private Pointer mPointer;
+        private Keyboard mKeyboard;
         private Proxy mProxy;
 
         #endregion
@@ -60,7 +61,8 @@ namespace GameCanvas
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mSound = new Sound(Resource, mAudioSource);
             mPointer = new Pointer(mGraphic);
-            mProxy = new Proxy(mGraphic, mSound, mPointer);
+            mKeyboard = new Keyboard();
+            mProxy = new Proxy(mGraphic, mSound, mPointer, mKeyboard);
 
             // TODO
         }
@@ -75,6 +77,7 @@ namespace GameCanvas
             mGraphic.OnBeforeUpdate();
             mSound.OnBeforeUpdate();
             mPointer.OnBeforeUpdate();
+            mKeyboard.OnBeforeUpdate();
 
             updateGame();
             drawGame();

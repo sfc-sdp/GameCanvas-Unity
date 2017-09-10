@@ -23,22 +23,20 @@ namespace GameCanvas
         private readonly Graphic cGraphic;
         private readonly Sound cSound;
         private readonly Pointer cPointer;
+        private readonly Keyboard cKeyboard;
 
-        #endregion
+        // 定数
 
-        //----------------------------------------------------------
-        #region パブリック関数
-        //----------------------------------------------------------
-
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
-        public Proxy(Graphic graphic, Sound sound, Pointer pointer)
-        {
-            cGraphic = graphic;
-            cSound = sound;
-            cPointer = pointer;
-        }
+        public readonly EKeyCode KEY_UP = EKeyCode.Up;
+        public readonly EKeyCode KEY_DOWN = EKeyCode.Down;
+        public readonly EKeyCode KEY_LEFT = EKeyCode.Left;
+        public readonly EKeyCode KEY_RIGHT = EKeyCode.Right;
+        public readonly EKeyCode KEY_Z = EKeyCode.Z;
+        public readonly EKeyCode KEY_X = EKeyCode.X;
+        public readonly EKeyCode KEY_C = EKeyCode.C;
+        public readonly EKeyCode KEY_V = EKeyCode.V;
+        public readonly EKeyCode KEY_ENTER = EKeyCode.Enter;
+        public readonly EKeyCode KEY_SPACE = EKeyCode.Space;
 
         public readonly Color COLOR_WHITE = new Color(1f, 1f, 1f);
         public readonly Color COLOR_BLACK = new Color(0f, 0f, 0f);
@@ -50,6 +48,23 @@ namespace GameCanvas
         public readonly Color COLOR_PURPLE = new Color(1f, 0f, 1f);
         public readonly Color COLOR_CYAN = new Color(0f, 1f, 1f);
         public readonly Color COLOR_AQUA = new Color(.5f, .5f, 1f);
+
+        #endregion
+
+        //----------------------------------------------------------
+        #region パブリック関数
+        //----------------------------------------------------------
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public Proxy(Graphic graphic, Sound sound, Pointer pointer, Keyboard keyboard)
+        {
+            cGraphic = graphic;
+            cSound = sound;
+            cPointer = pointer;
+            cKeyboard = keyboard;
+        }
 
         // 描画：文字列
 
@@ -104,6 +119,10 @@ namespace GameCanvas
 
         // 入力
 
+        public int getKeyPressLength(EKeyCode key) => cKeyboard.GetPressFrameCount(ref key);
+        public bool isKeyPress(EKeyCode key) => cKeyboard.GetIsPress(ref key);
+        public bool isKeyPushed(EKeyCode key) => cKeyboard.GetIsBegan(ref key);
+        public bool isKeyReleased(EKeyCode key) => cKeyboard.GetIsEnded(ref key);
         public int getMouseX() => cPointer.LastX;
         public int getMouseY() => cPointer.LastY;
         public int getMouseClickLength() => cPointer.FrameCount;
@@ -112,6 +131,7 @@ namespace GameCanvas
         public bool isMousePress() => cPointer.HasEvent;
         public bool showYesNoDialog(string message) { return false; } // TODO
         public string showInputDialog(string message, string defaultInput) { return null; } // TODO
+        public bool showScreenKeyboard() => cKeyboard.Open();
 
         // 数学
 
@@ -130,43 +150,14 @@ namespace GameCanvas
         public int load(int key) { return 0; } // TODO
         public void save(int key, int value) { } // TODO
         public void resetGame() { } // TODO
-        public void exitApp() { } // TODO
+        public void exitApp() => Application.Quit();
 
         // 廃止
-
-        [System.Obsolete]
-        public readonly int KEY_UP = 0;
-        [System.Obsolete]
-        public readonly int KEY_DOWN = 0;
-        [System.Obsolete]
-        public readonly int KEY_LEFT = 0;
-        [System.Obsolete]
-        public readonly int KEY_RIGHT = 0;
-        [System.Obsolete]
-        public readonly int KEY_Z = 0;
-        [System.Obsolete]
-        public readonly int KEY_X = 0;
-        [System.Obsolete]
-        public readonly int KEY_C = 0;
-        [System.Obsolete]
-        public readonly int KEY_V = 0;
-        [System.Obsolete]
-        public readonly int KEY_ENTER = 0;
-        [System.Obsolete]
-        public readonly int KEY_SPACE = 0;
 
         [System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
         public void setWindowTitle(string title) { }
         [System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
         public void setFont(string fontName, int fontStyle, int fontSize) { }
-        [System.Obsolete]
-        public int getKeyPressLength() { return 0; }
-        [System.Obsolete]
-        public bool isKeyPress() { return false; }
-        [System.Obsolete]
-        public bool isKeyPushed() { return false; }
-        [System.Obsolete]
-        public bool isKeyReleased() { return false; }
 
         #endregion
     }
