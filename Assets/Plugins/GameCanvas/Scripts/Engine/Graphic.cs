@@ -35,6 +35,10 @@ namespace GameCanvas.Engine
         private readonly int cShaderPropMainTex;
         private readonly Mesh cMeshRect;
         private readonly Mesh cMeshCircle;
+        private readonly Mesh cMeshRectBorder;
+        private readonly Mesh cMeshCircleBorder;
+        private readonly Vector3[] cVertexRectBorder;
+        private readonly Vector3[] cVertexCircleBorder;
         private readonly List<TextGenerator> cTextGeneratorPool;
         private readonly List<Mesh> cTextMeshPool;
 
@@ -51,6 +55,7 @@ namespace GameCanvas.Engine
         private Box mBoxCanvas;
         private Rect mRectScreen;
         private Matrix4x4 mMatrixView;
+        private float mPixelSizeMin;
         private Color mColor;
         private Font mFont;
         private FontStyle mFontStyle;
@@ -93,6 +98,8 @@ namespace GameCanvas.Engine
             cTextMeshPool = new List<Mesh>(20);
             initMeshAsRect(out cMeshRect);
             initMeshAsCircle(out cMeshCircle);
+            initMeshAsRectBorder(out cMeshRectBorder, out cVertexRectBorder);
+            initMeshAsRectBorder(out cMeshCircleBorder, out cVertexCircleBorder);
 
             mFontStyle = FontStyle.Normal;
             mFontSize = 25;
@@ -197,6 +204,8 @@ namespace GameCanvas.Engine
             mRectScreen = new Rect(screenMin, screenMax - screenMin);
 
             mMatrixView = Matrix4x4.TRS(new Vector3(-1f, -1f, 0f), Quaternion.identity, new Vector3(2f / mCanvasSize.x, 2f / mCanvasSize.y, 1f));
+
+            mPixelSizeMin = Mathf.Max(1f, mCanvasSize.x / mRectScreen.width);
         }
 
         public int ScreenToCanvasX(int screenX)
@@ -310,7 +319,32 @@ namespace GameCanvas.Engine
 
         public void DrawRect(ref int x, ref int y, ref int width, ref int height)
         {
-            // TODO
+            if (mIsDispose) return;
+
+            var half = 0.5f * mPixelSizeMin;
+            var l0 = -half;
+            var l1 = half;
+            var t0 = half;
+            var t1 = -half;
+            var r0 = width + half;
+            var r1 = width - half;
+            var b0 = -half - height;
+            var b1 = half - height;
+            cVertexRectBorder[0] = new Vector3(l0, t0); // 左上:外
+            cVertexRectBorder[1] = new Vector3(l1, t1); // 左上:内
+            cVertexRectBorder[2] = new Vector3(r0, t0); // 右上:外
+            cVertexRectBorder[3] = new Vector3(r1, t1); // 右上:内
+            cVertexRectBorder[4] = new Vector3(r0, b0); // 右下:外
+            cVertexRectBorder[5] = new Vector3(r1, b1); // 右下:内
+            cVertexRectBorder[6] = new Vector3(l0, b0); // 左下:外
+            cVertexRectBorder[7] = new Vector3(l1, b1); // 左下:内
+            cMeshRectBorder.vertices = cVertexRectBorder;
+
+            cBlock.Clear();
+            cBlock.SetColor(cShaderPropColor, mColor);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
+            cBufferOpaque.DrawMesh(cMeshRectBorder, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
         public void FillRect(ref int x, ref int y, ref int width, ref int height)
@@ -393,7 +427,12 @@ namespace GameCanvas.Engine
             cBufferOpaque.ClearRenderTarget(true, true, cColorWhite);
         }
 
-        public bool WriteScreenImage(ref string file) { return false; }
+        public bool WriteScreenImage(ref string file)
+        {
+            var filename = file.EndsWith(".png") ? file : file + ".png";
+            ScreenCapture.CaptureScreenshot(filename);
+            return true; // TODO 仮実装
+        }
 
         #endregion
 
@@ -414,12 +453,6 @@ namespace GameCanvas.Engine
                 0, 2, 1,
                 2, 3, 1
             };
-            //mesh.normals = new[] {
-            //    new Vector3(0f, 0f, -1f), // 左下
-            //    new Vector3(0f, 0f, -1f), // 右下
-            //    new Vector3(0f, 0f, -1f), // 左上
-            //    new Vector3(0f, 0f, -1f)  // 右上
-            //};
             mesh.uv = new[] {
                 new Vector2(0f, 0f), // 左下
                 new Vector2(1f, 0f), // 右下
@@ -433,7 +466,6 @@ namespace GameCanvas.Engine
             const int len = 20;
             var vertices = new Vector3[len];
             var triangles = new int[len * 3 - 6];
-            var normals = new Vector3[len];
             for (var i = 0; i < len; ++i)
             {
                 var rad = Mathf.PI * 2 * i / len;
@@ -446,13 +478,34 @@ namespace GameCanvas.Engine
                     triangles[i * 3 + 1] = i + 1;
                     triangles[i * 3 + 2] = i + 2;
                 }
-                normals[i] = new Vector3(0f, 0f, -1f);
             }
 
             mesh = new Mesh();
             mesh.vertices = vertices;
             mesh.triangles = triangles;
-            mesh.normals = normals;
+        }
+
+        private static void initMeshAsRectBorder(out Mesh mesh, out Vector3[] verts)
+        {
+            verts = new Vector3[8];
+            mesh = new Mesh();
+            mesh.vertices = verts;
+            mesh.triangles = new int[24]
+            {
+                0, 2, 1, 2, 3, 1,
+                2, 4, 3, 4, 5, 3,
+                4, 6, 5, 6, 7, 5,
+                6, 0, 7, 0, 1, 7
+            };
+        }
+
+        private static void initMeshAsCircleBorder(out Mesh mesh, out Vector3[] verts)
+        {
+            const int len = 20;
+            verts = new Vector3[len * 2];
+            mesh = new Mesh();
+            mesh.vertices = verts;
+            mesh.triangles = new int[len * 2]; // TODO
         }
 
         private static void genTextSetting(out TextGenerationSettings settings, ref Font font, ref FontStyle style, ref int size, ref Color color, ref TextAnchor anchor)
