@@ -39,8 +39,12 @@ namespace GameCanvas.Engine
         private readonly Mesh cMeshCircle;
         private readonly Mesh cMeshRectBorder;
         private readonly Mesh cMeshCircleBorder;
-        private readonly Vector3[] cVertexRectBorder;
-        private readonly Vector3[] cVertexCircleBorder;
+        private readonly List<Vector3> cVertexRectBorder;
+        private readonly List<Vector3> cVertexCircleBorder;
+        private readonly List<Vector3> cVertexText;
+        private readonly List<Vector2> cUvText;
+        private readonly List<int> cTriangleText;
+        private readonly List<Color> cColorText;
         private readonly List<TextGenerator> cTextGeneratorPool;
         private readonly List<Mesh> cTextMeshPool;
 
@@ -98,6 +102,10 @@ namespace GameCanvas.Engine
             cShaderPropMainTex = Shader.PropertyToID("_MainTex");
             cTextGeneratorPool = new List<TextGenerator>(20);
             cTextMeshPool = new List<Mesh>(20);
+            cVertexText = new List<Vector3>();
+            cUvText = new List<Vector2>();
+            cTriangleText = new List<int>();
+            cColorText = new List<Color>();
             initMeshAsRect(out cMeshRect);
             initMeshAsCircle(out cMeshCircle);
             initMeshAsRectBorder(out cMeshRectBorder, out cVertexRectBorder);
@@ -340,7 +348,7 @@ namespace GameCanvas.Engine
             cVertexRectBorder[5] = new Vector3(r1, b1); // 右下:内
             cVertexRectBorder[6] = new Vector3(l0, b0); // 左下:外
             cVertexRectBorder[7] = new Vector3(l1, b1); // 左下:内
-            cMeshRectBorder.vertices = cVertexRectBorder;
+            cMeshRectBorder.SetVertices(cVertexRectBorder);
 
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
@@ -367,14 +375,14 @@ namespace GameCanvas.Engine
             var half = 0.5f * mPixelSizeMin;
             var r0 = radius - half;
             var r1 = radius + half;
-            for (var i = 0; i < cVertexCircleBorder.Length; i += 2)
+            for (var i = 0; i < cCircleResolution; ++i)
             {
-                var rad = Mathf.PI * i / cCircleResolution;
+                var rad = Mathf.PI * 2 * i / cCircleResolution;
                 var vec = new Vector3(Mathf.Sin(rad), Mathf.Cos(rad));
-                cVertexCircleBorder[i] = vec * r1;
-                cVertexCircleBorder[i + 1] = vec * r0;
+                cVertexCircleBorder[i * 2] = vec * r1;
+                cVertexCircleBorder[i * 2 + 1] = vec * r0;
             }
-            cMeshCircleBorder.vertices = cVertexCircleBorder;
+            cMeshCircleBorder.SetVertices(cVertexCircleBorder);
 
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
@@ -504,11 +512,12 @@ namespace GameCanvas.Engine
             mesh.triangles = triangles;
         }
 
-        private static void initMeshAsRectBorder(out Mesh mesh, out Vector3[] verts)
+        private static void initMeshAsRectBorder(out Mesh mesh, out List<Vector3> verts)
         {
-            verts = new Vector3[8];
+            verts = new List<Vector3>(8);
+            for (var i = 0; i < 8; ++i) verts.Add(default(Vector3));
             mesh = new Mesh();
-            mesh.vertices = verts;
+            mesh.SetVertices(verts);
             mesh.triangles = new int[24]
             {
                 0, 2, 1, 2, 3, 1,
@@ -518,7 +527,7 @@ namespace GameCanvas.Engine
             };
         }
 
-        private static void initMeshAsCircleBorder(out Mesh mesh, out Vector3[] verts)
+        private static void initMeshAsCircleBorder(out Mesh mesh, out List<Vector3> verts)
         {
             var tris = new int[cCircleResolution * 6];
             for (var i = 0; i < cCircleResolution; ++i)
@@ -537,8 +546,9 @@ namespace GameCanvas.Engine
             tris[cCircleResolution * 6 - 2] = 1;
 
             mesh = new Mesh();
-            verts = new Vector3[cCircleResolution * 2];
-            mesh.vertices = verts;
+            verts = new List<Vector3>(cCircleResolution * 2);
+            for (var i = 0; i < cCircleResolution * 2; ++i) verts.Add(default(Vector3));
+            mesh.SetVertices(verts);
             mesh.triangles = tris;
         }
 
@@ -561,45 +571,41 @@ namespace GameCanvas.Engine
             };
         }
 
-        private static void convertToMesh(ref Mesh mesh, ref TextGenerator generator)
+        private void convertToMesh(ref Mesh mesh, ref TextGenerator generator)
         {
-            var vertices = mesh.vertices;
-            var colors = mesh.colors;
-            //var normals = mesh.normals;
-            var uv = mesh.uv;
-            var triangles = mesh.triangles;
-            var vertexCount = generator.vertexCount;
+            cVertexText.Clear();
+            cUvText.Clear();
+            cTriangleText.Clear();
+            cColorText.Clear();
 
-            if (vertices == null || vertices.Length != vertexCount) vertices = new Vector3[vertexCount];
-            if (colors == null || colors.Length != vertexCount) colors = new Color[vertexCount];
-            //if (normals == null || normals.Length != vertexCount) normals = new Vector3[vertexCount];
-            if (uv == null || uv.Length != vertexCount) uv = new Vector2[vertexCount];
-            if (triangles == null || triangles.Length != vertexCount * 6) triangles = new int[vertexCount * 6];
+            var vertexCount = generator.vertexCount;
+            if (cVertexText.Capacity < vertexCount) cVertexText.Capacity = vertexCount;
+            if (cUvText.Capacity < vertexCount) cUvText.Capacity = vertexCount;
+            if (cTriangleText.Capacity < vertexCount * 6) cTriangleText.Capacity = vertexCount * 6;
+            if (cColorText.Capacity < vertexCount) cColorText.Capacity = vertexCount;
 
             var uiverts = generator.verts;
-            for (var i = 0; i < vertices.Length; i += 4)
+            for (var i = 0; i < vertexCount; i += 4)
             {
                 for (var j = 0; j < 4; ++j)
                 {
                     var idx = i + j;
-                    vertices[idx] = uiverts[idx].position;
-                    colors[idx] = uiverts[idx].color;
-                    //normals[idx] = uiverts[idx].normal;
-                    uv[idx] = uiverts[idx].uv0;
+                    cVertexText.Add(uiverts[idx].position);
+                    cColorText.Add(uiverts[idx].color);
+                    cUvText.Add(uiverts[idx].uv0);
                 }
-                triangles[i * 6] = i;
-                triangles[i * 6 + 1] = i + 1;
-                triangles[i * 6 + 2] = i + 2;
-                triangles[i * 6 + 3] = i + 2;
-                triangles[i * 6 + 4] = i + 3;
-                triangles[i * 6 + 5] = i;
+                cTriangleText.Add(i);
+                cTriangleText.Add(i + 1);
+                cTriangleText.Add(i + 2);
+                cTriangleText.Add(i + 2);
+                cTriangleText.Add(i + 3);
+                cTriangleText.Add(i);
             }
 
-            mesh.vertices = vertices;
-            mesh.colors = colors;
-            //mesh.normals = normals;
-            mesh.uv = uv;
-            mesh.triangles = triangles;
+            mesh.SetVertices(cVertexText);
+            mesh.SetUVs(0, cUvText);
+            mesh.SetTriangles(cTriangleText, 0);
+            mesh.SetColors(cColorText);
             mesh.RecalculateBounds();
         }
 
