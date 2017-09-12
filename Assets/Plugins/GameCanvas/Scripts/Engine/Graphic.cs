@@ -21,6 +21,8 @@ namespace GameCanvas.Engine
         #region フィールド変数
         //----------------------------------------------------------
 
+        private const int cCircleResolution = 24;
+
         private static readonly Vector2 cVectorRight = Vector2.right;
         private static readonly Color cColorWhite = Color.white;
 
@@ -99,7 +101,7 @@ namespace GameCanvas.Engine
             initMeshAsRect(out cMeshRect);
             initMeshAsCircle(out cMeshCircle);
             initMeshAsRectBorder(out cMeshRectBorder, out cVertexRectBorder);
-            initMeshAsRectBorder(out cMeshCircleBorder, out cVertexCircleBorder);
+            initMeshAsCircleBorder(out cMeshCircleBorder, out cVertexCircleBorder);
 
             mFontStyle = FontStyle.Normal;
             mFontSize = 25;
@@ -360,7 +362,25 @@ namespace GameCanvas.Engine
 
         public void DrawCircle(ref int x, ref int y, ref int radius)
         {
-            // TODO
+            if (mIsDispose) return;
+
+            var half = 0.5f * mPixelSizeMin;
+            var r0 = radius - half;
+            var r1 = radius + half;
+            for (var i = 0; i < cVertexCircleBorder.Length; i += 2)
+            {
+                var rad = Mathf.PI * i / cCircleResolution;
+                var vec = new Vector3(Mathf.Sin(rad), Mathf.Cos(rad));
+                cVertexCircleBorder[i] = vec * r1;
+                cVertexCircleBorder[i + 1] = vec * r0;
+            }
+            cMeshCircleBorder.vertices = cVertexCircleBorder;
+
+            cBlock.Clear();
+            cBlock.SetColor(cShaderPropColor, mColor);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
+            cBufferOpaque.DrawMesh(cMeshCircleBorder, matrix, cMaterialOpaque, 0, -1, cBlock);
         }
 
         public void FillCircle(ref int x, ref int y, ref int radius)
@@ -463,16 +483,15 @@ namespace GameCanvas.Engine
 
         private static void initMeshAsCircle(out Mesh mesh)
         {
-            const int len = 20;
-            var vertices = new Vector3[len];
-            var triangles = new int[len * 3 - 6];
-            for (var i = 0; i < len; ++i)
+            var vertices = new Vector3[cCircleResolution];
+            var triangles = new int[cCircleResolution * 3 - 6];
+            for (var i = 0; i < cCircleResolution; ++i)
             {
-                var rad = Mathf.PI * 2 * i / len;
+                var rad = Mathf.PI * 2 * i / cCircleResolution;
                 var x = Mathf.Sin(rad);
                 var y = Mathf.Cos(rad);
                 vertices[i] = new Vector3(x, y);
-                if (i < len - 2)
+                if (i < cCircleResolution - 2)
                 {
                     triangles[i * 3] = 0;
                     triangles[i * 3 + 1] = i + 1;
@@ -501,11 +520,26 @@ namespace GameCanvas.Engine
 
         private static void initMeshAsCircleBorder(out Mesh mesh, out Vector3[] verts)
         {
-            const int len = 20;
-            verts = new Vector3[len * 2];
+            var tris = new int[cCircleResolution * 6];
+            for (var i = 0; i < cCircleResolution; ++i)
+            {
+                var j = i * 6;
+                var k = i * 2;
+                tris[j] = k;
+                tris[j + 1] = k + 2;
+                tris[j + 2] = k + 1;
+                tris[j + 3] = k + 2;
+                tris[j + 4] = k + 3;
+                tris[j + 5] = k + 1;
+            }
+            tris[cCircleResolution * 6 - 5] = 0;
+            tris[cCircleResolution * 6 - 3] = 0;
+            tris[cCircleResolution * 6 - 2] = 1;
+
             mesh = new Mesh();
+            verts = new Vector3[cCircleResolution * 2];
             mesh.vertices = verts;
-            mesh.triangles = new int[len * 2]; // TODO
+            mesh.triangles = tris;
         }
 
         private static void genTextSetting(out TextGenerationSettings settings, ref Font font, ref FontStyle style, ref int size, ref Color color, ref TextAnchor anchor)
