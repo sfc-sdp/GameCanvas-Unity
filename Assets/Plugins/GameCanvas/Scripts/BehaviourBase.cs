@@ -28,7 +28,7 @@ namespace GameCanvas
         [SerializeField]
         private int CanvasHeight = 1280;
         [SerializeField]
-        private Resource Resource;
+        private Resource Resource = null;
 
         private Camera mCamera;
         private AudioListener mListener;
