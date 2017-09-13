@@ -163,8 +163,8 @@ namespace GameCanvas
             TextAssets = texts ?? new TextAsset[0];
             Fonts = fonts ?? new Font[0];
 
-            ShaderOpaque = ShaderOpaque ?? Shader.Find("Unlit/Color");
-            ShaderTransparent = ShaderTransparent ?? Shader.Find("Unlit/Transparent");
+            ShaderOpaque = ShaderOpaque ?? Shader.Find("GameCanvas/Opaque");
+            ShaderTransparent = ShaderTransparent ?? Shader.Find("GameCanvas/Transparent");
         }
 #endif //UNITY_EDITOR
 

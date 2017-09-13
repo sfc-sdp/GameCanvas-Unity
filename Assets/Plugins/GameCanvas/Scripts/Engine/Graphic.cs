@@ -33,18 +33,22 @@ namespace GameCanvas.Engine
         private readonly Material cMaterialOpaque;
         private readonly Material cMaterialTransparent;
         private readonly MaterialPropertyBlock cBlock;
-        private readonly int cShaderPropColor;
         private readonly int cShaderPropMainTex;
+        private readonly int cShaderPropClipRect;
         private readonly Mesh cMeshRect;
         private readonly Mesh cMeshCircle;
         private readonly Mesh cMeshRectBorder;
         private readonly Mesh cMeshCircleBorder;
-        private readonly List<Vector3> cVertexRectBorder;
-        private readonly List<Vector3> cVertexCircleBorder;
-        private readonly List<Vector3> cVertexText;
-        private readonly List<Vector2> cUvText;
-        private readonly List<int> cTriangleText;
-        private readonly List<Color> cColorText;
+        private readonly List<Vector3> cVertsRectBorder;
+        private readonly List<Vector3> cVertsCircleBorder;
+        private readonly List<Vector3> cVertsText;
+        private readonly List<Vector2> cUvsText;
+        private readonly List<int> cTrisText;
+        private readonly List<Color> cColorsRect;
+        private readonly List<Color> cColorsCircle;
+        private readonly List<Color> cColorsRectBorder;
+        private readonly List<Color> cColorsCircleBorder;
+        private readonly List<Color> cColorsText;
         private readonly List<TextGenerator> cTextGeneratorPool;
         private readonly List<Mesh> cTextMeshPool;
 
@@ -98,18 +102,18 @@ namespace GameCanvas.Engine
             cMaterialOpaque = new Material(res.ShaderOpaque);
             cMaterialTransparent = new Material(res.ShaderTransparent);
             cBlock = new MaterialPropertyBlock();
-            cShaderPropColor = Shader.PropertyToID("_Color");
             cShaderPropMainTex = Shader.PropertyToID("_MainTex");
+            cShaderPropClipRect = Shader.PropertyToID("_ClipRect");
             cTextGeneratorPool = new List<TextGenerator>(20);
             cTextMeshPool = new List<Mesh>(20);
-            cVertexText = new List<Vector3>();
-            cUvText = new List<Vector2>();
-            cTriangleText = new List<int>();
-            cColorText = new List<Color>();
-            initMeshAsRect(out cMeshRect);
-            initMeshAsCircle(out cMeshCircle);
-            initMeshAsRectBorder(out cMeshRectBorder, out cVertexRectBorder);
-            initMeshAsCircleBorder(out cMeshCircleBorder, out cVertexCircleBorder);
+            cVertsText = new List<Vector3>();
+            cUvsText = new List<Vector2>();
+            cTrisText = new List<int>();
+            cColorsText = new List<Color>();
+            initMeshAsRect(out cMeshRect, out cColorsRect);
+            initMeshAsCircle(out cMeshCircle, out cColorsCircle);
+            initMeshAsRectBorder(out cMeshRectBorder, out cVertsRectBorder, out cColorsRectBorder);
+            initMeshAsCircleBorder(out cMeshCircleBorder, out cVertsCircleBorder, out cColorsCircleBorder);
 
             mFontStyle = FontStyle.Normal;
             mFontSize = 25;
@@ -241,6 +245,12 @@ namespace GameCanvas.Engine
             return new Vector2(canvasX, canvasY);
         }
 
+        public void CanvasToScreen(out float screenX, out float screenY, ref int canvasX, ref int canvasY)
+        {
+            screenX = canvasX * mRectScreen.width / mCanvasSize.x + mRectScreen.xMin;
+            screenY = (mCanvasSize.y - canvasY) * mRectScreen.height / mCanvasSize.y + mRectScreen.yMin;
+        }
+
         public int CanvasWidth => (int)mCanvasSize.x;
 
         public int CanvasHeight => (int)mCanvasSize.y;
@@ -316,15 +326,16 @@ namespace GameCanvas.Engine
         {
             if (mIsDispose) return;
 
-            cBlock.Clear();
-            cBlock.SetColor(cShaderPropColor, mColor);
-
             var p0 = new Vector2(startX, mCanvasSize.y - startY);
             var p1 = new Vector2(endX, mCanvasSize.y - endY);
             var distance = Vector2.Distance(p0, p1);
             var degree = Vector2.SignedAngle(cVectorRight, p1 - p0);
+
+            for (var i = 0; i < 4; ++i) cColorsRect[i] = mColor;
+            cMeshRect.SetColors(cColorsRect);
+
             var matrix = calcMatrix(mCountDraw++, startX, startY, distance, 1f, degree);
-            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque);
         }
 
         public void DrawRect(ref int x, ref int y, ref int width, ref int height)
@@ -340,32 +351,32 @@ namespace GameCanvas.Engine
             var r1 = width - half;
             var b0 = -half - height;
             var b1 = half - height;
-            cVertexRectBorder[0] = new Vector3(l0, t0); // 左上:外
-            cVertexRectBorder[1] = new Vector3(l1, t1); // 左上:内
-            cVertexRectBorder[2] = new Vector3(r0, t0); // 右上:外
-            cVertexRectBorder[3] = new Vector3(r1, t1); // 右上:内
-            cVertexRectBorder[4] = new Vector3(r0, b0); // 右下:外
-            cVertexRectBorder[5] = new Vector3(r1, b1); // 右下:内
-            cVertexRectBorder[6] = new Vector3(l0, b0); // 左下:外
-            cVertexRectBorder[7] = new Vector3(l1, b1); // 左下:内
-            cMeshRectBorder.SetVertices(cVertexRectBorder);
+            cVertsRectBorder[0] = new Vector3(l0, t0); // 左上:外
+            cVertsRectBorder[1] = new Vector3(l1, t1); // 左上:内
+            cVertsRectBorder[2] = new Vector3(r0, t0); // 右上:外
+            cVertsRectBorder[3] = new Vector3(r1, t1); // 右上:内
+            cVertsRectBorder[4] = new Vector3(r0, b0); // 右下:外
+            cVertsRectBorder[5] = new Vector3(r1, b1); // 右下:内
+            cVertsRectBorder[6] = new Vector3(l0, b0); // 左下:外
+            cVertsRectBorder[7] = new Vector3(l1, b1); // 左下:内
+            cMeshRectBorder.SetVertices(cVertsRectBorder);
 
-            cBlock.Clear();
-            cBlock.SetColor(cShaderPropColor, mColor);
+            for (var i = 0; i < 8; ++i) cColorsRectBorder[i] = mColor;
+            cMeshRectBorder.SetColors(cColorsRectBorder);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferOpaque.DrawMesh(cMeshRectBorder, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshRectBorder, matrix, cMaterialOpaque);
         }
 
         public void FillRect(ref int x, ref int y, ref int width, ref int height)
         {
             if (mIsDispose) return;
 
-            cBlock.Clear();
-            cBlock.SetColor(cShaderPropColor, mColor);
+            for (var i = 0; i < 4; ++i) cColorsRect[i] = mColor;
+            cMeshRect.SetColors(cColorsRect);
 
             var matrix = calcMatrix(mCountDraw++, x, y, width, height);
-            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque);
         }
 
         public void DrawCircle(ref int x, ref int y, ref int radius)
@@ -375,31 +386,31 @@ namespace GameCanvas.Engine
             var half = 0.5f * mPixelSizeMin;
             var r0 = radius - half;
             var r1 = radius + half;
-            for (var i = 0; i < cCircleResolution; ++i)
+            for (var i = 0; i < cCircleResolution * 2; i += 2)
             {
-                var rad = Mathf.PI * 2 * i / cCircleResolution;
+                var rad = Mathf.PI * i / cCircleResolution;
                 var vec = new Vector3(Mathf.Sin(rad), Mathf.Cos(rad));
-                cVertexCircleBorder[i * 2] = vec * r1;
-                cVertexCircleBorder[i * 2 + 1] = vec * r0;
+                cVertsCircleBorder[i] = vec * r1;
+                cVertsCircleBorder[i + 1] = vec * r0;
+                cColorsCircleBorder[i] = mColor;
+                cColorsCircleBorder[i + 1] = mColor;
             }
-            cMeshCircleBorder.SetVertices(cVertexCircleBorder);
-
-            cBlock.Clear();
-            cBlock.SetColor(cShaderPropColor, mColor);
+            cMeshCircleBorder.SetVertices(cVertsCircleBorder);
+            cMeshCircleBorder.SetColors(cColorsCircleBorder);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferOpaque.DrawMesh(cMeshCircleBorder, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshCircleBorder, matrix, cMaterialOpaque);
         }
 
         public void FillCircle(ref int x, ref int y, ref int radius)
         {
             if (mIsDispose) return;
 
-            cBlock.Clear();
-            cBlock.SetColor(cShaderPropColor, mColor);
+            for (var i = 0; i < cCircleResolution; ++i) cColorsCircle[i] = mColor;
+            cMeshCircle.SetColors(cColorsCircle);
 
             var matrix = calcMatrix(mCountDraw++, x, y, radius, radius);
-            cBufferOpaque.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
+            cBufferOpaque.DrawMesh(cMeshCircle, matrix, cMaterialOpaque);
         }
 
         // 互換実装：画像系
@@ -413,6 +424,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+            cBlock.SetVector(cShaderPropClipRect, new Vector4(mRectScreen.xMin, mRectScreen.yMin, mRectScreen.xMax, mRectScreen.yMax));
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
@@ -420,7 +432,25 @@ namespace GameCanvas.Engine
 
         public void DrawClipImage(ref int imageId, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height)
         {
-            // TODO
+            if (mIsDispose) return;
+
+            var img = cRes.GetImg(imageId);
+            if (img.Data == null) return;
+
+            var canvasL = Mathf.Clamp(x + u, 0, (int)mCanvasSize.x);
+            var canvasT = Mathf.Clamp(y + v, 0, (int)mCanvasSize.y);
+            var canvasR = Mathf.Clamp(x + u + width, canvasL, (int)mCanvasSize.x);
+            var canvasB = Mathf.Clamp(y + v + height, canvasT, (int)mCanvasSize.y);
+            float screenL, screenT, screenR, screenB;
+            CanvasToScreen(out screenL, out screenB, ref canvasL, ref canvasB);
+            CanvasToScreen(out screenR, out screenT, ref canvasR, ref canvasT);
+
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+            cBlock.SetVector(cShaderPropClipRect, new Vector4(screenL, mRectScreen.height - screenT, screenR, mRectScreen.height - screenB));
+
+            var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
         public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree)
@@ -468,29 +498,40 @@ namespace GameCanvas.Engine
         #region プライベート関数
         //----------------------------------------------------------
 
-        private static void initMeshAsRect(out Mesh mesh)
+        private static void initMeshAsRect(out Mesh mesh, out List<Color> colors)
         {
-            mesh = new Mesh();
-            mesh.vertices = new[] {
+            colors = new List<Color>(4);
+            for (var i = 0; i < 4; ++i) colors.Add(cColorWhite);
+
+            var verts = new[] {
                 new Vector3(0f, -1f), // 左下
                 new Vector3(1f, -1f), // 右下
                 new Vector3(0f, 0f), // 左上
                 new Vector3(1f, 0f)  // 右上
             };
-            mesh.triangles = new[] {
+            var tris = new[] {
                 0, 2, 1,
                 2, 3, 1
             };
-            mesh.uv = new[] {
+            var uvs = new[] {
                 new Vector2(0f, 0f), // 左下
                 new Vector2(1f, 0f), // 右下
                 new Vector2(0f, 1f), // 左上
                 new Vector2(1f, 1f)  // 右上
             };
+
+            mesh = new Mesh();
+            mesh.vertices = verts;
+            mesh.triangles = tris;
+            mesh.uv = uvs;
+            mesh.SetColors(colors);
         }
 
-        private static void initMeshAsCircle(out Mesh mesh)
+        private static void initMeshAsCircle(out Mesh mesh, out List<Color> colors)
         {
+            colors = new List<Color>(cCircleResolution);
+            for (var i = 0; i < cCircleResolution; ++i) colors.Add(cColorWhite);
+
             var vertices = new Vector3[cCircleResolution];
             var triangles = new int[cCircleResolution * 3 - 6];
             for (var i = 0; i < cCircleResolution; ++i)
@@ -510,25 +551,43 @@ namespace GameCanvas.Engine
             mesh = new Mesh();
             mesh.vertices = vertices;
             mesh.triangles = triangles;
+            mesh.SetColors(colors);
         }
 
-        private static void initMeshAsRectBorder(out Mesh mesh, out List<Vector3> verts)
+        private static void initMeshAsRectBorder(out Mesh mesh, out List<Vector3> verts, out List<Color> colors)
         {
             verts = new List<Vector3>(8);
-            for (var i = 0; i < 8; ++i) verts.Add(default(Vector3));
-            mesh = new Mesh();
-            mesh.SetVertices(verts);
-            mesh.triangles = new int[24]
+            colors = new List<Color>(8);
+            for (var i = 0; i < 8; ++i)
+            {
+                verts.Add(default(Vector3));
+                colors.Add(cColorWhite);
+            }
+
+            var tris = new int[24]
             {
                 0, 2, 1, 2, 3, 1,
                 2, 4, 3, 4, 5, 3,
                 4, 6, 5, 6, 7, 5,
                 6, 0, 7, 0, 1, 7
             };
+
+            mesh = new Mesh();
+            mesh.SetVertices(verts);
+            mesh.SetColors(colors);
+            mesh.triangles = tris;
         }
 
-        private static void initMeshAsCircleBorder(out Mesh mesh, out List<Vector3> verts)
+        private static void initMeshAsCircleBorder(out Mesh mesh, out List<Vector3> verts, out List<Color> colors)
         {
+            verts = new List<Vector3>(cCircleResolution * 2);
+            colors = new List<Color>(cCircleResolution * 2);
+            for (var i = 0; i < cCircleResolution * 2; ++i)
+            {
+                verts.Add(default(Vector3));
+                colors.Add(cColorWhite);
+            }
+
             var tris = new int[cCircleResolution * 6];
             for (var i = 0; i < cCircleResolution; ++i)
             {
@@ -546,9 +605,8 @@ namespace GameCanvas.Engine
             tris[cCircleResolution * 6 - 2] = 1;
 
             mesh = new Mesh();
-            verts = new List<Vector3>(cCircleResolution * 2);
-            for (var i = 0; i < cCircleResolution * 2; ++i) verts.Add(default(Vector3));
             mesh.SetVertices(verts);
+            mesh.SetColors(colors);
             mesh.triangles = tris;
         }
 
@@ -573,16 +631,16 @@ namespace GameCanvas.Engine
 
         private void convertToMesh(ref Mesh mesh, ref TextGenerator generator)
         {
-            cVertexText.Clear();
-            cUvText.Clear();
-            cTriangleText.Clear();
-            cColorText.Clear();
+            cVertsText.Clear();
+            cUvsText.Clear();
+            cTrisText.Clear();
+            cColorsText.Clear();
 
             var vertexCount = generator.vertexCount;
-            if (cVertexText.Capacity < vertexCount) cVertexText.Capacity = vertexCount;
-            if (cUvText.Capacity < vertexCount) cUvText.Capacity = vertexCount;
-            if (cTriangleText.Capacity < vertexCount * 6) cTriangleText.Capacity = vertexCount * 6;
-            if (cColorText.Capacity < vertexCount) cColorText.Capacity = vertexCount;
+            if (cVertsText.Capacity < vertexCount) cVertsText.Capacity = vertexCount;
+            if (cUvsText.Capacity < vertexCount) cUvsText.Capacity = vertexCount;
+            if (cTrisText.Capacity < vertexCount * 6) cTrisText.Capacity = vertexCount * 6;
+            if (cColorsText.Capacity < vertexCount) cColorsText.Capacity = vertexCount;
 
             var uiverts = generator.verts;
             for (var i = 0; i < vertexCount; i += 4)
@@ -590,22 +648,22 @@ namespace GameCanvas.Engine
                 for (var j = 0; j < 4; ++j)
                 {
                     var idx = i + j;
-                    cVertexText.Add(uiverts[idx].position);
-                    cColorText.Add(uiverts[idx].color);
-                    cUvText.Add(uiverts[idx].uv0);
+                    cVertsText.Add(uiverts[idx].position);
+                    cColorsText.Add(uiverts[idx].color);
+                    cUvsText.Add(uiverts[idx].uv0);
                 }
-                cTriangleText.Add(i);
-                cTriangleText.Add(i + 1);
-                cTriangleText.Add(i + 2);
-                cTriangleText.Add(i + 2);
-                cTriangleText.Add(i + 3);
-                cTriangleText.Add(i);
+                cTrisText.Add(i);
+                cTrisText.Add(i + 1);
+                cTrisText.Add(i + 2);
+                cTrisText.Add(i + 2);
+                cTrisText.Add(i + 3);
+                cTrisText.Add(i);
             }
 
-            mesh.SetVertices(cVertexText);
-            mesh.SetUVs(0, cUvText);
-            mesh.SetTriangles(cTriangleText, 0);
-            mesh.SetColors(cColorText);
+            mesh.SetVertices(cVertsText);
+            mesh.SetUVs(0, cUvsText);
+            mesh.SetTriangles(cTrisText, 0);
+            mesh.SetColors(cColorsText);
             mesh.RecalculateBounds();
         }
 
@@ -628,6 +686,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, mFont.material.mainTexture);
+            cBlock.SetVector(cShaderPropClipRect, new Vector4(mRectScreen.xMin, mRectScreen.yMin, mRectScreen.xMax, mRectScreen.yMax));
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
