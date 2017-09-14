@@ -2,6 +2,8 @@
 
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 //------------------------------------------------------------//
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
@@ -15,7 +17,7 @@
 Shader "GameCanvas/Transparent" {
 	Properties {
 		_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
-		_ClipRect ("Clip Rect", Vector) = (-720, -1280, 720, 1280)
+		_ClipRect ("Clip Rect", Vector) = (0, 0, 1, 1)
 	}
 
 	SubShader {
@@ -35,12 +37,13 @@ Shader "GameCanvas/Transparent" {
 
 				struct appdata_t {
 					float4 vertex : POSITION;
-					float2 uv: TEXCOORD0;
+					float2 uv : TEXCOORD0;
 				};
 
 				struct v2f {
 					float4 vertex : SV_POSITION;
-					float2 uv: TEXCOORD0;
+					float2 uv : TEXCOORD0;
+					float2 screen : TEXCOORD1;
 				};
 
 				sampler2D _MainTex;
@@ -58,13 +61,14 @@ Shader "GameCanvas/Transparent" {
 					v2f o;
 					o.vertex = UnityObjectToClipPos(v.vertex);
 					o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+					o.screen = ComputeScreenPos(o.vertex);
 					return o;
 				}
 
 				fixed4 frag (v2f i) : SV_Target
 				{
 					fixed4 c = tex2D(_MainTex, i.uv);
-					c.a *= World2dClip(i.vertex.xy, _ClipRect);
+					c.a *= World2dClip(i.screen.xy, _ClipRect);
 					clip(c.a - 0.001);
 					return c;
 				}

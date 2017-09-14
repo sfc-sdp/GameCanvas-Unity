@@ -424,7 +424,6 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
-            cBlock.SetVector(cShaderPropClipRect, new Vector4(mRectScreen.xMin, mRectScreen.yMin, mRectScreen.xMax, mRectScreen.yMax));
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
@@ -437,17 +436,15 @@ namespace GameCanvas.Engine
             var img = cRes.GetImg(imageId);
             if (img.Data == null) return;
 
-            var canvasL = Mathf.Clamp(x + u, 0, (int)mCanvasSize.x);
-            var canvasT = Mathf.Clamp(y + v, 0, (int)mCanvasSize.y);
-            var canvasR = Mathf.Clamp(x + u + width, canvasL, (int)mCanvasSize.x);
-            var canvasB = Mathf.Clamp(y + v + height, canvasT, (int)mCanvasSize.y);
-            float screenL, screenT, screenR, screenB;
-            CanvasToScreen(out screenL, out screenB, ref canvasL, ref canvasB);
-            CanvasToScreen(out screenR, out screenT, ref canvasR, ref canvasT);
+            var l = Mathf.Clamp01((x + u) / mCanvasSize.x);
+            var t = Mathf.Clamp01((y + v) / mCanvasSize.y);
+            var r = Mathf.Clamp((x + u + width) / mCanvasSize.x, l, 1f);
+            var b = Mathf.Clamp((y + v + height) / mCanvasSize.y, t, 1f);
+            var clipRect = new Vector4(l, 1f - b, r, 1f - t);
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
-            cBlock.SetVector(cShaderPropClipRect, new Vector4(screenL, mRectScreen.height - screenT, screenR, mRectScreen.height - screenB));
+            cBlock.SetVector(cShaderPropClipRect, clipRect);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
@@ -686,7 +683,6 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, mFont.material.mainTexture);
-            cBlock.SetVector(cShaderPropClipRect, new Vector4(mRectScreen.xMin, mRectScreen.yMin, mRectScreen.xMax, mRectScreen.yMax));
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
