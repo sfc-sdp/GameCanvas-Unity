@@ -13,6 +13,7 @@ namespace GameCanvas
     using UnityEngine;
     using GameCanvas.Engine;
     using GameCanvas.Input;
+    using Collision = Engine.Collision;
 
     public sealed class Proxy
     {
@@ -22,8 +23,11 @@ namespace GameCanvas
 
         private readonly Graphic cGraphic;
         private readonly Sound cSound;
+        private readonly Collision cCollision;
         private readonly Pointer cPointer;
         private readonly Keyboard cKeyboard;
+
+        private System.Random mRandom;
 
         // 定数
 
@@ -58,12 +62,14 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Proxy(Graphic graphic, Sound sound, Pointer pointer, Keyboard keyboard)
+        public Proxy(Graphic graphic, Sound sound, Collision collision, Pointer pointer, Keyboard keyboard)
         {
             cGraphic = graphic;
             cSound = sound;
+            cCollision = collision;
             cPointer = pointer;
             cKeyboard = keyboard;
+            mRandom = new System.Random();
         }
 
         // 描画：文字列
@@ -100,7 +106,7 @@ namespace GameCanvas
         public bool writeScreenImage(string file) => cGraphic.WriteScreenImage(ref file);
         public int WIDTH => cGraphic.CanvasWidth;
         public int HEIGHT => cGraphic.CanvasHeight;
-        public int CONFIG_FPS => 30; // TODO
+        public int CONFIG_FPS => Application.targetFrameRate;
 
         // 音声
 
@@ -135,21 +141,25 @@ namespace GameCanvas
 
         // 数学
 
-        public void setSeed(int seed) { } // TODO
-        public int rand(int min, int max) { return 0; } // TODO
-        public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) { return false; } // TODO
-        public bool checkHitImage(int imageId1, int x1, int y1, int imageId2, int x2, int y2) { return false; } // TODO
-        public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2) { return false; } // TODO
-        public double sqrt(double value) { return 0; } // TODO
-        public double cos(double degree) { return 0; } // TODO
-        public double sin(double degree) { return 0; } // TODO
-        public double atan2(double x, double y) { return 0; } // TODO
+        public void setSeed(int seed) => mRandom = new System.Random(seed);
+        public int rand(int min, int max) => mRandom.Next(min, max + 1);
+        public bool checkHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) => cCollision.CheckHitRect(ref x1, ref y1, ref w1, ref h1, ref x2, ref y2, ref w2, ref h2);
+        public bool checkHitImage(int imageId1, int x1, int y1, int imageId2, int x2, int y2) => cCollision.CheckHitImage(ref imageId1, ref x1, ref y1, ref imageId2, ref x2, ref y2);
+        public bool checkHitCircle(int x1, int y1, int r1, int x2, int y2, int r2) => cCollision.CheckHitCircle(ref x1, ref y1, ref r1, ref x2, ref y2, ref r2);
+        public double sqrt(double value) => Mathf.Sqrt((float)value);
+        public double cos(double degree) => Mathf.Cos((float)degree * Mathf.Deg2Rad);
+        public double sin(double degree) => Mathf.Sin((float)degree * Mathf.Deg2Rad);
+        public double atan2(double x, double y) => Mathf.Atan2((float)x, (float)y);
 
         // その他
 
-        public int load(int key) { return 0; } // TODO
-        public void save(int key, int value) { } // TODO
-        public void resetGame() { } // TODO
+        public int load(int key) => PlayerPrefs.GetInt(key.ToString(), 0);
+        public void save(int key, int value) => PlayerPrefs.SetInt(key.ToString(), value);
+        public void resetGame()
+        {
+            cSound.Stop();
+            cGraphic.ClearScreen();
+        }
         public void exitApp() => Application.Quit();
 
         // 廃止
