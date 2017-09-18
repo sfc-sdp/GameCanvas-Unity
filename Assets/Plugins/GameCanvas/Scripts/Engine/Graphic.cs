@@ -452,12 +452,35 @@ namespace GameCanvas.Engine
 
         public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree)
         {
-            // TODO
+            if (mIsDispose) return;
+
+            var img = cRes.GetImg(imageId);
+            if (img.Data == null) return;
+
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, xSize * 0.01f, ySize * 0.01f, 360f - (float)degree);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
         public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref double degree, ref double centerX, ref double centerY)
         {
-            // TODO
+            if (mIsDispose) return;
+
+            var img = cRes.GetImg(imageId);
+            if (img.Data == null) return;
+
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+
+            var count = mCountDraw++;
+            var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
+            var r = degree != 0 ? Quaternion.Euler(0f, 0f, 360f - (float)degree) : Quaternion.identity;
+            var s = new Vector3(xSize * 0.01f, ySize * 0.01f, 1f);
+            var t2 = new Vector3((float)-centerX, (float)centerY);
+            var matrix = Matrix4x4.Translate(t) * Matrix4x4.Rotate(r) * Matrix4x4.Translate(t2) * Matrix4x4.Scale(s);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
         public int GetImageWidth(ref int imageId)
