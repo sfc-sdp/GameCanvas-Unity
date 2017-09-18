@@ -151,13 +151,13 @@ namespace GameCanvas.Input
 
         public int Count => mEventNum;
         public bool HasEvent => (mEventNum > 0);
-        public PointerEvent GetRaw(int i) => (i < mEventNum) ? cEvents[i] : default(PointerEvent);
-        public int GetX(int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasX(cEvents[i].ScreenX) : 0;
-        public int GetY(int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasY(cEvents[i].ScreenY) : 0;
-        public bool GetIsBegan(int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Began) : false;
-        public bool GetIsEnded(int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Ended) : false;
-        public int GetFrameCount(int i) => (i < mEventNum) ? cEventFrameCounts[i] : 0;
-        public float GetDulation(int i) => (i < mEventNum) ? cEventDulations[i] : 0f;
+        public PointerEvent GetRaw(ref int i) => (i < mEventNum) ? cEvents[i] : default(PointerEvent);
+        public int GetX(ref int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasX(cEvents[i].ScreenX) : 0;
+        public int GetY(ref int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasY(cEvents[i].ScreenY) : 0;
+        public bool GetIsBegan(ref int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Began) : false;
+        public bool GetIsEnded(ref int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Ended) : false;
+        public int GetFrameCount(ref int i) => (i < mEventNum) ? cEventFrameCounts[i] : 0;
+        public float GetDulation(ref int i) => (i < mEventNum) ? cEventDulations[i] : 0f;
 
         public int X => HasEvent ? cGraphic.ScreenToCanvasX(cEvents[0].ScreenX) : 0;
         public int Y => HasEvent ? cGraphic.ScreenToCanvasY(cEvents[0].ScreenY) : 0;

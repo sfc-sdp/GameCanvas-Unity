@@ -13,15 +13,15 @@ public abstract class GameBase : GameCanvas.BehaviourBase
     /// <summary>
     /// 初期化処理
     /// </summary>
-    public override void initGame() { }
+    public override void InitGame() { }
 
     /// <summary>
     /// 更新処理
     /// </summary>
-    public override void updateGame() { }
+    public override void UpdateGame() { }
 
     /// <summary>
     /// 描画処理
     /// </summary>
-    public override void drawGame() { }
+    public override void DrawGame() { }
 }

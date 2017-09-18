@@ -72,7 +72,7 @@ namespace GameCanvas
 
         private void Start()
         {
-            initGame();
+            InitGame();
         }
 
         private void Update()
@@ -82,8 +82,8 @@ namespace GameCanvas
             mPointer.OnBeforeUpdate();
             mKeyboard.OnBeforeUpdate();
 
-            updateGame();
-            drawGame();
+            UpdateGame();
+            DrawGame();
         }
 
         private void OnApplicationFocus(bool focus)
@@ -126,11 +126,11 @@ namespace GameCanvas
 
         protected Proxy gc => mProxy;
 
-        public abstract void initGame();
+        public abstract void InitGame();
 
-        public abstract void updateGame();
+        public abstract void UpdateGame();
 
-        public abstract void drawGame();
+        public abstract void DrawGame();
 
         #endregion
 

@@ -95,6 +95,7 @@ namespace GameCanvas.Engine
             cCamera.orthographicSize = 5;
             cCamera.farClipPlane = 100;
             cCamera.nearClipPlane = 0;
+            cCamera.allowMSAA = false;
             cBufferOpaque = new CommandBuffer();
             cBufferOpaque.name = "GameCanvas Opaque";
             cBufferTransparent = new CommandBuffer();
