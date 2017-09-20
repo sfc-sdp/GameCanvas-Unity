@@ -55,7 +55,7 @@ namespace GameCanvas.Input
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Keyboard()
+        internal Keyboard()
         {
             cKeyCodes = (EKeyCode[])System.Enum.GetValues(typeof(EKeyCode));
             cKeyInfo = new KeyInfo[cKeyCodes.Length];

@@ -49,7 +49,7 @@ namespace GameCanvas.Input
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Pointer(Graphic graphic)
+        internal Pointer(Graphic graphic)
         {
             Assert.IsNotNull(graphic);
             cGraphic = graphic;

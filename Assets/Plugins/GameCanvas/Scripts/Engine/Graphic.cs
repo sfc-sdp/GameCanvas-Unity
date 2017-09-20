@@ -83,7 +83,7 @@ namespace GameCanvas.Engine
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Graphic(Resource res, Camera camera)
+        internal Graphic(Resource res, Camera camera)
         {
             Assert.IsNotNull(res);
             Assert.IsNotNull(camera);
@@ -307,6 +307,11 @@ namespace GameCanvas.Engine
         }
 
         // 互換実装：図形系
+
+        public void SetColor(ref Color color)
+        {
+            mColor = color;
+        }
 
         public void SetColor(ref int color)
         {

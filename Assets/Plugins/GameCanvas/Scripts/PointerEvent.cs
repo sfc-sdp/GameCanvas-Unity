@@ -65,6 +65,9 @@ namespace GameCanvas
         #region 列挙体
         //----------------------------------------------------------
 
+        /// <summary>
+        /// 状態
+        /// </summary>
         public enum EPhase
         {
             Began,
@@ -73,6 +76,9 @@ namespace GameCanvas
             Ended
         }
 
+        /// <summary>
+        /// 種類
+        /// </summary>
         public enum EType
         {
             Touch,
@@ -103,7 +109,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public PointerEvent(int id, int x, int y, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
+        internal PointerEvent(int id, int x, int y, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
         {
             Id = id;
             ScreenX = x;
@@ -120,7 +126,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public PointerEvent(ref Touch touch)
+        internal PointerEvent(ref Touch touch)
         {
             Id = touch.fingerId;
             ScreenX = (int)touch.position.x;

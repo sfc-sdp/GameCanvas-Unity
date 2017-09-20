@@ -34,7 +34,7 @@ namespace GameCanvas.Engine
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Sound(Resource res, AudioSource source)
+        internal Sound(Resource res, AudioSource source)
         {
             Assert.IsNotNull(res);
             Assert.IsNotNull(source);

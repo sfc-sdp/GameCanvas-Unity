@@ -30,7 +30,7 @@ namespace GameCanvas.Engine
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Collision(Resource res)
+        internal Collision(Resource res)
         {
             Assert.IsNotNull(res);
             cRes = res;

@@ -29,7 +29,7 @@ namespace GameCanvas.Engine
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Network()
+        internal Network()
         {
             // TODO
         }

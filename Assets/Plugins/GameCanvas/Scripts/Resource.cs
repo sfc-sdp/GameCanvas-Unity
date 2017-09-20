@@ -155,7 +155,7 @@ namespace GameCanvas
         //----------------------------------------------------------
 
 #if UNITY_EDITOR
-        public void SetValue(SpriteAtlas atlas, VideoClip[] video, AudioClip[] audio, TextAsset[] texts, Font[] fonts)
+        internal void SetValue(SpriteAtlas atlas, VideoClip[] video, AudioClip[] audio, TextAsset[] texts, Font[] fonts)
         {
             SpriteAtlas = atlas;
             VideoClips = video ?? new VideoClip[0];
