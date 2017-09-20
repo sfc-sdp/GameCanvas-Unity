@@ -1,0 +1,2442 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: GameCanvas
+  name: GameCanvas
+  href: api/GameCanvas.html
+  commentId: N:GameCanvas
+  fullName: GameCanvas
+  nameWithType: GameCanvas
+- uid: GameCanvas.Box
+  name: Box
+  href: api/GameCanvas.Box.html
+  commentId: T:GameCanvas.Box
+  fullName: GameCanvas.Box
+  nameWithType: Box
+- uid: GameCanvas.Box.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  name: Box(Single, Single, Single, Single, Single, Single)
+  href: api/GameCanvas.Box.html#GameCanvas_Box__ctor_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  commentId: M:GameCanvas.Box.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  fullName: GameCanvas.Box.Box(System.Single, System.Single, System.Single, System.Single, System.Single, System.Single)
+  nameWithType: Box.Box(Single, Single, Single, Single, Single, Single)
+- uid: GameCanvas.Box.#ctor(UnityEngine.Vector3,UnityEngine.Vector3)
+  name: Box(Vector3, Vector3)
+  href: api/GameCanvas.Box.html#GameCanvas_Box__ctor_UnityEngine_Vector3_UnityEngine_Vector3_
+  commentId: M:GameCanvas.Box.#ctor(UnityEngine.Vector3,UnityEngine.Vector3)
+  fullName: GameCanvas.Box.Box(UnityEngine.Vector3, UnityEngine.Vector3)
+  nameWithType: Box.Box(Vector3, Vector3)
+- uid: GameCanvas.Box.#ctor*
+  name: Box
+  href: api/GameCanvas.Box.html#GameCanvas_Box__ctor_
+  commentId: Overload:GameCanvas.Box.#ctor
+  fullName: GameCanvas.Box.Box
+  nameWithType: Box.Box
+- uid: GameCanvas.Box.Center
+  name: Center
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Center
+  commentId: P:GameCanvas.Box.Center
+  fullName: GameCanvas.Box.Center
+  nameWithType: Box.Center
+- uid: GameCanvas.Box.Center*
+  name: Center
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Center_
+  commentId: Overload:GameCanvas.Box.Center
+  fullName: GameCanvas.Box.Center
+  nameWithType: Box.Center
+- uid: GameCanvas.Box.CenterX
+  name: CenterX
+  href: api/GameCanvas.Box.html#GameCanvas_Box_CenterX
+  commentId: P:GameCanvas.Box.CenterX
+  fullName: GameCanvas.Box.CenterX
+  nameWithType: Box.CenterX
+- uid: GameCanvas.Box.CenterX*
+  name: CenterX
+  href: api/GameCanvas.Box.html#GameCanvas_Box_CenterX_
+  commentId: Overload:GameCanvas.Box.CenterX
+  fullName: GameCanvas.Box.CenterX
+  nameWithType: Box.CenterX
+- uid: GameCanvas.Box.CenterY
+  name: CenterY
+  href: api/GameCanvas.Box.html#GameCanvas_Box_CenterY
+  commentId: P:GameCanvas.Box.CenterY
+  fullName: GameCanvas.Box.CenterY
+  nameWithType: Box.CenterY
+- uid: GameCanvas.Box.CenterY*
+  name: CenterY
+  href: api/GameCanvas.Box.html#GameCanvas_Box_CenterY_
+  commentId: Overload:GameCanvas.Box.CenterY
+  fullName: GameCanvas.Box.CenterY
+  nameWithType: Box.CenterY
+- uid: GameCanvas.Box.CenterZ
+  name: CenterZ
+  href: api/GameCanvas.Box.html#GameCanvas_Box_CenterZ
+  commentId: P:GameCanvas.Box.CenterZ
+  fullName: GameCanvas.Box.CenterZ
+  nameWithType: Box.CenterZ
+- uid: GameCanvas.Box.CenterZ*
+  name: CenterZ
+  href: api/GameCanvas.Box.html#GameCanvas_Box_CenterZ_
+  commentId: Overload:GameCanvas.Box.CenterZ
+  fullName: GameCanvas.Box.CenterZ
+  nameWithType: Box.CenterZ
+- uid: GameCanvas.Box.Depth
+  name: Depth
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Depth
+  commentId: P:GameCanvas.Box.Depth
+  fullName: GameCanvas.Box.Depth
+  nameWithType: Box.Depth
+- uid: GameCanvas.Box.Depth*
+  name: Depth
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Depth_
+  commentId: Overload:GameCanvas.Box.Depth
+  fullName: GameCanvas.Box.Depth
+  nameWithType: Box.Depth
+- uid: GameCanvas.Box.Equals(GameCanvas.Box)
+  name: Equals(Box)
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Equals_GameCanvas_Box_
+  commentId: M:GameCanvas.Box.Equals(GameCanvas.Box)
+  fullName: GameCanvas.Box.Equals(GameCanvas.Box)
+  nameWithType: Box.Equals(Box)
+- uid: GameCanvas.Box.Equals(System.Object)
+  name: Equals(Object)
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Equals_System_Object_
+  commentId: M:GameCanvas.Box.Equals(System.Object)
+  fullName: GameCanvas.Box.Equals(System.Object)
+  nameWithType: Box.Equals(Object)
+- uid: GameCanvas.Box.Equals*
+  name: Equals
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Equals_
+  commentId: Overload:GameCanvas.Box.Equals
+  fullName: GameCanvas.Box.Equals
+  nameWithType: Box.Equals
+- uid: GameCanvas.Box.GetHashCode
+  name: GetHashCode()
+  href: api/GameCanvas.Box.html#GameCanvas_Box_GetHashCode
+  commentId: M:GameCanvas.Box.GetHashCode
+  fullName: GameCanvas.Box.GetHashCode()
+  nameWithType: Box.GetHashCode()
+- uid: GameCanvas.Box.GetHashCode*
+  name: GetHashCode
+  href: api/GameCanvas.Box.html#GameCanvas_Box_GetHashCode_
+  commentId: Overload:GameCanvas.Box.GetHashCode
+  fullName: GameCanvas.Box.GetHashCode
+  nameWithType: Box.GetHashCode
+- uid: GameCanvas.Box.Height
+  name: Height
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Height
+  commentId: P:GameCanvas.Box.Height
+  fullName: GameCanvas.Box.Height
+  nameWithType: Box.Height
+- uid: GameCanvas.Box.Height*
+  name: Height
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Height_
+  commentId: Overload:GameCanvas.Box.Height
+  fullName: GameCanvas.Box.Height
+  nameWithType: Box.Height
+- uid: GameCanvas.Box.Max
+  name: Max
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Max
+  commentId: P:GameCanvas.Box.Max
+  fullName: GameCanvas.Box.Max
+  nameWithType: Box.Max
+- uid: GameCanvas.Box.Max*
+  name: Max
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Max_
+  commentId: Overload:GameCanvas.Box.Max
+  fullName: GameCanvas.Box.Max
+  nameWithType: Box.Max
+- uid: GameCanvas.Box.MaxX
+  name: MaxX
+  href: api/GameCanvas.Box.html#GameCanvas_Box_MaxX
+  commentId: F:GameCanvas.Box.MaxX
+  fullName: GameCanvas.Box.MaxX
+  nameWithType: Box.MaxX
+- uid: GameCanvas.Box.MaxY
+  name: MaxY
+  href: api/GameCanvas.Box.html#GameCanvas_Box_MaxY
+  commentId: F:GameCanvas.Box.MaxY
+  fullName: GameCanvas.Box.MaxY
+  nameWithType: Box.MaxY
+- uid: GameCanvas.Box.MaxZ
+  name: MaxZ
+  href: api/GameCanvas.Box.html#GameCanvas_Box_MaxZ
+  commentId: F:GameCanvas.Box.MaxZ
+  fullName: GameCanvas.Box.MaxZ
+  nameWithType: Box.MaxZ
+- uid: GameCanvas.Box.Min
+  name: Min
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Min
+  commentId: P:GameCanvas.Box.Min
+  fullName: GameCanvas.Box.Min
+  nameWithType: Box.Min
+- uid: GameCanvas.Box.Min*
+  name: Min
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Min_
+  commentId: Overload:GameCanvas.Box.Min
+  fullName: GameCanvas.Box.Min
+  nameWithType: Box.Min
+- uid: GameCanvas.Box.MinX
+  name: MinX
+  href: api/GameCanvas.Box.html#GameCanvas_Box_MinX
+  commentId: F:GameCanvas.Box.MinX
+  fullName: GameCanvas.Box.MinX
+  nameWithType: Box.MinX
+- uid: GameCanvas.Box.MinY
+  name: MinY
+  href: api/GameCanvas.Box.html#GameCanvas_Box_MinY
+  commentId: F:GameCanvas.Box.MinY
+  fullName: GameCanvas.Box.MinY
+  nameWithType: Box.MinY
+- uid: GameCanvas.Box.MinZ
+  name: MinZ
+  href: api/GameCanvas.Box.html#GameCanvas_Box_MinZ
+  commentId: F:GameCanvas.Box.MinZ
+  fullName: GameCanvas.Box.MinZ
+  nameWithType: Box.MinZ
+- uid: GameCanvas.Box.op_Equality(GameCanvas.Box,GameCanvas.Box)
+  name: Equality(Box, Box)
+  href: api/GameCanvas.Box.html#GameCanvas_Box_op_Equality_GameCanvas_Box_GameCanvas_Box_
+  commentId: M:GameCanvas.Box.op_Equality(GameCanvas.Box,GameCanvas.Box)
+  fullName: GameCanvas.Box.Equality(GameCanvas.Box, GameCanvas.Box)
+  nameWithType: Box.Equality(Box, Box)
+- uid: GameCanvas.Box.op_Equality*
+  name: Equality
+  href: api/GameCanvas.Box.html#GameCanvas_Box_op_Equality_
+  commentId: Overload:GameCanvas.Box.op_Equality
+  fullName: GameCanvas.Box.Equality
+  nameWithType: Box.Equality
+- uid: GameCanvas.Box.op_Inequality(GameCanvas.Box,GameCanvas.Box)
+  name: Inequality(Box, Box)
+  href: api/GameCanvas.Box.html#GameCanvas_Box_op_Inequality_GameCanvas_Box_GameCanvas_Box_
+  commentId: M:GameCanvas.Box.op_Inequality(GameCanvas.Box,GameCanvas.Box)
+  fullName: GameCanvas.Box.Inequality(GameCanvas.Box, GameCanvas.Box)
+  nameWithType: Box.Inequality(Box, Box)
+- uid: GameCanvas.Box.op_Inequality*
+  name: Inequality
+  href: api/GameCanvas.Box.html#GameCanvas_Box_op_Inequality_
+  commentId: Overload:GameCanvas.Box.op_Inequality
+  fullName: GameCanvas.Box.Inequality
+  nameWithType: Box.Inequality
+- uid: GameCanvas.Box.Size
+  name: Size
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Size
+  commentId: P:GameCanvas.Box.Size
+  fullName: GameCanvas.Box.Size
+  nameWithType: Box.Size
+- uid: GameCanvas.Box.Size*
+  name: Size
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Size_
+  commentId: Overload:GameCanvas.Box.Size
+  fullName: GameCanvas.Box.Size
+  nameWithType: Box.Size
+- uid: GameCanvas.Box.ToString
+  name: ToString()
+  href: api/GameCanvas.Box.html#GameCanvas_Box_ToString
+  commentId: M:GameCanvas.Box.ToString
+  fullName: GameCanvas.Box.ToString()
+  nameWithType: Box.ToString()
+- uid: GameCanvas.Box.ToString*
+  name: ToString
+  href: api/GameCanvas.Box.html#GameCanvas_Box_ToString_
+  commentId: Overload:GameCanvas.Box.ToString
+  fullName: GameCanvas.Box.ToString
+  nameWithType: Box.ToString
+- uid: GameCanvas.Box.Width
+  name: Width
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Width
+  commentId: P:GameCanvas.Box.Width
+  fullName: GameCanvas.Box.Width
+  nameWithType: Box.Width
+- uid: GameCanvas.Box.Width*
+  name: Width
+  href: api/GameCanvas.Box.html#GameCanvas_Box_Width_
+  commentId: Overload:GameCanvas.Box.Width
+  fullName: GameCanvas.Box.Width
+  nameWithType: Box.Width
+- uid: GameCanvas.EKeyCode
+  name: EKeyCode
+  href: api/GameCanvas.EKeyCode.html
+  commentId: T:GameCanvas.EKeyCode
+  fullName: GameCanvas.EKeyCode
+  nameWithType: EKeyCode
+- uid: GameCanvas.EKeyCode._0
+  name: _0
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__0
+  commentId: F:GameCanvas.EKeyCode._0
+  fullName: GameCanvas.EKeyCode._0
+  nameWithType: EKeyCode._0
+- uid: GameCanvas.EKeyCode._1
+  name: _1
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__1
+  commentId: F:GameCanvas.EKeyCode._1
+  fullName: GameCanvas.EKeyCode._1
+  nameWithType: EKeyCode._1
+- uid: GameCanvas.EKeyCode._2
+  name: _2
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__2
+  commentId: F:GameCanvas.EKeyCode._2
+  fullName: GameCanvas.EKeyCode._2
+  nameWithType: EKeyCode._2
+- uid: GameCanvas.EKeyCode._3
+  name: _3
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__3
+  commentId: F:GameCanvas.EKeyCode._3
+  fullName: GameCanvas.EKeyCode._3
+  nameWithType: EKeyCode._3
+- uid: GameCanvas.EKeyCode._4
+  name: _4
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__4
+  commentId: F:GameCanvas.EKeyCode._4
+  fullName: GameCanvas.EKeyCode._4
+  nameWithType: EKeyCode._4
+- uid: GameCanvas.EKeyCode._5
+  name: _5
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__5
+  commentId: F:GameCanvas.EKeyCode._5
+  fullName: GameCanvas.EKeyCode._5
+  nameWithType: EKeyCode._5
+- uid: GameCanvas.EKeyCode._6
+  name: _6
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__6
+  commentId: F:GameCanvas.EKeyCode._6
+  fullName: GameCanvas.EKeyCode._6
+  nameWithType: EKeyCode._6
+- uid: GameCanvas.EKeyCode._7
+  name: _7
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__7
+  commentId: F:GameCanvas.EKeyCode._7
+  fullName: GameCanvas.EKeyCode._7
+  nameWithType: EKeyCode._7
+- uid: GameCanvas.EKeyCode._8
+  name: _8
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__8
+  commentId: F:GameCanvas.EKeyCode._8
+  fullName: GameCanvas.EKeyCode._8
+  nameWithType: EKeyCode._8
+- uid: GameCanvas.EKeyCode._9
+  name: _9
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode__9
+  commentId: F:GameCanvas.EKeyCode._9
+  fullName: GameCanvas.EKeyCode._9
+  nameWithType: EKeyCode._9
+- uid: GameCanvas.EKeyCode.A
+  name: A
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_A
+  commentId: F:GameCanvas.EKeyCode.A
+  fullName: GameCanvas.EKeyCode.A
+  nameWithType: EKeyCode.A
+- uid: GameCanvas.EKeyCode.B
+  name: B
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_B
+  commentId: F:GameCanvas.EKeyCode.B
+  fullName: GameCanvas.EKeyCode.B
+  nameWithType: EKeyCode.B
+- uid: GameCanvas.EKeyCode.Backspace
+  name: Backspace
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Backspace
+  commentId: F:GameCanvas.EKeyCode.Backspace
+  fullName: GameCanvas.EKeyCode.Backspace
+  nameWithType: EKeyCode.Backspace
+- uid: GameCanvas.EKeyCode.C
+  name: C
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_C
+  commentId: F:GameCanvas.EKeyCode.C
+  fullName: GameCanvas.EKeyCode.C
+  nameWithType: EKeyCode.C
+- uid: GameCanvas.EKeyCode.D
+  name: D
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_D
+  commentId: F:GameCanvas.EKeyCode.D
+  fullName: GameCanvas.EKeyCode.D
+  nameWithType: EKeyCode.D
+- uid: GameCanvas.EKeyCode.Down
+  name: Down
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Down
+  commentId: F:GameCanvas.EKeyCode.Down
+  fullName: GameCanvas.EKeyCode.Down
+  nameWithType: EKeyCode.Down
+- uid: GameCanvas.EKeyCode.E
+  name: E
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_E
+  commentId: F:GameCanvas.EKeyCode.E
+  fullName: GameCanvas.EKeyCode.E
+  nameWithType: EKeyCode.E
+- uid: GameCanvas.EKeyCode.Enter
+  name: Enter
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Enter
+  commentId: F:GameCanvas.EKeyCode.Enter
+  fullName: GameCanvas.EKeyCode.Enter
+  nameWithType: EKeyCode.Enter
+- uid: GameCanvas.EKeyCode.Escape
+  name: Escape
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Escape
+  commentId: F:GameCanvas.EKeyCode.Escape
+  fullName: GameCanvas.EKeyCode.Escape
+  nameWithType: EKeyCode.Escape
+- uid: GameCanvas.EKeyCode.F
+  name: F
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_F
+  commentId: F:GameCanvas.EKeyCode.F
+  fullName: GameCanvas.EKeyCode.F
+  nameWithType: EKeyCode.F
+- uid: GameCanvas.EKeyCode.G
+  name: G
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_G
+  commentId: F:GameCanvas.EKeyCode.G
+  fullName: GameCanvas.EKeyCode.G
+  nameWithType: EKeyCode.G
+- uid: GameCanvas.EKeyCode.H
+  name: H
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_H
+  commentId: F:GameCanvas.EKeyCode.H
+  fullName: GameCanvas.EKeyCode.H
+  nameWithType: EKeyCode.H
+- uid: GameCanvas.EKeyCode.I
+  name: I
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_I
+  commentId: F:GameCanvas.EKeyCode.I
+  fullName: GameCanvas.EKeyCode.I
+  nameWithType: EKeyCode.I
+- uid: GameCanvas.EKeyCode.J
+  name: J
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_J
+  commentId: F:GameCanvas.EKeyCode.J
+  fullName: GameCanvas.EKeyCode.J
+  nameWithType: EKeyCode.J
+- uid: GameCanvas.EKeyCode.K
+  name: K
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_K
+  commentId: F:GameCanvas.EKeyCode.K
+  fullName: GameCanvas.EKeyCode.K
+  nameWithType: EKeyCode.K
+- uid: GameCanvas.EKeyCode.L
+  name: L
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_L
+  commentId: F:GameCanvas.EKeyCode.L
+  fullName: GameCanvas.EKeyCode.L
+  nameWithType: EKeyCode.L
+- uid: GameCanvas.EKeyCode.Left
+  name: Left
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Left
+  commentId: F:GameCanvas.EKeyCode.Left
+  fullName: GameCanvas.EKeyCode.Left
+  nameWithType: EKeyCode.Left
+- uid: GameCanvas.EKeyCode.M
+  name: M
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_M
+  commentId: F:GameCanvas.EKeyCode.M
+  fullName: GameCanvas.EKeyCode.M
+  nameWithType: EKeyCode.M
+- uid: GameCanvas.EKeyCode.N
+  name: N
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_N
+  commentId: F:GameCanvas.EKeyCode.N
+  fullName: GameCanvas.EKeyCode.N
+  nameWithType: EKeyCode.N
+- uid: GameCanvas.EKeyCode.O
+  name: O
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_O
+  commentId: F:GameCanvas.EKeyCode.O
+  fullName: GameCanvas.EKeyCode.O
+  nameWithType: EKeyCode.O
+- uid: GameCanvas.EKeyCode.P
+  name: P
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_P
+  commentId: F:GameCanvas.EKeyCode.P
+  fullName: GameCanvas.EKeyCode.P
+  nameWithType: EKeyCode.P
+- uid: GameCanvas.EKeyCode.Q
+  name: Q
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Q
+  commentId: F:GameCanvas.EKeyCode.Q
+  fullName: GameCanvas.EKeyCode.Q
+  nameWithType: EKeyCode.Q
+- uid: GameCanvas.EKeyCode.R
+  name: R
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_R
+  commentId: F:GameCanvas.EKeyCode.R
+  fullName: GameCanvas.EKeyCode.R
+  nameWithType: EKeyCode.R
+- uid: GameCanvas.EKeyCode.Right
+  name: Right
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Right
+  commentId: F:GameCanvas.EKeyCode.Right
+  fullName: GameCanvas.EKeyCode.Right
+  nameWithType: EKeyCode.Right
+- uid: GameCanvas.EKeyCode.S
+  name: S
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_S
+  commentId: F:GameCanvas.EKeyCode.S
+  fullName: GameCanvas.EKeyCode.S
+  nameWithType: EKeyCode.S
+- uid: GameCanvas.EKeyCode.Space
+  name: Space
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Space
+  commentId: F:GameCanvas.EKeyCode.Space
+  fullName: GameCanvas.EKeyCode.Space
+  nameWithType: EKeyCode.Space
+- uid: GameCanvas.EKeyCode.T
+  name: T
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_T
+  commentId: F:GameCanvas.EKeyCode.T
+  fullName: GameCanvas.EKeyCode.T
+  nameWithType: EKeyCode.T
+- uid: GameCanvas.EKeyCode.U
+  name: U
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_U
+  commentId: F:GameCanvas.EKeyCode.U
+  fullName: GameCanvas.EKeyCode.U
+  nameWithType: EKeyCode.U
+- uid: GameCanvas.EKeyCode.Up
+  name: Up
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Up
+  commentId: F:GameCanvas.EKeyCode.Up
+  fullName: GameCanvas.EKeyCode.Up
+  nameWithType: EKeyCode.Up
+- uid: GameCanvas.EKeyCode.V
+  name: V
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_V
+  commentId: F:GameCanvas.EKeyCode.V
+  fullName: GameCanvas.EKeyCode.V
+  nameWithType: EKeyCode.V
+- uid: GameCanvas.EKeyCode.W
+  name: W
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_W
+  commentId: F:GameCanvas.EKeyCode.W
+  fullName: GameCanvas.EKeyCode.W
+  nameWithType: EKeyCode.W
+- uid: GameCanvas.EKeyCode.X
+  name: X
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_X
+  commentId: F:GameCanvas.EKeyCode.X
+  fullName: GameCanvas.EKeyCode.X
+  nameWithType: EKeyCode.X
+- uid: GameCanvas.EKeyCode.Y
+  name: Y
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Y
+  commentId: F:GameCanvas.EKeyCode.Y
+  fullName: GameCanvas.EKeyCode.Y
+  nameWithType: EKeyCode.Y
+- uid: GameCanvas.EKeyCode.Z
+  name: Z
+  href: api/GameCanvas.EKeyCode.html#GameCanvas_EKeyCode_Z
+  commentId: F:GameCanvas.EKeyCode.Z
+  fullName: GameCanvas.EKeyCode.Z
+  nameWithType: EKeyCode.Z
+- uid: GameCanvas.Engine
+  name: GameCanvas.Engine
+  href: api/GameCanvas.Engine.html
+  commentId: N:GameCanvas.Engine
+  fullName: GameCanvas.Engine
+  nameWithType: GameCanvas.Engine
+- uid: GameCanvas.Engine.Collision
+  name: Collision
+  href: api/GameCanvas.Engine.Collision.html
+  commentId: T:GameCanvas.Engine.Collision
+  fullName: GameCanvas.Engine.Collision
+  nameWithType: Collision
+- uid: GameCanvas.Engine.Collision.CheckHitCircle(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: CheckHitCircle(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Collision.html#GameCanvas_Engine_Collision_CheckHitCircle_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Collision.CheckHitCircle(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: CheckHitCircle(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Collision.CheckHitCircle(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Collision.CheckHitCircle(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Collision.CheckHitCircle(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Collision.CheckHitCircle(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Collision.CheckHitCircle*
+  name: CheckHitCircle
+  href: api/GameCanvas.Engine.Collision.html#GameCanvas_Engine_Collision_CheckHitCircle_
+  commentId: Overload:GameCanvas.Engine.Collision.CheckHitCircle
+  fullName: GameCanvas.Engine.Collision.CheckHitCircle
+  nameWithType: Collision.CheckHitCircle
+- uid: GameCanvas.Engine.Collision.CheckHitImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: CheckHitImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Collision.html#GameCanvas_Engine_Collision_CheckHitImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Collision.CheckHitImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: CheckHitImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Collision.CheckHitImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Collision.CheckHitImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Collision.CheckHitImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Collision.CheckHitImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Collision.CheckHitImage*
+  name: CheckHitImage
+  href: api/GameCanvas.Engine.Collision.html#GameCanvas_Engine_Collision_CheckHitImage_
+  commentId: Overload:GameCanvas.Engine.Collision.CheckHitImage
+  fullName: GameCanvas.Engine.Collision.CheckHitImage
+  nameWithType: Collision.CheckHitImage
+- uid: GameCanvas.Engine.Collision.CheckHitRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: CheckHitRect(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Collision.html#GameCanvas_Engine_Collision_CheckHitRect_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Collision.CheckHitRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: CheckHitRect(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Collision.CheckHitRect(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Collision.CheckHitRect(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Collision.CheckHitRect(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Collision.CheckHitRect(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Collision.CheckHitRect*
+  name: CheckHitRect
+  href: api/GameCanvas.Engine.Collision.html#GameCanvas_Engine_Collision_CheckHitRect_
+  commentId: Overload:GameCanvas.Engine.Collision.CheckHitRect
+  fullName: GameCanvas.Engine.Collision.CheckHitRect
+  nameWithType: Collision.CheckHitRect
+- uid: GameCanvas.Engine.Graphic
+  name: Graphic
+  href: api/GameCanvas.Engine.Graphic.html
+  commentId: T:GameCanvas.Engine.Graphic
+  fullName: GameCanvas.Engine.Graphic
+  nameWithType: Graphic
+- uid: GameCanvas.Engine.Graphic.CanvasHeight
+  name: CanvasHeight
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_CanvasHeight
+  commentId: P:GameCanvas.Engine.Graphic.CanvasHeight
+  fullName: GameCanvas.Engine.Graphic.CanvasHeight
+  nameWithType: Graphic.CanvasHeight
+- uid: GameCanvas.Engine.Graphic.CanvasHeight*
+  name: CanvasHeight
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_CanvasHeight_
+  commentId: Overload:GameCanvas.Engine.Graphic.CanvasHeight
+  fullName: GameCanvas.Engine.Graphic.CanvasHeight
+  nameWithType: Graphic.CanvasHeight
+- uid: GameCanvas.Engine.Graphic.CanvasToScreen(System.Single@,System.Single@,System.Int32@,System.Int32@)
+  name: CanvasToScreen(out Single, out Single, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_CanvasToScreen_System_Single__System_Single__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.CanvasToScreen(System.Single@,System.Single@,System.Int32@,System.Int32@)
+  name.vb: CanvasToScreen(ByRef Single, ByRef Single, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.CanvasToScreen(out System.Single, out System.Single, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.CanvasToScreen(ByRef System.Single, ByRef System.Single, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.CanvasToScreen(out Single, out Single, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.CanvasToScreen(ByRef Single, ByRef Single, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.CanvasToScreen*
+  name: CanvasToScreen
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_CanvasToScreen_
+  commentId: Overload:GameCanvas.Engine.Graphic.CanvasToScreen
+  fullName: GameCanvas.Engine.Graphic.CanvasToScreen
+  nameWithType: Graphic.CanvasToScreen
+- uid: GameCanvas.Engine.Graphic.CanvasWidth
+  name: CanvasWidth
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_CanvasWidth
+  commentId: P:GameCanvas.Engine.Graphic.CanvasWidth
+  fullName: GameCanvas.Engine.Graphic.CanvasWidth
+  nameWithType: Graphic.CanvasWidth
+- uid: GameCanvas.Engine.Graphic.CanvasWidth*
+  name: CanvasWidth
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_CanvasWidth_
+  commentId: Overload:GameCanvas.Engine.Graphic.CanvasWidth
+  fullName: GameCanvas.Engine.Graphic.CanvasWidth
+  nameWithType: Graphic.CanvasWidth
+- uid: GameCanvas.Engine.Graphic.ClearScreen
+  name: ClearScreen()
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ClearScreen
+  commentId: M:GameCanvas.Engine.Graphic.ClearScreen
+  fullName: GameCanvas.Engine.Graphic.ClearScreen()
+  nameWithType: Graphic.ClearScreen()
+- uid: GameCanvas.Engine.Graphic.ClearScreen*
+  name: ClearScreen
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ClearScreen_
+  commentId: Overload:GameCanvas.Engine.Graphic.ClearScreen
+  fullName: GameCanvas.Engine.Graphic.ClearScreen
+  nameWithType: Graphic.ClearScreen
+- uid: GameCanvas.Engine.Graphic.Dispose
+  name: Dispose()
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_Dispose
+  commentId: M:GameCanvas.Engine.Graphic.Dispose
+  fullName: GameCanvas.Engine.Graphic.Dispose()
+  nameWithType: Graphic.Dispose()
+- uid: GameCanvas.Engine.Graphic.Dispose*
+  name: Dispose
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_Dispose_
+  commentId: Overload:GameCanvas.Engine.Graphic.Dispose
+  fullName: GameCanvas.Engine.Graphic.Dispose
+  nameWithType: Graphic.Dispose
+- uid: GameCanvas.Engine.Graphic.DrawCenterString(System.String@,System.Int32@,System.Int32@)
+  name: DrawCenterString(ref String, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawCenterString_System_String__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawCenterString(System.String@,System.Int32@,System.Int32@)
+  name.vb: DrawCenterString(ByRef String, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawCenterString(ref System.String, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawCenterString(ByRef System.String, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawCenterString(ref String, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawCenterString(ByRef String, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawCenterString*
+  name: DrawCenterString
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawCenterString_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawCenterString
+  fullName: GameCanvas.Engine.Graphic.DrawCenterString
+  nameWithType: Graphic.DrawCenterString
+- uid: GameCanvas.Engine.Graphic.DrawCircle(System.Int32@,System.Int32@,System.Int32@)
+  name: DrawCircle(ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawCircle_System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawCircle(System.Int32@,System.Int32@,System.Int32@)
+  name.vb: DrawCircle(ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawCircle(ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawCircle(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawCircle(ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawCircle(ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawCircle*
+  name: DrawCircle
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawCircle_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawCircle
+  fullName: GameCanvas.Engine.Graphic.DrawCircle
+  nameWithType: Graphic.DrawCircle
+- uid: GameCanvas.Engine.Graphic.DrawClipImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: DrawClipImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawClipImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawClipImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: DrawClipImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawClipImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawClipImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawClipImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawClipImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawClipImage*
+  name: DrawClipImage
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawClipImage_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawClipImage
+  fullName: GameCanvas.Engine.Graphic.DrawClipImage
+  nameWithType: Graphic.DrawClipImage
+- uid: GameCanvas.Engine.Graphic.DrawImage(System.Int32@,System.Int32@,System.Int32@)
+  name: DrawImage(ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawImage(System.Int32@,System.Int32@,System.Int32@)
+  name.vb: DrawImage(ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawImage(ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawImage(ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawImage(ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawImage*
+  name: DrawImage
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawImage
+  fullName: GameCanvas.Engine.Graphic.DrawImage
+  nameWithType: Graphic.DrawImage
+- uid: GameCanvas.Engine.Graphic.DrawLine(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: DrawLine(ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawLine_System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawLine(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: DrawLine(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawLine(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawLine(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawLine(ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawLine(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawLine*
+  name: DrawLine
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawLine_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawLine
+  fullName: GameCanvas.Engine.Graphic.DrawLine
+  nameWithType: Graphic.DrawLine
+- uid: GameCanvas.Engine.Graphic.DrawRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: DrawRect(ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawRect_System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: DrawRect(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawRect(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawRect(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawRect(ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawRect(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawRect*
+  name: DrawRect
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawRect_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawRect
+  fullName: GameCanvas.Engine.Graphic.DrawRect
+  nameWithType: Graphic.DrawRect
+- uid: GameCanvas.Engine.Graphic.DrawRightString(System.String@,System.Int32@,System.Int32@)
+  name: DrawRightString(ref String, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawRightString_System_String__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawRightString(System.String@,System.Int32@,System.Int32@)
+  name.vb: DrawRightString(ByRef String, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawRightString(ref System.String, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawRightString(ByRef System.String, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawRightString(ref String, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawRightString(ByRef String, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawRightString*
+  name: DrawRightString
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawRightString_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawRightString
+  fullName: GameCanvas.Engine.Graphic.DrawRightString
+  nameWithType: Graphic.DrawRightString
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@)
+  name: DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Double__
+  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@)
+  name.vb: DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double)
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Double)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Double)
+  nameWithType: Graphic.DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double)
+  nameWithType.vb: Graphic.DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double)
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@,System.Double@,System.Double@)
+  name: DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double, ref Double, ref Double)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Double__System_Double__System_Double__
+  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@,System.Double@,System.Double@)
+  name.vb: DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double, ByRef Double, ByRef Double)
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Double, ref System.Double, ref System.Double)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Double, ByRef System.Double, ByRef System.Double)
+  nameWithType: Graphic.DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double, ref Double, ref Double)
+  nameWithType.vb: Graphic.DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double, ByRef Double, ByRef Double)
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage*
+  name: DrawScaledRotateImage
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawScaledRotateImage
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage
+  nameWithType: Graphic.DrawScaledRotateImage
+- uid: GameCanvas.Engine.Graphic.DrawString(System.String@,System.Int32@,System.Int32@)
+  name: DrawString(ref String, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawString_System_String__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawString(System.String@,System.Int32@,System.Int32@)
+  name.vb: DrawString(ByRef String, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawString(ref System.String, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawString(ByRef System.String, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawString(ref String, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawString(ByRef String, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawString*
+  name: DrawString
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawString_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawString
+  fullName: GameCanvas.Engine.Graphic.DrawString
+  nameWithType: Graphic.DrawString
+- uid: GameCanvas.Engine.Graphic.FillCircle(System.Int32@,System.Int32@,System.Int32@)
+  name: FillCircle(ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_FillCircle_System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.FillCircle(System.Int32@,System.Int32@,System.Int32@)
+  name.vb: FillCircle(ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.FillCircle(ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.FillCircle(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.FillCircle(ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.FillCircle(ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.FillCircle*
+  name: FillCircle
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_FillCircle_
+  commentId: Overload:GameCanvas.Engine.Graphic.FillCircle
+  fullName: GameCanvas.Engine.Graphic.FillCircle
+  nameWithType: Graphic.FillCircle
+- uid: GameCanvas.Engine.Graphic.FillRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: FillRect(ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_FillRect_System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.FillRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: FillRect(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.FillRect(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.FillRect(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.FillRect(ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.FillRect(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.FillRect*
+  name: FillRect
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_FillRect_
+  commentId: Overload:GameCanvas.Engine.Graphic.FillRect
+  fullName: GameCanvas.Engine.Graphic.FillRect
+  nameWithType: Graphic.FillRect
+- uid: GameCanvas.Engine.Graphic.GetImageHeight(System.Int32@)
+  name: GetImageHeight(ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_GetImageHeight_System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.GetImageHeight(System.Int32@)
+  name.vb: GetImageHeight(ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.GetImageHeight(ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.GetImageHeight(ByRef System.Int32)
+  nameWithType: Graphic.GetImageHeight(ref Int32)
+  nameWithType.vb: Graphic.GetImageHeight(ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.GetImageHeight*
+  name: GetImageHeight
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_GetImageHeight_
+  commentId: Overload:GameCanvas.Engine.Graphic.GetImageHeight
+  fullName: GameCanvas.Engine.Graphic.GetImageHeight
+  nameWithType: Graphic.GetImageHeight
+- uid: GameCanvas.Engine.Graphic.GetImageWidth(System.Int32@)
+  name: GetImageWidth(ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_GetImageWidth_System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.GetImageWidth(System.Int32@)
+  name.vb: GetImageWidth(ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.GetImageWidth(ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.GetImageWidth(ByRef System.Int32)
+  nameWithType: Graphic.GetImageWidth(ref Int32)
+  nameWithType.vb: Graphic.GetImageWidth(ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.GetImageWidth*
+  name: GetImageWidth
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_GetImageWidth_
+  commentId: Overload:GameCanvas.Engine.Graphic.GetImageWidth
+  fullName: GameCanvas.Engine.Graphic.GetImageWidth
+  nameWithType: Graphic.GetImageWidth
+- uid: GameCanvas.Engine.Graphic.GetStringWidth(System.String@)
+  name: GetStringWidth(ref String)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_GetStringWidth_System_String__
+  commentId: M:GameCanvas.Engine.Graphic.GetStringWidth(System.String@)
+  name.vb: GetStringWidth(ByRef String)
+  fullName: GameCanvas.Engine.Graphic.GetStringWidth(ref System.String)
+  fullName.vb: GameCanvas.Engine.Graphic.GetStringWidth(ByRef System.String)
+  nameWithType: Graphic.GetStringWidth(ref String)
+  nameWithType.vb: Graphic.GetStringWidth(ByRef String)
+- uid: GameCanvas.Engine.Graphic.GetStringWidth*
+  name: GetStringWidth
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_GetStringWidth_
+  commentId: Overload:GameCanvas.Engine.Graphic.GetStringWidth
+  fullName: GameCanvas.Engine.Graphic.GetStringWidth
+  nameWithType: Graphic.GetStringWidth
+- uid: GameCanvas.Engine.Graphic.OnBeforeUpdate
+  name: OnBeforeUpdate()
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_OnBeforeUpdate
+  commentId: M:GameCanvas.Engine.Graphic.OnBeforeUpdate
+  fullName: GameCanvas.Engine.Graphic.OnBeforeUpdate()
+  nameWithType: Graphic.OnBeforeUpdate()
+- uid: GameCanvas.Engine.Graphic.OnBeforeUpdate*
+  name: OnBeforeUpdate
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_OnBeforeUpdate_
+  commentId: Overload:GameCanvas.Engine.Graphic.OnBeforeUpdate
+  fullName: GameCanvas.Engine.Graphic.OnBeforeUpdate
+  nameWithType: Graphic.OnBeforeUpdate
+- uid: GameCanvas.Engine.Graphic.OnDisable
+  name: OnDisable()
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_OnDisable
+  commentId: M:GameCanvas.Engine.Graphic.OnDisable
+  fullName: GameCanvas.Engine.Graphic.OnDisable()
+  nameWithType: Graphic.OnDisable()
+- uid: GameCanvas.Engine.Graphic.OnDisable*
+  name: OnDisable
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_OnDisable_
+  commentId: Overload:GameCanvas.Engine.Graphic.OnDisable
+  fullName: GameCanvas.Engine.Graphic.OnDisable
+  nameWithType: Graphic.OnDisable
+- uid: GameCanvas.Engine.Graphic.OnEnable
+  name: OnEnable()
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_OnEnable
+  commentId: M:GameCanvas.Engine.Graphic.OnEnable
+  fullName: GameCanvas.Engine.Graphic.OnEnable()
+  nameWithType: Graphic.OnEnable()
+- uid: GameCanvas.Engine.Graphic.OnEnable*
+  name: OnEnable
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_OnEnable_
+  commentId: Overload:GameCanvas.Engine.Graphic.OnEnable
+  fullName: GameCanvas.Engine.Graphic.OnEnable
+  nameWithType: Graphic.OnEnable
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvas(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: ScreenToCanvas(out Int32, out Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvas_System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.ScreenToCanvas(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: ScreenToCanvas(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvas(out System.Int32, out System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.ScreenToCanvas(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.ScreenToCanvas(out Int32, out Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.ScreenToCanvas(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvas(UnityEngine.Vector2@)
+  name: ScreenToCanvas(ref Vector2)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvas_UnityEngine_Vector2__
+  commentId: M:GameCanvas.Engine.Graphic.ScreenToCanvas(UnityEngine.Vector2@)
+  name.vb: ScreenToCanvas(ByRef Vector2)
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvas(ref UnityEngine.Vector2)
+  fullName.vb: GameCanvas.Engine.Graphic.ScreenToCanvas(ByRef UnityEngine.Vector2)
+  nameWithType: Graphic.ScreenToCanvas(ref Vector2)
+  nameWithType.vb: Graphic.ScreenToCanvas(ByRef Vector2)
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvas*
+  name: ScreenToCanvas
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvas_
+  commentId: Overload:GameCanvas.Engine.Graphic.ScreenToCanvas
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvas
+  nameWithType: Graphic.ScreenToCanvas
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvasX(System.Int32)
+  name: ScreenToCanvasX(Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvasX_System_Int32_
+  commentId: M:GameCanvas.Engine.Graphic.ScreenToCanvasX(System.Int32)
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvasX(System.Int32)
+  nameWithType: Graphic.ScreenToCanvasX(Int32)
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvasX*
+  name: ScreenToCanvasX
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvasX_
+  commentId: Overload:GameCanvas.Engine.Graphic.ScreenToCanvasX
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvasX
+  nameWithType: Graphic.ScreenToCanvasX
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvasY(System.Int32)
+  name: ScreenToCanvasY(Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvasY_System_Int32_
+  commentId: M:GameCanvas.Engine.Graphic.ScreenToCanvasY(System.Int32)
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvasY(System.Int32)
+  nameWithType: Graphic.ScreenToCanvasY(Int32)
+- uid: GameCanvas.Engine.Graphic.ScreenToCanvasY*
+  name: ScreenToCanvasY
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ScreenToCanvasY_
+  commentId: Overload:GameCanvas.Engine.Graphic.ScreenToCanvasY
+  fullName: GameCanvas.Engine.Graphic.ScreenToCanvasY
+  nameWithType: Graphic.ScreenToCanvasY
+- uid: GameCanvas.Engine.Graphic.SetColor(System.Int32@)
+  name: SetColor(ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColor_System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetColor(System.Int32@)
+  name.vb: SetColor(ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetColor(ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetColor(ByRef System.Int32)
+  nameWithType: Graphic.SetColor(ref Int32)
+  nameWithType.vb: Graphic.SetColor(ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetColor(System.Int32@,System.Int32@,System.Int32@)
+  name: SetColor(ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColor_System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetColor(System.Int32@,System.Int32@,System.Int32@)
+  name.vb: SetColor(ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetColor(ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetColor(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.SetColor(ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.SetColor(ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetColor(UnityEngine.Color@)
+  name: SetColor(ref Color)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColor_UnityEngine_Color__
+  commentId: M:GameCanvas.Engine.Graphic.SetColor(UnityEngine.Color@)
+  name.vb: SetColor(ByRef Color)
+  fullName: GameCanvas.Engine.Graphic.SetColor(ref UnityEngine.Color)
+  fullName.vb: GameCanvas.Engine.Graphic.SetColor(ByRef UnityEngine.Color)
+  nameWithType: Graphic.SetColor(ref Color)
+  nameWithType.vb: Graphic.SetColor(ByRef Color)
+- uid: GameCanvas.Engine.Graphic.SetColor*
+  name: SetColor
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColor_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetColor
+  fullName: GameCanvas.Engine.Graphic.SetColor
+  nameWithType: Graphic.SetColor
+- uid: GameCanvas.Engine.Graphic.SetFont(System.Int32@,UnityEngine.FontStyle@,System.Int32@)
+  name: SetFont(ref Int32, ref FontStyle, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetFont_System_Int32__UnityEngine_FontStyle__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetFont(System.Int32@,UnityEngine.FontStyle@,System.Int32@)
+  name.vb: SetFont(ByRef Int32, ByRef FontStyle, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetFont(ref System.Int32, ref UnityEngine.FontStyle, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetFont(ByRef System.Int32, ByRef UnityEngine.FontStyle, ByRef System.Int32)
+  nameWithType: Graphic.SetFont(ref Int32, ref FontStyle, ref Int32)
+  nameWithType.vb: Graphic.SetFont(ByRef Int32, ByRef FontStyle, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetFont*
+  name: SetFont
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetFont_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetFont
+  fullName: GameCanvas.Engine.Graphic.SetFont
+  nameWithType: Graphic.SetFont
+- uid: GameCanvas.Engine.Graphic.SetFontSize(System.Int32@)
+  name: SetFontSize(ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetFontSize_System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetFontSize(System.Int32@)
+  name.vb: SetFontSize(ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetFontSize(ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetFontSize(ByRef System.Int32)
+  nameWithType: Graphic.SetFontSize(ref Int32)
+  nameWithType.vb: Graphic.SetFontSize(ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetFontSize*
+  name: SetFontSize
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetFontSize_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetFontSize
+  fullName: GameCanvas.Engine.Graphic.SetFontSize
+  nameWithType: Graphic.SetFontSize
+- uid: GameCanvas.Engine.Graphic.SetResolution(System.Int32,System.Int32)
+  name: SetResolution(Int32, Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetResolution_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Engine.Graphic.SetResolution(System.Int32,System.Int32)
+  fullName: GameCanvas.Engine.Graphic.SetResolution(System.Int32, System.Int32)
+  nameWithType: Graphic.SetResolution(Int32, Int32)
+- uid: GameCanvas.Engine.Graphic.SetResolution*
+  name: SetResolution
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetResolution_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetResolution
+  fullName: GameCanvas.Engine.Graphic.SetResolution
+  nameWithType: Graphic.SetResolution
+- uid: GameCanvas.Engine.Graphic.WriteScreenImage(System.String@)
+  name: WriteScreenImage(ref String)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_WriteScreenImage_System_String__
+  commentId: M:GameCanvas.Engine.Graphic.WriteScreenImage(System.String@)
+  name.vb: WriteScreenImage(ByRef String)
+  fullName: GameCanvas.Engine.Graphic.WriteScreenImage(ref System.String)
+  fullName.vb: GameCanvas.Engine.Graphic.WriteScreenImage(ByRef System.String)
+  nameWithType: Graphic.WriteScreenImage(ref String)
+  nameWithType.vb: Graphic.WriteScreenImage(ByRef String)
+- uid: GameCanvas.Engine.Graphic.WriteScreenImage*
+  name: WriteScreenImage
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_WriteScreenImage_
+  commentId: Overload:GameCanvas.Engine.Graphic.WriteScreenImage
+  fullName: GameCanvas.Engine.Graphic.WriteScreenImage
+  nameWithType: Graphic.WriteScreenImage
+- uid: GameCanvas.Engine.Network
+  name: Network
+  href: api/GameCanvas.Engine.Network.html
+  commentId: T:GameCanvas.Engine.Network
+  fullName: GameCanvas.Engine.Network
+  nameWithType: Network
+- uid: GameCanvas.Engine.Sound
+  name: Sound
+  href: api/GameCanvas.Engine.Sound.html
+  commentId: T:GameCanvas.Engine.Sound
+  fullName: GameCanvas.Engine.Sound
+  nameWithType: Sound
+- uid: GameCanvas.Engine.Sound.ChangeVolume(System.Int32)
+  name: ChangeVolume(Int32)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_ChangeVolume_System_Int32_
+  commentId: M:GameCanvas.Engine.Sound.ChangeVolume(System.Int32)
+  fullName: GameCanvas.Engine.Sound.ChangeVolume(System.Int32)
+  nameWithType: Sound.ChangeVolume(Int32)
+- uid: GameCanvas.Engine.Sound.ChangeVolume*
+  name: ChangeVolume
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_ChangeVolume_
+  commentId: Overload:GameCanvas.Engine.Sound.ChangeVolume
+  fullName: GameCanvas.Engine.Sound.ChangeVolume
+  nameWithType: Sound.ChangeVolume
+- uid: GameCanvas.Engine.Sound.OnBeforeUpdate
+  name: OnBeforeUpdate()
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_OnBeforeUpdate
+  commentId: M:GameCanvas.Engine.Sound.OnBeforeUpdate
+  fullName: GameCanvas.Engine.Sound.OnBeforeUpdate()
+  nameWithType: Sound.OnBeforeUpdate()
+- uid: GameCanvas.Engine.Sound.OnBeforeUpdate*
+  name: OnBeforeUpdate
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_OnBeforeUpdate_
+  commentId: Overload:GameCanvas.Engine.Sound.OnBeforeUpdate
+  fullName: GameCanvas.Engine.Sound.OnBeforeUpdate
+  nameWithType: Sound.OnBeforeUpdate
+- uid: GameCanvas.Engine.Sound.Pause
+  name: Pause()
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Pause
+  commentId: M:GameCanvas.Engine.Sound.Pause
+  fullName: GameCanvas.Engine.Sound.Pause()
+  nameWithType: Sound.Pause()
+- uid: GameCanvas.Engine.Sound.Pause*
+  name: Pause
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Pause_
+  commentId: Overload:GameCanvas.Engine.Sound.Pause
+  fullName: GameCanvas.Engine.Sound.Pause
+  nameWithType: Sound.Pause
+- uid: GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean)
+  name: Play(Int32, Boolean)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Play_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean)
+  fullName: GameCanvas.Engine.Sound.Play(System.Int32, System.Boolean)
+  nameWithType: Sound.Play(Int32, Boolean)
+- uid: GameCanvas.Engine.Sound.Play*
+  name: Play
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Play_
+  commentId: Overload:GameCanvas.Engine.Sound.Play
+  fullName: GameCanvas.Engine.Sound.Play
+  nameWithType: Sound.Play
+- uid: GameCanvas.Engine.Sound.Stop
+  name: Stop()
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Stop
+  commentId: M:GameCanvas.Engine.Sound.Stop
+  fullName: GameCanvas.Engine.Sound.Stop()
+  nameWithType: Sound.Stop()
+- uid: GameCanvas.Engine.Sound.Stop*
+  name: Stop
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Stop_
+  commentId: Overload:GameCanvas.Engine.Sound.Stop
+  fullName: GameCanvas.Engine.Sound.Stop
+  nameWithType: Sound.Stop
+- uid: GameCanvas.Engine.Sound.Unpause
+  name: Unpause()
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Unpause
+  commentId: M:GameCanvas.Engine.Sound.Unpause
+  fullName: GameCanvas.Engine.Sound.Unpause()
+  nameWithType: Sound.Unpause()
+- uid: GameCanvas.Engine.Sound.Unpause*
+  name: Unpause
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Unpause_
+  commentId: Overload:GameCanvas.Engine.Sound.Unpause
+  fullName: GameCanvas.Engine.Sound.Unpause
+  nameWithType: Sound.Unpause
+- uid: GameCanvas.Input
+  name: GameCanvas.Input
+  href: api/GameCanvas.Input.html
+  commentId: N:GameCanvas.Input
+  fullName: GameCanvas.Input
+  nameWithType: GameCanvas.Input
+- uid: GameCanvas.Input.Keyboard
+  name: Keyboard
+  href: api/GameCanvas.Input.Keyboard.html
+  commentId: T:GameCanvas.Input.Keyboard
+  fullName: GameCanvas.Input.Keyboard
+  nameWithType: Keyboard
+- uid: GameCanvas.Input.Keyboard.GetIsBegan(GameCanvas.EKeyCode@)
+  name: GetIsBegan(ref EKeyCode)
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetIsBegan_GameCanvas_EKeyCode__
+  commentId: M:GameCanvas.Input.Keyboard.GetIsBegan(GameCanvas.EKeyCode@)
+  name.vb: GetIsBegan(ByRef EKeyCode)
+  fullName: GameCanvas.Input.Keyboard.GetIsBegan(ref GameCanvas.EKeyCode)
+  fullName.vb: GameCanvas.Input.Keyboard.GetIsBegan(ByRef GameCanvas.EKeyCode)
+  nameWithType: Keyboard.GetIsBegan(ref EKeyCode)
+  nameWithType.vb: Keyboard.GetIsBegan(ByRef EKeyCode)
+- uid: GameCanvas.Input.Keyboard.GetIsBegan*
+  name: GetIsBegan
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetIsBegan_
+  commentId: Overload:GameCanvas.Input.Keyboard.GetIsBegan
+  fullName: GameCanvas.Input.Keyboard.GetIsBegan
+  nameWithType: Keyboard.GetIsBegan
+- uid: GameCanvas.Input.Keyboard.GetIsEnded(GameCanvas.EKeyCode@)
+  name: GetIsEnded(ref EKeyCode)
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetIsEnded_GameCanvas_EKeyCode__
+  commentId: M:GameCanvas.Input.Keyboard.GetIsEnded(GameCanvas.EKeyCode@)
+  name.vb: GetIsEnded(ByRef EKeyCode)
+  fullName: GameCanvas.Input.Keyboard.GetIsEnded(ref GameCanvas.EKeyCode)
+  fullName.vb: GameCanvas.Input.Keyboard.GetIsEnded(ByRef GameCanvas.EKeyCode)
+  nameWithType: Keyboard.GetIsEnded(ref EKeyCode)
+  nameWithType.vb: Keyboard.GetIsEnded(ByRef EKeyCode)
+- uid: GameCanvas.Input.Keyboard.GetIsEnded*
+  name: GetIsEnded
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetIsEnded_
+  commentId: Overload:GameCanvas.Input.Keyboard.GetIsEnded
+  fullName: GameCanvas.Input.Keyboard.GetIsEnded
+  nameWithType: Keyboard.GetIsEnded
+- uid: GameCanvas.Input.Keyboard.GetIsPress(GameCanvas.EKeyCode@)
+  name: GetIsPress(ref EKeyCode)
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetIsPress_GameCanvas_EKeyCode__
+  commentId: M:GameCanvas.Input.Keyboard.GetIsPress(GameCanvas.EKeyCode@)
+  name.vb: GetIsPress(ByRef EKeyCode)
+  fullName: GameCanvas.Input.Keyboard.GetIsPress(ref GameCanvas.EKeyCode)
+  fullName.vb: GameCanvas.Input.Keyboard.GetIsPress(ByRef GameCanvas.EKeyCode)
+  nameWithType: Keyboard.GetIsPress(ref EKeyCode)
+  nameWithType.vb: Keyboard.GetIsPress(ByRef EKeyCode)
+- uid: GameCanvas.Input.Keyboard.GetIsPress*
+  name: GetIsPress
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetIsPress_
+  commentId: Overload:GameCanvas.Input.Keyboard.GetIsPress
+  fullName: GameCanvas.Input.Keyboard.GetIsPress
+  nameWithType: Keyboard.GetIsPress
+- uid: GameCanvas.Input.Keyboard.GetPressDuration(GameCanvas.EKeyCode@)
+  name: GetPressDuration(ref EKeyCode)
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetPressDuration_GameCanvas_EKeyCode__
+  commentId: M:GameCanvas.Input.Keyboard.GetPressDuration(GameCanvas.EKeyCode@)
+  name.vb: GetPressDuration(ByRef EKeyCode)
+  fullName: GameCanvas.Input.Keyboard.GetPressDuration(ref GameCanvas.EKeyCode)
+  fullName.vb: GameCanvas.Input.Keyboard.GetPressDuration(ByRef GameCanvas.EKeyCode)
+  nameWithType: Keyboard.GetPressDuration(ref EKeyCode)
+  nameWithType.vb: Keyboard.GetPressDuration(ByRef EKeyCode)
+- uid: GameCanvas.Input.Keyboard.GetPressDuration*
+  name: GetPressDuration
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetPressDuration_
+  commentId: Overload:GameCanvas.Input.Keyboard.GetPressDuration
+  fullName: GameCanvas.Input.Keyboard.GetPressDuration
+  nameWithType: Keyboard.GetPressDuration
+- uid: GameCanvas.Input.Keyboard.GetPressFrameCount(GameCanvas.EKeyCode@)
+  name: GetPressFrameCount(ref EKeyCode)
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetPressFrameCount_GameCanvas_EKeyCode__
+  commentId: M:GameCanvas.Input.Keyboard.GetPressFrameCount(GameCanvas.EKeyCode@)
+  name.vb: GetPressFrameCount(ByRef EKeyCode)
+  fullName: GameCanvas.Input.Keyboard.GetPressFrameCount(ref GameCanvas.EKeyCode)
+  fullName.vb: GameCanvas.Input.Keyboard.GetPressFrameCount(ByRef GameCanvas.EKeyCode)
+  nameWithType: Keyboard.GetPressFrameCount(ref EKeyCode)
+  nameWithType.vb: Keyboard.GetPressFrameCount(ByRef EKeyCode)
+- uid: GameCanvas.Input.Keyboard.GetPressFrameCount*
+  name: GetPressFrameCount
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_GetPressFrameCount_
+  commentId: Overload:GameCanvas.Input.Keyboard.GetPressFrameCount
+  fullName: GameCanvas.Input.Keyboard.GetPressFrameCount
+  nameWithType: Keyboard.GetPressFrameCount
+- uid: GameCanvas.Input.Keyboard.IsVisible
+  name: IsVisible
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_IsVisible
+  commentId: P:GameCanvas.Input.Keyboard.IsVisible
+  fullName: GameCanvas.Input.Keyboard.IsVisible
+  nameWithType: Keyboard.IsVisible
+- uid: GameCanvas.Input.Keyboard.IsVisible*
+  name: IsVisible
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_IsVisible_
+  commentId: Overload:GameCanvas.Input.Keyboard.IsVisible
+  fullName: GameCanvas.Input.Keyboard.IsVisible
+  nameWithType: Keyboard.IsVisible
+- uid: GameCanvas.Input.Keyboard.OnBeforeUpdate
+  name: OnBeforeUpdate()
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_OnBeforeUpdate
+  commentId: M:GameCanvas.Input.Keyboard.OnBeforeUpdate
+  fullName: GameCanvas.Input.Keyboard.OnBeforeUpdate()
+  nameWithType: Keyboard.OnBeforeUpdate()
+- uid: GameCanvas.Input.Keyboard.OnBeforeUpdate*
+  name: OnBeforeUpdate
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_OnBeforeUpdate_
+  commentId: Overload:GameCanvas.Input.Keyboard.OnBeforeUpdate
+  fullName: GameCanvas.Input.Keyboard.OnBeforeUpdate
+  nameWithType: Keyboard.OnBeforeUpdate
+- uid: GameCanvas.Input.Keyboard.Open
+  name: Open()
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_Open
+  commentId: M:GameCanvas.Input.Keyboard.Open
+  fullName: GameCanvas.Input.Keyboard.Open()
+  nameWithType: Keyboard.Open()
+- uid: GameCanvas.Input.Keyboard.Open*
+  name: Open
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_Open_
+  commentId: Overload:GameCanvas.Input.Keyboard.Open
+  fullName: GameCanvas.Input.Keyboard.Open
+  nameWithType: Keyboard.Open
+- uid: GameCanvas.Input.Pointer
+  name: Pointer
+  href: api/GameCanvas.Input.Pointer.html
+  commentId: T:GameCanvas.Input.Pointer
+  fullName: GameCanvas.Input.Pointer
+  nameWithType: Pointer
+- uid: GameCanvas.Input.Pointer.Count
+  name: Count
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_Count
+  commentId: P:GameCanvas.Input.Pointer.Count
+  fullName: GameCanvas.Input.Pointer.Count
+  nameWithType: Pointer.Count
+- uid: GameCanvas.Input.Pointer.Count*
+  name: Count
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_Count_
+  commentId: Overload:GameCanvas.Input.Pointer.Count
+  fullName: GameCanvas.Input.Pointer.Count
+  nameWithType: Pointer.Count
+- uid: GameCanvas.Input.Pointer.Duration
+  name: Duration
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_Duration
+  commentId: P:GameCanvas.Input.Pointer.Duration
+  fullName: GameCanvas.Input.Pointer.Duration
+  nameWithType: Pointer.Duration
+- uid: GameCanvas.Input.Pointer.Duration*
+  name: Duration
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_Duration_
+  commentId: Overload:GameCanvas.Input.Pointer.Duration
+  fullName: GameCanvas.Input.Pointer.Duration
+  nameWithType: Pointer.Duration
+- uid: GameCanvas.Input.Pointer.FrameCount
+  name: FrameCount
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_FrameCount
+  commentId: P:GameCanvas.Input.Pointer.FrameCount
+  fullName: GameCanvas.Input.Pointer.FrameCount
+  nameWithType: Pointer.FrameCount
+- uid: GameCanvas.Input.Pointer.FrameCount*
+  name: FrameCount
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_FrameCount_
+  commentId: Overload:GameCanvas.Input.Pointer.FrameCount
+  fullName: GameCanvas.Input.Pointer.FrameCount
+  nameWithType: Pointer.FrameCount
+- uid: GameCanvas.Input.Pointer.GetDulation(System.Int32@)
+  name: GetDulation(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetDulation_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetDulation(System.Int32@)
+  name.vb: GetDulation(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetDulation(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetDulation(ByRef System.Int32)
+  nameWithType: Pointer.GetDulation(ref Int32)
+  nameWithType.vb: Pointer.GetDulation(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetDulation*
+  name: GetDulation
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetDulation_
+  commentId: Overload:GameCanvas.Input.Pointer.GetDulation
+  fullName: GameCanvas.Input.Pointer.GetDulation
+  nameWithType: Pointer.GetDulation
+- uid: GameCanvas.Input.Pointer.GetFrameCount(System.Int32@)
+  name: GetFrameCount(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetFrameCount_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetFrameCount(System.Int32@)
+  name.vb: GetFrameCount(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetFrameCount(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetFrameCount(ByRef System.Int32)
+  nameWithType: Pointer.GetFrameCount(ref Int32)
+  nameWithType.vb: Pointer.GetFrameCount(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetFrameCount*
+  name: GetFrameCount
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetFrameCount_
+  commentId: Overload:GameCanvas.Input.Pointer.GetFrameCount
+  fullName: GameCanvas.Input.Pointer.GetFrameCount
+  nameWithType: Pointer.GetFrameCount
+- uid: GameCanvas.Input.Pointer.GetIsBegan(System.Int32@)
+  name: GetIsBegan(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetIsBegan_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetIsBegan(System.Int32@)
+  name.vb: GetIsBegan(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetIsBegan(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetIsBegan(ByRef System.Int32)
+  nameWithType: Pointer.GetIsBegan(ref Int32)
+  nameWithType.vb: Pointer.GetIsBegan(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetIsBegan*
+  name: GetIsBegan
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetIsBegan_
+  commentId: Overload:GameCanvas.Input.Pointer.GetIsBegan
+  fullName: GameCanvas.Input.Pointer.GetIsBegan
+  nameWithType: Pointer.GetIsBegan
+- uid: GameCanvas.Input.Pointer.GetIsEnded(System.Int32@)
+  name: GetIsEnded(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetIsEnded_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetIsEnded(System.Int32@)
+  name.vb: GetIsEnded(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetIsEnded(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetIsEnded(ByRef System.Int32)
+  nameWithType: Pointer.GetIsEnded(ref Int32)
+  nameWithType.vb: Pointer.GetIsEnded(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetIsEnded*
+  name: GetIsEnded
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetIsEnded_
+  commentId: Overload:GameCanvas.Input.Pointer.GetIsEnded
+  fullName: GameCanvas.Input.Pointer.GetIsEnded
+  nameWithType: Pointer.GetIsEnded
+- uid: GameCanvas.Input.Pointer.GetRaw(System.Int32@)
+  name: GetRaw(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetRaw_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetRaw(System.Int32@)
+  name.vb: GetRaw(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetRaw(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetRaw(ByRef System.Int32)
+  nameWithType: Pointer.GetRaw(ref Int32)
+  nameWithType.vb: Pointer.GetRaw(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetRaw*
+  name: GetRaw
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetRaw_
+  commentId: Overload:GameCanvas.Input.Pointer.GetRaw
+  fullName: GameCanvas.Input.Pointer.GetRaw
+  nameWithType: Pointer.GetRaw
+- uid: GameCanvas.Input.Pointer.GetX(System.Int32@)
+  name: GetX(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetX_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetX(System.Int32@)
+  name.vb: GetX(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetX(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetX(ByRef System.Int32)
+  nameWithType: Pointer.GetX(ref Int32)
+  nameWithType.vb: Pointer.GetX(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetX*
+  name: GetX
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetX_
+  commentId: Overload:GameCanvas.Input.Pointer.GetX
+  fullName: GameCanvas.Input.Pointer.GetX
+  nameWithType: Pointer.GetX
+- uid: GameCanvas.Input.Pointer.GetY(System.Int32@)
+  name: GetY(ref Int32)
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetY_System_Int32__
+  commentId: M:GameCanvas.Input.Pointer.GetY(System.Int32@)
+  name.vb: GetY(ByRef Int32)
+  fullName: GameCanvas.Input.Pointer.GetY(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Pointer.GetY(ByRef System.Int32)
+  nameWithType: Pointer.GetY(ref Int32)
+  nameWithType.vb: Pointer.GetY(ByRef Int32)
+- uid: GameCanvas.Input.Pointer.GetY*
+  name: GetY
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_GetY_
+  commentId: Overload:GameCanvas.Input.Pointer.GetY
+  fullName: GameCanvas.Input.Pointer.GetY
+  nameWithType: Pointer.GetY
+- uid: GameCanvas.Input.Pointer.HasEvent
+  name: HasEvent
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_HasEvent
+  commentId: P:GameCanvas.Input.Pointer.HasEvent
+  fullName: GameCanvas.Input.Pointer.HasEvent
+  nameWithType: Pointer.HasEvent
+- uid: GameCanvas.Input.Pointer.HasEvent*
+  name: HasEvent
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_HasEvent_
+  commentId: Overload:GameCanvas.Input.Pointer.HasEvent
+  fullName: GameCanvas.Input.Pointer.HasEvent
+  nameWithType: Pointer.HasEvent
+- uid: GameCanvas.Input.Pointer.IsBegan
+  name: IsBegan
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_IsBegan
+  commentId: P:GameCanvas.Input.Pointer.IsBegan
+  fullName: GameCanvas.Input.Pointer.IsBegan
+  nameWithType: Pointer.IsBegan
+- uid: GameCanvas.Input.Pointer.IsBegan*
+  name: IsBegan
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_IsBegan_
+  commentId: Overload:GameCanvas.Input.Pointer.IsBegan
+  fullName: GameCanvas.Input.Pointer.IsBegan
+  nameWithType: Pointer.IsBegan
+- uid: GameCanvas.Input.Pointer.IsEnded
+  name: IsEnded
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_IsEnded
+  commentId: P:GameCanvas.Input.Pointer.IsEnded
+  fullName: GameCanvas.Input.Pointer.IsEnded
+  nameWithType: Pointer.IsEnded
+- uid: GameCanvas.Input.Pointer.IsEnded*
+  name: IsEnded
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_IsEnded_
+  commentId: Overload:GameCanvas.Input.Pointer.IsEnded
+  fullName: GameCanvas.Input.Pointer.IsEnded
+  nameWithType: Pointer.IsEnded
+- uid: GameCanvas.Input.Pointer.LastX
+  name: LastX
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_LastX
+  commentId: P:GameCanvas.Input.Pointer.LastX
+  fullName: GameCanvas.Input.Pointer.LastX
+  nameWithType: Pointer.LastX
+- uid: GameCanvas.Input.Pointer.LastX*
+  name: LastX
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_LastX_
+  commentId: Overload:GameCanvas.Input.Pointer.LastX
+  fullName: GameCanvas.Input.Pointer.LastX
+  nameWithType: Pointer.LastX
+- uid: GameCanvas.Input.Pointer.LastY
+  name: LastY
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_LastY
+  commentId: P:GameCanvas.Input.Pointer.LastY
+  fullName: GameCanvas.Input.Pointer.LastY
+  nameWithType: Pointer.LastY
+- uid: GameCanvas.Input.Pointer.LastY*
+  name: LastY
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_LastY_
+  commentId: Overload:GameCanvas.Input.Pointer.LastY
+  fullName: GameCanvas.Input.Pointer.LastY
+  nameWithType: Pointer.LastY
+- uid: GameCanvas.Input.Pointer.OnBeforeUpdate
+  name: OnBeforeUpdate()
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_OnBeforeUpdate
+  commentId: M:GameCanvas.Input.Pointer.OnBeforeUpdate
+  fullName: GameCanvas.Input.Pointer.OnBeforeUpdate()
+  nameWithType: Pointer.OnBeforeUpdate()
+- uid: GameCanvas.Input.Pointer.OnBeforeUpdate*
+  name: OnBeforeUpdate
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_OnBeforeUpdate_
+  commentId: Overload:GameCanvas.Input.Pointer.OnBeforeUpdate
+  fullName: GameCanvas.Input.Pointer.OnBeforeUpdate
+  nameWithType: Pointer.OnBeforeUpdate
+- uid: GameCanvas.Input.Pointer.PressureMax
+  name: PressureMax
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_PressureMax
+  commentId: P:GameCanvas.Input.Pointer.PressureMax
+  fullName: GameCanvas.Input.Pointer.PressureMax
+  nameWithType: Pointer.PressureMax
+- uid: GameCanvas.Input.Pointer.PressureMax*
+  name: PressureMax
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_PressureMax_
+  commentId: Overload:GameCanvas.Input.Pointer.PressureMax
+  fullName: GameCanvas.Input.Pointer.PressureMax
+  nameWithType: Pointer.PressureMax
+- uid: GameCanvas.Input.Pointer.X
+  name: X
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_X
+  commentId: P:GameCanvas.Input.Pointer.X
+  fullName: GameCanvas.Input.Pointer.X
+  nameWithType: Pointer.X
+- uid: GameCanvas.Input.Pointer.X*
+  name: X
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_X_
+  commentId: Overload:GameCanvas.Input.Pointer.X
+  fullName: GameCanvas.Input.Pointer.X
+  nameWithType: Pointer.X
+- uid: GameCanvas.Input.Pointer.Y
+  name: Y
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_Y
+  commentId: P:GameCanvas.Input.Pointer.Y
+  fullName: GameCanvas.Input.Pointer.Y
+  nameWithType: Pointer.Y
+- uid: GameCanvas.Input.Pointer.Y*
+  name: Y
+  href: api/GameCanvas.Input.Pointer.html#GameCanvas_Input_Pointer_Y_
+  commentId: Overload:GameCanvas.Input.Pointer.Y
+  fullName: GameCanvas.Input.Pointer.Y
+  nameWithType: Pointer.Y
+- uid: GameCanvas.PointerEvent
+  name: PointerEvent
+  href: api/GameCanvas.PointerEvent.html
+  commentId: T:GameCanvas.PointerEvent
+  fullName: GameCanvas.PointerEvent
+  nameWithType: PointerEvent
+- uid: GameCanvas.PointerEvent.EPhase
+  name: PointerEvent.EPhase
+  href: api/GameCanvas.PointerEvent.EPhase.html
+  commentId: T:GameCanvas.PointerEvent.EPhase
+  fullName: GameCanvas.PointerEvent.EPhase
+  nameWithType: PointerEvent.EPhase
+- uid: GameCanvas.PointerEvent.EPhase.Began
+  name: Began
+  href: api/GameCanvas.PointerEvent.EPhase.html#GameCanvas_PointerEvent_EPhase_Began
+  commentId: F:GameCanvas.PointerEvent.EPhase.Began
+  fullName: GameCanvas.PointerEvent.EPhase.Began
+  nameWithType: PointerEvent.EPhase.Began
+- uid: GameCanvas.PointerEvent.EPhase.Ended
+  name: Ended
+  href: api/GameCanvas.PointerEvent.EPhase.html#GameCanvas_PointerEvent_EPhase_Ended
+  commentId: F:GameCanvas.PointerEvent.EPhase.Ended
+  fullName: GameCanvas.PointerEvent.EPhase.Ended
+  nameWithType: PointerEvent.EPhase.Ended
+- uid: GameCanvas.PointerEvent.EPhase.Moved
+  name: Moved
+  href: api/GameCanvas.PointerEvent.EPhase.html#GameCanvas_PointerEvent_EPhase_Moved
+  commentId: F:GameCanvas.PointerEvent.EPhase.Moved
+  fullName: GameCanvas.PointerEvent.EPhase.Moved
+  nameWithType: PointerEvent.EPhase.Moved
+- uid: GameCanvas.PointerEvent.EPhase.Stationary
+  name: Stationary
+  href: api/GameCanvas.PointerEvent.EPhase.html#GameCanvas_PointerEvent_EPhase_Stationary
+  commentId: F:GameCanvas.PointerEvent.EPhase.Stationary
+  fullName: GameCanvas.PointerEvent.EPhase.Stationary
+  nameWithType: PointerEvent.EPhase.Stationary
+- uid: GameCanvas.PointerEvent.Equals(GameCanvas.PointerEvent)
+  name: Equals(PointerEvent)
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Equals_GameCanvas_PointerEvent_
+  commentId: M:GameCanvas.PointerEvent.Equals(GameCanvas.PointerEvent)
+  fullName: GameCanvas.PointerEvent.Equals(GameCanvas.PointerEvent)
+  nameWithType: PointerEvent.Equals(PointerEvent)
+- uid: GameCanvas.PointerEvent.Equals(System.Object)
+  name: Equals(Object)
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Equals_System_Object_
+  commentId: M:GameCanvas.PointerEvent.Equals(System.Object)
+  fullName: GameCanvas.PointerEvent.Equals(System.Object)
+  nameWithType: PointerEvent.Equals(Object)
+- uid: GameCanvas.PointerEvent.Equals*
+  name: Equals
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Equals_
+  commentId: Overload:GameCanvas.PointerEvent.Equals
+  fullName: GameCanvas.PointerEvent.Equals
+  nameWithType: PointerEvent.Equals
+- uid: GameCanvas.PointerEvent.EType
+  name: PointerEvent.EType
+  href: api/GameCanvas.PointerEvent.EType.html
+  commentId: T:GameCanvas.PointerEvent.EType
+  fullName: GameCanvas.PointerEvent.EType
+  nameWithType: PointerEvent.EType
+- uid: GameCanvas.PointerEvent.EType.Others
+  name: Others
+  href: api/GameCanvas.PointerEvent.EType.html#GameCanvas_PointerEvent_EType_Others
+  commentId: F:GameCanvas.PointerEvent.EType.Others
+  fullName: GameCanvas.PointerEvent.EType.Others
+  nameWithType: PointerEvent.EType.Others
+- uid: GameCanvas.PointerEvent.EType.Stylus
+  name: Stylus
+  href: api/GameCanvas.PointerEvent.EType.html#GameCanvas_PointerEvent_EType_Stylus
+  commentId: F:GameCanvas.PointerEvent.EType.Stylus
+  fullName: GameCanvas.PointerEvent.EType.Stylus
+  nameWithType: PointerEvent.EType.Stylus
+- uid: GameCanvas.PointerEvent.EType.Touch
+  name: Touch
+  href: api/GameCanvas.PointerEvent.EType.html#GameCanvas_PointerEvent_EType_Touch
+  commentId: F:GameCanvas.PointerEvent.EType.Touch
+  fullName: GameCanvas.PointerEvent.EType.Touch
+  nameWithType: PointerEvent.EType.Touch
+- uid: GameCanvas.PointerEvent.Frame
+  name: Frame
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Frame
+  commentId: F:GameCanvas.PointerEvent.Frame
+  fullName: GameCanvas.PointerEvent.Frame
+  nameWithType: PointerEvent.Frame
+- uid: GameCanvas.PointerEvent.GetHashCode
+  name: GetHashCode()
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_GetHashCode
+  commentId: M:GameCanvas.PointerEvent.GetHashCode
+  fullName: GameCanvas.PointerEvent.GetHashCode()
+  nameWithType: PointerEvent.GetHashCode()
+- uid: GameCanvas.PointerEvent.GetHashCode*
+  name: GetHashCode
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_GetHashCode_
+  commentId: Overload:GameCanvas.PointerEvent.GetHashCode
+  fullName: GameCanvas.PointerEvent.GetHashCode
+  nameWithType: PointerEvent.GetHashCode
+- uid: GameCanvas.PointerEvent.Id
+  name: Id
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Id
+  commentId: F:GameCanvas.PointerEvent.Id
+  fullName: GameCanvas.PointerEvent.Id
+  nameWithType: PointerEvent.Id
+- uid: GameCanvas.PointerEvent.op_Equality(GameCanvas.PointerEvent,GameCanvas.PointerEvent)
+  name: Equality(PointerEvent, PointerEvent)
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_op_Equality_GameCanvas_PointerEvent_GameCanvas_PointerEvent_
+  commentId: M:GameCanvas.PointerEvent.op_Equality(GameCanvas.PointerEvent,GameCanvas.PointerEvent)
+  fullName: GameCanvas.PointerEvent.Equality(GameCanvas.PointerEvent, GameCanvas.PointerEvent)
+  nameWithType: PointerEvent.Equality(PointerEvent, PointerEvent)
+- uid: GameCanvas.PointerEvent.op_Equality*
+  name: Equality
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_op_Equality_
+  commentId: Overload:GameCanvas.PointerEvent.op_Equality
+  fullName: GameCanvas.PointerEvent.Equality
+  nameWithType: PointerEvent.Equality
+- uid: GameCanvas.PointerEvent.op_Inequality(GameCanvas.PointerEvent,GameCanvas.PointerEvent)
+  name: Inequality(PointerEvent, PointerEvent)
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_op_Inequality_GameCanvas_PointerEvent_GameCanvas_PointerEvent_
+  commentId: M:GameCanvas.PointerEvent.op_Inequality(GameCanvas.PointerEvent,GameCanvas.PointerEvent)
+  fullName: GameCanvas.PointerEvent.Inequality(GameCanvas.PointerEvent, GameCanvas.PointerEvent)
+  nameWithType: PointerEvent.Inequality(PointerEvent, PointerEvent)
+- uid: GameCanvas.PointerEvent.op_Inequality*
+  name: Inequality
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_op_Inequality_
+  commentId: Overload:GameCanvas.PointerEvent.op_Inequality
+  fullName: GameCanvas.PointerEvent.Inequality
+  nameWithType: PointerEvent.Inequality
+- uid: GameCanvas.PointerEvent.Phase
+  name: Phase
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Phase
+  commentId: F:GameCanvas.PointerEvent.Phase
+  fullName: GameCanvas.PointerEvent.Phase
+  nameWithType: PointerEvent.Phase
+- uid: GameCanvas.PointerEvent.Pressure
+  name: Pressure
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Pressure
+  commentId: F:GameCanvas.PointerEvent.Pressure
+  fullName: GameCanvas.PointerEvent.Pressure
+  nameWithType: PointerEvent.Pressure
+- uid: GameCanvas.PointerEvent.ScreenX
+  name: ScreenX
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_ScreenX
+  commentId: F:GameCanvas.PointerEvent.ScreenX
+  fullName: GameCanvas.PointerEvent.ScreenX
+  nameWithType: PointerEvent.ScreenX
+- uid: GameCanvas.PointerEvent.ScreenY
+  name: ScreenY
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_ScreenY
+  commentId: F:GameCanvas.PointerEvent.ScreenY
+  fullName: GameCanvas.PointerEvent.ScreenY
+  nameWithType: PointerEvent.ScreenY
+- uid: GameCanvas.PointerEvent.TiltX
+  name: TiltX
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_TiltX
+  commentId: F:GameCanvas.PointerEvent.TiltX
+  fullName: GameCanvas.PointerEvent.TiltX
+  nameWithType: PointerEvent.TiltX
+- uid: GameCanvas.PointerEvent.TiltY
+  name: TiltY
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_TiltY
+  commentId: F:GameCanvas.PointerEvent.TiltY
+  fullName: GameCanvas.PointerEvent.TiltY
+  nameWithType: PointerEvent.TiltY
+- uid: GameCanvas.PointerEvent.Time
+  name: Time
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Time
+  commentId: F:GameCanvas.PointerEvent.Time
+  fullName: GameCanvas.PointerEvent.Time
+  nameWithType: PointerEvent.Time
+- uid: GameCanvas.PointerEvent.ToString
+  name: ToString()
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_ToString
+  commentId: M:GameCanvas.PointerEvent.ToString
+  fullName: GameCanvas.PointerEvent.ToString()
+  nameWithType: PointerEvent.ToString()
+- uid: GameCanvas.PointerEvent.ToString*
+  name: ToString
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_ToString_
+  commentId: Overload:GameCanvas.PointerEvent.ToString
+  fullName: GameCanvas.PointerEvent.ToString
+  nameWithType: PointerEvent.ToString
+- uid: GameCanvas.PointerEvent.Type
+  name: Type
+  href: api/GameCanvas.PointerEvent.html#GameCanvas_PointerEvent_Type
+  commentId: F:GameCanvas.PointerEvent.Type
+  fullName: GameCanvas.PointerEvent.Type
+  nameWithType: PointerEvent.Type
+- uid: GameCanvas.Proxy
+  name: Proxy
+  href: api/GameCanvas.Proxy.html
+  commentId: T:GameCanvas.Proxy
+  fullName: GameCanvas.Proxy
+  nameWithType: Proxy
+- uid: GameCanvas.Proxy.Atan2(System.Double,System.Double)
+  name: Atan2(Double, Double)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_System_Double_System_Double_
+  commentId: M:GameCanvas.Proxy.Atan2(System.Double,System.Double)
+  fullName: GameCanvas.Proxy.Atan2(System.Double, System.Double)
+  nameWithType: Proxy.Atan2(Double, Double)
+- uid: GameCanvas.Proxy.Atan2*
+  name: Atan2
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_
+  commentId: Overload:GameCanvas.Proxy.Atan2
+  fullName: GameCanvas.Proxy.Atan2
+  nameWithType: Proxy.Atan2
+- uid: GameCanvas.Proxy.ChangeVolume(System.Int32)
+  name: ChangeVolume(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeVolume_System_Int32_
+  commentId: M:GameCanvas.Proxy.ChangeVolume(System.Int32)
+  fullName: GameCanvas.Proxy.ChangeVolume(System.Int32)
+  nameWithType: Proxy.ChangeVolume(Int32)
+- uid: GameCanvas.Proxy.ChangeVolume*
+  name: ChangeVolume
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeVolume_
+  commentId: Overload:GameCanvas.Proxy.ChangeVolume
+  fullName: GameCanvas.Proxy.ChangeVolume
+  nameWithType: Proxy.ChangeVolume
+- uid: GameCanvas.Proxy.CheckHitCircle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: CheckHitCircle(Int32, Int32, Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitCircle_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.CheckHitCircle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.CheckHitCircle(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.CheckHitCircle(Int32, Int32, Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.CheckHitCircle*
+  name: CheckHitCircle
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitCircle_
+  commentId: Overload:GameCanvas.Proxy.CheckHitCircle
+  fullName: GameCanvas.Proxy.CheckHitCircle
+  nameWithType: Proxy.CheckHitCircle
+- uid: GameCanvas.Proxy.CheckHitImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: CheckHitImage(Int32, Int32, Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.CheckHitImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.CheckHitImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.CheckHitImage(Int32, Int32, Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.CheckHitImage*
+  name: CheckHitImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitImage_
+  commentId: Overload:GameCanvas.Proxy.CheckHitImage
+  fullName: GameCanvas.Proxy.CheckHitImage
+  nameWithType: Proxy.CheckHitImage
+- uid: GameCanvas.Proxy.CheckHitRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: CheckHitRect(Int32, Int32, Int32, Int32, Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitRect_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.CheckHitRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.CheckHitRect(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.CheckHitRect(Int32, Int32, Int32, Int32, Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.CheckHitRect*
+  name: CheckHitRect
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitRect_
+  commentId: Overload:GameCanvas.Proxy.CheckHitRect
+  fullName: GameCanvas.Proxy.CheckHitRect
+  nameWithType: Proxy.CheckHitRect
+- uid: GameCanvas.Proxy.ClearScreen
+  name: ClearScreen()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearScreen
+  commentId: M:GameCanvas.Proxy.ClearScreen
+  fullName: GameCanvas.Proxy.ClearScreen()
+  nameWithType: Proxy.ClearScreen()
+- uid: GameCanvas.Proxy.ClearScreen*
+  name: ClearScreen
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearScreen_
+  commentId: Overload:GameCanvas.Proxy.ClearScreen
+  fullName: GameCanvas.Proxy.ClearScreen
+  nameWithType: Proxy.ClearScreen
+- uid: GameCanvas.Proxy.ColorAqua
+  name: ColorAqua
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorAqua
+  commentId: F:GameCanvas.Proxy.ColorAqua
+  fullName: GameCanvas.Proxy.ColorAqua
+  nameWithType: Proxy.ColorAqua
+- uid: GameCanvas.Proxy.ColorBlack
+  name: ColorBlack
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorBlack
+  commentId: F:GameCanvas.Proxy.ColorBlack
+  fullName: GameCanvas.Proxy.ColorBlack
+  nameWithType: Proxy.ColorBlack
+- uid: GameCanvas.Proxy.ColorBlue
+  name: ColorBlue
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorBlue
+  commentId: F:GameCanvas.Proxy.ColorBlue
+  fullName: GameCanvas.Proxy.ColorBlue
+  nameWithType: Proxy.ColorBlue
+- uid: GameCanvas.Proxy.ColorCyan
+  name: ColorCyan
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorCyan
+  commentId: F:GameCanvas.Proxy.ColorCyan
+  fullName: GameCanvas.Proxy.ColorCyan
+  nameWithType: Proxy.ColorCyan
+- uid: GameCanvas.Proxy.ColorGray
+  name: ColorGray
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorGray
+  commentId: F:GameCanvas.Proxy.ColorGray
+  fullName: GameCanvas.Proxy.ColorGray
+  nameWithType: Proxy.ColorGray
+- uid: GameCanvas.Proxy.ColorGreen
+  name: ColorGreen
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorGreen
+  commentId: F:GameCanvas.Proxy.ColorGreen
+  fullName: GameCanvas.Proxy.ColorGreen
+  nameWithType: Proxy.ColorGreen
+- uid: GameCanvas.Proxy.ColorPurple
+  name: ColorPurple
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorPurple
+  commentId: F:GameCanvas.Proxy.ColorPurple
+  fullName: GameCanvas.Proxy.ColorPurple
+  nameWithType: Proxy.ColorPurple
+- uid: GameCanvas.Proxy.ColorRed
+  name: ColorRed
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorRed
+  commentId: F:GameCanvas.Proxy.ColorRed
+  fullName: GameCanvas.Proxy.ColorRed
+  nameWithType: Proxy.ColorRed
+- uid: GameCanvas.Proxy.ColorWhite
+  name: ColorWhite
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorWhite
+  commentId: F:GameCanvas.Proxy.ColorWhite
+  fullName: GameCanvas.Proxy.ColorWhite
+  nameWithType: Proxy.ColorWhite
+- uid: GameCanvas.Proxy.ColorYellow
+  name: ColorYellow
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ColorYellow
+  commentId: F:GameCanvas.Proxy.ColorYellow
+  fullName: GameCanvas.Proxy.ColorYellow
+  nameWithType: Proxy.ColorYellow
+- uid: GameCanvas.Proxy.ConfigFps
+  name: ConfigFps
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ConfigFps
+  commentId: P:GameCanvas.Proxy.ConfigFps
+  fullName: GameCanvas.Proxy.ConfigFps
+  nameWithType: Proxy.ConfigFps
+- uid: GameCanvas.Proxy.ConfigFps*
+  name: ConfigFps
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ConfigFps_
+  commentId: Overload:GameCanvas.Proxy.ConfigFps
+  fullName: GameCanvas.Proxy.ConfigFps
+  nameWithType: Proxy.ConfigFps
+- uid: GameCanvas.Proxy.Cos(System.Double)
+  name: Cos(Double)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Cos_System_Double_
+  commentId: M:GameCanvas.Proxy.Cos(System.Double)
+  fullName: GameCanvas.Proxy.Cos(System.Double)
+  nameWithType: Proxy.Cos(Double)
+- uid: GameCanvas.Proxy.Cos*
+  name: Cos
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Cos_
+  commentId: Overload:GameCanvas.Proxy.Cos
+  fullName: GameCanvas.Proxy.Cos
+  nameWithType: Proxy.Cos
+- uid: GameCanvas.Proxy.DrawCenterString(System.String,System.Int32,System.Int32)
+  name: DrawCenterString(String, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCenterString_System_String_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawCenterString(System.String,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawCenterString(System.String, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawCenterString(String, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawCenterString*
+  name: DrawCenterString
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCenterString_
+  commentId: Overload:GameCanvas.Proxy.DrawCenterString
+  fullName: GameCanvas.Proxy.DrawCenterString
+  nameWithType: Proxy.DrawCenterString
+- uid: GameCanvas.Proxy.DrawCircle(System.Int32,System.Int32,System.Int32)
+  name: DrawCircle(Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCircle_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawCircle(System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawCircle(System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawCircle(Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawCircle*
+  name: DrawCircle
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCircle_
+  commentId: Overload:GameCanvas.Proxy.DrawCircle
+  fullName: GameCanvas.Proxy.DrawCircle
+  nameWithType: Proxy.DrawCircle
+- uid: GameCanvas.Proxy.DrawClipImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: DrawClipImage(Int32, Int32, Int32, Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawClipImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawClipImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawClipImage(Int32, Int32, Int32, Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawClipImage*
+  name: DrawClipImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipImage_
+  commentId: Overload:GameCanvas.Proxy.DrawClipImage
+  fullName: GameCanvas.Proxy.DrawClipImage
+  nameWithType: Proxy.DrawClipImage
+- uid: GameCanvas.Proxy.DrawImage(System.Int32,System.Int32,System.Int32)
+  name: DrawImage(Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawImage_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawImage(System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawImage(System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawImage(Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawImage*
+  name: DrawImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawImage_
+  commentId: Overload:GameCanvas.Proxy.DrawImage
+  fullName: GameCanvas.Proxy.DrawImage
+  nameWithType: Proxy.DrawImage
+- uid: GameCanvas.Proxy.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: DrawLine(Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawLine_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawLine(System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawLine(Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawLine*
+  name: DrawLine
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawLine_
+  commentId: Overload:GameCanvas.Proxy.DrawLine
+  fullName: GameCanvas.Proxy.DrawLine
+  nameWithType: Proxy.DrawLine
+- uid: GameCanvas.Proxy.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: DrawRect(Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawRect_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawRect(System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawRect(Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawRect*
+  name: DrawRect
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawRect_
+  commentId: Overload:GameCanvas.Proxy.DrawRect
+  fullName: GameCanvas.Proxy.DrawRect
+  nameWithType: Proxy.DrawRect
+- uid: GameCanvas.Proxy.DrawRightString(System.String,System.Int32,System.Int32)
+  name: DrawRightString(String, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawRightString_System_String_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawRightString(System.String,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawRightString(System.String, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawRightString(String, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawRightString*
+  name: DrawRightString
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawRightString_
+  commentId: Overload:GameCanvas.Proxy.DrawRightString
+  fullName: GameCanvas.Proxy.DrawRightString
+  nameWithType: Proxy.DrawRightString
+- uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)
+  name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Double_
+  commentId: M:GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)
+  fullName: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Double)
+  nameWithType: Proxy.DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double)
+- uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double)
+  name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double, Double, Double)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Double_System_Double_System_Double_
+  commentId: M:GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double)
+  fullName: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Double, System.Double, System.Double)
+  nameWithType: Proxy.DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double, Double, Double)
+- uid: GameCanvas.Proxy.DrawScaledRotateImage*
+  name: DrawScaledRotateImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_
+  commentId: Overload:GameCanvas.Proxy.DrawScaledRotateImage
+  fullName: GameCanvas.Proxy.DrawScaledRotateImage
+  nameWithType: Proxy.DrawScaledRotateImage
+- uid: GameCanvas.Proxy.DrawString(System.String,System.Int32,System.Int32)
+  name: DrawString(String, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawString_System_String_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawString(System.String,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawString(System.String, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawString(String, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawString*
+  name: DrawString
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawString_
+  commentId: Overload:GameCanvas.Proxy.DrawString
+  fullName: GameCanvas.Proxy.DrawString
+  nameWithType: Proxy.DrawString
+- uid: GameCanvas.Proxy.ExitApp
+  name: ExitApp()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ExitApp
+  commentId: M:GameCanvas.Proxy.ExitApp
+  fullName: GameCanvas.Proxy.ExitApp()
+  nameWithType: Proxy.ExitApp()
+- uid: GameCanvas.Proxy.ExitApp*
+  name: ExitApp
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ExitApp_
+  commentId: Overload:GameCanvas.Proxy.ExitApp
+  fullName: GameCanvas.Proxy.ExitApp
+  nameWithType: Proxy.ExitApp
+- uid: GameCanvas.Proxy.FillCircle(System.Int32,System.Int32,System.Int32)
+  name: FillCircle(Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_FillCircle_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.FillCircle(System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.FillCircle(System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.FillCircle(Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.FillCircle*
+  name: FillCircle
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_FillCircle_
+  commentId: Overload:GameCanvas.Proxy.FillCircle
+  fullName: GameCanvas.Proxy.FillCircle
+  nameWithType: Proxy.FillCircle
+- uid: GameCanvas.Proxy.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: FillRect(Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_FillRect_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.FillRect(System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.FillRect(System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.FillRect(Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.FillRect*
+  name: FillRect
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_FillRect_
+  commentId: Overload:GameCanvas.Proxy.FillRect
+  fullName: GameCanvas.Proxy.FillRect
+  nameWithType: Proxy.FillRect
+- uid: GameCanvas.Proxy.GetImageHeight(System.Int32)
+  name: GetImageHeight(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageHeight_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetImageHeight(System.Int32)
+  fullName: GameCanvas.Proxy.GetImageHeight(System.Int32)
+  nameWithType: Proxy.GetImageHeight(Int32)
+- uid: GameCanvas.Proxy.GetImageHeight*
+  name: GetImageHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageHeight_
+  commentId: Overload:GameCanvas.Proxy.GetImageHeight
+  fullName: GameCanvas.Proxy.GetImageHeight
+  nameWithType: Proxy.GetImageHeight
+- uid: GameCanvas.Proxy.GetImageWidth(System.Int32)
+  name: GetImageWidth(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageWidth_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetImageWidth(System.Int32)
+  fullName: GameCanvas.Proxy.GetImageWidth(System.Int32)
+  nameWithType: Proxy.GetImageWidth(Int32)
+- uid: GameCanvas.Proxy.GetImageWidth*
+  name: GetImageWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageWidth_
+  commentId: Overload:GameCanvas.Proxy.GetImageWidth
+  fullName: GameCanvas.Proxy.GetImageWidth
+  nameWithType: Proxy.GetImageWidth
+- uid: GameCanvas.Proxy.GetIsKeyBegan(GameCanvas.EKeyCode)
+  name: GetIsKeyBegan(EKeyCode)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyBegan_GameCanvas_EKeyCode_
+  commentId: M:GameCanvas.Proxy.GetIsKeyBegan(GameCanvas.EKeyCode)
+  fullName: GameCanvas.Proxy.GetIsKeyBegan(GameCanvas.EKeyCode)
+  nameWithType: Proxy.GetIsKeyBegan(EKeyCode)
+- uid: GameCanvas.Proxy.GetIsKeyBegan*
+  name: GetIsKeyBegan
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyBegan_
+  commentId: Overload:GameCanvas.Proxy.GetIsKeyBegan
+  fullName: GameCanvas.Proxy.GetIsKeyBegan
+  nameWithType: Proxy.GetIsKeyBegan
+- uid: GameCanvas.Proxy.GetIsKeyEnded(GameCanvas.EKeyCode)
+  name: GetIsKeyEnded(EKeyCode)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyEnded_GameCanvas_EKeyCode_
+  commentId: M:GameCanvas.Proxy.GetIsKeyEnded(GameCanvas.EKeyCode)
+  fullName: GameCanvas.Proxy.GetIsKeyEnded(GameCanvas.EKeyCode)
+  nameWithType: Proxy.GetIsKeyEnded(EKeyCode)
+- uid: GameCanvas.Proxy.GetIsKeyEnded*
+  name: GetIsKeyEnded
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyEnded_
+  commentId: Overload:GameCanvas.Proxy.GetIsKeyEnded
+  fullName: GameCanvas.Proxy.GetIsKeyEnded
+  nameWithType: Proxy.GetIsKeyEnded
+- uid: GameCanvas.Proxy.GetIsKeyPress(GameCanvas.EKeyCode)
+  name: GetIsKeyPress(EKeyCode)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyPress_GameCanvas_EKeyCode_
+  commentId: M:GameCanvas.Proxy.GetIsKeyPress(GameCanvas.EKeyCode)
+  fullName: GameCanvas.Proxy.GetIsKeyPress(GameCanvas.EKeyCode)
+  nameWithType: Proxy.GetIsKeyPress(EKeyCode)
+- uid: GameCanvas.Proxy.GetIsKeyPress*
+  name: GetIsKeyPress
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyPress_
+  commentId: Overload:GameCanvas.Proxy.GetIsKeyPress
+  fullName: GameCanvas.Proxy.GetIsKeyPress
+  nameWithType: Proxy.GetIsKeyPress
+- uid: GameCanvas.Proxy.GetIsPointerBegan(System.Int32)
+  name: GetIsPointerBegan(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerBegan_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetIsPointerBegan(System.Int32)
+  fullName: GameCanvas.Proxy.GetIsPointerBegan(System.Int32)
+  nameWithType: Proxy.GetIsPointerBegan(Int32)
+- uid: GameCanvas.Proxy.GetIsPointerBegan*
+  name: GetIsPointerBegan
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerBegan_
+  commentId: Overload:GameCanvas.Proxy.GetIsPointerBegan
+  fullName: GameCanvas.Proxy.GetIsPointerBegan
+  nameWithType: Proxy.GetIsPointerBegan
+- uid: GameCanvas.Proxy.GetIsPointerEnded(System.Int32)
+  name: GetIsPointerEnded(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerEnded_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetIsPointerEnded(System.Int32)
+  fullName: GameCanvas.Proxy.GetIsPointerEnded(System.Int32)
+  nameWithType: Proxy.GetIsPointerEnded(Int32)
+- uid: GameCanvas.Proxy.GetIsPointerEnded*
+  name: GetIsPointerEnded
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerEnded_
+  commentId: Overload:GameCanvas.Proxy.GetIsPointerEnded
+  fullName: GameCanvas.Proxy.GetIsPointerEnded
+  nameWithType: Proxy.GetIsPointerEnded
+- uid: GameCanvas.Proxy.GetKeyPressDuration(GameCanvas.EKeyCode)
+  name: GetKeyPressDuration(EKeyCode)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetKeyPressDuration_GameCanvas_EKeyCode_
+  commentId: M:GameCanvas.Proxy.GetKeyPressDuration(GameCanvas.EKeyCode)
+  fullName: GameCanvas.Proxy.GetKeyPressDuration(GameCanvas.EKeyCode)
+  nameWithType: Proxy.GetKeyPressDuration(EKeyCode)
+- uid: GameCanvas.Proxy.GetKeyPressDuration*
+  name: GetKeyPressDuration
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetKeyPressDuration_
+  commentId: Overload:GameCanvas.Proxy.GetKeyPressDuration
+  fullName: GameCanvas.Proxy.GetKeyPressDuration
+  nameWithType: Proxy.GetKeyPressDuration
+- uid: GameCanvas.Proxy.GetKeyPressFrameCount(GameCanvas.EKeyCode)
+  name: GetKeyPressFrameCount(EKeyCode)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetKeyPressFrameCount_GameCanvas_EKeyCode_
+  commentId: M:GameCanvas.Proxy.GetKeyPressFrameCount(GameCanvas.EKeyCode)
+  fullName: GameCanvas.Proxy.GetKeyPressFrameCount(GameCanvas.EKeyCode)
+  nameWithType: Proxy.GetKeyPressFrameCount(EKeyCode)
+- uid: GameCanvas.Proxy.GetKeyPressFrameCount*
+  name: GetKeyPressFrameCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetKeyPressFrameCount_
+  commentId: Overload:GameCanvas.Proxy.GetKeyPressFrameCount
+  fullName: GameCanvas.Proxy.GetKeyPressFrameCount
+  nameWithType: Proxy.GetKeyPressFrameCount
+- uid: GameCanvas.Proxy.GetPointerDuration(System.Int32)
+  name: GetPointerDuration(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetPointerDuration(System.Int32)
+  fullName: GameCanvas.Proxy.GetPointerDuration(System.Int32)
+  nameWithType: Proxy.GetPointerDuration(Int32)
+- uid: GameCanvas.Proxy.GetPointerDuration*
+  name: GetPointerDuration
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_
+  commentId: Overload:GameCanvas.Proxy.GetPointerDuration
+  fullName: GameCanvas.Proxy.GetPointerDuration
+  nameWithType: Proxy.GetPointerDuration
+- uid: GameCanvas.Proxy.GetPointerEvent(System.Int32)
+  name: GetPointerEvent(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerEvent_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetPointerEvent(System.Int32)
+  fullName: GameCanvas.Proxy.GetPointerEvent(System.Int32)
+  nameWithType: Proxy.GetPointerEvent(Int32)
+- uid: GameCanvas.Proxy.GetPointerEvent*
+  name: GetPointerEvent
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerEvent_
+  commentId: Overload:GameCanvas.Proxy.GetPointerEvent
+  fullName: GameCanvas.Proxy.GetPointerEvent
+  nameWithType: Proxy.GetPointerEvent
+- uid: GameCanvas.Proxy.GetPointerFrameCount(System.Int32)
+  name: GetPointerFrameCount(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerFrameCount_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetPointerFrameCount(System.Int32)
+  fullName: GameCanvas.Proxy.GetPointerFrameCount(System.Int32)
+  nameWithType: Proxy.GetPointerFrameCount(Int32)
+- uid: GameCanvas.Proxy.GetPointerFrameCount*
+  name: GetPointerFrameCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerFrameCount_
+  commentId: Overload:GameCanvas.Proxy.GetPointerFrameCount
+  fullName: GameCanvas.Proxy.GetPointerFrameCount
+  nameWithType: Proxy.GetPointerFrameCount
+- uid: GameCanvas.Proxy.GetPointerX(System.Int32)
+  name: GetPointerX(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerX_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetPointerX(System.Int32)
+  fullName: GameCanvas.Proxy.GetPointerX(System.Int32)
+  nameWithType: Proxy.GetPointerX(Int32)
+- uid: GameCanvas.Proxy.GetPointerX*
+  name: GetPointerX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerX_
+  commentId: Overload:GameCanvas.Proxy.GetPointerX
+  fullName: GameCanvas.Proxy.GetPointerX
+  nameWithType: Proxy.GetPointerX
+- uid: GameCanvas.Proxy.GetPointerY(System.Int32)
+  name: GetPointerY(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerY_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetPointerY(System.Int32)
+  fullName: GameCanvas.Proxy.GetPointerY(System.Int32)
+  nameWithType: Proxy.GetPointerY(Int32)
+- uid: GameCanvas.Proxy.GetPointerY*
+  name: GetPointerY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerY_
+  commentId: Overload:GameCanvas.Proxy.GetPointerY
+  fullName: GameCanvas.Proxy.GetPointerY
+  nameWithType: Proxy.GetPointerY
+- uid: GameCanvas.Proxy.GetStringWidth(System.String)
+  name: GetStringWidth(String)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetStringWidth_System_String_
+  commentId: M:GameCanvas.Proxy.GetStringWidth(System.String)
+  fullName: GameCanvas.Proxy.GetStringWidth(System.String)
+  nameWithType: Proxy.GetStringWidth(String)
+- uid: GameCanvas.Proxy.GetStringWidth*
+  name: GetStringWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetStringWidth_
+  commentId: Overload:GameCanvas.Proxy.GetStringWidth
+  fullName: GameCanvas.Proxy.GetStringWidth
+  nameWithType: Proxy.GetStringWidth
+- uid: GameCanvas.Proxy.HasPointerEvent
+  name: HasPointerEvent
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasPointerEvent
+  commentId: P:GameCanvas.Proxy.HasPointerEvent
+  fullName: GameCanvas.Proxy.HasPointerEvent
+  nameWithType: Proxy.HasPointerEvent
+- uid: GameCanvas.Proxy.HasPointerEvent*
+  name: HasPointerEvent
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasPointerEvent_
+  commentId: Overload:GameCanvas.Proxy.HasPointerEvent
+  fullName: GameCanvas.Proxy.HasPointerEvent
+  nameWithType: Proxy.HasPointerEvent
+- uid: GameCanvas.Proxy.Height
+  name: Height
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Height
+  commentId: P:GameCanvas.Proxy.Height
+  fullName: GameCanvas.Proxy.Height
+  nameWithType: Proxy.Height
+- uid: GameCanvas.Proxy.Height*
+  name: Height
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Height_
+  commentId: Overload:GameCanvas.Proxy.Height
+  fullName: GameCanvas.Proxy.Height
+  nameWithType: Proxy.Height
+- uid: GameCanvas.Proxy.KeyEscape
+  name: KeyEscape
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_KeyEscape
+  commentId: F:GameCanvas.Proxy.KeyEscape
+  fullName: GameCanvas.Proxy.KeyEscape
+  nameWithType: Proxy.KeyEscape
+- uid: GameCanvas.Proxy.Load(System.Int32)
+  name: Load(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Load_System_Int32_
+  commentId: M:GameCanvas.Proxy.Load(System.Int32)
+  fullName: GameCanvas.Proxy.Load(System.Int32)
+  nameWithType: Proxy.Load(Int32)
+- uid: GameCanvas.Proxy.Load*
+  name: Load
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Load_
+  commentId: Overload:GameCanvas.Proxy.Load
+  fullName: GameCanvas.Proxy.Load
+  nameWithType: Proxy.Load
+- uid: GameCanvas.Proxy.Pause
+  name: Pause()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Pause
+  commentId: M:GameCanvas.Proxy.Pause
+  fullName: GameCanvas.Proxy.Pause()
+  nameWithType: Proxy.Pause()
+- uid: GameCanvas.Proxy.Pause*
+  name: Pause
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Pause_
+  commentId: Overload:GameCanvas.Proxy.Pause
+  fullName: GameCanvas.Proxy.Pause
+  nameWithType: Proxy.Pause
+- uid: GameCanvas.Proxy.Play(System.Int32,System.Boolean)
+  name: Play(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Play_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.Play(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.Play(System.Int32, System.Boolean)
+  nameWithType: Proxy.Play(Int32, Boolean)
+- uid: GameCanvas.Proxy.Play*
+  name: Play
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Play_
+  commentId: Overload:GameCanvas.Proxy.Play
+  fullName: GameCanvas.Proxy.Play
+  nameWithType: Proxy.Play
+- uid: GameCanvas.Proxy.PointerCount
+  name: PointerCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PointerCount
+  commentId: P:GameCanvas.Proxy.PointerCount
+  fullName: GameCanvas.Proxy.PointerCount
+  nameWithType: Proxy.PointerCount
+- uid: GameCanvas.Proxy.PointerCount*
+  name: PointerCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PointerCount_
+  commentId: Overload:GameCanvas.Proxy.PointerCount
+  fullName: GameCanvas.Proxy.PointerCount
+  nameWithType: Proxy.PointerCount
+- uid: GameCanvas.Proxy.Rand(System.Int32,System.Int32)
+  name: Rand(Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Rand_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.Rand(System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.Rand(System.Int32, System.Int32)
+  nameWithType: Proxy.Rand(Int32, Int32)
+- uid: GameCanvas.Proxy.Rand*
+  name: Rand
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Rand_
+  commentId: Overload:GameCanvas.Proxy.Rand
+  fullName: GameCanvas.Proxy.Rand
+  nameWithType: Proxy.Rand
+- uid: GameCanvas.Proxy.ResetGame
+  name: ResetGame()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ResetGame
+  commentId: M:GameCanvas.Proxy.ResetGame
+  fullName: GameCanvas.Proxy.ResetGame()
+  nameWithType: Proxy.ResetGame()
+- uid: GameCanvas.Proxy.ResetGame*
+  name: ResetGame
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ResetGame_
+  commentId: Overload:GameCanvas.Proxy.ResetGame
+  fullName: GameCanvas.Proxy.ResetGame
+  nameWithType: Proxy.ResetGame
+- uid: GameCanvas.Proxy.Save(System.Int32,System.Int32)
+  name: Save(Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Save_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.Save(System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.Save(System.Int32, System.Int32)
+  nameWithType: Proxy.Save(Int32, Int32)
+- uid: GameCanvas.Proxy.Save*
+  name: Save
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Save_
+  commentId: Overload:GameCanvas.Proxy.Save
+  fullName: GameCanvas.Proxy.Save
+  nameWithType: Proxy.Save
+- uid: GameCanvas.Proxy.SetColor(System.Int32)
+  name: SetColor(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColor_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetColor(System.Int32)
+  fullName: GameCanvas.Proxy.SetColor(System.Int32)
+  nameWithType: Proxy.SetColor(Int32)
+- uid: GameCanvas.Proxy.SetColor(System.Int32,System.Int32,System.Int32)
+  name: SetColor(Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColor_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetColor(System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.SetColor(System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.SetColor(Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.SetColor(UnityEngine.Color)
+  name: SetColor(Color)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColor_UnityEngine_Color_
+  commentId: M:GameCanvas.Proxy.SetColor(UnityEngine.Color)
+  fullName: GameCanvas.Proxy.SetColor(UnityEngine.Color)
+  nameWithType: Proxy.SetColor(Color)
+- uid: GameCanvas.Proxy.SetColor*
+  name: SetColor
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColor_
+  commentId: Overload:GameCanvas.Proxy.SetColor
+  fullName: GameCanvas.Proxy.SetColor
+  nameWithType: Proxy.SetColor
+- uid: GameCanvas.Proxy.SetFont(System.Int32,UnityEngine.FontStyle,System.Int32)
+  name: SetFont(Int32, FontStyle, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFont_System_Int32_UnityEngine_FontStyle_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetFont(System.Int32,UnityEngine.FontStyle,System.Int32)
+  fullName: GameCanvas.Proxy.SetFont(System.Int32, UnityEngine.FontStyle, System.Int32)
+  nameWithType: Proxy.SetFont(Int32, FontStyle, Int32)
+- uid: GameCanvas.Proxy.SetFont*
+  name: SetFont
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFont_
+  commentId: Overload:GameCanvas.Proxy.SetFont
+  fullName: GameCanvas.Proxy.SetFont
+  nameWithType: Proxy.SetFont
+- uid: GameCanvas.Proxy.SetFontSize(System.Int32)
+  name: SetFontSize(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFontSize_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetFontSize(System.Int32)
+  fullName: GameCanvas.Proxy.SetFontSize(System.Int32)
+  nameWithType: Proxy.SetFontSize(Int32)
+- uid: GameCanvas.Proxy.SetFontSize*
+  name: SetFontSize
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFontSize_
+  commentId: Overload:GameCanvas.Proxy.SetFontSize
+  fullName: GameCanvas.Proxy.SetFontSize
+  nameWithType: Proxy.SetFontSize
+- uid: GameCanvas.Proxy.SetSeed(System.Int32)
+  name: SetSeed(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSeed_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetSeed(System.Int32)
+  fullName: GameCanvas.Proxy.SetSeed(System.Int32)
+  nameWithType: Proxy.SetSeed(Int32)
+- uid: GameCanvas.Proxy.SetSeed*
+  name: SetSeed
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSeed_
+  commentId: Overload:GameCanvas.Proxy.SetSeed
+  fullName: GameCanvas.Proxy.SetSeed
+  nameWithType: Proxy.SetSeed
+- uid: GameCanvas.Proxy.ShowScreenKeyboard
+  name: ShowScreenKeyboard()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ShowScreenKeyboard
+  commentId: M:GameCanvas.Proxy.ShowScreenKeyboard
+  fullName: GameCanvas.Proxy.ShowScreenKeyboard()
+  nameWithType: Proxy.ShowScreenKeyboard()
+- uid: GameCanvas.Proxy.ShowScreenKeyboard*
+  name: ShowScreenKeyboard
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ShowScreenKeyboard_
+  commentId: Overload:GameCanvas.Proxy.ShowScreenKeyboard
+  fullName: GameCanvas.Proxy.ShowScreenKeyboard
+  nameWithType: Proxy.ShowScreenKeyboard
+- uid: GameCanvas.Proxy.Sin(System.Double)
+  name: Sin(Double)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sin_System_Double_
+  commentId: M:GameCanvas.Proxy.Sin(System.Double)
+  fullName: GameCanvas.Proxy.Sin(System.Double)
+  nameWithType: Proxy.Sin(Double)
+- uid: GameCanvas.Proxy.Sin*
+  name: Sin
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sin_
+  commentId: Overload:GameCanvas.Proxy.Sin
+  fullName: GameCanvas.Proxy.Sin
+  nameWithType: Proxy.Sin
+- uid: GameCanvas.Proxy.Sqrt(System.Double)
+  name: Sqrt(Double)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sqrt_System_Double_
+  commentId: M:GameCanvas.Proxy.Sqrt(System.Double)
+  fullName: GameCanvas.Proxy.Sqrt(System.Double)
+  nameWithType: Proxy.Sqrt(Double)
+- uid: GameCanvas.Proxy.Sqrt*
+  name: Sqrt
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sqrt_
+  commentId: Overload:GameCanvas.Proxy.Sqrt
+  fullName: GameCanvas.Proxy.Sqrt
+  nameWithType: Proxy.Sqrt
+- uid: GameCanvas.Proxy.Stop
+  name: Stop()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Stop
+  commentId: M:GameCanvas.Proxy.Stop
+  fullName: GameCanvas.Proxy.Stop()
+  nameWithType: Proxy.Stop()
+- uid: GameCanvas.Proxy.Stop*
+  name: Stop
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Stop_
+  commentId: Overload:GameCanvas.Proxy.Stop
+  fullName: GameCanvas.Proxy.Stop
+  nameWithType: Proxy.Stop
+- uid: GameCanvas.Proxy.Unpause
+  name: Unpause()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Unpause
+  commentId: M:GameCanvas.Proxy.Unpause
+  fullName: GameCanvas.Proxy.Unpause()
+  nameWithType: Proxy.Unpause()
+- uid: GameCanvas.Proxy.Unpause*
+  name: Unpause
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Unpause_
+  commentId: Overload:GameCanvas.Proxy.Unpause
+  fullName: GameCanvas.Proxy.Unpause
+  nameWithType: Proxy.Unpause
+- uid: GameCanvas.Proxy.Width
+  name: Width
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Width
+  commentId: P:GameCanvas.Proxy.Width
+  fullName: GameCanvas.Proxy.Width
+  nameWithType: Proxy.Width
+- uid: GameCanvas.Proxy.Width*
+  name: Width
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Width_
+  commentId: Overload:GameCanvas.Proxy.Width
+  fullName: GameCanvas.Proxy.Width
+  nameWithType: Proxy.Width
+- uid: GameCanvas.Proxy.WriteScreenImage(System.String)
+  name: WriteScreenImage(String)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_System_String_
+  commentId: M:GameCanvas.Proxy.WriteScreenImage(System.String)
+  fullName: GameCanvas.Proxy.WriteScreenImage(System.String)
+  nameWithType: Proxy.WriteScreenImage(String)
+- uid: GameCanvas.Proxy.WriteScreenImage*
+  name: WriteScreenImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_
+  commentId: Overload:GameCanvas.Proxy.WriteScreenImage
+  fullName: GameCanvas.Proxy.WriteScreenImage
+  nameWithType: Proxy.WriteScreenImage

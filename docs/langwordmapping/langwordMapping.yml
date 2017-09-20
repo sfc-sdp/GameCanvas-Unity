@@ -1,0 +1,21 @@
+﻿references:
+- uid: langword_csharp_null
+  name: "null"
+- uid: langword_csharp_static
+  name: static
+- uid: langword_csharp_virtual
+  name: virtual
+- uid: langword_csharp_true
+  name: "true"
+- uid: langword_csharp_false
+  name: "false"
+- uid: langword_csharp_abstract
+  name: abstract
+- uid: langword_csharp_sealed
+  name: sealed
+- uid: langword_csharp_async
+  name: async
+- uid: langword_csharp_await
+  name: await
+- uid: langword_csharp_async/await
+  name: async/await
