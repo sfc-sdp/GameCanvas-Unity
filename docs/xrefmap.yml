@@ -985,6 +985,21 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.SetColor
   fullName: GameCanvas.Engine.Graphic.SetColor
   nameWithType: Graphic.SetColor
+- uid: GameCanvas.Engine.Graphic.SetColorHSV(System.Single@,System.Single@,System.Single@)
+  name: SetColorHSV(ref Single, ref Single, ref Single)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColorHSV_System_Single__System_Single__System_Single__
+  commentId: M:GameCanvas.Engine.Graphic.SetColorHSV(System.Single@,System.Single@,System.Single@)
+  name.vb: SetColorHSV(ByRef Single, ByRef Single, ByRef Single)
+  fullName: GameCanvas.Engine.Graphic.SetColorHSV(ref System.Single, ref System.Single, ref System.Single)
+  fullName.vb: GameCanvas.Engine.Graphic.SetColorHSV(ByRef System.Single, ByRef System.Single, ByRef System.Single)
+  nameWithType: Graphic.SetColorHSV(ref Single, ref Single, ref Single)
+  nameWithType.vb: Graphic.SetColorHSV(ByRef Single, ByRef Single, ByRef Single)
+- uid: GameCanvas.Engine.Graphic.SetColorHSV*
+  name: SetColorHSV
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColorHSV_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetColorHSV
+  fullName: GameCanvas.Engine.Graphic.SetColorHSV
+  nameWithType: Graphic.SetColorHSV
 - uid: GameCanvas.Engine.Graphic.SetFont(System.Int32@,UnityEngine.FontStyle@,System.Int32@)
   name: SetFont(ref Int32, ref FontStyle, ref Int32)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetFont_System_Int32__UnityEngine_FontStyle__System_Int32__
@@ -2332,6 +2347,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.SetColor
   fullName: GameCanvas.Proxy.SetColor
   nameWithType: Proxy.SetColor
+- uid: GameCanvas.Proxy.SetColorHsv(System.Single,System.Single,System.Single)
+  name: SetColorHsv(Single, Single, Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColorHsv_System_Single_System_Single_System_Single_
+  commentId: M:GameCanvas.Proxy.SetColorHsv(System.Single,System.Single,System.Single)
+  fullName: GameCanvas.Proxy.SetColorHsv(System.Single, System.Single, System.Single)
+  nameWithType: Proxy.SetColorHsv(Single, Single, Single)
+- uid: GameCanvas.Proxy.SetColorHsv*
+  name: SetColorHsv
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColorHsv_
+  commentId: Overload:GameCanvas.Proxy.SetColorHsv
+  fullName: GameCanvas.Proxy.SetColorHsv
+  nameWithType: Proxy.SetColorHsv
 - uid: GameCanvas.Proxy.SetFont(System.Int32,UnityEngine.FontStyle,System.Int32)
   name: SetFont(Int32, FontStyle, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFont_System_Int32_UnityEngine_FontStyle_System_Int32_
