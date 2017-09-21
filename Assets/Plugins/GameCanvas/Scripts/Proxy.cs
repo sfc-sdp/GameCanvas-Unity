@@ -269,11 +269,11 @@ namespace GameCanvas
         /// <summary>
         /// 画面の幅
         /// </summary>
-        public int Width => cGraphic.CanvasWidth;
+        public int CanvasWidth => cGraphic.CanvasWidth;
         /// <summary>
         /// 画面の高さ
         /// </summary>
-        public int Height => cGraphic.CanvasHeight;
+        public int CanvasHeight => cGraphic.CanvasHeight;
         /// <summary>
         /// フレームレート
         /// </summary>
@@ -522,6 +522,10 @@ namespace GameCanvas
         [Hidden(HiddenState.Never), System.Obsolete]
         public readonly EKeyCode KeySpace = EKeyCode.Space;
 
+        [Hidden(HiddenState.Never), System.Obsolete("gc.CanvasWidth")]
+        public int Width => cGraphic.CanvasWidth;
+        [Hidden(HiddenState.Never), System.Obsolete("gc.CanvasWHeight")]
+        public int Height => cGraphic.CanvasHeight;
         [Hidden(HiddenState.Never), System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
         public void SetWindowTitle(string title) { }
         [Hidden(HiddenState.Never), System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]

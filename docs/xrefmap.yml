@@ -1708,6 +1708,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.Atan2
   fullName: GameCanvas.Proxy.Atan2
   nameWithType: Proxy.Atan2
+- uid: GameCanvas.Proxy.CanvasHeight
+  name: CanvasHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight
+  commentId: P:GameCanvas.Proxy.CanvasHeight
+  fullName: GameCanvas.Proxy.CanvasHeight
+  nameWithType: Proxy.CanvasHeight
+- uid: GameCanvas.Proxy.CanvasHeight*
+  name: CanvasHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight_
+  commentId: Overload:GameCanvas.Proxy.CanvasHeight
+  fullName: GameCanvas.Proxy.CanvasHeight
+  nameWithType: Proxy.CanvasHeight
+- uid: GameCanvas.Proxy.CanvasWidth
+  name: CanvasWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasWidth
+  commentId: P:GameCanvas.Proxy.CanvasWidth
+  fullName: GameCanvas.Proxy.CanvasWidth
+  nameWithType: Proxy.CanvasWidth
+- uid: GameCanvas.Proxy.CanvasWidth*
+  name: CanvasWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasWidth_
+  commentId: Overload:GameCanvas.Proxy.CanvasWidth
+  fullName: GameCanvas.Proxy.CanvasWidth
+  nameWithType: Proxy.CanvasWidth
 - uid: GameCanvas.Proxy.ChangeVolume(System.Int32)
   name: ChangeVolume(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeVolume_System_Int32_
@@ -2194,18 +2218,6 @@ references:
   commentId: Overload:GameCanvas.Proxy.HasPointerEvent
   fullName: GameCanvas.Proxy.HasPointerEvent
   nameWithType: Proxy.HasPointerEvent
-- uid: GameCanvas.Proxy.Height
-  name: Height
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Height
-  commentId: P:GameCanvas.Proxy.Height
-  fullName: GameCanvas.Proxy.Height
-  nameWithType: Proxy.Height
-- uid: GameCanvas.Proxy.Height*
-  name: Height
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Height_
-  commentId: Overload:GameCanvas.Proxy.Height
-  fullName: GameCanvas.Proxy.Height
-  nameWithType: Proxy.Height
 - uid: GameCanvas.Proxy.KeyEscape
   name: KeyEscape
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_KeyEscape
@@ -2416,18 +2428,6 @@ references:
   commentId: Overload:GameCanvas.Proxy.Unpause
   fullName: GameCanvas.Proxy.Unpause
   nameWithType: Proxy.Unpause
-- uid: GameCanvas.Proxy.Width
-  name: Width
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Width
-  commentId: P:GameCanvas.Proxy.Width
-  fullName: GameCanvas.Proxy.Width
-  nameWithType: Proxy.Width
-- uid: GameCanvas.Proxy.Width*
-  name: Width
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Width_
-  commentId: Overload:GameCanvas.Proxy.Width
-  fullName: GameCanvas.Proxy.Width
-  nameWithType: Proxy.Width
 - uid: GameCanvas.Proxy.WriteScreenImage(System.String)
   name: WriteScreenImage(String)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_System_String_
