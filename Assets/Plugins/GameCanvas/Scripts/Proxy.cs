@@ -267,6 +267,12 @@ namespace GameCanvas
         /// <returns>常に真を返します</returns>
         public bool WriteScreenImage(string file) => cGraphic.WriteScreenImage(ref file);
         /// <summary>
+        /// 画面の幅と高さを設定します。
+        /// </summary>
+        /// <param name="width">幅</param>
+        /// <param name="height">高さ</param>
+        public void SetResolution(int width, int height) => cGraphic.SetResolution(width, height);
+        /// <summary>
         /// 画面の幅
         /// </summary>
         public int CanvasWidth => cGraphic.CanvasWidth;
