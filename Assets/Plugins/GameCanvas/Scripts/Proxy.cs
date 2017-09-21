@@ -161,6 +161,13 @@ namespace GameCanvas
         /// <param name="b">色の青成分 (0～255)</param>
         public void SetColor(int r, int g, int b) => cGraphic.SetColor(ref r, ref g, ref b);
         /// <summary>
+        /// 描画に用いる塗りの色をHSV色空間で指定します。
+        /// </summary>
+        /// <param name="h">色相（0f～1f）</param>
+        /// <param name="s">彩度（0f～1f）</param>
+        /// <param name="v">明度（0f～1f）</param>
+        public void SetColorHsv(float h, float s, float v) => cGraphic.SetColorHSV(ref h, ref s, ref v);
+        /// <summary>
         /// 直線を描画します。
         /// </summary>
         /// <param name="startX">開始点のX座標</param>
@@ -267,13 +274,19 @@ namespace GameCanvas
         /// <returns>常に真を返します</returns>
         public bool WriteScreenImage(string file) => cGraphic.WriteScreenImage(ref file);
         /// <summary>
+        /// 画面の幅と高さを設定します。
+        /// </summary>
+        /// <param name="width">幅</param>
+        /// <param name="height">高さ</param>
+        public void SetResolution(int width, int height) => cGraphic.SetResolution(width, height);
+        /// <summary>
         /// 画面の幅
         /// </summary>
-        public int Width => cGraphic.CanvasWidth;
+        public int CanvasWidth => cGraphic.CanvasWidth;
         /// <summary>
         /// 画面の高さ
         /// </summary>
-        public int Height => cGraphic.CanvasHeight;
+        public int CanvasHeight => cGraphic.CanvasHeight;
         /// <summary>
         /// フレームレート
         /// </summary>
@@ -522,6 +535,10 @@ namespace GameCanvas
         [Hidden(HiddenState.Never), System.Obsolete]
         public readonly EKeyCode KeySpace = EKeyCode.Space;
 
+        [Hidden(HiddenState.Never), System.Obsolete("gc.CanvasWidth")]
+        public int Width => cGraphic.CanvasWidth;
+        [Hidden(HiddenState.Never), System.Obsolete("gc.CanvasWHeight")]
+        public int Height => cGraphic.CanvasHeight;
         [Hidden(HiddenState.Never), System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
         public void SetWindowTitle(string title) { }
         [Hidden(HiddenState.Never), System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]

@@ -328,6 +328,11 @@ namespace GameCanvas.Engine
             mColor = new Color(r * n, g * n, b * n);
         }
 
+        public void SetColorHSV(ref float h, ref float s, ref float v)
+        {
+            mColor = Color.HSVToRGB(h, s, v);
+        }
+
         public void DrawLine(ref int startX, ref int startY, ref int endX, ref int endY)
         {
             if (mIsDispose) return;

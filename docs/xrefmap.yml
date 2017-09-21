@@ -985,6 +985,21 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.SetColor
   fullName: GameCanvas.Engine.Graphic.SetColor
   nameWithType: Graphic.SetColor
+- uid: GameCanvas.Engine.Graphic.SetColorHSV(System.Single@,System.Single@,System.Single@)
+  name: SetColorHSV(ref Single, ref Single, ref Single)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColorHSV_System_Single__System_Single__System_Single__
+  commentId: M:GameCanvas.Engine.Graphic.SetColorHSV(System.Single@,System.Single@,System.Single@)
+  name.vb: SetColorHSV(ByRef Single, ByRef Single, ByRef Single)
+  fullName: GameCanvas.Engine.Graphic.SetColorHSV(ref System.Single, ref System.Single, ref System.Single)
+  fullName.vb: GameCanvas.Engine.Graphic.SetColorHSV(ByRef System.Single, ByRef System.Single, ByRef System.Single)
+  nameWithType: Graphic.SetColorHSV(ref Single, ref Single, ref Single)
+  nameWithType.vb: Graphic.SetColorHSV(ByRef Single, ByRef Single, ByRef Single)
+- uid: GameCanvas.Engine.Graphic.SetColorHSV*
+  name: SetColorHSV
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColorHSV_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetColorHSV
+  fullName: GameCanvas.Engine.Graphic.SetColorHSV
+  nameWithType: Graphic.SetColorHSV
 - uid: GameCanvas.Engine.Graphic.SetFont(System.Int32@,UnityEngine.FontStyle@,System.Int32@)
   name: SetFont(ref Int32, ref FontStyle, ref Int32)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetFont_System_Int32__UnityEngine_FontStyle__System_Int32__
@@ -1708,6 +1723,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.Atan2
   fullName: GameCanvas.Proxy.Atan2
   nameWithType: Proxy.Atan2
+- uid: GameCanvas.Proxy.CanvasHeight
+  name: CanvasHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight
+  commentId: P:GameCanvas.Proxy.CanvasHeight
+  fullName: GameCanvas.Proxy.CanvasHeight
+  nameWithType: Proxy.CanvasHeight
+- uid: GameCanvas.Proxy.CanvasHeight*
+  name: CanvasHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight_
+  commentId: Overload:GameCanvas.Proxy.CanvasHeight
+  fullName: GameCanvas.Proxy.CanvasHeight
+  nameWithType: Proxy.CanvasHeight
+- uid: GameCanvas.Proxy.CanvasWidth
+  name: CanvasWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasWidth
+  commentId: P:GameCanvas.Proxy.CanvasWidth
+  fullName: GameCanvas.Proxy.CanvasWidth
+  nameWithType: Proxy.CanvasWidth
+- uid: GameCanvas.Proxy.CanvasWidth*
+  name: CanvasWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasWidth_
+  commentId: Overload:GameCanvas.Proxy.CanvasWidth
+  fullName: GameCanvas.Proxy.CanvasWidth
+  nameWithType: Proxy.CanvasWidth
 - uid: GameCanvas.Proxy.ChangeVolume(System.Int32)
   name: ChangeVolume(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeVolume_System_Int32_
@@ -2194,18 +2233,6 @@ references:
   commentId: Overload:GameCanvas.Proxy.HasPointerEvent
   fullName: GameCanvas.Proxy.HasPointerEvent
   nameWithType: Proxy.HasPointerEvent
-- uid: GameCanvas.Proxy.Height
-  name: Height
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Height
-  commentId: P:GameCanvas.Proxy.Height
-  fullName: GameCanvas.Proxy.Height
-  nameWithType: Proxy.Height
-- uid: GameCanvas.Proxy.Height*
-  name: Height
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Height_
-  commentId: Overload:GameCanvas.Proxy.Height
-  fullName: GameCanvas.Proxy.Height
-  nameWithType: Proxy.Height
 - uid: GameCanvas.Proxy.KeyEscape
   name: KeyEscape
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_KeyEscape
@@ -2320,6 +2347,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.SetColor
   fullName: GameCanvas.Proxy.SetColor
   nameWithType: Proxy.SetColor
+- uid: GameCanvas.Proxy.SetColorHsv(System.Single,System.Single,System.Single)
+  name: SetColorHsv(Single, Single, Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColorHsv_System_Single_System_Single_System_Single_
+  commentId: M:GameCanvas.Proxy.SetColorHsv(System.Single,System.Single,System.Single)
+  fullName: GameCanvas.Proxy.SetColorHsv(System.Single, System.Single, System.Single)
+  nameWithType: Proxy.SetColorHsv(Single, Single, Single)
+- uid: GameCanvas.Proxy.SetColorHsv*
+  name: SetColorHsv
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColorHsv_
+  commentId: Overload:GameCanvas.Proxy.SetColorHsv
+  fullName: GameCanvas.Proxy.SetColorHsv
+  nameWithType: Proxy.SetColorHsv
 - uid: GameCanvas.Proxy.SetFont(System.Int32,UnityEngine.FontStyle,System.Int32)
   name: SetFont(Int32, FontStyle, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFont_System_Int32_UnityEngine_FontStyle_System_Int32_
@@ -2344,6 +2383,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.SetFontSize
   fullName: GameCanvas.Proxy.SetFontSize
   nameWithType: Proxy.SetFontSize
+- uid: GameCanvas.Proxy.SetResolution(System.Int32,System.Int32)
+  name: SetResolution(Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetResolution_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetResolution(System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.SetResolution(System.Int32, System.Int32)
+  nameWithType: Proxy.SetResolution(Int32, Int32)
+- uid: GameCanvas.Proxy.SetResolution*
+  name: SetResolution
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetResolution_
+  commentId: Overload:GameCanvas.Proxy.SetResolution
+  fullName: GameCanvas.Proxy.SetResolution
+  nameWithType: Proxy.SetResolution
 - uid: GameCanvas.Proxy.SetSeed(System.Int32)
   name: SetSeed(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSeed_System_Int32_
@@ -2416,18 +2467,6 @@ references:
   commentId: Overload:GameCanvas.Proxy.Unpause
   fullName: GameCanvas.Proxy.Unpause
   nameWithType: Proxy.Unpause
-- uid: GameCanvas.Proxy.Width
-  name: Width
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Width
-  commentId: P:GameCanvas.Proxy.Width
-  fullName: GameCanvas.Proxy.Width
-  nameWithType: Proxy.Width
-- uid: GameCanvas.Proxy.Width*
-  name: Width
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Width_
-  commentId: Overload:GameCanvas.Proxy.Width
-  fullName: GameCanvas.Proxy.Width
-  nameWithType: Proxy.Width
 - uid: GameCanvas.Proxy.WriteScreenImage(System.String)
   name: WriteScreenImage(String)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_System_String_
