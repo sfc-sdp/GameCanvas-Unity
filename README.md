@@ -1,10 +1,10 @@
-[![v2.0.0](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v2.0](https://img.shields.io/badge/GameCanvas%20API-v2.0-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.GameCanvas.html)
+[![v2.0.0](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v2.0](https://img.shields.io/badge/GameCanvas%20API-v2.0-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.Proxy.html)
 [<img alt="GameCanvas" align="right" src="Assets/Plugins/GameCanvas/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
 
-**GameCanvas for Unity** は、慶應義塾大学『スマートデバイスプログラミング』にて
-教材として使われている 2Dゲームエンジン です。
+**GameCanvas for Unity** は、慶應義塾大学『スマートデバイスプログラミング』にて  
+教材として使われている 2Dゲームフレームワーク です。
 
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 

@@ -13,6 +13,7 @@ namespace GameCanvas
     using UnityEngine;
     using GameCanvas.Engine;
     using GameCanvas.Input;
+    using Time = Engine.Time;
     using Collision = Engine.Collision;
     using HiddenAttribute = System.ComponentModel.EditorBrowsableAttribute;
     using HiddenState = System.ComponentModel.EditorBrowsableState;
@@ -23,6 +24,7 @@ namespace GameCanvas
         #region フィールド変数
         //----------------------------------------------------------
 
+        private readonly Time cTime;
         private readonly Graphic cGraphic;
         private readonly Sound cSound;
         private readonly Collision cCollision;
@@ -88,8 +90,9 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal Proxy(Graphic graphic, Sound sound, Collision collision, Pointer pointer, Keyboard keyboard)
+        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Pointer pointer, Keyboard keyboard)
         {
+            cTime = time;
             cGraphic = graphic;
             cSound = sound;
             cCollision = collision;
@@ -443,7 +446,7 @@ namespace GameCanvas
         /// <param name="y2">長方形Bの左上Y座標</param>
         /// <param name="w2">長方形Bの幅</param>
         /// <param name="h2">長方形Bの高さ</param>
-        /// <returns></returns>
+        /// <returns>重なっているかどうか</returns>
         public bool CheckHitRect(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) => cCollision.CheckHitRect(ref x1, ref y1, ref w1, ref h1, ref x2, ref y2, ref w2, ref h2);
         /// <summary>
         /// 画像A と 画像B が重なっているかどうか判定します。
@@ -454,7 +457,7 @@ namespace GameCanvas
         /// <param name="imageId2">画像Bの画像ID</param>
         /// <param name="x2">画像Bの左上X座標</param>
         /// <param name="y2">画像Bの左上Y座標</param>
-        /// <returns></returns>
+        /// <returns>重なっているかどうか</returns>
         public bool CheckHitImage(int imageId1, int x1, int y1, int imageId2, int x2, int y2) => cCollision.CheckHitImage(ref imageId1, ref x1, ref y1, ref imageId2, ref x2, ref y2);
         /// <summary>
         /// 円A と　円B が重なっているかどうか判定します。
@@ -465,7 +468,7 @@ namespace GameCanvas
         /// <param name="x2">円Bの中心X座標</param>
         /// <param name="y2">円Bの中心Y座標</param>
         /// <param name="r2">円Bの半径</param>
-        /// <returns></returns>
+        /// <returns>重なっているかどうか</returns>
         public bool CheckHitCircle(int x1, int y1, int r1, int x2, int y2, int r2) => cCollision.CheckHitCircle(ref x1, ref y1, ref r1, ref x2, ref y2, ref r2);
         /// <summary>
         /// 平方根を計算します。
@@ -493,11 +496,64 @@ namespace GameCanvas
         /// <returns>ベクトルの角度（度数法）</returns>
         public float Atan2(float x, float y) => Mathf.Atan2(x, y);
 
-        // 時間
+        // 時間（日時、フレーム）
 
-        public float TimeSinceStartup => Time.unscaledTime;
-        public float TimeSincePrevFrame => Time.unscaledDeltaTime;
-        public System.DateTime TimeNow => System.DateTime.Now;
+        /// <summary>
+        /// 現在フレームのアプリ起動からの経過時間（秒）
+        /// </summary>
+        public float TimeSinceStartup => cTime.SinceStartup;
+        /// <summary>
+        /// ひとつ前のフレームからの経過時間（秒）
+        /// </summary>
+        public float TimeSincePrevFrame => cTime.SincePrevFrame;
+        /// <summary>
+        /// 現在フレームの日付の西暦部分
+        /// </summary>
+        public int CurrentYear => cTime.Year;
+        /// <summary>
+        /// 現在フレームの日付の月部分（1～12）
+        /// </summary>
+        public int CurrentMonth => cTime.Month;
+        /// <summary>
+        /// 現在フレームの日付（1～31）
+        /// </summary>
+        public int CurrentDay => cTime.Day;
+        /// <summary>
+        /// 現在フレームの曜日（0～6）
+        /// </summary>
+        public System.DayOfWeek CurrentDayOfWeek => cTime.DayOfWeek;
+        /// <summary>
+        /// 現在フレームの時刻の時間部分（0～23）
+        /// </summary>
+        public int CurrentHour => cTime.Hour;
+        /// <summary>
+        /// 現在フレームの時刻の分部分（0～59）
+        /// </summary>
+        public int CurrentMinute => cTime.Minute;
+        /// <summary>
+        /// 現在フレームの時刻の秒部分（0～59）
+        /// </summary>
+        public int CurrentSecond => cTime.Second;
+        /// <summary>
+        /// 現在フレームの時刻のミリ秒部分（0～59）
+        /// </summary>
+        public int CurrentMillisecond => cTime.Millisecond;
+        /// <summary>
+        /// 現在フレームのUnixタイムスタンプ
+        /// </summary>
+        public long CurrentTimestamp => cTime.Timestamp;
+        /// <summary>
+        /// アプリ起動からの累計フレーム数
+        /// </summary>
+        public int CurrentFrame => cTime.FrameCount;
+        /// <summary>
+        /// 現在フレームの日時
+        /// </summary>
+        public System.DateTimeOffset CurrentTime => cTime.Current;
+        /// <summary>
+        /// 現在（関数呼び出し時点）の日時
+        /// </summary>
+        public System.DateTimeOffset NowTime => cTime.Now;
 
         // その他
 

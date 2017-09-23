@@ -115,8 +115,8 @@ namespace GameCanvas.Input
                 mLastX = cGraphic.ScreenToCanvasX(cEvents[0].ScreenX);
                 mLastY = cGraphic.ScreenToCanvasY(cEvents[0].ScreenY);
 
-                var currentFrame = Time.frameCount;
-                var currentTime = Time.unscaledTime;
+                var currentFrame = UnityEngine.Time.frameCount;
+                var currentTime = UnityEngine.Time.unscaledTime;
                 for (var i = 0; i < mEventNum; ++i)
                 {
                     var id = cEvents[i].Id;
