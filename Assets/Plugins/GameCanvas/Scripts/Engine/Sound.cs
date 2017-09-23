@@ -119,7 +119,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void ChangeVolume(int volume)
+        public void SetVolume(ref int volume)
         {
             cSource.volume = volume * 0.01f;
         }

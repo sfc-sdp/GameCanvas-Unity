@@ -7,6 +7,10 @@ article span:nth-of-type(2n + 1).small.pull-right {
 	display: none;
 }
 
+#_content > h1 {
+	font-size: 18px;
+	line-height: 1rem;
+}
 #_content > h3 {
 	margin-top: 50px;
 	margin-left: -0.66em;
@@ -24,8 +28,4 @@ article span:nth-of-type(2n + 1).small.pull-right {
 
 .article {
 	margin-top: 30px;
-}
-#GameCanvas_Proxy {
-	font-size: 18px;
-	line-height: 1rem;
 }

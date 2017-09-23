@@ -754,24 +754,24 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.DrawRightString
   fullName: GameCanvas.Engine.Graphic.DrawRightString
   nameWithType: Graphic.DrawRightString
-- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@)
-  name: DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double)
-  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Double__
-  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@)
-  name.vb: DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double)
-  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Double)
-  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Double)
-  nameWithType: Graphic.DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double)
-  nameWithType.vb: Graphic.DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double)
-- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@,System.Double@,System.Double@)
-  name: DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double, ref Double, ref Double)
-  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Double__System_Double__System_Double__
-  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Double@,System.Double@,System.Double@)
-  name.vb: DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double, ByRef Double, ByRef Double)
-  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Double, ref System.Double, ref System.Double)
-  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Double, ByRef System.Double, ByRef System.Double)
-  nameWithType: Graphic.DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Double, ref Double, ref Double)
-  nameWithType.vb: Graphic.DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Double, ByRef Double, ByRef Double)
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@)
+  name: DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Single)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Single__
+  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@)
+  name.vb: DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single)
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Single)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Single)
+  nameWithType: Graphic.DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Single)
+  nameWithType.vb: Graphic.DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single)
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@,System.Single@,System.Single@)
+  name: DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Single, ref Single, ref Single)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Single__System_Single__System_Single__
+  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateImage(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@,System.Single@,System.Single@)
+  name.vb: DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single, ByRef Single, ByRef Single)
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Single, ref System.Single, ref System.Single)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Single, ByRef System.Single, ByRef System.Single)
+  nameWithType: Graphic.DrawScaledRotateImage(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Single, ref Single, ref Single)
+  nameWithType.vb: Graphic.DrawScaledRotateImage(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single, ByRef Single, ByRef Single)
 - uid: GameCanvas.Engine.Graphic.DrawScaledRotateImage*
   name: DrawScaledRotateImage
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateImage_
@@ -1042,21 +1042,6 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.SetResolution
   fullName: GameCanvas.Engine.Graphic.SetResolution
   nameWithType: Graphic.SetResolution
-- uid: GameCanvas.Engine.Graphic.WriteScreenImage(System.String@)
-  name: WriteScreenImage(ref String)
-  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_WriteScreenImage_System_String__
-  commentId: M:GameCanvas.Engine.Graphic.WriteScreenImage(System.String@)
-  name.vb: WriteScreenImage(ByRef String)
-  fullName: GameCanvas.Engine.Graphic.WriteScreenImage(ref System.String)
-  fullName.vb: GameCanvas.Engine.Graphic.WriteScreenImage(ByRef System.String)
-  nameWithType: Graphic.WriteScreenImage(ref String)
-  nameWithType.vb: Graphic.WriteScreenImage(ByRef String)
-- uid: GameCanvas.Engine.Graphic.WriteScreenImage*
-  name: WriteScreenImage
-  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_WriteScreenImage_
-  commentId: Overload:GameCanvas.Engine.Graphic.WriteScreenImage
-  fullName: GameCanvas.Engine.Graphic.WriteScreenImage
-  nameWithType: Graphic.WriteScreenImage
 - uid: GameCanvas.Engine.Network
   name: Network
   href: api/GameCanvas.Engine.Network.html
@@ -1069,18 +1054,6 @@ references:
   commentId: T:GameCanvas.Engine.Sound
   fullName: GameCanvas.Engine.Sound
   nameWithType: Sound
-- uid: GameCanvas.Engine.Sound.ChangeVolume(System.Int32)
-  name: ChangeVolume(Int32)
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_ChangeVolume_System_Int32_
-  commentId: M:GameCanvas.Engine.Sound.ChangeVolume(System.Int32)
-  fullName: GameCanvas.Engine.Sound.ChangeVolume(System.Int32)
-  nameWithType: Sound.ChangeVolume(Int32)
-- uid: GameCanvas.Engine.Sound.ChangeVolume*
-  name: ChangeVolume
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_ChangeVolume_
-  commentId: Overload:GameCanvas.Engine.Sound.ChangeVolume
-  fullName: GameCanvas.Engine.Sound.ChangeVolume
-  nameWithType: Sound.ChangeVolume
 - uid: GameCanvas.Engine.Sound.OnBeforeUpdate
   name: OnBeforeUpdate()
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_OnBeforeUpdate
@@ -1117,6 +1090,21 @@ references:
   commentId: Overload:GameCanvas.Engine.Sound.Play
   fullName: GameCanvas.Engine.Sound.Play
   nameWithType: Sound.Play
+- uid: GameCanvas.Engine.Sound.SetVolume(System.Int32@)
+  name: SetVolume(ref Int32)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_SetVolume_System_Int32__
+  commentId: M:GameCanvas.Engine.Sound.SetVolume(System.Int32@)
+  name.vb: SetVolume(ByRef Int32)
+  fullName: GameCanvas.Engine.Sound.SetVolume(ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Sound.SetVolume(ByRef System.Int32)
+  nameWithType: Sound.SetVolume(ref Int32)
+  nameWithType.vb: Sound.SetVolume(ByRef Int32)
+- uid: GameCanvas.Engine.Sound.SetVolume*
+  name: SetVolume
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_SetVolume_
+  commentId: Overload:GameCanvas.Engine.Sound.SetVolume
+  fullName: GameCanvas.Engine.Sound.SetVolume
+  nameWithType: Sound.SetVolume
 - uid: GameCanvas.Engine.Sound.Stop
   name: Stop()
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Stop
@@ -1711,12 +1699,12 @@ references:
   commentId: T:GameCanvas.Proxy
   fullName: GameCanvas.Proxy
   nameWithType: Proxy
-- uid: GameCanvas.Proxy.Atan2(System.Double,System.Double)
-  name: Atan2(Double, Double)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_System_Double_System_Double_
-  commentId: M:GameCanvas.Proxy.Atan2(System.Double,System.Double)
-  fullName: GameCanvas.Proxy.Atan2(System.Double, System.Double)
-  nameWithType: Proxy.Atan2(Double, Double)
+- uid: GameCanvas.Proxy.Atan2(System.Single,System.Single)
+  name: Atan2(Single, Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_System_Single_System_Single_
+  commentId: M:GameCanvas.Proxy.Atan2(System.Single,System.Single)
+  fullName: GameCanvas.Proxy.Atan2(System.Single, System.Single)
+  nameWithType: Proxy.Atan2(Single, Single)
 - uid: GameCanvas.Proxy.Atan2*
   name: Atan2
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_
@@ -1747,18 +1735,6 @@ references:
   commentId: Overload:GameCanvas.Proxy.CanvasWidth
   fullName: GameCanvas.Proxy.CanvasWidth
   nameWithType: Proxy.CanvasWidth
-- uid: GameCanvas.Proxy.ChangeVolume(System.Int32)
-  name: ChangeVolume(Int32)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeVolume_System_Int32_
-  commentId: M:GameCanvas.Proxy.ChangeVolume(System.Int32)
-  fullName: GameCanvas.Proxy.ChangeVolume(System.Int32)
-  nameWithType: Proxy.ChangeVolume(Int32)
-- uid: GameCanvas.Proxy.ChangeVolume*
-  name: ChangeVolume
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeVolume_
-  commentId: Overload:GameCanvas.Proxy.ChangeVolume
-  fullName: GameCanvas.Proxy.ChangeVolume
-  nameWithType: Proxy.ChangeVolume
 - uid: GameCanvas.Proxy.CheckHitCircle(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
   name: CheckHitCircle(Int32, Int32, Int32, Int32, Int32, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitCircle_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
@@ -1879,12 +1855,12 @@ references:
   commentId: Overload:GameCanvas.Proxy.ConfigFps
   fullName: GameCanvas.Proxy.ConfigFps
   nameWithType: Proxy.ConfigFps
-- uid: GameCanvas.Proxy.Cos(System.Double)
-  name: Cos(Double)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Cos_System_Double_
-  commentId: M:GameCanvas.Proxy.Cos(System.Double)
-  fullName: GameCanvas.Proxy.Cos(System.Double)
-  nameWithType: Proxy.Cos(Double)
+- uid: GameCanvas.Proxy.Cos(System.Single)
+  name: Cos(Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Cos_System_Single_
+  commentId: M:GameCanvas.Proxy.Cos(System.Single)
+  fullName: GameCanvas.Proxy.Cos(System.Single)
+  nameWithType: Proxy.Cos(Single)
 - uid: GameCanvas.Proxy.Cos*
   name: Cos
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Cos_
@@ -1975,18 +1951,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.DrawRightString
   fullName: GameCanvas.Proxy.DrawRightString
   nameWithType: Proxy.DrawRightString
-- uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)
-  name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Double_
-  commentId: M:GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)
-  fullName: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Double)
-  nameWithType: Proxy.DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double)
-- uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double)
-  name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double, Double, Double)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Double_System_Double_System_Double_
-  commentId: M:GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double)
-  fullName: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Double, System.Double, System.Double)
-  nameWithType: Proxy.DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Double, Double, Double)
+- uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single)
+  name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Single_
+  commentId: M:GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single)
+  fullName: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Single)
+  nameWithType: Proxy.DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Single)
+- uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)
+  name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Single, Single, Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Single_System_Single_System_Single_
+  commentId: M:GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)
+  fullName: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Single, System.Single, System.Single)
+  nameWithType: Proxy.DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Single, Single, Single)
 - uid: GameCanvas.Proxy.DrawScaledRotateImage*
   name: DrawScaledRotateImage
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_
@@ -2251,30 +2227,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.Load
   fullName: GameCanvas.Proxy.Load
   nameWithType: Proxy.Load
-- uid: GameCanvas.Proxy.Pause
-  name: Pause()
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Pause
-  commentId: M:GameCanvas.Proxy.Pause
-  fullName: GameCanvas.Proxy.Pause()
-  nameWithType: Proxy.Pause()
-- uid: GameCanvas.Proxy.Pause*
-  name: Pause
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Pause_
-  commentId: Overload:GameCanvas.Proxy.Pause
-  fullName: GameCanvas.Proxy.Pause
-  nameWithType: Proxy.Pause
-- uid: GameCanvas.Proxy.Play(System.Int32,System.Boolean)
-  name: Play(Int32, Boolean)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Play_System_Int32_System_Boolean_
-  commentId: M:GameCanvas.Proxy.Play(System.Int32,System.Boolean)
-  fullName: GameCanvas.Proxy.Play(System.Int32, System.Boolean)
-  nameWithType: Proxy.Play(Int32, Boolean)
-- uid: GameCanvas.Proxy.Play*
-  name: Play
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Play_
-  commentId: Overload:GameCanvas.Proxy.Play
-  fullName: GameCanvas.Proxy.Play
-  nameWithType: Proxy.Play
+- uid: GameCanvas.Proxy.PauseSound
+  name: PauseSound()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound
+  commentId: M:GameCanvas.Proxy.PauseSound
+  fullName: GameCanvas.Proxy.PauseSound()
+  nameWithType: Proxy.PauseSound()
+- uid: GameCanvas.Proxy.PauseSound*
+  name: PauseSound
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound_
+  commentId: Overload:GameCanvas.Proxy.PauseSound
+  fullName: GameCanvas.Proxy.PauseSound
+  nameWithType: Proxy.PauseSound
+- uid: GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean)
+  name: PlaySound(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.PlaySound(System.Int32, System.Boolean)
+  nameWithType: Proxy.PlaySound(Int32, Boolean)
+- uid: GameCanvas.Proxy.PlaySound*
+  name: PlaySound
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_
+  commentId: Overload:GameCanvas.Proxy.PlaySound
+  fullName: GameCanvas.Proxy.PlaySound
+  nameWithType: Proxy.PlaySound
 - uid: GameCanvas.Proxy.PointerCount
   name: PointerCount
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PointerCount
@@ -2287,18 +2263,24 @@ references:
   commentId: Overload:GameCanvas.Proxy.PointerCount
   fullName: GameCanvas.Proxy.PointerCount
   nameWithType: Proxy.PointerCount
-- uid: GameCanvas.Proxy.Rand(System.Int32,System.Int32)
-  name: Rand(Int32, Int32)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Rand_System_Int32_System_Int32_
-  commentId: M:GameCanvas.Proxy.Rand(System.Int32,System.Int32)
-  fullName: GameCanvas.Proxy.Rand(System.Int32, System.Int32)
-  nameWithType: Proxy.Rand(Int32, Int32)
-- uid: GameCanvas.Proxy.Rand*
-  name: Rand
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Rand_
-  commentId: Overload:GameCanvas.Proxy.Rand
-  fullName: GameCanvas.Proxy.Rand
-  nameWithType: Proxy.Rand
+- uid: GameCanvas.Proxy.Random
+  name: Random()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Random
+  commentId: M:GameCanvas.Proxy.Random
+  fullName: GameCanvas.Proxy.Random()
+  nameWithType: Proxy.Random()
+- uid: GameCanvas.Proxy.Random(System.Int32,System.Int32)
+  name: Random(Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Random_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.Random(System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.Random(System.Int32, System.Int32)
+  nameWithType: Proxy.Random(Int32, Int32)
+- uid: GameCanvas.Proxy.Random*
+  name: Random
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Random_
+  commentId: Overload:GameCanvas.Proxy.Random
+  fullName: GameCanvas.Proxy.Random
+  nameWithType: Proxy.Random
 - uid: GameCanvas.Proxy.ResetGame
   name: ResetGame()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ResetGame
@@ -2407,6 +2389,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.SetSeed
   fullName: GameCanvas.Proxy.SetSeed
   nameWithType: Proxy.SetSeed
+- uid: GameCanvas.Proxy.SetSoundVolume(System.Int32)
+  name: SetSoundVolume(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetSoundVolume(System.Int32)
+  fullName: GameCanvas.Proxy.SetSoundVolume(System.Int32)
+  nameWithType: Proxy.SetSoundVolume(Int32)
+- uid: GameCanvas.Proxy.SetSoundVolume*
+  name: SetSoundVolume
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_
+  commentId: Overload:GameCanvas.Proxy.SetSoundVolume
+  fullName: GameCanvas.Proxy.SetSoundVolume
+  nameWithType: Proxy.SetSoundVolume
 - uid: GameCanvas.Proxy.ShowScreenKeyboard
   name: ShowScreenKeyboard()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ShowScreenKeyboard
@@ -2419,54 +2413,90 @@ references:
   commentId: Overload:GameCanvas.Proxy.ShowScreenKeyboard
   fullName: GameCanvas.Proxy.ShowScreenKeyboard
   nameWithType: Proxy.ShowScreenKeyboard
-- uid: GameCanvas.Proxy.Sin(System.Double)
-  name: Sin(Double)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sin_System_Double_
-  commentId: M:GameCanvas.Proxy.Sin(System.Double)
-  fullName: GameCanvas.Proxy.Sin(System.Double)
-  nameWithType: Proxy.Sin(Double)
+- uid: GameCanvas.Proxy.Sin(System.Single)
+  name: Sin(Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sin_System_Single_
+  commentId: M:GameCanvas.Proxy.Sin(System.Single)
+  fullName: GameCanvas.Proxy.Sin(System.Single)
+  nameWithType: Proxy.Sin(Single)
 - uid: GameCanvas.Proxy.Sin*
   name: Sin
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sin_
   commentId: Overload:GameCanvas.Proxy.Sin
   fullName: GameCanvas.Proxy.Sin
   nameWithType: Proxy.Sin
-- uid: GameCanvas.Proxy.Sqrt(System.Double)
-  name: Sqrt(Double)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sqrt_System_Double_
-  commentId: M:GameCanvas.Proxy.Sqrt(System.Double)
-  fullName: GameCanvas.Proxy.Sqrt(System.Double)
-  nameWithType: Proxy.Sqrt(Double)
+- uid: GameCanvas.Proxy.Sqrt(System.Single)
+  name: Sqrt(Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sqrt_System_Single_
+  commentId: M:GameCanvas.Proxy.Sqrt(System.Single)
+  fullName: GameCanvas.Proxy.Sqrt(System.Single)
+  nameWithType: Proxy.Sqrt(Single)
 - uid: GameCanvas.Proxy.Sqrt*
   name: Sqrt
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sqrt_
   commentId: Overload:GameCanvas.Proxy.Sqrt
   fullName: GameCanvas.Proxy.Sqrt
   nameWithType: Proxy.Sqrt
-- uid: GameCanvas.Proxy.Stop
-  name: Stop()
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Stop
-  commentId: M:GameCanvas.Proxy.Stop
-  fullName: GameCanvas.Proxy.Stop()
-  nameWithType: Proxy.Stop()
-- uid: GameCanvas.Proxy.Stop*
-  name: Stop
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Stop_
-  commentId: Overload:GameCanvas.Proxy.Stop
-  fullName: GameCanvas.Proxy.Stop
-  nameWithType: Proxy.Stop
-- uid: GameCanvas.Proxy.Unpause
-  name: Unpause()
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Unpause
-  commentId: M:GameCanvas.Proxy.Unpause
-  fullName: GameCanvas.Proxy.Unpause()
-  nameWithType: Proxy.Unpause()
-- uid: GameCanvas.Proxy.Unpause*
-  name: Unpause
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Unpause_
-  commentId: Overload:GameCanvas.Proxy.Unpause
-  fullName: GameCanvas.Proxy.Unpause
-  nameWithType: Proxy.Unpause
+- uid: GameCanvas.Proxy.StopSound
+  name: StopSound()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound
+  commentId: M:GameCanvas.Proxy.StopSound
+  fullName: GameCanvas.Proxy.StopSound()
+  nameWithType: Proxy.StopSound()
+- uid: GameCanvas.Proxy.StopSound*
+  name: StopSound
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound_
+  commentId: Overload:GameCanvas.Proxy.StopSound
+  fullName: GameCanvas.Proxy.StopSound
+  nameWithType: Proxy.StopSound
+- uid: GameCanvas.Proxy.TimeNow
+  name: TimeNow
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow
+  commentId: P:GameCanvas.Proxy.TimeNow
+  fullName: GameCanvas.Proxy.TimeNow
+  nameWithType: Proxy.TimeNow
+- uid: GameCanvas.Proxy.TimeNow*
+  name: TimeNow
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_
+  commentId: Overload:GameCanvas.Proxy.TimeNow
+  fullName: GameCanvas.Proxy.TimeNow
+  nameWithType: Proxy.TimeNow
+- uid: GameCanvas.Proxy.TimeSincePrevFrame
+  name: TimeSincePrevFrame
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeSincePrevFrame
+  commentId: P:GameCanvas.Proxy.TimeSincePrevFrame
+  fullName: GameCanvas.Proxy.TimeSincePrevFrame
+  nameWithType: Proxy.TimeSincePrevFrame
+- uid: GameCanvas.Proxy.TimeSincePrevFrame*
+  name: TimeSincePrevFrame
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeSincePrevFrame_
+  commentId: Overload:GameCanvas.Proxy.TimeSincePrevFrame
+  fullName: GameCanvas.Proxy.TimeSincePrevFrame
+  nameWithType: Proxy.TimeSincePrevFrame
+- uid: GameCanvas.Proxy.TimeSinceStartup
+  name: TimeSinceStartup
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeSinceStartup
+  commentId: P:GameCanvas.Proxy.TimeSinceStartup
+  fullName: GameCanvas.Proxy.TimeSinceStartup
+  nameWithType: Proxy.TimeSinceStartup
+- uid: GameCanvas.Proxy.TimeSinceStartup*
+  name: TimeSinceStartup
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeSinceStartup_
+  commentId: Overload:GameCanvas.Proxy.TimeSinceStartup
+  fullName: GameCanvas.Proxy.TimeSinceStartup
+  nameWithType: Proxy.TimeSinceStartup
+- uid: GameCanvas.Proxy.UnpauseSound
+  name: UnpauseSound()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseSound
+  commentId: M:GameCanvas.Proxy.UnpauseSound
+  fullName: GameCanvas.Proxy.UnpauseSound()
+  nameWithType: Proxy.UnpauseSound()
+- uid: GameCanvas.Proxy.UnpauseSound*
+  name: UnpauseSound
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseSound_
+  commentId: Overload:GameCanvas.Proxy.UnpauseSound
+  fullName: GameCanvas.Proxy.UnpauseSound
+  nameWithType: Proxy.UnpauseSound
 - uid: GameCanvas.Proxy.WriteScreenImage(System.String)
   name: WriteScreenImage(String)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_System_String_
