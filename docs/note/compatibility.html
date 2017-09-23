@@ -1,0 +1,950 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>&#26032;&#26087;API&#23550;&#24540;&#34920; | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="&#26032;&#26087;API&#23550;&#24540;&#34920; | GameCanvas ">
+    <meta name="generator" content="docfx 2.24.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="新旧api対応表">新旧API対応表</h1>
+
+<h3 id="v12--v20">v1.2 → v2.0</h3>
+<p>v1.2 以前に存在し v2.0 で変更・廃止されたAPIの一覧と対応表です</p>
+<table>
+<thead>
+<tr>
+<th>v1.2</th>
+<th>v2.0</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acceX</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>acceY</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>acceZ</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>cameraImageHeight</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>cameraImageWidth</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ChangeBGMVolume</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_">SetSoundVolume</a></td>
+<td>関数名と型の変更</td>
+</tr>
+<tr>
+<td>ChangeSEVolume</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>CheckHitCircle</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitCircle_">CheckHitCircle</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>CheckHitImage</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitImage_">CheckHitImage</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>CheckHitRect</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CheckHitRect_">CheckHitRect</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>ClearDownloadCache</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>CloseWS</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>compass</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ConvertFromJson&lt;T&gt;</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ConvertToJson</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Deg2Rad</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DeleteData</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DeleteDataAll</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>deltaTime</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeSincePrevFrame_">TimeSincePrevFrame</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>DrawCameraImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawCameraImageSRT</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawCircle</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCircle_">DrawCircle</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>DrawClippedCameraImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawClippedImage</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipImage_">DrawClipImage</a></td>
+</tr>
+<tr>
+<td>DrawClippedImageUVWH</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipImage_">DrawClipImage</a></td>
+<td>関数名と型の変更、仕様変更</td>
+</tr>
+<tr>
+<td>DrawClippedOnlineImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawImage</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawImage_">DrawImage</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>DrawImageSRT</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_">DrawScaledRotateImage</a></td>
+<td>関数名と型の変更</td>
+</tr>
+<tr>
+<td>DrawLine</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawLine_">DrawLine</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>DrawMultiLineString</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawString_">DrawString</a></td>
+</tr>
+<tr>
+<td>DrawOnlineImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawOnlineImageSRT</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawRect</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawRect_">DrawRect</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>DrawRotatedCameraImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawRotatedImage</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_">DrawScaledRotateImage</a></td>
+</tr>
+<tr>
+<td>DrawRotatedOnlineImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawRotatedRect</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawScaledCameraImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawScaledImage</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_">DrawScaledRotateImage</a></td>
+</tr>
+<tr>
+<td>DrawScaledOnlineImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>DrawString</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawString_">DrawString</a></td>
+<td>引数順と型の変更、ダイナミックフォント対応</td>
+</tr>
+<tr>
+<td>FillCircle</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_FillCircle_">FillCircle</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>FillRect</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_FillRect_">FillRect</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>FillRotatedRect</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>frameRate</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_ConfigFps_">ConfigFps</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>GetColorOfCameraImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GetColorsOfCameraImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GetDay</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetDayOfWeek</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetDayOfWeekKanji</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetHour</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetIsKeyPress</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyPress_">GetIsKeyPress</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>GetIsKeyPushed</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyBegan_">GetIsKeyBegan</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>GetIsKeyReleased</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyEnded_">GetIsKeyEnded</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>GetMilliSecond</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetMinute</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetMonth</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetOnlineImageHeight</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GetOnlineImageWidth</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GetSecond</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>GetTextFromNet</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GetTextFromNetAsync</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GetTouchPoint</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerX_">GetPointerX</a> <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerY_">GetPointerY</a></td>
+</tr>
+<tr>
+<td>GetYear</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeNow_">TimeNow</a></td>
+</tr>
+<tr>
+<td>gyroX</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>gyroY</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>gyroZ</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>isBackKeyPushed</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyBegan_">GetIsKeyBegan</a></td>
+</tr>
+<tr>
+<td>isCompassEnabled</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isDevelop</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isDownloadedImage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isFlick</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isFullScreen</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isGyroEnabled</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isHold</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_">GetPointerDuration</a></td>
+</tr>
+<tr>
+<td>isLoaded</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isLocationEnabled</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isOpenWS</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isPinchIn</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isPinchInOut</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isPinchOut</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isPortrait</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isRunningLocaltionService</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isScreenAutoRotation</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>isTap</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_">GetPointerDuration</a></td>
+</tr>
+<tr>
+<td>isTouch</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasPointerEvent_">HasPointerEvent</a> <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PointerCount_">PointerCount</a></td>
+</tr>
+<tr>
+<td>isTouchBegan</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerBegan_">GetIsPointerBegan</a></td>
+</tr>
+<tr>
+<td>isTouchEnded</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerEnded_">GetIsPointerEnded</a></td>
+</tr>
+<tr>
+<td>lastLocationLatitude</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>lastLocationLongitude</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>lastLocationTime</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Load</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>LoadAsInt</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Load_">Load</a></td>
+<td>関数名と型の変更</td>
+</tr>
+<tr>
+<td>LoadAsNumber</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>maxPinchInScale</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>maxTapDistance</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>maxTapTimeLength</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minFlickDistance</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minHoldTimeLength</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>minPinchOutScale</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>OpenWS</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PauseBGM</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound_">PauseSound</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>pinchRatio</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>pinchRatioInstant</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PlayBGM</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_">PlaySound</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>PlaySE</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Rad2Deg</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>ReadDataByStorage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Save</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>SaveAsInt</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Save_">Save</a></td>
+<td>関数名と型の変更</td>
+</tr>
+<tr>
+<td>SaveAsNumber</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>screenHeight</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight_">CanvasHeight</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>screenWidth</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasWidth_">CanvasWidth</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>SendWS</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>SetFontSize</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFontSize_">SetFontSize</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>SetTextHorizontalRatio</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>SetTextLineHeight</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>SetTextTracking</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>StartCameraService</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>StartLocationService</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>StopBGM</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound_">StopSound</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>StopCameraService</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>StopLocationService</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_TimeSinceStartup_">TimeSinceStartup</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>touchCount</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PointerCount_">PointerCount</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>touchPoint</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>touchTimeLength</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_">GetPointerDuration</a></td>
+</tr>
+<tr>
+<td>touchX</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerX_">GetPointerX</a></td>
+</tr>
+<tr>
+<td>touchY</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerY_">GetPointerY</a></td>
+</tr>
+<tr>
+<td>Trace</td>
+<td><em>TODO</em></td>
+<td></td>
+</tr>
+<tr>
+<td>WriteDataToStorage</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="java--unity">Java → Unity</h3>
+<p><a href="https://github.com/sfc-sdp/GameCanvas-Java/">旧Java版</a>に存在し Unity v2.0 までに変更・廃止されたAPIの一覧と対応表です<br>（関数名がパスカル形式に変更されただけのものは除外しています）</p>
+<table>
+<thead>
+<tr>
+<th>Java</th>
+<th>Unity</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>atan2</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_">Atan2</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>changeBGMVolume</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_">SetSoundVolume</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>changeSEVolume</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>cos</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Cos_">Cos</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>getKeyPressLength</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetKeyPressFrameCount_">GetKeyPressFrameCount</a></td>
+</tr>
+<tr>
+<td>getMouseClickLength</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerFrameCount_">GetPointerFrameCount</a></td>
+</tr>
+<tr>
+<td>getMouseX</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerX_">GetPointerX</a></td>
+</tr>
+<tr>
+<td>getMouseY</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerY_">GetPointerY</a></td>
+</tr>
+<tr>
+<td>HEIGHT</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight_">CanvasHeight</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>isKeyPress</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyPress_">GetIsKeyPress</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>isKeyPushed</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyBegan_">GetIsKeyBegan</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>isKeyReleased</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyEnded_">GetIsKeyEnded</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>isMousePress</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasPointerEvent_">HasPointerEvent</a> <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PointerCount_">PointerCount</a></td>
+</tr>
+<tr>
+<td>isMousePushed</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerBegan_">GetIsPointerBegan</a></td>
+</tr>
+<tr>
+<td>isMouseReleased</td>
+<td><code>Obsolete</code></td>
+<td>代替: <a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerEnded_">GetIsPointerEnded</a></td>
+</tr>
+<tr>
+<td>KEY_C</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_DOWN</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_ENTER</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_LEFT</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_RIGHT</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_SPACE</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_UP</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_V</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_X</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>KEY_Z</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>pauseBGM</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound_">PauseSound</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>pauseSE</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>playBGM</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_">PlaySound</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>playSE</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>rand</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Random_">Random</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>resetGame</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>setFont</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetFont_">SetFont</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>setWindowTitle</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>showInputDialog</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>showYesNoDialog</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>sin</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sin_">Sin</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>sqrt</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_Sqrt_">Sqrt</a></td>
+<td>引数の型の変更</td>
+</tr>
+<tr>
+<td>stopBGM</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound_">StopSound</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>stopSE</td>
+<td><code>Obsolete</code></td>
+<td></td>
+</tr>
+<tr>
+<td>WIDTH</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasWidth_">CanvasWidth</a></td>
+<td>関数名の変更</td>
+</tr>
+<tr>
+<td>writeScreenImage</td>
+<td><a class="xref" href="../api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_">WriteScreenImage</a></td>
+<td>返り値の型の変更</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2017 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

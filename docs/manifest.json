@@ -23,7 +23,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "SBUGWcKN4QU4/W6CyC7m6Q=="
+          "hash": "ViS30qsD9Uhq9arSEgqzhw=="
         }
       },
       "is_incremental": true,
@@ -41,6 +41,18 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "note/compatibility.md",
+      "output": {
+        ".html": {
+          "relative_path": "note/compatibility.html",
+          "hash": "2D+0dArIgeb+Eq49Rpw94g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
       "type": "ManagedReference",
       "source_relative_path": "obj/api/GameCanvas.Box.yml",
       "output": {
@@ -49,7 +61,7 @@
           "hash": "vsJKXJs96NfpAKBsQA3T1w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -61,7 +73,7 @@
           "hash": "7tp/+K/IRU1chtH9t9TGIA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -73,7 +85,7 @@
           "hash": "T1wIDluUQC6bItQqStotHw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -82,10 +94,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Engine.Graphic.html",
-          "hash": "PUmq1avyfh5rSHHRaIi7xg=="
+          "hash": "JMTxNS+OeHKxTEKyNoGDHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -97,7 +109,7 @@
           "hash": "uK4DgxjsioOWxVHye0Aq0Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -106,10 +118,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Engine.Sound.html",
-          "hash": "DjMgESuTQR/1+NhKBMT2nQ=="
+          "hash": "ReCLmMdcmsmtnTNIGqqMLw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -121,7 +133,7 @@
           "hash": "a3KIsvHktj9+YpI8K3ns+w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -133,7 +145,7 @@
           "hash": "0SVOLlu9XePEA97pn2UDLg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -145,7 +157,7 @@
           "hash": "6hBw+Q0AgyWvKcq+b4f9AQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -157,7 +169,7 @@
           "hash": "I6zDySCoIU8x8eaQ/USJug=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -169,7 +181,7 @@
           "hash": "HFl7j+bVx0kX95c94QhTEg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -181,7 +193,7 @@
           "hash": "Z1wZL8iQa80HFxb6eMtR8Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -193,7 +205,7 @@
           "hash": "xiXDymaw2ReaRYBFdsXXdg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -202,10 +214,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Proxy.html",
-          "hash": "HR+gnYnXx70BAMKsua2phg=="
+          "hash": "xbvTzIo4vnS0baNk4Bt0LA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -217,7 +229,7 @@
           "hash": "WJwUGrJsbEAWS9ZfV/5gCQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -239,9 +251,14 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
+        "ResourceDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "RestApiDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ConceptualDocumentProcessor": {
@@ -252,14 +269,9 @@
           "can_incremental": true,
           "incrementalPhase": "build"
         },
-        "ResourceDocumentProcessor": {
+        "TocDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "RestApiDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }
