@@ -235,7 +235,7 @@ namespace GameCanvas
         /// <param name="xSize">横の拡縮率（100で等倍, 200なら倍の大きさ）</param>
         /// <param name="ySize">縦の拡縮率（100で等倍, 200なら倍の大きさ）</param>
         /// <param name="degree">回転角（度数法）</param>
-        public void DrawScaledRotateImage(int imageId, int x, int y, int xSize, int ySize, double degree) => cGraphic.DrawScaledRotateImage(ref imageId, ref x, ref y, ref xSize, ref ySize, ref degree);
+        public void DrawScaledRotateImage(int imageId, int x, int y, int xSize, int ySize, float degree) => cGraphic.DrawScaledRotateImage(ref imageId, ref x, ref y, ref xSize, ref ySize, ref degree);
         /// <summary>
         /// 画像を拡大縮小・回転をかけて描画します。
         /// </summary>
@@ -247,7 +247,7 @@ namespace GameCanvas
         /// <param name="degree">回転角（度数法）</param>
         /// <param name="centerX">回転中心のX座標</param>
         /// <param name="centerY">回転中心のY座標</param>
-        public void DrawScaledRotateImage(int imageId, int x, int y, int xSize, int ySize, double degree, double centerX, double centerY) => cGraphic.DrawScaledRotateImage(ref imageId, ref x, ref y, ref xSize, ref ySize, ref degree, ref centerX, ref centerY);
+        public void DrawScaledRotateImage(int imageId, int x, int y, int xSize, int ySize, float degree, float centerX, float centerY) => cGraphic.DrawScaledRotateImage(ref imageId, ref x, ref y, ref xSize, ref ySize, ref degree, ref centerX, ref centerY);
         /// <summary>
         /// 画像の幅を取得します。
         /// </summary>
@@ -271,8 +271,11 @@ namespace GameCanvas
         /// 現在の画面を、画像として保存します。
         /// </summary>
         /// <param name="file">拡張子を除いたファイル名</param>
-        /// <returns>常に真を返します</returns>
-        public bool WriteScreenImage(string file) => cGraphic.WriteScreenImage(ref file);
+        public void WriteScreenImage(string file)
+        {
+            var filename = file.EndsWith(".png") ? file : file + ".png";
+            ScreenCapture.CaptureScreenshot(filename);
+        }
         /// <summary>
         /// 画面の幅と高さを設定します。
         /// </summary>
@@ -303,24 +306,24 @@ namespace GameCanvas
         /// </summary>
         /// <param name="soundId">サウンドID（snd0.wav なら 0, snd1.mp3 なら 1）</param>
         /// <param name="loop">ループ再生するかどうか</param>
-        public void Play(int soundId, bool loop = false) => cSound.Play(soundId, loop);
+        public void PlaySound(int soundId, bool loop = false) => cSound.Play(soundId, loop);
         /// <summary>
         /// 音量を変更します。
         /// </summary>
         /// <param name="volume">音量（0～100）</param>
-        public void ChangeVolume(int volume) => cSound.ChangeVolume(volume);
+        public void SetSoundVolume(int volume) => cSound.SetVolume(ref volume);
         /// <summary>
         /// サウンドを停止します。
         /// </summary>
-        public void Stop() => cSound.Stop();
+        public void StopSound() => cSound.Stop();
         /// <summary>
         /// サウンドを一時停止します。
         /// </summary>
-        public void Pause() => cSound.Pause();
+        public void PauseSound() => cSound.Pause();
         /// <summary>
         /// サウンドを一時停止していた場合、再生を再開します。
         /// </summary>
-        public void Unpause() => cSound.Unpause();
+        public void UnpauseSound() => cSound.Unpause();
 
         // 入力
 
@@ -422,8 +425,13 @@ namespace GameCanvas
         /// </summary>
         /// <param name="min">最小値</param>
         /// <param name="max">最大値</param>
-        /// <returns></returns>
-        public int Rand(int min, int max) => mRandom.Next(min, max + 1);
+        /// <returns><paramref name="min"/> から <paramref name="max"/> までのランダムな値</returns>
+        public int Random(int min, int max) => mRandom.Next(min, max + 1);
+        /// <summary>
+        /// 0f から 1f までのランダムな値を計算します。
+        /// </summary>
+        /// <returns>0f から 1f までのランダムな値</returns>
+        public float Random() => UnityEngine.Random.value;
         /// <summary>
         /// 長方形A と 長方形B が重なっているかどうか判定します。
         /// </summary>
@@ -464,26 +472,32 @@ namespace GameCanvas
         /// </summary>
         /// <param name="value">平方根を求める値</param>
         /// <returns>平方根</returns>
-        public double Sqrt(double value) => Mathf.Sqrt((float)value);
+        public float Sqrt(float value) => Mathf.Sqrt(value);
         /// <summary>
         /// コサインを計算します。
         /// </summary>
         /// <param name="degree">角度（度数法）</param>
         /// <returns>コサイン</returns>
-        public double Cos(double degree) => Mathf.Cos((float)degree * Mathf.Deg2Rad);
+        public float Cos(float degree) => Mathf.Cos(degree * Mathf.Deg2Rad);
         /// <summary>
         /// サインを計算します。
         /// </summary>
         /// <param name="degree">角度（度数法）</param>
         /// <returns>サイン</returns>
-        public double Sin(double degree) => Mathf.Sin((float)degree * Mathf.Deg2Rad);
+        public float Sin(float degree) => Mathf.Sin(degree * Mathf.Deg2Rad);
         /// <summary>
         /// ベクトルの角度を計算します。
         /// </summary>
         /// <param name="x">ベクトルのX成分</param>
         /// <param name="y">ベクトルのY成分</param>
         /// <returns>ベクトルの角度（度数法）</returns>
-        public double Atan2(double x, double y) => Mathf.Atan2((float)x, (float)y);
+        public float Atan2(float x, float y) => Mathf.Atan2(x, y);
+
+        // 時間
+
+        public float TimeSinceStartup => Time.unscaledTime;
+        public float TimeSincePrevFrame => Time.unscaledDeltaTime;
+        public System.DateTime TimeNow => System.DateTime.Now;
 
         // その他
 
@@ -546,7 +560,7 @@ namespace GameCanvas
         [Hidden(HiddenState.Never), System.Obsolete("gc.Play()")]
         public void PlaySE(int soundId, bool loop = false) => cSound.Play(soundId, loop);
         [Hidden(HiddenState.Never), System.Obsolete("gc.ChangeVolume()")]
-        public void ChangeSEVolume(int volume) => cSound.ChangeVolume(volume);
+        public void ChangeSEVolume(int volume) => cSound.SetVolume(ref volume);
         [Hidden(HiddenState.Never), System.Obsolete("gc.Stop()")]
         public void StopSE() => cSound.Stop();
         [Hidden(HiddenState.Never), System.Obsolete("gc.Pause()")]
