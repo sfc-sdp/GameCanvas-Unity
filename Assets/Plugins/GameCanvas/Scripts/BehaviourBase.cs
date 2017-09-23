@@ -15,6 +15,7 @@ namespace GameCanvas
     using GameCanvas.Engine;
     using GameCanvas.Input;
     using Collision = Engine.Collision;
+    using Time = Engine.Time;
 
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera), typeof(AudioListener), typeof(AudioSource))]
@@ -35,6 +36,7 @@ namespace GameCanvas
         private AudioListener mListener;
         private AudioSource mAudioSource;
 
+        private Time mTime;
         private Graphic mGraphic;
         private Sound mSound;
         private Collision mCollision;
@@ -59,13 +61,15 @@ namespace GameCanvas
             Assert.IsNotNull(Resource);
 
             Resource.Initialize();
+
+            mTime = new Time();
             mGraphic = new Graphic(Resource, mCamera);
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mSound = new Sound(Resource, mAudioSource);
             mCollision = new Collision(Resource);
             mPointer = new Pointer(mGraphic);
             mKeyboard = new Keyboard();
-            mProxy = new Proxy(mGraphic, mSound, mCollision, mPointer, mKeyboard);
+            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mPointer, mKeyboard);
 
             // TODO
         }
@@ -77,6 +81,7 @@ namespace GameCanvas
 
         private void Update()
         {
+            mTime.OnBeforeUpdate();
             mGraphic.OnBeforeUpdate();
             mSound.OnBeforeUpdate();
             mPointer.OnBeforeUpdate();
