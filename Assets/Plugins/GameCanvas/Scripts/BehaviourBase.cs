@@ -43,6 +43,7 @@ namespace GameCanvas
         private Pointer mPointer;
         private Keyboard mKeyboard;
         private Accelerometer mAccelerometer;
+        private Geolocation mGeolocation;
         private Proxy mProxy;
 
         #endregion
@@ -71,7 +72,8 @@ namespace GameCanvas
             mPointer = new Pointer(mGraphic);
             mKeyboard = new Keyboard();
             mAccelerometer = new Accelerometer();
-            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mPointer, mKeyboard, mAccelerometer);
+            mGeolocation = new Geolocation();
+            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mPointer, mKeyboard, mAccelerometer, mGeolocation);
         }
 
         private void Start()
@@ -87,6 +89,7 @@ namespace GameCanvas
             mPointer.OnBeforeUpdate();
             mKeyboard.OnBeforeUpdate();
             mAccelerometer.OnBeforeUpdate();
+            mGeolocation.OnBeforeUpdate();
 
             UpdateGame();
             DrawGame();

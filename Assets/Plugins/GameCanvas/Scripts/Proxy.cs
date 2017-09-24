@@ -31,6 +31,7 @@ namespace GameCanvas
         private readonly Pointer cPointer;
         private readonly Keyboard cKeyboard;
         private readonly Accelerometer cAccelerometer;
+        private readonly Geolocation cGeolocation;
 
         private System.Random mRandom;
 
@@ -91,7 +92,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Pointer pointer, Keyboard keyboard, Accelerometer accelerometer)
+        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Pointer pointer, Keyboard keyboard, Accelerometer accelerometer, Geolocation geolocation)
         {
             cTime = time;
             cGraphic = graphic;
@@ -100,6 +101,7 @@ namespace GameCanvas
             cPointer = pointer;
             cKeyboard = keyboard;
             cAccelerometer = accelerometer;
+            cGeolocation = geolocation;
             mRandom = new System.Random();
         }
 
@@ -596,6 +598,49 @@ namespace GameCanvas
         /// <param name="normalize">加速度を正規化するかどうか</param>
         /// <returns>Z軸加速度</returns>
         public float GetAccelerationZ(int i, bool normalize = false) => normalize ? cAccelerometer.GetNormalizedZ(ref i) : cAccelerometer.GetZ(ref i);
+
+        // 位置情報
+
+        /// <summary>
+        /// 位置情報サービスが現在動作しているかどうか
+        /// </summary>
+        public bool IsGeolocationRunning => cGeolocation.IsRunning;
+        /// <summary>
+        /// 位置情報サービスの利用を許可されているかどうか
+        /// </summary>
+        public bool HasGeolocationPermission => cGeolocation.HasPermission;
+        /// <summary>
+        /// 現在のフレームで位置情報が更新されたかどうか
+        /// </summary>
+        public bool HasGeolocationUpdate => cGeolocation.HasUpdate;
+        /// <summary>
+        /// 最後の位置情報の高度
+        /// </summary>
+        public float GeolocationLastAltitude => cGeolocation.LastAltitude;
+        /// <summary>
+        /// 最後の位置情報の緯度
+        /// </summary>
+        public float GeolocationLastLatitude => cGeolocation.LastLatitude;
+        /// <summary>
+        /// 最後の位置情報の経度
+        /// </summary>
+        public float GeolocationLastLongitude => cGeolocation.LastLongitude;
+        /// <summary>
+        /// 最後の位置情報の更新日時
+        /// </summary>
+        public System.DateTimeOffset GeolocationLastTime => cGeolocation.LastTime;
+        /// <summary>
+        /// 位置情報サービスの状態
+        /// </summary>
+        public LocationServiceStatus GeolocationStatus => cGeolocation.Status;
+        /// <summary>
+        /// 位置情報サービスを開始します。
+        /// </summary>
+        public void StartGeolocationService() => cGeolocation.StartService();
+        /// <summary>
+        /// 位置情報サービスを終了します。
+        /// </summary>
+        public void StopGeolocationService() => cGeolocation.StopService();
 
         // その他
 

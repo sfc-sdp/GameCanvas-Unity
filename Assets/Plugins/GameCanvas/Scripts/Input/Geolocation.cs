@@ -18,20 +18,19 @@ namespace GameCanvas.Input
         #region フィールド変数
         //----------------------------------------------------------
 
-        // TODO
+        private float mLastAltitude;
+        private float mLastLatitude;
+        private float mLastLongitude;
+        private double mLastTimestamp;
+        private System.DateTimeOffset mLastTime;
+
+        private bool mIsActive;
+        private bool mHasUpdate;
 
         #endregion
 
         //----------------------------------------------------------
         #region パブリック関数
-        //----------------------------------------------------------
-
-        // TODO
-
-        #endregion
-
-        //----------------------------------------------------------
-        #region プライベート関数
         //----------------------------------------------------------
 
         /// <summary>
@@ -40,6 +39,54 @@ namespace GameCanvas.Input
         internal Geolocation()
         {
             // TODO
+        }
+
+        public void OnBeforeUpdate()
+        {
+            mHasUpdate = false;
+
+            if (mIsActive && HasPermission && Status == LocationServiceStatus.Running)
+            {
+                var data = Input.location.lastData;
+                if (mLastTimestamp != data.timestamp)
+                {
+                    mLastAltitude = data.altitude;
+                    mLastLatitude = data.latitude;
+                    mLastLongitude = data.longitude;
+                    mLastTimestamp = data.timestamp;
+                    mLastTime = System.DateTimeOffset.FromUnixTimeSeconds((long)mLastTimestamp);
+
+                    mHasUpdate = true;
+                }
+            }
+        }
+
+        public bool HasPermission => Input.location.isEnabledByUser;
+        public LocationServiceStatus Status => Input.location.status;
+        public bool IsRunning => HasPermission && (Status == LocationServiceStatus.Running || Status == LocationServiceStatus.Initializing);
+        public bool HasUpdate => mHasUpdate;
+
+        public float LastAltitude => mLastAltitude;
+        public float LastLatitude => mLastLatitude;
+        public float LastLongitude => mLastLongitude;
+        public System.DateTimeOffset LastTime => mLastTime;
+
+        public void StartService()
+        {
+            if (!mIsActive && Status == LocationServiceStatus.Stopped)
+            {
+                Input.location.Start();
+                mIsActive = true;
+            }
+        }
+
+        public void StopService()
+        {
+            if (mIsActive || Status != LocationServiceStatus.Stopped)
+            {
+                Input.location.Stop();
+                mIsActive = false;
+            }
         }
 
         #endregion
