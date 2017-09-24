@@ -42,6 +42,7 @@ namespace GameCanvas
         private Collision mCollision;
         private Pointer mPointer;
         private Keyboard mKeyboard;
+        private Accelerometer mAccelerometer;
         private Proxy mProxy;
 
         #endregion
@@ -69,9 +70,8 @@ namespace GameCanvas
             mCollision = new Collision(Resource);
             mPointer = new Pointer(mGraphic);
             mKeyboard = new Keyboard();
-            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mPointer, mKeyboard);
-
-            // TODO
+            mAccelerometer = new Accelerometer();
+            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mPointer, mKeyboard, mAccelerometer);
         }
 
         private void Start()
@@ -86,6 +86,7 @@ namespace GameCanvas
             mSound.OnBeforeUpdate();
             mPointer.OnBeforeUpdate();
             mKeyboard.OnBeforeUpdate();
+            mAccelerometer.OnBeforeUpdate();
 
             UpdateGame();
             DrawGame();

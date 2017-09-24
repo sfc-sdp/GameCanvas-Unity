@@ -1315,6 +1315,144 @@ references:
   commentId: T:GameCanvas.Input.Accelerometer
   fullName: GameCanvas.Input.Accelerometer
   nameWithType: Accelerometer
+- uid: GameCanvas.Input.Accelerometer.EventCount
+  name: EventCount
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_EventCount
+  commentId: P:GameCanvas.Input.Accelerometer.EventCount
+  fullName: GameCanvas.Input.Accelerometer.EventCount
+  nameWithType: Accelerometer.EventCount
+- uid: GameCanvas.Input.Accelerometer.EventCount*
+  name: EventCount
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_EventCount_
+  commentId: Overload:GameCanvas.Input.Accelerometer.EventCount
+  fullName: GameCanvas.Input.Accelerometer.EventCount
+  nameWithType: Accelerometer.EventCount
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedX(System.Int32@)
+  name: GetNormalizedX(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedX_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetNormalizedX(System.Int32@)
+  name.vb: GetNormalizedX(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedX(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetNormalizedX(ByRef System.Int32)
+  nameWithType: Accelerometer.GetNormalizedX(ref Int32)
+  nameWithType.vb: Accelerometer.GetNormalizedX(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedX*
+  name: GetNormalizedX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedX_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetNormalizedX
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedX
+  nameWithType: Accelerometer.GetNormalizedX
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedY(System.Int32@)
+  name: GetNormalizedY(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedY_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetNormalizedY(System.Int32@)
+  name.vb: GetNormalizedY(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedY(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetNormalizedY(ByRef System.Int32)
+  nameWithType: Accelerometer.GetNormalizedY(ref Int32)
+  nameWithType.vb: Accelerometer.GetNormalizedY(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedY*
+  name: GetNormalizedY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedY_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetNormalizedY
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedY
+  nameWithType: Accelerometer.GetNormalizedY
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedZ(System.Int32@)
+  name: GetNormalizedZ(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedZ_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetNormalizedZ(System.Int32@)
+  name.vb: GetNormalizedZ(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedZ(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetNormalizedZ(ByRef System.Int32)
+  nameWithType: Accelerometer.GetNormalizedZ(ref Int32)
+  nameWithType.vb: Accelerometer.GetNormalizedZ(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedZ*
+  name: GetNormalizedZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedZ_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetNormalizedZ
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedZ
+  nameWithType: Accelerometer.GetNormalizedZ
+- uid: GameCanvas.Input.Accelerometer.GetX(System.Int32@)
+  name: GetX(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetX_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetX(System.Int32@)
+  name.vb: GetX(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetX(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetX(ByRef System.Int32)
+  nameWithType: Accelerometer.GetX(ref Int32)
+  nameWithType.vb: Accelerometer.GetX(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetX*
+  name: GetX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetX_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetX
+  fullName: GameCanvas.Input.Accelerometer.GetX
+  nameWithType: Accelerometer.GetX
+- uid: GameCanvas.Input.Accelerometer.GetY(System.Int32@)
+  name: GetY(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetY_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetY(System.Int32@)
+  name.vb: GetY(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetY(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetY(ByRef System.Int32)
+  nameWithType: Accelerometer.GetY(ref Int32)
+  nameWithType.vb: Accelerometer.GetY(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetY*
+  name: GetY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetY_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetY
+  fullName: GameCanvas.Input.Accelerometer.GetY
+  nameWithType: Accelerometer.GetY
+- uid: GameCanvas.Input.Accelerometer.GetZ(System.Int32@)
+  name: GetZ(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetZ_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetZ(System.Int32@)
+  name.vb: GetZ(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetZ(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetZ(ByRef System.Int32)
+  nameWithType: Accelerometer.GetZ(ref Int32)
+  nameWithType.vb: Accelerometer.GetZ(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetZ*
+  name: GetZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetZ_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetZ
+  fullName: GameCanvas.Input.Accelerometer.GetZ
+  nameWithType: Accelerometer.GetZ
+- uid: GameCanvas.Input.Accelerometer.LastX
+  name: LastX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastX
+  commentId: P:GameCanvas.Input.Accelerometer.LastX
+  fullName: GameCanvas.Input.Accelerometer.LastX
+  nameWithType: Accelerometer.LastX
+- uid: GameCanvas.Input.Accelerometer.LastX*
+  name: LastX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastX_
+  commentId: Overload:GameCanvas.Input.Accelerometer.LastX
+  fullName: GameCanvas.Input.Accelerometer.LastX
+  nameWithType: Accelerometer.LastX
+- uid: GameCanvas.Input.Accelerometer.LastY
+  name: LastY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastY
+  commentId: P:GameCanvas.Input.Accelerometer.LastY
+  fullName: GameCanvas.Input.Accelerometer.LastY
+  nameWithType: Accelerometer.LastY
+- uid: GameCanvas.Input.Accelerometer.LastY*
+  name: LastY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastY_
+  commentId: Overload:GameCanvas.Input.Accelerometer.LastY
+  fullName: GameCanvas.Input.Accelerometer.LastY
+  nameWithType: Accelerometer.LastY
+- uid: GameCanvas.Input.Accelerometer.LastZ
+  name: LastZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastZ
+  commentId: P:GameCanvas.Input.Accelerometer.LastZ
+  fullName: GameCanvas.Input.Accelerometer.LastZ
+  nameWithType: Accelerometer.LastZ
+- uid: GameCanvas.Input.Accelerometer.LastZ*
+  name: LastZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastZ_
+  commentId: Overload:GameCanvas.Input.Accelerometer.LastZ
+  fullName: GameCanvas.Input.Accelerometer.LastZ
+  nameWithType: Accelerometer.LastZ
 - uid: GameCanvas.Input.Compass
   name: Compass
   href: api/GameCanvas.Input.Compass.html
@@ -1909,6 +2047,54 @@ references:
   commentId: T:GameCanvas.Proxy
   fullName: GameCanvas.Proxy
   nameWithType: Proxy
+- uid: GameCanvas.Proxy.AccelerationEventCount
+  name: AccelerationEventCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationEventCount
+  commentId: P:GameCanvas.Proxy.AccelerationEventCount
+  fullName: GameCanvas.Proxy.AccelerationEventCount
+  nameWithType: Proxy.AccelerationEventCount
+- uid: GameCanvas.Proxy.AccelerationEventCount*
+  name: AccelerationEventCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationEventCount_
+  commentId: Overload:GameCanvas.Proxy.AccelerationEventCount
+  fullName: GameCanvas.Proxy.AccelerationEventCount
+  nameWithType: Proxy.AccelerationEventCount
+- uid: GameCanvas.Proxy.AccelerationLastX
+  name: AccelerationLastX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastX
+  commentId: P:GameCanvas.Proxy.AccelerationLastX
+  fullName: GameCanvas.Proxy.AccelerationLastX
+  nameWithType: Proxy.AccelerationLastX
+- uid: GameCanvas.Proxy.AccelerationLastX*
+  name: AccelerationLastX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastX_
+  commentId: Overload:GameCanvas.Proxy.AccelerationLastX
+  fullName: GameCanvas.Proxy.AccelerationLastX
+  nameWithType: Proxy.AccelerationLastX
+- uid: GameCanvas.Proxy.AccelerationLastY
+  name: AccelerationLastY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastY
+  commentId: P:GameCanvas.Proxy.AccelerationLastY
+  fullName: GameCanvas.Proxy.AccelerationLastY
+  nameWithType: Proxy.AccelerationLastY
+- uid: GameCanvas.Proxy.AccelerationLastY*
+  name: AccelerationLastY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastY_
+  commentId: Overload:GameCanvas.Proxy.AccelerationLastY
+  fullName: GameCanvas.Proxy.AccelerationLastY
+  nameWithType: Proxy.AccelerationLastY
+- uid: GameCanvas.Proxy.AccelerationLastZ
+  name: AccelerationLastZ
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastZ
+  commentId: P:GameCanvas.Proxy.AccelerationLastZ
+  fullName: GameCanvas.Proxy.AccelerationLastZ
+  nameWithType: Proxy.AccelerationLastZ
+- uid: GameCanvas.Proxy.AccelerationLastZ*
+  name: AccelerationLastZ
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastZ_
+  commentId: Overload:GameCanvas.Proxy.AccelerationLastZ
+  fullName: GameCanvas.Proxy.AccelerationLastZ
+  nameWithType: Proxy.AccelerationLastZ
 - uid: GameCanvas.Proxy.Atan2(System.Single,System.Single)
   name: Atan2(Single, Single)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_System_Single_System_Single_
@@ -2359,6 +2545,42 @@ references:
   commentId: Overload:GameCanvas.Proxy.FillRect
   fullName: GameCanvas.Proxy.FillRect
   nameWithType: Proxy.FillRect
+- uid: GameCanvas.Proxy.GetAccelerationX(System.Int32,System.Boolean)
+  name: GetAccelerationX(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationX_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.GetAccelerationX(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.GetAccelerationX(System.Int32, System.Boolean)
+  nameWithType: Proxy.GetAccelerationX(Int32, Boolean)
+- uid: GameCanvas.Proxy.GetAccelerationX*
+  name: GetAccelerationX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationX_
+  commentId: Overload:GameCanvas.Proxy.GetAccelerationX
+  fullName: GameCanvas.Proxy.GetAccelerationX
+  nameWithType: Proxy.GetAccelerationX
+- uid: GameCanvas.Proxy.GetAccelerationY(System.Int32,System.Boolean)
+  name: GetAccelerationY(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationY_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.GetAccelerationY(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.GetAccelerationY(System.Int32, System.Boolean)
+  nameWithType: Proxy.GetAccelerationY(Int32, Boolean)
+- uid: GameCanvas.Proxy.GetAccelerationY*
+  name: GetAccelerationY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationY_
+  commentId: Overload:GameCanvas.Proxy.GetAccelerationY
+  fullName: GameCanvas.Proxy.GetAccelerationY
+  nameWithType: Proxy.GetAccelerationY
+- uid: GameCanvas.Proxy.GetAccelerationZ(System.Int32,System.Boolean)
+  name: GetAccelerationZ(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationZ_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.GetAccelerationZ(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.GetAccelerationZ(System.Int32, System.Boolean)
+  nameWithType: Proxy.GetAccelerationZ(Int32, Boolean)
+- uid: GameCanvas.Proxy.GetAccelerationZ*
+  name: GetAccelerationZ
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationZ_
+  commentId: Overload:GameCanvas.Proxy.GetAccelerationZ
+  fullName: GameCanvas.Proxy.GetAccelerationZ
+  nameWithType: Proxy.GetAccelerationZ
 - uid: GameCanvas.Proxy.GetImageHeight(System.Int32)
   name: GetImageHeight(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageHeight_System_Int32_

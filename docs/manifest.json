@@ -46,7 +46,7 @@
       "output": {
         ".html": {
           "relative_path": "note/compatibility.html",
-          "hash": "h3ANQJGgnhHZe2ei9506gA=="
+          "hash": "lK4rxCkF6v2vJ3dCMg/neA=="
         }
       },
       "is_incremental": false,
@@ -154,7 +154,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.Accelerometer.html",
-          "hash": "FktaWNIP8EZBVSE9n9ZGGg=="
+          "hash": "zydUNT0eeUM6GbfrQmgOhg=="
         }
       },
       "is_incremental": true,
@@ -298,7 +298,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Proxy.html",
-          "hash": "8kN4JzmICl9cjMnw//n7nw=="
+          "hash": "0j52nqHsXwdj4haQ/pjQgw=="
         }
       },
       "is_incremental": true,
@@ -343,6 +343,11 @@
           "can_incremental": true,
           "incrementalPhase": "build"
         },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
         "RestApiDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -351,11 +356,6 @@
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

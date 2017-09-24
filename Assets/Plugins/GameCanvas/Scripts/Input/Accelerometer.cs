@@ -10,6 +10,7 @@
 
 namespace GameCanvas.Input
 {
+    using System.Collections.Generic;
     using UnityEngine;
 
     public sealed class Accelerometer
@@ -18,7 +19,10 @@ namespace GameCanvas.Input
         #region フィールド変数
         //----------------------------------------------------------
 
-        // TODO
+        private readonly Vector3[] cEvents;
+        private readonly Vector3[] cNormalizedEvents;
+        private int mEventCount;
+        private Vector3 mLast;
 
         #endregion
 
@@ -26,21 +30,40 @@ namespace GameCanvas.Input
         #region パブリック関数
         //----------------------------------------------------------
 
-        // TODO
-
-        #endregion
-
-        //----------------------------------------------------------
-        #region プライベート関数
-        //----------------------------------------------------------
-
         /// <summary>
         /// コンストラクタ
         /// </summary>
         internal Accelerometer()
         {
-            // TODO
+            cEvents = new Vector3[5];
+            cNormalizedEvents = new Vector3[5];
+            mLast = Vector3.zero;
         }
+
+        internal void OnBeforeUpdate()
+        {
+            mLast = Input.acceleration;
+            mEventCount = Input.accelerationEventCount;
+
+            for (var i = 0; i < cEvents.Length; ++i)
+            {
+                if (i >= mEventCount) break;
+                cEvents[i] = Input.GetAccelerationEvent(i).acceleration;
+                cNormalizedEvents[i] = cEvents[i].normalized;
+            }
+        }
+
+        public float LastX => mLast.x;
+        public float LastY => mLast.y;
+        public float LastZ => mLast.z;
+
+        public int EventCount => mEventCount;
+        public float GetX(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].x : 0f;
+        public float GetY(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].y : 0f;
+        public float GetZ(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].z : 0f;
+        public float GetNormalizedX(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].x : 0f;
+        public float GetNormalizedY(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].y : 0f;
+        public float GetNormalizedZ(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].z : 0f;
 
         #endregion
     }
