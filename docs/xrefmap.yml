@@ -1315,6 +1315,144 @@ references:
   commentId: T:GameCanvas.Input.Accelerometer
   fullName: GameCanvas.Input.Accelerometer
   nameWithType: Accelerometer
+- uid: GameCanvas.Input.Accelerometer.EventCount
+  name: EventCount
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_EventCount
+  commentId: P:GameCanvas.Input.Accelerometer.EventCount
+  fullName: GameCanvas.Input.Accelerometer.EventCount
+  nameWithType: Accelerometer.EventCount
+- uid: GameCanvas.Input.Accelerometer.EventCount*
+  name: EventCount
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_EventCount_
+  commentId: Overload:GameCanvas.Input.Accelerometer.EventCount
+  fullName: GameCanvas.Input.Accelerometer.EventCount
+  nameWithType: Accelerometer.EventCount
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedX(System.Int32@)
+  name: GetNormalizedX(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedX_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetNormalizedX(System.Int32@)
+  name.vb: GetNormalizedX(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedX(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetNormalizedX(ByRef System.Int32)
+  nameWithType: Accelerometer.GetNormalizedX(ref Int32)
+  nameWithType.vb: Accelerometer.GetNormalizedX(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedX*
+  name: GetNormalizedX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedX_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetNormalizedX
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedX
+  nameWithType: Accelerometer.GetNormalizedX
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedY(System.Int32@)
+  name: GetNormalizedY(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedY_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetNormalizedY(System.Int32@)
+  name.vb: GetNormalizedY(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedY(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetNormalizedY(ByRef System.Int32)
+  nameWithType: Accelerometer.GetNormalizedY(ref Int32)
+  nameWithType.vb: Accelerometer.GetNormalizedY(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedY*
+  name: GetNormalizedY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedY_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetNormalizedY
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedY
+  nameWithType: Accelerometer.GetNormalizedY
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedZ(System.Int32@)
+  name: GetNormalizedZ(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedZ_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetNormalizedZ(System.Int32@)
+  name.vb: GetNormalizedZ(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedZ(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetNormalizedZ(ByRef System.Int32)
+  nameWithType: Accelerometer.GetNormalizedZ(ref Int32)
+  nameWithType.vb: Accelerometer.GetNormalizedZ(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetNormalizedZ*
+  name: GetNormalizedZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetNormalizedZ_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetNormalizedZ
+  fullName: GameCanvas.Input.Accelerometer.GetNormalizedZ
+  nameWithType: Accelerometer.GetNormalizedZ
+- uid: GameCanvas.Input.Accelerometer.GetX(System.Int32@)
+  name: GetX(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetX_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetX(System.Int32@)
+  name.vb: GetX(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetX(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetX(ByRef System.Int32)
+  nameWithType: Accelerometer.GetX(ref Int32)
+  nameWithType.vb: Accelerometer.GetX(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetX*
+  name: GetX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetX_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetX
+  fullName: GameCanvas.Input.Accelerometer.GetX
+  nameWithType: Accelerometer.GetX
+- uid: GameCanvas.Input.Accelerometer.GetY(System.Int32@)
+  name: GetY(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetY_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetY(System.Int32@)
+  name.vb: GetY(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetY(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetY(ByRef System.Int32)
+  nameWithType: Accelerometer.GetY(ref Int32)
+  nameWithType.vb: Accelerometer.GetY(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetY*
+  name: GetY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetY_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetY
+  fullName: GameCanvas.Input.Accelerometer.GetY
+  nameWithType: Accelerometer.GetY
+- uid: GameCanvas.Input.Accelerometer.GetZ(System.Int32@)
+  name: GetZ(ref Int32)
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetZ_System_Int32__
+  commentId: M:GameCanvas.Input.Accelerometer.GetZ(System.Int32@)
+  name.vb: GetZ(ByRef Int32)
+  fullName: GameCanvas.Input.Accelerometer.GetZ(ref System.Int32)
+  fullName.vb: GameCanvas.Input.Accelerometer.GetZ(ByRef System.Int32)
+  nameWithType: Accelerometer.GetZ(ref Int32)
+  nameWithType.vb: Accelerometer.GetZ(ByRef Int32)
+- uid: GameCanvas.Input.Accelerometer.GetZ*
+  name: GetZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_GetZ_
+  commentId: Overload:GameCanvas.Input.Accelerometer.GetZ
+  fullName: GameCanvas.Input.Accelerometer.GetZ
+  nameWithType: Accelerometer.GetZ
+- uid: GameCanvas.Input.Accelerometer.LastX
+  name: LastX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastX
+  commentId: P:GameCanvas.Input.Accelerometer.LastX
+  fullName: GameCanvas.Input.Accelerometer.LastX
+  nameWithType: Accelerometer.LastX
+- uid: GameCanvas.Input.Accelerometer.LastX*
+  name: LastX
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastX_
+  commentId: Overload:GameCanvas.Input.Accelerometer.LastX
+  fullName: GameCanvas.Input.Accelerometer.LastX
+  nameWithType: Accelerometer.LastX
+- uid: GameCanvas.Input.Accelerometer.LastY
+  name: LastY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastY
+  commentId: P:GameCanvas.Input.Accelerometer.LastY
+  fullName: GameCanvas.Input.Accelerometer.LastY
+  nameWithType: Accelerometer.LastY
+- uid: GameCanvas.Input.Accelerometer.LastY*
+  name: LastY
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastY_
+  commentId: Overload:GameCanvas.Input.Accelerometer.LastY
+  fullName: GameCanvas.Input.Accelerometer.LastY
+  nameWithType: Accelerometer.LastY
+- uid: GameCanvas.Input.Accelerometer.LastZ
+  name: LastZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastZ
+  commentId: P:GameCanvas.Input.Accelerometer.LastZ
+  fullName: GameCanvas.Input.Accelerometer.LastZ
+  nameWithType: Accelerometer.LastZ
+- uid: GameCanvas.Input.Accelerometer.LastZ*
+  name: LastZ
+  href: api/GameCanvas.Input.Accelerometer.html#GameCanvas_Input_Accelerometer_LastZ_
+  commentId: Overload:GameCanvas.Input.Accelerometer.LastZ
+  fullName: GameCanvas.Input.Accelerometer.LastZ
+  nameWithType: Accelerometer.LastZ
 - uid: GameCanvas.Input.Compass
   name: Compass
   href: api/GameCanvas.Input.Compass.html
@@ -1333,6 +1471,138 @@ references:
   commentId: T:GameCanvas.Input.Geolocation
   fullName: GameCanvas.Input.Geolocation
   nameWithType: Geolocation
+- uid: GameCanvas.Input.Geolocation.HasPermission
+  name: HasPermission
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_HasPermission
+  commentId: P:GameCanvas.Input.Geolocation.HasPermission
+  fullName: GameCanvas.Input.Geolocation.HasPermission
+  nameWithType: Geolocation.HasPermission
+- uid: GameCanvas.Input.Geolocation.HasPermission*
+  name: HasPermission
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_HasPermission_
+  commentId: Overload:GameCanvas.Input.Geolocation.HasPermission
+  fullName: GameCanvas.Input.Geolocation.HasPermission
+  nameWithType: Geolocation.HasPermission
+- uid: GameCanvas.Input.Geolocation.HasUpdate
+  name: HasUpdate
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_HasUpdate
+  commentId: P:GameCanvas.Input.Geolocation.HasUpdate
+  fullName: GameCanvas.Input.Geolocation.HasUpdate
+  nameWithType: Geolocation.HasUpdate
+- uid: GameCanvas.Input.Geolocation.HasUpdate*
+  name: HasUpdate
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_HasUpdate_
+  commentId: Overload:GameCanvas.Input.Geolocation.HasUpdate
+  fullName: GameCanvas.Input.Geolocation.HasUpdate
+  nameWithType: Geolocation.HasUpdate
+- uid: GameCanvas.Input.Geolocation.IsRunning
+  name: IsRunning
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_IsRunning
+  commentId: P:GameCanvas.Input.Geolocation.IsRunning
+  fullName: GameCanvas.Input.Geolocation.IsRunning
+  nameWithType: Geolocation.IsRunning
+- uid: GameCanvas.Input.Geolocation.IsRunning*
+  name: IsRunning
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_IsRunning_
+  commentId: Overload:GameCanvas.Input.Geolocation.IsRunning
+  fullName: GameCanvas.Input.Geolocation.IsRunning
+  nameWithType: Geolocation.IsRunning
+- uid: GameCanvas.Input.Geolocation.LastAltitude
+  name: LastAltitude
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastAltitude
+  commentId: P:GameCanvas.Input.Geolocation.LastAltitude
+  fullName: GameCanvas.Input.Geolocation.LastAltitude
+  nameWithType: Geolocation.LastAltitude
+- uid: GameCanvas.Input.Geolocation.LastAltitude*
+  name: LastAltitude
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastAltitude_
+  commentId: Overload:GameCanvas.Input.Geolocation.LastAltitude
+  fullName: GameCanvas.Input.Geolocation.LastAltitude
+  nameWithType: Geolocation.LastAltitude
+- uid: GameCanvas.Input.Geolocation.LastLatitude
+  name: LastLatitude
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastLatitude
+  commentId: P:GameCanvas.Input.Geolocation.LastLatitude
+  fullName: GameCanvas.Input.Geolocation.LastLatitude
+  nameWithType: Geolocation.LastLatitude
+- uid: GameCanvas.Input.Geolocation.LastLatitude*
+  name: LastLatitude
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastLatitude_
+  commentId: Overload:GameCanvas.Input.Geolocation.LastLatitude
+  fullName: GameCanvas.Input.Geolocation.LastLatitude
+  nameWithType: Geolocation.LastLatitude
+- uid: GameCanvas.Input.Geolocation.LastLongitude
+  name: LastLongitude
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastLongitude
+  commentId: P:GameCanvas.Input.Geolocation.LastLongitude
+  fullName: GameCanvas.Input.Geolocation.LastLongitude
+  nameWithType: Geolocation.LastLongitude
+- uid: GameCanvas.Input.Geolocation.LastLongitude*
+  name: LastLongitude
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastLongitude_
+  commentId: Overload:GameCanvas.Input.Geolocation.LastLongitude
+  fullName: GameCanvas.Input.Geolocation.LastLongitude
+  nameWithType: Geolocation.LastLongitude
+- uid: GameCanvas.Input.Geolocation.LastTime
+  name: LastTime
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastTime
+  commentId: P:GameCanvas.Input.Geolocation.LastTime
+  fullName: GameCanvas.Input.Geolocation.LastTime
+  nameWithType: Geolocation.LastTime
+- uid: GameCanvas.Input.Geolocation.LastTime*
+  name: LastTime
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastTime_
+  commentId: Overload:GameCanvas.Input.Geolocation.LastTime
+  fullName: GameCanvas.Input.Geolocation.LastTime
+  nameWithType: Geolocation.LastTime
+- uid: GameCanvas.Input.Geolocation.OnBeforeUpdate
+  name: OnBeforeUpdate()
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_OnBeforeUpdate
+  commentId: M:GameCanvas.Input.Geolocation.OnBeforeUpdate
+  fullName: GameCanvas.Input.Geolocation.OnBeforeUpdate()
+  nameWithType: Geolocation.OnBeforeUpdate()
+- uid: GameCanvas.Input.Geolocation.OnBeforeUpdate*
+  name: OnBeforeUpdate
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_OnBeforeUpdate_
+  commentId: Overload:GameCanvas.Input.Geolocation.OnBeforeUpdate
+  fullName: GameCanvas.Input.Geolocation.OnBeforeUpdate
+  nameWithType: Geolocation.OnBeforeUpdate
+- uid: GameCanvas.Input.Geolocation.StartService
+  name: StartService()
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_StartService
+  commentId: M:GameCanvas.Input.Geolocation.StartService
+  fullName: GameCanvas.Input.Geolocation.StartService()
+  nameWithType: Geolocation.StartService()
+- uid: GameCanvas.Input.Geolocation.StartService*
+  name: StartService
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_StartService_
+  commentId: Overload:GameCanvas.Input.Geolocation.StartService
+  fullName: GameCanvas.Input.Geolocation.StartService
+  nameWithType: Geolocation.StartService
+- uid: GameCanvas.Input.Geolocation.Status
+  name: Status
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_Status
+  commentId: P:GameCanvas.Input.Geolocation.Status
+  fullName: GameCanvas.Input.Geolocation.Status
+  nameWithType: Geolocation.Status
+- uid: GameCanvas.Input.Geolocation.Status*
+  name: Status
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_Status_
+  commentId: Overload:GameCanvas.Input.Geolocation.Status
+  fullName: GameCanvas.Input.Geolocation.Status
+  nameWithType: Geolocation.Status
+- uid: GameCanvas.Input.Geolocation.StopService
+  name: StopService()
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_StopService
+  commentId: M:GameCanvas.Input.Geolocation.StopService
+  fullName: GameCanvas.Input.Geolocation.StopService()
+  nameWithType: Geolocation.StopService()
+- uid: GameCanvas.Input.Geolocation.StopService*
+  name: StopService
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_StopService_
+  commentId: Overload:GameCanvas.Input.Geolocation.StopService
+  fullName: GameCanvas.Input.Geolocation.StopService
+  nameWithType: Geolocation.StopService
 - uid: GameCanvas.Input.Gyroscope
   name: Gyroscope
   href: api/GameCanvas.Input.Gyroscope.html
@@ -1909,6 +2179,54 @@ references:
   commentId: T:GameCanvas.Proxy
   fullName: GameCanvas.Proxy
   nameWithType: Proxy
+- uid: GameCanvas.Proxy.AccelerationEventCount
+  name: AccelerationEventCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationEventCount
+  commentId: P:GameCanvas.Proxy.AccelerationEventCount
+  fullName: GameCanvas.Proxy.AccelerationEventCount
+  nameWithType: Proxy.AccelerationEventCount
+- uid: GameCanvas.Proxy.AccelerationEventCount*
+  name: AccelerationEventCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationEventCount_
+  commentId: Overload:GameCanvas.Proxy.AccelerationEventCount
+  fullName: GameCanvas.Proxy.AccelerationEventCount
+  nameWithType: Proxy.AccelerationEventCount
+- uid: GameCanvas.Proxy.AccelerationLastX
+  name: AccelerationLastX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastX
+  commentId: P:GameCanvas.Proxy.AccelerationLastX
+  fullName: GameCanvas.Proxy.AccelerationLastX
+  nameWithType: Proxy.AccelerationLastX
+- uid: GameCanvas.Proxy.AccelerationLastX*
+  name: AccelerationLastX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastX_
+  commentId: Overload:GameCanvas.Proxy.AccelerationLastX
+  fullName: GameCanvas.Proxy.AccelerationLastX
+  nameWithType: Proxy.AccelerationLastX
+- uid: GameCanvas.Proxy.AccelerationLastY
+  name: AccelerationLastY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastY
+  commentId: P:GameCanvas.Proxy.AccelerationLastY
+  fullName: GameCanvas.Proxy.AccelerationLastY
+  nameWithType: Proxy.AccelerationLastY
+- uid: GameCanvas.Proxy.AccelerationLastY*
+  name: AccelerationLastY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastY_
+  commentId: Overload:GameCanvas.Proxy.AccelerationLastY
+  fullName: GameCanvas.Proxy.AccelerationLastY
+  nameWithType: Proxy.AccelerationLastY
+- uid: GameCanvas.Proxy.AccelerationLastZ
+  name: AccelerationLastZ
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastZ
+  commentId: P:GameCanvas.Proxy.AccelerationLastZ
+  fullName: GameCanvas.Proxy.AccelerationLastZ
+  nameWithType: Proxy.AccelerationLastZ
+- uid: GameCanvas.Proxy.AccelerationLastZ*
+  name: AccelerationLastZ
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_AccelerationLastZ_
+  commentId: Overload:GameCanvas.Proxy.AccelerationLastZ
+  fullName: GameCanvas.Proxy.AccelerationLastZ
+  nameWithType: Proxy.AccelerationLastZ
 - uid: GameCanvas.Proxy.Atan2(System.Single,System.Single)
   name: Atan2(Single, Single)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_Atan2_System_Single_System_Single_
@@ -2359,6 +2677,102 @@ references:
   commentId: Overload:GameCanvas.Proxy.FillRect
   fullName: GameCanvas.Proxy.FillRect
   nameWithType: Proxy.FillRect
+- uid: GameCanvas.Proxy.GeolocationLastAltitude
+  name: GeolocationLastAltitude
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastAltitude
+  commentId: P:GameCanvas.Proxy.GeolocationLastAltitude
+  fullName: GameCanvas.Proxy.GeolocationLastAltitude
+  nameWithType: Proxy.GeolocationLastAltitude
+- uid: GameCanvas.Proxy.GeolocationLastAltitude*
+  name: GeolocationLastAltitude
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastAltitude_
+  commentId: Overload:GameCanvas.Proxy.GeolocationLastAltitude
+  fullName: GameCanvas.Proxy.GeolocationLastAltitude
+  nameWithType: Proxy.GeolocationLastAltitude
+- uid: GameCanvas.Proxy.GeolocationLastLatitude
+  name: GeolocationLastLatitude
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastLatitude
+  commentId: P:GameCanvas.Proxy.GeolocationLastLatitude
+  fullName: GameCanvas.Proxy.GeolocationLastLatitude
+  nameWithType: Proxy.GeolocationLastLatitude
+- uid: GameCanvas.Proxy.GeolocationLastLatitude*
+  name: GeolocationLastLatitude
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastLatitude_
+  commentId: Overload:GameCanvas.Proxy.GeolocationLastLatitude
+  fullName: GameCanvas.Proxy.GeolocationLastLatitude
+  nameWithType: Proxy.GeolocationLastLatitude
+- uid: GameCanvas.Proxy.GeolocationLastLongitude
+  name: GeolocationLastLongitude
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastLongitude
+  commentId: P:GameCanvas.Proxy.GeolocationLastLongitude
+  fullName: GameCanvas.Proxy.GeolocationLastLongitude
+  nameWithType: Proxy.GeolocationLastLongitude
+- uid: GameCanvas.Proxy.GeolocationLastLongitude*
+  name: GeolocationLastLongitude
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastLongitude_
+  commentId: Overload:GameCanvas.Proxy.GeolocationLastLongitude
+  fullName: GameCanvas.Proxy.GeolocationLastLongitude
+  nameWithType: Proxy.GeolocationLastLongitude
+- uid: GameCanvas.Proxy.GeolocationLastTime
+  name: GeolocationLastTime
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastTime
+  commentId: P:GameCanvas.Proxy.GeolocationLastTime
+  fullName: GameCanvas.Proxy.GeolocationLastTime
+  nameWithType: Proxy.GeolocationLastTime
+- uid: GameCanvas.Proxy.GeolocationLastTime*
+  name: GeolocationLastTime
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationLastTime_
+  commentId: Overload:GameCanvas.Proxy.GeolocationLastTime
+  fullName: GameCanvas.Proxy.GeolocationLastTime
+  nameWithType: Proxy.GeolocationLastTime
+- uid: GameCanvas.Proxy.GeolocationStatus
+  name: GeolocationStatus
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationStatus
+  commentId: P:GameCanvas.Proxy.GeolocationStatus
+  fullName: GameCanvas.Proxy.GeolocationStatus
+  nameWithType: Proxy.GeolocationStatus
+- uid: GameCanvas.Proxy.GeolocationStatus*
+  name: GeolocationStatus
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GeolocationStatus_
+  commentId: Overload:GameCanvas.Proxy.GeolocationStatus
+  fullName: GameCanvas.Proxy.GeolocationStatus
+  nameWithType: Proxy.GeolocationStatus
+- uid: GameCanvas.Proxy.GetAccelerationX(System.Int32,System.Boolean)
+  name: GetAccelerationX(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationX_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.GetAccelerationX(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.GetAccelerationX(System.Int32, System.Boolean)
+  nameWithType: Proxy.GetAccelerationX(Int32, Boolean)
+- uid: GameCanvas.Proxy.GetAccelerationX*
+  name: GetAccelerationX
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationX_
+  commentId: Overload:GameCanvas.Proxy.GetAccelerationX
+  fullName: GameCanvas.Proxy.GetAccelerationX
+  nameWithType: Proxy.GetAccelerationX
+- uid: GameCanvas.Proxy.GetAccelerationY(System.Int32,System.Boolean)
+  name: GetAccelerationY(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationY_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.GetAccelerationY(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.GetAccelerationY(System.Int32, System.Boolean)
+  nameWithType: Proxy.GetAccelerationY(Int32, Boolean)
+- uid: GameCanvas.Proxy.GetAccelerationY*
+  name: GetAccelerationY
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationY_
+  commentId: Overload:GameCanvas.Proxy.GetAccelerationY
+  fullName: GameCanvas.Proxy.GetAccelerationY
+  nameWithType: Proxy.GetAccelerationY
+- uid: GameCanvas.Proxy.GetAccelerationZ(System.Int32,System.Boolean)
+  name: GetAccelerationZ(Int32, Boolean)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationZ_System_Int32_System_Boolean_
+  commentId: M:GameCanvas.Proxy.GetAccelerationZ(System.Int32,System.Boolean)
+  fullName: GameCanvas.Proxy.GetAccelerationZ(System.Int32, System.Boolean)
+  nameWithType: Proxy.GetAccelerationZ(Int32, Boolean)
+- uid: GameCanvas.Proxy.GetAccelerationZ*
+  name: GetAccelerationZ
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetAccelerationZ_
+  commentId: Overload:GameCanvas.Proxy.GetAccelerationZ
+  fullName: GameCanvas.Proxy.GetAccelerationZ
+  nameWithType: Proxy.GetAccelerationZ
 - uid: GameCanvas.Proxy.GetImageHeight(System.Int32)
   name: GetImageHeight(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageHeight_System_Int32_
@@ -2539,6 +2953,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.GetStringWidth
   fullName: GameCanvas.Proxy.GetStringWidth
   nameWithType: Proxy.GetStringWidth
+- uid: GameCanvas.Proxy.HasGeolocationPermission
+  name: HasGeolocationPermission
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasGeolocationPermission
+  commentId: P:GameCanvas.Proxy.HasGeolocationPermission
+  fullName: GameCanvas.Proxy.HasGeolocationPermission
+  nameWithType: Proxy.HasGeolocationPermission
+- uid: GameCanvas.Proxy.HasGeolocationPermission*
+  name: HasGeolocationPermission
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasGeolocationPermission_
+  commentId: Overload:GameCanvas.Proxy.HasGeolocationPermission
+  fullName: GameCanvas.Proxy.HasGeolocationPermission
+  nameWithType: Proxy.HasGeolocationPermission
+- uid: GameCanvas.Proxy.HasGeolocationUpdate
+  name: HasGeolocationUpdate
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasGeolocationUpdate
+  commentId: P:GameCanvas.Proxy.HasGeolocationUpdate
+  fullName: GameCanvas.Proxy.HasGeolocationUpdate
+  nameWithType: Proxy.HasGeolocationUpdate
+- uid: GameCanvas.Proxy.HasGeolocationUpdate*
+  name: HasGeolocationUpdate
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasGeolocationUpdate_
+  commentId: Overload:GameCanvas.Proxy.HasGeolocationUpdate
+  fullName: GameCanvas.Proxy.HasGeolocationUpdate
+  nameWithType: Proxy.HasGeolocationUpdate
 - uid: GameCanvas.Proxy.HasPointerEvent
   name: HasPointerEvent
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_HasPointerEvent
@@ -2551,6 +2989,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.HasPointerEvent
   fullName: GameCanvas.Proxy.HasPointerEvent
   nameWithType: Proxy.HasPointerEvent
+- uid: GameCanvas.Proxy.IsGeolocationRunning
+  name: IsGeolocationRunning
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsGeolocationRunning
+  commentId: P:GameCanvas.Proxy.IsGeolocationRunning
+  fullName: GameCanvas.Proxy.IsGeolocationRunning
+  nameWithType: Proxy.IsGeolocationRunning
+- uid: GameCanvas.Proxy.IsGeolocationRunning*
+  name: IsGeolocationRunning
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsGeolocationRunning_
+  commentId: Overload:GameCanvas.Proxy.IsGeolocationRunning
+  fullName: GameCanvas.Proxy.IsGeolocationRunning
+  nameWithType: Proxy.IsGeolocationRunning
 - uid: GameCanvas.Proxy.KeyEscape
   name: KeyEscape
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_KeyEscape
@@ -2791,6 +3241,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.Sqrt
   fullName: GameCanvas.Proxy.Sqrt
   nameWithType: Proxy.Sqrt
+- uid: GameCanvas.Proxy.StartGeolocationService
+  name: StartGeolocationService()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StartGeolocationService
+  commentId: M:GameCanvas.Proxy.StartGeolocationService
+  fullName: GameCanvas.Proxy.StartGeolocationService()
+  nameWithType: Proxy.StartGeolocationService()
+- uid: GameCanvas.Proxy.StartGeolocationService*
+  name: StartGeolocationService
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StartGeolocationService_
+  commentId: Overload:GameCanvas.Proxy.StartGeolocationService
+  fullName: GameCanvas.Proxy.StartGeolocationService
+  nameWithType: Proxy.StartGeolocationService
+- uid: GameCanvas.Proxy.StopGeolocationService
+  name: StopGeolocationService()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopGeolocationService
+  commentId: M:GameCanvas.Proxy.StopGeolocationService
+  fullName: GameCanvas.Proxy.StopGeolocationService()
+  nameWithType: Proxy.StopGeolocationService()
+- uid: GameCanvas.Proxy.StopGeolocationService*
+  name: StopGeolocationService
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopGeolocationService_
+  commentId: Overload:GameCanvas.Proxy.StopGeolocationService
+  fullName: GameCanvas.Proxy.StopGeolocationService
+  nameWithType: Proxy.StopGeolocationService
 - uid: GameCanvas.Proxy.StopSound
   name: StopSound()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound

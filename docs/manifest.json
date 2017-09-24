@@ -46,7 +46,7 @@
       "output": {
         ".html": {
           "relative_path": "note/compatibility.html",
-          "hash": "h3ANQJGgnhHZe2ei9506gA=="
+          "hash": "asj+0MMRTKsGQ10Qq3eoSA=="
         }
       },
       "is_incremental": false,
@@ -154,7 +154,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.Accelerometer.html",
-          "hash": "FktaWNIP8EZBVSE9n9ZGGg=="
+          "hash": "zydUNT0eeUM6GbfrQmgOhg=="
         }
       },
       "is_incremental": true,
@@ -190,7 +190,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.Geolocation.html",
-          "hash": "pKBULVKg/2j3+xo4ZdPHDQ=="
+          "hash": "X4xZ8fOhXh4cIh3cDmx9NQ=="
         }
       },
       "is_incremental": true,
@@ -298,10 +298,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Proxy.html",
-          "hash": "8kN4JzmICl9cjMnw//n7nw=="
+          "hash": "CsaSRiKgxyrqN//i8ajk6A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -313,7 +313,7 @@
           "hash": "WJwUGrJsbEAWS9ZfV/5gCQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -335,17 +335,17 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build"
         },
-        "RestApiDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
           "incrementalPhase": "build"
         },
         "TocDocumentProcessor": {
@@ -353,9 +353,9 @@
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ResourceDocumentProcessor": {
+        "RestApiDocumentProcessor": {
           "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }
