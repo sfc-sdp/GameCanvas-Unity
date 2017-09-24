@@ -12,9 +12,8 @@
 1. [Unity 2017.1.1](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします  
 （ChooseComponent で android / ios をチェックしてください）
 1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) を入手し、解凍して適当なフォルダに配置します
-1. Unity を起動し、先ほど配置したフォルダを開きます  
-（初回のみ File > Build Settings で Android/iOS を選択し Switch Platform してください）
-1. Assets/Game.unity を開いて再生ボタンを押せば、すぐにサンプルが実行されます
+1. `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます
+1. プロジェクトビューから `Assets/Game.unity` を選択し再生ボタンを押せば、すぐにサンプルが実行されます
 1. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう
 
 iOS や Android への書き出しなど、より詳しい解説は、[スマートデバイスプログラミング 講義ページ](http://web.sfc.keio.ac.jp/~wadari/sdp/) を参照してください
