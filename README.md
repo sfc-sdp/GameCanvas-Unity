@@ -15,7 +15,7 @@
 1. Unity を起動し、先ほど配置したフォルダを開きます  
 （初回のみ File > Build Settings で Android/iOS を選択し Switch Platform してください）
 1. Assets/Game.unity を開いて再生ボタンを押せば、すぐにサンプルが実行されます
-1. [Assets/Game.cs](Assets/Scripts/Game.cs) を編集して、自分だけのオリジナルゲームを作りましょう
+1. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう
 
 iOS や Android への書き出しなど、より詳しい解説は、[スマートデバイスプログラミング 講義ページ](http://web.sfc.keio.ac.jp/~wadari/sdp/) を参照してください
 
