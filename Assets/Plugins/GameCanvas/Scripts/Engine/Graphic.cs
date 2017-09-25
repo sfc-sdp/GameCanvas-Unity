@@ -684,6 +684,7 @@ namespace GameCanvas.Engine
                 cTrisText.Add(i);
             }
 
+            mesh.Clear();
             mesh.SetVertices(cVertsText);
             mesh.SetUVs(0, cUvsText);
             mesh.SetTriangles(cTrisText, 0);
