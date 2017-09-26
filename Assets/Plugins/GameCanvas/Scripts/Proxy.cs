@@ -332,19 +332,23 @@ namespace GameCanvas
         /// </summary>
         public void UnpauseSound() => cSound.Unpause();
 
-        // 入力
+        // キー入力
 
         /// <summary>
-        /// キーが押されているフレーム数を取得します。
+        /// バックボタンが押されているかどうか（Androidのみ）
+        /// </summary>
+        public bool IsPressBackButton => cKeyboard.IsPressBackButton;
+        /// <summary>
+        /// キーが押されているフレーム数（押された瞬間を1フレーム目とする経過フレーム数）を取得します。
         /// </summary>
         /// <param name="key">キー番号</param>
-        /// <returns>フレーム数</returns>
+        /// <returns>フレーム数（押されていない場合は常に0を返します）</returns>
         public int GetKeyPressFrameCount(EKeyCode key) => cKeyboard.GetPressFrameCount(ref key);
         /// <summary>
-        /// キーが押されている時間を取得します。
+        /// キーが押されている時間（押された瞬間からの経過時間）を取得します。
         /// </summary>
         /// <param name="key">キー番号</param>
-        /// <returns>時間（秒）</returns>
+        /// <returns>時間（秒。押されていない場合と押された瞬間は0を返します）</returns>
         public float GetKeyPressDuration(EKeyCode key) => cKeyboard.GetPressDuration(ref key);
         /// <summary>
         /// キーが押されているかどうかを取得します。
@@ -365,12 +369,38 @@ namespace GameCanvas
         /// <returns>離された瞬間かどうか</returns>
         public bool GetIsKeyEnded(EKeyCode key) => cKeyboard.GetIsEnded(ref key);
         /// <summary>
+        /// スクリーンキーボードを表示します。（実機のみ）
+        /// </summary>
+        /// <returns>正常に表示できたかどうか</returns>
+        public bool ShowScreenKeyboard() => cKeyboard.Open();
+
+        // ポインタ入力
+
+        /// <summary>
         /// 有効なポインタイベントの数を取得します。
         /// </summary>
         public int PointerCount => cPointer.Count;
         /// <summary>
         /// ポインタイベントがあるかどうかを取得します。
         /// </summary>
+        /// <example>
+        /// 以下はポインタ入力の有無を判定するコードの例です。
+        /// <code>
+        /// string str;
+        /// 
+        /// public override void UpdateGame()
+        /// {
+        ///     if (gc.HasPointerEvent)
+        ///     {
+        ///         str = "ポインタ入力あり！";
+        ///     }
+        ///     else
+        ///     {
+        ///         str = "ポインタ入力なし……";
+        ///     }
+        /// }
+        /// </code>
+        /// </example>
         public bool HasPointerEvent => cPointer.HasEvent;
         /// <summary>
         /// ポインタイベントを取得します。
@@ -401,24 +431,43 @@ namespace GameCanvas
         /// </summary>
         /// <param name="i">ポインタ通し番号（0～<see cref="PointerCount"/>-1）</param>
         /// <returns>離された瞬間かどうか</returns>
+        /// <example>
+        /// 以下は <see cref="GetPointerDuration"/> と組み合わせてタップを判定するコードの例です。
+        /// <code>
+        /// bool isTap;
+        /// 
+        /// public override void UpdateGame()
+        /// {
+        ///     // 0.3 秒以内に指を離したらタップと判定する
+        ///     <![CDATA[isTap = (gc.GetIsPointerEnded(0) && gc.GetPointerDuration(0) < 0.3f));]]>
+        /// }
+        /// </code>
+        /// </example>
         public bool GetIsPointerEnded(int i) => cPointer.GetIsEnded(ref i);
         /// <summary>
-        /// ポインタが押された瞬間からの経過フレーム数を取得します。
+        /// ポインタが押されているフレーム数（押された瞬間を1フレーム目とする経過フレーム数）を取得します。
         /// </summary>
         /// <param name="i">ポインタ通し番号（0～<see cref="PointerCount"/>-1）</param>
-        /// <returns>押された瞬間からの経過フレーム数</returns>
+        /// <returns>押された瞬間を1フレーム目とする経過フレーム数（押されていない場合は常に0を返します）</returns>
         public int GetPointerFrameCount(int i) => cPointer.GetFrameCount(ref i);
         /// <summary>
-        /// ポインタが押された瞬間からの経過時間を取得します。
+        /// ポインタが押されている時間（押された瞬間からの経過時間）を取得します。
         /// </summary>
         /// <param name="i">ポインタ通し番号（0～<see cref="PointerCount"/>-1）</param>
-        /// <returns>押された瞬間からの経過時間（秒）</returns>
+        /// <returns>押された瞬間からの経過時間（秒。押されていない場合と押された瞬間は0を返します）</returns>
+        /// <example>
+        /// 以下は <see cref="GetIsPointerEnded"/> と組み合わせてタップを判定するコードの例です。
+        /// <code>
+        /// bool isTap;
+        /// 
+        /// public override void UpdateGame()
+        /// {
+        ///     // 0.3 秒以内に指を離したらタップと判定する
+        ///     <![CDATA[isTap = (gc.GetIsPointerEnded(0) && gc.GetPointerDuration(0) < 0.3f));]]>
+        /// }
+        /// </code>
+        /// </example>
         public float GetPointerDuration(int i) => cPointer.GetDulation(ref i);
-        /// <summary>
-        /// スクリーンキーボードを表示します。（実機のみ）
-        /// </summary>
-        /// <returns>正常に表示できたかどうか</returns>
-        public bool ShowScreenKeyboard() => cKeyboard.Open();
 
         // 数学
 

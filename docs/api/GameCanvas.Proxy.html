@@ -959,6 +959,22 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="GameCanvas_Proxy_HasPointerEvent_examples">Examples</h5>
+  <p>以下はポインタ入力の有無を判定するコードの例です。</p>
+<pre><code>string str;
+
+public override void UpdateGame()
+{
+    if (gc.HasPointerEvent)
+    {
+        str = &quot;ポインタ入力あり！&quot;;
+    }
+    else
+    {
+        str = &quot;ポインタ入力なし……&quot;;
+    }
+}</code></pre>
+
   <a id="GameCanvas_Proxy_IsGeolocationRunning_" data-uid="GameCanvas.Proxy.IsGeolocationRunning*"></a>
   <h4 id="GameCanvas_Proxy_IsGeolocationRunning" data-uid="GameCanvas.Proxy.IsGeolocationRunning">IsGeolocationRunning</h4>
   <div class="markdown level1 summary"><p>位置情報サービスが現在動作しているかどうか</p>
@@ -967,6 +983,30 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsGeolocationRunning { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.boolean(v=vs.110).aspx">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_IsPressBackButton_" data-uid="GameCanvas.Proxy.IsPressBackButton*"></a>
+  <h4 id="GameCanvas_Proxy_IsPressBackButton" data-uid="GameCanvas.Proxy.IsPressBackButton">IsPressBackButton</h4>
+  <div class="markdown level1 summary"><p>バックボタンが押されているかどうか（Androidのみ）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsPressBackButton { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2427,9 +2467,19 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="GameCanvas_Proxy_GetIsPointerEnded_System_Int32__examples">Examples</h5>
+  <p>以下は <a class="xref" href="GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_System_Int32_">GetPointerDuration(Int32)</a> と組み合わせてタップを判定するコードの例です。</p>
+<pre><code>bool isTap;
+
+public override void UpdateGame()
+{
+    // 0.3 秒以内に指を離したらタップと判定する
+    isTap = (gc.GetIsPointerEnded(0) &amp;&amp; gc.GetPointerDuration(0) &lt; 0.3f));
+}</code></pre>
+
   <a id="GameCanvas_Proxy_GetKeyPressDuration_" data-uid="GameCanvas.Proxy.GetKeyPressDuration*"></a>
   <h4 id="GameCanvas_Proxy_GetKeyPressDuration_GameCanvas_EKeyCode_" data-uid="GameCanvas.Proxy.GetKeyPressDuration(GameCanvas.EKeyCode)">GetKeyPressDuration(EKeyCode)</h4>
-  <div class="markdown level1 summary"><p>キーが押されている時間を取得します。</p>
+  <div class="markdown level1 summary"><p>キーが押されている時間（押された瞬間からの経過時間）を取得します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2465,14 +2515,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.single(v=vs.110).aspx">Single</a></td>
-        <td><p>時間（秒）</p>
+        <td><p>時間（秒。押されていない場合と押された瞬間は0を返します）</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_Proxy_GetKeyPressFrameCount_" data-uid="GameCanvas.Proxy.GetKeyPressFrameCount*"></a>
   <h4 id="GameCanvas_Proxy_GetKeyPressFrameCount_GameCanvas_EKeyCode_" data-uid="GameCanvas.Proxy.GetKeyPressFrameCount(GameCanvas.EKeyCode)">GetKeyPressFrameCount(EKeyCode)</h4>
-  <div class="markdown level1 summary"><p>キーが押されているフレーム数を取得します。</p>
+  <div class="markdown level1 summary"><p>キーが押されているフレーム数（押された瞬間を1フレーム目とする経過フレーム数）を取得します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2508,14 +2558,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
-        <td><p>フレーム数</p>
+        <td><p>フレーム数（押されていない場合は常に0を返します）</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_Proxy_GetPointerDuration_" data-uid="GameCanvas.Proxy.GetPointerDuration*"></a>
   <h4 id="GameCanvas_Proxy_GetPointerDuration_System_Int32_" data-uid="GameCanvas.Proxy.GetPointerDuration(System.Int32)">GetPointerDuration(Int32)</h4>
-  <div class="markdown level1 summary"><p>ポインタが押された瞬間からの経過時間を取得します。</p>
+  <div class="markdown level1 summary"><p>ポインタが押されている時間（押された瞬間からの経過時間）を取得します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2551,11 +2601,21 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.single(v=vs.110).aspx">Single</a></td>
-        <td><p>押された瞬間からの経過時間（秒）</p>
+        <td><p>押された瞬間からの経過時間（秒。押されていない場合と押された瞬間は0を返します）</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="GameCanvas_Proxy_GetPointerDuration_System_Int32__examples">Examples</h5>
+  <p>以下は <a class="xref" href="GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsPointerEnded_System_Int32_">GetIsPointerEnded(Int32)</a> と組み合わせてタップを判定するコードの例です。</p>
+<pre><code>bool isTap;
+
+public override void UpdateGame()
+{
+    // 0.3 秒以内に指を離したらタップと判定する
+    isTap = (gc.GetIsPointerEnded(0) &amp;&amp; gc.GetPointerDuration(0) &lt; 0.3f));
+}</code></pre>
+
   <a id="GameCanvas_Proxy_GetPointerEvent_" data-uid="GameCanvas.Proxy.GetPointerEvent*"></a>
   <h4 id="GameCanvas_Proxy_GetPointerEvent_System_Int32_" data-uid="GameCanvas.Proxy.GetPointerEvent(System.Int32)">GetPointerEvent(Int32)</h4>
   <div class="markdown level1 summary"><p>ポインタイベントを取得します。</p>
@@ -2601,7 +2661,7 @@
   </table>
   <a id="GameCanvas_Proxy_GetPointerFrameCount_" data-uid="GameCanvas.Proxy.GetPointerFrameCount*"></a>
   <h4 id="GameCanvas_Proxy_GetPointerFrameCount_System_Int32_" data-uid="GameCanvas.Proxy.GetPointerFrameCount(System.Int32)">GetPointerFrameCount(Int32)</h4>
-  <div class="markdown level1 summary"><p>ポインタが押された瞬間からの経過フレーム数を取得します。</p>
+  <div class="markdown level1 summary"><p>ポインタが押されているフレーム数（押された瞬間を1フレーム目とする経過フレーム数）を取得します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2637,7 +2697,7 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
-        <td><p>押された瞬間からの経過フレーム数</p>
+        <td><p>押された瞬間を1フレーム目とする経過フレーム数（押されていない場合は常に0を返します）</p>
 </td>
       </tr>
     </tbody>

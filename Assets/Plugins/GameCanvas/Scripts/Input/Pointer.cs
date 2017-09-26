@@ -123,13 +123,13 @@ namespace GameCanvas.Input
 
                     if (cEvents[i].Phase == PointerEvent.EPhase.Began)
                     {
-                        cEventFrameCounts[i] = 0;
+                        cEventFrameCounts[i] = 1;
                         cEventDulations[i] = 0;
                         cBeganEventDict.Add(id, cEvents[i]);
                         continue;
                     }
 
-                    cEventFrameCounts[i] = currentFrame - cBeganEventDict[id].Frame;
+                    cEventFrameCounts[i] = currentFrame - cBeganEventDict[id].Frame + 1;
                     cEventDulations[i] = currentTime - cBeganEventDict[id].Time;
 
                     if (cEvents[i].Phase == PointerEvent.EPhase.Ended)
