@@ -125,7 +125,7 @@ namespace GameCanvas.Engine
             mColor = cColorWhite;
             mScreenSize = new Vector2(Screen.width, Screen.height);
             mCanvasSize = new Vector2(720, 1280);
-            Application.targetFrameRate = 30;
+            Application.targetFrameRate = 60;
         }
 
         public void Dispose()
