@@ -76,8 +76,12 @@ namespace GameCanvas.Input
                 switch (cKeyInfo[i].State)
                 {
                     case EState.None:
-                    case EState.Began:
                         cKeyInfo[i].FrameCount = 0;
+                        cKeyInfo[i].Duration = 0f;
+                        break;
+
+                    case EState.Began:
+                        cKeyInfo[i].FrameCount = 1;
                         cKeyInfo[i].Duration = 0f;
                         break;
 
@@ -109,6 +113,7 @@ namespace GameCanvas.Input
         }
 
         public bool IsVisible => (mScreenKeyboard != null);
+        public bool IsPressBackButton => (cKeyInfo[cCodeToIndex[EKeyCode.Escape]].State != EState.None);
 
         public int GetPressFrameCount(ref EKeyCode key) => cKeyInfo[cCodeToIndex[key]].FrameCount;
         public float GetPressDuration(ref EKeyCode key) => cKeyInfo[cCodeToIndex[key]].Duration;

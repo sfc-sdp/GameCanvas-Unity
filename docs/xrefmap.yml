@@ -1690,6 +1690,18 @@ references:
   commentId: Overload:GameCanvas.Input.Keyboard.GetPressFrameCount
   fullName: GameCanvas.Input.Keyboard.GetPressFrameCount
   nameWithType: Keyboard.GetPressFrameCount
+- uid: GameCanvas.Input.Keyboard.IsPressBackButton
+  name: IsPressBackButton
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_IsPressBackButton
+  commentId: P:GameCanvas.Input.Keyboard.IsPressBackButton
+  fullName: GameCanvas.Input.Keyboard.IsPressBackButton
+  nameWithType: Keyboard.IsPressBackButton
+- uid: GameCanvas.Input.Keyboard.IsPressBackButton*
+  name: IsPressBackButton
+  href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_IsPressBackButton_
+  commentId: Overload:GameCanvas.Input.Keyboard.IsPressBackButton
+  fullName: GameCanvas.Input.Keyboard.IsPressBackButton
+  nameWithType: Keyboard.IsPressBackButton
 - uid: GameCanvas.Input.Keyboard.IsVisible
   name: IsVisible
   href: api/GameCanvas.Input.Keyboard.html#GameCanvas_Input_Keyboard_IsVisible
@@ -3001,6 +3013,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.IsGeolocationRunning
   fullName: GameCanvas.Proxy.IsGeolocationRunning
   nameWithType: Proxy.IsGeolocationRunning
+- uid: GameCanvas.Proxy.IsPressBackButton
+  name: IsPressBackButton
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsPressBackButton
+  commentId: P:GameCanvas.Proxy.IsPressBackButton
+  fullName: GameCanvas.Proxy.IsPressBackButton
+  nameWithType: Proxy.IsPressBackButton
+- uid: GameCanvas.Proxy.IsPressBackButton*
+  name: IsPressBackButton
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsPressBackButton_
+  commentId: Overload:GameCanvas.Proxy.IsPressBackButton
+  fullName: GameCanvas.Proxy.IsPressBackButton
+  nameWithType: Proxy.IsPressBackButton
 - uid: GameCanvas.Proxy.KeyEscape
   name: KeyEscape
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_KeyEscape
