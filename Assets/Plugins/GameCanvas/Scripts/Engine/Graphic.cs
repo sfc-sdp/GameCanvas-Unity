@@ -51,6 +51,7 @@ namespace GameCanvas.Engine
         private readonly List<Color> cColorsText;
         private readonly List<TextGenerator> cTextGeneratorPool;
         private readonly List<Mesh> cTextMeshPool;
+        private readonly System.Action<Font> cTextRebuildCallback;
 
         //private readonly List<Mesh[]> cMeshPool;
         //private readonly Queue<UIVertex> cVertsPool;
@@ -107,6 +108,7 @@ namespace GameCanvas.Engine
             cShaderPropClipRect = Shader.PropertyToID("_ClipRect");
             cTextGeneratorPool = new List<TextGenerator>(20);
             cTextMeshPool = new List<Mesh>(20);
+            cTextRebuildCallback = new System.Action<Font>(onTextTextureRebuild);
             cVertsText = new List<Vector3>();
             cUvsText = new List<Vector2>();
             cTrisText = new List<int>();
@@ -144,6 +146,7 @@ namespace GameCanvas.Engine
                 mIsEnable = true;
                 cCamera.AddCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
                 cCamera.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
+                Font.textureRebuilt += cTextRebuildCallback;
             }
         }
 
@@ -154,6 +157,7 @@ namespace GameCanvas.Engine
                 mIsEnable = false;
                 cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
                 cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
+                Font.textureRebuilt -= cTextRebuildCallback;
             }
         }
 
@@ -722,6 +726,14 @@ namespace GameCanvas.Engine
             var r = degree != 0f ? Quaternion.Euler(0f, 0f, degree) : Quaternion.identity;
             var s = new Vector3(w, h, 1f);
             return Matrix4x4.TRS(t, r, s);
+        }
+
+        private void onTextTextureRebuild(Font font)
+        {
+            foreach (var generator in cTextGeneratorPool)
+            {
+                generator.Invalidate();
+            }
         }
 
         #endregion
