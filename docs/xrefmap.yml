@@ -1555,6 +1555,18 @@ references:
   commentId: Overload:GameCanvas.Input.Geolocation.LastTime
   fullName: GameCanvas.Input.Geolocation.LastTime
   nameWithType: Geolocation.LastTime
+- uid: GameCanvas.Input.Geolocation.LastTimestamp
+  name: LastTimestamp
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastTimestamp
+  commentId: P:GameCanvas.Input.Geolocation.LastTimestamp
+  fullName: GameCanvas.Input.Geolocation.LastTimestamp
+  nameWithType: Geolocation.LastTimestamp
+- uid: GameCanvas.Input.Geolocation.LastTimestamp*
+  name: LastTimestamp
+  href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_LastTimestamp_
+  commentId: Overload:GameCanvas.Input.Geolocation.LastTimestamp
+  fullName: GameCanvas.Input.Geolocation.LastTimestamp
+  nameWithType: Geolocation.LastTimestamp
 - uid: GameCanvas.Input.Geolocation.OnBeforeUpdate
   name: OnBeforeUpdate()
   href: api/GameCanvas.Input.Geolocation.html#GameCanvas_Input_Geolocation_OnBeforeUpdate

@@ -37,7 +37,10 @@ namespace GameCanvas
                 && lh.MaxX == rh.MaxX && lh.MaxY == rh.MaxY && lh.MaxZ == rh.MaxZ;
         }
 
-        public static bool operator !=(Box lh, Box rh) => !(lh == rh);
+        public static bool operator !=(Box lh, Box rh)
+        {
+            return !(lh == rh);
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -60,41 +63,47 @@ namespace GameCanvas
         /// <summary>
         /// 幅
         /// </summary>
-        public float Width => (MaxX - MinX);
+        public float Width { get { return (MaxX - MinX); } }
 
         /// <summary>
         /// 高さ
         /// </summary>
-        public float Height => (MaxY - MinY);
+        public float Height { get { return (MaxY - MinY); } }
 
         /// <summary>
         /// 奥行き
         /// </summary>
-        public float Depth => (MaxZ - MinZ);
+        public float Depth { get { return (MaxZ - MinZ); } }
 
-        public float CenterX => (MinX + MaxX) * 0.5f;
+        public float CenterX { get { return (MinX + MaxX) * 0.5f; } }
 
-        public float CenterY => (MinY + MaxY) * 0.5f;
+        public float CenterY { get { return (MinY + MaxY) * 0.5f; } }
 
-        public float CenterZ => (MinZ + MaxZ) * 0.5f;
+        public float CenterZ { get { return (MinZ + MaxZ) * 0.5f; } }
 
-        public Vector3 Min => new Vector3(MinX, MinY, MinZ);
+        public Vector3 Min { get { return new Vector3(MinX, MinY, MinZ); } }
 
-        public Vector3 Max => new Vector3(MaxX, MaxY, MaxZ);
+        public Vector3 Max { get { return new Vector3(MaxX, MaxY, MaxZ); } }
 
         /// <summary>
         /// 大きさ
         /// </summary>
-        public Vector3 Size => new Vector3(Width, Height, Depth);
+        public Vector3 Size { get { return new Vector3(Width, Height, Depth); } }
 
         /// <summary>
         /// 中心
         /// </summary>
-        public Vector3 Center => new Vector3(CenterX, CenterY, CenterZ);
+        public Vector3 Center { get { return new Vector3(CenterX, CenterY, CenterZ); } }
 
-        public bool Equals(Box other) => (this == other);
+        public bool Equals(Box other)
+        {
+            return (this == other);
+        }
 
-        public override bool Equals(object obj) => (obj is Box && this == (Box)obj);
+        public override bool Equals(object obj)
+        {
+            return (obj is Box && this == (Box)obj);
+        }
 
         public override int GetHashCode()
         {
