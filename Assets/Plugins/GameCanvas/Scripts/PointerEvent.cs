@@ -104,7 +104,10 @@ namespace GameCanvas
                 && lh.TiltY == rh.TiltY;
         }
 
-        public static bool operator !=(PointerEvent lh, PointerEvent rh) => !(lh == rh);
+        public static bool operator !=(PointerEvent lh, PointerEvent rh)
+        {
+            return !(lh == rh);
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -145,9 +148,15 @@ namespace GameCanvas
             Time = UnityEngine.Time.unscaledTime;
         }
 
-        public bool Equals(PointerEvent other) => (this == other);
+        public bool Equals(PointerEvent other)
+        {
+            return (this == other);
+        }
 
-        public override bool Equals(object obj) => (obj is PointerEvent && this == (PointerEvent)obj);
+        public override bool Equals(object obj)
+        {
+            return (obj is PointerEvent && this == (PointerEvent)obj);
+        }
 
         public override int GetHashCode()
         {
@@ -161,8 +170,8 @@ namespace GameCanvas
         public override string ToString()
         {
             return (TiltX != 0f || TiltY != 0f)
-                ? $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, tilt: ({TiltX}, {TiltY}), pressure: {Pressure}"
-                : $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, pressure: {Pressure}";
+                ? string.Format("{0}: point: ({1}, {2}), phase: {3}, tilt: ({4}, {5}), pressure: {6}", Id, ScreenX, ScreenY, Phase, TiltX, TiltY, Pressure)
+                : string.Format("{0}: point: ({1}, {2}), phase: {3}, pressure: {4}", Id, ScreenX, ScreenY, Phase, Pressure);
         }
 
         #endregion

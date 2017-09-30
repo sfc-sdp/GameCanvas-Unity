@@ -149,27 +149,49 @@ namespace GameCanvas.Input
             }
         }
 
-        public int Count => mEventNum;
-        public bool HasEvent => (mEventNum > 0);
-        public PointerEvent GetRaw(ref int i) => (i < mEventNum) ? cEvents[i] : default(PointerEvent);
-        public int GetX(ref int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasX(cEvents[i].ScreenX) : 0;
-        public int GetY(ref int i) => (i < mEventNum) ? cGraphic.ScreenToCanvasY(cEvents[i].ScreenY) : 0;
-        public bool GetIsBegan(ref int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Began) : false;
-        public bool GetIsEnded(ref int i) => (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Ended) : false;
-        public int GetFrameCount(ref int i) => (i < mEventNum) ? cEventFrameCounts[i] : 0;
-        public float GetDulation(ref int i) => (i < mEventNum) ? cEventDulations[i] : 0f;
+        public int Count { get { return mEventNum; } }
+        public bool HasEvent { get { return (mEventNum > 0); } }
 
-        public int X => HasEvent ? cGraphic.ScreenToCanvasX(cEvents[0].ScreenX) : 0;
-        public int Y => HasEvent ? cGraphic.ScreenToCanvasY(cEvents[0].ScreenY) : 0;
-        public bool IsBegan => (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Began);
-        public bool IsEnded => (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Ended);
-        public int FrameCount => HasEvent ? cEventFrameCounts[0] : 0;
-        public float Duration => HasEvent ? cEventDulations[0] : 0f;
+        public PointerEvent GetRaw(ref int i)
+        {
+            return (i < mEventNum) ? cEvents[i] : default(PointerEvent);
+        }
+        public int GetX(ref int i)
+        {
+            return (i < mEventNum) ? cGraphic.ScreenToCanvasX(cEvents[i].ScreenX) : 0;
+        }
+        public int GetY(ref int i)
+        {
+            return (i < mEventNum) ? cGraphic.ScreenToCanvasY(cEvents[i].ScreenY) : 0;
+        }
+        public bool GetIsBegan(ref int i)
+        {
+            return (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Began) : false;
+        }
+        public bool GetIsEnded(ref int i)
+        {
+            return (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Ended) : false;
+        }
+        public int GetFrameCount(ref int i)
+        {
+            return (i < mEventNum) ? cEventFrameCounts[i] : 0;
+        }
+        public float GetDulation(ref int i)
+        {
+            return (i < mEventNum) ? cEventDulations[i] : 0f;
+        }
 
-        public int LastX => mLastX;
-        public int LastY => mLastY;
+        public int X { get { return HasEvent ? cGraphic.ScreenToCanvasX(cEvents[0].ScreenX) : 0; } }
+        public int Y { get { return HasEvent ? cGraphic.ScreenToCanvasY(cEvents[0].ScreenY) : 0; } }
+        public bool IsBegan { get { return (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Began); } }
+        public bool IsEnded { get { return (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Ended); } }
+        public int FrameCount { get { return HasEvent ? cEventFrameCounts[0] : 0; } }
+        public float Duration { get { return HasEvent ? cEventDulations[0] : 0f; } }
 
-        public float PressureMax => mPressureMax;
+        public int LastX { get { return mLastX; } }
+        public int LastY { get { return mLastY; } }
+
+        public float PressureMax { get { return mPressureMax; } }
 
         #endregion
 

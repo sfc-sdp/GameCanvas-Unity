@@ -18,6 +18,8 @@ namespace GameCanvas.Engine
         #region フィールド変数
         //----------------------------------------------------------
 
+        internal static readonly System.DateTimeOffset cUnixZero = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local);
+
         private System.DateTimeOffset mCurrent;
         private System.DateTimeOffset mStartup;
         private float mSinceStartup;
@@ -51,22 +53,22 @@ namespace GameCanvas.Engine
             mFrameCount++;
         }
 
-        public float SinceStartup => mSinceStartup;
-        public float SincePrevFrame => mSincePrevFrame;
-        public int FrameCount => mFrameCount;
+        public float SinceStartup { get { return mSinceStartup; } }
+        public float SincePrevFrame { get { return mSincePrevFrame; } }
+        public int FrameCount { get { return mFrameCount; } }
 
-        public System.DateTimeOffset Current => mCurrent;
-        public long Timestamp => mCurrent.ToUnixTimeSeconds();
-        public int Year => mCurrent.Year;
-        public int Month => mCurrent.Month;
-        public int Day => mCurrent.Day;
-        public int Hour => mCurrent.Hour;
-        public int Minute => mCurrent.Minute;
-        public int Second => mCurrent.Second;
-        public int Millisecond => mCurrent.Millisecond;
-        public System.DayOfWeek DayOfWeek => mCurrent.DayOfWeek;
+        public System.DateTimeOffset Current { get { return mCurrent; } }
+        public long Timestamp { get { return (long)((mCurrent - cUnixZero).TotalSeconds); } }
+        public int Year { get { return mCurrent.Year; } }
+        public int Month { get { return mCurrent.Month; } }
+        public int Day { get { return mCurrent.Day; } }
+        public int Hour { get { return mCurrent.Hour; } }
+        public int Minute { get { return mCurrent.Minute; } }
+        public int Second { get { return mCurrent.Second; } }
+        public int Millisecond { get { return mCurrent.Millisecond; } }
+        public System.DayOfWeek DayOfWeek { get { return mCurrent.DayOfWeek; } }
 
-        public System.DateTimeOffset Now => System.DateTimeOffset.Now;
+        public System.DateTimeOffset Now { get { return System.DateTimeOffset.Now; } }
 
         #endregion
     }

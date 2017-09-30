@@ -256,9 +256,9 @@ namespace GameCanvas.Engine
             screenY = (mCanvasSize.y - canvasY) * mRectScreen.height / mCanvasSize.y + mRectScreen.yMin;
         }
 
-        public int CanvasWidth => (int)mCanvasSize.x;
+        public int CanvasWidth { get { return (int)mCanvasSize.x; } }
 
-        public int CanvasHeight => (int)mCanvasSize.y;
+        public int CanvasHeight { get { return (int)mCanvasSize.y; } }
 
         // 互換実装：文字列系
 

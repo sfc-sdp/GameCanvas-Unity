@@ -55,39 +55,55 @@ namespace GameCanvas
 
         public struct Img : IRes<Sprite>
         {
-            public Img(int id, Sprite data, Mesh mesh) { Id = id; Data = data; Mesh = mesh; }
-            public int Id { get; }
-            public Sprite Data { get; }
-            public Mesh Mesh { get; }
-            public Texture2D Texture => Data.texture;
+            public Img(int id, Sprite data, Mesh mesh) { mId = id; mData = data; mMesh = mesh; }
+            public int Id { get { return mId; } }
+            public Sprite Data { get { return mData; } }
+            public Mesh Mesh { get { return mMesh; } }
+            public Texture2D Texture { get { return mData.texture; } }
+
+            public readonly int mId;
+            public readonly Sprite mData;
+            public readonly Mesh mMesh;
         }
 
         public struct Snd : IRes<AudioClip>
         {
-            public Snd(int id, AudioClip data) { Id = id; Data = data; }
-            public int Id { get; }
-            public AudioClip Data { get; }
+            public Snd(int id, AudioClip data) { mId = id; mData = data; }
+            public int Id { get { return mId; } }
+            public AudioClip Data { get { return mData; } }
+
+            public readonly int mId;
+            public readonly AudioClip mData;
         }
 
         public struct Mov : IRes<VideoClip>
         {
-            public Mov(int id, VideoClip data) { Id = id; Data = data; }
-            public int Id { get; }
-            public VideoClip Data { get; }
+            public Mov(int id, VideoClip data) { mId = id; mData = data; }
+            public int Id { get { return mId; } }
+            public VideoClip Data { get { return mData; } }
+
+            public readonly int mId;
+            public readonly VideoClip mData;
         }
 
         public struct Txt : IRes<string>
         {
-            public Txt(int id, string data) { Id = id; Data = data; }
-            public int Id { get; }
-            public string Data { get; }
+            public Txt(int id, string data) { mId = id; mData = data; }
+            public int Id { get { return mId; } }
+            public string Data { get { return mData; } }
+
+            public readonly int mId;
+            public readonly string mData;
         }
 
         public struct Fnt : IRes<Font>
         {
-            public Fnt(int id, Font data) { Id = id; Data = data; }
-            public int Id { get; }
-            public Font Data { get; }
+            public Fnt(int id, Font data) { mId = id; mData = data; }
+            public int Id { get { return mId; } }
+            public Font Data { get { return mData; } }
+
+            public readonly int mId;
+            public readonly Font mData;
         }
 
         #endregion
@@ -96,11 +112,30 @@ namespace GameCanvas
         #region パブリック関数
         //----------------------------------------------------------
 
-        public Mov GetMov(int id) => (id < 0 || id >= VideoClips.Length) ? new Mov(-1, null) : new Mov(id, VideoClips[id]);
-        public Snd GetSnd(int id) => (id < 0 || id >= AudioClips.Length) ? new Snd(-1, null) : new Snd(id, AudioClips[id]);
-        public Img GetImg(int id) => (id < 0 || id >= mSprites.Length) ? new Img(-1, null, null) : new Img(id, mSprites[id], mSpriteMeshes[id]);
-        public Txt GetTxt(int id) => (id < 0 || id >= mTexts.Length) ? new Txt(-1, null) : new Txt(id, mTexts[id]);
-        public Fnt GetFnt(int id) => (id < 0 || id >= Fonts.Length) ? new Fnt(-1, null) : new Fnt(id, Fonts[id]);
+        public Mov GetMov(int id)
+        {
+            return (id < 0 || id >= VideoClips.Length) ? new Mov(-1, null) : new Mov(id, VideoClips[id]);
+        }
+
+        public Snd GetSnd(int id)
+        {
+            return (id < 0 || id >= AudioClips.Length) ? new Snd(-1, null) : new Snd(id, AudioClips[id]);
+        }
+
+        public Img GetImg(int id)
+        {
+            return (id < 0 || id >= mSprites.Length) ? new Img(-1, null, null) : new Img(id, mSprites[id], mSpriteMeshes[id]);
+        }
+
+        public Txt GetTxt(int id)
+        {
+            return (id < 0 || id >= mTexts.Length) ? new Txt(-1, null) : new Txt(id, mTexts[id]);
+        }
+
+        public Fnt GetFnt(int id)
+        {
+            return (id < 0 || id >= Fonts.Length) ? new Fnt(-1, null) : new Fnt(id, Fonts[id]);
+        }
 
         internal void Initialize()
         {
@@ -192,7 +227,7 @@ namespace GameCanvas
             private static readonly Regex cRegFnt = new Regex(@"^Assets/Res/fnt(?<id>\d+)\.(ttf|TTF|otf|OTF)$");
 
             int IOrderedCallback.callbackOrder { get { return 0; } }
-            void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path) => onPreview();
+            void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path) { onPreview(); }
 
             [InitializeOnLoadMethod]
             private static void onInitialize()

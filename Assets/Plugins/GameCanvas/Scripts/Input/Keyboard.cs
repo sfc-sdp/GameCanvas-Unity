@@ -112,14 +112,29 @@ namespace GameCanvas.Input
             return (mScreenKeyboard != null);
         }
 
-        public bool IsVisible => (mScreenKeyboard != null);
-        public bool IsPressBackButton => (cKeyInfo[cCodeToIndex[EKeyCode.Escape]].State != EState.None);
+        public bool IsVisible { get { return (mScreenKeyboard != null); } }
+        public bool IsPressBackButton { get { return (cKeyInfo[cCodeToIndex[EKeyCode.Escape]].State != EState.None); } }
 
-        public int GetPressFrameCount(ref EKeyCode key) => cKeyInfo[cCodeToIndex[key]].FrameCount;
-        public float GetPressDuration(ref EKeyCode key) => cKeyInfo[cCodeToIndex[key]].Duration;
-        public bool GetIsPress(ref EKeyCode key) => (cKeyInfo[cCodeToIndex[key]].State != EState.None);
-        public bool GetIsBegan(ref EKeyCode key) => (cKeyInfo[cCodeToIndex[key]].State == EState.Began);
-        public bool GetIsEnded(ref EKeyCode key) => (cKeyInfo[cCodeToIndex[key]].State == EState.Ended);
+        public int GetPressFrameCount(ref EKeyCode key)
+        {
+            return cKeyInfo[cCodeToIndex[key]].FrameCount;
+        }
+        public float GetPressDuration(ref EKeyCode key)
+        {
+            return cKeyInfo[cCodeToIndex[key]].Duration;
+        }
+        public bool GetIsPress(ref EKeyCode key)
+        {
+            return (cKeyInfo[cCodeToIndex[key]].State != EState.None);
+        }
+        public bool GetIsBegan(ref EKeyCode key)
+        {
+            return (cKeyInfo[cCodeToIndex[key]].State == EState.Began);
+        }
+        public bool GetIsEnded(ref EKeyCode key)
+        {
+            return (cKeyInfo[cCodeToIndex[key]].State == EState.Ended);
+        }
 
         #endregion
 
