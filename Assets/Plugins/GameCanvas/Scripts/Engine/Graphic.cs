@@ -722,7 +722,7 @@ namespace GameCanvas.Engine
 
         private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h, float degree = 0f)
         {
-            var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
+            var t = new Vector3(x, mCanvasSize.y - y + 1, 1f - count * 0.001f);
             var r = degree != 0f ? Quaternion.Euler(0f, 0f, degree) : Quaternion.identity;
             var s = new Vector3(w, h, 1f);
             return Matrix4x4.TRS(t, r, s);
