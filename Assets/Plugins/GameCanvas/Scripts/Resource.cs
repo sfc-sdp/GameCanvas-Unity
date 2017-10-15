@@ -227,22 +227,29 @@ namespace GameCanvas
             private static readonly Regex cRegFnt = new Regex(@"^Assets/Res/fnt(?<id>\d+)\.(ttf|TTF|otf|OTF)$");
 
             int IOrderedCallback.callbackOrder { get { return 0; } }
-            void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path) { onPreview(); }
+            void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path) { onExitEditMode(); }
 
             [InitializeOnLoadMethod]
             private static void onInitialize()
             {
+#if UNITY_2017_2_OR_NEWER
+                EditorApplication.playModeStateChanged += (PlayModeStateChange state) =>
+                {
+                    if (state == PlayModeStateChange.ExitingEditMode) onExitEditMode();
+                };
+#else
                 EditorApplication.playmodeStateChanged += () =>
                 {
-                    if (!EditorApplication.isPlaying && EditorApplication.isPlayingOrWillChangePlaymode) onPreview();
+                    if (!EditorApplication.isPlaying && EditorApplication.isPlayingOrWillChangePlaymode) onExitEditMode();
                 };
+#endif //UNITY_2017_2_OR_NEWER
                 EditorApplication.delayCall += () =>
                 {
                     if (!File.Exists(cOutputPath)) AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<Resource>(), cOutputPath);
                 };
             }
 
-            private static void onPreview()
+            private static void onExitEditMode()
             {
                 var atlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(cAtlasPath);
                 var audio = AssetDatabase.FindAssets("t:AudioClip", cInputFolders)
