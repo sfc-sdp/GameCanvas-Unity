@@ -23,6 +23,8 @@ namespace GameCanvas
         [SerializeField]
         private SpriteAtlas SpriteAtlas;
         [SerializeField]
+        private string[] ImageIds;
+        [SerializeField]
         private VideoClip[] VideoClips;
         [SerializeField]
         private AudioClip[] AudioClips;
@@ -141,10 +143,15 @@ namespace GameCanvas
         {
             if (SpriteAtlas != null)
             {
-                mSprites = new Sprite[SpriteAtlas.spriteCount];
-                SpriteAtlas.GetSprites(mSprites);
-                mSpriteMeshes = new Mesh[mSprites.Length];
-                for (var i = 0; i < mSprites.Length; ++i) setupMesh(out mSpriteMeshes[i], ref mSprites[i]);
+                UnityEngine.Assertions.Assert.IsTrue(ImageIds.Length == SpriteAtlas.spriteCount);
+                mSprites = new Sprite[ImageIds.Length];
+                mSpriteMeshes = new Mesh[ImageIds.Length];
+                for (var i = 0; i < ImageIds.Length; ++i)
+                {
+                    mSprites[i] = SpriteAtlas.GetSprite(ImageIds[i]);
+                    UnityEngine.Assertions.Assert.IsNotNull(mSprites[i]);
+                    setupMesh(out mSpriteMeshes[i], ref mSprites[i]);
+                }
             }
             if (TextAssets != null)
             {
@@ -190,9 +197,10 @@ namespace GameCanvas
         //----------------------------------------------------------
 
 #if UNITY_EDITOR
-        internal void SetValue(SpriteAtlas atlas, VideoClip[] video, AudioClip[] audio, TextAsset[] texts, Font[] fonts)
+        internal void SetValue(SpriteAtlas atlas, string[] imageId, VideoClip[] video, AudioClip[] audio, TextAsset[] texts, Font[] fonts)
         {
             SpriteAtlas = atlas;
+            ImageIds = imageId ?? new string[0];
             VideoClips = video ?? new VideoClip[0];
             AudioClips = audio ?? new AudioClip[0];
             TextAssets = texts ?? new TextAsset[0];
@@ -219,8 +227,9 @@ namespace GameCanvas
         {
             private const string cOutputPath = "Assets/Plugins/GameCanvas/Res.asset";
             private const string cAtlasPath = "Assets/Plugins/GameCanvas/Atlas.spriteatlas";
+            private const string cTextureImporterLabel = "GameCanvas TextureImporter 2.0";
             private static readonly string[] cInputFolders = new[] { "Assets/Res" };
-            //private static readonly Regex cRegImg = new Regex(@"^Assets/Res/img(?<id>\d+)\.(gif|GIF|png|PNG|jpg|JPG|tga|TGA|tif|TIF|tiff|TIFF|bmp|BMP|iff|IFF|pict|PICT)$");
+            private static readonly Regex cRegImg = new Regex(@"^Assets/Res/(?<filename>img(?<id>\d+))\.(gif|GIF|png|PNG|jpg|JPG|tga|TGA|tif|TIF|tiff|TIFF|bmp|BMP|iff|IFF|pict|PICT)$");
             private static readonly Regex cRegSnd = new Regex(@"^Assets/Res/snd(?<id>\d+)\.(wav|WAV|mp3|MP3|ogg|OGG|aiff|AIFF|aif|AIF)$");
             private static readonly Regex cRegMov = new Regex(@"^Assets/Res/mov(?<id>\d+)\.(mp4|MP4|mov|MOV|mpg|MPG|mpeg|MPEG|avi|AVI|asf|ASF|dv|DV|ogv|OGV|vp8|VP8|webm|WEBM|wmv|WMV)$");
             private static readonly Regex cRegTxt = new Regex(@"^Assets/Res/txt(?<id>\d+)\.(txt|TXT|bytes|BYTES|json|JSON|xml|XML|csv|CSV|yaml|YAML)$");
@@ -251,7 +260,58 @@ namespace GameCanvas
 
             private static void onExitEditMode()
             {
+                AssetDatabase.StartAssetEditing();
+                {
+                    validateImages();
+                    listup();
+                }
+                AssetDatabase.StopAssetEditing();
+            }
+
+            private static void validateImages()
+            {
+                var importers = AssetDatabase.FindAssets("t:Texture2D", cInputFolders)
+                    .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+                    .Select(path => cRegImg.Match(path))
+                    .Where(match => match.Success)
+                    .OrderBy(match => int.Parse(match.Groups["id"].Value))
+                    .Select(match => AssetImporter.GetAtPath(match.Value) as TextureImporter)
+                    .Where(importer => importer != null);
+
+                foreach (var importer in importers)
+                {
+                    if (importer.userData != cTextureImporterLabel)
+                    {
+                        var settings = new TextureImporterSettings();
+                        importer.ReadTextureSettings(settings);
+                        {
+                            settings.filterMode = FilterMode.Point;
+                            settings.mipmapEnabled = false;
+                            settings.readable = false;
+                            settings.spriteAlignment = (int)SpriteAlignment.TopLeft;
+                            settings.spriteMeshType = SpriteMeshType.Tight;
+                            settings.spritePixelsPerUnit = 1f;
+                            settings.textureType = TextureImporterType.Sprite;
+                        }
+                        importer.SetTextureSettings(settings);
+                        importer.maxTextureSize = 2048;
+                        importer.spriteImportMode = SpriteImportMode.Single;
+                        importer.userData = cTextureImporterLabel;
+                        importer.SaveAndReimport();
+                    }
+                }
+            }
+
+            private static void listup()
+            {
                 var atlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(cAtlasPath);
+                var imageId = AssetDatabase.FindAssets("t:Texture2D", cInputFolders)
+                    .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+                    .Select(path => cRegImg.Match(path))
+                    .Where(match => match.Success)
+                    .OrderBy(match => int.Parse(match.Groups["id"].Value))
+                    .Select(match => match.Groups["filename"].Value)
+                    .ToArray();
                 var audio = AssetDatabase.FindAssets("t:AudioClip", cInputFolders)
                     .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
                     .Select(path => cRegSnd.Match(path))
@@ -286,7 +346,7 @@ namespace GameCanvas
                     .ToArray();
 
                 var res = AssetDatabase.LoadAssetAtPath<Resource>(cOutputPath);
-                res.SetValue(atlas, video, audio, texts, fonts);
+                res.SetValue(atlas, imageId, video, audio, texts, fonts);
                 EditorUtility.SetDirty(res);
                 AssetDatabase.SaveAssets();
             }
