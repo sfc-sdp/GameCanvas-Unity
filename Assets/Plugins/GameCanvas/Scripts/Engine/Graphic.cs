@@ -461,7 +461,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
             cBlock.SetVector(cShaderPropClipRect, clipRect);
 
-            var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
+            var matrix = calcMatrix(mCountDraw++, x - u, y - v, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 
