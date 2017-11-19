@@ -520,6 +520,19 @@ namespace GameCanvas.Engine
             cBufferOpaque.ClearRenderTarget(true, true, cColorWhite);
         }
 
+        // その他
+
+        public void DrawImage(ref Texture2D texture, ref int x, ref int y)
+        {
+            if (mIsDispose || texture == null) return;
+
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, texture);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, texture.width, texture.height);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
+        }
+
         #endregion
 
         //----------------------------------------------------------

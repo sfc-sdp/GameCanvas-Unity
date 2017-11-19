@@ -15,6 +15,7 @@ namespace GameCanvas
     using GameCanvas.Engine;
     using GameCanvas.Input;
     using Collision = Engine.Collision;
+    using Network = Engine.Network;
     using Time = Engine.Time;
 
     [DisallowMultipleComponent]
@@ -40,6 +41,7 @@ namespace GameCanvas
         private Graphic mGraphic;
         private Sound mSound;
         private Collision mCollision;
+        private Network mNetwork;
         private Pointer mPointer;
         private Keyboard mKeyboard;
         private Accelerometer mAccelerometer;
@@ -69,11 +71,12 @@ namespace GameCanvas
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
             mSound = new Sound(Resource, mAudioSource);
             mCollision = new Collision(Resource);
+            mNetwork = new Network(this, mGraphic);
             mPointer = new Pointer(mGraphic);
             mKeyboard = new Keyboard();
             mAccelerometer = new Accelerometer();
             mGeolocation = new Geolocation();
-            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mPointer, mKeyboard, mAccelerometer, mGeolocation);
+            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mNetwork, mPointer, mKeyboard, mAccelerometer, mGeolocation);
         }
 
         private void Start()
