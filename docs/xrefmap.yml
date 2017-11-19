@@ -253,6 +253,36 @@ references:
   commentId: Overload:GameCanvas.Box.Width
   fullName: GameCanvas.Box.Width
   nameWithType: Box.Width
+- uid: GameCanvas.EDownloadState
+  name: EDownloadState
+  href: api/GameCanvas.EDownloadState.html
+  commentId: T:GameCanvas.EDownloadState
+  fullName: GameCanvas.EDownloadState
+  nameWithType: EDownloadState
+- uid: GameCanvas.EDownloadState.Begin
+  name: Begin
+  href: api/GameCanvas.EDownloadState.html#GameCanvas_EDownloadState_Begin
+  commentId: F:GameCanvas.EDownloadState.Begin
+  fullName: GameCanvas.EDownloadState.Begin
+  nameWithType: EDownloadState.Begin
+- uid: GameCanvas.EDownloadState.Complete
+  name: Complete
+  href: api/GameCanvas.EDownloadState.html#GameCanvas_EDownloadState_Complete
+  commentId: F:GameCanvas.EDownloadState.Complete
+  fullName: GameCanvas.EDownloadState.Complete
+  nameWithType: EDownloadState.Complete
+- uid: GameCanvas.EDownloadState.Downloading
+  name: Downloading
+  href: api/GameCanvas.EDownloadState.html#GameCanvas_EDownloadState_Downloading
+  commentId: F:GameCanvas.EDownloadState.Downloading
+  fullName: GameCanvas.EDownloadState.Downloading
+  nameWithType: EDownloadState.Downloading
+- uid: GameCanvas.EDownloadState.Error
+  name: Error
+  href: api/GameCanvas.EDownloadState.html#GameCanvas_EDownloadState_Error
+  commentId: F:GameCanvas.EDownloadState.Error
+  fullName: GameCanvas.EDownloadState.Error
+  nameWithType: EDownloadState.Error
 - uid: GameCanvas.EKeyCode
   name: EKeyCode
   href: api/GameCanvas.EKeyCode.html
@@ -703,6 +733,15 @@ references:
   fullName.vb: GameCanvas.Engine.Graphic.DrawImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
   nameWithType: Graphic.DrawImage(ref Int32, ref Int32, ref Int32)
   nameWithType.vb: Graphic.DrawImage(ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawImage(UnityEngine.Texture2D@,System.Int32@,System.Int32@)
+  name: DrawImage(ref Texture2D, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_UnityEngine_Texture2D__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawImage(UnityEngine.Texture2D@,System.Int32@,System.Int32@)
+  name.vb: DrawImage(ByRef Texture2D, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawImage(ref UnityEngine.Texture2D, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawImage(ByRef UnityEngine.Texture2D, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawImage(ref Texture2D, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawImage(ByRef Texture2D, ByRef Int32, ByRef Int32)
 - uid: GameCanvas.Engine.Graphic.DrawImage*
   name: DrawImage
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_
@@ -1048,6 +1087,78 @@ references:
   commentId: T:GameCanvas.Engine.Network
   fullName: GameCanvas.Engine.Network
   nameWithType: Network
+- uid: GameCanvas.Engine.Network.Clear
+  name: Clear()
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_Clear
+  commentId: M:GameCanvas.Engine.Network.Clear
+  fullName: GameCanvas.Engine.Network.Clear()
+  nameWithType: Network.Clear()
+- uid: GameCanvas.Engine.Network.Clear*
+  name: Clear
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_Clear_
+  commentId: Overload:GameCanvas.Engine.Network.Clear
+  fullName: GameCanvas.Engine.Network.Clear
+  nameWithType: Network.Clear
+- uid: GameCanvas.Engine.Network.DrawOnlineImage(System.String@,System.Int32@,System.Int32@)
+  name: DrawOnlineImage(ref String, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_DrawOnlineImage_System_String__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Network.DrawOnlineImage(System.String@,System.Int32@,System.Int32@)
+  name.vb: DrawOnlineImage(ByRef String, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Network.DrawOnlineImage(ref System.String, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Network.DrawOnlineImage(ByRef System.String, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Network.DrawOnlineImage(ref String, ref Int32, ref Int32)
+  nameWithType.vb: Network.DrawOnlineImage(ByRef String, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Network.DrawOnlineImage*
+  name: DrawOnlineImage
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_DrawOnlineImage_
+  commentId: Overload:GameCanvas.Engine.Network.DrawOnlineImage
+  fullName: GameCanvas.Engine.Network.DrawOnlineImage
+  nameWithType: Network.DrawOnlineImage
+- uid: GameCanvas.Engine.Network.GetOnlineImageHeight(System.String@)
+  name: GetOnlineImageHeight(ref String)
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_GetOnlineImageHeight_System_String__
+  commentId: M:GameCanvas.Engine.Network.GetOnlineImageHeight(System.String@)
+  name.vb: GetOnlineImageHeight(ByRef String)
+  fullName: GameCanvas.Engine.Network.GetOnlineImageHeight(ref System.String)
+  fullName.vb: GameCanvas.Engine.Network.GetOnlineImageHeight(ByRef System.String)
+  nameWithType: Network.GetOnlineImageHeight(ref String)
+  nameWithType.vb: Network.GetOnlineImageHeight(ByRef String)
+- uid: GameCanvas.Engine.Network.GetOnlineImageHeight*
+  name: GetOnlineImageHeight
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_GetOnlineImageHeight_
+  commentId: Overload:GameCanvas.Engine.Network.GetOnlineImageHeight
+  fullName: GameCanvas.Engine.Network.GetOnlineImageHeight
+  nameWithType: Network.GetOnlineImageHeight
+- uid: GameCanvas.Engine.Network.GetOnlineImageWidth(System.String@)
+  name: GetOnlineImageWidth(ref String)
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_GetOnlineImageWidth_System_String__
+  commentId: M:GameCanvas.Engine.Network.GetOnlineImageWidth(System.String@)
+  name.vb: GetOnlineImageWidth(ByRef String)
+  fullName: GameCanvas.Engine.Network.GetOnlineImageWidth(ref System.String)
+  fullName.vb: GameCanvas.Engine.Network.GetOnlineImageWidth(ByRef System.String)
+  nameWithType: Network.GetOnlineImageWidth(ref String)
+  nameWithType.vb: Network.GetOnlineImageWidth(ByRef String)
+- uid: GameCanvas.Engine.Network.GetOnlineImageWidth*
+  name: GetOnlineImageWidth
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_GetOnlineImageWidth_
+  commentId: Overload:GameCanvas.Engine.Network.GetOnlineImageWidth
+  fullName: GameCanvas.Engine.Network.GetOnlineImageWidth
+  nameWithType: Network.GetOnlineImageWidth
+- uid: GameCanvas.Engine.Network.GetOnlineText(System.String@,System.String@)
+  name: GetOnlineText(ref String, ref String)
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_GetOnlineText_System_String__System_String__
+  commentId: M:GameCanvas.Engine.Network.GetOnlineText(System.String@,System.String@)
+  name.vb: GetOnlineText(ByRef String, ByRef String)
+  fullName: GameCanvas.Engine.Network.GetOnlineText(ref System.String, ref System.String)
+  fullName.vb: GameCanvas.Engine.Network.GetOnlineText(ByRef System.String, ByRef System.String)
+  nameWithType: Network.GetOnlineText(ref String, ref String)
+  nameWithType.vb: Network.GetOnlineText(ByRef String, ByRef String)
+- uid: GameCanvas.Engine.Network.GetOnlineText*
+  name: GetOnlineText
+  href: api/GameCanvas.Engine.Network.html#GameCanvas_Engine_Network_GetOnlineText_
+  commentId: Overload:GameCanvas.Engine.Network.GetOnlineText
+  fullName: GameCanvas.Engine.Network.GetOnlineText
+  nameWithType: Network.GetOnlineText
 - uid: GameCanvas.Engine.Sound
   name: Sound
   href: api/GameCanvas.Engine.Sound.html
@@ -2323,6 +2434,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.CheckHitRect
   fullName: GameCanvas.Proxy.CheckHitRect
   nameWithType: Proxy.CheckHitRect
+- uid: GameCanvas.Proxy.ClearDownloadCache
+  name: ClearDownloadCache()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearDownloadCache
+  commentId: M:GameCanvas.Proxy.ClearDownloadCache
+  fullName: GameCanvas.Proxy.ClearDownloadCache()
+  nameWithType: Proxy.ClearDownloadCache()
+- uid: GameCanvas.Proxy.ClearDownloadCache*
+  name: ClearDownloadCache
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearDownloadCache_
+  commentId: Overload:GameCanvas.Proxy.ClearDownloadCache
+  fullName: GameCanvas.Proxy.ClearDownloadCache
+  nameWithType: Proxy.ClearDownloadCache
 - uid: GameCanvas.Proxy.ClearScreen
   name: ClearScreen()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearScreen
@@ -2611,6 +2734,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.DrawLine
   fullName: GameCanvas.Proxy.DrawLine
   nameWithType: Proxy.DrawLine
+- uid: GameCanvas.Proxy.DrawOnlineImage(System.String,System.Int32,System.Int32)
+  name: DrawOnlineImage(String, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawOnlineImage_System_String_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawOnlineImage(System.String,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawOnlineImage(System.String, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawOnlineImage(String, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawOnlineImage*
+  name: DrawOnlineImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawOnlineImage_
+  commentId: Overload:GameCanvas.Proxy.DrawOnlineImage
+  fullName: GameCanvas.Proxy.DrawOnlineImage
+  nameWithType: Proxy.DrawOnlineImage
 - uid: GameCanvas.Proxy.DrawRect(System.Int32,System.Int32,System.Int32,System.Int32)
   name: DrawRect(Int32, Int32, Int32, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawRect_System_Int32_System_Int32_System_Int32_System_Int32_
@@ -2905,6 +3040,45 @@ references:
   commentId: Overload:GameCanvas.Proxy.GetKeyPressFrameCount
   fullName: GameCanvas.Proxy.GetKeyPressFrameCount
   nameWithType: Proxy.GetKeyPressFrameCount
+- uid: GameCanvas.Proxy.GetOnlineImageHeight(System.String)
+  name: GetOnlineImageHeight(String)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetOnlineImageHeight_System_String_
+  commentId: M:GameCanvas.Proxy.GetOnlineImageHeight(System.String)
+  fullName: GameCanvas.Proxy.GetOnlineImageHeight(System.String)
+  nameWithType: Proxy.GetOnlineImageHeight(String)
+- uid: GameCanvas.Proxy.GetOnlineImageHeight*
+  name: GetOnlineImageHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetOnlineImageHeight_
+  commentId: Overload:GameCanvas.Proxy.GetOnlineImageHeight
+  fullName: GameCanvas.Proxy.GetOnlineImageHeight
+  nameWithType: Proxy.GetOnlineImageHeight
+- uid: GameCanvas.Proxy.GetOnlineImageWidth(System.String)
+  name: GetOnlineImageWidth(String)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetOnlineImageWidth_System_String_
+  commentId: M:GameCanvas.Proxy.GetOnlineImageWidth(System.String)
+  fullName: GameCanvas.Proxy.GetOnlineImageWidth(System.String)
+  nameWithType: Proxy.GetOnlineImageWidth(String)
+- uid: GameCanvas.Proxy.GetOnlineImageWidth*
+  name: GetOnlineImageWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetOnlineImageWidth_
+  commentId: Overload:GameCanvas.Proxy.GetOnlineImageWidth
+  fullName: GameCanvas.Proxy.GetOnlineImageWidth
+  nameWithType: Proxy.GetOnlineImageWidth
+- uid: GameCanvas.Proxy.GetOnlineTextAsync(System.String,System.String@)
+  name: GetOnlineTextAsync(String, out String)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetOnlineTextAsync_System_String_System_String__
+  commentId: M:GameCanvas.Proxy.GetOnlineTextAsync(System.String,System.String@)
+  name.vb: GetOnlineTextAsync(String, ByRef String)
+  fullName: GameCanvas.Proxy.GetOnlineTextAsync(System.String, out System.String)
+  fullName.vb: GameCanvas.Proxy.GetOnlineTextAsync(System.String, ByRef System.String)
+  nameWithType: Proxy.GetOnlineTextAsync(String, out String)
+  nameWithType.vb: Proxy.GetOnlineTextAsync(String, ByRef String)
+- uid: GameCanvas.Proxy.GetOnlineTextAsync*
+  name: GetOnlineTextAsync
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetOnlineTextAsync_
+  commentId: Overload:GameCanvas.Proxy.GetOnlineTextAsync
+  fullName: GameCanvas.Proxy.GetOnlineTextAsync
+  nameWithType: Proxy.GetOnlineTextAsync
 - uid: GameCanvas.Proxy.GetPointerDuration(System.Int32)
   name: GetPointerDuration(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetPointerDuration_System_Int32_

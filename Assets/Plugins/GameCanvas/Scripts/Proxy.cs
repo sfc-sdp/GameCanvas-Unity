@@ -15,6 +15,7 @@ namespace GameCanvas
     using GameCanvas.Input;
     using Time = Engine.Time;
     using Collision = Engine.Collision;
+    using Network = Engine.Network;
     using HiddenAttribute = System.ComponentModel.EditorBrowsableAttribute;
     using HiddenState = System.ComponentModel.EditorBrowsableState;
 
@@ -28,6 +29,7 @@ namespace GameCanvas
         private readonly Graphic cGraphic;
         private readonly Sound cSound;
         private readonly Collision cCollision;
+        private readonly Network cNetwork;
         private readonly Pointer cPointer;
         private readonly Keyboard cKeyboard;
         private readonly Accelerometer cAccelerometer;
@@ -92,12 +94,13 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Pointer pointer, Keyboard keyboard, Accelerometer accelerometer, Geolocation geolocation)
+        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Network network, Pointer pointer, Keyboard keyboard, Accelerometer accelerometer, Geolocation geolocation)
         {
             cTime = time;
             cGraphic = graphic;
             cSound = sound;
             cCollision = collision;
+            cNetwork = network;
             cPointer = pointer;
             cKeyboard = keyboard;
             cAccelerometer = accelerometer;
@@ -139,6 +142,20 @@ namespace GameCanvas
         public void DrawRightString(string str, int x, int y)
         {
             cGraphic.DrawRightString(ref str, ref x, ref y);
+        }
+
+        /// <summary>
+        /// オンラインテキストを取得します。（非同期）
+        /// 
+        /// すぐに取得できなかった場合は null を返します。戻り値から取得状況を確認できます。
+        /// </summary>
+        /// <param name="url">テキストURL</param>
+        /// <param name="text">取得したテキスト</param>
+        /// <returns>取得状況</returns>
+        public EDownloadState GetOnlineTextAsync(string url, out string text)
+        {
+            text = null;
+            return cNetwork.GetOnlineText(ref url, ref text);
         }
 
         /// <summary>
@@ -327,6 +344,38 @@ namespace GameCanvas
         public void DrawScaledRotateImage(int imageId, int x, int y, int xSize, int ySize, float degree, float centerX, float centerY)
         {
             cGraphic.DrawScaledRotateImage(ref imageId, ref x, ref y, ref xSize, ref ySize, ref degree, ref centerX, ref centerY);
+        }
+
+        /// <summary>
+        /// オンライン画像をダウンロードし描画します。
+        /// </summary>
+        /// <param name="url">画像URL</param>
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        /// <returns>ダウンロード状態</returns>
+        public EDownloadState DrawOnlineImage(string url, int x, int y)
+        {
+            return cNetwork.DrawOnlineImage(ref url, ref x, ref y);
+        }
+
+        /// <summary>
+        /// オンライン画像の幅を取得します。
+        /// </summary>
+        /// <param name="url">画像URL</param>
+        /// <returns>幅（ダウンロードが完了していない場合は常に0）</returns>
+        public int GetOnlineImageWidth(string url)
+        {
+            return cNetwork.GetOnlineImageWidth(ref url);
+        }
+
+        /// <summary>
+        /// オンライン画像の高さを取得します。
+        /// </summary>
+        /// <param name="url">画像URL</param>
+        /// <returns>高さ（ウンロードが完了していない場合は常に0）</returns>
+        public int GetOnlineImageHeight(string url)
+        {
+            return cNetwork.GetOnlineImageHeight(ref url);
         }
 
         /// <summary>
@@ -957,6 +1006,14 @@ namespace GameCanvas
         public void Save(int key, int value)
         {
             PlayerPrefs.SetInt(key.ToString(), value);
+        }
+
+        /// <summary>
+        /// すべてのダウンロードキャッシュを削除します。
+        /// </summary>
+        public void ClearDownloadCache()
+        {
+            cNetwork.Clear();
         }
 
         /// <summary>

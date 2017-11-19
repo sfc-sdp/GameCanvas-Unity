@@ -73,7 +73,7 @@
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: Assembly-CSharp-firstpass.dll</h6>
+  <h6><strong>Assembly</strong>: Assembly-CSharp-firstpass.dll.dll</h6>
   <h5 id="GameCanvas_Proxy_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Proxy</code></pre>
@@ -1401,6 +1401,15 @@ public override void UpdateGame()
       </tr>
     </tbody>
   </table>
+  <a id="GameCanvas_Proxy_ClearDownloadCache_" data-uid="GameCanvas.Proxy.ClearDownloadCache*"></a>
+  <h4 id="GameCanvas_Proxy_ClearDownloadCache" data-uid="GameCanvas.Proxy.ClearDownloadCache">ClearDownloadCache()</h4>
+  <div class="markdown level1 summary"><p>すべてのダウンロードキャッシュを削除します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearDownloadCache()</code></pre>
+  </div>
   <a id="GameCanvas_Proxy_ClearScreen_" data-uid="GameCanvas.Proxy.ClearScreen*"></a>
   <h4 id="GameCanvas_Proxy_ClearScreen" data-uid="GameCanvas.Proxy.ClearScreen">ClearScreen()</h4>
   <div class="markdown level1 summary"><p>画面を白で塗りつぶします。</p>
@@ -1673,6 +1682,61 @@ public override void UpdateGame()
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
         <td><span class="parametername">endY</span></td>
         <td><p>終了点のY座標</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_DrawOnlineImage_" data-uid="GameCanvas.Proxy.DrawOnlineImage*"></a>
+  <h4 id="GameCanvas_Proxy_DrawOnlineImage_System_String_System_Int32_System_Int32_" data-uid="GameCanvas.Proxy.DrawOnlineImage(System.String,System.Int32,System.Int32)">DrawOnlineImage(String, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像をダウンロードし描画します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EDownloadState DrawOnlineImage(string url, int x, int y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.string(v=vs.110).aspx">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>画像URL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>左上のX座標</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>左上のY座標</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.EDownloadState.html">EDownloadState</a></td>
+        <td><p>ダウンロード状態</p>
 </td>
       </tr>
     </tbody>
@@ -2559,6 +2623,142 @@ public override void UpdateGame()
       <tr>
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
         <td><p>フレーム数（押されていない場合は常に0を返します）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_GetOnlineImageHeight_" data-uid="GameCanvas.Proxy.GetOnlineImageHeight*"></a>
+  <h4 id="GameCanvas_Proxy_GetOnlineImageHeight_System_String_" data-uid="GameCanvas.Proxy.GetOnlineImageHeight(System.String)">GetOnlineImageHeight(String)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像の高さを取得します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetOnlineImageHeight(string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.string(v=vs.110).aspx">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>画像URL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><p>高さ（ウンロードが完了していない場合は常に0）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_GetOnlineImageWidth_" data-uid="GameCanvas.Proxy.GetOnlineImageWidth*"></a>
+  <h4 id="GameCanvas_Proxy_GetOnlineImageWidth_System_String_" data-uid="GameCanvas.Proxy.GetOnlineImageWidth(System.String)">GetOnlineImageWidth(String)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像の幅を取得します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetOnlineImageWidth(string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.string(v=vs.110).aspx">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>画像URL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><p>幅（ダウンロードが完了していない場合は常に0）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_GetOnlineTextAsync_" data-uid="GameCanvas.Proxy.GetOnlineTextAsync*"></a>
+  <h4 id="GameCanvas_Proxy_GetOnlineTextAsync_System_String_System_String__" data-uid="GameCanvas.Proxy.GetOnlineTextAsync(System.String,System.String@)">GetOnlineTextAsync(String, out String)</h4>
+  <div class="markdown level1 summary"><p>オンラインテキストを取得します。（非同期）</p>
+<p>すぐに取得できなかった場合は null を返します。戻り値から取得状況を確認できます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EDownloadState GetOnlineTextAsync(string url, out string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.string(v=vs.110).aspx">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>テキストURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.string(v=vs.110).aspx">String</a></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>取得したテキスト</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.EDownloadState.html">EDownloadState</a></td>
+        <td><p>取得状況</p>
 </td>
       </tr>
     </tbody>
