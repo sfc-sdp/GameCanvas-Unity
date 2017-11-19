@@ -127,7 +127,11 @@ namespace GameCanvas.Engine
         private IEnumerator downloadImage(string url)
         {
             var req = UnityWebRequestTexture.GetTexture(url, true);
+#if UNITY_2017_2_OR_NEWER
             yield return req.SendWebRequest();
+#else
+            yield return req.Send();
+#endif //UNITY_2017_2_OR_NEWER
 
             if (req.isNetworkError || req.isHttpError)
             {
@@ -141,7 +145,11 @@ namespace GameCanvas.Engine
         private IEnumerator downloadText(string url)
         {
             var req = UnityWebRequest.Get(url);
+#if UNITY_2017_2_OR_NEWER
             yield return req.SendWebRequest();
+#else
+            yield return req.Send();
+#endif //UNITY_2017_2_OR_NEWER
 
             if (req.isNetworkError || req.isHttpError)
             {
