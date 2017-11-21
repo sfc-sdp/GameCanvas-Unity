@@ -179,7 +179,12 @@ namespace GameCanvas
             var uv = sprite.uv;
 
             var v1 = new Vector3[v0.Length];
-            for (var i = 0; i < v1.Length; ++i) v1[i] = new Vector3(v0[i].x, v0[i].y - 1f);
+            var c1 = new Color[v0.Length];
+            for (var i = 0; i < v1.Length; ++i)
+            {
+                v1[i] = new Vector3(v0[i].x, v0[i].y - 1f);
+                c1[i] = new Color(0f, 0f, 0f);
+            }
             var t1 = new int[t0.Length];
             for (var i = 0; i < t1.Length; ++i) t1[i] = t0[i];
 
@@ -187,6 +192,7 @@ namespace GameCanvas
             mesh.vertices = v1;
             mesh.triangles = t1;
             mesh.uv = uv;
+            mesh.colors = c1;
             mesh.RecalculateBounds();
         }
 
