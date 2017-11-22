@@ -9,6 +9,10 @@
 //------------------------------------------------------------//
 
 Shader "GameCanvas/Opaque" {
+	Properties {
+		_Color ("Color", Color)  = (0, 0, 0, 0)
+	}
+
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 		LOD 100
@@ -24,28 +28,26 @@ Shader "GameCanvas/Opaque" {
 
 				struct appdata_t {
 					float4 vertex : POSITION;
-					float4 color : COLOR;
 				};
 
 				struct v2f {
 					float4 vertex : SV_POSITION;
-					float4 color : COLOR;
 				};
+
+				fixed4 _Color;
 
 				v2f vert (appdata_t v)
 				{
 					v2f o;
 					o.vertex = UnityObjectToClipPos(v.vertex);
-					o.color = v.color;
 					return o;
 				}
 
 				fixed4 frag (v2f i) : COLOR
 				{
-					fixed4 c = i.color;
-					clip(c.a - 0.001);
-					UNITY_OPAQUE_ALPHA(c.a);
-					return c;
+					clip(_Color.a - 0.001);
+					UNITY_OPAQUE_ALPHA(_Color.a);
+					return _Color;
 				}
 			ENDCG
 		}
