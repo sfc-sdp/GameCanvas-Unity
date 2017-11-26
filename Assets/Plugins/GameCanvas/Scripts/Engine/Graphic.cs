@@ -24,6 +24,7 @@ namespace GameCanvas.Engine
         private const int cCircleResolution = 24;
 
         private static readonly Vector2 cVectorRight = Vector2.right;
+        private static readonly Color cColorBlack = Color.black;
         private static readonly Color cColorWhite = Color.white;
 
         private readonly Resource cRes;
@@ -120,7 +121,7 @@ namespace GameCanvas.Engine
             mFontSize = 25;
             mFont = cRes.GetFnt(0).Data ?? Font.CreateDynamicFontFromOSFont(new[] { ".Hiragino Kaku Gothic Interface", "MotoyaLMaru", "MotoyaLCedar", "RobotoSansFallback", "Droid Sans Fallback" }, mFontSize);
 
-            mColor = cColorWhite;
+            mColor = cColorBlack;
             mScreenSize = new Vector2(Screen.width, Screen.height);
             mCanvasSize = new Vector2(720, 1280);
             Application.targetFrameRate = 60;
