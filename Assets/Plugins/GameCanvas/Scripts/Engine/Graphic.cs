@@ -556,11 +556,18 @@ namespace GameCanvas.Engine
                 new Vector2(0f, 1f), // 左上
                 new Vector2(1f, 1f)  // 右上
             };
+            var colors = new[] {
+                cColorBlack,
+                cColorBlack,
+                cColorBlack,
+                cColorBlack
+            };
 
             mesh = new Mesh();
             mesh.vertices = verts;
             mesh.triangles = tris;
             mesh.uv = uvs;
+            mesh.colors = colors;
         }
 
         private static void initMeshAsCircle(out Mesh mesh)
