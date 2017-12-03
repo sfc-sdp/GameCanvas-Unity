@@ -34,6 +34,7 @@ namespace GameCanvas
         private readonly Keyboard cKeyboard;
         private readonly Accelerometer cAccelerometer;
         private readonly Geolocation cGeolocation;
+        private readonly CameraDevice cCameraDevice;
 
         private System.Random mRandom;
 
@@ -94,7 +95,8 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Network network, Pointer pointer, Keyboard keyboard, Accelerometer accelerometer, Geolocation geolocation)
+        internal Proxy(Time time, Graphic graphic, Sound sound, Collision collision, Network network
+            , Pointer pointer, Keyboard keyboard, Accelerometer accelerometer, Geolocation geolocation, CameraDevice cameraDevice)
         {
             cTime = time;
             cGraphic = graphic;
@@ -105,6 +107,7 @@ namespace GameCanvas
             cKeyboard = keyboard;
             cAccelerometer = accelerometer;
             cGeolocation = geolocation;
+            cCameraDevice = cameraDevice;
             mRandom = new System.Random();
         }
 
@@ -356,6 +359,43 @@ namespace GameCanvas
         public EDownloadState DrawOnlineImage(string url, int x, int y)
         {
             return cNetwork.DrawOnlineImage(ref url, ref x, ref y);
+        }
+
+        /// <summary>
+        /// カメラ映像を描画します。事前に <see cref="StartCameraService"/> を呼んでおく必要があります。
+        /// </summary>
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        public void DrawCameraImage(int x, int y)
+        {
+            cCameraDevice.Draw(ref x, ref y);
+        }
+
+        /// <summary>
+        /// カメラ映像を部分的に描画します。事前に <see cref="StartCameraService"/> を呼んでおく必要があります。
+        /// </summary>
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        /// <param name="u">元画像左上を原点としたときの描画部分左上のX座標</param>
+        /// <param name="v">元画像左上を原点としたときの描画部分左上のY座標</param>
+        /// <param name="width">描画部分の幅</param>
+        /// <param name="height">描画部分の高さ</param>
+        public void DrawClipCameraImage(int x, int y, int u, int v, int width, int height)
+        {
+            cCameraDevice.Draw(ref x, ref y, ref u, ref v, ref width, ref height);
+        }
+
+        /// <summary>
+        /// カメラ映像を拡大縮小・回転をかけて描画します。事前に <see cref="StartCameraService"/> を呼んでおく必要があります。
+        /// </summary>
+        /// <param name="x">左上のX座標</param>
+        /// <param name="y">左上のY座標</param>
+        /// <param name="xSize">横の拡縮率（100で等倍, 200なら倍の大きさ）</param>
+        /// <param name="ySize">縦の拡縮率（100で等倍, 200なら倍の大きさ）</param>
+        /// <param name="degree">回転角（度数法）</param>
+        public void DrawScaledRotateCameraImage(int x, int y, int xSize, int ySize, float degree)
+        {
+            cCameraDevice.Draw(ref x, ref y, ref xSize, ref ySize, ref degree);
         }
 
         /// <summary>
@@ -985,6 +1025,82 @@ namespace GameCanvas
         {
             cGeolocation.StopService();
         }
+
+        // カメラ映像入力
+
+        /// <summary>
+        /// 検出されたカメラ映像入力デバイスの数
+        /// </summary>
+        public int CameraDeviceCount { get { return cCameraDevice.Count; } }
+
+        /// <summary>
+        /// 再生中のカメラ映像の幅
+        /// </summary>
+        public int CurrentCameraWidth { get { return cCameraDevice.CurrentWidth; } }
+
+        /// <summary>
+        /// 再生中のカメラ映像の高さ
+        /// </summary>
+        public int CurrentCameraHeight { get { return cCameraDevice.CurrentHeight; } }
+
+        /// <summary>
+        /// 再生中のカメラ映像入力のデバイス名
+        /// </summary>
+        public string CurrentCameraName { get { return cCameraDevice.CurrentDeviceName; } }
+
+        /// <summary>
+        /// 再生中のカメラ映像の必要回転角度 (度数法)
+        /// </summary>
+        public int CurrentCameraRotation { get { return cCameraDevice.CurrentRotation; } }
+
+        /// <summary>
+        /// 再生中のカメラ映像の上下反転有無
+        /// </summary>
+        public bool IsCameraMirrored { get { return cCameraDevice.IsMirrored; } }
+
+        /// <summary>
+        /// 再生中のカメラ映像が現在フレームで更新されたかどうか
+        /// </summary>
+        public bool DidCameraUpdate { get { return cCameraDevice.DidUpdate; } }
+
+        /// <summary>
+        /// カメラ映像入力デバイスの一覧を更新します。
+        /// </summary>
+        public void UpdateCameraDeviceList() { cCameraDevice.UpdateList(); }
+
+        /// <summary>
+        /// 指定されたカメラ映像入力のデバイス名を取得します。
+        /// </summary>
+        /// <param name="deviceIndex">カメラデバイス通し番号 (0以上<see cref="CameraDeviceCount"/>未満)</param>
+        /// <returns></returns>
+        public string GetCameraDeviceName(int deviceIndex) { return cCameraDevice.GetName(ref deviceIndex); }
+
+        /// <summary>
+        /// 指定したカメラ映像入力が前面カメラかどうか
+        /// </summary>
+        /// <param name="deviceIndex">カメラデバイス通し番号 (0以上<see cref="CameraDeviceCount"/>未満)</param>
+        public bool GetIsFrontCamera(int deviceIndex) { return cCameraDevice.GetIsFront(ref deviceIndex); }
+
+        /// <summary>
+        /// カメラ映像入力の選択と開始
+        /// </summary>
+        /// <param name="deviceIndex">カメラデバイス通し番号 (0以上<see cref="CameraDeviceCount"/>未満)</param>
+        public void StartCameraService(int deviceIndex = 0) { cCameraDevice.Start(ref deviceIndex); }
+
+        /// <summary>
+        /// カメラ映像入力の停止
+        /// </summary>
+        public void StopCameraService() { cCameraDevice.Stop(); }
+
+        /// <summary>
+        /// カメラ映像入力の一時停止
+        /// </summary>
+        public void PauseCameraService() { cCameraDevice.Pause(); }
+
+        /// <summary>
+        /// カメラ映像入力の再開
+        /// </summary>
+        public void UnpauseCameraService() { cCameraDevice.Unpause(); }
 
         // その他
 

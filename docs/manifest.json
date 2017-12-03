@@ -106,7 +106,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Engine.Graphic.html",
-          "hash": "R44DppbcKS07EjL6qhyMBw=="
+          "hash": "hp4ZnLtt1XhqKLcoX7HQtA=="
         }
       },
       "is_incremental": false,
@@ -174,11 +174,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/GameCanvas.Input.Compass.yml",
+      "source_relative_path": "obj/api/GameCanvas.Input.CameraDevice.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GameCanvas.Input.Compass.html",
-          "hash": "27liYHjk98quyLFqdD6uDw=="
+          "relative_path": "api/GameCanvas.Input.CameraDevice.html",
+          "hash": "LhXbFMuWuTuO9+hGIsvdUQ=="
         }
       },
       "is_incremental": false,
@@ -186,11 +186,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/GameCanvas.Input.DeviceCamera.yml",
+      "source_relative_path": "obj/api/GameCanvas.Input.Compass.yml",
       "output": {
         ".html": {
-          "relative_path": "api/GameCanvas.Input.DeviceCamera.html",
-          "hash": "RDtHLo4dJDtoXz29ADWUZQ=="
+          "relative_path": "api/GameCanvas.Input.Compass.html",
+          "hash": "27liYHjk98quyLFqdD6uDw=="
         }
       },
       "is_incremental": false,
@@ -262,7 +262,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.html",
-          "hash": "S9TCMErT3DIzv14IzpBwAA=="
+          "hash": "I71gbcjO7KJcOkA12ecGWQ=="
         }
       },
       "is_incremental": false,
@@ -310,7 +310,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Proxy.html",
-          "hash": "Je7VcgvmMbO9c3M9rlDL5w=="
+          "hash": "IxIdUWHj2MvrIcr0rgSpSA=="
         }
       },
       "is_incremental": false,
@@ -353,22 +353,22 @@
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
+        "RestApiDocumentProcessor": {
           "can_incremental": false,
+          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build"
         },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
-        "RestApiDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor RestApiDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

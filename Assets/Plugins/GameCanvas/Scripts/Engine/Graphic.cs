@@ -521,7 +521,7 @@ namespace GameCanvas.Engine
 
         // その他
 
-        public void DrawImage(ref Texture2D texture, ref int x, ref int y)
+        public void DrawTexture(Texture texture, ref int x, ref int y)
         {
             if (mIsDispose || texture == null) return;
 
@@ -529,6 +529,35 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, texture);
 
             var matrix = calcMatrix(mCountDraw++, x, y, texture.width, texture.height);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
+        }
+
+        public void DrawClipTexture(Texture texture, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height)
+        {
+            if (mIsDispose || texture == null) return;
+
+            var l = Mathf.Clamp01((x + u) / mCanvasSize.x);
+            var t = Mathf.Clamp01((y + v) / mCanvasSize.y);
+            var r = Mathf.Clamp((x + u + width) / mCanvasSize.x, l, 1f);
+            var b = Mathf.Clamp((y + v + height) / mCanvasSize.y, t, 1f);
+            var clipRect = new Vector4(l, 1f - b, r, 1f - t);
+
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, texture);
+            cBlock.SetVector(cShaderPropClipRect, clipRect);
+
+            var matrix = calcMatrix(mCountDraw++, x - u, y - v, texture.width, texture.height);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
+        }
+
+        public void DrawScaledRotateTexture(Texture texture, ref int x, ref int y, ref int xSize, ref int ySize, ref float degree)
+        {
+            if (mIsDispose || texture == null) return;
+
+            cBlock.Clear();
+            cBlock.SetTexture(cShaderPropMainTex, texture);
+
+            var matrix = calcMatrix(mCountDraw++, x, y, texture.width * xSize * 0.01f, texture.height * ySize * 0.01f, 360f - degree);
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
         }
 

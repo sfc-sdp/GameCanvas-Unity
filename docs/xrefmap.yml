@@ -724,6 +724,21 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.DrawClipImage
   fullName: GameCanvas.Engine.Graphic.DrawClipImage
   nameWithType: Graphic.DrawClipImage
+- uid: GameCanvas.Engine.Graphic.DrawClipTexture(UnityEngine.Texture,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: DrawClipTexture(Texture, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawClipTexture_UnityEngine_Texture_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawClipTexture(UnityEngine.Texture,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: DrawClipTexture(Texture, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawClipTexture(UnityEngine.Texture, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawClipTexture(UnityEngine.Texture, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawClipTexture(Texture, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawClipTexture(Texture, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawClipTexture*
+  name: DrawClipTexture
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawClipTexture_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawClipTexture
+  fullName: GameCanvas.Engine.Graphic.DrawClipTexture
+  nameWithType: Graphic.DrawClipTexture
 - uid: GameCanvas.Engine.Graphic.DrawImage(System.Int32@,System.Int32@,System.Int32@)
   name: DrawImage(ref Int32, ref Int32, ref Int32)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_System_Int32__System_Int32__System_Int32__
@@ -733,15 +748,6 @@ references:
   fullName.vb: GameCanvas.Engine.Graphic.DrawImage(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
   nameWithType: Graphic.DrawImage(ref Int32, ref Int32, ref Int32)
   nameWithType.vb: Graphic.DrawImage(ByRef Int32, ByRef Int32, ByRef Int32)
-- uid: GameCanvas.Engine.Graphic.DrawImage(UnityEngine.Texture2D@,System.Int32@,System.Int32@)
-  name: DrawImage(ref Texture2D, ref Int32, ref Int32)
-  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_UnityEngine_Texture2D__System_Int32__System_Int32__
-  commentId: M:GameCanvas.Engine.Graphic.DrawImage(UnityEngine.Texture2D@,System.Int32@,System.Int32@)
-  name.vb: DrawImage(ByRef Texture2D, ByRef Int32, ByRef Int32)
-  fullName: GameCanvas.Engine.Graphic.DrawImage(ref UnityEngine.Texture2D, ref System.Int32, ref System.Int32)
-  fullName.vb: GameCanvas.Engine.Graphic.DrawImage(ByRef UnityEngine.Texture2D, ByRef System.Int32, ByRef System.Int32)
-  nameWithType: Graphic.DrawImage(ref Texture2D, ref Int32, ref Int32)
-  nameWithType.vb: Graphic.DrawImage(ByRef Texture2D, ByRef Int32, ByRef Int32)
 - uid: GameCanvas.Engine.Graphic.DrawImage*
   name: DrawImage
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawImage_
@@ -817,6 +823,21 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.DrawScaledRotateImage
   fullName: GameCanvas.Engine.Graphic.DrawScaledRotateImage
   nameWithType: Graphic.DrawScaledRotateImage
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateTexture(UnityEngine.Texture,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@)
+  name: DrawScaledRotateTexture(Texture, ref Int32, ref Int32, ref Int32, ref Int32, ref Single)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateTexture_UnityEngine_Texture_System_Int32__System_Int32__System_Int32__System_Int32__System_Single__
+  commentId: M:GameCanvas.Engine.Graphic.DrawScaledRotateTexture(UnityEngine.Texture,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@)
+  name.vb: DrawScaledRotateTexture(Texture, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single)
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateTexture(UnityEngine.Texture, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Single)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawScaledRotateTexture(UnityEngine.Texture, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Single)
+  nameWithType: Graphic.DrawScaledRotateTexture(Texture, ref Int32, ref Int32, ref Int32, ref Int32, ref Single)
+  nameWithType.vb: Graphic.DrawScaledRotateTexture(Texture, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single)
+- uid: GameCanvas.Engine.Graphic.DrawScaledRotateTexture*
+  name: DrawScaledRotateTexture
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawScaledRotateTexture_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawScaledRotateTexture
+  fullName: GameCanvas.Engine.Graphic.DrawScaledRotateTexture
+  nameWithType: Graphic.DrawScaledRotateTexture
 - uid: GameCanvas.Engine.Graphic.DrawString(System.String@,System.Int32@,System.Int32@)
   name: DrawString(ref String, ref Int32, ref Int32)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawString_System_String__System_Int32__System_Int32__
@@ -832,6 +853,21 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.DrawString
   fullName: GameCanvas.Engine.Graphic.DrawString
   nameWithType: Graphic.DrawString
+- uid: GameCanvas.Engine.Graphic.DrawTexture(UnityEngine.Texture,System.Int32@,System.Int32@)
+  name: DrawTexture(Texture, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawTexture_UnityEngine_Texture_System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.DrawTexture(UnityEngine.Texture,System.Int32@,System.Int32@)
+  name.vb: DrawTexture(Texture, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.DrawTexture(UnityEngine.Texture, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.DrawTexture(UnityEngine.Texture, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.DrawTexture(Texture, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.DrawTexture(Texture, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.DrawTexture*
+  name: DrawTexture
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DrawTexture_
+  commentId: Overload:GameCanvas.Engine.Graphic.DrawTexture
+  fullName: GameCanvas.Engine.Graphic.DrawTexture
+  nameWithType: Graphic.DrawTexture
 - uid: GameCanvas.Engine.Graphic.FillCircle(System.Int32@,System.Int32@,System.Int32@)
   name: FillCircle(ref Int32, ref Int32, ref Int32)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_FillCircle_System_Int32__System_Int32__System_Int32__
@@ -1564,18 +1600,228 @@ references:
   commentId: Overload:GameCanvas.Input.Accelerometer.LastZ
   fullName: GameCanvas.Input.Accelerometer.LastZ
   nameWithType: Accelerometer.LastZ
+- uid: GameCanvas.Input.CameraDevice
+  name: CameraDevice
+  href: api/GameCanvas.Input.CameraDevice.html
+  commentId: T:GameCanvas.Input.CameraDevice
+  fullName: GameCanvas.Input.CameraDevice
+  nameWithType: CameraDevice
+- uid: GameCanvas.Input.CameraDevice.Count
+  name: Count
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Count
+  commentId: P:GameCanvas.Input.CameraDevice.Count
+  fullName: GameCanvas.Input.CameraDevice.Count
+  nameWithType: CameraDevice.Count
+- uid: GameCanvas.Input.CameraDevice.Count*
+  name: Count
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Count_
+  commentId: Overload:GameCanvas.Input.CameraDevice.Count
+  fullName: GameCanvas.Input.CameraDevice.Count
+  nameWithType: CameraDevice.Count
+- uid: GameCanvas.Input.CameraDevice.CurrentDeviceName
+  name: CurrentDeviceName
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentDeviceName
+  commentId: P:GameCanvas.Input.CameraDevice.CurrentDeviceName
+  fullName: GameCanvas.Input.CameraDevice.CurrentDeviceName
+  nameWithType: CameraDevice.CurrentDeviceName
+- uid: GameCanvas.Input.CameraDevice.CurrentDeviceName*
+  name: CurrentDeviceName
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentDeviceName_
+  commentId: Overload:GameCanvas.Input.CameraDevice.CurrentDeviceName
+  fullName: GameCanvas.Input.CameraDevice.CurrentDeviceName
+  nameWithType: CameraDevice.CurrentDeviceName
+- uid: GameCanvas.Input.CameraDevice.CurrentHeight
+  name: CurrentHeight
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentHeight
+  commentId: P:GameCanvas.Input.CameraDevice.CurrentHeight
+  fullName: GameCanvas.Input.CameraDevice.CurrentHeight
+  nameWithType: CameraDevice.CurrentHeight
+- uid: GameCanvas.Input.CameraDevice.CurrentHeight*
+  name: CurrentHeight
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentHeight_
+  commentId: Overload:GameCanvas.Input.CameraDevice.CurrentHeight
+  fullName: GameCanvas.Input.CameraDevice.CurrentHeight
+  nameWithType: CameraDevice.CurrentHeight
+- uid: GameCanvas.Input.CameraDevice.CurrentRotation
+  name: CurrentRotation
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentRotation
+  commentId: P:GameCanvas.Input.CameraDevice.CurrentRotation
+  fullName: GameCanvas.Input.CameraDevice.CurrentRotation
+  nameWithType: CameraDevice.CurrentRotation
+- uid: GameCanvas.Input.CameraDevice.CurrentRotation*
+  name: CurrentRotation
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentRotation_
+  commentId: Overload:GameCanvas.Input.CameraDevice.CurrentRotation
+  fullName: GameCanvas.Input.CameraDevice.CurrentRotation
+  nameWithType: CameraDevice.CurrentRotation
+- uid: GameCanvas.Input.CameraDevice.CurrentWidth
+  name: CurrentWidth
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentWidth
+  commentId: P:GameCanvas.Input.CameraDevice.CurrentWidth
+  fullName: GameCanvas.Input.CameraDevice.CurrentWidth
+  nameWithType: CameraDevice.CurrentWidth
+- uid: GameCanvas.Input.CameraDevice.CurrentWidth*
+  name: CurrentWidth
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_CurrentWidth_
+  commentId: Overload:GameCanvas.Input.CameraDevice.CurrentWidth
+  fullName: GameCanvas.Input.CameraDevice.CurrentWidth
+  nameWithType: CameraDevice.CurrentWidth
+- uid: GameCanvas.Input.CameraDevice.DidUpdate
+  name: DidUpdate
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_DidUpdate
+  commentId: P:GameCanvas.Input.CameraDevice.DidUpdate
+  fullName: GameCanvas.Input.CameraDevice.DidUpdate
+  nameWithType: CameraDevice.DidUpdate
+- uid: GameCanvas.Input.CameraDevice.DidUpdate*
+  name: DidUpdate
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_DidUpdate_
+  commentId: Overload:GameCanvas.Input.CameraDevice.DidUpdate
+  fullName: GameCanvas.Input.CameraDevice.DidUpdate
+  nameWithType: CameraDevice.DidUpdate
+- uid: GameCanvas.Input.CameraDevice.Draw(System.Int32@,System.Int32@)
+  name: Draw(ref Int32, ref Int32)
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Draw_System_Int32__System_Int32__
+  commentId: M:GameCanvas.Input.CameraDevice.Draw(System.Int32@,System.Int32@)
+  name.vb: Draw(ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Input.CameraDevice.Draw(ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Input.CameraDevice.Draw(ByRef System.Int32, ByRef System.Int32)
+  nameWithType: CameraDevice.Draw(ref Int32, ref Int32)
+  nameWithType.vb: CameraDevice.Draw(ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Input.CameraDevice.Draw(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: Draw(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Draw_System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Input.CameraDevice.Draw(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: Draw(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Input.CameraDevice.Draw(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Input.CameraDevice.Draw(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: CameraDevice.Draw(ref Int32, ref Int32, ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: CameraDevice.Draw(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Input.CameraDevice.Draw(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@)
+  name: Draw(ref Int32, ref Int32, ref Int32, ref Int32, ref Single)
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Draw_System_Int32__System_Int32__System_Int32__System_Int32__System_Single__
+  commentId: M:GameCanvas.Input.CameraDevice.Draw(System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Single@)
+  name.vb: Draw(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single)
+  fullName: GameCanvas.Input.CameraDevice.Draw(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32, ref System.Single)
+  fullName.vb: GameCanvas.Input.CameraDevice.Draw(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Single)
+  nameWithType: CameraDevice.Draw(ref Int32, ref Int32, ref Int32, ref Int32, ref Single)
+  nameWithType.vb: CameraDevice.Draw(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32, ByRef Single)
+- uid: GameCanvas.Input.CameraDevice.Draw*
+  name: Draw
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Draw_
+  commentId: Overload:GameCanvas.Input.CameraDevice.Draw
+  fullName: GameCanvas.Input.CameraDevice.Draw
+  nameWithType: CameraDevice.Draw
+- uid: GameCanvas.Input.CameraDevice.GetIsFront(System.Int32@)
+  name: GetIsFront(ref Int32)
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_GetIsFront_System_Int32__
+  commentId: M:GameCanvas.Input.CameraDevice.GetIsFront(System.Int32@)
+  name.vb: GetIsFront(ByRef Int32)
+  fullName: GameCanvas.Input.CameraDevice.GetIsFront(ref System.Int32)
+  fullName.vb: GameCanvas.Input.CameraDevice.GetIsFront(ByRef System.Int32)
+  nameWithType: CameraDevice.GetIsFront(ref Int32)
+  nameWithType.vb: CameraDevice.GetIsFront(ByRef Int32)
+- uid: GameCanvas.Input.CameraDevice.GetIsFront*
+  name: GetIsFront
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_GetIsFront_
+  commentId: Overload:GameCanvas.Input.CameraDevice.GetIsFront
+  fullName: GameCanvas.Input.CameraDevice.GetIsFront
+  nameWithType: CameraDevice.GetIsFront
+- uid: GameCanvas.Input.CameraDevice.GetName(System.Int32@)
+  name: GetName(ref Int32)
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_GetName_System_Int32__
+  commentId: M:GameCanvas.Input.CameraDevice.GetName(System.Int32@)
+  name.vb: GetName(ByRef Int32)
+  fullName: GameCanvas.Input.CameraDevice.GetName(ref System.Int32)
+  fullName.vb: GameCanvas.Input.CameraDevice.GetName(ByRef System.Int32)
+  nameWithType: CameraDevice.GetName(ref Int32)
+  nameWithType.vb: CameraDevice.GetName(ByRef Int32)
+- uid: GameCanvas.Input.CameraDevice.GetName*
+  name: GetName
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_GetName_
+  commentId: Overload:GameCanvas.Input.CameraDevice.GetName
+  fullName: GameCanvas.Input.CameraDevice.GetName
+  nameWithType: CameraDevice.GetName
+- uid: GameCanvas.Input.CameraDevice.IsMirrored
+  name: IsMirrored
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_IsMirrored
+  commentId: P:GameCanvas.Input.CameraDevice.IsMirrored
+  fullName: GameCanvas.Input.CameraDevice.IsMirrored
+  nameWithType: CameraDevice.IsMirrored
+- uid: GameCanvas.Input.CameraDevice.IsMirrored*
+  name: IsMirrored
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_IsMirrored_
+  commentId: Overload:GameCanvas.Input.CameraDevice.IsMirrored
+  fullName: GameCanvas.Input.CameraDevice.IsMirrored
+  nameWithType: CameraDevice.IsMirrored
+- uid: GameCanvas.Input.CameraDevice.Pause
+  name: Pause()
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Pause
+  commentId: M:GameCanvas.Input.CameraDevice.Pause
+  fullName: GameCanvas.Input.CameraDevice.Pause()
+  nameWithType: CameraDevice.Pause()
+- uid: GameCanvas.Input.CameraDevice.Pause*
+  name: Pause
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Pause_
+  commentId: Overload:GameCanvas.Input.CameraDevice.Pause
+  fullName: GameCanvas.Input.CameraDevice.Pause
+  nameWithType: CameraDevice.Pause
+- uid: GameCanvas.Input.CameraDevice.Start(System.Int32@)
+  name: Start(ref Int32)
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Start_System_Int32__
+  commentId: M:GameCanvas.Input.CameraDevice.Start(System.Int32@)
+  name.vb: Start(ByRef Int32)
+  fullName: GameCanvas.Input.CameraDevice.Start(ref System.Int32)
+  fullName.vb: GameCanvas.Input.CameraDevice.Start(ByRef System.Int32)
+  nameWithType: CameraDevice.Start(ref Int32)
+  nameWithType.vb: CameraDevice.Start(ByRef Int32)
+- uid: GameCanvas.Input.CameraDevice.Start*
+  name: Start
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Start_
+  commentId: Overload:GameCanvas.Input.CameraDevice.Start
+  fullName: GameCanvas.Input.CameraDevice.Start
+  nameWithType: CameraDevice.Start
+- uid: GameCanvas.Input.CameraDevice.Stop
+  name: Stop()
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Stop
+  commentId: M:GameCanvas.Input.CameraDevice.Stop
+  fullName: GameCanvas.Input.CameraDevice.Stop()
+  nameWithType: CameraDevice.Stop()
+- uid: GameCanvas.Input.CameraDevice.Stop*
+  name: Stop
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Stop_
+  commentId: Overload:GameCanvas.Input.CameraDevice.Stop
+  fullName: GameCanvas.Input.CameraDevice.Stop
+  nameWithType: CameraDevice.Stop
+- uid: GameCanvas.Input.CameraDevice.Unpause
+  name: Unpause()
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Unpause
+  commentId: M:GameCanvas.Input.CameraDevice.Unpause
+  fullName: GameCanvas.Input.CameraDevice.Unpause()
+  nameWithType: CameraDevice.Unpause()
+- uid: GameCanvas.Input.CameraDevice.Unpause*
+  name: Unpause
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_Unpause_
+  commentId: Overload:GameCanvas.Input.CameraDevice.Unpause
+  fullName: GameCanvas.Input.CameraDevice.Unpause
+  nameWithType: CameraDevice.Unpause
+- uid: GameCanvas.Input.CameraDevice.UpdateList
+  name: UpdateList()
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_UpdateList
+  commentId: M:GameCanvas.Input.CameraDevice.UpdateList
+  fullName: GameCanvas.Input.CameraDevice.UpdateList()
+  nameWithType: CameraDevice.UpdateList()
+- uid: GameCanvas.Input.CameraDevice.UpdateList*
+  name: UpdateList
+  href: api/GameCanvas.Input.CameraDevice.html#GameCanvas_Input_CameraDevice_UpdateList_
+  commentId: Overload:GameCanvas.Input.CameraDevice.UpdateList
+  fullName: GameCanvas.Input.CameraDevice.UpdateList
+  nameWithType: CameraDevice.UpdateList
 - uid: GameCanvas.Input.Compass
   name: Compass
   href: api/GameCanvas.Input.Compass.html
   commentId: T:GameCanvas.Input.Compass
   fullName: GameCanvas.Input.Compass
   nameWithType: Compass
-- uid: GameCanvas.Input.DeviceCamera
-  name: DeviceCamera
-  href: api/GameCanvas.Input.DeviceCamera.html
-  commentId: T:GameCanvas.Input.DeviceCamera
-  fullName: GameCanvas.Input.DeviceCamera
-  nameWithType: DeviceCamera
 - uid: GameCanvas.Input.Geolocation
   name: Geolocation
   href: api/GameCanvas.Input.Geolocation.html
@@ -2374,6 +2620,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.Atan2
   fullName: GameCanvas.Proxy.Atan2
   nameWithType: Proxy.Atan2
+- uid: GameCanvas.Proxy.CameraDeviceCount
+  name: CameraDeviceCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CameraDeviceCount
+  commentId: P:GameCanvas.Proxy.CameraDeviceCount
+  fullName: GameCanvas.Proxy.CameraDeviceCount
+  nameWithType: Proxy.CameraDeviceCount
+- uid: GameCanvas.Proxy.CameraDeviceCount*
+  name: CameraDeviceCount
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CameraDeviceCount_
+  commentId: Overload:GameCanvas.Proxy.CameraDeviceCount
+  fullName: GameCanvas.Proxy.CameraDeviceCount
+  nameWithType: Proxy.CameraDeviceCount
 - uid: GameCanvas.Proxy.CanvasHeight
   name: CanvasHeight
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CanvasHeight
@@ -2542,6 +2800,54 @@ references:
   commentId: Overload:GameCanvas.Proxy.Cos
   fullName: GameCanvas.Proxy.Cos
   nameWithType: Proxy.Cos
+- uid: GameCanvas.Proxy.CurrentCameraHeight
+  name: CurrentCameraHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraHeight
+  commentId: P:GameCanvas.Proxy.CurrentCameraHeight
+  fullName: GameCanvas.Proxy.CurrentCameraHeight
+  nameWithType: Proxy.CurrentCameraHeight
+- uid: GameCanvas.Proxy.CurrentCameraHeight*
+  name: CurrentCameraHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraHeight_
+  commentId: Overload:GameCanvas.Proxy.CurrentCameraHeight
+  fullName: GameCanvas.Proxy.CurrentCameraHeight
+  nameWithType: Proxy.CurrentCameraHeight
+- uid: GameCanvas.Proxy.CurrentCameraName
+  name: CurrentCameraName
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraName
+  commentId: P:GameCanvas.Proxy.CurrentCameraName
+  fullName: GameCanvas.Proxy.CurrentCameraName
+  nameWithType: Proxy.CurrentCameraName
+- uid: GameCanvas.Proxy.CurrentCameraName*
+  name: CurrentCameraName
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraName_
+  commentId: Overload:GameCanvas.Proxy.CurrentCameraName
+  fullName: GameCanvas.Proxy.CurrentCameraName
+  nameWithType: Proxy.CurrentCameraName
+- uid: GameCanvas.Proxy.CurrentCameraRotation
+  name: CurrentCameraRotation
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraRotation
+  commentId: P:GameCanvas.Proxy.CurrentCameraRotation
+  fullName: GameCanvas.Proxy.CurrentCameraRotation
+  nameWithType: Proxy.CurrentCameraRotation
+- uid: GameCanvas.Proxy.CurrentCameraRotation*
+  name: CurrentCameraRotation
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraRotation_
+  commentId: Overload:GameCanvas.Proxy.CurrentCameraRotation
+  fullName: GameCanvas.Proxy.CurrentCameraRotation
+  nameWithType: Proxy.CurrentCameraRotation
+- uid: GameCanvas.Proxy.CurrentCameraWidth
+  name: CurrentCameraWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraWidth
+  commentId: P:GameCanvas.Proxy.CurrentCameraWidth
+  fullName: GameCanvas.Proxy.CurrentCameraWidth
+  nameWithType: Proxy.CurrentCameraWidth
+- uid: GameCanvas.Proxy.CurrentCameraWidth*
+  name: CurrentCameraWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentCameraWidth_
+  commentId: Overload:GameCanvas.Proxy.CurrentCameraWidth
+  fullName: GameCanvas.Proxy.CurrentCameraWidth
+  nameWithType: Proxy.CurrentCameraWidth
 - uid: GameCanvas.Proxy.CurrentDay
   name: CurrentDay
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_CurrentDay
@@ -2674,6 +2980,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.CurrentYear
   fullName: GameCanvas.Proxy.CurrentYear
   nameWithType: Proxy.CurrentYear
+- uid: GameCanvas.Proxy.DidCameraUpdate
+  name: DidCameraUpdate
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DidCameraUpdate
+  commentId: P:GameCanvas.Proxy.DidCameraUpdate
+  fullName: GameCanvas.Proxy.DidCameraUpdate
+  nameWithType: Proxy.DidCameraUpdate
+- uid: GameCanvas.Proxy.DidCameraUpdate*
+  name: DidCameraUpdate
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DidCameraUpdate_
+  commentId: Overload:GameCanvas.Proxy.DidCameraUpdate
+  fullName: GameCanvas.Proxy.DidCameraUpdate
+  nameWithType: Proxy.DidCameraUpdate
+- uid: GameCanvas.Proxy.DrawCameraImage(System.Int32,System.Int32)
+  name: DrawCameraImage(Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCameraImage_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawCameraImage(System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawCameraImage(System.Int32, System.Int32)
+  nameWithType: Proxy.DrawCameraImage(Int32, Int32)
+- uid: GameCanvas.Proxy.DrawCameraImage*
+  name: DrawCameraImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCameraImage_
+  commentId: Overload:GameCanvas.Proxy.DrawCameraImage
+  fullName: GameCanvas.Proxy.DrawCameraImage
+  nameWithType: Proxy.DrawCameraImage
 - uid: GameCanvas.Proxy.DrawCenterString(System.String,System.Int32,System.Int32)
   name: DrawCenterString(String, Int32, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawCenterString_System_String_System_Int32_System_Int32_
@@ -2698,6 +3028,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.DrawCircle
   fullName: GameCanvas.Proxy.DrawCircle
   nameWithType: Proxy.DrawCircle
+- uid: GameCanvas.Proxy.DrawClipCameraImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  name: DrawClipCameraImage(Int32, Int32, Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipCameraImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.DrawClipCameraImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.DrawClipCameraImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.DrawClipCameraImage(Int32, Int32, Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.DrawClipCameraImage*
+  name: DrawClipCameraImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipCameraImage_
+  commentId: Overload:GameCanvas.Proxy.DrawClipCameraImage
+  fullName: GameCanvas.Proxy.DrawClipCameraImage
+  nameWithType: Proxy.DrawClipCameraImage
 - uid: GameCanvas.Proxy.DrawClipImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
   name: DrawClipImage(Int32, Int32, Int32, Int32, Int32, Int32, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawClipImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_
@@ -2770,6 +3112,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.DrawRightString
   fullName: GameCanvas.Proxy.DrawRightString
   nameWithType: Proxy.DrawRightString
+- uid: GameCanvas.Proxy.DrawScaledRotateCameraImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Single)
+  name: DrawScaledRotateCameraImage(Int32, Int32, Int32, Int32, Single)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateCameraImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Single_
+  commentId: M:GameCanvas.Proxy.DrawScaledRotateCameraImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Single)
+  fullName: GameCanvas.Proxy.DrawScaledRotateCameraImage(System.Int32, System.Int32, System.Int32, System.Int32, System.Single)
+  nameWithType: Proxy.DrawScaledRotateCameraImage(Int32, Int32, Int32, Int32, Single)
+- uid: GameCanvas.Proxy.DrawScaledRotateCameraImage*
+  name: DrawScaledRotateCameraImage
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateCameraImage_
+  commentId: Overload:GameCanvas.Proxy.DrawScaledRotateCameraImage
+  fullName: GameCanvas.Proxy.DrawScaledRotateCameraImage
+  nameWithType: Proxy.DrawScaledRotateCameraImage
 - uid: GameCanvas.Proxy.DrawScaledRotateImage(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Single)
   name: DrawScaledRotateImage(Int32, Int32, Int32, Int32, Int32, Single)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DrawScaledRotateImage_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Single_
@@ -2932,6 +3286,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.GetAccelerationZ
   fullName: GameCanvas.Proxy.GetAccelerationZ
   nameWithType: Proxy.GetAccelerationZ
+- uid: GameCanvas.Proxy.GetCameraDeviceName(System.Int32)
+  name: GetCameraDeviceName(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetCameraDeviceName_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetCameraDeviceName(System.Int32)
+  fullName: GameCanvas.Proxy.GetCameraDeviceName(System.Int32)
+  nameWithType: Proxy.GetCameraDeviceName(Int32)
+- uid: GameCanvas.Proxy.GetCameraDeviceName*
+  name: GetCameraDeviceName
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetCameraDeviceName_
+  commentId: Overload:GameCanvas.Proxy.GetCameraDeviceName
+  fullName: GameCanvas.Proxy.GetCameraDeviceName
+  nameWithType: Proxy.GetCameraDeviceName
 - uid: GameCanvas.Proxy.GetImageHeight(System.Int32)
   name: GetImageHeight(Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetImageHeight_System_Int32_
@@ -2956,6 +3322,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.GetImageWidth
   fullName: GameCanvas.Proxy.GetImageWidth
   nameWithType: Proxy.GetImageWidth
+- uid: GameCanvas.Proxy.GetIsFrontCamera(System.Int32)
+  name: GetIsFrontCamera(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsFrontCamera_System_Int32_
+  commentId: M:GameCanvas.Proxy.GetIsFrontCamera(System.Int32)
+  fullName: GameCanvas.Proxy.GetIsFrontCamera(System.Int32)
+  nameWithType: Proxy.GetIsFrontCamera(Int32)
+- uid: GameCanvas.Proxy.GetIsFrontCamera*
+  name: GetIsFrontCamera
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsFrontCamera_
+  commentId: Overload:GameCanvas.Proxy.GetIsFrontCamera
+  fullName: GameCanvas.Proxy.GetIsFrontCamera
+  nameWithType: Proxy.GetIsFrontCamera
 - uid: GameCanvas.Proxy.GetIsKeyBegan(GameCanvas.EKeyCode)
   name: GetIsKeyBegan(EKeyCode)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_GetIsKeyBegan_GameCanvas_EKeyCode_
@@ -3187,6 +3565,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.HasPointerEvent
   fullName: GameCanvas.Proxy.HasPointerEvent
   nameWithType: Proxy.HasPointerEvent
+- uid: GameCanvas.Proxy.IsCameraMirrored
+  name: IsCameraMirrored
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsCameraMirrored
+  commentId: P:GameCanvas.Proxy.IsCameraMirrored
+  fullName: GameCanvas.Proxy.IsCameraMirrored
+  nameWithType: Proxy.IsCameraMirrored
+- uid: GameCanvas.Proxy.IsCameraMirrored*
+  name: IsCameraMirrored
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsCameraMirrored_
+  commentId: Overload:GameCanvas.Proxy.IsCameraMirrored
+  fullName: GameCanvas.Proxy.IsCameraMirrored
+  nameWithType: Proxy.IsCameraMirrored
 - uid: GameCanvas.Proxy.IsGeolocationRunning
   name: IsGeolocationRunning
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_IsGeolocationRunning
@@ -3241,6 +3631,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.NowTime
   fullName: GameCanvas.Proxy.NowTime
   nameWithType: Proxy.NowTime
+- uid: GameCanvas.Proxy.PauseCameraService
+  name: PauseCameraService()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseCameraService
+  commentId: M:GameCanvas.Proxy.PauseCameraService
+  fullName: GameCanvas.Proxy.PauseCameraService()
+  nameWithType: Proxy.PauseCameraService()
+- uid: GameCanvas.Proxy.PauseCameraService*
+  name: PauseCameraService
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseCameraService_
+  commentId: Overload:GameCanvas.Proxy.PauseCameraService
+  fullName: GameCanvas.Proxy.PauseCameraService
+  nameWithType: Proxy.PauseCameraService
 - uid: GameCanvas.Proxy.PauseSound
   name: PauseSound()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound
@@ -3451,6 +3853,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.Sqrt
   fullName: GameCanvas.Proxy.Sqrt
   nameWithType: Proxy.Sqrt
+- uid: GameCanvas.Proxy.StartCameraService(System.Int32)
+  name: StartCameraService(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StartCameraService_System_Int32_
+  commentId: M:GameCanvas.Proxy.StartCameraService(System.Int32)
+  fullName: GameCanvas.Proxy.StartCameraService(System.Int32)
+  nameWithType: Proxy.StartCameraService(Int32)
+- uid: GameCanvas.Proxy.StartCameraService*
+  name: StartCameraService
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StartCameraService_
+  commentId: Overload:GameCanvas.Proxy.StartCameraService
+  fullName: GameCanvas.Proxy.StartCameraService
+  nameWithType: Proxy.StartCameraService
 - uid: GameCanvas.Proxy.StartGeolocationService
   name: StartGeolocationService()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StartGeolocationService
@@ -3463,6 +3877,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.StartGeolocationService
   fullName: GameCanvas.Proxy.StartGeolocationService
   nameWithType: Proxy.StartGeolocationService
+- uid: GameCanvas.Proxy.StopCameraService
+  name: StopCameraService()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopCameraService
+  commentId: M:GameCanvas.Proxy.StopCameraService
+  fullName: GameCanvas.Proxy.StopCameraService()
+  nameWithType: Proxy.StopCameraService()
+- uid: GameCanvas.Proxy.StopCameraService*
+  name: StopCameraService
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopCameraService_
+  commentId: Overload:GameCanvas.Proxy.StopCameraService
+  fullName: GameCanvas.Proxy.StopCameraService
+  nameWithType: Proxy.StopCameraService
 - uid: GameCanvas.Proxy.StopGeolocationService
   name: StopGeolocationService()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopGeolocationService
@@ -3511,6 +3937,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.TimeSinceStartup
   fullName: GameCanvas.Proxy.TimeSinceStartup
   nameWithType: Proxy.TimeSinceStartup
+- uid: GameCanvas.Proxy.UnpauseCameraService
+  name: UnpauseCameraService()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseCameraService
+  commentId: M:GameCanvas.Proxy.UnpauseCameraService
+  fullName: GameCanvas.Proxy.UnpauseCameraService()
+  nameWithType: Proxy.UnpauseCameraService()
+- uid: GameCanvas.Proxy.UnpauseCameraService*
+  name: UnpauseCameraService
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseCameraService_
+  commentId: Overload:GameCanvas.Proxy.UnpauseCameraService
+  fullName: GameCanvas.Proxy.UnpauseCameraService
+  nameWithType: Proxy.UnpauseCameraService
 - uid: GameCanvas.Proxy.UnpauseSound
   name: UnpauseSound()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseSound
@@ -3523,6 +3961,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.UnpauseSound
   fullName: GameCanvas.Proxy.UnpauseSound
   nameWithType: Proxy.UnpauseSound
+- uid: GameCanvas.Proxy.UpdateCameraDeviceList
+  name: UpdateCameraDeviceList()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UpdateCameraDeviceList
+  commentId: M:GameCanvas.Proxy.UpdateCameraDeviceList
+  fullName: GameCanvas.Proxy.UpdateCameraDeviceList()
+  nameWithType: Proxy.UpdateCameraDeviceList()
+- uid: GameCanvas.Proxy.UpdateCameraDeviceList*
+  name: UpdateCameraDeviceList
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UpdateCameraDeviceList_
+  commentId: Overload:GameCanvas.Proxy.UpdateCameraDeviceList
+  fullName: GameCanvas.Proxy.UpdateCameraDeviceList
+  nameWithType: Proxy.UpdateCameraDeviceList
 - uid: GameCanvas.Proxy.WriteScreenImage(System.String)
   name: WriteScreenImage(String)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_System_String_
