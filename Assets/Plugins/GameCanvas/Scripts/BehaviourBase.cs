@@ -46,6 +46,7 @@ namespace GameCanvas
         private Keyboard mKeyboard;
         private Accelerometer mAccelerometer;
         private Geolocation mGeolocation;
+        private CameraDevice mCameraDevice;
         private Proxy mProxy;
 
         #endregion
@@ -76,7 +77,8 @@ namespace GameCanvas
             mKeyboard = new Keyboard();
             mAccelerometer = new Accelerometer();
             mGeolocation = new Geolocation();
-            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mNetwork, mPointer, mKeyboard, mAccelerometer, mGeolocation);
+            mCameraDevice = new CameraDevice(mGraphic);
+            mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mNetwork, mPointer, mKeyboard, mAccelerometer, mGeolocation, mCameraDevice);
         }
 
         private void Start()

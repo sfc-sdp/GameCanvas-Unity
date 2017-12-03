@@ -63,7 +63,7 @@ namespace GameCanvas.Engine
                 return EDownloadState.Downloading;
             }
 
-            cGraphic.DrawImage(ref cache, ref x, ref y);
+            cGraphic.DrawTexture(cache, ref x, ref y);
             return EDownloadState.Complete;
         }
 
