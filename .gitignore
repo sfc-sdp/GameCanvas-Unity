@@ -60,6 +60,8 @@ Android Export/*.idea/
 proguard/
 
 # VisualStudio user files
+*.csproj
+*.sln
 *.suo
 *.user
 *.userosscache
@@ -79,7 +81,6 @@ proguard/
 *.sap
 .vs
 .vscode
-Assembly-CSharp*.csproj
 Assets/UnityVS/Editor*
 VSCode.*
 Assets/VSCode/Editor*
@@ -88,7 +89,4 @@ Assets/VSCode/Editor*
 node_modules/
 
 # GameCanvas ignore
-GameCanvas-Unity.*.csproj
-GameCanvas-Unity.sln
 UnityGC/Doxyfile
-GameCanvas-Unity.csproj
