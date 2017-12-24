@@ -9,7 +9,7 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [Unity 2017.2.0](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします  
+1. [Unity 2017.3.0](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします  
 （ChooseComponent で android / ios をチェックしてください）
 1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) を入手し、解凍して適当なフォルダに配置します
 1. `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます
