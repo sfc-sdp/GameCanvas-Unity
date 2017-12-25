@@ -228,7 +228,7 @@ namespace GameCanvas
         /// <param name="r">色の赤成分 (0～255)</param>
         /// <param name="g">色の緑成分 (0～255)</param>
         /// <param name="b">色の青成分 (0～255)</param>
-        /// <param name="b">色の透明度 (0～255)</param>
+        /// <param name="a">色の不透明度 (0～255)</param>
         public void SetColor(int r, int g, int b, int a)
         {
             cGraphic.SetColor(ref r, ref g, ref b, ref a);
