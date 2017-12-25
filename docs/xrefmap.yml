@@ -655,6 +655,18 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.CanvasWidth
   fullName: GameCanvas.Engine.Graphic.CanvasWidth
   nameWithType: Graphic.CanvasWidth
+- uid: GameCanvas.Engine.Graphic.ClearImageMultiplyColor
+  name: ClearImageMultiplyColor()
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ClearImageMultiplyColor
+  commentId: M:GameCanvas.Engine.Graphic.ClearImageMultiplyColor
+  fullName: GameCanvas.Engine.Graphic.ClearImageMultiplyColor()
+  nameWithType: Graphic.ClearImageMultiplyColor()
+- uid: GameCanvas.Engine.Graphic.ClearImageMultiplyColor*
+  name: ClearImageMultiplyColor
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ClearImageMultiplyColor_
+  commentId: Overload:GameCanvas.Engine.Graphic.ClearImageMultiplyColor
+  fullName: GameCanvas.Engine.Graphic.ClearImageMultiplyColor
+  nameWithType: Graphic.ClearImageMultiplyColor
 - uid: GameCanvas.Engine.Graphic.ClearScreen
   name: ClearScreen()
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_ClearScreen
@@ -1045,6 +1057,15 @@ references:
   fullName.vb: GameCanvas.Engine.Graphic.SetColor(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
   nameWithType: Graphic.SetColor(ref Int32, ref Int32, ref Int32)
   nameWithType.vb: Graphic.SetColor(ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetColor(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: SetColor(ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColor_System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetColor(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: SetColor(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetColor(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetColor(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.SetColor(ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.SetColor(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
 - uid: GameCanvas.Engine.Graphic.SetColor(UnityEngine.Color@)
   name: SetColor(ref Color)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetColor_UnityEngine_Color__
@@ -1105,6 +1126,45 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.SetFontSize
   fullName: GameCanvas.Engine.Graphic.SetFontSize
   nameWithType: Graphic.SetFontSize
+- uid: GameCanvas.Engine.Graphic.SetImageAlpha(System.Int32@)
+  name: SetImageAlpha(ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetImageAlpha_System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetImageAlpha(System.Int32@)
+  name.vb: SetImageAlpha(ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetImageAlpha(ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetImageAlpha(ByRef System.Int32)
+  nameWithType: Graphic.SetImageAlpha(ref Int32)
+  nameWithType.vb: Graphic.SetImageAlpha(ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetImageAlpha*
+  name: SetImageAlpha
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetImageAlpha_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetImageAlpha
+  fullName: GameCanvas.Engine.Graphic.SetImageAlpha
+  nameWithType: Graphic.SetImageAlpha
+- uid: GameCanvas.Engine.Graphic.SetImageMultiplyColor(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name: SetImageMultiplyColor(ref Int32, ref Int32, ref Int32, ref Int32)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetImageMultiplyColor_System_Int32__System_Int32__System_Int32__System_Int32__
+  commentId: M:GameCanvas.Engine.Graphic.SetImageMultiplyColor(System.Int32@,System.Int32@,System.Int32@,System.Int32@)
+  name.vb: SetImageMultiplyColor(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+  fullName: GameCanvas.Engine.Graphic.SetImageMultiplyColor(ref System.Int32, ref System.Int32, ref System.Int32, ref System.Int32)
+  fullName.vb: GameCanvas.Engine.Graphic.SetImageMultiplyColor(ByRef System.Int32, ByRef System.Int32, ByRef System.Int32, ByRef System.Int32)
+  nameWithType: Graphic.SetImageMultiplyColor(ref Int32, ref Int32, ref Int32, ref Int32)
+  nameWithType.vb: Graphic.SetImageMultiplyColor(ByRef Int32, ByRef Int32, ByRef Int32, ByRef Int32)
+- uid: GameCanvas.Engine.Graphic.SetImageMultiplyColor(UnityEngine.Color@)
+  name: SetImageMultiplyColor(ref Color)
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetImageMultiplyColor_UnityEngine_Color__
+  commentId: M:GameCanvas.Engine.Graphic.SetImageMultiplyColor(UnityEngine.Color@)
+  name.vb: SetImageMultiplyColor(ByRef Color)
+  fullName: GameCanvas.Engine.Graphic.SetImageMultiplyColor(ref UnityEngine.Color)
+  fullName.vb: GameCanvas.Engine.Graphic.SetImageMultiplyColor(ByRef UnityEngine.Color)
+  nameWithType: Graphic.SetImageMultiplyColor(ref Color)
+  nameWithType.vb: Graphic.SetImageMultiplyColor(ByRef Color)
+- uid: GameCanvas.Engine.Graphic.SetImageMultiplyColor*
+  name: SetImageMultiplyColor
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetImageMultiplyColor_
+  commentId: Overload:GameCanvas.Engine.Graphic.SetImageMultiplyColor
+  fullName: GameCanvas.Engine.Graphic.SetImageMultiplyColor
+  nameWithType: Graphic.SetImageMultiplyColor
 - uid: GameCanvas.Engine.Graphic.SetResolution(System.Int32,System.Int32)
   name: SetResolution(Int32, Int32)
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_SetResolution_System_Int32_System_Int32_
@@ -2704,6 +2764,18 @@ references:
   commentId: Overload:GameCanvas.Proxy.ClearDownloadCache
   fullName: GameCanvas.Proxy.ClearDownloadCache
   nameWithType: Proxy.ClearDownloadCache
+- uid: GameCanvas.Proxy.ClearImageMultiplyColor
+  name: ClearImageMultiplyColor()
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearImageMultiplyColor
+  commentId: M:GameCanvas.Proxy.ClearImageMultiplyColor
+  fullName: GameCanvas.Proxy.ClearImageMultiplyColor()
+  nameWithType: Proxy.ClearImageMultiplyColor()
+- uid: GameCanvas.Proxy.ClearImageMultiplyColor*
+  name: ClearImageMultiplyColor
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearImageMultiplyColor_
+  commentId: Overload:GameCanvas.Proxy.ClearImageMultiplyColor
+  fullName: GameCanvas.Proxy.ClearImageMultiplyColor
+  nameWithType: Proxy.ClearImageMultiplyColor
 - uid: GameCanvas.Proxy.ClearScreen
   name: ClearScreen()
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_ClearScreen
@@ -3733,6 +3805,12 @@ references:
   commentId: M:GameCanvas.Proxy.SetColor(System.Int32,System.Int32,System.Int32)
   fullName: GameCanvas.Proxy.SetColor(System.Int32, System.Int32, System.Int32)
   nameWithType: Proxy.SetColor(Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.SetColor(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: SetColor(Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColor_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetColor(System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.SetColor(System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.SetColor(Int32, Int32, Int32, Int32)
 - uid: GameCanvas.Proxy.SetColor(UnityEngine.Color)
   name: SetColor(Color)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetColor_UnityEngine_Color_
@@ -3781,6 +3859,36 @@ references:
   commentId: Overload:GameCanvas.Proxy.SetFontSize
   fullName: GameCanvas.Proxy.SetFontSize
   nameWithType: Proxy.SetFontSize
+- uid: GameCanvas.Proxy.SetImageAlpha(System.Int32)
+  name: SetImageAlpha(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetImageAlpha_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetImageAlpha(System.Int32)
+  fullName: GameCanvas.Proxy.SetImageAlpha(System.Int32)
+  nameWithType: Proxy.SetImageAlpha(Int32)
+- uid: GameCanvas.Proxy.SetImageAlpha*
+  name: SetImageAlpha
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetImageAlpha_
+  commentId: Overload:GameCanvas.Proxy.SetImageAlpha
+  fullName: GameCanvas.Proxy.SetImageAlpha
+  nameWithType: Proxy.SetImageAlpha
+- uid: GameCanvas.Proxy.SetImageMultiplyColor(System.Int32,System.Int32,System.Int32,System.Int32)
+  name: SetImageMultiplyColor(Int32, Int32, Int32, Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetImageMultiplyColor_System_Int32_System_Int32_System_Int32_System_Int32_
+  commentId: M:GameCanvas.Proxy.SetImageMultiplyColor(System.Int32,System.Int32,System.Int32,System.Int32)
+  fullName: GameCanvas.Proxy.SetImageMultiplyColor(System.Int32, System.Int32, System.Int32, System.Int32)
+  nameWithType: Proxy.SetImageMultiplyColor(Int32, Int32, Int32, Int32)
+- uid: GameCanvas.Proxy.SetImageMultiplyColor(UnityEngine.Color)
+  name: SetImageMultiplyColor(Color)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetImageMultiplyColor_UnityEngine_Color_
+  commentId: M:GameCanvas.Proxy.SetImageMultiplyColor(UnityEngine.Color)
+  fullName: GameCanvas.Proxy.SetImageMultiplyColor(UnityEngine.Color)
+  nameWithType: Proxy.SetImageMultiplyColor(Color)
+- uid: GameCanvas.Proxy.SetImageMultiplyColor*
+  name: SetImageMultiplyColor
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetImageMultiplyColor_
+  commentId: Overload:GameCanvas.Proxy.SetImageMultiplyColor
+  fullName: GameCanvas.Proxy.SetImageMultiplyColor
+  nameWithType: Proxy.SetImageMultiplyColor
 - uid: GameCanvas.Proxy.SetResolution(System.Int32,System.Int32)
   name: SetResolution(Int32, Int32)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetResolution_System_Int32_System_Int32_

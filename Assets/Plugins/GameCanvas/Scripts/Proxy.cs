@@ -223,6 +223,18 @@ namespace GameCanvas
         }
 
         /// <summary>
+        /// 描画に用いる塗りの色を指定します。
+        /// </summary>
+        /// <param name="r">色の赤成分 (0～255)</param>
+        /// <param name="g">色の緑成分 (0～255)</param>
+        /// <param name="b">色の青成分 (0～255)</param>
+        /// <param name="a">色の不透明度 (0～255)</param>
+        public void SetColor(int r, int g, int b, int a)
+        {
+            cGraphic.SetColor(ref r, ref g, ref b, ref a);
+        }
+
+        /// <summary>
         /// 描画に用いる塗りの色をHSV色空間で指定します。
         /// </summary>
         /// <param name="h">色相（0f～1f）</param>
@@ -292,6 +304,44 @@ namespace GameCanvas
         }
 
         // 描画：画像
+
+        /// <summary>
+        /// 画像の透明度を指定します。
+        /// </summary>
+        /// <param name="alpha">画像の不透明度 (0～255)。初期値は255=不透明</param>
+        public void SetImageAlpha(int alpha)
+        {
+            cGraphic.SetImageAlpha(ref alpha);
+        }
+
+        /// <summary>
+        /// 画像に加算する色を指定します。
+        /// </summary>
+        /// <param name="r">色の赤成分 (0～255)</param>
+        /// <param name="g">色の緑成分 (0～255)</param>
+        /// <param name="b">色の青成分 (0～255)</param>
+        /// <param name="a">色の不透明度 (0～255)</param>
+        public void SetImageMultiplyColor(int r, int g, int b, int a)
+        {
+            cGraphic.SetImageMultiplyColor(ref r, ref g, ref b, ref a);
+        }
+
+        /// <summary>
+        /// 画像に加算する色を指定します。
+        /// </summary>
+        /// <param name="color">色</param>
+        public void SetImageMultiplyColor(Color color)
+        {
+            cGraphic.SetImageMultiplyColor(ref color);
+        }
+
+        /// <summary>
+        /// 画像に加算する色情報を破棄(画像をそのまま描画)します。
+        /// </summary>
+        public void ClearImageMultiplyColor()
+        {
+            cGraphic.ClearImageMultiplyColor();
+        }
 
         /// <summary>
         /// 画像を描画します。

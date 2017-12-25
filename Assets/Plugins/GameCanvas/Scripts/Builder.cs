@@ -221,7 +221,11 @@ namespace GameCanvas.Editor
             EditorGUILayout.LabelField("APP BUILDER", mLargeText, GUILayout.Height(32));
 
             var isChange = false;
-            isChange |= drawTextField("APPLICATION ID", ref mOption.mApplicationId);
+            if (drawTextField("APPLICATION ID", ref mOption.mApplicationId))
+            {
+                isChange |= true;
+                mOption.mApplicationId = mOption.mApplicationId.Replace(" ", "");
+            }
             isChange |= drawTextField("BUNDLE VERSION", ref mOption.mBundleVersion);
             isChange |= drawTextField("PRODUCT NAME", ref mOption.mProductName);
             isChange |= drawTextField("COMPANY NAME", ref mOption.mCompanyName);
@@ -342,7 +346,7 @@ namespace GameCanvas.Editor
         private void initOption()
         {
             mOption = default(Option);
-            mOption.mApplicationId = PlayerSettings.applicationIdentifier;
+            mOption.mApplicationId = PlayerSettings.applicationIdentifier.Replace(" ", "");
             mOption.mBundleVersion = PlayerSettings.bundleVersion;
             mOption.mProductName = PlayerSettings.productName;
             mOption.mCompanyName = PlayerSettings.companyName;

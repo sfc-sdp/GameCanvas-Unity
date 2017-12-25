@@ -25,4 +25,7 @@ MonoBehaviour:
   Fonts:
   - {fileID: 12800000, guid: 86bc9d489ff7b104198dbd36a4cb03b3, type: 3}
   ShaderOpaque: {fileID: 4800000, guid: b07486247c81e004087cdab0a27f97cf, type: 3}
-  ShaderTransparent: {fileID: 4800000, guid: e3d76065aa8714545a415c3c6dc3fdc6, type: 3}
+  ShaderTransparentImage: {fileID: 4800000, guid: e3d76065aa8714545a415c3c6dc3fdc6,
+    type: 3}
+  ShaderTransparentColor: {fileID: 4800000, guid: 036731672c6122d42aadffff5b94f6cc,
+    type: 3}

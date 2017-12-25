@@ -73,7 +73,7 @@
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: Assembly-CSharp-firstpass.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Assembly-CSharp-firstpass.dll</h6>
   <h5 id="GameCanvas_Proxy_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Proxy</code></pre>
@@ -1577,6 +1577,15 @@ public override void UpdateGame()
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ClearDownloadCache()</code></pre>
+  </div>
+  <a id="GameCanvas_Proxy_ClearImageMultiplyColor_" data-uid="GameCanvas.Proxy.ClearImageMultiplyColor*"></a>
+  <h4 id="GameCanvas_Proxy_ClearImageMultiplyColor" data-uid="GameCanvas.Proxy.ClearImageMultiplyColor">ClearImageMultiplyColor()</h4>
+  <div class="markdown level1 summary"><p>画像に加算する色情報を破棄(画像をそのまま描画)します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearImageMultiplyColor()</code></pre>
   </div>
   <a id="GameCanvas_Proxy_ClearScreen_" data-uid="GameCanvas.Proxy.ClearScreen*"></a>
   <h4 id="GameCanvas_Proxy_ClearScreen" data-uid="GameCanvas.Proxy.ClearScreen">ClearScreen()</h4>
@@ -3701,6 +3710,51 @@ public override void UpdateGame()
     </tbody>
   </table>
   <a id="GameCanvas_Proxy_SetColor_" data-uid="GameCanvas.Proxy.SetColor*"></a>
+  <h4 id="GameCanvas_Proxy_SetColor_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="GameCanvas.Proxy.SetColor(System.Int32,System.Int32,System.Int32,System.Int32)">SetColor(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>描画に用いる塗りの色を指定します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetColor(int r, int g, int b, int a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">r</span></td>
+        <td><p>色の赤成分 (0～255)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">g</span></td>
+        <td><p>色の緑成分 (0～255)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">b</span></td>
+        <td><p>色の青成分 (0～255)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">a</span></td>
+        <td><p>色の不透明度 (0～255)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_SetColor_" data-uid="GameCanvas.Proxy.SetColor*"></a>
   <h4 id="GameCanvas_Proxy_SetColor_UnityEngine_Color_" data-uid="GameCanvas.Proxy.SetColor(UnityEngine.Color)">SetColor(Color)</h4>
   <div class="markdown level1 summary"><p>描画に用いる塗りの色を指定します。</p>
 </div>
@@ -3828,6 +3882,105 @@ public override void UpdateGame()
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
         <td><span class="parametername">fontSize</span></td>
         <td><p>フォントサイズ</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_SetImageAlpha_" data-uid="GameCanvas.Proxy.SetImageAlpha*"></a>
+  <h4 id="GameCanvas_Proxy_SetImageAlpha_System_Int32_" data-uid="GameCanvas.Proxy.SetImageAlpha(System.Int32)">SetImageAlpha(Int32)</h4>
+  <div class="markdown level1 summary"><p>画像の透明度を指定します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetImageAlpha(int alpha)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">alpha</span></td>
+        <td><p>画像の不透明度 (0～255)。初期値は255=不透明</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_SetImageMultiplyColor_" data-uid="GameCanvas.Proxy.SetImageMultiplyColor*"></a>
+  <h4 id="GameCanvas_Proxy_SetImageMultiplyColor_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="GameCanvas.Proxy.SetImageMultiplyColor(System.Int32,System.Int32,System.Int32,System.Int32)">SetImageMultiplyColor(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>画像に加算する色を指定します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetImageMultiplyColor(int r, int g, int b, int a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">r</span></td>
+        <td><p>色の赤成分 (0～255)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">g</span></td>
+        <td><p>色の緑成分 (0～255)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">b</span></td>
+        <td><p>色の青成分 (0～255)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">a</span></td>
+        <td><p>色の不透明度 (0～255)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_SetImageMultiplyColor_" data-uid="GameCanvas.Proxy.SetImageMultiplyColor*"></a>
+  <h4 id="GameCanvas_Proxy_SetImageMultiplyColor_UnityEngine_Color_" data-uid="GameCanvas.Proxy.SetImageMultiplyColor(UnityEngine.Color)">SetImageMultiplyColor(Color)</h4>
+  <div class="markdown level1 summary"><p>画像に加算する色を指定します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetImageMultiplyColor(Color color)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2017.1/Documentation/ScriptReference/Color.html">Color</a></td>
+        <td><span class="parametername">color</span></td>
+        <td><p>色</p>
 </td>
       </tr>
     </tbody>

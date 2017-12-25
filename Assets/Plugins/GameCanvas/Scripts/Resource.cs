@@ -34,7 +34,8 @@ namespace GameCanvas
         private Font[] Fonts;
 
         public Shader ShaderOpaque;
-        public Shader ShaderTransparent;
+        public Shader ShaderTransparentImage;
+        public Shader ShaderTransparentColor;
 
         [System.NonSerialized]
         private Sprite[] mSprites = null;
@@ -213,7 +214,8 @@ namespace GameCanvas
             Fonts = fonts ?? new Font[0];
 
             ShaderOpaque = ShaderOpaque ?? Shader.Find("GameCanvas/Opaque");
-            ShaderTransparent = ShaderTransparent ?? Shader.Find("GameCanvas/Transparent");
+            ShaderTransparentImage = ShaderTransparentImage ?? Shader.Find("GameCanvas/TransparentImage");
+            ShaderTransparentColor = ShaderTransparentColor ?? Shader.Find("GameCanvas/TransparentColor");
         }
 #endif //UNITY_EDITOR
 
