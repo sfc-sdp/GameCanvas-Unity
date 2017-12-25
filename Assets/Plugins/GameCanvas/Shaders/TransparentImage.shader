@@ -11,6 +11,7 @@
 Shader "GameCanvas/TransparentImage" {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
+		_Color ("Multiply", Color) = (1, 1, 1, 1)
 		_ClipRect ("Clip Rect", Vector) = (0, 0, 1, 1)
 	}
 
@@ -44,6 +45,7 @@ Shader "GameCanvas/TransparentImage" {
 
 				sampler2D _MainTex;
 				float4 _MainTex_ST;
+				fixed4 _Color;
 				float4 _ClipRect;
 
 				inline float World2dClip (in float2 position, in float4 clipRect)
@@ -64,7 +66,7 @@ Shader "GameCanvas/TransparentImage" {
 
 				fixed4 frag (v2f i) : SV_Target
 				{
-					fixed4 c = tex2D(_MainTex, i.uv);
+					fixed4 c = tex2D(_MainTex, i.uv) * _Color;
 					c.a *= World2dClip(i.screen.xy, _ClipRect);
 					clip(c.a - 0.001);
 					return fixed4(c.rgb + i.color.rgb, c.a);

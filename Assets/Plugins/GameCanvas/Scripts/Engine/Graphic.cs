@@ -67,6 +67,7 @@ namespace GameCanvas.Engine
         private Matrix4x4 mMatrixView;
         private float mPixelSizeMin;
         private Color mColor;
+        private Color mColorMultiply;
         private Font mFont;
         private FontStyle mFontStyle;
         private int mFontSize;
@@ -124,6 +125,7 @@ namespace GameCanvas.Engine
             mFont = cRes.GetFnt(0).Data ?? Font.CreateDynamicFontFromOSFont(new[] { ".Hiragino Kaku Gothic Interface", "MotoyaLMaru", "MotoyaLCedar", "RobotoSansFallback", "Droid Sans Fallback" }, mFontSize);
 
             mColor = cColorBlack;
+            mColorMultiply = cColorWhite;
             mScreenSize = new Vector2(Screen.width, Screen.height);
             mCanvasSize = new Vector2(720, 1280);
             Application.targetFrameRate = 60;
@@ -452,6 +454,27 @@ namespace GameCanvas.Engine
 
         // 互換実装：画像系
 
+        public void SetImageAlpha(ref int alpha)
+        {
+            mColorMultiply = new Color(1f, 1f, 1f, alpha / 255f);
+        }
+
+        public void SetImageMultiplyColor(ref int r, ref int g, ref int b, ref int a)
+        {
+            const float n = 1f / 255;
+            mColorMultiply = new Color(r * n, g * n, b * n, a * n);
+        }
+
+        public void SetImageMultiplyColor(ref Color color)
+        {
+            mColorMultiply = color;
+        }
+
+        public void ClearImageMultiplyColor()
+        {
+            mColorMultiply = cColorWhite;
+        }
+
         public void DrawImage(ref int imageId, ref int x, ref int y)
         {
             if (mIsDispose) return;
@@ -461,6 +484,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
@@ -482,6 +506,7 @@ namespace GameCanvas.Engine
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
             cBlock.SetVector(cShaderPropClipRect, clipRect);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var matrix = calcMatrix(mCountDraw++, x - u, y - v, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
@@ -496,6 +521,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var matrix = calcMatrix(mCountDraw++, x, y, xSize * 0.01f, ySize * 0.01f, 360f - degree);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
@@ -510,6 +536,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var count = mCountDraw++;
             var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
@@ -550,6 +577,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, texture);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var matrix = calcMatrix(mCountDraw++, x, y, texture.width, texture.height);
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
@@ -568,6 +596,7 @@ namespace GameCanvas.Engine
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, texture);
             cBlock.SetVector(cShaderPropClipRect, clipRect);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var matrix = calcMatrix(mCountDraw++, x - u, y - v, texture.width, texture.height);
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
@@ -579,6 +608,7 @@ namespace GameCanvas.Engine
 
             cBlock.Clear();
             cBlock.SetTexture(cShaderPropMainTex, texture);
+            if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var matrix = calcMatrix(mCountDraw++, x, y, texture.width * xSize * 0.01f, texture.height * ySize * 0.01f, 360f - degree);
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
