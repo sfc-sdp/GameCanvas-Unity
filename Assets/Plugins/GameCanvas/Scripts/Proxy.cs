@@ -223,6 +223,18 @@ namespace GameCanvas
         }
 
         /// <summary>
+        /// 描画に用いる塗りの色を指定します。
+        /// </summary>
+        /// <param name="r">色の赤成分 (0～255)</param>
+        /// <param name="g">色の緑成分 (0～255)</param>
+        /// <param name="b">色の青成分 (0～255)</param>
+        /// <param name="b">色の透明度 (0～255)</param>
+        public void SetColor(int r, int g, int b, int a)
+        {
+            cGraphic.SetColor(ref r, ref g, ref b, ref a);
+        }
+
+        /// <summary>
         /// 描画に用いる塗りの色をHSV色空間で指定します。
         /// </summary>
         /// <param name="h">色相（0f～1f）</param>

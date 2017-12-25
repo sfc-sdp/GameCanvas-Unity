@@ -32,7 +32,8 @@ namespace GameCanvas.Engine
         private readonly CommandBuffer cBufferOpaque;
         private readonly CommandBuffer cBufferTransparent;
         private readonly Material cMaterialOpaque;
-        private readonly Material cMaterialTransparent;
+        private readonly Material cMaterialTransparentImage;
+        private readonly Material cMaterialTransparentColor;
         private readonly MaterialPropertyBlock cBlock;
         private readonly int cShaderPropMainTex;
         private readonly int cShaderPropColor;
@@ -100,7 +101,8 @@ namespace GameCanvas.Engine
             cBufferTransparent = new CommandBuffer();
             cBufferTransparent.name = "GameCanvas Transparent ";
             cMaterialOpaque = new Material(res.ShaderOpaque);
-            cMaterialTransparent = new Material(res.ShaderTransparent);
+            cMaterialTransparentImage = new Material(res.ShaderTransparentImage);
+            cMaterialTransparentColor = new Material(res.ShaderTransparentColor);
             cBlock = new MaterialPropertyBlock();
             cShaderPropMainTex = Shader.PropertyToID("_MainTex");
             cShaderPropColor = Shader.PropertyToID("_Color");
@@ -331,6 +333,12 @@ namespace GameCanvas.Engine
             mColor = new Color(r * n, g * n, b * n);
         }
 
+        public void SetColor(ref int r, ref int g, ref int b, ref int a)
+        {
+            const float n = 1f / 255;
+            mColor = new Color(r * n, g * n, b * n, a * n);
+        }
+
         public void SetColorHSV(ref float h, ref float s, ref float v)
         {
             mColor = Color.HSVToRGB(h, s, v);
@@ -349,7 +357,10 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, startX, startY, distance, 1f, degree);
-            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
+            var hasAlpha = (mColor.a > 0f);
+            var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
+            var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
+            buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
         }
 
         public void DrawRect(ref int x, ref int y, ref int width, ref int height)
@@ -379,7 +390,10 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferOpaque.DrawMesh(cMeshRectBorder, matrix, cMaterialOpaque, 0, -1, cBlock);
+            var hasAlpha = (mColor.a > 0f);
+            var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
+            var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
+            buffer.DrawMesh(cMeshRectBorder, matrix, material, 0, -1, cBlock);
         }
 
         public void FillRect(ref int x, ref int y, ref int width, ref int height)
@@ -390,7 +404,10 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, width, height);
-            cBufferOpaque.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, -1, cBlock);
+            var hasAlpha = (mColor.a > 0f);
+            var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
+            var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
+            buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
         }
 
         public void DrawCircle(ref int x, ref int y, ref int radius)
@@ -413,7 +430,10 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferOpaque.DrawMesh(cMeshCircleBorder, matrix, cMaterialOpaque, 0, -1, cBlock);
+            var hasAlpha = (mColor.a > 0f);
+            var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
+            var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
+            buffer.DrawMesh(cMeshCircleBorder, matrix, material, 0, -1, cBlock);
         }
 
         public void FillCircle(ref int x, ref int y, ref int radius)
@@ -424,7 +444,10 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, radius, radius);
-            cBufferOpaque.DrawMesh(cMeshCircle, matrix, cMaterialOpaque, 0, -1, cBlock);
+            var hasAlpha = (mColor.a > 0f);
+            var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
+            var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
+            buffer.DrawMesh(cMeshCircle, matrix, material, 0, -1, cBlock);
         }
 
         // 互換実装：画像系
@@ -440,7 +463,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         public void DrawClipImage(ref int imageId, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height)
@@ -461,7 +484,7 @@ namespace GameCanvas.Engine
             cBlock.SetVector(cShaderPropClipRect, clipRect);
 
             var matrix = calcMatrix(mCountDraw++, x - u, y - v, 1f, 1f);
-            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref float degree)
@@ -475,7 +498,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
 
             var matrix = calcMatrix(mCountDraw++, x, y, xSize * 0.01f, ySize * 0.01f, 360f - degree);
-            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         public void DrawScaledRotateImage(ref int imageId, ref int x, ref int y, ref int xSize, ref int ySize, ref float degree, ref float centerX, ref float centerY)
@@ -494,7 +517,7 @@ namespace GameCanvas.Engine
             var s = new Vector3(xSize * 0.01f, ySize * 0.01f, 1f);
             var t2 = new Vector3(-centerX, centerY);
             var matrix = Matrix4x4.Translate(t) * Matrix4x4.Rotate(r) * Matrix4x4.Translate(t2) * Matrix4x4.Scale(s);
-            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         public int GetImageWidth(ref int imageId)
@@ -529,7 +552,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, texture);
 
             var matrix = calcMatrix(mCountDraw++, x, y, texture.width, texture.height);
-            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         public void DrawClipTexture(Texture texture, ref int x, ref int y, ref int u, ref int v, ref int width, ref int height)
@@ -547,7 +570,7 @@ namespace GameCanvas.Engine
             cBlock.SetVector(cShaderPropClipRect, clipRect);
 
             var matrix = calcMatrix(mCountDraw++, x - u, y - v, texture.width, texture.height);
-            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         public void DrawScaledRotateTexture(Texture texture, ref int x, ref int y, ref int xSize, ref int ySize, ref float degree)
@@ -558,7 +581,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, texture);
 
             var matrix = calcMatrix(mCountDraw++, x, y, texture.width * xSize * 0.01f, texture.height * ySize * 0.01f, 360f - degree);
-            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         #endregion
@@ -751,7 +774,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, mFont.material.mainTexture);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            cBufferTransparent.DrawMesh(mesh, matrix, cMaterialTransparent, 0, -1, cBlock);
+            cBufferTransparent.DrawMesh(mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
         private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h, float degree = 0f)

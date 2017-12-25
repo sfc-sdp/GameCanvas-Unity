@@ -1,4 +1,4 @@
-//------------------------------------------------------------//
+﻿//------------------------------------------------------------//
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
@@ -8,10 +8,9 @@
 // </remarks>
 //------------------------------------------------------------//
 
-Shader "GameCanvas/Transparent" {
+Shader "GameCanvas/TransparentColor" {
 	Properties {
-		_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
-		_ClipRect ("Clip Rect", Vector) = (0, 0, 1, 1)
+		_Color ("Color", Color) = (0, 0, 0, 0)
 	}
 
 	SubShader {
@@ -31,43 +30,25 @@ Shader "GameCanvas/Transparent" {
 
 				struct appdata_t {
 					float4 vertex : POSITION;
-					float4 color : COLOR;
-					float2 uv : TEXCOORD0;
 				};
 
 				struct v2f {
 					float4 vertex : SV_POSITION;
-					float4 color : COLOR;
-					float2 uv : TEXCOORD0;
-					float2 screen : TEXCOORD1;
 				};
 
-				sampler2D _MainTex;
-				float4 _MainTex_ST;
-				float4 _ClipRect;
-
-				inline float World2dClip (in float2 position, in float4 clipRect)
-				{
- 					float2 inside = step(clipRect.xy, position.xy) * step(position.xy, clipRect.zw);
- 					return inside.x * inside.y;
-				}
+				fixed4 _Color;
 
 				v2f vert (appdata_t v)
 				{
 					v2f o;
 					o.vertex = UnityObjectToClipPos(v.vertex);
-					o.color = v.color;
-					o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-					o.screen = ComputeScreenPos(o.vertex);
 					return o;
 				}
 
 				fixed4 frag (v2f i) : SV_Target
 				{
-					fixed4 c = tex2D(_MainTex, i.uv);
-					c.a *= World2dClip(i.screen.xy, _ClipRect);
-					clip(c.a - 0.001);
-					return fixed4(c.rgb + i.color.rgb, c.a);
+					clip(_Color.a - 0.001);
+					return _Color;
 				}
 			ENDCG
 		}
