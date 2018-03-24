@@ -170,8 +170,8 @@ namespace GameCanvas
         public override string ToString()
         {
             return (TiltX != 0f || TiltY != 0f)
-                ? string.Format("{0}: point: ({1}, {2}), phase: {3}, tilt: ({4}, {5}), pressure: {6}", Id, ScreenX, ScreenY, Phase, TiltX, TiltY, Pressure)
-                : string.Format("{0}: point: ({1}, {2}), phase: {3}, pressure: {4}", Id, ScreenX, ScreenY, Phase, Pressure);
+                ? $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, tilt: ({TiltX}, {TiltY}), pressure: {Pressure}"
+                : $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, pressure: {Pressure}";
         }
 
         #endregion

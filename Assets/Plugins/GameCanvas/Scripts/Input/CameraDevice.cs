@@ -44,31 +44,31 @@ namespace GameCanvas.Input
         /// <summary>
         /// 有効なデバイス数
         /// </summary>
-        public int Count { get { return mDevices.Length; } }
+        public int Count => mDevices.Length;
         /// <summary>
         /// 再生中のカメラ映像の幅
         /// </summary>
-        public int CurrentWidth { get { return (mTexture == null) ? 0 : mTexture.width; } }
+        public int CurrentWidth => (mTexture == null) ? 0 : mTexture.width;
         /// <summary>
         /// 再生中のカメラ映像の高さ
         /// </summary>
-        public int CurrentHeight { get { return (mTexture == null) ? 0 : mTexture.height; } }
+        public int CurrentHeight => (mTexture == null) ? 0 : mTexture.height;
         /// <summary>
         /// 再生中のカメラデバイス名
         /// </summary>
-        public string CurrentDeviceName { get { return (mTexture == null) ? null : mTexture.deviceName; } }
+        public string CurrentDeviceName => mTexture?.deviceName;
         /// <summary>
         /// 再生中のカメラ映像の回転角度 (度数法)
         /// </summary>
-        public int CurrentRotation { get { return (mTexture == null) ? 0 : mTexture.videoRotationAngle; } }
+        public int CurrentRotation => (mTexture == null) ? 0 : mTexture.videoRotationAngle;
         /// <summary>
         /// 再生中のカメラ映像の上下反転有無
         /// </summary>
-        public bool IsMirrored { get { return (mTexture != null && mTexture.videoVerticallyMirrored); } }
+        public bool IsMirrored => (mTexture != null && mTexture.videoVerticallyMirrored);
         /// <summary>
         /// 再生中のカメラ映像が現在フレームで更新されたかどうか
         /// </summary>
-        public bool DidUpdate { get { return (mTexture != null && mTexture.didUpdateThisFrame); } }
+        public bool DidUpdate => (mTexture != null && mTexture.didUpdateThisFrame);
 
         /// <summary>
         /// デバイス一覧の更新

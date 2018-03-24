@@ -128,7 +128,7 @@ namespace GameCanvas
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            if (mGraphic != null) mGraphic.SetResolution(CanvasWidth, CanvasHeight);
+            mGraphic?.SetResolution(CanvasWidth, CanvasHeight);
         }
 #endif //UNITY_EDITOR
 
@@ -138,7 +138,7 @@ namespace GameCanvas
         #region パブリック関数 (Game.cs に公開している関数)
         //----------------------------------------------------------
 
-        protected Proxy gc { get { return mProxy; } }
+        protected Proxy gc => mProxy;
 
         public abstract void InitGame();
 

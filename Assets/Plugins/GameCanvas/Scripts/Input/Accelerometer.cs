@@ -53,17 +53,17 @@ namespace GameCanvas.Input
             }
         }
 
-        public float LastX { get { return mLast.x; } }
-        public float LastY { get { return mLast.y; } }
-        public float LastZ { get { return mLast.z; } }
+        public float LastX => mLast.x;
+        public float LastY => mLast.y;
+        public float LastZ => mLast.z;
 
-        public int EventCount { get { return mEventCount; } }
-        public float GetX(ref int i) { return (i >= 0 && i < mEventCount) ? cEvents[i].x : 0f; }
-        public float GetY(ref int i) { return (i >= 0 && i < mEventCount) ? cEvents[i].y : 0f; }
-        public float GetZ(ref int i) { return (i >= 0 && i < mEventCount) ? cEvents[i].z : 0f; }
-        public float GetNormalizedX(ref int i) { return (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].x : 0f; }
-        public float GetNormalizedY(ref int i) { return (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].y : 0f; }
-        public float GetNormalizedZ(ref int i) { return (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].z : 0f; }
+        public int EventCount => mEventCount;
+        public float GetX(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].x : 0f;
+        public float GetY(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].y : 0f;
+        public float GetZ(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].z : 0f;
+        public float GetNormalizedX(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].x : 0f;
+        public float GetNormalizedY(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].y : 0f;
+        public float GetNormalizedZ(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].z : 0f;
 
         #endregion
     }

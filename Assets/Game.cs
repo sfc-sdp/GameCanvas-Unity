@@ -42,6 +42,6 @@ public sealed class Game : GameBase
         gc.SetFontSize(48);
         gc.DrawString("この文字と青空の画像が", 40, 160);
         gc.DrawString("見えていれば成功です", 40, 270);
-        gc.DrawRightString(sec.ToString() + "s", 630, 10);
+        gc.DrawRightString($"{sec}s", 630, 10);
     }
 }
