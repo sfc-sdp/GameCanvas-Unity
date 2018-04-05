@@ -17,6 +17,7 @@ namespace GameCanvas
     using Collision = Engine.Collision;
     using Network = Engine.Network;
     using Time = Engine.Time;
+    using Sequence = System.Collections.IEnumerator;
 
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera), typeof(AudioListener), typeof(AudioSource))]
@@ -48,6 +49,9 @@ namespace GameCanvas
         private Geolocation mGeolocation;
         private CameraDevice mCameraDevice;
         private Proxy mProxy;
+
+        private Sequence mSequence;
+        private bool mIsRunning;
 
         #endregion
 
@@ -84,6 +88,8 @@ namespace GameCanvas
         private void Start()
         {
             InitGame();
+            mIsRunning = true;
+            mSequence = Entry();
         }
 
         private void Update()
@@ -97,6 +103,7 @@ namespace GameCanvas
             mGeolocation.OnBeforeUpdate();
 
             UpdateGame();
+            mIsRunning = mIsRunning && mSequence.MoveNext();
             DrawGame();
         }
 
@@ -145,6 +152,8 @@ namespace GameCanvas
         public abstract void UpdateGame();
 
         public abstract void DrawGame();
+
+        public abstract Sequence Entry();
 
         #endregion
     }

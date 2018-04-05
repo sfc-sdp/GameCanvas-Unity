@@ -86,6 +86,11 @@ namespace GameCanvas
         /// </summary>
         public readonly Color ColorAqua = new Color(.5f, .5f, 1f);
 
+        /// <summary>
+        /// 次のフレームを待つ (yield return 限定)
+        /// </summary>
+        public readonly object WaitForNextFrame = null;
+
         #endregion
 
         //----------------------------------------------------------

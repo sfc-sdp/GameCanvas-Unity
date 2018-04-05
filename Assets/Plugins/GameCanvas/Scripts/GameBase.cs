@@ -8,6 +8,8 @@
 // </remarks>
 /*------------------------------------------------------------*/
 
+using System.Collections;
+
 public abstract class GameBase : GameCanvas.BehaviourBase
 {
     /// <summary>
@@ -24,4 +26,12 @@ public abstract class GameBase : GameCanvas.BehaviourBase
     /// 描画処理
     /// </summary>
     public override void DrawGame() { }
+
+    /// <summary>
+    /// ゲームシーケンス
+    /// </summary>
+    public override IEnumerator Entry()
+    {
+        yield break;
+    }
 }
