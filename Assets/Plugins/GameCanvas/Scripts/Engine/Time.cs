@@ -2,7 +2,7 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2017 Smart Device Programming.
+// (c) 2015-2018 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
@@ -53,22 +53,22 @@ namespace GameCanvas.Engine
             mFrameCount++;
         }
 
-        public float SinceStartup { get { return mSinceStartup; } }
-        public float SincePrevFrame { get { return mSincePrevFrame; } }
-        public int FrameCount { get { return mFrameCount; } }
+        public float SinceStartup => mSinceStartup;
+        public float SincePrevFrame => mSincePrevFrame;
+        public int FrameCount => mFrameCount;
 
-        public System.DateTimeOffset Current { get { return mCurrent; } }
-        public long Timestamp { get { return (long)((mCurrent - cUnixZero).TotalSeconds); } }
-        public int Year { get { return mCurrent.Year; } }
-        public int Month { get { return mCurrent.Month; } }
-        public int Day { get { return mCurrent.Day; } }
-        public int Hour { get { return mCurrent.Hour; } }
-        public int Minute { get { return mCurrent.Minute; } }
-        public int Second { get { return mCurrent.Second; } }
-        public int Millisecond { get { return mCurrent.Millisecond; } }
-        public System.DayOfWeek DayOfWeek { get { return mCurrent.DayOfWeek; } }
+        public System.DateTimeOffset Current => mCurrent;
+        public long Timestamp => (long)((mCurrent - cUnixZero).TotalSeconds);
+        public int Year => mCurrent.Year;
+        public int Month => mCurrent.Month;
+        public int Day => mCurrent.Day;
+        public int Hour => mCurrent.Hour;
+        public int Minute => mCurrent.Minute;
+        public int Second => mCurrent.Second;
+        public int Millisecond => mCurrent.Millisecond;
+        public System.DayOfWeek DayOfWeek => mCurrent.DayOfWeek;
 
-        public System.DateTimeOffset Now { get { return System.DateTimeOffset.Now; } }
+        public System.DateTimeOffset Now => System.DateTimeOffset.Now;
 
         #endregion
     }

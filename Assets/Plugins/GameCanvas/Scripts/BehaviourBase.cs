@@ -2,7 +2,7 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2017 Smart Device Programming.
+// (c) 2015-2018 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
@@ -17,6 +17,7 @@ namespace GameCanvas
     using Collision = Engine.Collision;
     using Network = Engine.Network;
     using Time = Engine.Time;
+    using Sequence = System.Collections.IEnumerator;
 
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera), typeof(AudioListener), typeof(AudioSource))]
@@ -48,6 +49,9 @@ namespace GameCanvas
         private Geolocation mGeolocation;
         private CameraDevice mCameraDevice;
         private Proxy mProxy;
+
+        private Sequence mSequence;
+        private bool mIsRunning;
 
         #endregion
 
@@ -84,6 +88,8 @@ namespace GameCanvas
         private void Start()
         {
             InitGame();
+            mIsRunning = true;
+            mSequence = Entry();
         }
 
         private void Update()
@@ -97,6 +103,7 @@ namespace GameCanvas
             mGeolocation.OnBeforeUpdate();
 
             UpdateGame();
+            mIsRunning = mIsRunning && mSequence.MoveNext();
             DrawGame();
         }
 
@@ -128,7 +135,7 @@ namespace GameCanvas
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            if (mGraphic != null) mGraphic.SetResolution(CanvasWidth, CanvasHeight);
+            mGraphic?.SetResolution(CanvasWidth, CanvasHeight);
         }
 #endif //UNITY_EDITOR
 
@@ -138,13 +145,15 @@ namespace GameCanvas
         #region パブリック関数 (Game.cs に公開している関数)
         //----------------------------------------------------------
 
-        protected Proxy gc { get { return mProxy; } }
+        protected Proxy gc => mProxy;
 
         public abstract void InitGame();
 
         public abstract void UpdateGame();
 
         public abstract void DrawGame();
+
+        public abstract Sequence Entry();
 
         #endregion
     }

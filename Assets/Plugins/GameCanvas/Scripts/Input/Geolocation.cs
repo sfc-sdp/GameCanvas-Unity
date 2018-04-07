@@ -2,7 +2,7 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2017 Smart Device Programming.
+// (c) 2015-2018 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
@@ -59,16 +59,16 @@ namespace GameCanvas.Input
             }
         }
 
-        public bool HasPermission { get { return Input.location.isEnabledByUser; } }
-        public LocationServiceStatus Status { get { return Input.location.status; } }
-        public bool IsRunning { get { return HasPermission && (Status == LocationServiceStatus.Running || Status == LocationServiceStatus.Initializing); } }
-        public bool HasUpdate { get { return mHasUpdate; } }
+        public bool HasPermission => Input.location.isEnabledByUser;
+        public LocationServiceStatus Status => Input.location.status;
+        public bool IsRunning => HasPermission && (Status == LocationServiceStatus.Running || Status == LocationServiceStatus.Initializing);
+        public bool HasUpdate => mHasUpdate;
 
-        public float LastAltitude { get { return mLastAltitude; } }
-        public float LastLatitude { get { return mLastLatitude; } }
-        public float LastLongitude { get { return mLastLongitude; } }
-        public long LastTimestamp { get { return (long)mLastTimestamp; } }
-        public System.DateTimeOffset LastTime { get { return Engine.Time.cUnixZero.AddSeconds(mLastTimestamp); } }
+        public float LastAltitude => mLastAltitude;
+        public float LastLatitude => mLastLatitude;
+        public float LastLongitude => mLastLongitude;
+        public long LastTimestamp => (long)mLastTimestamp;
+        public System.DateTimeOffset LastTime => Engine.Time.cUnixZero.AddSeconds(mLastTimestamp);
 
         public void StartService()
         {

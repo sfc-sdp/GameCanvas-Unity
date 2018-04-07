@@ -4081,6 +4081,12 @@ references:
   commentId: Overload:GameCanvas.Proxy.UpdateCameraDeviceList
   fullName: GameCanvas.Proxy.UpdateCameraDeviceList
   nameWithType: Proxy.UpdateCameraDeviceList
+- uid: GameCanvas.Proxy.WaitForNextFrame
+  name: WaitForNextFrame
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WaitForNextFrame
+  commentId: F:GameCanvas.Proxy.WaitForNextFrame
+  fullName: GameCanvas.Proxy.WaitForNextFrame
+  nameWithType: Proxy.WaitForNextFrame
 - uid: GameCanvas.Proxy.WriteScreenImage(System.String)
   name: WriteScreenImage(String)
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_WriteScreenImage_System_String_

@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v2.0](https://img.shields.io/badge/GameCanvas%20API-v2.0-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.Proxy.html)
+[![Latest Release](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v2.1](https://img.shields.io/badge/GameCanvas%20API-v2.1-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.Proxy.html)
 [<img alt="GameCanvas" align="right" src="Assets/Plugins/GameCanvas/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
@@ -9,7 +9,7 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [Unity 2017.3.0](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします  
+1. [Unity 2017.4.1](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします  
 （ChooseComponent で android / ios をチェックしてください）
 1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) を入手し、解凍して適当なフォルダに配置します
 1. `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます
@@ -25,6 +25,6 @@ iOS や Android への書き出しなど、より詳しい解説は、[スマー
 GameCanvasに対する質問やバグ報告は [![Issues](https://img.shields.io/github/issues/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/issues) で受け付けています
 
 ## ライセンス
-Copyright (c) 2015-2017 Smart Device Programming.
+Copyright (c) 2015-2018 Smart Device Programming.
 
 This software is released under the MIT License, see [LICENSE](LICENSE).
