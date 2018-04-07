@@ -9,9 +9,9 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [Unity 2017.4.1](https://unity3d.com/jp/get-unity/download/archive) を入手し、インストールします  
+1. [Unity 2017.4.1](https://unity3d.com/jp/unity/qa/lts-releases) を入手し、インストールします  
 （ChooseComponent で android / ios をチェックしてください）
-1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) を入手し、解凍して適当なフォルダに配置します
+1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手し、解凍して適当なフォルダに配置します
 1. `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます
 1. プロジェクトビューから `Assets/Game.unity` を選択し再生ボタンを押せば、すぐにサンプルが実行されます
 1. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう
