@@ -9,12 +9,21 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [Unity 2017.4.1](https://unity3d.com/jp/unity/qa/lts-releases) を入手し、インストールします  
-（ChooseComponent で android / ios をチェックしてください）
-1. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手し、解凍して適当なフォルダに配置します
-1. `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます
-1. プロジェクトビューから `Assets/Game.unity` を選択し再生ボタンを押せば、すぐにサンプルが実行されます
-1. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう
+1. [こちらから Unity 2017.4.1 のインストーラを入手](https://unity3d.com/jp/unity/qa/lts-releases)し、起動します
+
+![](docs/images/setup_01.gif)
+
+2. Unity, MonoDevelop, Androidプラグイン, iOSプラグインを選択してインストールします
+
+![](docs/images/setup_02.gif)
+
+
+3. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手・解凍し、 `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます。  
+プロジェクトビューから `Assets/Game.unity` を選択し再生ボタンを押せば、すぐにサンプルが実行されます
+
+![](docs/images/setup_03.gif)
+
+4. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう
 
 iOS や Android への書き出しなど、より詳しい解説は、[スマートデバイスプログラミング 講義ページ](http://web.sfc.keio.ac.jp/~wadari/sdp/) を参照してください
 
