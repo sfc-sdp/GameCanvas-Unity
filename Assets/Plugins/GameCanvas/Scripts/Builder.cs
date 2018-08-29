@@ -158,6 +158,7 @@ namespace GameCanvas.Editor
 
                     PlayerSettings.Android.minSdkVersion = option.mMinimumSdkVersion;
                     PlayerSettings.Android.targetSdkVersion = option.mTargetSdkVersion;
+                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, option.mIsIl2cpp ? ScriptingImplementation.IL2CPP : ScriptingImplementation.Mono2x);
 
                     // 既に出力ファイルがあれば退避させておく
                     if (File.Exists(outFilePath))
@@ -176,13 +177,13 @@ namespace GameCanvas.Editor
                     return;
             }
 
+
             var buildOption = BuildOptions.CompressWithLz4;
-            if (option.mIsIl2cpp) buildOption |= BuildOptions.Il2CPP;
             if (option.mIsConnectProfiler) buildOption |= BuildOptions.ConnectWithProfiler;
             buildOption |= option.mAndRun ? BuildOptions.AutoRunPlayer : BuildOptions.ShowBuiltPlayer;
 
             // ビルドを実行する
-            var errorMessage = BuildPipeline.BuildPlayer(
+            var report = BuildPipeline.BuildPlayer(
                 getEnabledScenePaths(),
                 outFilePath,
                 (BuildTarget)option.mPlatform,
@@ -190,9 +191,9 @@ namespace GameCanvas.Editor
             );
 
             // エラー出力
-            if (!string.IsNullOrEmpty(errorMessage))
+            if (report.summary.result == UnityEditor.Build.Reporting.BuildResult.Failed)
             {
-                Debug.LogError(errorMessage);
+                Debug.LogError("ビルドに失敗しました\n" + report.summary.ToString());
             }
         }
 

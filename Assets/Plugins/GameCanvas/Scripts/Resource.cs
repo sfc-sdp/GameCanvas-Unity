@@ -230,8 +230,9 @@ namespace GameCanvas
         using System.Text.RegularExpressions;
         using UnityEditor;
         using UnityEditor.Build;
+        using UnityEditor.Build.Reporting;
 
-        public sealed class ResourceBuilder : IPreprocessBuild
+        public sealed class ResourceBuilder : IPreprocessBuildWithReport
         {
             private const string cOutputPath = "Assets/Plugins/GameCanvas/Res.asset";
             private const string cAtlasPath = "Assets/Plugins/GameCanvas/Atlas.spriteatlas";
@@ -244,7 +245,7 @@ namespace GameCanvas
             private static readonly Regex cRegFnt = new Regex(@"^Assets/Res/fnt(?<id>\d+)\.(ttf|TTF|otf|OTF)$");
 
             int IOrderedCallback.callbackOrder { get { return 0; } }
-            void IPreprocessBuild.OnPreprocessBuild(BuildTarget target, string path) { onExitEditMode(); }
+            void IPreprocessBuildWithReport.OnPreprocessBuild(BuildReport report) { onExitEditMode(); }
 
             [InitializeOnLoadMethod]
             private static void onInitialize()
