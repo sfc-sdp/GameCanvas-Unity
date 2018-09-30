@@ -9,21 +9,16 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [こちらから Unity 2017.4.1 のインストーラを入手](https://unity3d.com/jp/unity/qa/lts-releases)し、起動します
+1. [UnityHub](https://unity3d.com/jp/get-unity/download)を入手し、Unity 2018.2.10f1, Androidプラグイン, iOSプラグイン, 日本語言語パックを選択してインストールします  
+※ 推奨バージョンは Unity 2018.2.10f1 です。9GB弱の空き容量が必要です  
+※ インストール方法が分からない方は[こちらの記事](https://creive.me/archives/13376/)も参考にしてください。ただしUnity IDの取得は不要です
 
-![](docs/images/setup_01.gif)
+2. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手・解凍します。解凍したフォルダに含まれる `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックすると Unity が立ち上がり、プロジェクトが開きます
 
-2. Unity, MonoDevelop, Androidプラグイン, iOSプラグインを選択してインストールします
+3. プロジェクトビューから `Assets/Game.unity` を開き、再生ボタンを押します。サンプルが実行されれば導入完了です
 
-![](docs/images/setup_02.gif)
-
-
-3. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手・解凍し、 `RunUnity_Android.bat` または `RunUnity_*.command` をダブルクリックしてプロジェクトを開きます。  
-プロジェクトビューから `Assets/Game.unity` を選択し再生ボタンを押せば、すぐにサンプルが実行されます
-
-![](docs/images/setup_03.gif)
-
-4. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう
+4. [Assets/Game.cs](Assets/Game.cs) を編集して、自分だけのオリジナルアプリを作りましょう  
+※ コードエディタは [VSCode](https://code.visualstudio.com/) がおすすめです。Unityとの連携方法は[公式導入ガイド(英語)](https://code.visualstudio.com/docs/other/unity)を参考にしてください
 
 iOS や Android への書き出しなど、より詳しい解説は、[スマートデバイスプログラミング 講義ページ](http://web.sfc.keio.ac.jp/~wadari/sdp/) を参照してください
 
@@ -31,7 +26,7 @@ iOS や Android への書き出しなど、より詳しい解説は、[スマー
 最新の仕様は [GameCanvas for Unity API ドキュメント](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.Proxy.html) で確認できます
 
 ## 質問・バグ報告
-GameCanvasに対する質問やバグ報告は [![Issues](https://img.shields.io/github/issues/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/issues) で受け付けています
+GameCanvasに対する質問や提案、バグ報告は [![Issues](https://img.shields.io/github/issues/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/issues) で受け付けています
 
 ## ライセンス
 Copyright (c) 2015-2018 Smart Device Programming.
