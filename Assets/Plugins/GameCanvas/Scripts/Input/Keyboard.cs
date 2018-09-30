@@ -95,9 +95,17 @@ namespace GameCanvas.Input
 
             if (mScreenKeyboard != null)
             {
-                if (!mScreenKeyboard.active || mScreenKeyboard.done || mScreenKeyboard.wasCanceled)
+                switch (mScreenKeyboard.status)
                 {
-                    mScreenKeyboard = null;
+                    case TouchScreenKeyboard.Status.Canceled:
+                    case TouchScreenKeyboard.Status.Done:
+                    case TouchScreenKeyboard.Status.LostFocus:
+                        mScreenKeyboard = null;
+                        break;
+
+                    case TouchScreenKeyboard.Status.Visible:
+                        if (!mScreenKeyboard.active) mScreenKeyboard = null;
+                        break;
                 }
             }
         }

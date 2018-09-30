@@ -3,10 +3,11 @@
 --- !u!687078895 &4343727234628468602
 SpriteAtlas:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Atlas
   m_EditorData:
+    serializedVersion: 2
     textureSettings:
       serializedVersion: 2
       anisoLevel: 1
@@ -18,8 +19,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 0
-    platformSettings: []
-    packingParameters:
+    platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+    packingSettings:
       serializedVersion: 2
       padding: 4
       blockOffset: 1
@@ -32,12 +44,12 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 3212428bff945a84cb1e2c2aaf887e2d, type: 3}
   - {fileID: 21300000, guid: b7fd20551d34df04684ac005d1b54c14, type: 3}
+  - {fileID: 21300000, guid: 3212428bff945a84cb1e2c2aaf887e2d, type: 3}
   - {fileID: 21300000, guid: 42005afb256654d4db0ccb3704572942, type: 3}
   m_PackedSpriteNamesToIndex:
-  - img0
   - img1
+  - img0
   - img2
   m_Tag: Atlas
   m_IsVariant: 0
