@@ -32,8 +32,8 @@ namespace GameCanvas.Input
         private readonly PointerEvent[] cEvents;
         private readonly PointerEvent[] cPrevEvents;
         private readonly Dictionary<int, PointerEvent> cBeganEventDict;
-        private int[] cEventFrameCounts;
-        private float[] cEventDulations;
+        private readonly int[] cEventFrameCounts;
+        private readonly float[] cEventDulations;
 
         private int mEventNum = 0;
         private int mLastX = 0;
@@ -86,25 +86,25 @@ namespace GameCanvas.Input
 
                 if (Input.GetMouseButton(0) || Input.GetMouseButtonUp(0))
                 {
-                    var prevEvent
-                        = cPrevEvents[0].Id == cIdMouseButton0 ? (PointerEvent?)cPrevEvents[0]
+                    var prevEvent = (cPrevEvents[0].Id == cIdMouseButton0)
+                        ? (PointerEvent?)cPrevEvents[0]
                         : null;
                     createMouseEvent(out cEvents[mEventNum++], 0, cIdMouseButton0, ref mousePos, ref prevEvent);
                 }
                 if (Input.GetMouseButton(1) || Input.GetMouseButtonUp(1))
                 {
-                    var prevEvent
-                        = cPrevEvents[0].Id == cIdMouseButton1 ? (PointerEvent?)cPrevEvents[0]
-                        : cPrevEvents[1].Id == cIdMouseButton1 ? (PointerEvent?)cPrevEvents[1]
+                    var prevEvent = (cPrevEvents[0].Id == cIdMouseButton1)
+                        ? (PointerEvent?)cPrevEvents[0] : (cPrevEvents[1].Id == cIdMouseButton1)
+                        ? (PointerEvent?)cPrevEvents[1]
                         : null;
                     createMouseEvent(out cEvents[mEventNum++], 1, cIdMouseButton1, ref mousePos, ref prevEvent);
                 }
                 if (Input.GetMouseButton(2) || Input.GetMouseButtonUp(2))
                 {
-                    var prevEvent
-                        = cPrevEvents[0].Id == cIdMouseButton2 ? (PointerEvent?)cPrevEvents[0]
-                        : cPrevEvents[1].Id == cIdMouseButton2 ? (PointerEvent?)cPrevEvents[1]
-                        : cPrevEvents[2].Id == cIdMouseButton2 ? (PointerEvent?)cPrevEvents[2]
+                    var prevEvent = (cPrevEvents[0].Id == cIdMouseButton2)
+                        ? (PointerEvent?)cPrevEvents[0] : (cPrevEvents[1].Id == cIdMouseButton2)
+                        ? (PointerEvent?)cPrevEvents[1] : (cPrevEvents[2].Id == cIdMouseButton2)
+                        ? (PointerEvent?)cPrevEvents[2]
                         : null;
                     createMouseEvent(out cEvents[mEventNum++], 2, cIdMouseButton2, ref mousePos, ref prevEvent);
                 }
@@ -126,6 +126,12 @@ namespace GameCanvas.Input
                         cEventFrameCounts[i] = 1;
                         cEventDulations[i] = 0;
                         cBeganEventDict.Add(id, cEvents[i]);
+                        continue;
+                    }
+
+                    if (!cBeganEventDict.ContainsKey(id))
+                    {
+                        Debug.LogWarningFormat("[Pointer] {0} is unknown pointer. phase: {1}", id, cEvents[i].Phase);
                         continue;
                     }
 
@@ -204,7 +210,9 @@ namespace GameCanvas.Input
             var phase = PointerEvent.EPhase.Began;
             if (prev.HasValue)
             {
-                phase = (prev.Value.ScreenX == mousePos.x && prev.Value.ScreenY == mousePos.y)
+                var v = prev.Value;
+                phase = (v.Phase == PointerEvent.EPhase.Ended)
+                    ? PointerEvent.EPhase.Began : (Mathf.Approximately(v.ScreenX, mousePos.x) && Mathf.Approximately(v.ScreenY, mousePos.y))
                     ? PointerEvent.EPhase.Stationary
                     : PointerEvent.EPhase.Moved;
             }
