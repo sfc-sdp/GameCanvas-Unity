@@ -1,4 +1,4 @@
-﻿using Sequence = System.Collections.IEnumerator;
+using Sequence = System.Collections.IEnumerator;
 
 /// <summary>
 /// ゲームクラス。
