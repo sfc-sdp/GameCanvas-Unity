@@ -1,4 +1,4 @@
-﻿
+
 namespace GameCanvas.Tests
 {
     public sealed class DrawString : GameBase
