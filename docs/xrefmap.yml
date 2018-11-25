@@ -1273,63 +1273,93 @@ references:
   commentId: Overload:GameCanvas.Engine.Sound.OnBeforeUpdate
   fullName: GameCanvas.Engine.Sound.OnBeforeUpdate
   nameWithType: Sound.OnBeforeUpdate
-- uid: GameCanvas.Engine.Sound.Pause
-  name: Pause()
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Pause
-  commentId: M:GameCanvas.Engine.Sound.Pause
-  fullName: GameCanvas.Engine.Sound.Pause()
-  nameWithType: Sound.Pause()
+- uid: GameCanvas.Engine.Sound.Pause(GameCanvas.ESoundTrack)
+  name: Pause(ESoundTrack)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Pause_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Engine.Sound.Pause(GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Engine.Sound.Pause(GameCanvas.ESoundTrack)
+  nameWithType: Sound.Pause(ESoundTrack)
 - uid: GameCanvas.Engine.Sound.Pause*
   name: Pause
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Pause_
   commentId: Overload:GameCanvas.Engine.Sound.Pause
   fullName: GameCanvas.Engine.Sound.Pause
   nameWithType: Sound.Pause
-- uid: GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean)
-  name: Play(Int32, Boolean)
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Play_System_Int32_System_Boolean_
-  commentId: M:GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean)
-  fullName: GameCanvas.Engine.Sound.Play(System.Int32, System.Boolean)
-  nameWithType: Sound.Play(Int32, Boolean)
+- uid: GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean,GameCanvas.ESoundTrack)
+  name: Play(Int32, Boolean, ESoundTrack)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Play_System_Int32_System_Boolean_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean,GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Engine.Sound.Play(System.Int32, System.Boolean, GameCanvas.ESoundTrack)
+  nameWithType: Sound.Play(Int32, Boolean, ESoundTrack)
 - uid: GameCanvas.Engine.Sound.Play*
   name: Play
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Play_
   commentId: Overload:GameCanvas.Engine.Sound.Play
   fullName: GameCanvas.Engine.Sound.Play
   nameWithType: Sound.Play
-- uid: GameCanvas.Engine.Sound.SetVolume(System.Int32@)
-  name: SetVolume(ref Int32)
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_SetVolume_System_Int32__
-  commentId: M:GameCanvas.Engine.Sound.SetVolume(System.Int32@)
-  name.vb: SetVolume(ByRef Int32)
-  fullName: GameCanvas.Engine.Sound.SetVolume(ref System.Int32)
-  fullName.vb: GameCanvas.Engine.Sound.SetVolume(ByRef System.Int32)
-  nameWithType: Sound.SetVolume(ref Int32)
-  nameWithType.vb: Sound.SetVolume(ByRef Int32)
+- uid: GameCanvas.Engine.Sound.PlaySE(System.Int32)
+  name: PlaySE(Int32)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_PlaySE_System_Int32_
+  commentId: M:GameCanvas.Engine.Sound.PlaySE(System.Int32)
+  fullName: GameCanvas.Engine.Sound.PlaySE(System.Int32)
+  nameWithType: Sound.PlaySE(Int32)
+- uid: GameCanvas.Engine.Sound.PlaySE*
+  name: PlaySE
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_PlaySE_
+  commentId: Overload:GameCanvas.Engine.Sound.PlaySE
+  fullName: GameCanvas.Engine.Sound.PlaySE
+  nameWithType: Sound.PlaySE
+- uid: GameCanvas.Engine.Sound.Reset
+  name: Reset()
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Reset
+  commentId: M:GameCanvas.Engine.Sound.Reset
+  fullName: GameCanvas.Engine.Sound.Reset()
+  nameWithType: Sound.Reset()
+- uid: GameCanvas.Engine.Sound.Reset*
+  name: Reset
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Reset_
+  commentId: Overload:GameCanvas.Engine.Sound.Reset
+  fullName: GameCanvas.Engine.Sound.Reset
+  nameWithType: Sound.Reset
+- uid: GameCanvas.Engine.Sound.SetVolume(System.Int32@,GameCanvas.ESoundTrack)
+  name: SetVolume(ref Int32, ESoundTrack)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_SetVolume_System_Int32__GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Engine.Sound.SetVolume(System.Int32@,GameCanvas.ESoundTrack)
+  name.vb: SetVolume(ByRef Int32, ESoundTrack)
+  fullName: GameCanvas.Engine.Sound.SetVolume(ref System.Int32, GameCanvas.ESoundTrack)
+  fullName.vb: GameCanvas.Engine.Sound.SetVolume(ByRef System.Int32, GameCanvas.ESoundTrack)
+  nameWithType: Sound.SetVolume(ref Int32, ESoundTrack)
+  nameWithType.vb: Sound.SetVolume(ByRef Int32, ESoundTrack)
+- uid: GameCanvas.Engine.Sound.SetVolume(System.Single,GameCanvas.ESoundTrack)
+  name: SetVolume(Single, ESoundTrack)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_SetVolume_System_Single_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Engine.Sound.SetVolume(System.Single,GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Engine.Sound.SetVolume(System.Single, GameCanvas.ESoundTrack)
+  nameWithType: Sound.SetVolume(Single, ESoundTrack)
 - uid: GameCanvas.Engine.Sound.SetVolume*
   name: SetVolume
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_SetVolume_
   commentId: Overload:GameCanvas.Engine.Sound.SetVolume
   fullName: GameCanvas.Engine.Sound.SetVolume
   nameWithType: Sound.SetVolume
-- uid: GameCanvas.Engine.Sound.Stop
-  name: Stop()
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Stop
-  commentId: M:GameCanvas.Engine.Sound.Stop
-  fullName: GameCanvas.Engine.Sound.Stop()
-  nameWithType: Sound.Stop()
+- uid: GameCanvas.Engine.Sound.Stop(GameCanvas.ESoundTrack)
+  name: Stop(ESoundTrack)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Stop_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Engine.Sound.Stop(GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Engine.Sound.Stop(GameCanvas.ESoundTrack)
+  nameWithType: Sound.Stop(ESoundTrack)
 - uid: GameCanvas.Engine.Sound.Stop*
   name: Stop
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Stop_
   commentId: Overload:GameCanvas.Engine.Sound.Stop
   fullName: GameCanvas.Engine.Sound.Stop
   nameWithType: Sound.Stop
-- uid: GameCanvas.Engine.Sound.Unpause
-  name: Unpause()
-  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Unpause
-  commentId: M:GameCanvas.Engine.Sound.Unpause
-  fullName: GameCanvas.Engine.Sound.Unpause()
-  nameWithType: Sound.Unpause()
+- uid: GameCanvas.Engine.Sound.Unpause(GameCanvas.ESoundTrack)
+  name: Unpause(ESoundTrack)
+  href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Unpause_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Engine.Sound.Unpause(GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Engine.Sound.Unpause(GameCanvas.ESoundTrack)
+  nameWithType: Sound.Unpause(ESoundTrack)
 - uid: GameCanvas.Engine.Sound.Unpause*
   name: Unpause
   href: api/GameCanvas.Engine.Sound.html#GameCanvas_Engine_Sound_Unpause_
@@ -1510,6 +1540,42 @@ references:
   commentId: Overload:GameCanvas.Engine.Time.Year
   fullName: GameCanvas.Engine.Time.Year
   nameWithType: Time.Year
+- uid: GameCanvas.ESoundTrack
+  name: ESoundTrack
+  href: api/GameCanvas.ESoundTrack.html
+  commentId: T:GameCanvas.ESoundTrack
+  fullName: GameCanvas.ESoundTrack
+  nameWithType: ESoundTrack
+- uid: GameCanvas.ESoundTrack.BGM1
+  name: BGM1
+  href: api/GameCanvas.ESoundTrack.html#GameCanvas_ESoundTrack_BGM1
+  commentId: F:GameCanvas.ESoundTrack.BGM1
+  fullName: GameCanvas.ESoundTrack.BGM1
+  nameWithType: ESoundTrack.BGM1
+- uid: GameCanvas.ESoundTrack.BGM2
+  name: BGM2
+  href: api/GameCanvas.ESoundTrack.html#GameCanvas_ESoundTrack_BGM2
+  commentId: F:GameCanvas.ESoundTrack.BGM2
+  fullName: GameCanvas.ESoundTrack.BGM2
+  nameWithType: ESoundTrack.BGM2
+- uid: GameCanvas.ESoundTrack.BGM3
+  name: BGM3
+  href: api/GameCanvas.ESoundTrack.html#GameCanvas_ESoundTrack_BGM3
+  commentId: F:GameCanvas.ESoundTrack.BGM3
+  fullName: GameCanvas.ESoundTrack.BGM3
+  nameWithType: ESoundTrack.BGM3
+- uid: GameCanvas.ESoundTrack.Master
+  name: Master
+  href: api/GameCanvas.ESoundTrack.html#GameCanvas_ESoundTrack_Master
+  commentId: F:GameCanvas.ESoundTrack.Master
+  fullName: GameCanvas.ESoundTrack.Master
+  nameWithType: ESoundTrack.Master
+- uid: GameCanvas.ESoundTrack.SE
+  name: SE
+  href: api/GameCanvas.ESoundTrack.html#GameCanvas_ESoundTrack_SE
+  commentId: F:GameCanvas.ESoundTrack.SE
+  fullName: GameCanvas.ESoundTrack.SE
+  nameWithType: ESoundTrack.SE
 - uid: GameCanvas.Input
   name: GameCanvas.Input
   href: api/GameCanvas.Input.html
@@ -3715,24 +3781,36 @@ references:
   commentId: Overload:GameCanvas.Proxy.PauseCameraService
   fullName: GameCanvas.Proxy.PauseCameraService
   nameWithType: Proxy.PauseCameraService
-- uid: GameCanvas.Proxy.PauseSound
-  name: PauseSound()
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound
-  commentId: M:GameCanvas.Proxy.PauseSound
-  fullName: GameCanvas.Proxy.PauseSound()
-  nameWithType: Proxy.PauseSound()
+- uid: GameCanvas.Proxy.PauseSound(GameCanvas.ESoundTrack)
+  name: PauseSound(ESoundTrack)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Proxy.PauseSound(GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Proxy.PauseSound(GameCanvas.ESoundTrack)
+  nameWithType: Proxy.PauseSound(ESoundTrack)
 - uid: GameCanvas.Proxy.PauseSound*
   name: PauseSound
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PauseSound_
   commentId: Overload:GameCanvas.Proxy.PauseSound
   fullName: GameCanvas.Proxy.PauseSound
   nameWithType: Proxy.PauseSound
-- uid: GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean)
-  name: PlaySound(Int32, Boolean)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_System_Int32_System_Boolean_
-  commentId: M:GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean)
-  fullName: GameCanvas.Proxy.PlaySound(System.Int32, System.Boolean)
-  nameWithType: Proxy.PlaySound(Int32, Boolean)
+- uid: GameCanvas.Proxy.PlaySE(System.Int32)
+  name: PlaySE(Int32)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySE_System_Int32_
+  commentId: M:GameCanvas.Proxy.PlaySE(System.Int32)
+  fullName: GameCanvas.Proxy.PlaySE(System.Int32)
+  nameWithType: Proxy.PlaySE(Int32)
+- uid: GameCanvas.Proxy.PlaySE*
+  name: PlaySE
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySE_
+  commentId: Overload:GameCanvas.Proxy.PlaySE
+  fullName: GameCanvas.Proxy.PlaySE
+  nameWithType: Proxy.PlaySE
+- uid: GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean,GameCanvas.ESoundTrack)
+  name: PlaySound(Int32, Boolean, ESoundTrack)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_System_Int32_System_Boolean_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean,GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Proxy.PlaySound(System.Int32, System.Boolean, GameCanvas.ESoundTrack)
+  nameWithType: Proxy.PlaySound(Int32, Boolean, ESoundTrack)
 - uid: GameCanvas.Proxy.PlaySound*
   name: PlaySound
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_PlaySound_
@@ -3913,12 +3991,24 @@ references:
   commentId: Overload:GameCanvas.Proxy.SetSeed
   fullName: GameCanvas.Proxy.SetSeed
   nameWithType: Proxy.SetSeed
-- uid: GameCanvas.Proxy.SetSoundVolume(System.Int32)
-  name: SetSoundVolume(Int32)
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_System_Int32_
-  commentId: M:GameCanvas.Proxy.SetSoundVolume(System.Int32)
-  fullName: GameCanvas.Proxy.SetSoundVolume(System.Int32)
-  nameWithType: Proxy.SetSoundVolume(Int32)
+- uid: GameCanvas.Proxy.SetSoundDecibel(System.Single,GameCanvas.ESoundTrack)
+  name: SetSoundDecibel(Single, ESoundTrack)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundDecibel_System_Single_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Proxy.SetSoundDecibel(System.Single,GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Proxy.SetSoundDecibel(System.Single, GameCanvas.ESoundTrack)
+  nameWithType: Proxy.SetSoundDecibel(Single, ESoundTrack)
+- uid: GameCanvas.Proxy.SetSoundDecibel*
+  name: SetSoundDecibel
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundDecibel_
+  commentId: Overload:GameCanvas.Proxy.SetSoundDecibel
+  fullName: GameCanvas.Proxy.SetSoundDecibel
+  nameWithType: Proxy.SetSoundDecibel
+- uid: GameCanvas.Proxy.SetSoundVolume(System.Int32,GameCanvas.ESoundTrack)
+  name: SetSoundVolume(Int32, ESoundTrack)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_System_Int32_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Proxy.SetSoundVolume(System.Int32,GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Proxy.SetSoundVolume(System.Int32, GameCanvas.ESoundTrack)
+  nameWithType: Proxy.SetSoundVolume(Int32, ESoundTrack)
 - uid: GameCanvas.Proxy.SetSoundVolume*
   name: SetSoundVolume
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_SetSoundVolume_
@@ -4009,12 +4099,12 @@ references:
   commentId: Overload:GameCanvas.Proxy.StopGeolocationService
   fullName: GameCanvas.Proxy.StopGeolocationService
   nameWithType: Proxy.StopGeolocationService
-- uid: GameCanvas.Proxy.StopSound
-  name: StopSound()
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound
-  commentId: M:GameCanvas.Proxy.StopSound
-  fullName: GameCanvas.Proxy.StopSound()
-  nameWithType: Proxy.StopSound()
+- uid: GameCanvas.Proxy.StopSound(GameCanvas.ESoundTrack)
+  name: StopSound(ESoundTrack)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Proxy.StopSound(GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Proxy.StopSound(GameCanvas.ESoundTrack)
+  nameWithType: Proxy.StopSound(ESoundTrack)
 - uid: GameCanvas.Proxy.StopSound*
   name: StopSound
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_StopSound_
@@ -4057,12 +4147,12 @@ references:
   commentId: Overload:GameCanvas.Proxy.UnpauseCameraService
   fullName: GameCanvas.Proxy.UnpauseCameraService
   nameWithType: Proxy.UnpauseCameraService
-- uid: GameCanvas.Proxy.UnpauseSound
-  name: UnpauseSound()
-  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseSound
-  commentId: M:GameCanvas.Proxy.UnpauseSound
-  fullName: GameCanvas.Proxy.UnpauseSound()
-  nameWithType: Proxy.UnpauseSound()
+- uid: GameCanvas.Proxy.UnpauseSound(GameCanvas.ESoundTrack)
+  name: UnpauseSound(ESoundTrack)
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseSound_GameCanvas_ESoundTrack_
+  commentId: M:GameCanvas.Proxy.UnpauseSound(GameCanvas.ESoundTrack)
+  fullName: GameCanvas.Proxy.UnpauseSound(GameCanvas.ESoundTrack)
+  nameWithType: Proxy.UnpauseSound(ESoundTrack)
 - uid: GameCanvas.Proxy.UnpauseSound*
   name: UnpauseSound
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_UnpauseSound_

@@ -11,19 +11,24 @@
 namespace GameCanvas.Engine
 {
     using UnityEngine;
+    using UnityEngine.Audio;
     using UnityEngine.Assertions;
 
+    /// <summary>
+    /// サウンドエンジン
+    /// </summary>
     public sealed class Sound
     {
         //----------------------------------------------------------
         #region フィールド変数
         //----------------------------------------------------------
 
+        private const int cTrackNum = 4;
+        private const int cTrackBgmNum = 3;
         private readonly Resource cRes;
-        private readonly AudioSource cSource;
-
-        private int mPlayingId = -1;
-        private int mPausingId = -1;
+        private readonly AudioSource[] cSources;
+        private readonly int[] cPlayingId;
+        private readonly int[] cPausingId;
 
         #endregion
 
@@ -34,94 +39,191 @@ namespace GameCanvas.Engine
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal Sound(Resource res, AudioSource source)
+        internal Sound(BehaviourBase behaviour, Resource res, AudioSource[] sources)
         {
             Assert.IsNotNull(res);
-            Assert.IsNotNull(source);
+            Assert.IsNotNull(sources);
 
             cRes = res;
-            cSource = source;
-            cSource.bypassEffects = true;
-            cSource.bypassListenerEffects = true;
-            cSource.bypassReverbZones = true;
-            cSource.ignoreListenerPause = true;
-            cSource.ignoreListenerVolume = true;
-            cSource.mute = false;
-            cSource.panStereo = 0f;
-            cSource.pitch = 1f;
-            cSource.clip = null;
-            cSource.playOnAwake = false;
-            cSource.spatialBlend = 0f;
-            cSource.volume = 1f;
+            cSources = new AudioSource[cTrackNum];
+            cPlayingId = new int[cTrackBgmNum];
+            cPausingId = new int[cTrackBgmNum];
+
+            foreach (var s in sources)
+            {
+                if (s.outputAudioMixerGroup == null) continue;
+
+                int track;
+                switch (s.outputAudioMixerGroup.name)
+                {
+                    case "BGM1": track = (int)ESoundTrack.BGM1; break;
+                    case "BGM2": track = (int)ESoundTrack.BGM2; break;
+                    case "BGM3": track = (int)ESoundTrack.BGM3; break;
+                    case "SE": track = (int)ESoundTrack.SE; break;
+                    default: continue;
+                }
+
+                initSource(s);
+                cSources[track] = s;
+            }
+
+            // コンポーネントが足りなければ足す
+            for (var i = 0; i < cTrackNum; i++)
+            {
+                if (cSources[i] != null) continue;
+
+                cSources[i] = behaviour.gameObject.AddComponent<AudioSource>();
+                initSource(cSources[i]);
+
+                var trackName = ((ESoundTrack)i).ToString();
+                var candidate = cRes.AudioMixer.FindMatchingGroups(trackName);
+                Assert.IsTrue(candidate.Length == 1);
+                cSources[i].outputAudioMixerGroup = candidate[0];
+            }
+
+            Reset();
         }
 
         public void OnBeforeUpdate()
         {
-            if (mPlayingId != -1 && !cSource.isPlaying)
+            for (var i = 0; i < cTrackBgmNum; i++)
             {
-                mPlayingId = -1;
+                if (cPlayingId[i] != -1 && !cSources[i].isPlaying)
+                {
+                    cPlayingId[i] = -1;
+                }
             }
         }
 
-        public void Play(int soundId, bool loop)
+        public void Play(int soundId, bool loop, ESoundTrack track)
         {
-            if (mPlayingId == soundId) return;
-            if (mPausingId == soundId)
+            if (track == ESoundTrack.SE)
             {
-                cSource.loop = loop;
-                Unpause();
+                PlaySE(soundId);
+                return;
+            }
+            var i = (int)track;
+            if (i >= cTrackBgmNum) return;
+
+            if (cPlayingId[i] == soundId) return;
+            if (cPausingId[i] == soundId)
+            {
+                cSources[i].loop = loop;
+                Unpause(track);
                 return;
             }
 
             var sound = cRes.GetSnd(soundId);
             if (sound.Data == null) return;
 
-            if (cSource.isPlaying)
+            if (cSources[i].isPlaying)
             {
-                cSource.Stop();
+                cSources[i].Stop();
             }
 
-            mPlayingId = soundId;
-            mPausingId = -1;
-            cSource.loop = loop;
-            cSource.clip = sound.Data;
-            cSource.Play();
+            cPlayingId[i] = soundId;
+            cPausingId[i] = -1;
+            cSources[i].loop = loop;
+            cSources[i].clip = sound.Data;
+            cSources[i].Play();
         }
 
-        public void Stop()
+        public void Stop(ESoundTrack track)
         {
-            mPlayingId = -1;
-            mPausingId = -1;
+            var i = (int)track;
+            if (i >= cTrackBgmNum) return;
 
-            if (cSource.isPlaying)
-            {
-                cSource.Stop();
-            }
-        }
+            cPlayingId[i] = -1;
+            cPausingId[i] = -1;
 
-        public void Pause()
-        {
-            if (cSource.isPlaying)
+            if (cSources[i].isPlaying)
             {
-                mPausingId = mPlayingId;
-                mPlayingId = -1;
-                cSource.Pause();
+                cSources[i].Stop();
             }
         }
 
-        public void Unpause()
+        public void Pause(ESoundTrack track)
         {
-            if (mPausingId != -1)
+            var i = (int)track;
+            if (i >= cTrackBgmNum) return;
+
+            if (cSources[i].isPlaying)
             {
-                mPlayingId = mPausingId;
-                mPausingId = -1;
-                cSource.UnPause();
+                cPausingId[i] = cPlayingId[i];
+                cPlayingId[i] = -1;
+                cSources[i].Pause();
             }
         }
 
-        public void SetVolume(ref int volume)
+        public void Unpause(ESoundTrack track)
         {
-            cSource.volume = volume * 0.01f;
+            var i = (int)track;
+            if (i >= cTrackBgmNum) return;
+
+            if (cPausingId[i] != -1)
+            {
+                cPlayingId[i] = cPausingId[i];
+                cPausingId[i] = -1;
+                cSources[i].UnPause();
+            }
+        }
+
+        public void PlaySE(int soundId)
+        {
+            var sound = cRes.GetSnd(soundId);
+            if (sound.Data == null) return;
+            cSources[(int)ESoundTrack.SE].PlayOneShot(sound.Data);
+        }
+
+        public void SetVolume(ref int volume, ESoundTrack track)
+        {
+            var decibel = 20f * Mathf.Log10(volume * 0.01f);
+            SetVolume(decibel, track);
+        }
+
+        public void SetVolume(float decibel, ESoundTrack track)
+        {
+            string key;
+            switch (track)
+            {
+                case ESoundTrack.BGM1: key = "VolumeBGM1"; break;
+                case ESoundTrack.BGM2: key = "VolumeBGM2"; break;
+                case ESoundTrack.BGM3: key = "VolumeBGM3"; break;
+                case ESoundTrack.SE: key = "VolumeSE"; break;
+                case ESoundTrack.Master: key = "VolumeMaster"; break;
+                default: return;
+            }
+
+            if (float.IsNaN(decibel) || decibel < -96f)
+            {
+                decibel = -96f;
+            }
+            else if (decibel > 20f)
+            {
+                decibel = 20f;
+            }
+            cRes.AudioMixer.SetFloat(key, decibel);
+        }
+
+        public void Reset()
+        {
+            for (var i = 0; i < cTrackBgmNum; i++)
+            {
+                cPlayingId[i] = -1;
+                cPausingId[i] = -1;
+
+                if (cSources[i].isPlaying)
+                {
+                    cSources[i].Stop();
+                }
+            }
+
+            var mixer = cRes.AudioMixer;
+            mixer.SetFloat("VolumeBGM1", 0f);
+            mixer.SetFloat("VolumeBGM2", 0f);
+            mixer.SetFloat("VolumeBGM3", 0f);
+            mixer.SetFloat("VolumeSE", 0f);
+            mixer.SetFloat("VolumeMaster", 0f);
         }
 
         #endregion
@@ -130,7 +232,21 @@ namespace GameCanvas.Engine
         #region プライベート関数
         //----------------------------------------------------------
 
-        // TODO
+        private void initSource(AudioSource s)
+        {
+            s.bypassEffects = true;
+            s.bypassListenerEffects = true;
+            s.bypassReverbZones = true;
+            s.ignoreListenerPause = true;
+            s.ignoreListenerVolume = true;
+            s.mute = false;
+            s.panStereo = 0f;
+            s.pitch = 1f;
+            s.clip = null;
+            s.playOnAwake = false;
+            s.spatialBlend = 0f;
+            s.volume = 1f;
+        }
 
         #endregion
     }

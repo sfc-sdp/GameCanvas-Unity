@@ -66,14 +66,14 @@
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: Assembly-CSharp-firstpass.dll</h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
   <h5 id="GameCanvas_Proxy_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Proxy</code></pre>
@@ -3509,22 +3509,67 @@ public override void UpdateGame()
     <pre><code class="lang-csharp hljs">public void PauseCameraService()</code></pre>
   </div>
   <a id="GameCanvas_Proxy_PauseSound_" data-uid="GameCanvas.Proxy.PauseSound*"></a>
-  <h4 id="GameCanvas_Proxy_PauseSound" data-uid="GameCanvas.Proxy.PauseSound">PauseSound()</h4>
-  <div class="markdown level1 summary"><p>サウンドを一時停止します。</p>
+  <h4 id="GameCanvas_Proxy_PauseSound_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Proxy.PauseSound(GameCanvas.ESoundTrack)">PauseSound(ESoundTrack)</h4>
+  <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを一時停止します。BGMトラック以外では常に無視されます。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PauseSound()</code></pre>
+    <pre><code class="lang-csharp hljs">public void PauseSound(ESoundTrack track = ESoundTrack.BGM1)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_PlaySE_" data-uid="GameCanvas.Proxy.PlaySE*"></a>
+  <h4 id="GameCanvas_Proxy_PlaySE_System_Int32_" data-uid="GameCanvas.Proxy.PlaySE(System.Int32)">PlaySE(Int32)</h4>
+  <div class="markdown level1 summary"><p>効果音を1回再生します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PlaySE(int soundId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">soundId</span></td>
+        <td><p>サウンドID（snd0.wav なら 0, snd1.mp3 なら 1）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_Proxy_PlaySound_" data-uid="GameCanvas.Proxy.PlaySound*"></a>
-  <h4 id="GameCanvas_Proxy_PlaySound_System_Int32_System_Boolean_" data-uid="GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean)">PlaySound(Int32, Boolean)</h4>
+  <h4 id="GameCanvas_Proxy_PlaySound_System_Int32_System_Boolean_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Proxy.PlaySound(System.Int32,System.Boolean,GameCanvas.ESoundTrack)">PlaySound(Int32, Boolean, ESoundTrack)</h4>
   <div class="markdown level1 summary"><p>サウンドを再生します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PlaySound(int soundId, bool loop = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public void PlaySound(int soundId, bool loop = false, ESoundTrack track = ESoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -3545,7 +3590,13 @@ public override void UpdateGame()
       <tr>
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.boolean(v=vs.110).aspx">Boolean</a></td>
         <td><span class="parametername">loop</span></td>
-        <td><p>ループ再生するかどうか</p>
+        <td><p>ループ再生するかどうか (SEトラックでは常に無視されます)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
 </td>
       </tr>
     </tbody>
@@ -4068,14 +4119,47 @@ public override void UpdateGame()
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_Proxy_SetSoundVolume_" data-uid="GameCanvas.Proxy.SetSoundVolume*"></a>
-  <h4 id="GameCanvas_Proxy_SetSoundVolume_System_Int32_" data-uid="GameCanvas.Proxy.SetSoundVolume(System.Int32)">SetSoundVolume(Int32)</h4>
-  <div class="markdown level1 summary"><p>音量を変更します。</p>
+  <a id="GameCanvas_Proxy_SetSoundDecibel_" data-uid="GameCanvas.Proxy.SetSoundDecibel*"></a>
+  <h4 id="GameCanvas_Proxy_SetSoundDecibel_System_Single_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Proxy.SetSoundDecibel(System.Single,GameCanvas.ESoundTrack)">SetSoundDecibel(Single, ESoundTrack)</h4>
+  <div class="markdown level1 summary"><p>指定された音声トラックの音量を変更します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetSoundVolume(int volume)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetSoundDecibel(float decibel, ESoundTrack track = ESoundTrack.BGM1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.single(v=vs.110).aspx">Single</a></td>
+        <td><span class="parametername">decibel</span></td>
+        <td><p>音量 (-80〜20dB)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Proxy_SetSoundVolume_" data-uid="GameCanvas.Proxy.SetSoundVolume*"></a>
+  <h4 id="GameCanvas_Proxy_SetSoundVolume_System_Int32_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Proxy.SetSoundVolume(System.Int32,GameCanvas.ESoundTrack)">SetSoundVolume(Int32, ESoundTrack)</h4>
+  <div class="markdown level1 summary"><p>指定された音声トラックの音量を変更します。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSoundVolume(int volume, ESoundTrack track = ESoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -4091,6 +4175,12 @@ public override void UpdateGame()
         <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
         <td><span class="parametername">volume</span></td>
         <td><p>音量（0～100）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
 </td>
       </tr>
     </tbody>
@@ -4261,14 +4351,32 @@ public override void UpdateGame()
     <pre><code class="lang-csharp hljs">public void StopGeolocationService()</code></pre>
   </div>
   <a id="GameCanvas_Proxy_StopSound_" data-uid="GameCanvas.Proxy.StopSound*"></a>
-  <h4 id="GameCanvas_Proxy_StopSound" data-uid="GameCanvas.Proxy.StopSound">StopSound()</h4>
-  <div class="markdown level1 summary"><p>サウンドを停止します。</p>
+  <h4 id="GameCanvas_Proxy_StopSound_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Proxy.StopSound(GameCanvas.ESoundTrack)">StopSound(ESoundTrack)</h4>
+  <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを停止します。BGMトラック以外では常に無視されます。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void StopSound()</code></pre>
+    <pre><code class="lang-csharp hljs">public void StopSound(ESoundTrack track = ESoundTrack.BGM1)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_Proxy_UnpauseCameraService_" data-uid="GameCanvas.Proxy.UnpauseCameraService*"></a>
   <h4 id="GameCanvas_Proxy_UnpauseCameraService" data-uid="GameCanvas.Proxy.UnpauseCameraService">UnpauseCameraService()</h4>
   <div class="markdown level1 summary"><p>カメラ映像入力の再開</p>
@@ -4279,14 +4387,32 @@ public override void UpdateGame()
     <pre><code class="lang-csharp hljs">public void UnpauseCameraService()</code></pre>
   </div>
   <a id="GameCanvas_Proxy_UnpauseSound_" data-uid="GameCanvas.Proxy.UnpauseSound*"></a>
-  <h4 id="GameCanvas_Proxy_UnpauseSound" data-uid="GameCanvas.Proxy.UnpauseSound">UnpauseSound()</h4>
-  <div class="markdown level1 summary"><p>サウンドを一時停止していた場合、再生を再開します。</p>
+  <h4 id="GameCanvas_Proxy_UnpauseSound_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Proxy.UnpauseSound(GameCanvas.ESoundTrack)">UnpauseSound(ESoundTrack)</h4>
+  <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを一時停止していた場合、再生を再開します。BGMトラック以外では常に無視されます。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnpauseSound()</code></pre>
+    <pre><code class="lang-csharp hljs">public void UnpauseSound(ESoundTrack track = ESoundTrack.BGM1)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_Proxy_UpdateCameraDeviceList_" data-uid="GameCanvas.Proxy.UpdateCameraDeviceList*"></a>
   <h4 id="GameCanvas_Proxy_UpdateCameraDeviceList" data-uid="GameCanvas.Proxy.UpdateCameraDeviceList">UpdateCameraDeviceList()</h4>
   <div class="markdown level1 summary"><p>カメラ映像入力デバイスの一覧を更新します。</p>
@@ -4343,7 +4469,7 @@ public override void UpdateGame()
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            (c) 2015-2017 Smart Device Programming.
+            (c) 2015-2018 Smart Device Programming.
             
           </div>
         </div>

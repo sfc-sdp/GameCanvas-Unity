@@ -410,7 +410,7 @@ namespace GameCanvas
         /// <param name="file">拡張子を除いたファイル名</param>
         public void WriteScreenImage(string file)
         {
-            if (!file.EndsWith(".png")) file += ".png";
+            if (!file.EndsWith(".png", System.StringComparison.OrdinalIgnoreCase)) file += ".png";
             ScreenCapture.CaptureScreenshot(file);
         }
 
@@ -446,29 +446,47 @@ namespace GameCanvas
         /// サウンドを再生します。
         /// </summary>
         /// <param name="soundId">サウンドID（snd0.wav なら 0, snd1.mp3 なら 1）</param>
-        /// <param name="loop">ループ再生するかどうか</param>
-        public void PlaySound(int soundId, bool loop = false) => cSound.Play(soundId, loop);
+        /// <param name="loop">ループ再生するかどうか (SEトラックでは常に無視されます)</param>
+        /// <param name="track">対象の音声トラック</param>
+        public void PlaySound(int soundId, bool loop = false, ESoundTrack track = ESoundTrack.BGM1) => cSound.Play(soundId, loop, track);
 
         /// <summary>
-        /// 音量を変更します。
+        /// 効果音を1回再生します。
+        /// </summary>
+        /// <param name="soundId">サウンドID（snd0.wav なら 0, snd1.mp3 なら 1）</param>
+        public void PlaySE(int soundId) => cSound.PlaySE(soundId);
+
+        /// <summary>
+        /// 指定された音声トラックの音量を変更します。
         /// </summary>
         /// <param name="volume">音量（0～100）</param>
-        public void SetSoundVolume(int volume) => cSound.SetVolume(ref volume);
+        /// <param name="track">対象の音声トラック</param>
+        public void SetSoundVolume(int volume, ESoundTrack track = ESoundTrack.BGM1) => cSound.SetVolume(ref volume, track);
 
         /// <summary>
-        /// サウンドを停止します。
+        /// 指定された音声トラックの音量を変更します。
         /// </summary>
-        public void StopSound() => cSound.Stop();
+        /// <param name="decibel">音量 (-80〜20dB)</param>
+        /// <param name="track">対象の音声トラック</param>
+        public void SetSoundDecibel(float decibel, ESoundTrack track = ESoundTrack.BGM1) => cSound.SetVolume(decibel, track);
 
         /// <summary>
-        /// サウンドを一時停止します。
+        /// 指定された音声トラックのサウンドを停止します。BGMトラック以外では常に無視されます。
         /// </summary>
-        public void PauseSound() => cSound.Pause();
+        /// <param name="track">対象の音声トラック</param>
+        public void StopSound(ESoundTrack track = ESoundTrack.BGM1) => cSound.Stop(track);
 
         /// <summary>
-        /// サウンドを一時停止していた場合、再生を再開します。
+        /// 指定された音声トラックのサウンドを一時停止します。BGMトラック以外では常に無視されます。
         /// </summary>
-        public void UnpauseSound() => cSound.Unpause();
+        /// <param name="track">対象の音声トラック</param>
+        public void PauseSound(ESoundTrack track = ESoundTrack.BGM1) => cSound.Pause(track);
+
+        /// <summary>
+        /// 指定された音声トラックのサウンドを一時停止していた場合、再生を再開します。BGMトラック以外では常に無視されます。
+        /// </summary>
+        /// <param name="track">対象の音声トラック</param>
+        public void UnpauseSound(ESoundTrack track = ESoundTrack.BGM1) => cSound.Unpause(track);
 
         // キー入力
 
@@ -997,7 +1015,7 @@ namespace GameCanvas
         /// </summary>
         public void ResetGame()
         {
-            cSound.Stop();
+            cSound.Reset();
             cGraphic.ClearScreen();
         }
         /// <summary>
@@ -1036,15 +1054,15 @@ namespace GameCanvas
         public void SetWindowTitle(string title) { }
         [Hidden(HiddenState.Never), System.Obsolete, System.Diagnostics.Conditional("ENABLE_GAMECANVAS_JAVA")]
         public void SetFont(string fontName, int fontStyle, int fontSize) { }
-        [Hidden(HiddenState.Never), System.Obsolete("gc.Play()")]
-        public void PlaySE(int soundId, bool loop = false) => cSound.Play(soundId, loop);
+        [Hidden(HiddenState.Never), System.Obsolete("gc.PlaySE()")]
+        public void PlaySE(int soundId, bool loop) => cSound.PlaySE(soundId);
 
         [Hidden(HiddenState.Never), System.Obsolete("gc.ChangeVolume()")]
-        public void ChangeSEVolume(int volume) => cSound.SetVolume(ref volume);
+        public void ChangeSEVolume(int volume) => cSound.SetVolume(ref volume, ESoundTrack.SE);
         [Hidden(HiddenState.Never), System.Obsolete("gc.Stop()")]
-        public void StopSE() => cSound.Stop();
+        public void StopSE() {}
         [Hidden(HiddenState.Never), System.Obsolete("gc.Pause()")]
-        public void PauseSE() => cSound.Pause();
+        public void PauseSE() {}
         [Hidden(HiddenState.Never), System.Obsolete("gc.GetPointerX(0)")]
         public int GetMouseX() => cPointer.LastX;
         [Hidden(HiddenState.Never), System.Obsolete("gc.GetPointerY(0)")]

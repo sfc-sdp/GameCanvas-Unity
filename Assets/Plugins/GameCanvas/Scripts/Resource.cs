@@ -13,6 +13,7 @@ namespace GameCanvas
     using UnityEngine;
     using UnityEngine.Video;
     using UnityEngine.U2D;
+    using UnityEngine.Audio;
 
     public sealed class Resource : ScriptableObject
     {
@@ -33,6 +34,7 @@ namespace GameCanvas
         [SerializeField]
         private Font[] Fonts;
 
+        public AudioMixer AudioMixer;
         public Shader ShaderOpaque;
         public Shader ShaderTransparentImage;
         public Shader ShaderTransparentColor;
@@ -204,9 +206,10 @@ namespace GameCanvas
         //----------------------------------------------------------
 
 #if UNITY_EDITOR
-        internal void SetValue(SpriteAtlas atlas, string[] imageId, VideoClip[] video, AudioClip[] audio, TextAsset[] texts, Font[] fonts)
+        internal void SetValue(SpriteAtlas atlas, AudioMixer mixer, string[] imageId, VideoClip[] video, AudioClip[] audio, TextAsset[] texts, Font[] fonts)
         {
             SpriteAtlas = atlas;
+            AudioMixer = mixer;
             ImageIds = imageId ?? new string[0];
             VideoClips = video ?? new VideoClip[0];
             AudioClips = audio ?? new AudioClip[0];
@@ -236,6 +239,7 @@ namespace GameCanvas
         {
             private const string cOutputPath = "Assets/Plugins/GameCanvas/Res.asset";
             private const string cAtlasPath = "Assets/Plugins/GameCanvas/Atlas.spriteatlas";
+            private const string cMixerPath = "Assets/Plugins/GameCanvas/Mixer.mixer";
             private const string cTextureImporterLabel = "GameCanvas TextureImporter 2.0";
             private static readonly string[] cInputFolders = new[] { "Assets/Res" };
             private static readonly Regex cRegImg = new Regex(@"^Assets/Res/(?<filename>img(?<id>\d+))\.(gif|GIF|png|PNG|jpg|JPG|tga|TGA|tif|TIF|tiff|TIFF|bmp|BMP|iff|IFF|pict|PICT)$");
@@ -314,6 +318,7 @@ namespace GameCanvas
             private static void listup()
             {
                 var atlas = AssetDatabase.LoadAssetAtPath<SpriteAtlas>(cAtlasPath);
+                var mixer = AssetDatabase.LoadAssetAtPath<AudioMixer>(cMixerPath);
                 var imageId = AssetDatabase.FindAssets("t:Texture2D", cInputFolders)
                     .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
                     .Select(path => cRegImg.Match(path))
@@ -355,7 +360,7 @@ namespace GameCanvas
                     .ToArray();
 
                 var res = AssetDatabase.LoadAssetAtPath<Resource>(cOutputPath);
-                res.SetValue(atlas, imageId, video, audio, texts, fonts);
+                res.SetValue(atlas, mixer, imageId, video, audio, texts, fonts);
                 EditorUtility.SetDirty(res);
                 AssetDatabase.SaveAssets();
             }
