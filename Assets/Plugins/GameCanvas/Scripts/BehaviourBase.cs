@@ -36,7 +36,6 @@ namespace GameCanvas
 
         private Camera mCamera;
         private AudioListener mListener;
-        private AudioSource mAudioSource;
 
         private Time mTime;
         private Graphic mGraphic;
@@ -63,10 +62,8 @@ namespace GameCanvas
         {
             mCamera = GetComponent<Camera>();
             mListener = GetComponent<AudioListener>();
-            mAudioSource = GetComponent<AudioSource>();
             Assert.IsNotNull(mCamera);
             Assert.IsNotNull(mListener);
-            Assert.IsNotNull(mAudioSource);
             Assert.IsNotNull(Resource);
 
             Resource.Initialize();
@@ -74,7 +71,7 @@ namespace GameCanvas
             mTime = new Time();
             mGraphic = new Graphic(Resource, mCamera);
             mGraphic.SetResolution(CanvasWidth, CanvasHeight);
-            mSound = new Sound(Resource, mAudioSource);
+            mSound = new Sound(this, Resource, GetComponents<AudioSource>());
             mCollision = new Collision(Resource);
             mNetwork = new Network(this, mGraphic);
             mPointer = new Pointer(mGraphic);

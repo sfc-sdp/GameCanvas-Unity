@@ -24,6 +24,7 @@ MonoBehaviour:
   TextAssets: []
   Fonts:
   - {fileID: 12800000, guid: 86bc9d489ff7b104198dbd36a4cb03b3, type: 3}
+  AudioMixer: {fileID: 24100000, guid: 51a7d4fd5864e431f9705e00cbf7ef11, type: 2}
   ShaderOpaque: {fileID: 4800000, guid: b07486247c81e004087cdab0a27f97cf, type: 3}
   ShaderTransparentImage: {fileID: 4800000, guid: e3d76065aa8714545a415c3c6dc3fdc6,
     type: 3}

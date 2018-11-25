@@ -34,7 +34,8 @@
   
   <h1 id="GameCanvas_Engine_Sound" data-uid="GameCanvas.Engine.Sound" class="text-break">Class Sound
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>サウンドエンジン</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -59,14 +60,14 @@
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.Engine.html">GameCanvas.Engine</a></h6>
-  <h6><strong>Assembly</strong>: Assembly-CSharp-firstpass.dll</h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
   <h5 id="GameCanvas_Engine_Sound_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sealed class Sound</code></pre>
@@ -82,20 +83,37 @@
     <pre><code class="lang-csharp hljs">public void OnBeforeUpdate()</code></pre>
   </div>
   <a id="GameCanvas_Engine_Sound_Pause_" data-uid="GameCanvas.Engine.Sound.Pause*"></a>
-  <h4 id="GameCanvas_Engine_Sound_Pause" data-uid="GameCanvas.Engine.Sound.Pause">Pause()</h4>
+  <h4 id="GameCanvas_Engine_Sound_Pause_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Engine.Sound.Pause(GameCanvas.ESoundTrack)">Pause(ESoundTrack)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Pause()</code></pre>
+    <pre><code class="lang-csharp hljs">public void Pause(ESoundTrack track)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_Engine_Sound_Play_" data-uid="GameCanvas.Engine.Sound.Play*"></a>
-  <h4 id="GameCanvas_Engine_Sound_Play_System_Int32_System_Boolean_" data-uid="GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean)">Play(Int32, Boolean)</h4>
+  <h4 id="GameCanvas_Engine_Sound_Play_System_Int32_System_Boolean_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Engine.Sound.Play(System.Int32,System.Boolean,GameCanvas.ESoundTrack)">Play(Int32, Boolean, ESoundTrack)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Play(int soundId, bool loop)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Play(int soundId, bool loop, ESoundTrack track)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -117,15 +135,53 @@
         <td><span class="parametername">loop</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_Engine_Sound_SetVolume_" data-uid="GameCanvas.Engine.Sound.SetVolume*"></a>
-  <h4 id="GameCanvas_Engine_Sound_SetVolume_System_Int32__" data-uid="GameCanvas.Engine.Sound.SetVolume(System.Int32@)">SetVolume(ref Int32)</h4>
+  <a id="GameCanvas_Engine_Sound_PlaySE_" data-uid="GameCanvas.Engine.Sound.PlaySE*"></a>
+  <h4 id="GameCanvas_Engine_Sound_PlaySE_System_Int32_" data-uid="GameCanvas.Engine.Sound.PlaySE(System.Int32)">PlaySE(Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetVolume(ref int volume)</code></pre>
+    <pre><code class="lang-csharp hljs">public void PlaySE(int soundId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.int32(v=vs.110).aspx">Int32</a></td>
+        <td><span class="parametername">soundId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Engine_Sound_Reset_" data-uid="GameCanvas.Engine.Sound.Reset*"></a>
+  <h4 id="GameCanvas_Engine_Sound_Reset" data-uid="GameCanvas.Engine.Sound.Reset">Reset()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+  <a id="GameCanvas_Engine_Sound_SetVolume_" data-uid="GameCanvas.Engine.Sound.SetVolume*"></a>
+  <h4 id="GameCanvas_Engine_Sound_SetVolume_System_Int32__GameCanvas_ESoundTrack_" data-uid="GameCanvas.Engine.Sound.SetVolume(System.Int32@,GameCanvas.ESoundTrack)">SetVolume(ref Int32, ESoundTrack)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVolume(ref int volume, ESoundTrack track)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -142,24 +198,93 @@
         <td><span class="parametername">volume</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_Engine_Sound_SetVolume_" data-uid="GameCanvas.Engine.Sound.SetVolume*"></a>
+  <h4 id="GameCanvas_Engine_Sound_SetVolume_System_Single_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Engine.Sound.SetVolume(System.Single,GameCanvas.ESoundTrack)">SetVolume(Single, ESoundTrack)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVolume(float decibel, ESoundTrack track)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://msdn.microsoft.com/ja-jp/library/system.single(v=vs.110).aspx">Single</a></td>
+        <td><span class="parametername">decibel</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <a id="GameCanvas_Engine_Sound_Stop_" data-uid="GameCanvas.Engine.Sound.Stop*"></a>
-  <h4 id="GameCanvas_Engine_Sound_Stop" data-uid="GameCanvas.Engine.Sound.Stop">Stop()</h4>
+  <h4 id="GameCanvas_Engine_Sound_Stop_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Engine.Sound.Stop(GameCanvas.ESoundTrack)">Stop(ESoundTrack)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+    <pre><code class="lang-csharp hljs">public void Stop(ESoundTrack track)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_Engine_Sound_Unpause_" data-uid="GameCanvas.Engine.Sound.Unpause*"></a>
-  <h4 id="GameCanvas_Engine_Sound_Unpause" data-uid="GameCanvas.Engine.Sound.Unpause">Unpause()</h4>
+  <h4 id="GameCanvas_Engine_Sound_Unpause_GameCanvas_ESoundTrack_" data-uid="GameCanvas.Engine.Sound.Unpause(GameCanvas.ESoundTrack)">Unpause(ESoundTrack)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Unpause()</code></pre>
+    <pre><code class="lang-csharp hljs">public void Unpause(ESoundTrack track)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ESoundTrack.html">ESoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -180,7 +305,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            (c) 2015-2017 Smart Device Programming.
+            (c) 2015-2018 Smart Device Programming.
             
           </div>
         </div>
