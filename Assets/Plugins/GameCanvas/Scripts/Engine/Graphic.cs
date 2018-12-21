@@ -497,6 +497,11 @@ namespace GameCanvas.Engine
             var img = cRes.GetImg(imageId);
             if (img.Data == null) return;
 
+            x = x - u/2;
+            y = y - v/2;
+            u = u/2;
+            v = v/2;
+
             var l = Mathf.Clamp01((x + u) / mCanvasSize.x);
             var t = Mathf.Clamp01((y + v) / mCanvasSize.y);
             var r = Mathf.Clamp((x + u + width) / mCanvasSize.x, l, 1f);
