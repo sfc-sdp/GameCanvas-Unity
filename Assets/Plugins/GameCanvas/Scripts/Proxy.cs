@@ -422,6 +422,16 @@ namespace GameCanvas
         public void SetResolution(int width, int height) => cGraphic.SetResolution(width, height);
 
         /// <summary>
+        /// 端末スクリーン解像度（X方向）
+        /// </summary>
+        public int DeviceScreenWidth => cGraphic.DeviceScreenWidth;
+
+        /// <summary>
+        /// 端末スクリーン解像度（Y方向）
+        /// </summary>
+        public int DeviceScreenHeight => cGraphic.DeviceScreenHeight;
+
+        /// <summary>
         /// 画面の幅
         /// </summary>
         public int CanvasWidth => cGraphic.CanvasWidth;
