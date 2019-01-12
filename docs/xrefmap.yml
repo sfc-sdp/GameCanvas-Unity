@@ -679,6 +679,30 @@ references:
   commentId: Overload:GameCanvas.Engine.Graphic.ClearScreen
   fullName: GameCanvas.Engine.Graphic.ClearScreen
   nameWithType: Graphic.ClearScreen
+- uid: GameCanvas.Engine.Graphic.DeviceScreenHeight
+  name: DeviceScreenHeight
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DeviceScreenHeight
+  commentId: P:GameCanvas.Engine.Graphic.DeviceScreenHeight
+  fullName: GameCanvas.Engine.Graphic.DeviceScreenHeight
+  nameWithType: Graphic.DeviceScreenHeight
+- uid: GameCanvas.Engine.Graphic.DeviceScreenHeight*
+  name: DeviceScreenHeight
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DeviceScreenHeight_
+  commentId: Overload:GameCanvas.Engine.Graphic.DeviceScreenHeight
+  fullName: GameCanvas.Engine.Graphic.DeviceScreenHeight
+  nameWithType: Graphic.DeviceScreenHeight
+- uid: GameCanvas.Engine.Graphic.DeviceScreenWidth
+  name: DeviceScreenWidth
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DeviceScreenWidth
+  commentId: P:GameCanvas.Engine.Graphic.DeviceScreenWidth
+  fullName: GameCanvas.Engine.Graphic.DeviceScreenWidth
+  nameWithType: Graphic.DeviceScreenWidth
+- uid: GameCanvas.Engine.Graphic.DeviceScreenWidth*
+  name: DeviceScreenWidth
+  href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_DeviceScreenWidth_
+  commentId: Overload:GameCanvas.Engine.Graphic.DeviceScreenWidth
+  fullName: GameCanvas.Engine.Graphic.DeviceScreenWidth
+  nameWithType: Graphic.DeviceScreenWidth
 - uid: GameCanvas.Engine.Graphic.Dispose
   name: Dispose()
   href: api/GameCanvas.Engine.Graphic.html#GameCanvas_Engine_Graphic_Dispose
@@ -3118,6 +3142,30 @@ references:
   commentId: Overload:GameCanvas.Proxy.CurrentYear
   fullName: GameCanvas.Proxy.CurrentYear
   nameWithType: Proxy.CurrentYear
+- uid: GameCanvas.Proxy.DeviceScreenHeight
+  name: DeviceScreenHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DeviceScreenHeight
+  commentId: P:GameCanvas.Proxy.DeviceScreenHeight
+  fullName: GameCanvas.Proxy.DeviceScreenHeight
+  nameWithType: Proxy.DeviceScreenHeight
+- uid: GameCanvas.Proxy.DeviceScreenHeight*
+  name: DeviceScreenHeight
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DeviceScreenHeight_
+  commentId: Overload:GameCanvas.Proxy.DeviceScreenHeight
+  fullName: GameCanvas.Proxy.DeviceScreenHeight
+  nameWithType: Proxy.DeviceScreenHeight
+- uid: GameCanvas.Proxy.DeviceScreenWidth
+  name: DeviceScreenWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DeviceScreenWidth
+  commentId: P:GameCanvas.Proxy.DeviceScreenWidth
+  fullName: GameCanvas.Proxy.DeviceScreenWidth
+  nameWithType: Proxy.DeviceScreenWidth
+- uid: GameCanvas.Proxy.DeviceScreenWidth*
+  name: DeviceScreenWidth
+  href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DeviceScreenWidth_
+  commentId: Overload:GameCanvas.Proxy.DeviceScreenWidth
+  fullName: GameCanvas.Proxy.DeviceScreenWidth
+  nameWithType: Proxy.DeviceScreenWidth
 - uid: GameCanvas.Proxy.DidCameraUpdate
   name: DidCameraUpdate
   href: api/GameCanvas.Proxy.html#GameCanvas_Proxy_DidCameraUpdate
