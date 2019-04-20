@@ -792,7 +792,7 @@ namespace GameCanvas
         public int CurrentSecond => cTime.Second;
 
         /// <summary>
-        /// 現在フレームの時刻のミリ秒部分（0～59）
+        /// 現在フレームの時刻のミリ秒部分（0～999）
         /// </summary>
         public int CurrentMillisecond => cTime.Millisecond;
 
