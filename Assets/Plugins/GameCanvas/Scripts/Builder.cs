@@ -87,18 +87,6 @@ namespace GameCanvas.Editor
             /// </summary>
             public iOSSdkVersion mSdkType;
             /// <summary>
-            /// IL2CPPビルドかどうか
-            /// </summary>
-            public bool mIsIl2cpp;
-            /// <summary>
-            /// 開発ビルドかどうか
-            /// </summary>
-            public bool mIsDevelopment;
-            /// <summary>
-            /// プロファイラに自動接続するかどうか
-            /// </summary>
-            public bool mIsConnectProfiler;
-            /// <summary>
             /// ビルド後に自動実行するかどうか
             /// </summary>
             public bool mAndRun;
@@ -134,8 +122,8 @@ namespace GameCanvas.Editor
             PlayerSettings.bundleVersion = option.mBundleVersion;
             PlayerSettings.productName = option.mProductName;
             PlayerSettings.companyName = option.mCompanyName;
-            EditorUserBuildSettings.connectProfiler = option.mIsConnectProfiler;
-            EditorUserBuildSettings.development = option.mIsDevelopment;
+            EditorUserBuildSettings.connectProfiler = false;
+            EditorUserBuildSettings.development = false;
 
             var buildTarget = (BuildTarget)option.mPlatform;
             var buildTargetGroup = BuildPipeline.GetBuildTargetGroup(buildTarget);
@@ -158,7 +146,8 @@ namespace GameCanvas.Editor
 
                     PlayerSettings.Android.minSdkVersion = option.mMinimumSdkVersion;
                     PlayerSettings.Android.targetSdkVersion = option.mTargetSdkVersion;
-                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, option.mIsIl2cpp ? ScriptingImplementation.IL2CPP : ScriptingImplementation.Mono2x);
+                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+                    PlayerSettings.SetArchitecture(BuildTargetGroup.Android, 1); // ARM64
 
                     // 既に出力ファイルがあれば退避させておく
                     if (File.Exists(outFilePath))
@@ -179,7 +168,6 @@ namespace GameCanvas.Editor
 
 
             var buildOption = BuildOptions.CompressWithLz4;
-            if (option.mIsConnectProfiler) buildOption |= BuildOptions.ConnectWithProfiler;
             buildOption |= option.mAndRun ? BuildOptions.AutoRunPlayer : BuildOptions.ShowBuiltPlayer;
 
             // ビルドを実行する
@@ -206,7 +194,7 @@ namespace GameCanvas.Editor
         private new void Show()
         {
             titleContent = new GUIContent("GameCanvas Builder");
-            minSize = maxSize = new Vector2(500, 278);
+            minSize = maxSize = new Vector2(500, 248);
 
             mLargeText = new GUIStyle();
             mLargeText.fontSize = 18;
@@ -243,14 +231,6 @@ namespace GameCanvas.Editor
                     mOption.mSdkType = (iOSSdkVersion)drawEnumPopup("SDK VERSION", mOption.mSdkType, ref isChange);
                     break;
             }
-            if (drawToggle("DEVELOPMENT", ref mOption.mIsDevelopment))
-            {
-                isChange |= true;
-                mOption.mIsIl2cpp = !mOption.mIsDevelopment;
-            }
-            EditorGUI.BeginDisabledGroup(!mOption.mIsDevelopment);
-            isChange |= drawToggle("PROFILING", ref mOption.mIsConnectProfiler);
-            EditorGUI.EndDisabledGroup();
 
             // 保存
             if (isChange) saveData();
@@ -352,9 +332,6 @@ namespace GameCanvas.Editor
             mOption.mProductName = PlayerSettings.productName;
             mOption.mCompanyName = PlayerSettings.companyName;
             mOption.mOutFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
-            mOption.mIsIl2cpp = false;
-            mOption.mIsDevelopment = false;
-            mOption.mIsConnectProfiler = false;
             mOption.mAndRun = false;
             mOption.mTargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
             mOption.mMinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
