@@ -22,7 +22,17 @@ namespace GameCanvas.Editor
         [MenuItem("GameCanvas/パッケージを出力する")]
         public static void ExportPackage()
         {
-            EditorApplication.ExecuteMenuItem("Assets/Export Package...");
+            var path = EditorUtility.SaveFilePanel("パッケージ出力", "", "GameCanvas.unitypackage", "unitypackage");
+            if (string.IsNullOrEmpty(path)) return;
+            try
+            {
+                EditorUtility.DisplayProgressBar("パッケージ出力", "処理中…", 0f);
+                AssetDatabase.ExportPackage(new string[] { "Assets/" }, path, ExportPackageOptions.IncludeLibraryAssets | ExportPackageOptions.Recurse);
+            }
+            finally
+            {
+                EditorUtility.ClearProgressBar();
+            }
         }
 
         #endregion
