@@ -194,7 +194,7 @@ namespace GameCanvas.Editor
         private new void Show()
         {
             titleContent = new GUIContent("GameCanvas Builder");
-            minSize = maxSize = new Vector2(500, 248);
+            minSize = maxSize = new Vector2(500, 260);
 
             mLargeText = new GUIStyle();
             mLargeText.fontSize = 18;

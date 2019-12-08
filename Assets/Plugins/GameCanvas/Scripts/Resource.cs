@@ -21,6 +21,7 @@ namespace GameCanvas
         #region フィールド変数
         //----------------------------------------------------------
 
+#pragma warning disable 0649
         [SerializeField]
         private SpriteAtlas SpriteAtlas;
         [SerializeField]
@@ -33,6 +34,7 @@ namespace GameCanvas
         private TextAsset[] TextAssets;
         [SerializeField]
         private Font[] Fonts;
+#pragma warning restore 0649
 
         public AudioMixer AudioMixer;
         public Shader ShaderOpaque;
@@ -185,7 +187,7 @@ namespace GameCanvas
             var c1 = new Color[v0.Length];
             for (var i = 0; i < v1.Length; ++i)
             {
-                v1[i] = new Vector3(v0[i].x, v0[i].y - 1f);
+                v1[i] = new Vector3(v0[i].x, v0[i].y);
                 c1[i] = new Color(0f, 0f, 0f);
             }
             var t1 = new int[t0.Length];
