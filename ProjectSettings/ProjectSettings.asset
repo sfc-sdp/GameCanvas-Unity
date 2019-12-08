@@ -821,6 +821,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     1: 
   platformArchitecture:
+    Android: 1
     iPhone: 1
   scriptingBackend:
     Android: 1
