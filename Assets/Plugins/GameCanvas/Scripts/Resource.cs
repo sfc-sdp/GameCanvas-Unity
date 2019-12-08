@@ -21,6 +21,7 @@ namespace GameCanvas
         #region フィールド変数
         //----------------------------------------------------------
 
+#pragma warning disable 0649
         [SerializeField]
         private SpriteAtlas SpriteAtlas;
         [SerializeField]
@@ -33,6 +34,7 @@ namespace GameCanvas
         private TextAsset[] TextAssets;
         [SerializeField]
         private Font[] Fonts;
+#pragma warning restore 0649
 
         public AudioMixer AudioMixer;
         public Shader ShaderOpaque;
