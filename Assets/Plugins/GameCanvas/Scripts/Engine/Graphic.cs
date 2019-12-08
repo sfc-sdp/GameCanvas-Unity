@@ -60,6 +60,7 @@ namespace GameCanvas.Engine
         private Box mBoxCanvas;
         private Rect mRectScreen;
         private Matrix4x4 mMatrixView;
+        private Matrix4x4 mMatrixProj;
         private float mPixelSizeMin;
         private Color mColor;
         private Color mColorMultiply;
@@ -174,12 +175,12 @@ namespace GameCanvas.Engine
             cBufferOpaque.Clear();
             cBufferOpaque.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
             cBufferOpaque.SetViewport(mRectScreen);
-            cBufferOpaque.SetViewMatrix(mMatrixView);
+            cBufferOpaque.SetViewProjectionMatrices(mMatrixView, mMatrixProj);
 
             cBufferTransparent.Clear();
             cBufferTransparent.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
             cBufferTransparent.SetViewport(mRectScreen);
-            cBufferTransparent.SetViewMatrix(mMatrixView);
+            cBufferTransparent.SetViewProjectionMatrices(mMatrixView, mMatrixProj);
 
             mCountDraw = 0;
             mCountText = 0;
@@ -224,7 +225,7 @@ namespace GameCanvas.Engine
             mRectScreen = new Rect(screenMin, screenMax - screenMin);
 
             mMatrixView = Matrix4x4.TRS(new Vector3(-1f, -1f, 0f), Quaternion.identity, new Vector3(2f / mCanvasSize.x, 2f / mCanvasSize.y, 1f));
-
+            mMatrixProj = Matrix4x4.Ortho(-1f, 1f, -1f, 1f, -100f, 0f);
             mPixelSizeMin = Mathf.Max(1f, mCanvasSize.x / mRectScreen.width);
         }
 
@@ -361,7 +362,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, startX, startY, distance, 1f, degree);
-            var hasAlpha = (mColor.a > 0f);
+            var hasAlpha = (mColor.a != 1f);
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
@@ -411,7 +412,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            var hasAlpha = (mColor.a > 0f);
+            var hasAlpha = (mColor.a != 1f);
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(mesh, matrix, material, 0, -1, cBlock);
@@ -425,7 +426,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, width, height);
-            var hasAlpha = (mColor.a > 0f);
+            var hasAlpha = (mColor.a != 1f);
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
@@ -451,7 +452,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-            var hasAlpha = (mColor.a > 0f);
+            var hasAlpha = (mColor.a != 1f);
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshCircleBorder, matrix, material, 0, -1, cBlock);
@@ -465,7 +466,7 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, radius, radius);
-            var hasAlpha = (mColor.a > 0f);
+            var hasAlpha = (mColor.a != 1f);
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshCircle, matrix, material, 0, -1, cBlock);
@@ -833,7 +834,7 @@ namespace GameCanvas.Engine
 
         private Matrix4x4 calcMatrix(int count, float x, float y, float w, float h, float degree = 0f)
         {
-            var t = new Vector3(x, mCanvasSize.y - y + 1, 1f - count * 0.001f);
+            var t = new Vector3(x,  mCanvasSize.y - y, count * 0.001f);
             var r = Mathf.Approximately(degree, 0f) ? Quaternion.identity : Quaternion.Euler(0f, 0f, degree);
             var s = new Vector3(w, h, 1f);
             return Matrix4x4.TRS(t, r, s);
