@@ -82,15 +82,10 @@ namespace GameCanvas
             mProxy = new Proxy(mTime, mGraphic, mSound, mCollision, mNetwork, mPointer, mKeyboard, mAccelerometer, mGeolocation, mCameraDevice);
         }
 
-        private void Start()
+        private Sequence Start()
         {
-            InitGame();
             mIsRunning = true;
-            mSequence = Entry();
-        }
 
-        private void Update()
-        {
             mTime.OnBeforeUpdate();
             mGraphic.OnBeforeUpdate();
             mSound.OnBeforeUpdate();
@@ -99,9 +94,27 @@ namespace GameCanvas
             mAccelerometer.OnBeforeUpdate();
             mGeolocation.OnBeforeUpdate();
 
+            InitGame();
+            mSequence = Entry();
             UpdateGame();
-            mIsRunning = mIsRunning && mSequence.MoveNext();
             DrawGame();
+
+            while (enabled)
+            {
+                yield return null;
+
+                mTime.OnBeforeUpdate();
+                mGraphic.OnBeforeUpdate();
+                mSound.OnBeforeUpdate();
+                mPointer.OnBeforeUpdate();
+                mKeyboard.OnBeforeUpdate();
+                mAccelerometer.OnBeforeUpdate();
+                mGeolocation.OnBeforeUpdate();
+
+                UpdateGame();
+                mIsRunning = mIsRunning && mSequence.MoveNext();
+                DrawGame();
+            }
         }
 
         private void OnApplicationFocus(bool focus)
