@@ -31,6 +31,7 @@ namespace GameCanvas.Engine
         private readonly Camera cCamera;
         private readonly CommandBuffer cBufferOpaque;
         private readonly CommandBuffer cBufferTransparent;
+        private readonly CommandBuffer cBufferEndFrame;
         private readonly Material cMaterialOpaque;
         private readonly Material cMaterialTransparentImage;
         private readonly Material cMaterialTransparentColor;
@@ -71,6 +72,7 @@ namespace GameCanvas.Engine
         private int mCountDraw;
         private int mCountText;
         private int mCountDrawRect;
+        private RenderTexture mPrevFrame;
 
         #endregion
 
@@ -88,7 +90,8 @@ namespace GameCanvas.Engine
 
             cRes = res;
             cCamera = camera;
-            cCamera.clearFlags = CameraClearFlags.Depth;
+            cCamera.clearFlags = CameraClearFlags.SolidColor;
+            cCamera.backgroundColor = cColorBlack;
             cCamera.orthographic = true;
             cCamera.orthographicSize = 5;
             cCamera.farClipPlane = 100;
@@ -98,6 +101,8 @@ namespace GameCanvas.Engine
             cBufferOpaque.name = "GameCanvas Opaque";
             cBufferTransparent = new CommandBuffer();
             cBufferTransparent.name = "GameCanvas Transparent ";
+            cBufferEndFrame = new CommandBuffer();
+            cBufferEndFrame.name = "GameCanvas EndFrame";
             cMaterialOpaque = new Material(res.ShaderOpaque);
             cMaterialTransparentImage = new Material(res.ShaderTransparentImage);
             cMaterialTransparentColor = new Material(res.ShaderTransparentColor);
@@ -147,6 +152,7 @@ namespace GameCanvas.Engine
                 mIsEnable = true;
                 cCamera.AddCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
                 cCamera.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
+                cCamera.AddCommandBuffer(CameraEvent.AfterEverything, cBufferEndFrame);
                 Font.textureRebuilt += cTextRebuildCallback;
             }
         }
@@ -156,9 +162,12 @@ namespace GameCanvas.Engine
             if (mIsEnable && !mIsDispose)
             {
                 mIsEnable = false;
-                cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
-                cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
                 Font.textureRebuilt -= cTextRebuildCallback;
+                cCamera.RemoveCommandBuffer(CameraEvent.AfterEverything, cBufferEndFrame);
+                cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
+                cCamera.RemoveCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
+                mPrevFrame?.Release();
+                mPrevFrame = null;
             }
         }
 
@@ -173,7 +182,13 @@ namespace GameCanvas.Engine
             }
 
             cBufferOpaque.Clear();
-            cBufferOpaque.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
+#if UNITY_EDITOR_WIN
+            // DirectX
+            cBufferOpaque.Blit(mPrevFrame, BuiltinRenderTextureType.CameraTarget, new Vector2(1, -1f), new Vector2(0, 1f));
+#else
+            // OpenGL
+            cBufferOpaque.Blit(mPrevFrame, BuiltinRenderTextureType.CameraTarget);
+#endif //UNITY_EDITOR_WIN
             cBufferOpaque.SetViewport(mRectScreen);
             cBufferOpaque.SetViewProjectionMatrices(mMatrixView, mMatrixProj);
 
@@ -181,6 +196,9 @@ namespace GameCanvas.Engine
             cBufferTransparent.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
             cBufferTransparent.SetViewport(mRectScreen);
             cBufferTransparent.SetViewProjectionMatrices(mMatrixView, mMatrixProj);
+
+            cBufferEndFrame.Clear();
+            cBufferEndFrame.Blit(BuiltinRenderTextureType.CameraTarget, mPrevFrame);
 
             mCountDraw = 0;
             mCountText = 0;
@@ -227,6 +245,24 @@ namespace GameCanvas.Engine
             mMatrixView = Matrix4x4.TRS(new Vector3(-1f, -1f, 0f), Quaternion.identity, new Vector3(2f / mCanvasSize.x, 2f / mCanvasSize.y, 1f));
             mMatrixProj = Matrix4x4.Ortho(-1f, 1f, -1f, 1f, -100f, 0f);
             mPixelSizeMin = Mathf.Max(1f, mCanvasSize.x / mRectScreen.width);
+
+            if (mPrevFrame == null || mPrevFrame.width != mScreenSize.x || mPrevFrame.height != mScreenSize.y)
+            {
+                mPrevFrame?.Release();
+                mPrevFrame = new RenderTexture(mScreenSize.x, mScreenSize.y, 0, UnityEngine.Experimental.Rendering.DefaultFormat.LDR);
+                mPrevFrame.name = "PrevFrame";
+                mPrevFrame.Create();
+                Graphics.SetRenderTarget(mPrevFrame);
+                {
+                    cBlock.Clear();
+                    cBlock.SetColor(cShaderPropColor, cColorWhite);
+                    var t = new Vector3(mBoxCanvas.MinX, mBoxCanvas.MaxY, 0f);
+                    var s = new Vector3(mBoxCanvas.Width, mBoxCanvas.Height, 1f);
+                    var matrix = Matrix4x4.TRS(t, Quaternion.identity, s);
+                    Graphics.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, cCamera, 0, cBlock);
+                }
+                Graphics.SetRenderTarget(null);
+            }
         }
 
         public int ScreenToCanvasX(int screenX)
