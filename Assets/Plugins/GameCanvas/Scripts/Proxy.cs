@@ -341,6 +341,7 @@ namespace GameCanvas
         /// <returns>ダウンロード状態</returns>
         public EDownloadState DrawOnlineImage(string url, int x, int y) => cNetwork.DrawOnlineImage(ref url, ref x, ref y);
 
+#if !GC_DISABLE_CAMERAINPUT
         /// <summary>
         /// カメラ映像を描画します。事前に <see cref="StartCameraService"/> を呼んでおく必要があります。
         /// </summary>
@@ -368,6 +369,7 @@ namespace GameCanvas
         /// <param name="ySize">縦の拡縮率（100で等倍, 200なら倍の大きさ）</param>
         /// <param name="degree">回転角（度数法）</param>
         public void DrawScaledRotateCameraImage(int x, int y, int xSize, int ySize, float degree) => cCameraDevice.Draw(ref x, ref y, ref xSize, ref ySize, ref degree);
+#endif //!GC_DISABLE_CAMERAINPUT
 
         /// <summary>
         /// オンライン画像の幅を取得します。
@@ -816,6 +818,7 @@ namespace GameCanvas
         /// </summary>
         public System.DateTimeOffset NowTime => cTime.Now;
 
+#if !GC_DISABLE_ACCELEROMETER
         // 加速度計
 
         /// <summary>
@@ -870,7 +873,9 @@ namespace GameCanvas
         {
             return normalize ? cAccelerometer.GetNormalizedZ(ref i) : cAccelerometer.GetZ(ref i);
         }
+#endif //!GC_DISABLE_ACCELEROMETER
 
+#if !GC_DISABLE_GEOLOCATION
         // 位置情報
 
         /// <summary>
@@ -921,8 +926,10 @@ namespace GameCanvas
         /// <summary>
         /// 位置情報サービスを終了します。
         /// </summary>
-        public void StopGeolocationService() => cGeolocation.StopService();
+        public void StopGeolocationService() => cGeolocation.StopService();        
+#endif //!GC_DISABLE_GEOLOCATION
 
+#if !GC_DISABLE_CAMERAINPUT
         // カメラ映像入力
 
         /// <summary>
@@ -998,6 +1005,7 @@ namespace GameCanvas
         /// カメラ映像入力の再開
         /// </summary>
         public void UnpauseCameraService() => cCameraDevice.Unpause();
+#endif //!GC_DISABLE_CAMERAINPUT
 
         // その他
 
@@ -1110,6 +1118,6 @@ namespace GameCanvas
         [Hidden(HiddenState.Never)]
         public string ShowInputDialog(string message, string defaultInput) => null; // TODO
 
-        #endregion
+#endregion
     }
 }

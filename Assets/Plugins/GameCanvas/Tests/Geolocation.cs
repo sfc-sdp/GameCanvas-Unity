@@ -3,6 +3,7 @@ namespace GameCanvas.Tests
 {
     public sealed class Geolocation : GameBase
     {
+#if !GC_DISABLE_GEOLOCATION
         float lat;
         float lng;
         string text;
@@ -44,5 +45,6 @@ namespace GameCanvas.Tests
             gc.DrawOnlineImage(url, 0, 0);
             gc.DrawString(text, 15, 15);
         }
+#endif //!GC_DISABLE_GEOLOCATION
     }
 }

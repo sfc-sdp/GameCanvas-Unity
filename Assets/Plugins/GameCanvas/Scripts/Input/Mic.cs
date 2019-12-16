@@ -14,6 +14,7 @@ namespace GameCanvas.Input
 
     public sealed class Mic
     {
+#if !GC_DISABLE_MICROPHONE
         //----------------------------------------------------------
         #region フィールド変数
         //----------------------------------------------------------
@@ -43,5 +44,6 @@ namespace GameCanvas.Input
         }
 
         #endregion
+#endif //!GC_DISABLE_MICROPHONE
     }
 }
