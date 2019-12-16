@@ -3,6 +3,7 @@ namespace GameCanvas.Tests
 {
     public sealed class CameraDevice : GameBase
     {
+#if !GC_DISABLE_CAMERAINPUT
         private int mDeviceIndex;
         private string mDeviceName;
 
@@ -29,5 +30,6 @@ namespace GameCanvas.Tests
             gc.DrawScaledRotateCameraImage(100, 100, 25, 25, gc.CurrentCameraRotation);
             gc.DrawString(mDeviceName, 15, 15);
         }
+#endif //!GC_DISABLE_CAMERAINPUT
     }
 }

@@ -15,6 +15,7 @@ namespace GameCanvas.Input
 
     public sealed class CameraDevice
     {
+#if !GC_DISABLE_CAMERAINPUT
         //----------------------------------------------------------
         #region フィールド変数
         //----------------------------------------------------------
@@ -193,5 +194,8 @@ namespace GameCanvas.Input
         }
 
         #endregion
+#else
+        internal CameraDevice(Engine.Graphic graphic) { }
+#endif //!GC_DISABLE_CAMERAINPUT
     }
 }

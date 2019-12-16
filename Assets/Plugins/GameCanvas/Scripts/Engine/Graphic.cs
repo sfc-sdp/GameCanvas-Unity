@@ -182,8 +182,8 @@ namespace GameCanvas.Engine
             }
 
             cBufferOpaque.Clear();
-#if UNITY_EDITOR_WIN
-            // DirectX
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX || UNITY_IOS
+            // DirectX or Metal
             cBufferOpaque.Blit(mPrevFrame, BuiltinRenderTextureType.CameraTarget, new Vector2(1, -1f), new Vector2(0, 1f));
 #else
             // OpenGL

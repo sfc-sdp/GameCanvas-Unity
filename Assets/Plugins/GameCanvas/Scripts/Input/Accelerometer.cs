@@ -15,6 +15,7 @@ namespace GameCanvas.Input
 
     public sealed class Accelerometer
     {
+#if !GC_DISABLE_ACCELEROMETER
         //----------------------------------------------------------
         #region フィールド変数
         //----------------------------------------------------------
@@ -66,5 +67,8 @@ namespace GameCanvas.Input
         public float GetNormalizedZ(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].z : 0f;
 
         #endregion
+#else
+        internal void OnBeforeUpdate() { }
+#endif //!GC_DISABLE_ACCELEROMETER
     }
 }
