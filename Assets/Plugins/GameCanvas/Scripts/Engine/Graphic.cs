@@ -620,7 +620,7 @@ namespace GameCanvas.Engine
             if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var count = mCountDraw++;
-            var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
+            var t = new Vector3(x, mCanvasSize.y - y, count * 0.001f);
             var r = Mathf.Approximately(degree, 0f) ? Quaternion.identity : Quaternion.Euler(0f, 0f, 360f - degree);
             var s = new Vector3(xSize * 0.01f, ySize * 0.01f, 1f);
             var t2 = new Vector3(-centerX, centerY);
