@@ -243,6 +243,7 @@ namespace GameCanvas
             private const string cAtlasPath = "Assets/Plugins/GameCanvas/Atlas.spriteatlas";
             private const string cMixerPath = "Assets/Plugins/GameCanvas/Mixer.mixer";
             private const string cTextureImporterLabel = "GameCanvas TextureImporter 2.0";
+            private const string cAudioImporterLabel = "GameCanvas AudioImporter 1.0";
             private static readonly string[] cInputFolders = new[] { "Assets/Res" };
             private static readonly Regex cRegImg = new Regex(@"^Assets/Res/(?<filename>img(?<id>\d+))\.(gif|GIF|png|PNG|jpg|JPG|tga|TGA|tif|TIF|tiff|TIFF|bmp|BMP|iff|IFF|pict|PICT)$");
             private static readonly Regex cRegSnd = new Regex(@"^Assets/Res/snd(?<id>\d+)\.(wav|WAV|mp3|MP3|ogg|OGG|aiff|AIFF|aif|AIF)$");
@@ -278,6 +279,7 @@ namespace GameCanvas
                 AssetDatabase.StartAssetEditing();
                 {
                     validateImages();
+                    validateSounds();
                     listup();
                 }
                 AssetDatabase.StopAssetEditing();
@@ -312,6 +314,50 @@ namespace GameCanvas
                         importer.maxTextureSize = 2048;
                         importer.spriteImportMode = SpriteImportMode.Single;
                         importer.userData = cTextureImporterLabel;
+                        importer.SaveAndReimport();
+                    }
+                }
+            }
+
+            private static void validateSounds()
+            {
+                var sampleSettingSE = new AudioImporterSampleSettings()
+                {
+                    compressionFormat = AudioCompressionFormat.ADPCM,
+                    loadType = AudioClipLoadType.CompressedInMemory,
+                    sampleRateOverride = 44100,
+                    sampleRateSetting = AudioSampleRateSetting.OptimizeSampleRate
+                };
+                var sampleSettingBGM = new AudioImporterSampleSettings()
+                {
+                    compressionFormat = AudioCompressionFormat.Vorbis,
+                    loadType = AudioClipLoadType.Streaming,
+                    sampleRateOverride = 44100,
+                    sampleRateSetting = AudioSampleRateSetting.OptimizeSampleRate
+                };
+
+                var importers = AssetDatabase.FindAssets("t:AudioClip", cInputFolders)
+                    .Select(AssetDatabase.GUIDToAssetPath)
+                    .Select(path => cRegSnd.Match(path))
+                    .Where(match => match.Success)
+                    .OrderBy(match => int.Parse(match.Groups["id"].Value))
+                    .Select(match => AssetImporter.GetAtPath(match.Value) as AudioImporter)
+                    .Where(importer => importer != null);
+
+                foreach (var importer in importers)
+                {
+                    if (importer.userData != cAudioImporterLabel)
+                    {
+                        var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(importer.assetPath);
+                        var sampleSetting = (clip.length < 3f) ? sampleSettingSE : sampleSettingBGM;
+                        Resources.UnloadAsset(clip);
+                        importer.loadInBackground = false;
+                        importer.preloadAudioData = true;
+                        importer.defaultSampleSettings = sampleSetting;
+                        importer.SetOverrideSampleSettings("Standalone", sampleSetting);
+                        importer.SetOverrideSampleSettings("iOS", sampleSetting);
+                        importer.SetOverrideSampleSettings("Android", sampleSetting);
+                        importer.userData = cAudioImporterLabel;
                         importer.SaveAndReimport();
                     }
                 }

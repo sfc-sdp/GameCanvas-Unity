@@ -398,11 +398,11 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, startX, startY, distance, 1f, degree);
-#if UNITY_IOS
+#if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
             var hasAlpha = (mColor.a != 1f);
-#endif // UNITY_IOS
+#endif // !UNITY_EDITOR
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
@@ -452,11 +452,11 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-#if UNITY_IOS
+#if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
             var hasAlpha = (mColor.a != 1f);
-#endif // UNITY_IOS
+#endif // !UNITY_EDITOR
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(mesh, matrix, material, 0, -1, cBlock);
@@ -470,11 +470,11 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, width, height);
-#if UNITY_IOS
+#if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
             var hasAlpha = (mColor.a != 1f);
-#endif // UNITY_IOS
+#endif // !UNITY_EDITOR
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
@@ -500,11 +500,11 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, 1f, 1f);
-#if UNITY_IOS
+#if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
             var hasAlpha = (mColor.a != 1f);
-#endif // UNITY_IOS
+#endif // !UNITY_EDITOR
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshCircleBorder, matrix, material, 0, -1, cBlock);
@@ -518,11 +518,11 @@ namespace GameCanvas.Engine
             cBlock.SetColor(cShaderPropColor, mColor);
 
             var matrix = calcMatrix(mCountDraw++, x, y, radius, radius);
-#if UNITY_IOS
+#if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
             var hasAlpha = (mColor.a != 1f);
-#endif // UNITY_IOS
+#endif // !UNITY_EDITOR
             var buffer = hasAlpha ? cBufferTransparent : cBufferOpaque;
             var material = hasAlpha ? cMaterialTransparentColor : cMaterialOpaque;
             buffer.DrawMesh(cMeshCircle, matrix, material, 0, -1, cBlock);
@@ -620,7 +620,7 @@ namespace GameCanvas.Engine
             if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
             var count = mCountDraw++;
-            var t = new Vector3(x, mCanvasSize.y - y, 1f - count * 0.001f);
+            var t = new Vector3(x, mCanvasSize.y - y, count * 0.001f);
             var r = Mathf.Approximately(degree, 0f) ? Quaternion.identity : Quaternion.Euler(0f, 0f, 360f - degree);
             var s = new Vector3(xSize * 0.01f, ySize * 0.01f, 1f);
             var t2 = new Vector3(-centerX, centerY);
