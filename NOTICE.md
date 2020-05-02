@@ -1,12 +1,6 @@
 GameCanvas for Unity is built using open source software:
 
- * websocket-sharp (MIT License)
  * PixelMplus (M+ FONT LICENSE)
-
---
-websocket-sharp is:
-
-Copyright (c) 2010-2016 sta.blockhead
 
 --
 PixelMplus is:
