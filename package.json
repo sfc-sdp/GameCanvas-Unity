@@ -1,0 +1,13 @@
+{
+  "name": "jp.ac.keio.sfc.sdp",
+  "version": "4.0.0",
+  "displayName": "GameCanvas",
+  "description": "GameCanvas for Unity",
+  "unity": "2019.3",
+  "unityRelease": "11f1",
+  "author": {
+    "name": "Smart Device Programing (Seibe Takahashi)",
+    "email": "t@seibe.jp",
+    "url": "https://github.com/sfc-sdp/GameCanvas-Unity"
+  }
+}
