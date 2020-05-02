@@ -130,15 +130,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1845644149}
+  - component: {fileID: 1845644150}
   - component: {fileID: 1845644148}
   - component: {fileID: 1845644147}
   - component: {fileID: 1845644151}
   - component: {fileID: 1845644154}
   - component: {fileID: 1845644153}
   - component: {fileID: 1845644152}
-  - component: {fileID: 1845644150}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

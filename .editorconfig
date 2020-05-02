@@ -1,0 +1,4 @@
+﻿[*.{cs,vb}]
+
+# IDE0032: 自動プロパティを使用しない
+dotnet_style_prefer_auto_properties = false:silent
