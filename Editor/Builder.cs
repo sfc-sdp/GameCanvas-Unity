@@ -147,7 +147,9 @@ namespace GameCanvas.Editor
                     PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
                     PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
                     PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.Android, ApiCompatibilityLevel.NET_Standard_2_0);
+#if UNITY_ANDROID
                     UnityEditor.Android.UserBuildSettings.symlinkSources = true;
+#endif // UNITY_ANDROID
 
                     // 既に出力ファイルがあれば退避させておく
                     if (File.Exists(outFilePath))
