@@ -63,8 +63,11 @@ namespace GameCanvas
             mListener = GetComponent<AudioListener>();
             Assert.IsNotNull(mCamera);
             Assert.IsNotNull(mListener);
-            Assert.IsNotNull(Resource);
 
+            if (Resource == null)
+            {
+                throw new System.NullReferenceException("Game コンポーネントに Res.asset がアタッチされていません");
+            }
             Resource.Initialize();
 
             mTime = new Time();
@@ -83,6 +86,8 @@ namespace GameCanvas
 
         private Sequence Start()
         {
+            if (Resource == null) yield break;
+
             mIsRunning = true;
 
             mTime.OnBeforeUpdate();
@@ -118,22 +123,36 @@ namespace GameCanvas
 
         private void OnEnable()
         {
-            mGraphic.OnEnable();
+            mGraphic?.OnEnable();
         }
 
         private void OnDisable()
         {
-            mGraphic.OnDisable();
+            mGraphic?.OnDisable();
         }
 
         private void OnDestroy()
         {
-            mGraphic.Dispose();
+            mGraphic?.Dispose();
         }
 
 #if UNITY_EDITOR
+        private void Reset()
+        {
+            if (Resource == null)
+            {
+                try
+                {
+                    Resource = UnityEditor.AssetDatabase.LoadAssetAtPath<Resource>("Assets/GameCanvas/Res.asset");
+                    UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                }
+                catch (System.InvalidOperationException) { }
+            }
+        }
+
         private void OnValidate()
         {
+            Reset();
             mGraphic?.SetResolution(CanvasWidth, CanvasHeight);
         }
 #endif //UNITY_EDITOR

@@ -35,11 +35,11 @@ namespace GameCanvas.Editor
         private const string cTextureImporterLabel = "GameCanvas TextureImporter 2.0";
         private const string cAudioImporterLabel = "GameCanvas AudioImporter 1.0";
         private static readonly string[] cSearchFolder = new[] { cGameResFolderPath };
-        private static readonly Regex cRegImg = new Regex(@"^Assets/Res/(?<filename>img(?<id>\d+))\.(gif|GIF|png|PNG|jpg|JPG|tga|TGA|tif|TIF|tiff|TIFF|bmp|BMP|iff|IFF|pict|PICT)$");
-        private static readonly Regex cRegSnd = new Regex(@"^Assets/Res/snd(?<id>\d+)\.(wav|WAV|mp3|MP3|ogg|OGG|aiff|AIFF|aif|AIF)$");
-        private static readonly Regex cRegMov = new Regex(@"^Assets/Res/mov(?<id>\d+)\.(mp4|MP4|mov|MOV|mpg|MPG|mpeg|MPEG|avi|AVI|asf|ASF|dv|DV|ogv|OGV|vp8|VP8|webm|WEBM|wmv|WMV)$");
-        private static readonly Regex cRegTxt = new Regex(@"^Assets/Res/txt(?<id>\d+)\.(txt|TXT|bytes|BYTES|json|JSON|xml|XML|csv|CSV|yaml|YAML)$");
-        private static readonly Regex cRegFnt = new Regex(@"^Assets/Res/fnt(?<id>\d+)\.(ttf|TTF|otf|OTF)$");
+        private static readonly Regex cRegImg = new Regex(@"^Assets/Res/(?<filename>img(?<id>\d+))\.(gif|png|jpg|jpeg|tga|tif|tiff|bmp|iff|pict)$", RegexOptions.IgnoreCase);
+        private static readonly Regex cRegSnd = new Regex(@"^Assets/Res/snd(?<id>\d+)\.(wav|mp3|ogg|aiff|aif)$", RegexOptions.IgnoreCase);
+        private static readonly Regex cRegMov = new Regex(@"^Assets/Res/mov(?<id>\d+)\.(mp4|mov|mpg|mpeg|avi|asf|dv|ogv|vp8|webm|wmv)$", RegexOptions.IgnoreCase);
+        private static readonly Regex cRegTxt = new Regex(@"^Assets/Res/txt(?<id>\d+)\.(txt|bytes|json|xml|csv|yaml)$", RegexOptions.IgnoreCase);
+        private static readonly Regex cRegFnt = new Regex(@"^Assets/Res/fnt(?<id>\d+)\.(ttf|otf)$", RegexOptions.IgnoreCase);
 
         #endregion
 
@@ -81,6 +81,10 @@ namespace GameCanvas.Editor
                 ValidateImages();
                 ValidateSounds();
                 Listup();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogException(e);
             }
             finally
             {
@@ -210,10 +214,21 @@ namespace GameCanvas.Editor
                 .Where(asset => (asset != null))
                 .ToArray();
 
-            var res = AssetDatabase.LoadAssetAtPath<Resource>(cLibResAssetPath);
+            var res = LoadOrCreateSO<Resource>(cLibResAssetPath);
             res.SetValue(atlas, mixer, imageId, video, audio, texts, fonts);
             EditorUtility.SetDirty(res);
             AssetDatabase.SaveAssets();
+        }
+
+        private static T LoadOrCreateSO<T>(string assetPath) where T : ScriptableObject
+        {
+            if (!File.Exists(assetPath))
+            {
+                var asset = ScriptableObject.CreateInstance<T>();
+                AssetDatabase.CreateAsset(asset, assetPath);
+                return asset;
+            }
+            return AssetDatabase.LoadAssetAtPath<T>(assetPath);
         }
 
         #endregion
