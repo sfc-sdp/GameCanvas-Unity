@@ -11,24 +11,16 @@ using System.Collections;
 
 public abstract class GameBase : GameCanvas.BehaviourBase
 {
-    /// <summary>
-    /// 初期化処理
-    /// </summary>
     public override void InitGame() { }
 
-    /// <summary>
-    /// 更新処理
-    /// </summary>
     public override void UpdateGame() { }
 
-    /// <summary>
-    /// 描画処理
-    /// </summary>
     public override void DrawGame() { }
 
-    /// <summary>
-    /// ゲームシーケンス
-    /// </summary>
+    public override void PauseGame() { }
+
+    public override void ResumeGame() { }
+
     public override IEnumerator Entry()
     {
         yield break;

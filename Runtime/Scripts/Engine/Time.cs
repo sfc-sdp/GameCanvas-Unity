@@ -15,18 +15,18 @@ namespace GameCanvas.Engine
         #region フィールド変数
         //----------------------------------------------------------
 
-        internal static readonly System.DateTimeOffset cUnixZero = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local);
+        internal static readonly System.DateTimeOffset UnixZero = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local);
 
-        private System.DateTimeOffset mCurrent;
-        private System.DateTimeOffset mStartup;
-        private float mSinceStartup;
-        private float mSincePrevFrame;
-        private int mFrameCount;
+        private System.DateTimeOffset m_CurrentTime;
+        private System.DateTimeOffset m_StartupTime;
+        private float m_SinceStartup;
+        private float m_SincePrevFrame;
+        private int m_FrameCount;
 
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         /// <summary>
@@ -34,36 +34,36 @@ namespace GameCanvas.Engine
         /// </summary>
         internal Time()
         {
-            mStartup = System.DateTimeOffset.Now;
-            mCurrent = mStartup;
-            mSinceStartup = 0;
-            mSincePrevFrame = 0;
-            mFrameCount = 0;
+            m_StartupTime = System.DateTimeOffset.Now;
+            m_CurrentTime = m_StartupTime;
+            m_SinceStartup = 0;
+            m_SincePrevFrame = 0;
+            m_FrameCount = 0;
         }
 
-        internal void OnBeforeUpdate()
+        internal void OnBeforeUpdate(in System.DateTimeOffset now)
         {
-            var prev = mCurrent;
-            mCurrent = System.DateTimeOffset.Now;
-            mSinceStartup = (float)mCurrent.Subtract(mStartup).TotalSeconds;
-            mSincePrevFrame = (float)mCurrent.Subtract(prev).TotalSeconds;
-            mFrameCount++;
+            var prev = m_CurrentTime;
+            m_CurrentTime = now;
+            m_SinceStartup = (float)m_CurrentTime.Subtract(m_StartupTime).TotalSeconds;
+            m_SincePrevFrame = (float)m_CurrentTime.Subtract(prev).TotalSeconds;
+            m_FrameCount++;
         }
 
-        public float SinceStartup => mSinceStartup;
-        public float SincePrevFrame => mSincePrevFrame;
-        public int FrameCount => mFrameCount;
+        public float SinceStartup => m_SinceStartup;
+        public float SincePrevFrame => m_SincePrevFrame;
+        public int FrameCount => m_FrameCount;
 
-        public System.DateTimeOffset Current => mCurrent;
-        public long Timestamp => (long)((mCurrent - cUnixZero).TotalSeconds);
-        public int Year => mCurrent.Year;
-        public int Month => mCurrent.Month;
-        public int Day => mCurrent.Day;
-        public int Hour => mCurrent.Hour;
-        public int Minute => mCurrent.Minute;
-        public int Second => mCurrent.Second;
-        public int Millisecond => mCurrent.Millisecond;
-        public System.DayOfWeek DayOfWeek => mCurrent.DayOfWeek;
+        public System.DateTimeOffset Current => m_CurrentTime;
+        public long Timestamp => (long)((m_CurrentTime - UnixZero).TotalSeconds);
+        public int Year => m_CurrentTime.Year;
+        public int Month => m_CurrentTime.Month;
+        public int Day => m_CurrentTime.Day;
+        public int Hour => m_CurrentTime.Hour;
+        public int Minute => m_CurrentTime.Minute;
+        public int Second => m_CurrentTime.Second;
+        public int Millisecond => m_CurrentTime.Millisecond;
+        public System.DayOfWeek DayOfWeek => m_CurrentTime.DayOfWeek;
 
         public System.DateTimeOffset Now => System.DateTimeOffset.Now;
 

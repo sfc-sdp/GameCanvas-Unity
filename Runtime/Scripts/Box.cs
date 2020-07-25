@@ -27,7 +27,7 @@ namespace GameCanvas
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         public static bool operator ==(Box lh, Box rh)

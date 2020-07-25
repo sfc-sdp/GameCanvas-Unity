@@ -28,7 +28,7 @@ namespace GameCanvas.Input
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace GameCanvas.Input
         /// <summary>
         /// デバイス名の取得
         /// </summary>
-        public string GetName(ref int index)
+        public string GetName(in int index)
         {
             if (mDevices == null || mDevices.Length <= index)
             {
@@ -82,7 +82,7 @@ namespace GameCanvas.Input
         /// <summary>
         /// 前面カメラかどうか
         /// </summary>
-        public bool GetIsFront(ref int index)
+        public bool GetIsFront(in int index)
         {
             if (mDevices == null || mDevices.Length <= index)
             {
@@ -95,7 +95,7 @@ namespace GameCanvas.Input
         /// <summary>
         /// カメラデバイスの選択と再生
         /// </summary>
-        public void Start(ref int index)
+        public void Start(in int index)
         {
             if (mTexture != null && mSelectedIndex == index)
             {
@@ -154,38 +154,38 @@ namespace GameCanvas.Input
         /// <summary>
         /// 描画
         /// </summary>
-        public void Draw(ref int x, ref int y)
+        public void Draw(in int x, in int y)
         {
             if (mTexture != null)
             {
-                cGraphic.DrawTexture(mTexture, ref x, ref y);
+                cGraphic.DrawTexture(mTexture, x, y);
             }
         }
         /// <summary>
         /// 描画
         /// </summary>
-        public void Draw(ref int x, ref int y, ref int u, ref int v, ref int width, ref int height)
+        public void Draw(in int x, in int y, in int u, in int v, in int width, in int height)
         {
             if (mTexture != null)
             {
-                cGraphic.DrawClipTexture(mTexture, ref x, ref y, ref u, ref v, ref width, ref height);
+                cGraphic.DrawClipTexture(mTexture, x, y, u, v, width, height);
             }
         }
         /// <summary>
         /// 描画
         /// </summary>
-        public void Draw(ref int x, ref int y, ref int xSize, ref int ySize, ref float degree)
+        public void Draw(in int x, in int y, in int xSize, in int ySize, in float degree)
         {
             if (mTexture != null)
             {
-                cGraphic.DrawScaledRotateTexture(mTexture, ref x, ref y, ref xSize, ref ySize, ref degree);
+                cGraphic.DrawScaledRotateTexture(mTexture, x, y, xSize, ySize, degree);
             }
         }
 
         #endregion
 
         //----------------------------------------------------------
-        #region プライベート関数
+        #region 内部関数
         //----------------------------------------------------------
 
         /// <summary>

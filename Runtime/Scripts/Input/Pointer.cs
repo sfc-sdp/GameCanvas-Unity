@@ -20,204 +20,218 @@ namespace GameCanvas.Input
         #region フィールド変数
         //----------------------------------------------------------
 
-        private const int cEventNumMax = 10;
-        private const int cIdMouseButton0 = 1;
-        private const int cIdMouseButton1 = 2;
-        private const int cIdMouseButton2 = 3;
+        private const int k_EventNumMax = 10;
+        private readonly int[] k_IdMouseButton = new[] { 1, 2, 3 };
 
-        private readonly Graphic cGraphic;
-        private readonly bool cIsTouchSupported;
-        private readonly bool cIsTouchPressureSupported;
-        private readonly PointerEvent[] cEvents;
-        private readonly PointerEvent[] cPrevEvents;
-        private readonly Dictionary<int, PointerEvent> cBeganEventDict;
-        private readonly int[] cEventFrameCounts;
-        private readonly float[] cEventDulations;
+        private readonly Engine.Time Time;
+        private readonly Graphic Graphic;
+        private readonly bool IsTouchSupported;
+        private readonly bool IsTouchPressureSupported;
+        private readonly PointerEvent[] CurrEvents;
+        private readonly PointerEvent[] PrevEvents;
+        private readonly Dictionary<int, PointerEvent> BeganEventDict;
+        private readonly Dictionary<int, PointerEvent> PrevEventDict;
+        private readonly int[] EventFrameCounts;
+        private readonly float[] EventDurations;
+        private readonly float[] EventDistances;
 
-        private int mEventNum = 0;
-        private int mLastX = 0;
-        private int mLastY = 0;
-        private float mPressureMax = 1f;
+        private int m_EventNum = 0;
+        private bool m_IsTapped = false;
+        private Vector2Int m_LastPoint;
+        private Vector2Int m_LastTappedPoint;
+        private float m_PressureMax = 1f;
+        private float m_TapDurationMax = 0.125f;
+        private float m_TapDistanceMax = 25f;
 
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal Pointer(Graphic graphic)
+        internal Pointer(Engine.Time time, Graphic graphic)
         {
+            Assert.IsNotNull(time);
             Assert.IsNotNull(graphic);
-            cGraphic = graphic;
+            Time = time;
+            Graphic = graphic;
 
-            cIsTouchSupported = UnityEngine.Input.touchSupported && (Application.platform != RuntimePlatform.WindowsEditor);
-            cIsTouchPressureSupported = cIsTouchPressureSupported && UnityEngine.Input.touchPressureSupported;
+            IsTouchSupported = UnityEngine.Input.touchSupported && (Application.platform != RuntimePlatform.WindowsEditor);
+            IsTouchPressureSupported = IsTouchPressureSupported && UnityEngine.Input.touchPressureSupported;
 
-            cEvents = new PointerEvent[cEventNumMax];
-            cPrevEvents = new PointerEvent[cEventNumMax];
-            cBeganEventDict = new Dictionary<int, PointerEvent>(cEventNumMax);
-            cEventFrameCounts = new int[cEventNumMax];
-            cEventDulations = new float[cEventNumMax];
+            CurrEvents = new PointerEvent[k_EventNumMax];
+            PrevEvents = new PointerEvent[k_EventNumMax];
+            BeganEventDict = new Dictionary<int, PointerEvent>(k_EventNumMax);
+            PrevEventDict = new Dictionary<int, PointerEvent>(k_EventNumMax);
+            EventFrameCounts = new int[k_EventNumMax];
+            EventDurations = new float[k_EventNumMax];
+            EventDistances = new float[k_EventNumMax];
         }
 
         public void OnBeforeUpdate()
         {
-            if (cIsTouchSupported)
+            m_IsTapped = false;
+            PrevEventDict.Clear();
+            for (var i = 0; i < m_EventNum; i++)
             {
-                mEventNum = Mathf.Min(UnityEngine.Input.touchCount, cEventNumMax);
-                for (var i = 0; i < mEventNum; ++i)
+                PrevEvents[i] = CurrEvents[i];
+                PrevEventDict.Add(CurrEvents[i].Id, CurrEvents[i]);
+            }
+            
+            if (IsTouchSupported)
+            {
+                m_EventNum = Mathf.Min(UnityEngine.Input.touchCount, k_EventNumMax);
+                for (var i = 0; i < m_EventNum; ++i)
                 {
                     var touch = UnityEngine.Input.GetTouch(i);
-                    cEvents[i] = new PointerEvent(ref touch);
-                    if (cIsTouchPressureSupported)
+                    CurrEvents[i] = new PointerEvent(Time, Graphic, touch);
+                    if (IsTouchPressureSupported)
                     {
-                        mPressureMax = Mathf.Max(mPressureMax, touch.maximumPossiblePressure);
+                        m_PressureMax = Mathf.Max(m_PressureMax, touch.maximumPossiblePressure);
                     }
                 }
             }
             else
             {
-                mEventNum = 0;
+                m_EventNum = 0;
                 Vector2 mousePos = UnityEngine.Input.mousePosition;
 
-                if (UnityEngine.Input.GetMouseButton(0) || UnityEngine.Input.GetMouseButtonUp(0))
+                for (var i = 0; i < k_IdMouseButton.Length; i++)
                 {
-                    var prevEvent = (cPrevEvents[0].Id == cIdMouseButton0)
-                        ? (PointerEvent?)cPrevEvents[0]
-                        : null;
-                    createMouseEvent(out cEvents[mEventNum++], 0, cIdMouseButton0, ref mousePos, ref prevEvent);
-                }
-                if (UnityEngine.Input.GetMouseButton(1) || UnityEngine.Input.GetMouseButtonUp(1))
-                {
-                    var prevEvent = (cPrevEvents[0].Id == cIdMouseButton1)
-                        ? (PointerEvent?)cPrevEvents[0] : (cPrevEvents[1].Id == cIdMouseButton1)
-                        ? (PointerEvent?)cPrevEvents[1]
-                        : null;
-                    createMouseEvent(out cEvents[mEventNum++], 1, cIdMouseButton1, ref mousePos, ref prevEvent);
-                }
-                if (UnityEngine.Input.GetMouseButton(2) || UnityEngine.Input.GetMouseButtonUp(2))
-                {
-                    var prevEvent = (cPrevEvents[0].Id == cIdMouseButton2)
-                        ? (PointerEvent?)cPrevEvents[0] : (cPrevEvents[1].Id == cIdMouseButton2)
-                        ? (PointerEvent?)cPrevEvents[1] : (cPrevEvents[2].Id == cIdMouseButton2)
-                        ? (PointerEvent?)cPrevEvents[2]
-                        : null;
-                    createMouseEvent(out cEvents[mEventNum++], 2, cIdMouseButton2, ref mousePos, ref prevEvent);
+                    var on = UnityEngine.Input.GetMouseButton(i);
+                    var up = UnityEngine.Input.GetMouseButtonUp(i);
+                    if (up || on)
+                    {
+                        var id = k_IdMouseButton[i];
+                        PointerEvent.EPhase phase;
+                        if (up)
+                        {
+                            phase = PointerEvent.EPhase.Ended;
+                        }
+                        else if (PrevEventDict.TryGetValue(id, out var prev))
+                        {
+                            phase = (prev.Phase == PointerEvent.EPhase.Ended) ? PointerEvent.EPhase.Began
+                                : (Mathf.Approximately(prev.Screen.x, mousePos.x) && Mathf.Approximately(prev.Screen.y, mousePos.y)) ? PointerEvent.EPhase.Stationary
+                                : PointerEvent.EPhase.Moved;
+                        }
+                        else
+                        {
+                            phase = PointerEvent.EPhase.Began;
+                        }
+                        CurrEvents[m_EventNum++] = new PointerEvent(Time, Graphic, id, mousePos, phase, PointerEvent.EType.Others);
+                    }
                 }
             }
 
-            if (mEventNum > 0)
+            if (m_EventNum > 0)
             {
-                mLastX = cGraphic.ScreenToCanvasX(cEvents[0].ScreenX);
-                mLastY = cGraphic.ScreenToCanvasY(cEvents[0].ScreenY);
+                m_LastPoint = new Vector2Int(Mathf.RoundToInt(CurrEvents[0].Canvas.x), Mathf.RoundToInt(CurrEvents[0].Canvas.y));
 
-                var currentFrame = UnityEngine.Time.frameCount;
-                var currentTime = UnityEngine.Time.unscaledTime;
-                for (var i = 0; i < mEventNum; ++i)
+                var currentFrame = Time.FrameCount;
+                var currentTime = Time.SinceStartup;
+                for (var i = 0; i < m_EventNum; ++i)
                 {
-                    var id = cEvents[i].Id;
+                    var id = CurrEvents[i].Id;
 
-                    if (cEvents[i].Phase == PointerEvent.EPhase.Began)
+                    if (CurrEvents[i].Phase == PointerEvent.EPhase.Began)
                     {
-                        cEventFrameCounts[i] = 1;
-                        cEventDulations[i] = 0;
-                        cBeganEventDict.Add(id, cEvents[i]);
+                        EventFrameCounts[i] = 1;
+                        EventDurations[i] = 0f;
+                        EventDistances[i] = 0f;
+                        BeganEventDict.Add(id, CurrEvents[i]);
                         continue;
                     }
 
-                    if (!cBeganEventDict.ContainsKey(id))
+                    if (!BeganEventDict.ContainsKey(id))
                     {
-                        Debug.LogWarningFormat("[Pointer] {0} is unknown pointer. phase: {1}", id, cEvents[i].Phase);
+                        Debug.LogWarning($"[{nameof(Pointer)}] {id} is unknown pointer. phase: {CurrEvents[i].Phase}");
                         continue;
                     }
 
-                    cEventFrameCounts[i] = currentFrame - cBeganEventDict[id].Frame + 1;
-                    cEventDulations[i] = currentTime - cBeganEventDict[id].Time;
+                    EventFrameCounts[i] = currentFrame - BeganEventDict[id].Frame + 1;
+                    EventDurations[i] = currentTime - BeganEventDict[id].Time;
+                    EventDistances[i] += Vector2.Distance(CurrEvents[i].Screen, PrevEventDict[id].Screen);
 
-                    if (cEvents[i].Phase == PointerEvent.EPhase.Ended)
+                    if (CurrEvents[i].Phase == PointerEvent.EPhase.Ended)
                     {
-                        cBeganEventDict.Remove(id);
+                        if ((EventDurations[i] < m_TapDurationMax) && (EventDistances[i] < m_TapDistanceMax))
+                        {
+                            m_IsTapped |= true;
+                            m_LastTappedPoint = new Vector2Int(Mathf.RoundToInt(CurrEvents[i].Canvas.x), Mathf.RoundToInt(CurrEvents[i].Canvas.y));
+                        }
+                        BeganEventDict.Remove(id);
                     }
                 }
             }
 
-            for (var i = mEventNum; i < cEventNumMax; ++i)
+            for (var i = m_EventNum; i < CurrEvents.Length; i++)
             {
-                cEvents[i] = default(PointerEvent);
-            }
-            for (var i = 0; i < cEvents.Length; ++i)
-            {
-                cPrevEvents[i] = cEvents[i];
+                CurrEvents[i] = default;
             }
         }
 
-        public int Count { get { return mEventNum; } }
-        public bool HasEvent { get { return (mEventNum > 0); } }
-
-        public PointerEvent GetRaw(ref int i)
+        public int Count { get { return m_EventNum; } }
+        public bool HasEvent { get { return (m_EventNum > 0); } }
+        public bool IsTapped(out int canvasX, out int canvasY)
         {
-            return (i < mEventNum) ? cEvents[i] : default(PointerEvent);
+            canvasX = m_LastTappedPoint.x;
+            canvasY = m_LastTappedPoint.y;
+            return m_IsTapped;
         }
-        public int GetX(ref int i)
+        public bool IsTapped(in RectInt canvasRect)
         {
-            return (i < mEventNum) ? cGraphic.ScreenToCanvasX(cEvents[i].ScreenX) : 0;
-        }
-        public int GetY(ref int i)
-        {
-            return (i < mEventNum) ? cGraphic.ScreenToCanvasY(cEvents[i].ScreenY) : 0;
-        }
-        public bool GetIsBegan(ref int i)
-        {
-            return (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Began) : false;
-        }
-        public bool GetIsEnded(ref int i)
-        {
-            return (i < mEventNum) ? (cEvents[i].Phase == PointerEvent.EPhase.Ended) : false;
-        }
-        public int GetFrameCount(ref int i)
-        {
-            return (i < mEventNum) ? cEventFrameCounts[i] : 0;
-        }
-        public float GetDulation(ref int i)
-        {
-            return (i < mEventNum) ? cEventDulations[i] : 0f;
+            return m_IsTapped && canvasRect.Contains(m_LastTappedPoint);
         }
 
-        public int X { get { return HasEvent ? cGraphic.ScreenToCanvasX(cEvents[0].ScreenX) : 0; } }
-        public int Y { get { return HasEvent ? cGraphic.ScreenToCanvasY(cEvents[0].ScreenY) : 0; } }
-        public bool IsBegan { get { return (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Began); } }
-        public bool IsEnded { get { return (mEventNum > 0 && cEvents[0].Phase == PointerEvent.EPhase.Ended); } }
-        public int FrameCount { get { return HasEvent ? cEventFrameCounts[0] : 0; } }
-        public float Duration { get { return HasEvent ? cEventDulations[0] : 0f; } }
-
-        public int LastX { get { return mLastX; } }
-        public int LastY { get { return mLastY; } }
-
-        public float PressureMax { get { return mPressureMax; } }
-
-        #endregion
-
-        //----------------------------------------------------------
-        #region プライベート関数
-        //----------------------------------------------------------
-
-        private static void createMouseEvent(out PointerEvent e, int button, int id, ref Vector2 mousePos, ref PointerEvent? prev)
+        public PointerEvent GetRaw(in int i)
         {
-            var phase = PointerEvent.EPhase.Began;
-            if (prev.HasValue)
-            {
-                var v = prev.Value;
-                phase = (v.Phase == PointerEvent.EPhase.Ended)
-                    ? PointerEvent.EPhase.Began : (Mathf.Approximately(v.ScreenX, mousePos.x) && Mathf.Approximately(v.ScreenY, mousePos.y))
-                    ? PointerEvent.EPhase.Stationary
-                    : PointerEvent.EPhase.Moved;
-            }
-            if (UnityEngine.Input.GetMouseButtonUp(button)) phase = PointerEvent.EPhase.Ended;
-            e = new PointerEvent(id, (int)mousePos.x, (int)mousePos.y, phase, PointerEvent.EType.Others);
+            return (i < m_EventNum) ? CurrEvents[i] : default;
         }
+        public int GetX(in int i)
+        {
+            return (i < m_EventNum) ? Mathf.RoundToInt(CurrEvents[i].Canvas.x) : 0;
+        }
+        public int GetY(in int i)
+        {
+            return (i < m_EventNum) ? Mathf.RoundToInt(CurrEvents[i].Canvas.y) : 0;
+        }
+        public bool GetIsBegan(in int i)
+        {
+            return (i < m_EventNum) && (CurrEvents[i].Phase == PointerEvent.EPhase.Began);
+        }
+        public bool GetIsEnded(in int i)
+        {
+            return (i < m_EventNum) && (CurrEvents[i].Phase == PointerEvent.EPhase.Ended);
+        }
+        public int GetFrameCount(in int i)
+        {
+            return (i < m_EventNum) ? EventFrameCounts[i] : 0;
+        }
+        public float GetDulation(in int i)
+        {
+            return (i < m_EventNum) ? EventDurations[i] : 0f;
+        }
+
+        public void SetTapSensitivity(in float maxDuration, in float maxDistance)
+        {
+            m_TapDurationMax = maxDuration;
+            m_TapDistanceMax = maxDistance;
+        }
+
+        public int X { get { return (0 < m_EventNum) ? m_LastPoint.x : 0; } }
+        public int Y { get { return (0 < m_EventNum) ? m_LastPoint.y : 0; } }
+        public bool IsBegan { get { return (0 < m_EventNum) && (CurrEvents[0].Phase == PointerEvent.EPhase.Began); } }
+        public bool IsEnded { get { return (0 < m_EventNum) && (CurrEvents[0].Phase == PointerEvent.EPhase.Ended); } }
+        public int FrameCount { get { return (0 < m_EventNum) ? EventFrameCounts[0] : 0; } }
+        public float Duration { get { return (0 < m_EventNum) ? EventDurations[0] : 0f; } }
+
+        public int LastX { get { return m_LastPoint.x; } }
+        public int LastY { get { return m_LastPoint.y; } }
+
+        public float PressureMax { get { return m_PressureMax; } }
 
         #endregion
     }

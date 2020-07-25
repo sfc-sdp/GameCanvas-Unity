@@ -27,7 +27,7 @@ namespace GameCanvas.Engine
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace GameCanvas.Engine
             cCache.Clear();
         }
 
-        public EDownloadState DrawOnlineImage(ref string url, ref int x, ref int y)
+        public EDownloadState DrawOnlineImage(in string url, in int x, in int y)
         {
             if (!cCache.ContainsKey(url))
             {
@@ -62,11 +62,11 @@ namespace GameCanvas.Engine
                 return EDownloadState.Downloading;
             }
 
-            cGraphic.DrawTexture(cache, ref x, ref y);
+            cGraphic.DrawTexture(cache, in x, in y);
             return EDownloadState.Complete;
         }
 
-        public int GetOnlineImageWidth(ref string url)
+        public int GetOnlineImageWidth(in string url)
         {
             if (!cCache.ContainsKey(url))
             {
@@ -81,7 +81,7 @@ namespace GameCanvas.Engine
             return cache.width;
         }
 
-        public int GetOnlineImageHeight(ref string url)
+        public int GetOnlineImageHeight(in string url)
         {
             if (!cCache.ContainsKey(url))
             {
@@ -96,13 +96,14 @@ namespace GameCanvas.Engine
             return cache.height;
         }
 
-        public EDownloadState GetOnlineText(ref string url, ref string text)
+        public EDownloadState GetOnlineText(in string url, out string text)
         {
             if (!cCache.ContainsKey(url))
             {
                 // ダウンロード開始
                 cCache.Add(url, null);
                 cBehaviour.StartCoroutine(DownloadText(url));
+                text = null;
                 return EDownloadState.Begin;
             }
 
@@ -110,6 +111,7 @@ namespace GameCanvas.Engine
             if (cache == null)
             {
                 // ダウンロード中
+                text = null;
                 return EDownloadState.Downloading;
             }
 
@@ -120,7 +122,7 @@ namespace GameCanvas.Engine
         #endregion
 
         //----------------------------------------------------------
-        #region プライベート関数
+        #region 内部関数
         //----------------------------------------------------------
 
         private IEnumerator DownloadImage(string url)

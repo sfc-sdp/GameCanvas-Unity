@@ -115,7 +115,7 @@ namespace GameCanvas
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         public Mov GetMov(int id)
@@ -173,7 +173,7 @@ namespace GameCanvas
         #endregion
 
         //----------------------------------------------------------
-        #region プライベート関数
+        #region 内部関数
         //----------------------------------------------------------
 
         private static void SetupMesh(out Mesh mesh, ref Sprite sprite)

@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace GameCanvas
 {
-    public struct PointerEvent : System.IEquatable<PointerEvent>
+    public readonly struct PointerEvent : System.IEquatable<PointerEvent>
     {
         //----------------------------------------------------------
         #region フィールド変数
@@ -22,13 +22,13 @@ namespace GameCanvas
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// スクリーン座標 (X軸)
+        /// スクリーン座標
         /// </summary>
-        public readonly int ScreenX;
+        public readonly Vector2 Screen;
         /// <summary>
-        /// スクリーン座標 (Y軸)
+        /// キャンバス座標
         /// </summary>
-        public readonly int ScreenY;
+        public readonly Vector2 Canvas;
         /// <summary>
         /// 段階
         /// </summary>
@@ -88,51 +88,38 @@ namespace GameCanvas
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
-        public static bool operator ==(PointerEvent lh, PointerEvent rh)
-        {
-            return lh.Id == rh.Id
-                && lh.ScreenX == rh.ScreenX
-                && lh.ScreenY == rh.ScreenY
-                && lh.Phase == rh.Phase
-                && lh.Type == rh.Type
-                && lh.Pressure == rh.Pressure
-                && lh.TiltX == rh.TiltX
-                && lh.TiltY == rh.TiltY;
-        }
+        public static bool operator ==(PointerEvent lh, PointerEvent rh) => lh.Equals(rh);
 
-        public static bool operator !=(PointerEvent lh, PointerEvent rh)
-        {
-            return !(lh == rh);
-        }
+        public static bool operator !=(PointerEvent lh, PointerEvent rh) => !lh.Equals(rh);
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal PointerEvent(int id, int x, int y, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
+        internal PointerEvent(in Engine.Time time, in Engine.Graphic graphic, int id, Vector2 screen, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
         {
             Id = id;
-            ScreenX = x;
-            ScreenY = y;
+            Screen = screen;
+            graphic.ScreenToCanvas(out Canvas, Screen);
             Phase = phase;
             Type = type;
             TiltX = tiltX;
             TiltY = tiltY;
             Pressure = pressure;
-            Frame = UnityEngine.Time.frameCount;
-            Time = UnityEngine.Time.realtimeSinceStartup;
+            Frame = time.FrameCount;
+            Time = time.SinceStartup;
         }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal PointerEvent(ref Touch touch)
+        internal PointerEvent(in Engine.Time time, in Engine.Graphic graphic, in Touch touch)
         {
             Id = touch.fingerId;
-            ScreenX = (int)touch.position.x;
-            ScreenY = (int)touch.position.y;
+            Screen = new Vector2Int(Mathf.RoundToInt(touch.position.x), Mathf.RoundToInt(touch.position.y));
+            graphic.ScreenToCanvas(out Canvas, Screen);
             Phase = touch.phase == TouchPhase.Began ? EPhase.Began
                 : touch.phase == TouchPhase.Moved ? EPhase.Moved
                 : touch.phase == TouchPhase.Stationary ? EPhase.Stationary
@@ -143,25 +130,29 @@ namespace GameCanvas
             TiltX = touch.azimuthAngle * Mathf.Deg2Rad;
             TiltY = touch.altitudeAngle * Mathf.Deg2Rad;
             Pressure = touch.pressure;
-            Frame = UnityEngine.Time.frameCount;
-            Time = UnityEngine.Time.unscaledTime;
+            Frame = time.FrameCount;
+            Time = time.SinceStartup;
         }
 
         public bool Equals(PointerEvent other)
         {
-            return (this == other);
+            return Id == other.Id
+                && Screen.Equals(other.Screen)
+                && Phase == other.Phase
+                && Type == other.Type
+                && Pressure == other.Pressure
+                && TiltX == other.TiltX
+                && TiltY == other.TiltY;
         }
 
-        public override bool Equals(object obj)
-        {
-            return (obj is PointerEvent && this == (PointerEvent)obj);
-        }
+        public override bool Equals(object obj) => (obj is PointerEvent other) && Equals(other);
 
         public override int GetHashCode()
         {
             return Id.GetHashCode()
-                & ScreenX.GetHashCode() & ScreenY.GetHashCode()
-                & Phase.GetHashCode() & Type.GetHashCode()
+                & Screen.GetHashCode()
+                & Phase.GetHashCode()
+                & Type.GetHashCode()
                 & TiltX.GetHashCode() & TiltY.GetHashCode()
                 & Pressure.GetHashCode();
         }
@@ -169,8 +160,8 @@ namespace GameCanvas
         public override string ToString()
         {
             return (TiltX != 0f || TiltY != 0f)
-                ? $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, tilt: ({TiltX}, {TiltY}), pressure: {Pressure}"
-                : $"{Id}: point: ({ScreenX}, {ScreenY}), phase: {Phase}, pressure: {Pressure}";
+                ? $"{Id}: point: ({Screen.x}, {Screen.y}), phase: {Phase}, tilt: ({TiltX}, {TiltY}), pressure: {Pressure}"
+                : $"{Id}: point: ({Screen.x}, {Screen.y}), phase: {Phase}, pressure: {Pressure}";
         }
 
         #endregion

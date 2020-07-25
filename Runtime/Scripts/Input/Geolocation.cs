@@ -29,7 +29,7 @@ namespace GameCanvas.Input
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         public void OnBeforeUpdate()
@@ -60,7 +60,7 @@ namespace GameCanvas.Input
         public float LastLatitude => mLastLatitude;
         public float LastLongitude => mLastLongitude;
         public long LastTimestamp => (long)mLastTimestamp;
-        public System.DateTimeOffset LastTime => Engine.Time.cUnixZero.AddSeconds(mLastTimestamp);
+        public System.DateTimeOffset LastTime => Engine.Time.UnixZero.AddSeconds(mLastTimestamp);
 
         public void StartService()
         {
@@ -83,7 +83,7 @@ namespace GameCanvas.Input
         #endregion
 
         //----------------------------------------------------------
-        #region プライベート関数
+        #region 内部関数
         //----------------------------------------------------------
 
         /// <summary>
