@@ -48,11 +48,11 @@
       }
     },
     "jp.ac.keio.sfc.sdp": {
-      "version": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.0.3",
+      "version": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "0bbb386d45d813dd33451ed39f4aa7242b738631"
+      "hash": "b377ac699083aadab512d31336db32c76b4e2630"
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",

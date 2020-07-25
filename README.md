@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v2.1](https://img.shields.io/badge/GameCanvas%20API-v2.1-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.Proxy.html)
+[![Latest Release](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v4.1](https://img.shields.io/badge/GameCanvas%20API-v4.1-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/api/GameCanvas.Proxy.html)
 [<img alt="GameCanvas" align="right" src="Assets/GameCanvas/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
@@ -9,8 +9,8 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [UnityHub](https://unity3d.com/jp/get-unity/download)を入手し、Unity 2019.3.11f1, Androidプラグイン, iOSプラグイン, 日本語言語パックを選択してインストールします  
-※ 推奨バージョンは Unity 2019.3.11f1 です。9GB以上の空き容量が必要です  
+1. [UnityHub](https://unity3d.com/jp/get-unity/download)を入手し、Unity 2019.4.5f1, Androidプラグイン, iOSプラグイン, 日本語言語パックを選択してインストールします  
+※ 推奨バージョンは Unity 2019.4.5f1 です。9GB以上の空き容量が必要です  
 ※ インストール方法が分からない方は[こちらの記事](https://creive.me/archives/13376/)も参考にしてください
 
 2. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手・解凍します。UnityHubの開くボタンから解凍したフォルダを選択すると、プロジェクトが開きます

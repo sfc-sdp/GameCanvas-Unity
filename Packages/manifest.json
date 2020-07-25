@@ -5,7 +5,7 @@
     "com.unity.ide.vscode": "1.2.1",
     "com.unity.test-framework": "1.1.14",
     "com.unity.ugui": "1.0.0",
-    "jp.ac.keio.sfc.sdp": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.0.3",
+    "jp.ac.keio.sfc.sdp": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.1.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.audio": "1.0.0",
     "com.unity.modules.imageconversion": "1.0.0",
