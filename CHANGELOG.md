@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 4.1.1
+- [#131](https://github.com/sfc-sdp/GameCanvas-Unity/issues/131) 起動時に iOS, Android 以外のビルドターゲットだったら警告する
+- [#132](https://github.com/sfc-sdp/GameCanvas-Unity/issues/132) 起動時に Game.unity を自動で開く
+- [#133](https://github.com/sfc-sdp/GameCanvas-Unity/issues/133) エディタ挙動のカスタマイズ機能
 ## 4.1.0
 - [#53](https://github.com/sfc-sdp/GameCanvas-Unity/issues/53) 一時停止イベントと再開イベントの追加 (`PauseGame`, `ResumeGame`)
 - [#127](https://github.com/sfc-sdp/GameCanvas-Unity/issues/127) より正確なフレームレートの実現 (`gc.SetFrameInterval`)

@@ -44,7 +44,7 @@ namespace GameCanvas.Editor
         #endregion
 
         //----------------------------------------------------------
-        #region プライベート関数
+        #region 内部関数
         //----------------------------------------------------------
 
         int IOrderedCallback.callbackOrder { get { return 0; } }

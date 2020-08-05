@@ -7,8 +7,8 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
-using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -109,7 +109,6 @@ namespace GameCanvas.Editor
         #region パブリック関数
         //----------------------------------------------------------
 
-        [MenuItem("GameCanvas/アプリをビルドする")]
         public static void OpenWindow()
         {
             GetWindow<Builder>(true).Show();
@@ -197,8 +196,48 @@ namespace GameCanvas.Editor
         #endregion
 
         //----------------------------------------------------------
-        #region プライベート関数
+        #region 内部関数
         //----------------------------------------------------------
+
+        internal static void OnLaunch()
+        {
+            if (!EditorSettings.CurrentSettings.CheckBuildTargetOnLaunchEditor) return;
+
+            switch (EditorUserBuildSettings.activeBuildTarget)
+            {
+                case BuildTarget.iOS:
+                case BuildTarget.Android:
+                    return;
+            }
+
+            const string title = "GameCanvas";
+            const string message = "ビルドターゲットがスマートデバイス以外に設定されています。切り替えますか？";
+            const string button0 = "iOSに設定";
+            const string button1 = "このまま";
+            const string button2 = "Androidに設定";
+            switch (EditorUtility.DisplayDialogComplex(title, message, button0, button1, button2))
+            {
+                case 0:
+                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.iOS, BuildTarget.iOS);
+                    break;
+
+                case 2:
+                    EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 現在有効なシーンの一覧を取得します
+        /// </summary>
+        /// <returns></returns>
+        internal static string[] GetEnabledScenePaths()
+        {
+            return EditorBuildSettings.scenes
+                .Where(scene => scene.enabled)
+                .Select(scene => scene.path)
+                .ToArray();
+        }
 
         private new void Show()
         {
@@ -357,28 +396,6 @@ namespace GameCanvas.Editor
                     mOption.mPlatform = Platform.iOS;
                     break;
             }
-        }
-
-        private void SwitchPlatform(Platform platform)
-        {
-            // TODO
-            throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// 現在有効なシーンの一覧を取得します
-        /// </summary>
-        /// <returns></returns>
-        internal static string[] GetEnabledScenePaths()
-        {
-            var scenePathList = new List<string>();
-
-            foreach (var scene in EditorBuildSettings.scenes)
-            {
-                if (scene.enabled) scenePathList.Add(scene.path);
-            }
-
-            return scenePathList.ToArray();
         }
 
         #endregion

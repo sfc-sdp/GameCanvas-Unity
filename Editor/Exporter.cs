@@ -11,13 +11,12 @@ using UnityEditor;
 
 namespace GameCanvas.Editor
 {
-    public sealed class Exporter
+    static class Exporter
     {
         //----------------------------------------------------------
         #region パブリック関数
         //----------------------------------------------------------
 
-        [MenuItem("GameCanvas/パッケージを出力する")]
         public static void ExportPackage()
         {
             var path = EditorUtility.SaveFilePanel("パッケージ出力", "", "GameCanvas.unitypackage", "unitypackage");
