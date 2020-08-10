@@ -1,4 +1,6 @@
-using Sequence = System.Collections.IEnumerator;
+using GameCanvas;
+using Unity.Mathematics;
+using UnityEngine;
 
 /// <summary>
 /// ゲームクラス。

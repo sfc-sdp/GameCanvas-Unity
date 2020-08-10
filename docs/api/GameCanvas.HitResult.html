@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct PointerEvent
+    <title>Struct HitResult
    | GameCanvas </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct PointerEvent
+    <meta name="title" content="Struct HitResult
    | GameCanvas ">
     <meta name="generator" content="docfx 2.56.1.0">
     
@@ -29,16 +29,16 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.PointerEvent">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.HitResult">
   
   
-  <h1 id="GameCanvas_PointerEvent" data-uid="GameCanvas.PointerEvent" class="text-break">Struct PointerEvent
+  <h1 id="GameCanvas_HitResult" data-uid="GameCanvas.HitResult" class="text-break">Struct HitResult
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="GameCanvas.PointerEvent.html">PointerEvent</a>&gt;</div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="GameCanvas.HitResult.html">HitResult</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -54,19 +54,19 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
   <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_PointerEvent_syntax">Syntax</h5>
+  <h5 id="GameCanvas_HitResult_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct PointerEvent : IEquatable&lt;PointerEvent&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public struct HitResult : IEquatable&lt;HitResult&gt;</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
-  <h4 id="GameCanvas_PointerEvent_Canvas" data-uid="GameCanvas.PointerEvent.Canvas">Canvas</h4>
-  <div class="markdown level1 summary"><p>キャンバス座標</p>
+  <h4 id="GameCanvas_HitResult_HitNormal" data-uid="GameCanvas.HitResult.HitNormal">HitNormal</h4>
+  <div class="markdown level1 summary"><p>衝突点の法線</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 Canvas</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly float2 HitNormal</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -83,105 +83,13 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="GameCanvas_PointerEvent_Frame" data-uid="GameCanvas.PointerEvent.Frame">Frame</h4>
-  <div class="markdown level1 summary"><p>フレーム番号</p>
+  <h4 id="GameCanvas_HitResult_HitPosition" data-uid="GameCanvas.HitResult.HitPosition">HitPosition</h4>
+  <div class="markdown level1 summary"><p>衝突点</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly int Frame</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_Id" data-uid="GameCanvas.PointerEvent.Id">Id</h4>
-  <div class="markdown level1 summary"><p>識別子</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly int Id</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_Phase" data-uid="GameCanvas.PointerEvent.Phase">Phase</h4>
-  <div class="markdown level1 summary"><p>段階</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly PointerEvent.EPhase Phase</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.EPhase.html">PointerEvent.EPhase</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_Pressure" data-uid="GameCanvas.PointerEvent.Pressure">Pressure</h4>
-  <div class="markdown level1 summary"><p>圧力 (検知できない場合は1)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float Pressure</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_Screen" data-uid="GameCanvas.PointerEvent.Screen">Screen</h4>
-  <div class="markdown level1 summary"><p>スクリーン座標</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 Screen</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly float2 HitPosition</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,13 +106,83 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="GameCanvas_PointerEvent_TiltX" data-uid="GameCanvas.PointerEvent.TiltX">TiltX</h4>
-  <div class="markdown level1 summary"><p>傾き (X-Z面)</p>
+  <h4 id="GameCanvas_HitResult_ModifiedDelta" data-uid="GameCanvas.HitResult.ModifiedDelta">ModifiedDelta</h4>
+  <div class="markdown level1 summary"><p>めり込まないよう良しなに修正された移動量ベクトル</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float TiltX</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly float2 ModifiedDelta</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="GameCanvas_HitResult_SinkVecInv" data-uid="GameCanvas.HitResult.SinkVecInv">SinkVecInv</h4>
+  <div class="markdown level1 summary"><p>めり込み量の逆ベクトル</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 SinkVecInv</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="GameCanvas_HitResult_SweepPosition" data-uid="GameCanvas.HitResult.SweepPosition">SweepPosition</h4>
+  <div class="markdown level1 summary"><p>めり込む直前のオブジェクト座標</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 SweepPosition</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="GameCanvas_HitResult_SweepRatio" data-uid="GameCanvas.HitResult.SweepRatio">SweepRatio</h4>
+  <div class="markdown level1 summary"><p>移動量に対して、めり込む直前までの移動量の割合。
+移動量の指定のないメソッドでは常に1となる。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float SweepRatio</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -217,88 +195,19 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_TiltY" data-uid="GameCanvas.PointerEvent.TiltY">TiltY</h4>
-  <div class="markdown level1 summary"><p>傾き (Y-Z面)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float TiltY</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_Time" data-uid="GameCanvas.PointerEvent.Time">Time</h4>
-  <div class="markdown level1 summary"><p>起動からの経過秒数</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float Time</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_PointerEvent_Type" data-uid="GameCanvas.PointerEvent.Type">Type</h4>
-  <div class="markdown level1 summary"><p>種別</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly PointerEvent.EType Type</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.EType.html">PointerEvent.EType</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="GameCanvas_PointerEvent_Equals_" data-uid="GameCanvas.PointerEvent.Equals*"></a>
-  <h4 id="GameCanvas_PointerEvent_Equals_GameCanvas_PointerEvent_" data-uid="GameCanvas.PointerEvent.Equals(GameCanvas.PointerEvent)">Equals(PointerEvent)</h4>
+  <a id="GameCanvas_HitResult_Equals_" data-uid="GameCanvas.HitResult.Equals*"></a>
+  <h4 id="GameCanvas_HitResult_Equals_GameCanvas_HitResult_" data-uid="GameCanvas.HitResult.Equals(GameCanvas.HitResult)">Equals(HitResult)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(PointerEvent other)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Equals(HitResult other)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -311,7 +220,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.html">PointerEvent</a></td>
+        <td><a class="xref" href="GameCanvas.HitResult.html">HitResult</a></td>
         <td><span class="parametername">other</span></td>
         <td></td>
       </tr>
@@ -332,8 +241,8 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_PointerEvent_Equals_" data-uid="GameCanvas.PointerEvent.Equals*"></a>
-  <h4 id="GameCanvas_PointerEvent_Equals_System_Object_" data-uid="GameCanvas.PointerEvent.Equals(System.Object)">Equals(Object)</h4>
+  <a id="GameCanvas_HitResult_Equals_" data-uid="GameCanvas.HitResult.Equals*"></a>
+  <h4 id="GameCanvas_HitResult_Equals_System_Object_" data-uid="GameCanvas.HitResult.Equals(System.Object)">Equals(Object)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -374,8 +283,8 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
-  <a id="GameCanvas_PointerEvent_GetHashCode_" data-uid="GameCanvas.PointerEvent.GetHashCode*"></a>
-  <h4 id="GameCanvas_PointerEvent_GetHashCode" data-uid="GameCanvas.PointerEvent.GetHashCode">GetHashCode()</h4>
+  <a id="GameCanvas_HitResult_GetHashCode_" data-uid="GameCanvas.HitResult.GetHashCode*"></a>
+  <h4 id="GameCanvas_HitResult_GetHashCode" data-uid="GameCanvas.HitResult.GetHashCode">GetHashCode()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -399,8 +308,8 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">System.ValueType.GetHashCode()</span></div>
-  <a id="GameCanvas_PointerEvent_ToString_" data-uid="GameCanvas.PointerEvent.ToString*"></a>
-  <h4 id="GameCanvas_PointerEvent_ToString" data-uid="GameCanvas.PointerEvent.ToString">ToString()</h4>
+  <a id="GameCanvas_HitResult_ToString_" data-uid="GameCanvas.HitResult.ToString*"></a>
+  <h4 id="GameCanvas_HitResult_ToString" data-uid="GameCanvas.HitResult.ToString">ToString()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -426,13 +335,13 @@
   <div><span class="xref">System.ValueType.ToString()</span></div>
   <h3 id="operators">Operators
   </h3>
-  <a id="GameCanvas_PointerEvent_op_Equality_" data-uid="GameCanvas.PointerEvent.op_Equality*"></a>
-  <h4 id="GameCanvas_PointerEvent_op_Equality_GameCanvas_PointerEvent_GameCanvas_PointerEvent_" data-uid="GameCanvas.PointerEvent.op_Equality(GameCanvas.PointerEvent,GameCanvas.PointerEvent)">Equality(PointerEvent, PointerEvent)</h4>
+  <a id="GameCanvas_HitResult_op_Equality_" data-uid="GameCanvas.HitResult.op_Equality*"></a>
+  <h4 id="GameCanvas_HitResult_op_Equality_GameCanvas_HitResult_GameCanvas_HitResult_" data-uid="GameCanvas.HitResult.op_Equality(GameCanvas.HitResult,GameCanvas.HitResult)">Equality(HitResult, HitResult)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(PointerEvent lh, PointerEvent rh)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool operator ==(HitResult lh, HitResult rh)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -445,12 +354,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.html">PointerEvent</a></td>
+        <td><a class="xref" href="GameCanvas.HitResult.html">HitResult</a></td>
         <td><span class="parametername">lh</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.html">PointerEvent</a></td>
+        <td><a class="xref" href="GameCanvas.HitResult.html">HitResult</a></td>
         <td><span class="parametername">rh</span></td>
         <td></td>
       </tr>
@@ -471,13 +380,13 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_PointerEvent_op_Inequality_" data-uid="GameCanvas.PointerEvent.op_Inequality*"></a>
-  <h4 id="GameCanvas_PointerEvent_op_Inequality_GameCanvas_PointerEvent_GameCanvas_PointerEvent_" data-uid="GameCanvas.PointerEvent.op_Inequality(GameCanvas.PointerEvent,GameCanvas.PointerEvent)">Inequality(PointerEvent, PointerEvent)</h4>
+  <a id="GameCanvas_HitResult_op_Inequality_" data-uid="GameCanvas.HitResult.op_Inequality*"></a>
+  <h4 id="GameCanvas_HitResult_op_Inequality_GameCanvas_HitResult_GameCanvas_HitResult_" data-uid="GameCanvas.HitResult.op_Inequality(GameCanvas.HitResult,GameCanvas.HitResult)">Inequality(HitResult, HitResult)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(PointerEvent lh, PointerEvent rh)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool operator !=(HitResult lh, HitResult rh)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -490,12 +399,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.html">PointerEvent</a></td>
+        <td><a class="xref" href="GameCanvas.HitResult.html">HitResult</a></td>
         <td><span class="parametername">lh</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="GameCanvas.PointerEvent.html">PointerEvent</a></td>
+        <td><a class="xref" href="GameCanvas.HitResult.html">HitResult</a></td>
         <td><span class="parametername">rh</span></td>
         <td></td>
       </tr>

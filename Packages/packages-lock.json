@@ -7,13 +7,6 @@
       "dependencies": {},
       "hash": "087dd7026916c225f2f83fe92d26c0740e718ff5"
     },
-    "com.unity.collab-proxy": {
-      "version": "1.2.16",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ext.nunit": {
       "version": "1.0.0",
       "depth": 1,
@@ -24,6 +17,13 @@
     "com.unity.ide.vscode": {
       "version": "1.2.1",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.mathematics": {
+      "version": "1.2.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -48,11 +48,13 @@
       }
     },
     "jp.ac.keio.sfc.sdp": {
-      "version": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.1.1",
+      "version": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.2.0",
       "depth": 0,
       "source": "git",
-      "dependencies": {},
-      "hash": "1bef5c944ba481e4c909843953c07f5cec158e85"
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1"
+      },
+      "hash": "b5de59e0f89c7c90f62fc384d6444c231a88994a"
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IScene
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IScene
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.IScene">
+  
+  
+  <h1 id="GameCanvas_IScene" data-uid="GameCanvas.IScene" class="text-break">Interface IScene
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_IScene_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IScene</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_IScene_DrawScene_" data-uid="GameCanvas.IScene.DrawScene*"></a>
+  <h4 id="GameCanvas_IScene_DrawScene" data-uid="GameCanvas.IScene.DrawScene">DrawScene()</h4>
+  <div class="markdown level1 summary"><p>シーンの描画処理。毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DrawScene()</code></pre>
+  </div>
+  <a id="GameCanvas_IScene_EnterScene_" data-uid="GameCanvas.IScene.EnterScene*"></a>
+  <h4 id="GameCanvas_IScene_EnterScene_System_Object_" data-uid="GameCanvas.IScene.EnterScene(System.Object)">EnterScene(Object)</h4>
+  <div class="markdown level1 summary"><p>シーンの開始処理。シーン遷移時にGameCanvasにより自動的に呼び出されます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void EnterScene(object state)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p><a class="xref" href="GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(Object)</a>を通じて渡される任意の値。未設定の場合はnull</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IScene_LeaveScene_" data-uid="GameCanvas.IScene.LeaveScene*"></a>
+  <h4 id="GameCanvas_IScene_LeaveScene" data-uid="GameCanvas.IScene.LeaveScene">LeaveScene()</h4>
+  <div class="markdown level1 summary"><p>シーンの終了処理。シーン遷移時にGameCanvasにより自動的に呼び出されます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LeaveScene()</code></pre>
+  </div>
+  <a id="GameCanvas_IScene_PauseScene_" data-uid="GameCanvas.IScene.PauseScene*"></a>
+  <h4 id="GameCanvas_IScene_PauseScene" data-uid="GameCanvas.IScene.PauseScene">PauseScene()</h4>
+  <div class="markdown level1 summary"><p>シーンの中断処理。アプリが一時停止する直前にGameCanvasにより自動的に呼び出されます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PauseScene()</code></pre>
+  </div>
+  <a id="GameCanvas_IScene_ResumeScene_" data-uid="GameCanvas.IScene.ResumeScene*"></a>
+  <h4 id="GameCanvas_IScene_ResumeScene" data-uid="GameCanvas.IScene.ResumeScene">ResumeScene()</h4>
+  <div class="markdown level1 summary"><p>シーンの再開処理。アプリが再開する直前にGameCanvasにより自動的に呼び出されます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ResumeScene()</code></pre>
+  </div>
+  <a id="GameCanvas_IScene_UpdateScene_" data-uid="GameCanvas.IScene.UpdateScene*"></a>
+  <h4 id="GameCanvas_IScene_UpdateScene" data-uid="GameCanvas.IScene.UpdateScene">UpdateScene()</h4>
+  <div class="markdown level1 summary"><p>シーンの計算処理。毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます。</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateScene()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

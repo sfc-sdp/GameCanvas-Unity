@@ -43,7 +43,31 @@
       "output": {
         ".html": {
           "relative_path": "note/compatibility.html",
-          "hash": "4mj8WABjF90EJn4TQyaETw=="
+          "hash": "JJcmEWqF4DZFrgx+mOQYeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Actor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Actor.html",
+          "hash": "5X2iiKOuiruaqPAe5vwwDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.AffinTransform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.AffinTransform.html",
+          "hash": "PwnCKvkiUvHa3elH/03rRQ=="
         }
       },
       "is_incremental": false,
@@ -55,7 +79,31 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Box.html",
-          "hash": "fvaCNUCe52f+P4WorNV3EQ=="
+          "hash": "1yHqxlhLpBnaOSkYXD3gcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Box3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Box3D.html",
+          "hash": "y/PtYSdWCvdlWjQ2mLnJ0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Circle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Circle.html",
+          "hash": "N4IGbuwl9LeFLlsx3tA+kg=="
         }
       },
       "is_incremental": false,
@@ -70,7 +118,7 @@
           "hash": "ntHMgaPKRSEMAlK92T03cQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -94,18 +142,6 @@
           "hash": "MIdROO/8wfLTR/glPAZUHA=="
         }
       },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/GameCanvas.Engine.Collision.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/GameCanvas.Engine.Collision.html",
-          "hash": "ecxVCzeqK8c3wd9JmNddpw=="
-        }
-      },
       "is_incremental": false,
       "version": ""
     },
@@ -115,7 +151,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Engine.Graphic.html",
-          "hash": "fJcFxrrtYIt15SSSukLW0A=="
+          "hash": "WWbWr7kB98aanNXhTlpgbw=="
         }
       },
       "is_incremental": false,
@@ -135,11 +171,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Engine.Physics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Engine.Physics.html",
+          "hash": "gbXIOBizHwqvF+6KN/Dx/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/GameCanvas.Engine.Sound.yml",
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Engine.Sound.html",
-          "hash": "kD1Ir3ZXzXXMOK4W9A/U+w=="
+          "hash": "hkvA6O0DogRU7L8mYCw51g=="
         }
       },
       "is_incremental": false,
@@ -163,7 +211,55 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Engine.html",
-          "hash": "MsRXfcRBjqdgheJyquYOLA=="
+          "hash": "JMzM11/caD2kyv/SFWXX4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.GameBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.GameBase.html",
+          "hash": "6WfFki081UwXQm0b563aMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.HitResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.HitResult.html",
+          "hash": "IeRYHsw9y3nUR21nJlRkyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.IActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.IActor.html",
+          "hash": "CIuyrO5+caQ6GrOOdixRlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.IScene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.IScene.html",
+          "hash": "Ua1YvQdYnaVRHP8hjUoMhw=="
         }
       },
       "is_incremental": false,
@@ -175,7 +271,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.Accelerometer.html",
-          "hash": "MHpJ/DYHp+JpZdoUrf1PmQ=="
+          "hash": "auVn22rsPD/Ilkw1LDlr+w=="
         }
       },
       "is_incremental": false,
@@ -235,7 +331,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.Keyboard.html",
-          "hash": "gW6KfMaY+/miCBENaoxUug=="
+          "hash": "9LfNqSKcxM94/8v1vPmrdA=="
         }
       },
       "is_incremental": false,
@@ -259,7 +355,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Input.Pointer.html",
-          "hash": "gG00uR8NOxIw5momkdA7/g=="
+          "hash": "35PNm4Sm4QhKqVv9bY5e9g=="
         }
       },
       "is_incremental": false,
@@ -279,6 +375,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Line.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Line.html",
+          "hash": "RSdP4i4No33TRS8GZgyzRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Math.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Math.html",
+          "hash": "3w4cm+QK4/Zun+cWkhITHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/GameCanvas.PointerEvent.EPhase.yml",
       "output": {
         ".html": {
@@ -286,7 +406,7 @@
           "hash": "RSaUGhgjC/MgidmnuHJngw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -298,7 +418,7 @@
           "hash": "tCk/stxpLmLe52By0kVvVA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -307,7 +427,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.PointerEvent.html",
-          "hash": "NT+QAq5fUKJwauf49DrIwQ=="
+          "hash": "Gk+1Z6wtawSZIr+i9Py7Lg=="
         }
       },
       "is_incremental": false,
@@ -319,7 +439,55 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.Proxy.html",
-          "hash": "I2wOSuuyQBcIux2kk8Khjw=="
+          "hash": "3sjnN8pIpcvCgT0+84USlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Scene.ActorEnumerator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Scene.ActorEnumerator-1.html",
+          "hash": "uBrXsZMQrIQqYmGZ8M/pIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Scene.ReadOnlyActorList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Scene.ReadOnlyActorList-1.html",
+          "hash": "YmF1BHozfJLwyv2llSa9mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Scene.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Scene.html",
+          "hash": "P37TDPANqeN88HjSOzLfHQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/GameCanvas.Segment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GameCanvas.Segment.html",
+          "hash": "HNiwf0YcPEdKaDOPJV42Xw=="
         }
       },
       "is_incremental": false,
@@ -331,7 +499,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.html",
-          "hash": "+xD2ncwA0+BocwpFQWqrSQ=="
+          "hash": "UbK4WxpoPJF+Q1gQx3dntQ=="
         }
       },
       "is_incremental": false,
@@ -352,23 +520,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because config changed.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ConfigChanged"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 2,
-          "skipped_file_count": 2
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 25,
-          "skipped_file_count": 8
+          "total_file_count": 39,
+          "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
