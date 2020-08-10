@@ -17,7 +17,7 @@ namespace GameCanvas.Engine
     public sealed class Network
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private readonly BehaviourBase cBehaviour;

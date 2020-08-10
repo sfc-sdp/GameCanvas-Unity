@@ -15,7 +15,7 @@ namespace GameCanvas.Input
     {
 #if !GC_DISABLE_GEOLOCATION
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private float mLastAltitude;

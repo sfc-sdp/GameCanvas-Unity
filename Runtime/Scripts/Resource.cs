@@ -17,7 +17,7 @@ namespace GameCanvas
     public sealed class Resource : ScriptableObject
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
 #pragma warning disable 0649

@@ -15,7 +15,7 @@ namespace GameCanvas.Input
     {
 #if !GC_DISABLE_ACCELEROMETER
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private readonly Vector3[] cEvents;
@@ -57,12 +57,12 @@ namespace GameCanvas.Input
         public float LastZ => mLast.z;
 
         public int EventCount => mEventCount;
-        public float GetX(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].x : 0f;
-        public float GetY(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].y : 0f;
-        public float GetZ(ref int i) => (i >= 0 && i < mEventCount) ? cEvents[i].z : 0f;
-        public float GetNormalizedX(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].x : 0f;
-        public float GetNormalizedY(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].y : 0f;
-        public float GetNormalizedZ(ref int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].z : 0f;
+        public float GetX(in int i) => (i >= 0 && i < mEventCount) ? cEvents[i].x : 0f;
+        public float GetY(in int i) => (i >= 0 && i < mEventCount) ? cEvents[i].y : 0f;
+        public float GetZ(in int i) => (i >= 0 && i < mEventCount) ? cEvents[i].z : 0f;
+        public float GetNormalizedX(in int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].x : 0f;
+        public float GetNormalizedY(in int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].y : 0f;
+        public float GetNormalizedZ(in int i) => (i >= 0 && i < mEventCount) ? cNormalizedEvents[i].z : 0f;
 
         #endregion
 #else

@@ -18,7 +18,7 @@ namespace GameCanvas.Engine
     public sealed class Sound
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private const int cTrackNum = 4;
@@ -93,7 +93,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void Play(int soundId, bool loop, ESoundTrack track)
+        public void Play(in int soundId, in bool loop, in ESoundTrack track)
         {
             if (track == ESoundTrack.SE)
             {
@@ -126,7 +126,7 @@ namespace GameCanvas.Engine
             cSources[i].Play();
         }
 
-        public void Stop(ESoundTrack track)
+        public void Stop(in ESoundTrack track)
         {
             var i = (int)track;
             if (i >= cTrackBgmNum) return;
@@ -140,7 +140,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void Pause(ESoundTrack track)
+        public void Pause(in ESoundTrack track)
         {
             var i = (int)track;
             if (i >= cTrackBgmNum) return;
@@ -153,7 +153,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void Unpause(ESoundTrack track)
+        public void Unpause(in ESoundTrack track)
         {
             var i = (int)track;
             if (i >= cTrackBgmNum) return;
@@ -166,20 +166,20 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void PlaySE(int soundId)
+        public void PlaySE(in int soundId)
         {
             var sound = cRes.GetSnd(soundId);
             if (sound.Data == null) return;
             cSources[(int)ESoundTrack.SE].PlayOneShot(sound.Data);
         }
 
-        public void SetVolume(ref int volume, ESoundTrack track)
+        public void SetVolume(in int volume, in ESoundTrack track)
         {
             var decibel = 20f * Mathf.Log10(volume * 0.01f);
             SetVolume(decibel, track);
         }
 
-        public void SetVolume(float decibel, ESoundTrack track)
+        public void SetVolume(float decibel, in ESoundTrack track)
         {
             string key;
             switch (track)

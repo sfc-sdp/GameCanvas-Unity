@@ -9,20 +9,23 @@
 /*------------------------------------------------------------*/
 using System.Collections;
 
-public abstract class GameBase : GameCanvas.BehaviourBase
+namespace GameCanvas
 {
-    public override void InitGame() { }
-
-    public override void UpdateGame() { }
-
-    public override void DrawGame() { }
-
-    public override void PauseGame() { }
-
-    public override void ResumeGame() { }
-
-    public override IEnumerator Entry()
+    public abstract class GameBase : BehaviourBase
     {
-        yield break;
+        public override void InitGame() { }
+
+        public override void UpdateGame() { }
+
+        public override void DrawGame() { }
+
+        public override void PauseGame() { }
+
+        public override void ResumeGame() { }
+
+        public override IEnumerator Entry()
+        {
+            yield break;
+        }
     }
 }

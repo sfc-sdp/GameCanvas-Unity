@@ -9,6 +9,7 @@
 /*------------------------------------------------------------*/
 using GameCanvas.Engine;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -17,7 +18,7 @@ namespace GameCanvas.Input
     public sealed class Pointer
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private const int k_EventNumMax = 10;
@@ -37,8 +38,8 @@ namespace GameCanvas.Input
 
         private int m_EventNum = 0;
         private bool m_IsTapped = false;
-        private Vector2Int m_LastPoint;
-        private Vector2Int m_LastTappedPoint;
+        private float2 m_LastPoint;
+        private float2 m_LastTappedPoint;
         private float m_PressureMax = 1f;
         private float m_TapDurationMax = 0.125f;
         private float m_TapDistanceMax = 25f;
@@ -97,7 +98,7 @@ namespace GameCanvas.Input
             else
             {
                 m_EventNum = 0;
-                Vector2 mousePos = UnityEngine.Input.mousePosition;
+                float3 mousePos = UnityEngine.Input.mousePosition;
 
                 for (var i = 0; i < k_IdMouseButton.Length; i++)
                 {
@@ -114,21 +115,21 @@ namespace GameCanvas.Input
                         else if (PrevEventDict.TryGetValue(id, out var prev))
                         {
                             phase = (prev.Phase == PointerEvent.EPhase.Ended) ? PointerEvent.EPhase.Began
-                                : (Mathf.Approximately(prev.Screen.x, mousePos.x) && Mathf.Approximately(prev.Screen.y, mousePos.y)) ? PointerEvent.EPhase.Stationary
+                                : (Math.AlmostSame(prev.Screen.x, mousePos.x) && Math.AlmostSame(prev.Screen.y, mousePos.y)) ? PointerEvent.EPhase.Stationary
                                 : PointerEvent.EPhase.Moved;
                         }
                         else
                         {
                             phase = PointerEvent.EPhase.Began;
                         }
-                        CurrEvents[m_EventNum++] = new PointerEvent(Time, Graphic, id, mousePos, phase, PointerEvent.EType.Others);
+                        CurrEvents[m_EventNum++] = new PointerEvent(Time, Graphic, id, new float2(mousePos.x, mousePos.y), phase, PointerEvent.EType.Others);
                     }
                 }
             }
 
             if (m_EventNum > 0)
             {
-                m_LastPoint = new Vector2Int(Mathf.RoundToInt(CurrEvents[0].Canvas.x), Mathf.RoundToInt(CurrEvents[0].Canvas.y));
+                m_LastPoint = CurrEvents[0].Canvas;
 
                 var currentFrame = Time.FrameCount;
                 var currentTime = Time.SinceStartup;
@@ -153,14 +154,14 @@ namespace GameCanvas.Input
 
                     EventFrameCounts[i] = currentFrame - BeganEventDict[id].Frame + 1;
                     EventDurations[i] = currentTime - BeganEventDict[id].Time;
-                    EventDistances[i] += Vector2.Distance(CurrEvents[i].Screen, PrevEventDict[id].Screen);
+                    EventDistances[i] += math.distance(CurrEvents[i].Screen, PrevEventDict[id].Screen);
 
                     if (CurrEvents[i].Phase == PointerEvent.EPhase.Ended)
                     {
                         if ((EventDurations[i] < m_TapDurationMax) && (EventDistances[i] < m_TapDistanceMax))
                         {
                             m_IsTapped |= true;
-                            m_LastTappedPoint = new Vector2Int(Mathf.RoundToInt(CurrEvents[i].Canvas.x), Mathf.RoundToInt(CurrEvents[i].Canvas.y));
+                            m_LastTappedPoint = CurrEvents[i].Canvas;
                         }
                         BeganEventDict.Remove(id);
                     }
@@ -175,20 +176,36 @@ namespace GameCanvas.Input
 
         public int Count { get { return m_EventNum; } }
         public bool HasEvent { get { return (m_EventNum > 0); } }
+        public bool IsTapped() => m_IsTapped;
         public bool IsTapped(out int canvasX, out int canvasY)
         {
-            canvasX = m_LastTappedPoint.x;
-            canvasY = m_LastTappedPoint.y;
+            canvasX = Mathf.RoundToInt(m_LastTappedPoint.x);
+            canvasY = Mathf.RoundToInt(m_LastTappedPoint.y);
             return m_IsTapped;
         }
-        public bool IsTapped(in RectInt canvasRect)
+        public bool IsTapped(out float2 point)
+        {
+            point = m_LastTappedPoint;
+            return m_IsTapped;
+        }
+        public bool IsTapped(in Rect canvasRect)
         {
             return m_IsTapped && canvasRect.Contains(m_LastTappedPoint);
         }
 
-        public PointerEvent GetRaw(in int i)
+        public PointerEvent GetEvent(in int i)
         {
             return (i < m_EventNum) ? CurrEvents[i] : default;
+        }
+        public bool TryGetEvent(in int i, out PointerEvent e)
+        {
+            if (i >= 0 && i < m_EventNum)
+            {
+                e = CurrEvents[i];
+                return true;
+            }
+            e = default;
+            return false;
         }
         public int GetX(in int i)
         {
@@ -221,15 +238,15 @@ namespace GameCanvas.Input
             m_TapDistanceMax = maxDistance;
         }
 
-        public int X { get { return (0 < m_EventNum) ? m_LastPoint.x : 0; } }
-        public int Y { get { return (0 < m_EventNum) ? m_LastPoint.y : 0; } }
+        public int X { get { return (0 < m_EventNum) ? Mathf.RoundToInt(m_LastPoint.x) : 0; } }
+        public int Y { get { return (0 < m_EventNum) ? Mathf.RoundToInt(m_LastPoint.y) : 0; } }
         public bool IsBegan { get { return (0 < m_EventNum) && (CurrEvents[0].Phase == PointerEvent.EPhase.Began); } }
         public bool IsEnded { get { return (0 < m_EventNum) && (CurrEvents[0].Phase == PointerEvent.EPhase.Ended); } }
         public int FrameCount { get { return (0 < m_EventNum) ? EventFrameCounts[0] : 0; } }
         public float Duration { get { return (0 < m_EventNum) ? EventDurations[0] : 0f; } }
 
-        public int LastX { get { return m_LastPoint.x; } }
-        public int LastY { get { return m_LastPoint.y; } }
+        public int LastX { get { return Mathf.RoundToInt(m_LastPoint.x); } }
+        public int LastY { get { return Mathf.RoundToInt(m_LastPoint.y); } }
 
         public float PressureMax { get { return m_PressureMax; } }
 

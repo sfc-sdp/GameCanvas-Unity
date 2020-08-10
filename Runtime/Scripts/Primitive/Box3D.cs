@@ -11,10 +11,10 @@ using UnityEngine;
 
 namespace GameCanvas
 {
-    public struct Box : System.IEquatable<Box>
+    public readonly struct Box3D : System.IEquatable<Box3D>
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         public readonly float MinX;
@@ -30,11 +30,11 @@ namespace GameCanvas
         #region 公開関数
         //----------------------------------------------------------
 
-        public static bool operator ==(Box lh, Box rh)
+        public static bool operator ==(Box3D lh, Box3D rh)
             => lh.MinX == rh.MinX && lh.MinY == rh.MinY && lh.MinZ == rh.MinZ
             && lh.MaxX == rh.MaxX && lh.MaxY == rh.MaxY && lh.MaxZ == rh.MaxZ;
 
-        public static bool operator !=(Box lh, Box rh)
+        public static bool operator !=(Box3D lh, Box3D rh)
         {
             return !(lh == rh);
         }
@@ -42,7 +42,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Box(float x1, float y1, float z1, float x2, float y2, float z2)
+        public Box3D(float x1, float y1, float z1, float x2, float y2, float z2)
         {
             MinX = Mathf.Min(x1, x2);
             MinY = Mathf.Min(y1, y2);
@@ -55,7 +55,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public Box(Vector3 p1, Vector3 p2) : this(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z) { }
+        public Box3D(Vector3 p1, Vector3 p2) : this(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z) { }
 
         /// <summary>
         /// 幅
@@ -92,9 +92,9 @@ namespace GameCanvas
         /// </summary>
         public Vector3 Center => new Vector3(CenterX, CenterY, CenterZ);
 
-        public bool Equals(Box other) => (this == other);
+        public bool Equals(Box3D other) => (this == other);
 
-        public override bool Equals(object obj) => (obj is Box && this == (Box)obj);
+        public override bool Equals(object obj) => (obj is Box3D && this == (Box3D)obj);
 
         public override int GetHashCode()
             => MinX.GetHashCode() & MinY.GetHashCode() & MinZ.GetHashCode() & MaxX.GetHashCode() & MaxY.GetHashCode() & MaxZ.GetHashCode();

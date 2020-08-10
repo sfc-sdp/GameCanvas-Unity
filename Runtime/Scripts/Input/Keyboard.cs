@@ -15,7 +15,7 @@ namespace GameCanvas.Input
     public sealed class Keyboard
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private readonly EKeyCode[] cKeyCodes;
@@ -111,23 +111,23 @@ namespace GameCanvas.Input
         public bool IsVisible { get { return (mScreenKeyboard != null); } }
         public bool IsPressBackButton { get { return (cKeyInfo[cCodeToIndex[EKeyCode.Escape]].State != EState.None); } }
 
-        public int GetPressFrameCount(ref EKeyCode key)
+        public int GetPressFrameCount(in EKeyCode key)
         {
             return cKeyInfo[cCodeToIndex[key]].FrameCount;
         }
-        public float GetPressDuration(ref EKeyCode key)
+        public float GetPressDuration(in EKeyCode key)
         {
             return cKeyInfo[cCodeToIndex[key]].Duration;
         }
-        public bool GetIsPress(ref EKeyCode key)
+        public bool GetIsPress(in EKeyCode key)
         {
             return (cKeyInfo[cCodeToIndex[key]].State != EState.None);
         }
-        public bool GetIsBegan(ref EKeyCode key)
+        public bool GetIsBegan(in EKeyCode key)
         {
             return (cKeyInfo[cCodeToIndex[key]].State == EState.Began);
         }
-        public bool GetIsEnded(ref EKeyCode key)
+        public bool GetIsEnded(in EKeyCode key)
         {
             return (cKeyInfo[cCodeToIndex[key]].State == EState.Ended);
         }

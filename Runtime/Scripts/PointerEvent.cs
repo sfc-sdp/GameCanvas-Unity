@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace GameCanvas
@@ -14,7 +15,7 @@ namespace GameCanvas
     public readonly struct PointerEvent : System.IEquatable<PointerEvent>
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         /// <summary>
@@ -24,11 +25,11 @@ namespace GameCanvas
         /// <summary>
         /// スクリーン座標
         /// </summary>
-        public readonly Vector2 Screen;
+        public readonly float2 Screen;
         /// <summary>
         /// キャンバス座標
         /// </summary>
-        public readonly Vector2 Canvas;
+        public readonly float2 Canvas;
         /// <summary>
         /// 段階
         /// </summary>
@@ -98,11 +99,11 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        internal PointerEvent(in Engine.Time time, in Engine.Graphic graphic, int id, Vector2 screen, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
+        internal PointerEvent(in Engine.Time time, in Engine.Graphic graphic, int id, float2 screen, EPhase phase, EType type, float tiltX = 0f, float tiltY = 0f, float pressure = 0f)
         {
             Id = id;
             Screen = screen;
-            graphic.ScreenToCanvas(out Canvas, Screen);
+            graphic.ScreenToCanvas(Screen, out Canvas);
             Phase = phase;
             Type = type;
             TiltX = tiltX;
@@ -118,8 +119,8 @@ namespace GameCanvas
         internal PointerEvent(in Engine.Time time, in Engine.Graphic graphic, in Touch touch)
         {
             Id = touch.fingerId;
-            Screen = new Vector2Int(Mathf.RoundToInt(touch.position.x), Mathf.RoundToInt(touch.position.y));
-            graphic.ScreenToCanvas(out Canvas, Screen);
+            Screen = new int2(Mathf.RoundToInt(touch.position.x), Mathf.RoundToInt(touch.position.y));
+            graphic.ScreenToCanvas(Screen, out Canvas);
             Phase = touch.phase == TouchPhase.Began ? EPhase.Began
                 : touch.phase == TouchPhase.Moved ? EPhase.Moved
                 : touch.phase == TouchPhase.Stationary ? EPhase.Stationary

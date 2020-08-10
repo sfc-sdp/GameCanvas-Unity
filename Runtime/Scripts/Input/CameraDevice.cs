@@ -16,7 +16,7 @@ namespace GameCanvas.Input
     {
 #if !GC_DISABLE_CAMERAINPUT
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private readonly Engine.Graphic cGraphic;
@@ -168,7 +168,7 @@ namespace GameCanvas.Input
         {
             if (mTexture != null)
             {
-                cGraphic.DrawClipTexture(mTexture, x, y, u, v, width, height);
+                cGraphic.DrawClippedTexture(mTexture, x, y, u, v, width, height);
             }
         }
         /// <summary>

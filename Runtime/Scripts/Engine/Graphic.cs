@@ -8,6 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
@@ -17,12 +18,11 @@ namespace GameCanvas.Engine
     public sealed class Graphic : System.IDisposable
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         private const int cCircleResolution = 24;
 
-        private static readonly Vector2 cVectorRight = Vector2.right;
         private static readonly Color cColorBlack = Color.black;
         private static readonly Color cColorWhite = Color.white;
 
@@ -54,10 +54,10 @@ namespace GameCanvas.Engine
 
         private bool mIsEnable;
         private bool mIsDispose;
-        private Vector2Int mScreenSize;
-        private Vector2 mCanvasSize;
-        private Box mBoxViewport;
-        private Box mBoxCanvas;
+        private int2 mScreenSize;
+        private float2 mCanvasSize;
+        private Box3D mBoxViewport;
+        private Box3D mBoxCanvas;
         private Rect mRectScreen;
         private Matrix4x4 mMatrixView;
         private Matrix4x4 mMatrixProj;
@@ -128,8 +128,8 @@ namespace GameCanvas.Engine
 
             mColor = cColorBlack;
             mColorMultiply = cColorWhite;
-            mScreenSize = new Vector2Int(Screen.width, Screen.height);
-            mCanvasSize = new Vector2(720, 1280);
+            mScreenSize = new int2(Screen.width, Screen.height);
+            mCanvasSize = new float2(720, 1280);
         }
 
         public void Dispose()
@@ -148,6 +148,7 @@ namespace GameCanvas.Engine
             if (!mIsEnable && !mIsDispose)
             {
                 mIsEnable = true;
+                RecreatePrevFrameIfNeed();
                 cCamera.AddCommandBuffer(CameraEvent.BeforeForwardOpaque, cBufferOpaque);
                 cCamera.AddCommandBuffer(CameraEvent.BeforeForwardAlpha, cBufferTransparent);
                 cCamera.AddCommandBuffer(CameraEvent.AfterEverything, cBufferEndFrame);
@@ -175,14 +176,14 @@ namespace GameCanvas.Engine
 
             if (mScreenSize.x != Screen.width || mScreenSize.y != Screen.height)
             {
-                mScreenSize = new Vector2Int(Screen.width, Screen.height);
+                mScreenSize = new int2(Screen.width, Screen.height);
                 SetResolution((int)mCanvasSize.x, (int)mCanvasSize.y);
             }
 
             cBufferOpaque.Clear();
 #if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX || UNITY_IOS
             // DirectX or Metal
-            cBufferOpaque.Blit(mPrevFrame, BuiltinRenderTextureType.CameraTarget, new Vector2(1, -1f), new Vector2(0, 1f));
+            cBufferOpaque.Blit(mPrevFrame, BuiltinRenderTextureType.CameraTarget, new float2(1, -1f), new float2(0, 1f));
 #else
             // OpenGL
             cBufferOpaque.Blit(mPrevFrame, BuiltinRenderTextureType.CameraTarget);
@@ -205,9 +206,9 @@ namespace GameCanvas.Engine
 
         public void SetResolution(int width, int height)
         {
-            mCanvasSize = new Vector2(width, height);
+            mCanvasSize = new float2(width, height);
 
-            mBoxViewport = new Box(
+            mBoxViewport = new Box3D(
                 cCamera.ViewportToWorldPoint(new Vector3(0, 0, cCamera.nearClipPlane)),
                 cCamera.ViewportToWorldPoint(new Vector3(1, 1, cCamera.farClipPlane))
             );
@@ -217,7 +218,7 @@ namespace GameCanvas.Engine
             if (canvasAspect < viewportAspect)
             {
                 // 左右に黒帯
-                mBoxCanvas = new Box(
+                mBoxCanvas = new Box3D(
                     mBoxViewport.MinY * canvasAspect, mBoxViewport.MinY, mBoxViewport.MinZ,
                     mBoxViewport.MaxY * canvasAspect, mBoxViewport.MaxY, mBoxViewport.MaxZ
                 );
@@ -225,7 +226,7 @@ namespace GameCanvas.Engine
             else if (canvasAspect > viewportAspect)
             {
                 // 上下に黒帯
-                mBoxCanvas = new Box(
+                mBoxCanvas = new Box3D(
                     mBoxViewport.MinX, mBoxViewport.MinX / canvasAspect, mBoxViewport.MinZ,
                     mBoxViewport.MaxX, mBoxViewport.MaxX / canvasAspect, mBoxViewport.MaxZ
                 );
@@ -244,23 +245,7 @@ namespace GameCanvas.Engine
             mMatrixProj = Matrix4x4.Ortho(-1f, 1f, -1f, 1f, -100f, 0f);
             mPixelSizeMin = Mathf.Max(1f, mCanvasSize.x / mRectScreen.width);
 
-            if (mPrevFrame == null || mPrevFrame.width != mScreenSize.x || mPrevFrame.height != mScreenSize.y)
-            {
-                mPrevFrame?.Release();
-                mPrevFrame = new RenderTexture(mScreenSize.x, mScreenSize.y, 0, UnityEngine.Experimental.Rendering.DefaultFormat.LDR);
-                mPrevFrame.name = "PrevFrame";
-                mPrevFrame.Create();
-                Graphics.SetRenderTarget(mPrevFrame);
-                {
-                    cBlock.Clear();
-                    cBlock.SetColor(cShaderPropColor, cColorWhite);
-                    var t = new Vector3(mBoxCanvas.MinX, mBoxCanvas.MaxY, 0f);
-                    var s = new Vector3(mBoxCanvas.Width, mBoxCanvas.Height, 1f);
-                    var matrix = Matrix4x4.TRS(t, Quaternion.identity, s);
-                    Graphics.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, cCamera, 0, cBlock);
-                }
-                Graphics.SetRenderTarget(null);
-            }
+            RecreatePrevFrameIfNeed();
         }
 
         public int ScreenToCanvasX(in int screenX)
@@ -279,34 +264,30 @@ namespace GameCanvas.Engine
             canvasY = ScreenToCanvasY(screenY);
         }
 
-        public void ScreenToCanvas(out Vector2 canvas, in Vector2 screen)
+        public void ScreenToCanvas(in float2 screen, out float2 canvas)
         {
-            canvas = new Vector2(
+            canvas = new float2(
                 (screen.x - mRectScreen.xMin) * mCanvasSize.x / mRectScreen.width,
                 mCanvasSize.y - (screen.y - mRectScreen.yMin) * mCanvasSize.y / mRectScreen.height
             );
         }
 
-        public Vector2 ScreenToCanvas(in Vector2 screen)
+        public float2 ScreenToCanvas(in float2 screen)
         {
             var canvasX = (screen.x - mRectScreen.xMin) * mCanvasSize.x / mRectScreen.width;
             var canvasY = mCanvasSize.y - (screen.y - mRectScreen.yMin) * mCanvasSize.y / mRectScreen.height;
-            return new Vector2(canvasX, canvasY);
+            return new float2(canvasX, canvasY);
         }
 
-        public void CanvasToScreen(out float screenX, out float screenY, in int canvasX, in int canvasY)
+        public void CanvasToScreen(out int screenX, out int screenY, in float canvasX, in float canvasY)
         {
-            screenX = canvasX * mRectScreen.width / mCanvasSize.x + mRectScreen.xMin;
-            screenY = (mCanvasSize.y - canvasY) * mRectScreen.height / mCanvasSize.y + mRectScreen.yMin;
+            screenX = Math.Round(canvasX * mRectScreen.width / mCanvasSize.x + mRectScreen.xMin);
+            screenY = Math.Round((mCanvasSize.y - canvasY) * mRectScreen.height / mCanvasSize.y + mRectScreen.yMin);
         }
 
-        public int DeviceScreenWidth { get { return mScreenSize.x; } }
+        public int2 DeviceScreenSize => mScreenSize;
 
-        public int DeviceScreenHeight { get { return mScreenSize.y; }}
-
-        public int CanvasWidth { get { return (int)mCanvasSize.x; } }
-
-        public int CanvasHeight { get { return (int)mCanvasSize.y; } }
+        public float2 CanvasSize => mCanvasSize;
 
         // 互換実装：文字列系
 
@@ -395,10 +376,10 @@ namespace GameCanvas.Engine
         {
             if (mIsDispose) return;
 
-            var p0 = new Vector2(startX, mCanvasSize.y - startY);
-            var p1 = new Vector2(endX, mCanvasSize.y - endY);
-            var distance = Vector2.Distance(p0, p1);
-            var degree = Vector2.SignedAngle(cVectorRight, p1 - p0);
+            var p0 = new float2(startX, mCanvasSize.y - startY);
+            var p1 = new float2(endX, mCanvasSize.y - endY);
+            var distance = math.distance(p0, p1);
+            var degree = Math.Atan2(p1 - p0);
 
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
@@ -414,7 +395,7 @@ namespace GameCanvas.Engine
             buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
         }
 
-        public void DrawRect(in int x, in int y, in int width, in int height)
+        public void DrawRect(in Rect rect)
         {
             if (mIsDispose) return;
 
@@ -439,10 +420,10 @@ namespace GameCanvas.Engine
                 var l1 = half;
                 var t0 = half;
                 var t1 = -half;
-                var r0 = width + half;
-                var r1 = width - half;
-                var b0 = -half - height;
-                var b1 = half - height;
+                var r0 = rect.width + half;
+                var r1 = rect.width - half;
+                var b0 = -half - rect.height;
+                var b1 = half - rect.height;
                 verts[0] = new Vector3(l0, t0); // 左上:外
                 verts[1] = new Vector3(l1, t1); // 左上:内
                 verts[2] = new Vector3(r0, t0); // 右上:外
@@ -457,7 +438,7 @@ namespace GameCanvas.Engine
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
 
-            var matrix = CalcMatrix(mCountDraw++, x, y, 1f, 1f);
+            var matrix = CalcMatrix(mCountDraw++, rect.x, rect.y, 1f, 1f);
 #if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
@@ -468,14 +449,14 @@ namespace GameCanvas.Engine
             buffer.DrawMesh(mesh, matrix, material, 0, -1, cBlock);
         }
 
-        public void FillRect(in int x, in int y, in int width, in int height)
+        public void FillRect(in Rect rect)
         {
             if (mIsDispose) return;
 
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
 
-            var matrix = CalcMatrix(mCountDraw++, x, y, width, height);
+            var matrix = CalcMatrix(mCountDraw++, rect.x, rect.y, rect.width, rect.height);
 #if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
@@ -486,7 +467,7 @@ namespace GameCanvas.Engine
             buffer.DrawMesh(cMeshRect, matrix, material, 0, -1, cBlock);
         }
 
-        public void DrawCircle(in int x, in int y, in int radius)
+        public void DrawCircle(in float2 center, in float radius)
         {
             if (mIsDispose) return;
 
@@ -505,7 +486,7 @@ namespace GameCanvas.Engine
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
 
-            var matrix = CalcMatrix(mCountDraw++, x, y, 1f, 1f);
+            var matrix = CalcMatrix(mCountDraw++, center.x, center.y, 1f, 1f);
 #if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
@@ -516,14 +497,14 @@ namespace GameCanvas.Engine
             buffer.DrawMesh(cMeshCircleBorder, matrix, material, 0, -1, cBlock);
         }
 
-        public void FillCircle(in int x, in int y, in int radius)
+        public void FillCircle(in float2 center, in float radius)
         {
             if (mIsDispose) return;
 
             cBlock.Clear();
             cBlock.SetColor(cShaderPropColor, mColor);
 
-            var matrix = CalcMatrix(mCountDraw++, x, y, radius, radius);
+            var matrix = CalcMatrix(mCountDraw++, center.x, center.y, radius, radius);
 #if !UNITY_EDITOR
             const bool hasAlpha = true;
 #else
@@ -557,7 +538,7 @@ namespace GameCanvas.Engine
             mColorMultiply = cColorWhite;
         }
 
-        public void DrawImage(in int imageId, in int x, in int y)
+        public void DrawImage(in int imageId, in float2 position)
         {
             if (mIsDispose) return;
 
@@ -568,7 +549,7 @@ namespace GameCanvas.Engine
             cBlock.SetTexture(cShaderPropMainTex, img.Texture);
             if (mColorMultiply != cColorWhite) cBlock.SetColor(cShaderPropColor, mColorMultiply);
 
-            var matrix = CalcMatrix(mCountDraw++, x, y, 1f, 1f);
+            var matrix = CalcMatrix(mCountDraw++, position.x, position.y, 1f, 1f);
             cBufferTransparent.DrawMesh(img.Mesh, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
@@ -610,10 +591,10 @@ namespace GameCanvas.Engine
             var img = cRes.GetImg(imageId);
             if (img.Data == null) return;
 
-            x = x - u/2;
-            y = y - v/2;
-            u = u/2;
-            v = v/2;
+            x = x - u / 2;
+            y = y - v / 2;
+            u = u / 2;
+            v = v / 2;
 
             var l = Mathf.Clamp01((x + u) / mCanvasSize.x);
             var t = Mathf.Clamp01((y + v) / mCanvasSize.y);
@@ -682,9 +663,19 @@ namespace GameCanvas.Engine
             cBufferOpaque.ClearRenderTarget(true, true, cColorWhite);
         }
 
-        // その他
+        public void FillScreen(in Color color)
+        {
+            if (mIsDispose) return;
+            cBufferOpaque.ClearRenderTarget(true, true, color);
+        }
 
-        public void DrawTexture(Texture texture, in int x, in int y)
+        #endregion
+
+        //----------------------------------------------------------
+        #region 内部関数
+        //----------------------------------------------------------
+
+        internal void DrawTexture(Texture texture, in int x, in int y)
         {
             if (mIsDispose || texture == null) return;
 
@@ -696,7 +687,7 @@ namespace GameCanvas.Engine
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
-        public void DrawClipTexture(Texture texture, in int x, in int y, in int u, in int v, in int width, in int height)
+        internal void DrawClippedTexture(Texture texture, in int x, in int y, in int u, in int v, in int width, in int height)
         {
             if (mIsDispose || texture == null) return;
 
@@ -715,7 +706,7 @@ namespace GameCanvas.Engine
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
-        public void DrawScaledRotateTexture(Texture texture, in int x, in int y, in int xSize, in int ySize, in float degree)
+        internal void DrawScaledRotateTexture(Texture texture, in int x, in int y, in int xSize, in int ySize, in float degree)
         {
             if (mIsDispose || texture == null) return;
 
@@ -727,11 +718,26 @@ namespace GameCanvas.Engine
             cBufferTransparent.DrawMesh(cMeshRect, matrix, cMaterialTransparentImage, 0, -1, cBlock);
         }
 
-        #endregion
-
-        //----------------------------------------------------------
-        #region 内部関数
-        //----------------------------------------------------------
+        private void RecreatePrevFrameIfNeed()
+        {
+            if (mPrevFrame == null || mPrevFrame.width != mScreenSize.x || mPrevFrame.height != mScreenSize.y)
+            {
+                mPrevFrame?.Release();
+                mPrevFrame = new RenderTexture(mScreenSize.x, mScreenSize.y, 0, UnityEngine.Experimental.Rendering.DefaultFormat.LDR);
+                mPrevFrame.name = "PrevFrame";
+                mPrevFrame.Create();
+                Graphics.SetRenderTarget(mPrevFrame);
+                {
+                    cBlock.Clear();
+                    cBlock.SetColor(cShaderPropColor, cColorWhite);
+                    var t = new Vector3(mBoxCanvas.MinX, mBoxCanvas.MaxY, 0f);
+                    var s = new Vector3(mBoxCanvas.Width, mBoxCanvas.Height, 1f);
+                    var matrix = Matrix4x4.TRS(t, Quaternion.identity, s);
+                    Graphics.DrawMesh(cMeshRect, matrix, cMaterialOpaque, 0, cCamera, 0, cBlock);
+                }
+                Graphics.SetRenderTarget(null);
+            }
+        }
 
         private static void InitMeshAsRect(out Mesh mesh)
         {
@@ -922,7 +928,7 @@ namespace GameCanvas.Engine
 
         private Matrix4x4 CalcMatrix(int count, float x, float y, float w, float h, float degree = 0f)
         {
-            var t = new Vector3(x,  mCanvasSize.y - y, count * 0.001f);
+            var t = new Vector3(x, mCanvasSize.y - y, count * 0.001f);
             var r = Mathf.Approximately(degree, 0f) ? Quaternion.identity : Quaternion.Euler(0f, 0f, degree);
             var s = new Vector3(w, h, 1f);
             return Matrix4x4.TRS(t, r, s);

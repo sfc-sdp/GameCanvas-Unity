@@ -7,14 +7,9 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
-using GameCanvas.Engine;
-using GameCanvas.Input;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Collision = GameCanvas.Engine.Collision;
-using Network = GameCanvas.Engine.Network;
 using Sequence = System.Collections.IEnumerator;
-using Time = GameCanvas.Engine.Time;
 
 namespace GameCanvas
 {
@@ -23,7 +18,7 @@ namespace GameCanvas
     public abstract class BehaviourBase : MonoBehaviour
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         [SerializeField]
@@ -35,9 +30,11 @@ namespace GameCanvas
 
         internal Camera m_Camera;
 
+#pragma warning disable IDE0032
         private Proxy m_Proxy;
         private Sequence m_Sequence;
         private bool m_IsPause;
+#pragma warning restore IDE0032
 
         #endregion
 
@@ -61,9 +58,13 @@ namespace GameCanvas
             m_Proxy = new Proxy(this);
         }
 
-        private Sequence Start()
+        private void Start()
         {
-            if (Resource == null) yield break;
+            if (Resource == null)
+            {
+                Debug.LogError("[GameCanvas] Error: リソース読み込みに失敗しました");
+                return;
+            }
 
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged += OnChangedPlayMode;
@@ -74,18 +75,30 @@ namespace GameCanvas
                 {
                     UnityEditor.EditorApplication.playModeStateChanged -= OnChangedPlayMode;
                     PauseGame();
+                    StopAllCoroutines();
                 }
             }
 #endif // UNITY_EDITOR
 
-            var now = System.DateTimeOffset.Now;
-            m_Proxy.OnBeforeUpdate(now);
-            InitGame();
-            m_Sequence = Entry();
-            UpdateGame();
-            DrawGame();
+            StartCoroutine(GameLoop());
 
-            var samplers = new[] {
+            Sequence GameLoop()
+            {
+#if UNITY_EDITOR
+                yield return null;
+                yield return null;
+#endif // UNITY_EDITOR
+
+                var now = System.DateTimeOffset.Now;
+                m_Proxy.OnBeforeUpdate(now);
+                InitGame();
+                m_Sequence = Entry();
+                m_Proxy.UpdateCurrentScene();
+                UpdateGame();
+                m_Proxy.DrawCurrentScene();
+                DrawGame();
+
+                var samplers = new[] {
                 UnityEngine.Profiling.CustomSampler.Create("WaitForNextFrame"),
                 UnityEngine.Profiling.CustomSampler.Create("Sleep"),
                 UnityEngine.Profiling.CustomSampler.Create("BusyWait"),
@@ -95,81 +108,85 @@ namespace GameCanvas
                 UnityEngine.Profiling.CustomSampler.Create("Entry.MoveNext"),
                 UnityEngine.Profiling.CustomSampler.Create("DrawGame")
             };
-            var isRunning = true;
-            var targetFrameTime = System.DateTimeOffset.Now;
-            var w4ef = new WaitForEndOfFrame();
+                var isRunning = true;
+                var targetFrameTime = System.DateTimeOffset.Now;
+                var w4ef = new WaitForEndOfFrame();
 
-            while (enabled)
-            {
-                if (!m_Proxy.VSyncEnabled)
+                while (enabled)
                 {
-                    //
-                    // https://blogs.unity3d.com/jp/2019/06/03/precise-framerates-in-unity/
-                    //
-                    yield return w4ef;
-
-                    samplers[0].Begin();
+                    if (!m_Proxy.VSyncEnabled)
                     {
-                        targetFrameTime += System.TimeSpan.FromSeconds(m_Proxy.TargetFrameInterval);
-                        now = System.DateTimeOffset.Now;
+                        //
+                        // https://blogs.unity3d.com/jp/2019/06/03/precise-framerates-in-unity/
+                        //
+                        yield return w4ef;
 
-                        var diff = (targetFrameTime - now).TotalMilliseconds;
-                        if (diff > 0)
+                        samplers[0].Begin();
                         {
-                            if (diff > 1)
+                            targetFrameTime += System.TimeSpan.FromSeconds(m_Proxy.TargetFrameInterval);
+                            now = System.DateTimeOffset.Now;
+
+                            var diff = (targetFrameTime - now).TotalMilliseconds;
+                            if (diff > 0)
                             {
-                                samplers[1].Begin();
+                                if (diff > 1)
                                 {
-                                    var sleepTime = Mathf.Max(0, (int)(diff - 1));
-                                    System.Threading.Thread.Sleep(sleepTime);
+                                    samplers[1].Begin();
+                                    {
+                                        var sleepTime = Mathf.Max(0, (int)(diff - 1));
+                                        System.Threading.Thread.Sleep(sleepTime);
+                                    }
+                                    samplers[1].End();
                                 }
-                                samplers[1].End();
-                            }
 
-                            samplers[2].Begin();
+                                samplers[2].Begin();
+                                {
+                                    do { now = System.DateTimeOffset.Now; }
+                                    while (now < targetFrameTime);
+                                }
+                                samplers[2].End();
+                            }
+                            else if (diff < 0)
                             {
-                                do { now = System.DateTimeOffset.Now; }
-                                while (now < targetFrameTime);
+                                targetFrameTime = now;
                             }
-                            samplers[2].End();
                         }
-                        else if (diff < 0)
+                        samplers[0].End();
+                    }
+
+                    yield return null;
+
+                    samplers[3].Begin();
+                    {
+                        samplers[4].Begin();
                         {
-                            targetFrameTime = now;
+                            m_Proxy.OnBeforeUpdate(System.DateTimeOffset.Now);
                         }
+                        samplers[4].End();
+
+                        samplers[5].Begin();
+                        {
+                            m_Proxy.UpdateCurrentScene();
+                            UpdateGame();
+                        }
+                        samplers[5].End();
+
+                        samplers[6].Begin();
+                        {
+                            isRunning = isRunning && m_Sequence.MoveNext();
+                        }
+                        samplers[6].End();
+
+                        samplers[7].Begin();
+                        {
+                            m_Proxy.DrawCurrentScene();
+                            DrawGame();
+                            m_Proxy.OnAterDraw();
+                        }
+                        samplers[7].End();
                     }
-                    samplers[0].End();
+                    samplers[3].End();
                 }
-
-                yield return null;
-
-                samplers[3].Begin();
-                {
-                    samplers[4].Begin();
-                    {
-                        m_Proxy.OnBeforeUpdate(now);
-                    }
-                    samplers[4].End();
-
-                    samplers[5].Begin();
-                    {
-                        UpdateGame();
-                    }
-                    samplers[5].End();
-
-                    samplers[6].Begin();
-                    {
-                        isRunning = isRunning && m_Sequence.MoveNext();
-                    }
-                    samplers[6].End();
-
-                    samplers[7].Begin();
-                    {
-                        DrawGame();
-                    }
-                    samplers[7].End();
-                }
-                samplers[3].End();
             }
         }
 

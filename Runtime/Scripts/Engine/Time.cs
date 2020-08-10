@@ -12,7 +12,7 @@ namespace GameCanvas.Engine
     public sealed class Time
     {
         //----------------------------------------------------------
-        #region フィールド変数
+        #region 変数
         //----------------------------------------------------------
 
         internal static readonly System.DateTimeOffset UnixZero = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local);
