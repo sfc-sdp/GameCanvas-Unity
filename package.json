@@ -1,16 +1,17 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "4.2.0",
+  "version": "5.0.0-preview.4",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
-  "unity": "2019.4",
-  "unityRelease": "5f1",
+  "unity": "2020.1",
+  "unityRelease": "8f1",
   "author": {
     "name": "Smart Device Programing (Seibe Takahashi)",
     "email": "t@seibe.jp",
     "url": "https://github.com/sfc-sdp/GameCanvas-Unity"
   },
   "dependencies": {
-    "com.unity.mathematics": "1.2.1"
+    "com.unity.mathematics": "1.2.1",
+    "com.unity.collections": "0.12.0-preview.13"
   }
 }

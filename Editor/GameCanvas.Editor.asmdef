@@ -1,7 +1,7 @@
 {
     "name": "GameCanvas.Editor",
     "references": [
-        "GUID:1b735e4770e5be346a2bafdd22e488d7"
+        "GUID:f6f069d2503f93e449334ed12bfeb77f"
     ],
     "includePlatforms": [
         "Editor"

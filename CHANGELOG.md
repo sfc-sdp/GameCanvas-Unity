@@ -1,4 +1,43 @@
 # CHANGE LOG
+## 5.0.0-preview.4
+### 新機能
+- [#89](https://github.com/sfc-sdp/GameCanvas-Unity/issues/89) 描線の太さと端点を自由に設定できるように
+- [#141](https://github.com/sfc-sdp/GameCanvas-Unity/issues/141) スクリプトのホットリロードに対応
+- [#142](https://github.com/sfc-sdp/GameCanvas-Unity/issues/142) 矩形の原点を左上以外にして描画できるように
+- [#143](https://github.com/sfc-sdp/GameCanvas-Unity/issues/143) アフィン変換行列をサポート
+- [#144](https://github.com/sfc-sdp/GameCanvas-Unity/issues/144) キャンバス外の黒帯を 任意の色に変更できるように
+- [#145](https://github.com/sfc-sdp/GameCanvas-Unity/issues/145) 文字列描画の回転・拡縮サポート
+- [#146](https://github.com/sfc-sdp/GameCanvas-Unity/issues/146) 衝突判定：跳ね返りと壁ずりの便利関数を追加
+- [#147](https://github.com/sfc-sdp/GameCanvas-Unity/issues/147) ポインターイベントをまとめて取得できるように
+- [#148](https://github.com/sfc-sdp/GameCanvas-Unity/issues/148) 基本図形構造体の定義
+- [#149](https://github.com/sfc-sdp/GameCanvas-Unity/issues/149) リソース名の命名規則・連番制限を無くし、自由なIDを設定できるように
+- [#150](https://github.com/sfc-sdp/GameCanvas-Unity/issues/150) 任意のテクスチャーを描画できるように
+- [#151](https://github.com/sfc-sdp/GameCanvas-Unity/issues/151) 任意のオーディオクリップを再生できるように
+- [#152](https://github.com/sfc-sdp/GameCanvas-Unity/issues/152) 端末のデプスカメラ（深度カメラ）を取得・描画できるように
+- [#153](https://github.com/sfc-sdp/GameCanvas-Unity/issues/153) 複数のカメラを同時に取得・描画できるように
+- [#154](https://github.com/sfc-sdp/GameCanvas-Unity/issues/154) カメラ映像入力の解像度を変更できるように
+- [#155](https://github.com/sfc-sdp/GameCanvas-Unity/issues/155) ポイントフォーカス（カメラの任意点に焦点をあわせる機能）のサポート
+- [#156](https://github.com/sfc-sdp/GameCanvas-Unity/issues/156) カメラのランタイムパーミッション対応
+- [#157](https://github.com/sfc-sdp/GameCanvas-Unity/issues/157) 位置情報のランタイムパーミッション対応
+- [#158](https://github.com/sfc-sdp/GameCanvas-Unity/issues/158) 位置情報の精度を指定できるように
+- [#159](https://github.com/sfc-sdp/GameCanvas-Unity/issues/159) オンラインの音声リソースをダウンロードできるように
+### 仕様変更
+- 描画処理の全面刷新
+- Transparent シェーダーを単純化
+- 画像の単色加算描画APIを削除
+- 画像のクリッピング描画APIを削除
+- ランダム生成器を UnityEngine.Random から Unity.Mathematics.Random に変更
+- 初期解像度を Game のインスペクタで設定する機能を削除
+- EDownloadState 構造体を GcAvailability 構造体に置き換え
+- com.unity.collections パッケージに依存するように
+- 内部クラスの命名規則を変更
+- デフォルトリソースをパッケージ内部に移動
+- v3以前の旧APIとの互換対応を削除
+- エディタバージョン下限を 2020.1.8f1 に変更
+### 不具合修正
+- 衝突判定の不具合修正
+- 一部環境でUnityの名前空間と競合する現象を回避
+
 ## 4.2.0
 ### 新機能
 - [#140](https://github.com/sfc-sdp/GameCanvas-Unity/issues/140) 汎用的なシーンと遷移の仕組みを追加
