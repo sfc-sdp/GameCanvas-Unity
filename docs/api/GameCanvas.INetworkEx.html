@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface INetworkEx
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface INetworkEx
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.INetworkEx">
+  
+  
+  <h1 id="GameCanvas_INetworkEx" data-uid="GameCanvas.INetworkEx" class="text-break">Interface INetworkEx
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_ClearDownloadCache_System_String__">INetwork.ClearDownloadCache(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_ClearDownloadCacheAll">INetwork.ClearDownloadCacheAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__UnityEngine_Texture2D__">INetwork.TryGetOnlineImage(String, Texture2D)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImageSize_System_String__Unity_Mathematics_int2__">INetwork.TryGetOnlineImageSize(String, int2)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, AudioClip)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, AudioType, AudioClip)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__System_String__">INetwork.TryGetOnlineText(String, String)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_INetworkEx_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface INetworkEx : INetwork</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_INetworkEx_DrawOnlineImage_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage*"></a>
+  <h4 id="GameCanvas_INetworkEx_DrawOnlineImage_System_String__" data-uid="GameCanvas.INetworkEx.DrawOnlineImage(System.String@)">DrawOnlineImage(String)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースを描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability DrawOnlineImage(in string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetworkEx_DrawOnlineImage_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage*"></a>
+  <h4 id="GameCanvas_INetworkEx_DrawOnlineImage_System_String__GameCanvas_GcRect__" data-uid="GameCanvas.INetworkEx.DrawOnlineImage(System.String@,GameCanvas.GcRect@)">DrawOnlineImage(String, GcRect)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースを拡縮して描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability DrawOnlineImage(in string url, in GcRect rect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
+        <td><span class="parametername">rect</span></td>
+        <td><p>画像をフィッティングする矩形領域</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetworkEx_DrawOnlineImage_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage*"></a>
+  <h4 id="GameCanvas_INetworkEx_DrawOnlineImage_System_String__System_Single__System_Single__System_Single_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage(System.String@,System.Single@,System.Single@,System.Single)">DrawOnlineImage(String, Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースを描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability DrawOnlineImage(in string url, in float x, in float y, float degree = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>X座標</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>Y座標</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">degree</span></td>
+        <td><p>回転（度数法）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetworkEx_DrawOnlineImage_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage*"></a>
+  <h4 id="GameCanvas_INetworkEx_DrawOnlineImage_System_String__System_Single__System_Single__System_Single__System_Single__System_Single_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage(System.String@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single)">DrawOnlineImage(String, Single, Single, Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースを拡縮して描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float degree = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>X座標</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>Y座標</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">width</span></td>
+        <td><p>横幅。画像の横幅がこれになるように拡縮される</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">height</span></td>
+        <td><p>縦幅。画像の縦幅がこれになるように拡縮される</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">degree</span></td>
+        <td><p>回転（度数法）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetworkEx_DrawOnlineImage_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage*"></a>
+  <h4 id="GameCanvas_INetworkEx_DrawOnlineImage_System_String__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.INetworkEx.DrawOnlineImage(System.String@,Unity.Mathematics.float2@,System.Single)">DrawOnlineImage(String, float2, Single)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースを描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability DrawOnlineImage(in string url, in float2 position, float degree = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td><span class="parametername">position</span></td>
+        <td><p>位置</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">degree</span></td>
+        <td><p>回転（度数法）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetworkEx_GetOnlineImageHeight_" data-uid="GameCanvas.INetworkEx.GetOnlineImageHeight*"></a>
+  <h4 id="GameCanvas_INetworkEx_GetOnlineImageHeight_System_String__" data-uid="GameCanvas.INetworkEx.GetOnlineImageHeight(System.String@)">GetOnlineImageHeight(String)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースの縦幅を取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetOnlineImageHeight(in string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><p>オンライン画像リソースの縦幅。取得できなかった場合は0を返します</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetworkEx_GetOnlineImageWidth_" data-uid="GameCanvas.INetworkEx.GetOnlineImageWidth*"></a>
+  <h4 id="GameCanvas_INetworkEx_GetOnlineImageWidth_System_String__" data-uid="GameCanvas.INetworkEx.GetOnlineImageWidth(System.String@)">GetOnlineImageWidth(String)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースの横幅を取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetOnlineImageWidth(in string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><p>オンライン画像リソースの横幅。取得できなかった場合は0を返します</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

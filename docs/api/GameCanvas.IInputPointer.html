@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IInputPointer
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IInputPointer
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.IInputPointer">
+  
+  
+  <h1 id="GameCanvas_IInputPointer" data-uid="GameCanvas.IInputPointer" class="text-break">Interface IInputPointer
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_IInputPointer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputPointer</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="GameCanvas_IInputPointer_IsTouchPressureSupported_" data-uid="GameCanvas.IInputPointer.IsTouchPressureSupported*"></a>
+  <h4 id="GameCanvas_IInputPointer_IsTouchPressureSupported" data-uid="GameCanvas.IInputPointer.IsTouchPressureSupported">IsTouchPressureSupported</h4>
+  <div class="markdown level1 summary"><p>実行端末でタッチ圧力がサポートされているかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouchPressureSupported { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_IsTouchSupported_" data-uid="GameCanvas.IInputPointer.IsTouchSupported*"></a>
+  <h4 id="GameCanvas_IInputPointer_IsTouchSupported" data-uid="GameCanvas.IInputPointer.IsTouchSupported">IsTouchSupported</h4>
+  <div class="markdown level1 summary"><p>実行端末でタッチ操作がサポートされているかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouchSupported { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputPointer_IsTouchSupported_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Windowsエディタ環境では、タッチ対応デバイスであっても常に偽を返します</p>
+</div>
+  <a id="GameCanvas_IInputPointer_LastPointerEvent_" data-uid="GameCanvas.IInputPointer.LastPointerEvent*"></a>
+  <h4 id="GameCanvas_IInputPointer_LastPointerEvent" data-uid="GameCanvas.IInputPointer.LastPointerEvent">LastPointerEvent</h4>
+  <div class="markdown level1 summary"><p>最後に検出したポインターイベント。過去のフレームも含める</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcPointerEvent LastPointerEvent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_PointerBeginCount_" data-uid="GameCanvas.IInputPointer.PointerBeginCount*"></a>
+  <h4 id="GameCanvas_IInputPointer_PointerBeginCount" data-uid="GameCanvas.IInputPointer.PointerBeginCount">PointerBeginCount</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインター開始イベントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PointerBeginCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_PointerCount_" data-uid="GameCanvas.IInputPointer.PointerCount*"></a>
+  <h4 id="GameCanvas_IInputPointer_PointerCount" data-uid="GameCanvas.IInputPointer.PointerCount">PointerCount</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターイベントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PointerCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_PointerEndCount_" data-uid="GameCanvas.IInputPointer.PointerEndCount*"></a>
+  <h4 id="GameCanvas_IInputPointer_PointerEndCount" data-uid="GameCanvas.IInputPointer.PointerEndCount">PointerEndCount</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインター終了イベントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PointerEndCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_PointerTapCount_" data-uid="GameCanvas.IInputPointer.PointerTapCount*"></a>
+  <h4 id="GameCanvas_IInputPointer_PointerTapCount" data-uid="GameCanvas.IInputPointer.PointerTapCount">PointerTapCount</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した タップポイントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PointerTapCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TapSettings_" data-uid="GameCanvas.IInputPointer.TapSettings*"></a>
+  <h4 id="GameCanvas_IInputPointer_TapSettings" data-uid="GameCanvas.IInputPointer.TapSettings">TapSettings</h4>
+  <div class="markdown level1 summary"><p>タップ感度の設定</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcTapSettings TapSettings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcTapSettings.html">GcTapSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_IInputPointer_TryGetPointerEvent_" data-uid="GameCanvas.IInputPointer.TryGetPointerEvent*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerEvent_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointer.TryGetPointerEvent(GameCanvas.GcPointerEventPhase@,System.Int32@,GameCanvas.GcPointerEvent@)">TryGetPointerEvent(GcPointerEventPhase, Int32, out GcPointerEvent)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターイベントのうち、1つを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerEvent(in GcPointerEventPhase phase, in int i, out GcPointerEvent e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEventPhase.html">GcPointerEventPhase</a></td>
+        <td><span class="parametername">phase</span></td>
+        <td><p>イベント状態</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>イベントインデックス（イベントIDではない）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></td>
+        <td><span class="parametername">e</span></td>
+        <td><p>イベント</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerEvent_" data-uid="GameCanvas.IInputPointer.TryGetPointerEvent*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerEvent_System_Int32__GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointer.TryGetPointerEvent(System.Int32@,GameCanvas.GcPointerEvent@)">TryGetPointerEvent(Int32, out GcPointerEvent)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターイベントのうち、1つを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerEvent(in int i, out GcPointerEvent e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>イベントインデックス（0 から <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_PointerCount">PointerCount</a>-1 までの連番。イベントIDではない）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></td>
+        <td><span class="parametername">e</span></td>
+        <td><p>イベント</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerEventArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerEventArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)">TryGetPointerEventArray(GcPointerEventPhase, out NativeArray&lt;GcPointerEvent&gt;.ReadOnly, out Int32)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 指定された状態のポインターイベント全てを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray&lt;GcPointerEvent&gt;.ReadOnly array, out int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEventPhase.html">GcPointerEventPhase</a></td>
+        <td><span class="parametername">phase</span></td>
+        <td><p>イベント状態</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>イベント配列</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>イベント配列の要素数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上 取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerEventArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerEventArray_Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray(Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)">TryGetPointerEventArray(out NativeArray&lt;GcPointerEvent&gt;.ReadOnly, out Int32)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターイベント全てを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerEventArray(out NativeArray&lt;GcPointerEvent&gt;.ReadOnly array, out int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>イベント配列</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>イベント配列の要素数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上 取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTapPoint_" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPoint*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPoint(System.Int32@,Unity.Mathematics.float2@)">TryGetPointerTapPoint(Int32, out float2)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した タップポイントのうち、1つを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTapPoint(in int i, out float2 point)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>タップインデックス</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td><span class="parametername">point</span></td>
+        <td><p>タップポイント</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTapPointArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPointArray*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTapPointArray_Unity_Collections_NativeArray_Unity_Mathematics_float2__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPointArray(Unity.Collections.NativeArray{Unity.Mathematics.float2}.ReadOnly@,System.Int32@)">TryGetPointerTapPointArray(out NativeArray&lt;float2&gt;.ReadOnly, out Int32)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した タップポイント全てを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTapPointArray(out NativeArray&lt;float2&gt;.ReadOnly array, out int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>タップポイント配列</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>タップポイント配列の要素数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上 取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTrace_" data-uid="GameCanvas.IInputPointer.TryGetPointerTrace*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__" data-uid="GameCanvas.IInputPointer.TryGetPointerTrace(GameCanvas.GcPointerEventPhase@,System.Int32@,GameCanvas.GcPointerTrace@)">TryGetPointerTrace(GcPointerEventPhase, Int32, out GcPointerTrace)</h4>
+  <div class="markdown level1 summary"><p>現在有効なポインターのうち、1つの軌跡を取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTrace(in GcPointerEventPhase phase, in int i, out GcPointerTrace trace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEventPhase.html">GcPointerEventPhase</a></td>
+        <td><span class="parametername">phase</span></td>
+        <td><p>イベント状態</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>イベントインデックス（イベントIDではない）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a></td>
+        <td><span class="parametername">trace</span></td>
+        <td><p>軌跡</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">phase</code> に指定できる値は <a class="xref" href="GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_Hold">Hold</a> または <a class="xref" href="GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_End">End</a> のみです</p>
+</div>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTrace_" data-uid="GameCanvas.IInputPointer.TryGetPointerTrace*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTrace_System_Int32__GameCanvas_GcPointerTrace__" data-uid="GameCanvas.IInputPointer.TryGetPointerTrace(System.Int32@,GameCanvas.GcPointerTrace@)">TryGetPointerTrace(Int32, out GcPointerTrace)</h4>
+  <div class="markdown level1 summary"><p>現在有効なポインターのうち、1つの軌跡を取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTrace(in int i, out GcPointerTrace trace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>イベントインデックス（0 から <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_PointerCount">PointerCount</a>-1 までの連番。イベントIDではない）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a></td>
+        <td><span class="parametername">trace</span></td>
+        <td><p>軌跡</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTraceArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)">TryGetPointerTraceArray(GcPointerEventPhase, out NativeArray&lt;GcPointerTrace&gt;.ReadOnly, out Int32)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 指定された状態のポインターの軌跡全てを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray&lt;GcPointerTrace&gt;.ReadOnly array, out int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcPointerEventPhase.html">GcPointerEventPhase</a></td>
+        <td><span class="parametername">phase</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>軌跡配列</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>軌跡配列の要素数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上 取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputPointer_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">phase</code> に指定できる値は <a class="xref" href="GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_Hold">Hold</a> または <a class="xref" href="GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_End">End</a> のみです</p>
+</div>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTraceArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTraceArray_Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray(Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)">TryGetPointerTraceArray(out NativeArray&lt;GcPointerTrace&gt;.ReadOnly, out Int32)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターの軌跡全てを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTraceArray(out NativeArray&lt;GcPointerTrace&gt;.ReadOnly array, out int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>軌跡配列</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>軌跡配列の要素数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上 取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IScene
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="generator" content="docfx 2.56.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -46,16 +46,19 @@
   </h3>
   <a id="GameCanvas_IScene_DrawScene_" data-uid="GameCanvas.IScene.DrawScene*"></a>
   <h4 id="GameCanvas_IScene_DrawScene" data-uid="GameCanvas.IScene.DrawScene">DrawScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの描画処理。毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>シーンの描画処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawScene()</code></pre>
   </div>
+  <h5 id="GameCanvas_IScene_DrawScene_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IScene_EnterScene_" data-uid="GameCanvas.IScene.EnterScene*"></a>
   <h4 id="GameCanvas_IScene_EnterScene_System_Object_" data-uid="GameCanvas.IScene.EnterScene(System.Object)">EnterScene(Object)</h4>
-  <div class="markdown level1 summary"><p>シーンの開始処理。シーン遷移時にGameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>シーンの開始処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -75,47 +78,62 @@
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">state</span></td>
-        <td><p><a class="xref" href="GameCanvas.Proxy.html#GameCanvas_Proxy_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(Object)</a>を通じて渡される任意の値。未設定の場合はnull</p>
+        <td><p><a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(Object)</a>を通じて渡される任意の値。未設定の場合はnull</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="GameCanvas_IScene_EnterScene_System_Object__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>シーン遷移時にGameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IScene_LeaveScene_" data-uid="GameCanvas.IScene.LeaveScene*"></a>
   <h4 id="GameCanvas_IScene_LeaveScene" data-uid="GameCanvas.IScene.LeaveScene">LeaveScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの終了処理。シーン遷移時にGameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>シーンの終了処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void LeaveScene()</code></pre>
   </div>
+  <h5 id="GameCanvas_IScene_LeaveScene_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>シーン遷移時にGameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IScene_PauseScene_" data-uid="GameCanvas.IScene.PauseScene*"></a>
   <h4 id="GameCanvas_IScene_PauseScene" data-uid="GameCanvas.IScene.PauseScene">PauseScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの中断処理。アプリが一時停止する直前にGameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>シーンの中断処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PauseScene()</code></pre>
   </div>
+  <h5 id="GameCanvas_IScene_PauseScene_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>アプリが一時停止する直前にGameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IScene_ResumeScene_" data-uid="GameCanvas.IScene.ResumeScene*"></a>
   <h4 id="GameCanvas_IScene_ResumeScene" data-uid="GameCanvas.IScene.ResumeScene">ResumeScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの再開処理。アプリが再開する直前にGameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>シーンの再開処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ResumeScene()</code></pre>
   </div>
+  <h5 id="GameCanvas_IScene_ResumeScene_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>アプリが再開する直前にGameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IScene_UpdateScene_" data-uid="GameCanvas.IScene.UpdateScene*"></a>
   <h4 id="GameCanvas_IScene_UpdateScene" data-uid="GameCanvas.IScene.UpdateScene">UpdateScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの計算処理。毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>シーンの計算処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void UpdateScene()</code></pre>
   </div>
+  <h5 id="GameCanvas_IScene_UpdateScene_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます</p>
+</div>
 </article>
           </div>
           
