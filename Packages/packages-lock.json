@@ -54,6 +54,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.settings-manager": {
+      "version": "1.0.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.test-framework": {
       "version": "1.1.18",
       "depth": 0,
@@ -75,6 +82,16 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.testtools.codecoverage": {
+      "version": "0.3.1-preview",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.0.16",
+        "com.unity.settings-manager": "1.0.1"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ugui": {
       "version": "1.0.0",
       "depth": 0,
@@ -85,14 +102,14 @@
       }
     },
     "jp.ac.keio.sfc.sdp": {
-      "version": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm5.0.0-preview.4",
+      "version": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm5.0.0-preview.6",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
         "com.unity.collections": "0.12.0-preview.13"
       },
-      "hash": "da0c47a595d6ef4103420ba417fa5e912e5ea18e"
+      "hash": "5959a5d14df9cfaa3f10fb8185d2ab42fe33ae17"
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",

@@ -84,9 +84,8 @@ proguard/
 Assets/UnityVS/Editor*
 VSCode.*
 Assets/VSCode/Editor*
+CodeCoverage/
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 
 # Nodejs, npm
 node_modules/
-
-# GameCanvas ignore
-UnityGC/Doxyfile

@@ -2710,45 +2710,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.AccelerationEventCount
   nameWithType: GcProxy.AccelerationEventCount
-- uid: GameCanvas.GcProxy.AccelerationLastX
-  name: AccelerationLastX
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerationLastX
-  commentId: P:GameCanvas.GcProxy.AccelerationLastX
-  fullName: GameCanvas.GcProxy.AccelerationLastX
-  nameWithType: GcProxy.AccelerationLastX
-- uid: GameCanvas.GcProxy.AccelerationLastX*
-  name: AccelerationLastX
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerationLastX_
-  commentId: Overload:GameCanvas.GcProxy.AccelerationLastX
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.AccelerationLastX
-  nameWithType: GcProxy.AccelerationLastX
-- uid: GameCanvas.GcProxy.AccelerationLastY
-  name: AccelerationLastY
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerationLastY
-  commentId: P:GameCanvas.GcProxy.AccelerationLastY
-  fullName: GameCanvas.GcProxy.AccelerationLastY
-  nameWithType: GcProxy.AccelerationLastY
-- uid: GameCanvas.GcProxy.AccelerationLastY*
-  name: AccelerationLastY
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerationLastY_
-  commentId: Overload:GameCanvas.GcProxy.AccelerationLastY
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.AccelerationLastY
-  nameWithType: GcProxy.AccelerationLastY
-- uid: GameCanvas.GcProxy.AccelerationLastZ
-  name: AccelerationLastZ
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerationLastZ
-  commentId: P:GameCanvas.GcProxy.AccelerationLastZ
-  fullName: GameCanvas.GcProxy.AccelerationLastZ
-  nameWithType: GcProxy.AccelerationLastZ
-- uid: GameCanvas.GcProxy.AccelerationLastZ*
-  name: AccelerationLastZ
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerationLastZ_
-  commentId: Overload:GameCanvas.GcProxy.AccelerationLastZ
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.AccelerationLastZ
-  nameWithType: GcProxy.AccelerationLastZ
 - uid: GameCanvas.GcProxy.AddActor(GameCanvas.GcActor@)
   name: AddActor(GcActor)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AddActor_GameCanvas_GcActor__
@@ -3120,12 +3081,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.ClearCoordinate
   nameWithType: GcProxy.ClearCoordinate
-- uid: GameCanvas.GcProxy.ClearDownloadCache
-  name: ClearDownloadCache()
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_ClearDownloadCache
-  commentId: M:GameCanvas.GcProxy.ClearDownloadCache
-  fullName: GameCanvas.GcProxy.ClearDownloadCache()
-  nameWithType: GcProxy.ClearDownloadCache()
 - uid: GameCanvas.GcProxy.ClearDownloadCache(System.String@)
   name: ClearDownloadCache(String)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_ClearDownloadCache_System_String__
@@ -3436,32 +3391,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.CurrentCoordinate
   nameWithType: GcProxy.CurrentCoordinate
-- uid: GameCanvas.GcProxy.CurrentDay
-  name: CurrentDay
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentDay
-  commentId: P:GameCanvas.GcProxy.CurrentDay
-  fullName: GameCanvas.GcProxy.CurrentDay
-  nameWithType: GcProxy.CurrentDay
-- uid: GameCanvas.GcProxy.CurrentDay*
-  name: CurrentDay
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentDay_
-  commentId: Overload:GameCanvas.GcProxy.CurrentDay
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentDay
-  nameWithType: GcProxy.CurrentDay
-- uid: GameCanvas.GcProxy.CurrentDayOfWeek
-  name: CurrentDayOfWeek
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentDayOfWeek
-  commentId: P:GameCanvas.GcProxy.CurrentDayOfWeek
-  fullName: GameCanvas.GcProxy.CurrentDayOfWeek
-  nameWithType: GcProxy.CurrentDayOfWeek
-- uid: GameCanvas.GcProxy.CurrentDayOfWeek*
-  name: CurrentDayOfWeek
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentDayOfWeek_
-  commentId: Overload:GameCanvas.GcProxy.CurrentDayOfWeek
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentDayOfWeek
-  nameWithType: GcProxy.CurrentDayOfWeek
 - uid: GameCanvas.GcProxy.CurrentFrame
   name: CurrentFrame
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentFrame
@@ -3475,71 +3404,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.CurrentFrame
   nameWithType: GcProxy.CurrentFrame
-- uid: GameCanvas.GcProxy.CurrentHour
-  name: CurrentHour
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentHour
-  commentId: P:GameCanvas.GcProxy.CurrentHour
-  fullName: GameCanvas.GcProxy.CurrentHour
-  nameWithType: GcProxy.CurrentHour
-- uid: GameCanvas.GcProxy.CurrentHour*
-  name: CurrentHour
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentHour_
-  commentId: Overload:GameCanvas.GcProxy.CurrentHour
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentHour
-  nameWithType: GcProxy.CurrentHour
-- uid: GameCanvas.GcProxy.CurrentMillisecond
-  name: CurrentMillisecond
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentMillisecond
-  commentId: P:GameCanvas.GcProxy.CurrentMillisecond
-  fullName: GameCanvas.GcProxy.CurrentMillisecond
-  nameWithType: GcProxy.CurrentMillisecond
-- uid: GameCanvas.GcProxy.CurrentMillisecond*
-  name: CurrentMillisecond
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentMillisecond_
-  commentId: Overload:GameCanvas.GcProxy.CurrentMillisecond
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentMillisecond
-  nameWithType: GcProxy.CurrentMillisecond
-- uid: GameCanvas.GcProxy.CurrentMinute
-  name: CurrentMinute
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentMinute
-  commentId: P:GameCanvas.GcProxy.CurrentMinute
-  fullName: GameCanvas.GcProxy.CurrentMinute
-  nameWithType: GcProxy.CurrentMinute
-- uid: GameCanvas.GcProxy.CurrentMinute*
-  name: CurrentMinute
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentMinute_
-  commentId: Overload:GameCanvas.GcProxy.CurrentMinute
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentMinute
-  nameWithType: GcProxy.CurrentMinute
-- uid: GameCanvas.GcProxy.CurrentMonth
-  name: CurrentMonth
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentMonth
-  commentId: P:GameCanvas.GcProxy.CurrentMonth
-  fullName: GameCanvas.GcProxy.CurrentMonth
-  nameWithType: GcProxy.CurrentMonth
-- uid: GameCanvas.GcProxy.CurrentMonth*
-  name: CurrentMonth
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentMonth_
-  commentId: Overload:GameCanvas.GcProxy.CurrentMonth
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentMonth
-  nameWithType: GcProxy.CurrentMonth
-- uid: GameCanvas.GcProxy.CurrentSecond
-  name: CurrentSecond
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentSecond
-  commentId: P:GameCanvas.GcProxy.CurrentSecond
-  fullName: GameCanvas.GcProxy.CurrentSecond
-  nameWithType: GcProxy.CurrentSecond
-- uid: GameCanvas.GcProxy.CurrentSecond*
-  name: CurrentSecond
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentSecond_
-  commentId: Overload:GameCanvas.GcProxy.CurrentSecond
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentSecond
-  nameWithType: GcProxy.CurrentSecond
 - uid: GameCanvas.GcProxy.CurrentStyle
   name: CurrentStyle
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentStyle
@@ -3683,19 +3547,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.CurrentTimeYear
   nameWithType: GcProxy.CurrentTimeYear
-- uid: GameCanvas.GcProxy.CurrentYear
-  name: CurrentYear
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentYear
-  commentId: P:GameCanvas.GcProxy.CurrentYear
-  fullName: GameCanvas.GcProxy.CurrentYear
-  nameWithType: GcProxy.CurrentYear
-- uid: GameCanvas.GcProxy.CurrentYear*
-  name: CurrentYear
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CurrentYear_
-  commentId: Overload:GameCanvas.GcProxy.CurrentYear
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.CurrentYear
-  nameWithType: GcProxy.CurrentYear
 - uid: GameCanvas.GcProxy.DeviceScreenHeight
   name: DeviceScreenHeight
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DeviceScreenHeight
@@ -3832,38 +3683,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.DrawCameraImage
   nameWithType: GcProxy.DrawCameraImage
-- uid: GameCanvas.GcProxy.DrawCenterRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
-  name: DrawCenterRect(float2, float2, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawCenterRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_
-  commentId: M:GameCanvas.GcProxy.DrawCenterRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
-  name.vb: DrawCenterRect(ByRef float2, ByRef float2, Single)
-  fullName: GameCanvas.GcProxy.DrawCenterRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single)
-  fullName.vb: GameCanvas.GcProxy.DrawCenterRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single)
-  nameWithType: GcProxy.DrawCenterRect(float2, float2, Single)
-  nameWithType.vb: GcProxy.DrawCenterRect(ByRef float2, ByRef float2, Single)
-- uid: GameCanvas.GcProxy.DrawCenterRect*
-  name: DrawCenterRect
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawCenterRect_
-  commentId: Overload:GameCanvas.GcProxy.DrawCenterRect
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.DrawCenterRect
-  nameWithType: GcProxy.DrawCenterRect
-- uid: GameCanvas.GcProxy.DrawCenterString(System.String@,System.Single@,System.Single@,System.Single)
-  name: DrawCenterString(String, Single, Single, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawCenterString_System_String__System_Single__System_Single__System_Single_
-  commentId: M:GameCanvas.GcProxy.DrawCenterString(System.String@,System.Single@,System.Single@,System.Single)
-  name.vb: DrawCenterString(ByRef String, ByRef Single, ByRef Single, Single)
-  fullName: GameCanvas.GcProxy.DrawCenterString(System.String, System.Single, System.Single, System.Single)
-  fullName.vb: GameCanvas.GcProxy.DrawCenterString(ByRef System.String, ByRef System.Single, ByRef System.Single, System.Single)
-  nameWithType: GcProxy.DrawCenterString(String, Single, Single, Single)
-  nameWithType.vb: GcProxy.DrawCenterString(ByRef String, ByRef Single, ByRef Single, Single)
-- uid: GameCanvas.GcProxy.DrawCenterString*
-  name: DrawCenterString
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawCenterString_
-  commentId: Overload:GameCanvas.GcProxy.DrawCenterString
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.DrawCenterString
-  nameWithType: GcProxy.DrawCenterString
 - uid: GameCanvas.GcProxy.DrawCircle
   name: DrawCircle()
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawCircle
@@ -4088,22 +3907,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.DrawRect
   nameWithType: GcProxy.DrawRect
-- uid: GameCanvas.GcProxy.DrawRightString(System.String@,System.Single@,System.Single@,System.Single)
-  name: DrawRightString(String, Single, Single, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRightString_System_String__System_Single__System_Single__System_Single_
-  commentId: M:GameCanvas.GcProxy.DrawRightString(System.String@,System.Single@,System.Single@,System.Single)
-  name.vb: DrawRightString(ByRef String, ByRef Single, ByRef Single, Single)
-  fullName: GameCanvas.GcProxy.DrawRightString(System.String, System.Single, System.Single, System.Single)
-  fullName.vb: GameCanvas.GcProxy.DrawRightString(ByRef System.String, ByRef System.Single, ByRef System.Single, System.Single)
-  nameWithType: GcProxy.DrawRightString(String, Single, Single, Single)
-  nameWithType.vb: GcProxy.DrawRightString(ByRef String, ByRef Single, ByRef Single, Single)
-- uid: GameCanvas.GcProxy.DrawRightString*
-  name: DrawRightString
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRightString_
-  commentId: Overload:GameCanvas.GcProxy.DrawRightString
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.DrawRightString
-  nameWithType: GcProxy.DrawRightString
 - uid: GameCanvas.GcProxy.DrawString(System.String@)
   name: DrawString(String)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawString_System_String__
@@ -4212,22 +4015,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.EraseSavedDataAll
   nameWithType: GcProxy.EraseSavedDataAll
-- uid: GameCanvas.GcProxy.FillCenterRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
-  name: FillCenterRect(float2, float2, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillCenterRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_
-  commentId: M:GameCanvas.GcProxy.FillCenterRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
-  name.vb: FillCenterRect(ByRef float2, ByRef float2, Single)
-  fullName: GameCanvas.GcProxy.FillCenterRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single)
-  fullName.vb: GameCanvas.GcProxy.FillCenterRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single)
-  nameWithType: GcProxy.FillCenterRect(float2, float2, Single)
-  nameWithType.vb: GcProxy.FillCenterRect(ByRef float2, ByRef float2, Single)
-- uid: GameCanvas.GcProxy.FillCenterRect*
-  name: FillCenterRect
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillCenterRect_
-  commentId: Overload:GameCanvas.GcProxy.FillCenterRect
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.FillCenterRect
-  nameWithType: GcProxy.FillCenterRect
 - uid: GameCanvas.GcProxy.FillCircle
   name: FillCircle()
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillCircle
@@ -4350,119 +4137,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.FontSize
   nameWithType: GcProxy.FontSize
-- uid: GameCanvas.GcProxy.GeolocationLastAltitude
-  name: GeolocationLastAltitude
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastAltitude
-  commentId: P:GameCanvas.GcProxy.GeolocationLastAltitude
-  fullName: GameCanvas.GcProxy.GeolocationLastAltitude
-  nameWithType: GcProxy.GeolocationLastAltitude
-- uid: GameCanvas.GcProxy.GeolocationLastAltitude*
-  name: GeolocationLastAltitude
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastAltitude_
-  commentId: Overload:GameCanvas.GcProxy.GeolocationLastAltitude
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GeolocationLastAltitude
-  nameWithType: GcProxy.GeolocationLastAltitude
-- uid: GameCanvas.GcProxy.GeolocationLastLatitude
-  name: GeolocationLastLatitude
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastLatitude
-  commentId: P:GameCanvas.GcProxy.GeolocationLastLatitude
-  fullName: GameCanvas.GcProxy.GeolocationLastLatitude
-  nameWithType: GcProxy.GeolocationLastLatitude
-- uid: GameCanvas.GcProxy.GeolocationLastLatitude*
-  name: GeolocationLastLatitude
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastLatitude_
-  commentId: Overload:GameCanvas.GcProxy.GeolocationLastLatitude
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GeolocationLastLatitude
-  nameWithType: GcProxy.GeolocationLastLatitude
-- uid: GameCanvas.GcProxy.GeolocationLastLongitude
-  name: GeolocationLastLongitude
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastLongitude
-  commentId: P:GameCanvas.GcProxy.GeolocationLastLongitude
-  fullName: GameCanvas.GcProxy.GeolocationLastLongitude
-  nameWithType: GcProxy.GeolocationLastLongitude
-- uid: GameCanvas.GcProxy.GeolocationLastLongitude*
-  name: GeolocationLastLongitude
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastLongitude_
-  commentId: Overload:GameCanvas.GcProxy.GeolocationLastLongitude
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GeolocationLastLongitude
-  nameWithType: GcProxy.GeolocationLastLongitude
-- uid: GameCanvas.GcProxy.GeolocationLastTime
-  name: GeolocationLastTime
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastTime
-  commentId: P:GameCanvas.GcProxy.GeolocationLastTime
-  fullName: GameCanvas.GcProxy.GeolocationLastTime
-  nameWithType: GcProxy.GeolocationLastTime
-- uid: GameCanvas.GcProxy.GeolocationLastTime*
-  name: GeolocationLastTime
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationLastTime_
-  commentId: Overload:GameCanvas.GcProxy.GeolocationLastTime
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GeolocationLastTime
-  nameWithType: GcProxy.GeolocationLastTime
-- uid: GameCanvas.GcProxy.GeolocationStatus
-  name: GeolocationStatus
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationStatus
-  commentId: P:GameCanvas.GcProxy.GeolocationStatus
-  fullName: GameCanvas.GcProxy.GeolocationStatus
-  nameWithType: GcProxy.GeolocationStatus
-- uid: GameCanvas.GcProxy.GeolocationStatus*
-  name: GeolocationStatus
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GeolocationStatus_
-  commentId: Overload:GameCanvas.GcProxy.GeolocationStatus
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GeolocationStatus
-  nameWithType: GcProxy.GeolocationStatus
-- uid: GameCanvas.GcProxy.GetAccelerationX(System.Int32@,System.Boolean@)
-  name: GetAccelerationX(Int32, Boolean)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetAccelerationX_System_Int32__System_Boolean__
-  commentId: M:GameCanvas.GcProxy.GetAccelerationX(System.Int32@,System.Boolean@)
-  name.vb: GetAccelerationX(ByRef Int32, ByRef Boolean)
-  fullName: GameCanvas.GcProxy.GetAccelerationX(System.Int32, System.Boolean)
-  fullName.vb: GameCanvas.GcProxy.GetAccelerationX(ByRef System.Int32, ByRef System.Boolean)
-  nameWithType: GcProxy.GetAccelerationX(Int32, Boolean)
-  nameWithType.vb: GcProxy.GetAccelerationX(ByRef Int32, ByRef Boolean)
-- uid: GameCanvas.GcProxy.GetAccelerationX*
-  name: GetAccelerationX
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetAccelerationX_
-  commentId: Overload:GameCanvas.GcProxy.GetAccelerationX
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetAccelerationX
-  nameWithType: GcProxy.GetAccelerationX
-- uid: GameCanvas.GcProxy.GetAccelerationY(System.Int32@,System.Boolean@)
-  name: GetAccelerationY(Int32, Boolean)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetAccelerationY_System_Int32__System_Boolean__
-  commentId: M:GameCanvas.GcProxy.GetAccelerationY(System.Int32@,System.Boolean@)
-  name.vb: GetAccelerationY(ByRef Int32, ByRef Boolean)
-  fullName: GameCanvas.GcProxy.GetAccelerationY(System.Int32, System.Boolean)
-  fullName.vb: GameCanvas.GcProxy.GetAccelerationY(ByRef System.Int32, ByRef System.Boolean)
-  nameWithType: GcProxy.GetAccelerationY(Int32, Boolean)
-  nameWithType.vb: GcProxy.GetAccelerationY(ByRef Int32, ByRef Boolean)
-- uid: GameCanvas.GcProxy.GetAccelerationY*
-  name: GetAccelerationY
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetAccelerationY_
-  commentId: Overload:GameCanvas.GcProxy.GetAccelerationY
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetAccelerationY
-  nameWithType: GcProxy.GetAccelerationY
-- uid: GameCanvas.GcProxy.GetAccelerationZ(System.Int32@,System.Boolean@)
-  name: GetAccelerationZ(Int32, Boolean)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetAccelerationZ_System_Int32__System_Boolean__
-  commentId: M:GameCanvas.GcProxy.GetAccelerationZ(System.Int32@,System.Boolean@)
-  name.vb: GetAccelerationZ(ByRef Int32, ByRef Boolean)
-  fullName: GameCanvas.GcProxy.GetAccelerationZ(System.Int32, System.Boolean)
-  fullName.vb: GameCanvas.GcProxy.GetAccelerationZ(ByRef System.Int32, ByRef System.Boolean)
-  nameWithType: GcProxy.GetAccelerationZ(Int32, Boolean)
-  nameWithType.vb: GcProxy.GetAccelerationZ(ByRef Int32, ByRef Boolean)
-- uid: GameCanvas.GcProxy.GetAccelerationZ*
-  name: GetAccelerationZ
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetAccelerationZ_
-  commentId: Overload:GameCanvas.GcProxy.GetAccelerationZ
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetAccelerationZ
-  nameWithType: GcProxy.GetAccelerationZ
 - uid: GameCanvas.GcProxy.GetActor
   name: GetActor()
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetActor
@@ -4571,38 +4245,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetImageWidth
   nameWithType: GcProxy.GetImageWidth
-- uid: GameCanvas.GcProxy.GetIsKeyBegan(UnityEngine.KeyCode@)
-  name: GetIsKeyBegan(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetIsKeyBegan_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.GetIsKeyBegan(UnityEngine.KeyCode@)
-  name.vb: GetIsKeyBegan(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.GetIsKeyBegan(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.GetIsKeyBegan(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.GetIsKeyBegan(KeyCode)
-  nameWithType.vb: GcProxy.GetIsKeyBegan(ByRef KeyCode)
-- uid: GameCanvas.GcProxy.GetIsKeyBegan*
-  name: GetIsKeyBegan
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetIsKeyBegan_
-  commentId: Overload:GameCanvas.GcProxy.GetIsKeyBegan
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetIsKeyBegan
-  nameWithType: GcProxy.GetIsKeyBegan
-- uid: GameCanvas.GcProxy.GetIsKeyEnded(UnityEngine.KeyCode@)
-  name: GetIsKeyEnded(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetIsKeyEnded_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.GetIsKeyEnded(UnityEngine.KeyCode@)
-  name.vb: GetIsKeyEnded(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.GetIsKeyEnded(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.GetIsKeyEnded(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.GetIsKeyEnded(KeyCode)
-  nameWithType.vb: GcProxy.GetIsKeyEnded(ByRef KeyCode)
-- uid: GameCanvas.GcProxy.GetIsKeyEnded*
-  name: GetIsKeyEnded
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetIsKeyEnded_
-  commentId: Overload:GameCanvas.GcProxy.GetIsKeyEnded
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetIsKeyEnded
-  nameWithType: GcProxy.GetIsKeyEnded
 - uid: GameCanvas.GcProxy.GetKeyPressDuration(System.Char@)
   name: GetKeyPressDuration(Char)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressDuration_System_Char__
@@ -4685,22 +4327,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetOnlineImageWidth
   nameWithType: GcProxy.GetOnlineImageWidth
-- uid: GameCanvas.GcProxy.GetOnlineTextAsync(System.String@,System.String@)
-  name: GetOnlineTextAsync(String, out String)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetOnlineTextAsync_System_String__System_String__
-  commentId: M:GameCanvas.GcProxy.GetOnlineTextAsync(System.String@,System.String@)
-  name.vb: GetOnlineTextAsync(ByRef String, ByRef String)
-  fullName: GameCanvas.GcProxy.GetOnlineTextAsync(System.String, out System.String)
-  fullName.vb: GameCanvas.GcProxy.GetOnlineTextAsync(ByRef System.String, ByRef System.String)
-  nameWithType: GcProxy.GetOnlineTextAsync(String, out String)
-  nameWithType.vb: GcProxy.GetOnlineTextAsync(ByRef String, ByRef String)
-- uid: GameCanvas.GcProxy.GetOnlineTextAsync*
-  name: GetOnlineTextAsync
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetOnlineTextAsync_
-  commentId: Overload:GameCanvas.GcProxy.GetOnlineTextAsync
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetOnlineTextAsync
-  nameWithType: GcProxy.GetOnlineTextAsync
 - uid: GameCanvas.GcProxy.GetOrCreateCameraTexture(GameCanvas.GcCameraDevice@,GameCanvas.GcResolution@)
   name: GetOrCreateCameraTexture(GcCameraDevice, GcResolution)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetOrCreateCameraTexture_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__
@@ -4813,32 +4439,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetSoundVolume
   nameWithType: GcProxy.GetSoundVolume
-- uid: GameCanvas.GcProxy.HasGeolocationPermission
-  name: HasGeolocationPermission
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_HasGeolocationPermission
-  commentId: P:GameCanvas.GcProxy.HasGeolocationPermission
-  fullName: GameCanvas.GcProxy.HasGeolocationPermission
-  nameWithType: GcProxy.HasGeolocationPermission
-- uid: GameCanvas.GcProxy.HasGeolocationPermission*
-  name: HasGeolocationPermission
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_HasGeolocationPermission_
-  commentId: Overload:GameCanvas.GcProxy.HasGeolocationPermission
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.HasGeolocationPermission
-  nameWithType: GcProxy.HasGeolocationPermission
-- uid: GameCanvas.GcProxy.HasGeolocationUpdate
-  name: HasGeolocationUpdate
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_HasGeolocationUpdate
-  commentId: P:GameCanvas.GcProxy.HasGeolocationUpdate
-  fullName: GameCanvas.GcProxy.HasGeolocationUpdate
-  nameWithType: GcProxy.HasGeolocationUpdate
-- uid: GameCanvas.GcProxy.HasGeolocationUpdate*
-  name: HasGeolocationUpdate
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_HasGeolocationUpdate_
-  commentId: Overload:GameCanvas.GcProxy.HasGeolocationUpdate
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.HasGeolocationUpdate
-  nameWithType: GcProxy.HasGeolocationUpdate
 - uid: GameCanvas.GcProxy.HasUserAuthorizedPermissionCamera
   name: HasUserAuthorizedPermissionCamera
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_HasUserAuthorizedPermissionCamera
@@ -5178,19 +4778,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsPlayingSound
   nameWithType: GcProxy.IsPlayingSound
-- uid: GameCanvas.GcProxy.IsPressBackButton
-  name: IsPressBackButton
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsPressBackButton
-  commentId: P:GameCanvas.GcProxy.IsPressBackButton
-  fullName: GameCanvas.GcProxy.IsPressBackButton
-  nameWithType: GcProxy.IsPressBackButton
-- uid: GameCanvas.GcProxy.IsPressBackButton*
-  name: IsPressBackButton
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsPressBackButton_
-  commentId: Overload:GameCanvas.GcProxy.IsPressBackButton
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.IsPressBackButton
-  nameWithType: GcProxy.IsPressBackButton
 - uid: GameCanvas.GcProxy.IsScreenKeyboardSupported
   name: IsScreenKeyboardSupported
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsScreenKeyboardSupported
@@ -6058,22 +5645,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.RequestUserAuthorizedPermissionGeolocationAsync
   nameWithType: GcProxy.RequestUserAuthorizedPermissionGeolocationAsync
-- uid: GameCanvas.GcProxy.Rotate(Unity.Mathematics.float2@,System.Single@)
-  name: Rotate(float2, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_Rotate_Unity_Mathematics_float2__System_Single__
-  commentId: M:GameCanvas.GcProxy.Rotate(Unity.Mathematics.float2@,System.Single@)
-  name.vb: Rotate(ByRef float2, ByRef Single)
-  fullName: GameCanvas.GcProxy.Rotate(Unity.Mathematics.float2, System.Single)
-  fullName.vb: GameCanvas.GcProxy.Rotate(ByRef Unity.Mathematics.float2, ByRef System.Single)
-  nameWithType: GcProxy.Rotate(float2, Single)
-  nameWithType.vb: GcProxy.Rotate(ByRef float2, ByRef Single)
-- uid: GameCanvas.GcProxy.Rotate*
-  name: Rotate
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_Rotate_
-  commentId: Overload:GameCanvas.GcProxy.Rotate
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.Rotate
-  nameWithType: GcProxy.Rotate
 - uid: GameCanvas.GcProxy.RotateCoordinate(System.Single@)
   name: RotateCoordinate(Single)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_RotateCoordinate_System_Single__
@@ -6470,38 +6041,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.SetRectAnchor
   nameWithType: GcProxy.SetRectAnchor
-- uid: GameCanvas.GcProxy.SetResolution(System.Int32@,System.Int32@)
-  name: SetResolution(Int32, Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetResolution_System_Int32__System_Int32__
-  commentId: M:GameCanvas.GcProxy.SetResolution(System.Int32@,System.Int32@)
-  name.vb: SetResolution(ByRef Int32, ByRef Int32)
-  fullName: GameCanvas.GcProxy.SetResolution(System.Int32, System.Int32)
-  fullName.vb: GameCanvas.GcProxy.SetResolution(ByRef System.Int32, ByRef System.Int32)
-  nameWithType: GcProxy.SetResolution(Int32, Int32)
-  nameWithType.vb: GcProxy.SetResolution(ByRef Int32, ByRef Int32)
-- uid: GameCanvas.GcProxy.SetResolution*
-  name: SetResolution
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetResolution_
-  commentId: Overload:GameCanvas.GcProxy.SetResolution
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.SetResolution
-  nameWithType: GcProxy.SetResolution
-- uid: GameCanvas.GcProxy.SetSeed(System.Int32@)
-  name: SetSeed(Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSeed_System_Int32__
-  commentId: M:GameCanvas.GcProxy.SetSeed(System.Int32@)
-  name.vb: SetSeed(ByRef Int32)
-  fullName: GameCanvas.GcProxy.SetSeed(System.Int32)
-  fullName.vb: GameCanvas.GcProxy.SetSeed(ByRef System.Int32)
-  nameWithType: GcProxy.SetSeed(Int32)
-  nameWithType.vb: GcProxy.SetSeed(ByRef Int32)
-- uid: GameCanvas.GcProxy.SetSeed*
-  name: SetSeed
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSeed_
-  commentId: Overload:GameCanvas.GcProxy.SetSeed
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.SetSeed
-  nameWithType: GcProxy.SetSeed
 - uid: GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)
   name: SetSoundLevel(Single, GcSoundTrack)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack__
@@ -6566,22 +6105,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.SetStyle
   nameWithType: GcProxy.SetStyle
-- uid: GameCanvas.GcProxy.SetTapSensitivity(System.Single@,System.Single@)
-  name: SetTapSensitivity(Single, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetTapSensitivity_System_Single__System_Single__
-  commentId: M:GameCanvas.GcProxy.SetTapSensitivity(System.Single@,System.Single@)
-  name.vb: SetTapSensitivity(ByRef Single, ByRef Single)
-  fullName: GameCanvas.GcProxy.SetTapSensitivity(System.Single, System.Single)
-  fullName.vb: GameCanvas.GcProxy.SetTapSensitivity(ByRef System.Single, ByRef System.Single)
-  nameWithType: GcProxy.SetTapSensitivity(Single, Single)
-  nameWithType.vb: GcProxy.SetTapSensitivity(ByRef Single, ByRef Single)
-- uid: GameCanvas.GcProxy.SetTapSensitivity*
-  name: SetTapSensitivity
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetTapSensitivity_
-  commentId: Overload:GameCanvas.GcProxy.SetTapSensitivity
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.SetTapSensitivity
-  nameWithType: GcProxy.SetTapSensitivity
 - uid: GameCanvas.GcProxy.ShowScreenKeyboard
   name: ShowScreenKeyboard()
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_ShowScreenKeyboard
@@ -7454,22 +6977,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.VSyncEnabled
   nameWithType: GcProxy.VSyncEnabled
-- uid: GameCanvas.GcProxy.WriteScreenImage(System.String@)
-  name: WriteScreenImage(String)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_WriteScreenImage_System_String__
-  commentId: M:GameCanvas.GcProxy.WriteScreenImage(System.String@)
-  name.vb: WriteScreenImage(ByRef String)
-  fullName: GameCanvas.GcProxy.WriteScreenImage(System.String)
-  fullName.vb: GameCanvas.GcProxy.WriteScreenImage(ByRef System.String)
-  nameWithType: GcProxy.WriteScreenImage(String)
-  nameWithType.vb: GcProxy.WriteScreenImage(ByRef String)
-- uid: GameCanvas.GcProxy.WriteScreenImage*
-  name: WriteScreenImage
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_WriteScreenImage_
-  commentId: Overload:GameCanvas.GcProxy.WriteScreenImage
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.WriteScreenImage
-  nameWithType: GcProxy.WriteScreenImage
 - uid: GameCanvas.GcRect
   name: GcRect
   href: api/GameCanvas.GcRect.html
