@@ -1,5 +1,5 @@
 # CHANGE LOG
-## 5.0.0-preview.4
+## 5.0.0-preview.8
 ### 新機能
 - [#89](https://github.com/sfc-sdp/GameCanvas-Unity/issues/89) 描線の太さと端点を自由に設定できるように
 - [#141](https://github.com/sfc-sdp/GameCanvas-Unity/issues/141) スクリプトのホットリロードに対応
@@ -31,7 +31,7 @@
 - EDownloadState 構造体を GcAvailability 構造体に置き換え
 - com.unity.collections パッケージに依存するように
 - 内部クラスの命名規則を変更
-- デフォルトリソースをパッケージ内部に移動
+- テストコードの用意
 - v3以前の旧APIとの互換対応を削除
 - エディタバージョン下限を 2020.1.8f1 に変更
 ### 不具合修正

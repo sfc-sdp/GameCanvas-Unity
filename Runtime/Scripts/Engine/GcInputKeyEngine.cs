@@ -9,6 +9,9 @@
 /*------------------------------------------------------------*/
 using Unity.Collections;
 using UnityEngine;
+#if !UNITY_ANDROID
+using Unity.Mathematics;
+#endif // !UNITY_ANDROID
 
 namespace GameCanvas.Engine
 {
@@ -281,8 +284,12 @@ namespace GameCanvas.Engine
                             m_KeyTraceDict[key] = t;
                             m_KeyTraceListOnlyHold.Add(t);
                         }
-                        else if (Input.GetKeyUp((KeyCode)key))
+                        else
                         {
+                            if (!Input.GetKeyUp((KeyCode)key))
+                            {
+                                Debug.LogWarning($"[{nameof(GcInputKeyEngine)}] dropped keyup event: {(KeyCode)key}.\n");
+                            }
                             var e = new GcKeyEvent((KeyCode)key, GcKeyEventPhase.Up, frame, time);
                             m_KeyCodeToKeyEventIndex.Add(key, m_KeyEventList.Length);
                             m_KeyEventList.Add(e);
@@ -305,10 +312,12 @@ namespace GameCanvas.Engine
                     if (Input.GetKeyDown(key))
                     {
                         var e = new GcKeyEvent(key, GcKeyEventPhase.Down, frame, time);
-                        m_KeyCodeToKeyEventIndex.Add((int)key, m_KeyEventList.Length);
-                        m_KeyEventList.Add(e);
-                        m_KeyEventListOnlyDown.Add(e);
-                        m_KeyTraceDict.Add((int)key, new GcKeyTrace(e));
+                        if (m_KeyCodeToKeyEventIndex.TryAdd((int)key, m_KeyEventList.Length))
+                        {
+                            m_KeyEventList.Add(e);
+                            m_KeyEventListOnlyDown.Add(e);
+                            m_KeyTraceDict.TryAdd((int)key, new GcKeyTrace(e));
+                        }
                     }
                 }
             }

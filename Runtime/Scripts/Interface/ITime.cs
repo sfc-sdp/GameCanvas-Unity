@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 
 namespace GameCanvas
 {
@@ -86,24 +87,31 @@ namespace GameCanvas
     public interface ITimeEx : ITime
     {
         [System.Obsolete("Use to `CurrentTimeDay` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentDay { get; }
 
         [System.Obsolete("Use to `CurrentTimeDayOfWeek` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         System.DayOfWeek CurrentDayOfWeek { get; }
 
         [System.Obsolete("Use to `CurrentTimeHour` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentHour { get; }
 
         [System.Obsolete("Use to `CurrentTimeMillisecond` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentMillisecond { get; }
 
         [System.Obsolete("Use to `CurrentTimeMinute` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentMinute { get; }
 
         [System.Obsolete("Use to `CurrentTimeMonth` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentMonth { get; }
 
         [System.Obsolete("Use to `CurrentTimeSecond` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentSecond { get; }
 
         /// <summary>
@@ -147,6 +155,7 @@ namespace GameCanvas
         int CurrentTimeYear { get; }
 
         [System.Obsolete("Use to `CurrentTimeYear` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentYear { get; }
     }
 }

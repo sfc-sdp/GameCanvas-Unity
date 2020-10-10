@@ -133,7 +133,7 @@ namespace GameCanvas.Engine
                 UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
             }
 #elif UNITY_IOS
-            if (HasUserAuthorizedPermissionCamera)
+            if (HasUserAuthorizedPermissionGeolocation)
             {
                 yield return null;
                 callback?.Invoke(true);

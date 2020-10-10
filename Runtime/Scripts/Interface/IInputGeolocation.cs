@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using UnityEngine;
 
 namespace GameCanvas
@@ -65,21 +66,27 @@ namespace GameCanvas
     public interface IInputGeolocationEx : IInputGeolocation
     {
         [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GeolocationLastAltitude { get; }
 
         [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GeolocationLastLatitude { get; }
 
         [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GeolocationLastLongitude { get; }
 
         [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         System.DateTimeOffset GeolocationLastTime { get; }
 
         [System.Obsolete("Use to `HasUserAuthorizedPermissionGeolocation` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool HasGeolocationPermission { get; }
 
         [System.Obsolete("Use to `DidUpdateGeolocationThisFrame` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool HasGeolocationUpdate { get; }
 
         /// <summary>

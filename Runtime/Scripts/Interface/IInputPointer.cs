@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using Unity.Collections;
 using Unity.Mathematics;
 
@@ -395,6 +396,7 @@ namespace GameCanvas
         bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py);
 
         [System.Obsolete("Use `gc.TapSettings` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void SetTapSensitivity(in float maxDuration, in float maxDistance);
     }
 }

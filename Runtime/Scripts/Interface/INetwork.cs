@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -70,6 +71,7 @@ namespace GameCanvas
     public interface INetworkEx : INetwork
     {
         [System.Obsolete("Use to `ClearDownloadCacheAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void ClearDownloadCache();
 
         /// <summary>
@@ -131,6 +133,7 @@ namespace GameCanvas
         int GetOnlineImageWidth(in string url);
 
         [System.Obsolete("Use to `TryGetOnlineText`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         GcAvailability GetOnlineTextAsync(in string url, out string str);
     }
 }

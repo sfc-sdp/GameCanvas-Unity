@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using Unity.Collections;
 using UnityEngine;
 
@@ -172,6 +173,7 @@ namespace GameCanvas
         bool IsAnyKeyUp { get; }
 
         [System.Obsolete("Use to `IsKeyDown` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsPressBackButton { get; }
 
         /// <summary>
@@ -185,9 +187,11 @@ namespace GameCanvas
         int KeyPressCount { get; }
 
         [System.Obsolete("Use to `IsKeyDown` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool GetIsKeyBegan(in KeyCode key);
 
         [System.Obsolete("Use to `IsKeyUp` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool GetIsKeyEnded(in KeyCode key);
 
         /// <summary>

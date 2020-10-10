@@ -291,8 +291,9 @@ namespace GameCanvas.Engine
         {
             if (k_IsTouchSupported)
             {
-                m_PointerList = new NativeList<GcPointerEvent>(Input.touchCount, Allocator.Temp);
-                for (int i = 0, len = m_PointerList.Capacity; i != len; i++)
+                var count = Input.touchCount;
+                m_PointerList = new NativeList<GcPointerEvent>(count, Allocator.Temp);
+                for (var i = 0; i < count; i++)
                 {
                     m_PointerList.Add(new GcPointerEvent(m_Context, Input.GetTouch(i)));
                 }

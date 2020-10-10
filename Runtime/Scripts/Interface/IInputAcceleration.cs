@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using Unity.Collections;
 
 namespace GameCanvas
@@ -51,27 +52,33 @@ namespace GameCanvas
         /// 最後に検出した加速度イベントの X方向の加速度
         /// </summary>
         [System.Obsolete("Use to `LastAcceleration`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float AccelerationLastX { get; }
 
         /// <summary>
         /// 最後に検出した加速度イベントの Y方向の加速度
         /// </summary>
         [System.Obsolete("Use to `LastAcceleration`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float AccelerationLastY { get; }
 
         /// <summary>
         /// 最後に検出した加速度イベントの Z方向の加速度
         /// </summary>
         [System.Obsolete("Use to `LastAcceleration`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float AccelerationLastZ { get; }
 
         [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GetAccelerationX(in int i, in bool normalize = false);
 
         [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GetAccelerationY(in int i, in bool normalize = false);
 
         [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GetAccelerationZ(in int i, in bool normalize = false);
     }
 }

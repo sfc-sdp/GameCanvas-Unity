@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -455,9 +456,11 @@ namespace GameCanvas
         void ChangeCanvasSize(in int width, in int height);
 
         [System.Obsolete("Use to `DrawRect`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void DrawCenterRect(in float2 center, in float2 size, float degree = 0f);
 
         [System.Obsolete("Use to `DrawString`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void DrawCenterString(in string str, in float x, in float y, float degree = 0f);
 
         /// <summary>
@@ -564,6 +567,7 @@ namespace GameCanvas
         void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f);
 
         [System.Obsolete("Use to `FillRect`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void FillCenterRect(in float2 center, in float2 size, float degree = 0f);
 
         /// <summary>
@@ -717,6 +721,7 @@ namespace GameCanvas
         void SetRectAnchor(in GcAnchor anchor);
 
         [System.Obsolete("Use to `ChangeCanvasSize`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void SetResolution(in int width, in int height);
 
         /// <summary>

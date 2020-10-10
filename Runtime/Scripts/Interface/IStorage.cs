@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using System.Numerics;
 
 namespace GameCanvas
@@ -104,6 +105,7 @@ namespace GameCanvas
         bool TryLoad(in string key, out BigInteger value);
 
         [System.Obsolete("Use to `SaveScreenshotAsync` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void WriteScreenImage(in string file);
     }
 }

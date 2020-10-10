@@ -7,7 +7,6 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
-using UnityEditor;
 using UnityEditor.SceneManagement;
 
 namespace GameCanvas.Editor

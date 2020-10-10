@@ -43,7 +43,7 @@ namespace GameCanvas
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool AlmostSame(in float a, in float b)
-            => (a >= b - math.EPSILON && a <= b + math.EPSILON);
+            => (a == b) || UnityEngine.Mathf.Approximately(a, b);
 
         /// <summary>
         /// 計算誤差を考慮した同値判定
@@ -144,7 +144,7 @@ namespace GameCanvas
         /// 平方根
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Sqrt(in float value) => UnityEngine.Mathf.Sqrt(value);
+        public static float Sqrt(in float value) => math.sqrt(value);
         #endregion
 
         //----------------------------------------------------------

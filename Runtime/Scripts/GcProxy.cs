@@ -9,6 +9,7 @@
 /*------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
@@ -46,18 +47,21 @@ namespace GameCanvas
             get => m_Context.InputAcceleration.AccelerationEventCount;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastX
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.x;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastY
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.y;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastZ
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -210,12 +214,14 @@ namespace GameCanvas
             set { m_Context.Graphics.CurrentCoordinate = value; }
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentDay
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Day;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public System.DayOfWeek CurrentDayOfWeek
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -228,30 +234,35 @@ namespace GameCanvas
             get => m_Context.Time.CurrentFrame;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentHour
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Hour;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentMillisecond
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Millisecond;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentMinute
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Minute;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentMonth
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Month;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentSecond
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -326,6 +337,7 @@ namespace GameCanvas
             get => m_Context.Time.CurrentTime.Year;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentYear
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -372,42 +384,49 @@ namespace GameCanvas
             set { m_Context.Graphics.FontSize = value; }
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GeolocationLastAltitude
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Altitude;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GeolocationLastLatitude
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Latitude;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GeolocationLastLongitude
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Longitude;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public System.DateTimeOffset GeolocationLastTime
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Time;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public LocationServiceStatus GeolocationStatus
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.GeolocationStatus;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool HasGeolocationPermission
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.HasUserAuthorizedPermissionGeolocation;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool HasGeolocationUpdate
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -478,6 +497,7 @@ namespace GameCanvas
             }
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsPressBackButton
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -775,6 +795,7 @@ namespace GameCanvas
             => m_Context.Graphics.ClearCoordinate();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void ClearDownloadCache()
             => m_Context.Network.ClearDownloadCacheAll();
 
@@ -898,6 +919,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void DrawCenterRect(in float2 center, in float2 size, float degree = 0f)
         {
             using (StyleScope)
@@ -908,6 +930,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void DrawCenterString(in string str, in float x, in float y, float degree = 0f)
         {
             using (StyleScope)
@@ -1041,6 +1064,7 @@ namespace GameCanvas
             => m_Context.Graphics.DrawRect(rect);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void DrawRightString(in string str, in float x, in float y, float degree = 0f)
         {
             using (StyleScope)
@@ -1090,6 +1114,7 @@ namespace GameCanvas
             => m_Context.Storage.EraseSavedDataAll();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void FillCenterRect(in float2 center, in float2 size, float degree = 0f)
         {
             using (StyleScope)
@@ -1136,6 +1161,7 @@ namespace GameCanvas
             => m_Context.InputCamera.FocusCameraImage(camera, uv);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GetAccelerationX(in int i, in bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
@@ -1146,6 +1172,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GetAccelerationY(in int i, in bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
@@ -1156,6 +1183,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GetAccelerationZ(in int i, in bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
@@ -1195,10 +1223,12 @@ namespace GameCanvas
         public int GetImageWidth(in GcImage image) => image.m_Size.x;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool GetIsKeyBegan(in KeyCode key)
             => m_Context.InputKey.IsKeyDown(key);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool GetIsKeyEnded(in KeyCode key)
             => m_Context.InputKey.IsKeyUp(key);
 
@@ -1251,6 +1281,7 @@ namespace GameCanvas
             => m_Context.Network.TryGetOnlineImageSize(url, out var size) ? size.x : 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public GcAvailability GetOnlineTextAsync(in string url, out string text)
             => m_Context.Network.TryGetOnlineText(url, out text);
 
@@ -1702,6 +1733,7 @@ namespace GameCanvas
             => m_Context.InputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync(callback);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float2 Rotate(in float2 vector, in float degree)
             => GcMath.RotateVector(vector, degree);
 
@@ -1823,10 +1855,12 @@ namespace GameCanvas
             => m_Context.Graphics.RectAnchor = anchor;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void SetResolution(in int width, in int height)
             => m_Context.Graphics.ChangeCanvasSize(new int2(width, height));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void SetSeed(in int seed) => GcMath.SetRandomSeed((uint)seed);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1846,6 +1880,7 @@ namespace GameCanvas
             => m_Context.Graphics.CurrentStyle = style;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void SetTapSensitivity(in float maxDuration, in float maxDistance)
             => m_Context.InputPointer.TapSettings = new GcTapSettings(maxDistance, maxDuration);
 
@@ -2129,6 +2164,7 @@ namespace GameCanvas
             => m_Context.InputCamera.UpdateCameraDevice();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void WriteScreenImage(in string _)
             => m_Context.Storage.SaveScreenshotAsync();
         #endregion
@@ -2176,10 +2212,10 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnDisable() => m_Context?.Dispose();
+        internal void OnDisable() => m_Context.Dispose();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnEnable() => m_Context?.Graphics?.Init();
+        internal void OnEnable() => m_Context.Graphics?.Init();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void UpdateCurrentScene()

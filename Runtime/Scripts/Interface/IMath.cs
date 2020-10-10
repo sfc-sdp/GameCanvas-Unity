@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using Unity.Mathematics;
 
 namespace GameCanvas
@@ -163,9 +164,11 @@ namespace GameCanvas
         float Atan2(in float x, in float y);
 
         [System.Obsolete("Use to `RotateVector` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float2 Rotate(in float2 vector, in float degree);
 
         [System.Obsolete("Use to `SetRandomSeed` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void SetSeed(in int seed);
     }
 }

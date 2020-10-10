@@ -137,6 +137,8 @@ namespace GameCanvas.Engine
             set { m_CurrentStyle.Color = value; }
         }
 
+        public CoordianteScope CoordinateScope => new CoordianteScope(this);
+
         public float2x3 CurrentCoordinate
         {
             get => m_CurrentMatrix;
@@ -174,9 +176,6 @@ namespace GameCanvas.Engine
             get => m_CurrentStyle.LineWidth;
             set { m_CurrentStyle.LineWidth = math.max(0, value); }
         }
-
-        public CoordianteScope CoordinateScope => new CoordianteScope(this);
-
         public GcAnchor RectAnchor
         {
             get => m_CurrentStyle.RectAnchor;
@@ -1111,6 +1110,10 @@ namespace GameCanvas.Engine
             if (m_StackStyle.IsCreated) m_StackStyle.Dispose();
             if (m_StackMatrix.IsCreated) m_StackMatrix.Dispose();
 
+            foreach (var font in m_TextFont.Values) font.Unload();
+            m_TextFont.Clear();
+            m_Atlas.Unload();
+
             m_IsInit = false;
         }
 
@@ -1120,8 +1123,8 @@ namespace GameCanvas.Engine
             m_MPBlock.SetColor(k_ShaderPropColor, color);
 
             var hasAlpha = color.a != 1f;
-            var buffer = hasAlpha ? m_CommandBufferTransparent : m_CommandBufferOpaque;
-            var material = hasAlpha ? m_MaterialTransparent : m_MaterialOpaque;
+            var buffer = GetCommandBuffer(hasAlpha);
+            var material = GetMaterial(hasAlpha);
             var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
                 .Mul(GcAffine.FromScale(new float2(1f, -1f)))
                 .Mul(mtx)
@@ -1151,8 +1154,8 @@ namespace GameCanvas.Engine
             m_MPBlock.SetColor(k_ShaderPropColor, color);
 
             var hasAlpha = color.a != 1f;
-            var buffer = hasAlpha ? m_CommandBufferTransparent : m_CommandBufferOpaque;
-            var material = hasAlpha ? m_MaterialTransparent : m_MaterialOpaque;
+            var buffer = GetCommandBuffer(hasAlpha);
+            var material = GetMaterial(hasAlpha);
             var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
                 .Mul(GcAffine.FromScale(new float2(1f, -1f)))
                 .ToFloat4x4();
@@ -1160,6 +1163,22 @@ namespace GameCanvas.Engine
 
             buffer.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private CommandBuffer GetCommandBuffer(in bool hasAlpha)
+#if UNITY_EDITOR
+            => hasAlpha ? m_CommandBufferTransparent : m_CommandBufferOpaque;
+#else
+            => m_CommandBufferTransparent;
+#endif // UNITY_EDITOR
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private Material GetMaterial(in bool hasAlpha)
+#if UNITY_EDITOR
+            => hasAlpha ? m_MaterialTransparent : m_MaterialOpaque;
+#else
+            => m_MaterialTransparent;
+#endif // UNITY_EDITOR
 
         private void GetOrCreateTextGenerator(in string str, out TextGenerator gen, out TextGenerationSettings settings)
         {
