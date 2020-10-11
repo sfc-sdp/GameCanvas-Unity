@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IActor
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.1.0">
+    <meta name="generator" content="docfx 2.56.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -46,7 +46,7 @@
   </h3>
   <a id="GameCanvas_IActor_Priority_" data-uid="GameCanvas.IActor.Priority*"></a>
   <h4 id="GameCanvas_IActor_Priority" data-uid="GameCanvas.IActor.Priority">Priority</h4>
-  <div class="markdown level1 summary"><p>アクターの処理優先度。初期値は0（無指定）</p>
+  <div class="markdown level1 summary"><p>アクターの処理優先度</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -69,38 +69,51 @@
     </tbody>
   </table>
   <h5 id="GameCanvas_IActor_Priority_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>アクターは、シーン内でこの値が小さい順に処理が回ってくる。
-同じ値だった場合は、シーンに登録した順序で実行される。</p>
-<p>負の値を設定した場合は、そのシーンの処理よりも前に実行される。</p>
+  <div class="markdown level1 remarks"><ul>
+<li>初期値は0（無指定）<br></li>
+<li>アクターは、シーン内でこの値が小さい順に処理が回ってきます<br></li>
+<li>同じ値だった場合は、シーンに登録した順序で実行されます<br></li>
+<li>負の値を設定した場合は、そのシーンの処理よりも前に実行されます</li>
+</ul>
 </div>
   <h3 id="methods">Methods
   </h3>
   <a id="GameCanvas_IActor_AfterDraw_" data-uid="GameCanvas.IActor.AfterDraw*"></a>
   <h4 id="GameCanvas_IActor_AfterDraw" data-uid="GameCanvas.IActor.AfterDraw">AfterDraw()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>アクターの描画後処理</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void AfterDraw()</code></pre>
   </div>
+  <h5 id="GameCanvas_IActor_AfterDraw_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（描画より後に）GameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IActor_Draw_" data-uid="GameCanvas.IActor.Draw*"></a>
   <h4 id="GameCanvas_IActor_Draw" data-uid="GameCanvas.IActor.Draw">Draw()</h4>
-  <div class="markdown level1 summary"><p>アクターの描画処理。毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>アクターの描画処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Draw()</code></pre>
   </div>
+  <h5 id="GameCanvas_IActor_Draw_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_IActor_Update_" data-uid="GameCanvas.IActor.Update*"></a>
   <h4 id="GameCanvas_IActor_Update" data-uid="GameCanvas.IActor.Update">Update()</h4>
-  <div class="markdown level1 summary"><p>アクターの計算処理。毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます。</p>
+  <div class="markdown level1 summary"><p>アクターの計算処理</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Update()</code></pre>
   </div>
+  <h5 id="GameCanvas_IActor_Update_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます</p>
+</div>
 </article>
           </div>
           

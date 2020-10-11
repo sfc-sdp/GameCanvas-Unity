@@ -1,4 +1,5 @@
 using GameCanvas;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public sealed class Game : GameBase
     public override void InitGame()
     {
         // キャンバスの大きさを設定します
-        gc.SetResolution(720, 1280);
+        gc.ChangeCanvasSize(720, 1280);
     }
 
     /// <summary>
@@ -37,14 +38,16 @@ public sealed class Game : GameBase
         // 画面を白で塗りつぶします
         gc.ClearScreen();
 
-        // 0番の画像を描画します
-        gc.DrawImage(0, 0, 0);
+        // 青空の画像を描画します
+        gc.DrawImage(GcImage.BlueSky, 0, 0);
 
         // 黒の文字を描画します
         gc.SetColor(0, 0, 0);
         gc.SetFontSize(48);
+        gc.SetStringAnchor(GcAnchor.UpperLeft);
         gc.DrawString("この文字と青空の画像が", 40, 160);
         gc.DrawString("見えていれば成功です", 40, 270);
-        gc.DrawRightString($"{sec}s", 630, 10);
+        gc.SetStringAnchor(GcAnchor.UpperRight);
+        gc.DrawString($"{sec}s", 630, 10);
     }
 }

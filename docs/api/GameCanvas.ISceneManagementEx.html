@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ISceneManagementEx
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ISceneManagementEx
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.ISceneManagementEx">
+  
+  
+  <h1 id="GameCanvas_ISceneManagementEx" data-uid="GameCanvas.ISceneManagementEx" class="text-break">Interface ISceneManagementEx
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_AddActor_GameCanvas_GcActor__">ISceneManagement.AddActor(GcActor)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_CreateActor__1">ISceneManagement.CreateActor&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_GetActorCount">ISceneManagement.GetActorCount()</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_GetActorCount__1">ISceneManagement.GetActorCount&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_RemoveActorAll">ISceneManagement.RemoveActorAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor_System_Int32__GameCanvas_GcActor__">ISceneManagement.TryGetActor(Int32, GcActor)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor__1_System_Int32____0__">ISceneManagement.TryGetActor&lt;T&gt;(Int32, T)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___">ISceneManagement.TryGetActorList&lt;T&gt;(ReadOnlyActorList&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryRemoveActor_GameCanvas_GcActor__">ISceneManagement.TryRemoveActor(GcActor)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_ISceneManagementEx_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ISceneManagementEx : ISceneManagement</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_ISceneManagementEx_ChangeScene_" data-uid="GameCanvas.ISceneManagementEx.ChangeScene*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_" data-uid="GameCanvas.ISceneManagementEx.ChangeScene``1(System.Object)">ChangeScene&lt;T&gt;(Object)</h4>
+  <div class="markdown level1 summary"><p>シーンを切り替えます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ChangeScene&lt;T&gt;(object state = null)
+    where T : GcScene</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>シーンの開始処理 (<a class="xref" href="GameCanvas.IScene.html#GameCanvas_IScene_EnterScene_System_Object_">EnterScene(Object)</a>) に引数として渡す任意の値</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>開始するシーンの型</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>これまで有効だったシーンは、現在のフレームの最後に終了処理が実行されます<br></li>
+<li>これから有効になるシーンは、次のフレームの最初に開始処理が実行されます</li>
+</ul>
+</div>
+  <a id="GameCanvas_ISceneManagementEx_GetActor_" data-uid="GameCanvas.ISceneManagementEx.GetActor*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_GetActor" data-uid="GameCanvas.ISceneManagementEx.GetActor">GetActor()</h4>
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、1つだけ取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcActor GetActor()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcActor.html">GcActor</a></td>
+        <td><p>取得できたアクター</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_ISceneManagementEx_GetActor_" data-uid="GameCanvas.ISceneManagementEx.GetActor*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_GetActor__1" data-uid="GameCanvas.ISceneManagementEx.GetActor``1">GetActor&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものを1つだけ取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T GetActor&lt;T&gt;()
+    where T : GcActor</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><p>取得できたアクター</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>取得するアクターの型</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_ISceneManagementEx_GetActorList_" data-uid="GameCanvas.ISceneManagementEx.GetActorList*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_GetActorList__1" data-uid="GameCanvas.ISceneManagementEx.GetActorList``1">GetActorList&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ReadOnlyActorList&lt;T&gt; GetActorList&lt;T&gt;()
+    where T : GcActor</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.ReadOnlyActorList-1.html">ReadOnlyActorList</a>&lt;T&gt;</td>
+        <td><p>取得したアクターのリスト</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>取得するアクターの型</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_ISceneManagementEx_RegisterScene_" data-uid="GameCanvas.ISceneManagementEx.RegisterScene*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_RegisterScene_GameCanvas_GcScene__" data-uid="GameCanvas.ISceneManagementEx.RegisterScene(GameCanvas.GcScene@)">RegisterScene(GcScene)</h4>
+  <div class="markdown level1 summary"><p>新たなシーンを登録します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterScene(in GcScene scene)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcScene.html">GcScene</a></td>
+        <td><span class="parametername">scene</span></td>
+        <td><p>登録するシーン</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_ISceneManagementEx_RegisterScene_GameCanvas_GcScene___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>登録したシーンは <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(Object)</a> を呼び出すことで有効になります</p>
+</div>
+  <a id="GameCanvas_ISceneManagementEx_RegisterScene_" data-uid="GameCanvas.ISceneManagementEx.RegisterScene*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_RegisterScene__1" data-uid="GameCanvas.ISceneManagementEx.RegisterScene``1">RegisterScene&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>新たなシーンを登録します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterScene&lt;T&gt;()
+    where T : GcScene, new()</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>登録するシーンの型</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_ISceneManagementEx_RegisterScene__1_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>登録したシーンは <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(Object)</a> を呼び出すことで有効になります</p>
+</div>
+  <a id="GameCanvas_ISceneManagementEx_UnregisterScene_" data-uid="GameCanvas.ISceneManagementEx.UnregisterScene*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_UnregisterScene_GameCanvas_GcScene__" data-uid="GameCanvas.ISceneManagementEx.UnregisterScene(GameCanvas.GcScene@)">UnregisterScene(GcScene)</h4>
+  <div class="markdown level1 summary"><p>指定したシーンをシーン一覧から削除します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnregisterScene(in GcScene scene)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcScene.html">GcScene</a></td>
+        <td><span class="parametername">scene</span></td>
+        <td><p>削除するシーン</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_ISceneManagementEx_UnregisterScene_GameCanvas_GcScene___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>もし指定したシーンが現在有効なシーンだった場合、フレームの最後にシーンの離脱処理が走ります</p>
+</div>
+  <a id="GameCanvas_ISceneManagementEx_UnregisterScene_" data-uid="GameCanvas.ISceneManagementEx.UnregisterScene*"></a>
+  <h4 id="GameCanvas_ISceneManagementEx_UnregisterScene__1" data-uid="GameCanvas.ISceneManagementEx.UnregisterScene``1">UnregisterScene&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>指定したシーンをシーン一覧から削除します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnregisterScene&lt;T&gt;()
+    where T : GcScene</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>削除するシーンの型</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_ISceneManagementEx_UnregisterScene__1_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>もし指定したシーンが現在有効なシーンだった場合、フレームの最後にシーンの離脱処理が走ります</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface INetwork
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface INetwork
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.INetwork">
+  
+  
+  <h1 id="GameCanvas_INetwork" data-uid="GameCanvas.INetwork" class="text-break">Interface INetwork
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_INetwork_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface INetwork</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_INetwork_ClearDownloadCache_" data-uid="GameCanvas.INetwork.ClearDownloadCache*"></a>
+  <h4 id="GameCanvas_INetwork_ClearDownloadCache_System_String__" data-uid="GameCanvas.INetwork.ClearDownloadCache(System.String@)">ClearDownloadCache(String)</h4>
+  <div class="markdown level1 summary"><p>指定されたオンラインリソースのダウンロードキャッシュを削除します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearDownloadCache(in string url)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetwork_ClearDownloadCacheAll_" data-uid="GameCanvas.INetwork.ClearDownloadCacheAll*"></a>
+  <h4 id="GameCanvas_INetwork_ClearDownloadCacheAll" data-uid="GameCanvas.INetwork.ClearDownloadCacheAll">ClearDownloadCacheAll()</h4>
+  <div class="markdown level1 summary"><p>全てのオンラインリソースのダウンロードキャッシュを削除します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearDownloadCacheAll()</code></pre>
+  </div>
+  <a id="GameCanvas_INetwork_TryGetOnlineImage_" data-uid="GameCanvas.INetwork.TryGetOnlineImage*"></a>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineImage_System_String__UnityEngine_Texture2D__" data-uid="GameCanvas.INetwork.TryGetOnlineImage(System.String@,UnityEngine.Texture2D@)">TryGetOnlineImage(String, out Texture2D)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineImage(in string url, out Texture2D texture)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Texture2D.html">Texture2D</a></td>
+        <td><span class="parametername">texture</span></td>
+        <td><p>画像リソース。戻り値が<a class="xref" href="GameCanvas.GcAvailability.html#GameCanvas_GcAvailability_Ready">Ready</a>以外だとNull</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetwork_TryGetOnlineImageSize_" data-uid="GameCanvas.INetwork.TryGetOnlineImageSize*"></a>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineImageSize_System_String__Unity_Mathematics_int2__" data-uid="GameCanvas.INetwork.TryGetOnlineImageSize(System.String@,Unity.Mathematics.int2@)">TryGetOnlineImageSize(String, out int2)</h4>
+  <div class="markdown level1 summary"><p>オンライン画像リソースの寸法を取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetOnlineImageSize(in string url, out int2 size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
+        <td><span class="parametername">size</span></td>
+        <td><p>オンライン画像リソースの寸法</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>オンラインリソースを取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetwork_TryGetOnlineSound_" data-uid="GameCanvas.INetwork.TryGetOnlineSound*"></a>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioClip__" data-uid="GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioClip@)">TryGetOnlineSound(String, out AudioClip)</h4>
+  <div class="markdown level1 summary"><p>オンライン音声リソースの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineSound(in string url, out AudioClip clip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/AudioClip.html">AudioClip</a></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>音声リソース。戻り値が<a class="xref" href="GameCanvas.GcAvailability.html#GameCanvas_GcAvailability_Ready">Ready</a>以外だとNull</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetwork_TryGetOnlineSound_" data-uid="GameCanvas.INetwork.TryGetOnlineSound*"></a>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__UnityEngine_AudioClip__" data-uid="GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,UnityEngine.AudioClip@)">TryGetOnlineSound(String, AudioType, out AudioClip)</h4>
+  <div class="markdown level1 summary"><p>オンライン音声リソースの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineSound(in string url, in AudioType type, out AudioClip clip)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/AudioType.html">AudioType</a></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>音声リソースの形式</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/AudioClip.html">AudioClip</a></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>音声リソース。戻り値が<a class="xref" href="GameCanvas.GcAvailability.html#GameCanvas_GcAvailability_Ready">Ready</a>以外だとNull</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_INetwork_TryGetOnlineText_" data-uid="GameCanvas.INetwork.TryGetOnlineText*"></a>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineText_System_String__System_String__" data-uid="GameCanvas.INetwork.TryGetOnlineText(System.String@,System.String@)">TryGetOnlineText(String, out String)</h4>
+  <div class="markdown level1 summary"><p>オンラインテキストの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineText(in string url, out string str)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">url</span></td>
+        <td><p>リソースURL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">str</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><p>オンラインリソースの可用性</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

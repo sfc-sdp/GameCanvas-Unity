@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IInputAcceleration
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IInputAcceleration
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.IInputAcceleration">
+  
+  
+  <h1 id="GameCanvas_IInputAcceleration" data-uid="GameCanvas.IInputAcceleration" class="text-break">Interface IInputAcceleration
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_IInputAcceleration_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputAcceleration</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="GameCanvas_IInputAcceleration_AccelerationEventCount_" data-uid="GameCanvas.IInputAcceleration.AccelerationEventCount*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_AccelerationEventCount" data-uid="GameCanvas.IInputAcceleration.AccelerationEventCount">AccelerationEventCount</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int AccelerationEventCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled_" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled">IsAccelerometerEnabled</h4>
+  <div class="markdown level1 summary"><p>加速度計が有効かどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsAccelerometerEnabled { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputAcceleration_LastAccelerationEvent_" data-uid="GameCanvas.IInputAcceleration.LastAccelerationEvent*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_LastAccelerationEvent" data-uid="GameCanvas.IInputAcceleration.LastAccelerationEvent">LastAccelerationEvent</h4>
+  <div class="markdown level1 summary"><p>最後に検出した加速度イベント</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAccelerationEvent LastAccelerationEvent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEvent_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvent*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_TryGetAccelerationEvent_System_Int32_GameCanvas_GcAccelerationEvent__" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvent(System.Int32,GameCanvas.GcAccelerationEvent@)">TryGetAccelerationEvent(Int32, out GcAccelerationEvent)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">i</span></td>
+        <td><p>イベントインデックス（0 から <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerationEventCount">AccelerationEventCount</a>-1 までの連番）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></td>
+        <td><span class="parametername">e</span></td>
+        <td><p>イベント</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>ポインターイベントを取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEvents_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvents*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_TryGetAccelerationEvents_Unity_Collections_NativeArray_GameCanvas_GcAccelerationEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvents(Unity.Collections.NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)">TryGetAccelerationEvents(out NativeArray&lt;GcAccelerationEvent&gt;.ReadOnly, out Int32)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetAccelerationEvents(out NativeArray&lt;GcAccelerationEvent&gt;.ReadOnly array, out int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>イベント配列</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>イベント配列の要素数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上の加速度イベントがあったかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

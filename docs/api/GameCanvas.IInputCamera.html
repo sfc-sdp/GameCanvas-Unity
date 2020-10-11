@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IInputCamera
+   | GameCanvas </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IInputCamera
+   | GameCanvas ">
+    <meta name="generator" content="docfx 2.56.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.IInputCamera">
+  
+  
+  <h1 id="GameCanvas_IInputCamera" data-uid="GameCanvas.IInputCamera" class="text-break">Interface IInputCamera
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
+  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
+  <h5 id="GameCanvas_IInputCamera_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputCamera</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="GameCanvas_IInputCamera_CameraDeviceCount_" data-uid="GameCanvas.IInputCamera.CameraDeviceCount*"></a>
+  <h4 id="GameCanvas_IInputCamera_CameraDeviceCount" data-uid="GameCanvas.IInputCamera.CameraDeviceCount">CameraDeviceCount</h4>
+  <div class="markdown level1 summary"><p>認識可能なカメラ（外部入力映像）の数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CameraDeviceCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_HasUserAuthorizedPermissionCamera_" data-uid="GameCanvas.IInputCamera.HasUserAuthorizedPermissionCamera*"></a>
+  <h4 id="GameCanvas_IInputCamera_HasUserAuthorizedPermissionCamera" data-uid="GameCanvas.IInputCamera.HasUserAuthorizedPermissionCamera">HasUserAuthorizedPermissionCamera</h4>
+  <div class="markdown level1 summary"><p>カメラデバイスへのアクセス権限を取得済みかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool HasUserAuthorizedPermissionCamera { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="GameCanvas_IInputCamera_DidUpdateCameraImageThisFrame_" data-uid="GameCanvas.IInputCamera.DidUpdateCameraImageThisFrame*"></a>
+  <h4 id="GameCanvas_IInputCamera_DidUpdateCameraImageThisFrame_GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.DidUpdateCameraImageThisFrame(GameCanvas.GcCameraDevice@)">DidUpdateCameraImageThisFrame(GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に 指定されたカメラ（外部入力映像）テクスチャーに更新があったかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>テクスチャーに更新があったかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_FocusCameraImage_" data-uid="GameCanvas.IInputCamera.FocusCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_FocusCameraImage_GameCanvas_GcCameraDevice__System_Nullable_Unity_Mathematics_float2___" data-uid="GameCanvas.IInputCamera.FocusCameraImage(GameCanvas.GcCameraDevice@,System.Nullable{Unity.Mathematics.float2}@)">FocusCameraImage(GcCameraDevice, Nullable&lt;float2&gt;)</h4>
+  <div class="markdown level1 summary"><p>カメラ（外部入力映像）の任意の点に焦点をあわせるように要求します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FocusCameraImage(in GcCameraDevice camera, in float2? uv)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.nullable-1?view=netstandard-2.0">Nullable</a>&lt;<a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a>&gt;</td>
+        <td><span class="parametername">uv</span></td>
+        <td><p>焦点をあわせる位置（左下を原点とする 0.0～1.0 のUV座標系）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputCamera_FocusCameraImage_GameCanvas_GcCameraDevice__System_Nullable_Unity_Mathematics_float2____remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>このAPIは、対応するカメラデバイスに対して、実機上での実行したときのみ動作します<br></li>
+<li><code data-dev-comment-type="paramref" class="paramref">uv</code>引数は、キャンバス座標系ではなく、左下を原点とする 0.0～1.0 のUV座標系を指定します<br></li>
+<li>焦点あわせを解除するには、<code data-dev-comment-type="paramref" class="paramref">uv</code>引数に null を渡します</li>
+</ul>
+</div>
+  <a id="GameCanvas_IInputCamera_GetOrCreateCameraTexture_" data-uid="GameCanvas.IInputCamera.GetOrCreateCameraTexture*"></a>
+  <h4 id="GameCanvas_IInputCamera_GetOrCreateCameraTexture_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__" data-uid="GameCanvas.IInputCamera.GetOrCreateCameraTexture(GameCanvas.GcCameraDevice@,GameCanvas.GcResolution@)">GetOrCreateCameraTexture(GcCameraDevice, GcResolution)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）のテクスチャーを生成もしくは取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">WebCamTexture GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcResolution.html">GcResolution</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>テクスチャーが未生成だった場合に、希望する解像度とリフレッシュレート</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/WebCamTexture.html">WebCamTexture</a></td>
+        <td><p>テクスチャー</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputCamera_GetOrCreateCameraTexture_GameCanvas_GcCameraDevice__GameCanvas_GcResolution___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>既にテクスチャーが生成済みの場合は、<code data-dev-comment-type="paramref" class="paramref">request</code>引数の値は無視されます<br></li>
+<li>生成後に解像度を変更する場合は <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryChangeCameraImageResolution_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">TryChangeCameraImageResolution(GcCameraDevice, GcResolution)</a> 関数を呼び出してください</li>
+</ul>
+</div>
+  <a id="GameCanvas_IInputCamera_IsFlippedCameraImage_" data-uid="GameCanvas.IInputCamera.IsFlippedCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_IsFlippedCameraImage_GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.IsFlippedCameraImage(GameCanvas.GcCameraDevice@)">IsFlippedCameraImage(GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）は上下が反転しているかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsFlippedCameraImage(in GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>上下が反転しているかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_IsPlayingCameraImage_" data-uid="GameCanvas.IInputCamera.IsPlayingCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_IsPlayingCameraImage_GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.IsPlayingCameraImage(GameCanvas.GcCameraDevice@)">IsPlayingCameraImage(GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の更新が行われているかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsPlayingCameraImage(in GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>更新が行われているかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_PauseCameraImage_" data-uid="GameCanvas.IInputCamera.PauseCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_PauseCameraImage_GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.PauseCameraImage(GameCanvas.GcCameraDevice@)">PauseCameraImage(GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の更新処理を一時停止します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool PauseCameraImage(in GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>停止したかどうか（元から停止していた場合を含まない）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_PlayCameraImage_" data-uid="GameCanvas.IInputCamera.PlayCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_PlayCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__Unity_Mathematics_int2__" data-uid="GameCanvas.IInputCamera.PlayCameraImage(GameCanvas.GcCameraDevice@,GameCanvas.GcResolution@,Unity.Mathematics.int2@)">PlayCameraImage(GcCameraDevice, GcResolution, out int2)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の更新処理を開始します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool PlayCameraImage(in GcCameraDevice camera, in GcResolution request, out int2 resolution)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcResolution.html">GcResolution</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>テクスチャーが未生成だった場合に、希望する解像度とリフレッシュレート</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
+        <td><span class="parametername">resolution</span></td>
+        <td><p>カメラ（外部入力映像）の解像度</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>開始したかどうか（元から更新していた場合を含まない）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputCamera_PlayCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__Unity_Mathematics_int2___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>カメラごとにこのAPIを呼び出すことで、それらを同時に更新することが可能です<br></li>
+<li>ただし、同じ名称のカメラは、同時に更新することができません<br></li>
+<li>既にテクスチャーが生成済みの場合は、<code data-dev-comment-type="paramref" class="paramref">request</code>引数の値は無視されます<br></li>
+<li>生成後に解像度を変更する場合は <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryChangeCameraImageResolution_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">TryChangeCameraImageResolution(GcCameraDevice, GcResolution)</a> 関数を呼び出してください</li>
+</ul>
+</div>
+  <a id="GameCanvas_IInputCamera_RequestUserAuthorizedPermissionCameraAsync_" data-uid="GameCanvas.IInputCamera.RequestUserAuthorizedPermissionCameraAsync*"></a>
+  <h4 id="GameCanvas_IInputCamera_RequestUserAuthorizedPermissionCameraAsync_System_Action_System_Boolean___" data-uid="GameCanvas.IInputCamera.RequestUserAuthorizedPermissionCameraAsync(System.Action{System.Boolean}@)">RequestUserAuthorizedPermissionCameraAsync(Action&lt;Boolean&gt;)</h4>
+  <div class="markdown level1 summary"><p>カメラデバイスへのアクセス権限を要求します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RequestUserAuthorizedPermissionCameraAsync(in Action&lt;bool&gt; callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.action-1?view=netstandard-2.0">Action</a>&lt;<a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a>&gt;</td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>結果を通知するコールバック</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_StopCameraImage_" data-uid="GameCanvas.IInputCamera.StopCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_StopCameraImage_GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.StopCameraImage(GameCanvas.GcCameraDevice@)">StopCameraImage(GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の更新処理を完全に停止します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void StopCameraImage(in GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_TryChangeCameraImageResolution_" data-uid="GameCanvas.IInputCamera.TryChangeCameraImageResolution*"></a>
+  <h4 id="GameCanvas_IInputCamera_TryChangeCameraImageResolution_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__" data-uid="GameCanvas.IInputCamera.TryChangeCameraImageResolution(GameCanvas.GcCameraDevice@,GameCanvas.GcResolution@)">TryChangeCameraImageResolution(GcCameraDevice, GcResolution)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の解像度変更を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int2 TryChangeCameraImageResolution(in GcCameraDevice camera, in GcResolution request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcResolution.html">GcResolution</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>希望する解像度とリフレッシュレート</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
+        <td><p>実際に設定された解像度</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_TryGetCameraImage_" data-uid="GameCanvas.IInputCamera.TryGetCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_TryGetCameraImage_GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.TryGetCameraImage(GameCanvas.GcCameraDevice@)">TryGetCameraImage(out GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>カメラ（外部入力映像）の取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetCameraImage(out GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_TryGetCameraImage_" data-uid="GameCanvas.IInputCamera.TryGetCameraImage*"></a>
+  <h4 id="GameCanvas_IInputCamera_TryGetCameraImage_System_String__GameCanvas_GcCameraDevice__" data-uid="GameCanvas.IInputCamera.TryGetCameraImage(System.String@,GameCanvas.GcCameraDevice@)">TryGetCameraImage(String, out GcCameraDevice)</h4>
+  <div class="markdown level1 summary"><p>デバイス名を指定して、カメラ（外部入力映像）の取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetCameraImage(in string deviceName, out GcCameraDevice camera)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
+        <td><span class="parametername">deviceName</span></td>
+        <td><p>デバイス名</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_TryGetCameraImageAll_" data-uid="GameCanvas.IInputCamera.TryGetCameraImageAll*"></a>
+  <h4 id="GameCanvas_IInputCamera_TryGetCameraImageAll_System_Collections_ObjectModel_ReadOnlyCollection_GameCanvas_GcCameraDevice___" data-uid="GameCanvas.IInputCamera.TryGetCameraImageAll(System.Collections.ObjectModel.ReadOnlyCollection{GameCanvas.GcCameraDevice}@)">TryGetCameraImageAll(out ReadOnlyCollection&lt;GcCameraDevice&gt;)</h4>
+  <div class="markdown level1 summary"><p>全ての認識可能なカメラ（外部入力映像）の取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetCameraImageAll(out ReadOnlyCollection&lt;GcCameraDevice&gt; array)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.collections.objectmodel.readonlycollection-1?view=netstandard-2.0">ReadOnlyCollection</a>&lt;<a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a>&gt;</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>カメラ（外部入力映像）配列</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>1つ以上 取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_TryGetCameraImageRotation_" data-uid="GameCanvas.IInputCamera.TryGetCameraImageRotation*"></a>
+  <h4 id="GameCanvas_IInputCamera_TryGetCameraImageRotation_GameCanvas_GcCameraDevice__System_Single__" data-uid="GameCanvas.IInputCamera.TryGetCameraImageRotation(GameCanvas.GcCameraDevice@,System.Single@)">TryGetCameraImageRotation(GcCameraDevice, out Single)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の回転角度取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">degree</span></td>
+        <td><p>回転角度</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_TryGetCameraImageSize_" data-uid="GameCanvas.IInputCamera.TryGetCameraImageSize*"></a>
+  <h4 id="GameCanvas_IInputCamera_TryGetCameraImageSize_GameCanvas_GcCameraDevice__Unity_Mathematics_int2__" data-uid="GameCanvas.IInputCamera.TryGetCameraImageSize(GameCanvas.GcCameraDevice@,Unity.Mathematics.int2@)">TryGetCameraImageSize(GcCameraDevice, out int2)</h4>
+  <div class="markdown level1 summary"><p>指定されたカメラ（外部入力映像）の解像度取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a></td>
+        <td><span class="parametername">camera</span></td>
+        <td><p>カメラ（外部入力映像）</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
+        <td><span class="parametername">resolution</span></td>
+        <td><p>カメラ（外部入力映像）の解像度</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><p>取得できたかどうか</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="GameCanvas_IInputCamera_TryGetCameraImageSize_GameCanvas_GcCameraDevice__Unity_Mathematics_int2___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>テクスチャーが未生成の場合は、取得に失敗します<br></li>
+<li>テクスチャーを生成するには、<a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_PlayCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__Unity_Mathematics_int2__">PlayCameraImage(GcCameraDevice, GcResolution, out int2)</a> もしくは <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_GetOrCreateCameraTexture_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">GetOrCreateCameraTexture(GcCameraDevice, GcResolution)</a> 関数を呼び出してください</li>
+</ul>
+</div>
+  <a id="GameCanvas_IInputCamera_UpdateCameraDevice_" data-uid="GameCanvas.IInputCamera.UpdateCameraDevice*"></a>
+  <h4 id="GameCanvas_IInputCamera_UpdateCameraDevice" data-uid="GameCanvas.IInputCamera.UpdateCameraDevice">UpdateCameraDevice()</h4>
+  <div class="markdown level1 summary"><p>カメラ（外部入力映像）の一覧を更新します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int UpdateCameraDevice()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><p>更新後の 認識可能なカメラ（外部入力映像）の数</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            (c) 2015-2020 Smart Device Programming.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,10 +1,11 @@
 {
   "dependencies": {
-    "com.coffee.upm-git-extension": "https://github.com/sfc-sdp/UpmGitExtension.git",
-    "com.unity.ide.vscode": "1.2.1",
-    "com.unity.test-framework": "1.1.16",
+    "com.unity.ide.visualstudio": "2.0.3",
+    "com.unity.ide.vscode": "1.2.2",
+    "com.unity.test-framework": "1.1.18",
+    "com.unity.testtools.codecoverage": "0.3.1-preview",
     "com.unity.ugui": "1.0.0",
-    "jp.ac.keio.sfc.sdp": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm4.2.0",
+    "jp.ac.keio.sfc.sdp": "https://github.com/sfc-sdp/GameCanvas-Unity.git#upm5.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.audio": "1.0.0",
     "com.unity.modules.imageconversion": "1.0.0",
