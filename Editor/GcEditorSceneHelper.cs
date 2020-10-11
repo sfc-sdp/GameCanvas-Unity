@@ -17,8 +17,7 @@ namespace GameCanvas.Editor
         #region 変数
         //----------------------------------------------------------
 
-        private const string k_GameScenePath = "Assets/Game.unity";
-
+        const string k_GameScenePath = "Assets/Game.unity";
         #endregion
 
         //----------------------------------------------------------
@@ -37,7 +36,6 @@ namespace GameCanvas.Editor
                 EditorSceneManager.OpenScene(k_GameScenePath);
             }
         }
-
         #endregion
     }
 }

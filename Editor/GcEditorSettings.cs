@@ -22,7 +22,7 @@ namespace GameCanvas.Editor
         private const int k_SerializeVersion = 1;
         private const string k_Path = "ProjectSettings/GameCanvasEditorSettings.json";
 
-        private static GcEditorSettings sInstance;
+        private static GcEditorSettings s_Instance;
 
         [SerializeField]
         private int SerializeVersion = k_SerializeVersion;
@@ -30,39 +30,37 @@ namespace GameCanvas.Editor
         public bool OpenGameSceneOnLaunchEditor = true;
         [SerializeField]
         public bool CheckBuildTargetOnLaunchEditor = true;
-
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         public static GcEditorSettings CurrentSettings
         {
             get
             {
-                if (sInstance == null)
+                if (s_Instance == null)
                 {
                     Load();
                 }
-                return sInstance;
+                return s_Instance;
             }
         }
 
         public void Save()
         {
-            if (sInstance != this) return;
+            if (s_Instance != this) return;
 
             if (File.Exists(k_Path))
             {
                 File.Delete(k_Path);
             }
 
-            sInstance.SerializeVersion = k_SerializeVersion;
-            var json = JsonUtility.ToJson(sInstance, true);
+            s_Instance.SerializeVersion = k_SerializeVersion;
+            var json = JsonUtility.ToJson(s_Instance, true);
             File.WriteAllText(k_Path, json);
         }
-
         #endregion
 
         //----------------------------------------------------------
@@ -74,19 +72,18 @@ namespace GameCanvas.Editor
             if (File.Exists(k_Path))
             {
                 var json = File.ReadAllText(k_Path);
-                sInstance = JsonUtility.FromJson<GcEditorSettings>(json);
-                if (sInstance != null)
+                s_Instance = JsonUtility.FromJson<GcEditorSettings>(json);
+                if (s_Instance != null)
                 {
-                    if (sInstance.SerializeVersion == k_SerializeVersion) return;
+                    if (s_Instance.SerializeVersion == k_SerializeVersion) return;
 
                     Debug.LogWarning("[GameCanvas] バージョン更新により、エディタ設定が初期化されました\n");
                 }
             }
 
-            sInstance = new GcEditorSettings();
-            sInstance.Save();
+            s_Instance = new GcEditorSettings();
+            s_Instance.Save();
         }
-
         #endregion
     }
 }

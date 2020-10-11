@@ -14,7 +14,7 @@ namespace GameCanvas.Editor
     static class GcEditorExporter
     {
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
 
         public static void ExportPackage()
@@ -31,7 +31,6 @@ namespace GameCanvas.Editor
                 EditorUtility.ClearProgressBar();
             }
         }
-
         #endregion
     }
 }

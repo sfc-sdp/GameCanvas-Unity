@@ -29,7 +29,6 @@ namespace GameCanvas.Editor
             public void Update(in string title, in string info, in float progress)
                             => EditorUtility.DisplayProgressBar(title, info, progress);
         }
-
         #endregion
 
         //----------------------------------------------------------
@@ -47,7 +46,6 @@ namespace GameCanvas.Editor
             EditorUtility.DisplayProgressBar(title, info, 0f);
             return default;
         }
-
         #endregion
     }
 }

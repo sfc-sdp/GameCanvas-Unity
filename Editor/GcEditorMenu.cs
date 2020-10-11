@@ -22,7 +22,6 @@ namespace GameCanvas.Editor
         private const string k_MenuPath101 = "GameCanvas/リソース定義の強制更新";
         private const string k_MenuPath201 = "GameCanvas/エディタ設定/起動時に Game.unity を開く";
         private const string k_MenuPath202 = "GameCanvas/エディタ設定/起動時にビルドターゲットを確認する";
-
         #endregion
 
         //----------------------------------------------------------
@@ -73,7 +72,6 @@ namespace GameCanvas.Editor
             Menu.SetChecked(k_MenuPath202, settings.CheckBuildTargetOnLaunchEditor);
         }
 #pragma warning restore IDE0051
-
         #endregion
     }
 }

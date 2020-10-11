@@ -1,5 +1,5 @@
 # CHANGE LOG
-## 5.0.0-preview.8
+## 5.0.0-preview.11
 ### 新機能
 - [#89](https://github.com/sfc-sdp/GameCanvas-Unity/issues/89) 描線の太さと端点を自由に設定できるように
 - [#141](https://github.com/sfc-sdp/GameCanvas-Unity/issues/141) スクリプトのホットリロードに対応

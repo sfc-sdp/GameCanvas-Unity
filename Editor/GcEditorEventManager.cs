@@ -17,14 +17,17 @@ using UnityEngine;
 namespace GameCanvas.Editor
 {
     [InitializeOnLoad]
-    sealed class GcEditorEventManager : AssetPostprocessor, IActiveBuildTargetChanged, IPreprocessBuildWithReport
+    sealed class GcEditorEventManager : AssetPostprocessor
+        , IActiveBuildTargetChanged, IPreprocessBuildWithReport
+#if UNITY_ANDROID
+        , UnityEditor.Android.IPostGenerateGradleAndroidProject
+#endif // UNITY_ANDROID
     {
         //----------------------------------------------------------
         #region 変数
         //----------------------------------------------------------
 
-        private const string k_LaunchFlagPath = "Temp/GameCanvasTempFile-LaunchFlag";
-
+        const string k_LaunchFlagPath = "Temp/GameCanvasTempFile-LaunchFlag";
         #endregion
 
         //----------------------------------------------------------
@@ -67,19 +70,26 @@ namespace GameCanvas.Editor
             Debug.Log($"OnActiveBuildTargetChanged: {previousTarget} -> {newTarget}");
         }
 
+#if UNITY_ANDROID
+        void UnityEditor.Android.IPostGenerateGradleAndroidProject.OnPostGenerateGradleAndroidProject(string path)
+        {
+            GcEditorBuilder.OnPostGenerateGradleAndroidProject(path);
+        }
+#endif // UNITY_ANDROID
+
         void IPreprocessBuildWithReport.OnPreprocessBuild(BuildReport report)
         {
             GcEditorResourceBuilder.Build();
         }
 
-        private static void OnLaunch()
+        static void OnLaunch()
         {
             GcEditorSceneHelper.OnLaunch();
             GcEditorBuilder.OnLaunch();
             GcEditorResourceBuilder.OnLaunch();
         }
 
-        private static void OnPlayModeStateChanged(PlayModeStateChange state)
+        static void OnPlayModeStateChanged(PlayModeStateChange state)
         {
             switch (state)
             {
@@ -98,12 +108,12 @@ namespace GameCanvas.Editor
             }
         }
 
-        private static void OnPostCompile()
+        static void OnPostCompile()
         {
             // empty
         }
 
-        private static void OnPreCompile()
+        static void OnPreCompile()
         {
             // empty
         }

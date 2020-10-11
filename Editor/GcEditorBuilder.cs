@@ -20,11 +20,11 @@ namespace GameCanvas.Editor
         #region 変数
         //----------------------------------------------------------
 
-        private const string cDataPath = "Library/GameCanvasBuilder.json";
-        private const int cDataVersion = 1;
+        const string k_DataPath = "Library/GameCanvasBuilder.json";
+        const int k_DataVersion = 2;
 
-        private GUIStyle mLargeText;
-        private Option mOption;
+        GUIStyle m_LargeText;
+        Option m_Option;
 
         #endregion
 
@@ -49,70 +49,74 @@ namespace GameCanvas.Editor
         public struct Option
         {
             /// <summary>
+            /// ビルド後に自動実行するかどうか
+            /// </summary>
+            public bool mAndRun;
+
+            /// <summary>
             /// バンドルID
             /// </summary>
             public string mApplicationId;
+
             /// <summary>
             /// バンドルバージョン
             /// </summary>
             public string mBundleVersion;
-            /// <summary>
-            /// 製品名
-            /// </summary>
-            public string mProductName;
+
             /// <summary>
             /// 会社名 or 開発者名
             /// </summary>
             public string mCompanyName;
-            /// <summary>
-            /// 出力先フォルダ
-            /// </summary>
-            public string mOutFolderPath;
-            /// <summary>
-            /// ビルドプラットフォーム
-            /// </summary>
-            public Platform mPlatform;
-            /// <summary>
-            /// Android ターゲットSDKバージョン
-            /// </summary>
-            public AndroidSdkVersions mTargetSdkVersion;
+
             /// <summary>
             /// Android 最小SDKバージョン
             /// </summary>
             public AndroidSdkVersions mMinimumSdkVersion;
+
+            /// <summary>
+            /// 出力先フォルダ
+            /// </summary>
+            public string mOutFolderPath;
+
+            /// <summary>
+            /// ビルドプラットフォーム
+            /// </summary>
+            public Platform mPlatform;
+
+            /// <summary>
+            /// 製品名
+            /// </summary>
+            public string mProductName;
+
             /// <summary>
             /// iOS デバイスかシミュレーターか
             /// </summary>
             public iOSSdkVersion mSdkType;
+
             /// <summary>
-            /// ビルド後に自動実行するかどうか
+            /// Android ターゲットSDKバージョン
             /// </summary>
-            public bool mAndRun;
+            public AndroidSdkVersions mTargetSdkVersion;
         }
 
         [System.Serializable]
-        private sealed class Data
+        sealed class Data
         {
-            public Option mOption;
-            public int mVersion;
+            public Option m_Option;
+            public int m_Version;
 
             public Data(Option option)
             {
-                mOption = option;
-                mVersion = cDataVersion;
+                m_Option = option;
+                m_Version = k_DataVersion;
             }
         }
 
         #endregion
 
         //----------------------------------------------------------
-        #region パブリック関数
+        #region 公開関数
         //----------------------------------------------------------
-
-        public static void OpenWindow()
-        {
-            GetWindow<GcEditorBuilder>(true).Show();
-        }
 
         public static void Build(Option option)
         {
@@ -193,11 +197,23 @@ namespace GameCanvas.Editor
             }
         }
 
+        public static void OpenWindow()
+        {
+            GetWindow<GcEditorBuilder>(true).Show();
+        }
         #endregion
 
         //----------------------------------------------------------
         #region 内部関数
         //----------------------------------------------------------
+
+        internal static string[] GetEnabledScenePaths()
+        {
+            return EditorBuildSettings.scenes
+                .Where(scene => scene.enabled)
+                .Select(scene => scene.path)
+                .ToArray();
+        }
 
         internal static void OnLaunch()
         {
@@ -227,103 +243,30 @@ namespace GameCanvas.Editor
             }
         }
 
-        /// <summary>
-        /// 現在有効なシーンの一覧を取得します
-        /// </summary>
-        /// <returns></returns>
-        internal static string[] GetEnabledScenePaths()
+#if UNITY_ANDROID
+        internal static void OnPostGenerateGradleAndroidProject(in string path)
         {
-            return EditorBuildSettings.scenes
-                .Where(scene => scene.enabled)
-                .Select(scene => scene.path)
-                .ToArray();
-        }
+            var manifestPath = Path.Combine(path, "src/main/AndroidManifest.xml");
 
-        private new void Show()
-        {
-            titleContent = new GUIContent("GameCanvas Builder");
-            minSize = maxSize = new Vector2(500, 260);
-
-            mLargeText = new GUIStyle();
-            mLargeText.fontSize = 18;
-
-            LoadData();
-            base.Show();
-        }
-
-        private void OnGUI()
-        {
-            EditorGUI.indentLevel = 1;
-            EditorGUILayout.Space();
-            EditorGUILayout.LabelField("APP BUILDER", mLargeText, GUILayout.Height(32));
-
-            var isChange = false;
-            if (DrawTextField("APPLICATION ID", ref mOption.mApplicationId))
+            using (var manifest = AndroidManifest.Load(manifestPath))
             {
-                isChange |= true;
-                mOption.mApplicationId = mOption.mApplicationId.Replace(" ", "");
-            }
-            isChange |= DrawTextField("BUNDLE VERSION", ref mOption.mBundleVersion);
-            isChange |= DrawTextField("PRODUCT NAME", ref mOption.mProductName);
-            isChange |= DrawTextField("COMPANY NAME", ref mOption.mCompanyName);
-            isChange |= DrawSaveFolderPath("OUTPUT FOLDER", ref mOption.mOutFolderPath);
-            mOption.mPlatform = (Platform)DrawEnumPopup("BUILD TARGET", mOption.mPlatform, ref isChange);
-            switch (mOption.mPlatform)
-            {
-                case Platform.Android:
-                    mOption.mTargetSdkVersion = (AndroidSdkVersions)DrawEnumPopup("TARGET SDK", mOption.mTargetSdkVersion, ref isChange);
-                    mOption.mMinimumSdkVersion = (AndroidSdkVersions)DrawEnumPopup("MINIMUM SDK", mOption.mMinimumSdkVersion, ref isChange);
-                    break;
-
-                case Platform.iOS:
-                    mOption.mSdkType = (iOSSdkVersion)DrawEnumPopup("SDK VERSION", mOption.mSdkType, ref isChange);
-                    break;
-            }
-
-            // 保存
-            if (isChange) SaveData();
-
-            EditorGUILayout.Space();
-            EditorGUILayout.BeginHorizontal();
-            var button1 = GUILayout.Button("BUILD", GUILayout.Height(25));
-            var button2 = mOption.mPlatform == Platform.Android && GUILayout.Button("BUILD & RUN", GUILayout.Height(25));
-            EditorGUILayout.EndHorizontal();
-
-            if (button1)
-            {
-                mOption.mAndRun = false;
-                Build(mOption);
-                //Close();
-            }
-            if (button2)
-            {
-                mOption.mAndRun = true;
-                Build(mOption);
-                //Close();
+                manifest.SkipPermissionsDialog(true);
             }
         }
+#endif // UNITY_ANDROID
 
-        private bool DrawToggle(string name, ref bool value)
+        System.Enum DrawEnumPopup(string name, System.Enum value, ref bool isChange)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(name, GUILayout.Width(120));
             var prev = value;
-            value = EditorGUILayout.Toggle(value);
+            value = EditorGUILayout.EnumPopup(value, GUILayout.Width(350));
             EditorGUILayout.EndHorizontal();
-            return (prev != value);
+            isChange |= (prev != value);
+            return value;
         }
 
-        private bool DrawTextField(string name, ref string value)
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(name, GUILayout.Width(120));
-            var prev = value;
-            value = EditorGUILayout.TextField(value, GUILayout.Width(350));
-            EditorGUILayout.EndHorizontal();
-            return (prev != value);
-        }
-
-        private bool DrawSaveFolderPath(string name, ref string value)
+        bool DrawSaveFolderPath(string name, ref string value)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(name, GUILayout.Width(120));
@@ -338,66 +281,140 @@ namespace GameCanvas.Editor
             return (prev != value);
         }
 
-        private System.Enum DrawEnumPopup(string name, System.Enum value, ref bool isChange)
+        bool DrawTextField(string name, ref string value)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(name, GUILayout.Width(120));
             var prev = value;
-            value = EditorGUILayout.EnumPopup(value, GUILayout.Width(350));
+            value = EditorGUILayout.TextField(value, GUILayout.Width(350));
             EditorGUILayout.EndHorizontal();
-            isChange |= (prev != value);
-            return value;
+            return (prev != value);
         }
 
-        private void LoadData()
+        bool DrawToggle(string name, ref bool value)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(name, GUILayout.Width(120));
+            var prev = value;
+            value = EditorGUILayout.Toggle(value);
+            EditorGUILayout.EndHorizontal();
+            return (prev != value);
+        }
+
+        void InitOption()
+        {
+            m_Option = default;
+            m_Option.mApplicationId = PlayerSettings.applicationIdentifier.Replace(" ", "");
+            m_Option.mBundleVersion = PlayerSettings.bundleVersion;
+            m_Option.mProductName = PlayerSettings.productName;
+            m_Option.mCompanyName = PlayerSettings.companyName;
+            m_Option.mOutFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
+            m_Option.mAndRun = false;
+            m_Option.mTargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
+            m_Option.mMinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
+            m_Option.mSdkType = iOSSdkVersion.DeviceSDK;
+
+            switch (EditorUserBuildSettings.activeBuildTarget)
+            {
+                default:
+                case BuildTarget.Android:
+                    m_Option.mPlatform = Platform.Android;
+                    break;
+
+                case BuildTarget.iOS:
+                    m_Option.mPlatform = Platform.iOS;
+                    break;
+            }
+        }
+
+        void LoadData()
         {
             var loaded = false;
-            if (File.Exists(cDataPath))
+            if (File.Exists(k_DataPath))
             {
-                var json = File.ReadAllText(cDataPath);
+                var json = File.ReadAllText(k_DataPath);
                 var data = JsonUtility.FromJson<Data>(json);
-                if (data.mVersion == cDataVersion)
+                if (data.m_Version == k_DataVersion)
                 {
-                    mOption = data.mOption;
+                    m_Option = data.m_Option;
                     loaded = true;
                 }
             }
             if (!loaded) InitOption();
         }
 
-        private void SaveData()
+#pragma warning disable IDE0051
+        void OnGUI()
         {
-            var data = new Data(mOption);
-            var json = JsonUtility.ToJson(data);
-            File.WriteAllText(cDataPath, json);
-        }
+            EditorGUI.indentLevel = 1;
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("APP BUILDER", m_LargeText, GUILayout.Height(32));
 
-        private void InitOption()
-        {
-            mOption = default;
-            mOption.mApplicationId = PlayerSettings.applicationIdentifier.Replace(" ", "");
-            mOption.mBundleVersion = PlayerSettings.bundleVersion;
-            mOption.mProductName = PlayerSettings.productName;
-            mOption.mCompanyName = PlayerSettings.companyName;
-            mOption.mOutFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
-            mOption.mAndRun = false;
-            mOption.mTargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
-            mOption.mMinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
-            mOption.mSdkType = iOSSdkVersion.DeviceSDK;
-
-            switch (EditorUserBuildSettings.activeBuildTarget)
+            var isChange = false;
+            if (DrawTextField("APPLICATION ID", ref m_Option.mApplicationId))
             {
-                default:
-                case BuildTarget.Android:
-                    mOption.mPlatform = Platform.Android;
+                isChange |= true;
+                m_Option.mApplicationId = m_Option.mApplicationId.Replace(" ", "");
+            }
+            isChange |= DrawTextField("BUNDLE VERSION", ref m_Option.mBundleVersion);
+            isChange |= DrawTextField("PRODUCT NAME", ref m_Option.mProductName);
+            isChange |= DrawTextField("COMPANY NAME", ref m_Option.mCompanyName);
+            isChange |= DrawSaveFolderPath("OUTPUT FOLDER", ref m_Option.mOutFolderPath);
+            m_Option.mPlatform = (Platform)DrawEnumPopup("BUILD TARGET", m_Option.mPlatform, ref isChange);
+            switch (m_Option.mPlatform)
+            {
+                case Platform.Android:
+                    m_Option.mTargetSdkVersion = (AndroidSdkVersions)DrawEnumPopup("TARGET SDK", m_Option.mTargetSdkVersion, ref isChange);
+                    m_Option.mMinimumSdkVersion = (AndroidSdkVersions)DrawEnumPopup("MINIMUM SDK", m_Option.mMinimumSdkVersion, ref isChange);
                     break;
 
-                case BuildTarget.iOS:
-                    mOption.mPlatform = Platform.iOS;
+                case Platform.iOS:
+                    m_Option.mSdkType = (iOSSdkVersion)DrawEnumPopup("SDK VERSION", m_Option.mSdkType, ref isChange);
                     break;
             }
+
+            // 保存
+            if (isChange) SaveData();
+
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginHorizontal();
+            var button1 = GUILayout.Button("BUILD", GUILayout.Height(25));
+            var button2 = m_Option.mPlatform == Platform.Android && GUILayout.Button("BUILD & RUN", GUILayout.Height(25));
+            EditorGUILayout.EndHorizontal();
+
+            if (button1)
+            {
+                m_Option.mAndRun = false;
+                Build(m_Option);
+                //Close();
+            }
+            if (button2)
+            {
+                m_Option.mAndRun = true;
+                Build(m_Option);
+                //Close();
+            }
+        }
+#pragma warning restore IDE0051
+
+        void SaveData()
+        {
+            var data = new Data(m_Option);
+            var json = JsonUtility.ToJson(data);
+            File.WriteAllText(k_DataPath, json);
         }
 
+        new void Show()
+        {
+            titleContent = new GUIContent("GameCanvas Builder");
+            minSize = maxSize = new Vector2(500, 260);
+
+            m_LargeText = new GUIStyle();
+            m_LargeText.fontSize = 18;
+
+            LoadData();
+            base.Show();
+        }
         #endregion
     }
 }

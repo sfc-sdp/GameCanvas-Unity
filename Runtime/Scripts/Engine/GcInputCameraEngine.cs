@@ -9,6 +9,7 @@
 /*------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
 using Coroutine = System.Collections.IEnumerator;
@@ -25,25 +26,21 @@ namespace GameCanvas.Engine
         readonly List<GcCameraDevice> m_DeviceList;
         readonly Dictionary<string, WebCamTexture> m_TextureDict;
         ReadOnlyCollection<GcCameraDevice> m_DeviceListReadOnly;
+        bool m_IsDeviceListInitialized;
         #endregion
 
         //----------------------------------------------------------
         #region 公開関数
         //----------------------------------------------------------
 
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
-        internal GcInputCameraEngine(in GcContext context)
+        public int CameraDeviceCount
         {
-            m_Context = context;
-            m_DeviceList = new List<GcCameraDevice>();
-            m_TextureDict = new Dictionary<string, WebCamTexture>();
-
-            UpdateCameraDevice();
+            get
+            {
+                InitCameraDevice();
+                return m_DeviceList.Count;
+            }
         }
-
-        public int CameraDeviceCount => m_DeviceList.Count;
 
         public bool HasUserAuthorizedPermissionCamera
 #if UNITY_EDITOR
@@ -184,6 +181,7 @@ namespace GameCanvas.Engine
 
         public bool TryGetCameraImage(out GcCameraDevice camera)
         {
+            InitCameraDevice();
             if (m_DeviceList.Count > 0)
             {
                 camera = m_DeviceList[0];
@@ -195,6 +193,7 @@ namespace GameCanvas.Engine
 
         public bool TryGetCameraImage(in string deviceName, out GcCameraDevice camera)
         {
+            InitCameraDevice();
             for (var i = 0; i < m_DeviceList.Count; i++)
             {
                 camera = m_DeviceList[i];
@@ -284,6 +283,16 @@ namespace GameCanvas.Engine
         #region 内部関数
         //----------------------------------------------------------
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        internal GcInputCameraEngine(in GcContext context)
+        {
+            m_Context = context;
+            m_DeviceList = new List<GcCameraDevice>();
+            m_TextureDict = new Dictionary<string, WebCamTexture>();
+        }
+
         void System.IDisposable.Dispose()
         {
             if (m_TextureDict != null)
@@ -306,6 +315,15 @@ namespace GameCanvas.Engine
         void IEngine.OnAfterDraw() { }
 
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now) { }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        void InitCameraDevice()
+        {
+            if (m_IsDeviceListInitialized) return;
+
+            UpdateCameraDevice();
+            m_IsDeviceListInitialized = true;
+        }
 
         /// <remarks><see href="https://qiita.com/utibenkei/items/65b56c13f43ce5809561">参考記事</see></remarks>
         private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
