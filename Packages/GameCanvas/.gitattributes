@@ -1,0 +1,7 @@
+*.bat encoding=cp932 diff=sjis
+*.cmd encoding=cp932 diff=sjis
+*.cs encoding=utf8
+*.html encoding=utf8
+*.json encoding=utf8
+*.yml encoding=utf8
+*.md encoding=utf8
