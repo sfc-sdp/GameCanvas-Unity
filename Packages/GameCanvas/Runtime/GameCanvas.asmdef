@@ -1,0 +1,17 @@
+{
+    "name": "GameCanvas",
+    "references": [
+        "Unity.Mathematics",
+        "Unity.Collections",
+        "GameCanvas.ScriptableObject"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

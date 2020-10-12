@@ -1,0 +1,17 @@
+{
+    "name": "GameCanvas.Editor",
+    "references": [
+        "GUID:f6f069d2503f93e449334ed12bfeb77f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
