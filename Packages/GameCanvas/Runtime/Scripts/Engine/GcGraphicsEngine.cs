@@ -823,6 +823,7 @@ namespace GameCanvas.Engine
 
             var vertices = new NativeArray<float3>(v0.Length, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             var uvs = new NativeArray<float2>(u0.Length, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+            var colors = new NativeArray<Color32>(v0.Length, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             {
                 v0.CopyTo(vertices);
                 u0.CopyTo(uvs);
@@ -830,12 +831,14 @@ namespace GameCanvas.Engine
                 for (var i = 0; i < vertices.Length; i++)
                 {
                     vertices[i] *= new float3(1f, -1f, 1f);
+                    colors[i] = new Color32(0, 0, 0, 1);
                 }
 
                 mesh = new Mesh();
                 mesh.SetVertices(vertices);
                 mesh.SetIndices(indices, MeshTopology.Triangles, 0);
                 mesh.SetUVs(0, uvs);
+                mesh.SetColors(colors);
                 mesh.RecalculateBounds();
             }
             uvs.Dispose();
