@@ -29,11 +29,13 @@ Shader "GameCanvas/TransparentImage" {
 
 				struct appdata_t {
 					float4 vertex : POSITION;
+					float4 color : COLOR;
 					float2 uv : TEXCOORD0;
 				};
 
 				struct v2f {
 					float4 vertex : SV_POSITION;
+					float4 color : COLOR;
 					float2 uv : TEXCOORD0;
 				};
 
@@ -44,6 +46,7 @@ Shader "GameCanvas/TransparentImage" {
 				{
 					v2f o;
 					o.vertex = UnityObjectToClipPos(v.vertex);
+					o.color = v.color;
 					o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 					return o;
 				}
@@ -52,7 +55,7 @@ Shader "GameCanvas/TransparentImage" {
 				{
 					fixed4 c = tex2D(_MainTex, i.uv);
 					clip(c.a - 0.001);
-					return c;
+					return fixed4(c.rgb + i.color.rgb, c.a);
 				}
 			ENDCG
 		}

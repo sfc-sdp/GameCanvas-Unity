@@ -1,4 +1,16 @@
 # CHANGE LOG
+## 5.0.3
+### 不具合修正
+- [#163](https://github.com/sfc-sdp/GameCanvas-Unity/issues/163) 文字色が反映されない不具合の修正
+
+## 5.0.2
+### 仕様変更
+- Git インストール不要で動作するように
+
+## 5.0.1
+### 仕様変更
+- [#161](https://github.com/sfc-sdp/GameCanvas-Unity/issues/161) JetBrains Rider サポート
+
 ## 5.0.0
 ### 新機能
 - [#89](https://github.com/sfc-sdp/GameCanvas-Unity/issues/89) 描線の太さと端点を自由に設定できるように
