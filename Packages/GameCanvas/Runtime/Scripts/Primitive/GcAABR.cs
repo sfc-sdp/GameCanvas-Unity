@@ -77,7 +77,17 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static GcAABB XYWH(in float x, in float y, in float width, in float height)
-            => MinMax(new float2(x, y), new float2(x + width, y + height));
+        {
+            var halfSize = math.abs(new float2(width, height) * 0.5f);
+            return new GcAABB(new float2(x, y) + halfSize, halfSize);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static GcAABB XYWH(in float2 position, in float2 size)
+        {
+            var halfSize = math.abs(size * 0.5f);
+            return new GcAABB(position + halfSize, halfSize);
+        }
 
         public bool Equals(GcAABB other)
             => Center.Equals(other.Center) && HalfSize.Equals(other.HalfSize);
