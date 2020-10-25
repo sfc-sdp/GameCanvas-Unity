@@ -1,4 +1,4 @@
-﻿references:
+references:
 - uid: langword_csharp_null
   name.csharp: "null"
   name.vb: "Nothing"
