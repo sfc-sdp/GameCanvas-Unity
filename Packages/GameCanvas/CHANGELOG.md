@@ -1,4 +1,9 @@
 # CHANGE LOG
+## 5.0.4
+### 不具合修正
+- [#164](https://github.com/sfc-sdp/GameCanvas-Unity/issues/164) GcAABB.XYWH が意図通りの値を返さない不具合の修正
+- [#165](https://github.com/sfc-sdp/GameCanvas-Unity/issues/165) gc.TapSettings の初期値を正しいものに修正
+
 ## 5.0.3
 ### 不具合修正
 - [#163](https://github.com/sfc-sdp/GameCanvas-Unity/issues/163) 文字色が反映されない不具合の修正

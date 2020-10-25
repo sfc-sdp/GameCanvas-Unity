@@ -259,6 +259,7 @@ namespace GameCanvas.Engine
         {
             m_Context = context;
             m_PointerTraceDict = new NativeHashMap<int, GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
+            m_TapSettings = GcTapSettings.Default;
         }
 
         void System.IDisposable.Dispose()

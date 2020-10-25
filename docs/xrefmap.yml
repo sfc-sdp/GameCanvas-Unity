@@ -408,6 +408,15 @@ references:
   fullName.vb: GameCanvas.GcAABB.XYWH(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single)
   nameWithType: GcAABB.XYWH(Single, Single, Single, Single)
   nameWithType.vb: GcAABB.XYWH(ByRef Single, ByRef Single, ByRef Single, ByRef Single)
+- uid: GameCanvas.GcAABB.XYWH(Unity.Mathematics.float2@,Unity.Mathematics.float2@)
+  name: XYWH(float2, float2)
+  href: api/GameCanvas.GcAABB.html#GameCanvas_GcAABB_XYWH_Unity_Mathematics_float2__Unity_Mathematics_float2__
+  commentId: M:GameCanvas.GcAABB.XYWH(Unity.Mathematics.float2@,Unity.Mathematics.float2@)
+  name.vb: XYWH(ByRef float2, ByRef float2)
+  fullName: GameCanvas.GcAABB.XYWH(Unity.Mathematics.float2, Unity.Mathematics.float2)
+  fullName.vb: GameCanvas.GcAABB.XYWH(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2)
+  nameWithType: GcAABB.XYWH(float2, float2)
+  nameWithType.vb: GcAABB.XYWH(ByRef float2, ByRef float2)
 - uid: GameCanvas.GcAABB.XYWH*
   name: XYWH
   href: api/GameCanvas.GcAABB.html#GameCanvas_GcAABB_XYWH_
