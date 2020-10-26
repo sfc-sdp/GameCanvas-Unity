@@ -787,6 +787,16 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool CheckHitCircle(in float x1, in float y1, in float r1, in float x2, in float y2, in float r2)
+            => new GcCircle(x1, y1, r1).Overlaps(new GcCircle(x2, y2, r2));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool CheckHitRect(in float x1, in float y1, in float w1, in float h1, in float x2, in float y2, in float w2, in float h2)
+            => GcAABB.XYWH(x1, y1, w1, h1).Overlaps(GcAABB.XYWH(x2, y2, w2, h2));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float Clamp(in float value, in float min, in float max)
             => GcMath.Clamp(value, min, max);
 
