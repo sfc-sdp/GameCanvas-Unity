@@ -1290,16 +1290,29 @@ namespace GameCanvas
             => m_Context.InputCamera.GetOrCreateCameraTexture(camera, request);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GetPointerDistance(in int i)
             => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Distance : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GetPointerDuration(in int i)
             => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Duration : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int GetPointerFrameCount(in int i)
             => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.FrameCount : 0;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetPointerX(in int i)
+            => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.x : 0f;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetPointerY(in int i)
+            => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.y : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcResolution GetPrimaryCameraResolution(in GcCameraDevice camera)
