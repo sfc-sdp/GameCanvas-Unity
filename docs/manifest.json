@@ -391,7 +391,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.GcProxy.html",
-          "hash": "+I84StE/MZ36Uef+C6GGkA=="
+          "hash": "YS89EjCGplf+u1nuN78GdQ=="
         }
       },
       "is_incremental": false,
@@ -571,7 +571,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.IGameCanvas.html",
-          "hash": "YY9/ogCBjcWD2kO8o+6BhA=="
+          "hash": "aSpAriotx2BIQdz6WXyAnQ=="
         }
       },
       "is_incremental": false,
@@ -715,7 +715,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.IInputPointerEx.html",
-          "hash": "+K9Ec7PhQAYP4TKwOrOG0A=="
+          "hash": "idgcqgls1PPXNcI8p5xnIw=="
         }
       },
       "is_incremental": false,

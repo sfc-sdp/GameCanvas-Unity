@@ -1,4 +1,9 @@
 # CHANGE LOG
+## 5.0.5
+### 不具合修正
+- [#166](https://github.com/sfc-sdp/GameCanvas-Unity/issues/166) gc.GetPointerX, gc.GetPointerY を書いてもコンパイルエラーにならないように
+- [#167](https://github.com/sfc-sdp/GameCanvas-Unity/issues/167) gc.CheckHitCircle, gc.CheckHitRect を書いてもコンパイルエラーにならないように
+
 ## 5.0.4
 ### 不具合修正
 - [#164](https://github.com/sfc-sdp/GameCanvas-Unity/issues/164) GcAABB.XYWH が意図通りの値を返さない不具合の修正

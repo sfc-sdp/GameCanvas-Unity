@@ -178,23 +178,62 @@ namespace GameCanvas
         /// <summary>
         /// 現在有効なポインターイベントのうち、指定した1つの累計移動距離を取得します
         /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントの累計移動距離</returns>
+        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GetPointerDistance(in int i);
 
         /// <summary>
         /// 現在有効なポインターイベントのうち、指定した1つの継続時間を取得します
         /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントの継続時間</returns>
+        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GetPointerDuration(in int i);
 
         /// <summary>
         /// 現在有効なポインターイベントのうち、指定した1つの継続フレーム数を取得します
         /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントの継続フレーム数</returns>
+        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int GetPointerFrameCount(in int i);
+
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つのX座標を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントのX座標</returns>
+        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        float GetPointerX(in int i);
+
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つのY座標を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントのY座標</returns>
+        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        float GetPointerY(in int i);
 
         /// <summary>
         /// 前回のフレーム処理以降に タップされたかどうか
