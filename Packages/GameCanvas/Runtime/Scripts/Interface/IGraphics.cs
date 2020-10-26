@@ -533,6 +533,7 @@ namespace GameCanvas
         void DrawRect(in float2 position, in float2 size, float degree = 0f);
 
         [System.Obsolete("Use to `DrawString`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         void DrawRightString(in string str, in float x, in float y, float degree = 0f);
 
         /// <summary>
