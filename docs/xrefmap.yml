@@ -4352,54 +4352,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetOrCreateCameraTexture
   nameWithType: GcProxy.GetOrCreateCameraTexture
-- uid: GameCanvas.GcProxy.GetPointerDistance(System.Int32@)
-  name: GetPointerDistance(Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPointerDistance_System_Int32__
-  commentId: M:GameCanvas.GcProxy.GetPointerDistance(System.Int32@)
-  name.vb: GetPointerDistance(ByRef Int32)
-  fullName: GameCanvas.GcProxy.GetPointerDistance(System.Int32)
-  fullName.vb: GameCanvas.GcProxy.GetPointerDistance(ByRef System.Int32)
-  nameWithType: GcProxy.GetPointerDistance(Int32)
-  nameWithType.vb: GcProxy.GetPointerDistance(ByRef Int32)
-- uid: GameCanvas.GcProxy.GetPointerDistance*
-  name: GetPointerDistance
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPointerDistance_
-  commentId: Overload:GameCanvas.GcProxy.GetPointerDistance
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetPointerDistance
-  nameWithType: GcProxy.GetPointerDistance
-- uid: GameCanvas.GcProxy.GetPointerDuration(System.Int32@)
-  name: GetPointerDuration(Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPointerDuration_System_Int32__
-  commentId: M:GameCanvas.GcProxy.GetPointerDuration(System.Int32@)
-  name.vb: GetPointerDuration(ByRef Int32)
-  fullName: GameCanvas.GcProxy.GetPointerDuration(System.Int32)
-  fullName.vb: GameCanvas.GcProxy.GetPointerDuration(ByRef System.Int32)
-  nameWithType: GcProxy.GetPointerDuration(Int32)
-  nameWithType.vb: GcProxy.GetPointerDuration(ByRef Int32)
-- uid: GameCanvas.GcProxy.GetPointerDuration*
-  name: GetPointerDuration
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPointerDuration_
-  commentId: Overload:GameCanvas.GcProxy.GetPointerDuration
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetPointerDuration
-  nameWithType: GcProxy.GetPointerDuration
-- uid: GameCanvas.GcProxy.GetPointerFrameCount(System.Int32@)
-  name: GetPointerFrameCount(Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPointerFrameCount_System_Int32__
-  commentId: M:GameCanvas.GcProxy.GetPointerFrameCount(System.Int32@)
-  name.vb: GetPointerFrameCount(ByRef Int32)
-  fullName: GameCanvas.GcProxy.GetPointerFrameCount(System.Int32)
-  fullName.vb: GameCanvas.GcProxy.GetPointerFrameCount(ByRef System.Int32)
-  nameWithType: GcProxy.GetPointerFrameCount(Int32)
-  nameWithType.vb: GcProxy.GetPointerFrameCount(ByRef Int32)
-- uid: GameCanvas.GcProxy.GetPointerFrameCount*
-  name: GetPointerFrameCount
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPointerFrameCount_
-  commentId: Overload:GameCanvas.GcProxy.GetPointerFrameCount
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetPointerFrameCount
-  nameWithType: GcProxy.GetPointerFrameCount
 - uid: GameCanvas.GcProxy.GetPrimaryCameraResolution(GameCanvas.GcCameraDevice@)
   name: GetPrimaryCameraResolution(GcCameraDevice)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetPrimaryCameraResolution_GameCanvas_GcCameraDevice__
@@ -10985,54 +10937,6 @@ references:
   commentId: T:GameCanvas.IInputPointerEx
   fullName: GameCanvas.IInputPointerEx
   nameWithType: IInputPointerEx
-- uid: GameCanvas.IInputPointerEx.GetPointerDistance(System.Int32@)
-  name: GetPointerDistance(Int32)
-  href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_GetPointerDistance_System_Int32__
-  commentId: M:GameCanvas.IInputPointerEx.GetPointerDistance(System.Int32@)
-  name.vb: GetPointerDistance(ByRef Int32)
-  fullName: GameCanvas.IInputPointerEx.GetPointerDistance(System.Int32)
-  fullName.vb: GameCanvas.IInputPointerEx.GetPointerDistance(ByRef System.Int32)
-  nameWithType: IInputPointerEx.GetPointerDistance(Int32)
-  nameWithType.vb: IInputPointerEx.GetPointerDistance(ByRef Int32)
-- uid: GameCanvas.IInputPointerEx.GetPointerDistance*
-  name: GetPointerDistance
-  href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_GetPointerDistance_
-  commentId: Overload:GameCanvas.IInputPointerEx.GetPointerDistance
-  isSpec: "True"
-  fullName: GameCanvas.IInputPointerEx.GetPointerDistance
-  nameWithType: IInputPointerEx.GetPointerDistance
-- uid: GameCanvas.IInputPointerEx.GetPointerDuration(System.Int32@)
-  name: GetPointerDuration(Int32)
-  href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_GetPointerDuration_System_Int32__
-  commentId: M:GameCanvas.IInputPointerEx.GetPointerDuration(System.Int32@)
-  name.vb: GetPointerDuration(ByRef Int32)
-  fullName: GameCanvas.IInputPointerEx.GetPointerDuration(System.Int32)
-  fullName.vb: GameCanvas.IInputPointerEx.GetPointerDuration(ByRef System.Int32)
-  nameWithType: IInputPointerEx.GetPointerDuration(Int32)
-  nameWithType.vb: IInputPointerEx.GetPointerDuration(ByRef Int32)
-- uid: GameCanvas.IInputPointerEx.GetPointerDuration*
-  name: GetPointerDuration
-  href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_GetPointerDuration_
-  commentId: Overload:GameCanvas.IInputPointerEx.GetPointerDuration
-  isSpec: "True"
-  fullName: GameCanvas.IInputPointerEx.GetPointerDuration
-  nameWithType: IInputPointerEx.GetPointerDuration
-- uid: GameCanvas.IInputPointerEx.GetPointerFrameCount(System.Int32@)
-  name: GetPointerFrameCount(Int32)
-  href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_GetPointerFrameCount_System_Int32__
-  commentId: M:GameCanvas.IInputPointerEx.GetPointerFrameCount(System.Int32@)
-  name.vb: GetPointerFrameCount(ByRef Int32)
-  fullName: GameCanvas.IInputPointerEx.GetPointerFrameCount(System.Int32)
-  fullName.vb: GameCanvas.IInputPointerEx.GetPointerFrameCount(ByRef System.Int32)
-  nameWithType: IInputPointerEx.GetPointerFrameCount(Int32)
-  nameWithType.vb: IInputPointerEx.GetPointerFrameCount(ByRef Int32)
-- uid: GameCanvas.IInputPointerEx.GetPointerFrameCount*
-  name: GetPointerFrameCount
-  href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_GetPointerFrameCount_
-  commentId: Overload:GameCanvas.IInputPointerEx.GetPointerFrameCount
-  isSpec: "True"
-  fullName: GameCanvas.IInputPointerEx.GetPointerFrameCount
-  nameWithType: IInputPointerEx.GetPointerFrameCount
 - uid: GameCanvas.IInputPointerEx.IsTapped
   name: IsTapped()
   href: api/GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped
