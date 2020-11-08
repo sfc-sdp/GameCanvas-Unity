@@ -7,6 +7,11 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -17,6 +22,71 @@ namespace GameCanvas
     /// </summary>
     public readonly struct GcAccelerationEvent : System.IEquatable<GcAccelerationEvent>
     {
+        //----------------------------------------------------------
+        #region 構造体
+        //----------------------------------------------------------
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public readonly struct Enumerable : IEnumerable<GcAccelerationEvent>
+        {
+            readonly NativeList<GcAccelerationEvent> m_EventList;
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            internal Enumerable(in NativeList<GcAccelerationEvent> eventList)
+            {
+                m_EventList = eventList;
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public Enumerator GetEnumerator()
+                => new Enumerator(m_EventList);
+
+            IEnumerator<GcAccelerationEvent> IEnumerable<GcAccelerationEvent>.GetEnumerator()
+                => throw new System.NotSupportedException();
+
+            IEnumerator IEnumerable.GetEnumerator()
+                => throw new System.NotSupportedException();
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public struct Enumerator : IEnumerator<GcAccelerationEvent>
+        {
+            NativeArray<GcAccelerationEvent>.ReadOnly m_Array;
+            int m_Count;
+            int m_Index;
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            internal Enumerator(in NativeList<GcAccelerationEvent> eventList)
+            {
+                m_Array = eventList.AsParallelReader();
+                m_Count = eventList.Length;
+                m_Index = -1;
+            }
+
+            public GcAccelerationEvent Current
+            {
+                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                get => (m_Index < m_Count) ? m_Array[m_Index] : default;
+            }
+
+            object IEnumerator.Current
+                => throw new System.NotSupportedException();
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public void Dispose()
+            {
+                m_Array = default;
+                m_Count = 0;
+            }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public bool MoveNext() => ++m_Index < m_Count;
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            public void Reset() => m_Index = -1;
+        }
+        #endregion
+
         //----------------------------------------------------------
         #region 変数
         //----------------------------------------------------------

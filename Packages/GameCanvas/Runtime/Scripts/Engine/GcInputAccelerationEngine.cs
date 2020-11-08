@@ -7,55 +7,14 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
 using UnityEngine;
 
 namespace GameCanvas.Engine
 {
-    sealed class GcInputAccelerationEngine : IInputAcceleration, IEngine, IEnumerable<GcAccelerationEvent>
+    sealed class GcInputAccelerationEngine : IInputAcceleration, IEngine
     {
-        //----------------------------------------------------------
-        #region 構造体
-        //----------------------------------------------------------
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public struct Enumerator : IEnumerator<GcAccelerationEvent>
-        {
-            NativeArray<GcAccelerationEvent>.ReadOnly m_Array;
-            int m_Count;
-            int m_Index;
-
-            internal Enumerator(in NativeList<GcAccelerationEvent> eventList)
-            {
-                m_Array = eventList.AsParallelReader();
-                m_Count = eventList.Length;
-                m_Index = -1;
-            }
-
-            public GcAccelerationEvent Current
-            {
-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                get => (m_Index < m_Count) ? m_Array[m_Index] : default;
-            }
-
-            object IEnumerator.Current
-                => throw new System.NotSupportedException();
-            public void Dispose()
-            {
-                m_Array = default;
-                m_Count = 0;
-            }
-
-            public bool MoveNext() => ++m_Index < m_Count;
-
-            public void Reset() => m_Index = -1;
-        }
-        #endregion
-
         //----------------------------------------------------------
         #region 変数
         //----------------------------------------------------------
@@ -77,10 +36,10 @@ namespace GameCanvas.Engine
             get => m_EventList.Length;
         }
 
-        public IEnumerable<GcAccelerationEvent> AccelerationEvents
+        public GcAccelerationEvent.Enumerable AccelerationEvents
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => this;
+            get => new GcAccelerationEvent.Enumerable(m_EventList);
         }
 
         public bool DidUpdateAccelerationThisFrame
@@ -102,9 +61,6 @@ namespace GameCanvas.Engine
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_LastAccelerationEvent;
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Enumerator GetEnumerator() => new Enumerator(m_EventList);
 
         public bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)
         {
@@ -148,12 +104,6 @@ namespace GameCanvas.Engine
         {
             if (m_EventList.IsCreated) m_EventList.Dispose();
         }
-
-        IEnumerator<GcAccelerationEvent> IEnumerable<GcAccelerationEvent>.GetEnumerator()
-            => GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator()
-            => GetEnumerator();
 
         void IEngine.OnAfterDraw() { }
 
