@@ -1,0 +1,73 @@
+name: Format C#
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  dotnet-format:
+    env:
+      FOLDER_PATH: ./Packages/GameCanvas/
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch info
+        id: comment-branch
+        uses: xt0rted/pull-request-comment-branch@v1.2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout repo
+        uses: actions/checkout@v2.3
+        if: success()
+        with:
+          ref: ${{ steps.comment-branch.outputs.head_ref }}
+          persist-credentials: false
+
+      - name: Check latest commit message
+        id: log
+        run: echo "::set-output name=message::$(git log --no-merges -1 --oneline)"
+
+      - name: Check folder existence
+        id: check_folder
+        uses: andstor/file-existence-action@v1.0
+        with:
+          files: ${{ env.FOLDER_PATH }}
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+
+      - name: Install dotnet-format
+        if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
+        run: dotnet tool install -g dotnet-format
+
+      - name: Check format
+        if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
+        id: check
+        uses: brmenchl/dotnet-format@v1.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          action: "check"
+          folder: ${{ env.FOLDER_PATH }}
+          fail-fast: false
+
+      - name: Run format
+        if: steps.check.outputs.has-changes == 'true'
+        uses: brmenchl/dotnet-format@v1.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          action: "fix"
+          folder: ${{ env.FOLDER_PATH }}
+
+      - name: Commit files
+        if: steps.check.outputs.has-changes == 'true'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -a -m 'Automated dotnet-format update [skip ci]' -m 'Co-authored-by: ${{ github.event.pull_request.user.login }} <${{ github.event.pull_request.user.id }}+${{ github.event.pull_request.user.login }}@users.noreply.github.com>'
+
+      - name: Push changes
+        if: steps.check.outputs.has-changes == 'true'
+        uses: ad-m/github-push-action@v0.6
+        with:
+          branch: ${{ steps.comment-branch.outputs.ref }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
