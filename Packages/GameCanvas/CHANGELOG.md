@@ -1,4 +1,15 @@
 # CHANGE LOG
+## 5.0.6
+### 機能追加
+- 加速度計関連のAPI追加
+    - gc.DidUpdateAccelerationThisFrame
+    - gc.AccelerationEvents
+- 数学関連のAPI追加
+    - gc.Repeat (GcMath.Repeat)
+- 加速度計取り扱いのサンプルプロジェクトを同梱 (Packages/GameCanvas/Sample~/Acceleration)
+### 仕様変更
+- キャンバス座標系で扱いやすいように GcAccelerationEvent.Acceleration の Y軸, Z軸 それぞれの値を反転
+
 ## 5.0.5
 ### 不具合修正
 - [#166](https://github.com/sfc-sdp/GameCanvas-Unity/issues/166) gc.GetPointerX, gc.GetPointerY を書いてもコンパイルエラーにならないように

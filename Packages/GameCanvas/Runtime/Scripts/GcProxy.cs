@@ -47,6 +47,12 @@ namespace GameCanvas
             get => m_Context.InputAcceleration.AccelerationEventCount;
         }
 
+        public IEnumerable<GcAccelerationEvent> AccelerationEvents
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.AccelerationEvents;
+        }
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastX
         {
@@ -360,6 +366,12 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Graphics.DeviceScreenSize.x;
+        }
+
+        public bool DidUpdateAccelerationThisFrame
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.DidUpdateAccelerationThisFrame;
         }
 
         public bool DidUpdateGeolocationThisFrame
@@ -1734,6 +1746,9 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float Random(in float min, in float max) => GcMath.Random(min, max);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public float Repeat(in float value, in float max) => GcMath.Repeat(value, max);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RegisterScene<T>() where T : GcScene, new()

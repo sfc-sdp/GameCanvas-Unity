@@ -48,10 +48,10 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
@@ -62,6 +62,31 @@
   </div>
   <h3 id="constructors">Constructors
   </h3>
+  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
+  <h4 id="GameCanvas_GcAABB__ctor_Rect__" data-uid="GameCanvas.GcAABB.#ctor(Rect@)">GcAABB(Rect)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcAABB(in Rect rect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Rect</span></td>
+        <td><span class="parametername">rect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
   <h4 id="GameCanvas_GcAABB__ctor_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.#ctor(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">GcAABB(float2, float2)</h4>
   <div class="markdown level1 summary"></div>
@@ -88,31 +113,6 @@
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
         <td><span class="parametername">halfSize</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
-  <h4 id="GameCanvas_GcAABB__ctor_UnityEngine_Rect__" data-uid="GameCanvas.GcAABB.#ctor(UnityEngine.Rect@)">GcAABB(Rect)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcAABB(in Rect rect)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
-        <td><span class="parametername">rect</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -532,7 +532,7 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Explicit_GameCanvas_GcAABB__UnityEngine_Rect" data-uid="GameCanvas.GcAABB.op_Explicit(GameCanvas.GcAABB)~UnityEngine.Rect">Explicit(GcAABB to Rect)</h4>
+  <h4 id="GameCanvas_GcAABB_op_Explicit_GameCanvas_GcAABB__Rect" data-uid="GameCanvas.GcAABB.op_Explicit(GameCanvas.GcAABB)~Rect">Explicit(GcAABB to Rect)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -566,13 +566,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
+        <td><span class="xref">Rect</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Explicit_UnityEngine_Rect__GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB.op_Explicit(UnityEngine.Rect)~GameCanvas.GcAABB">Explicit(Rect to GcAABB)</h4>
+  <h4 id="GameCanvas_GcAABB_op_Explicit_Rect__GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB.op_Explicit(Rect)~GameCanvas.GcAABB">Explicit(Rect to GcAABB)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -590,7 +590,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
+        <td><span class="xref">Rect</span></td>
         <td><span class="parametername">rect</span></td>
         <td></td>
       </tr>

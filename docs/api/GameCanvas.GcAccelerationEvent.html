@@ -47,10 +47,10 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
@@ -84,6 +84,9 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="GameCanvas_GcAccelerationEvent_Acceleration_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>キャンバス座標系で扱いやすいよう、Y軸, Z軸 の値をそれぞれ反転しています</p>
+</div>
   <h4 id="GameCanvas_GcAccelerationEvent_DeltaTime" data-uid="GameCanvas.GcAccelerationEvent.DeltaTime">DeltaTime</h4>
   <div class="markdown level1 summary"><p>前回の計測からの経過時間（秒）</p>
 </div>
@@ -125,6 +128,29 @@
     <tbody>
       <tr>
         <td><a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="GameCanvas_GcAccelerationEvent_RawAcceleration" data-uid="GameCanvas.GcAccelerationEvent.RawAcceleration">RawAcceleration</h4>
+  <div class="markdown level1 summary"><p>加速度計の実際の値</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float3 RawAcceleration</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Unity.Mathematics.float3</span></td>
         <td></td>
       </tr>
     </tbody>
