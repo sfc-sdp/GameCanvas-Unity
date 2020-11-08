@@ -26,12 +26,20 @@ namespace GameCanvas
         /// <summary>
         /// 加速度計の値
         /// </summary>
+        /// <remarks>
+        /// キャンバス座標系で扱いやすいよう、Y軸, Z軸 の値をそれぞれ反転しています
+        /// </remarks>
         public readonly float3 Acceleration;
 
         /// <summary>
         /// 前回の計測からの経過時間（秒）
         /// </summary>
         public readonly float DeltaTime;
+
+        /// <summary>
+        /// 加速度計の実際の値
+        /// </summary>
+        public readonly float3 RawAcceleration;
         #endregion
 
         //----------------------------------------------------------
@@ -44,7 +52,7 @@ namespace GameCanvas
 
         public bool Equals(GcAccelerationEvent other)
         {
-            return Acceleration.Equals(other.Acceleration)
+            return RawAcceleration.Equals(other.RawAcceleration)
                 && DeltaTime.Equals(other.DeltaTime);
         }
 
@@ -52,7 +60,7 @@ namespace GameCanvas
 
         public override int GetHashCode()
         {
-            return Acceleration.GetHashCode()
+            return RawAcceleration.GetHashCode()
                 & DeltaTime.GetHashCode();
         }
 
@@ -66,7 +74,8 @@ namespace GameCanvas
 
         internal GcAccelerationEvent(in AccelerationEvent e)
         {
-            Acceleration = e.acceleration;
+            Acceleration = new float3(e.acceleration.x, -e.acceleration.y, -e.acceleration.z);
+            RawAcceleration = e.acceleration;
             DeltaTime = e.deltaTime;
         }
         #endregion
