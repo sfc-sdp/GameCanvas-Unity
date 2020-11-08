@@ -68,6 +68,54 @@
       </tr>
     </tbody>
   </table>
+  <a id="GameCanvas_IInputAcceleration_AccelerationEvents_" data-uid="GameCanvas.IInputAcceleration.AccelerationEvents*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_AccelerationEvents" data-uid="GameCanvas.IInputAcceleration.AccelerationEvents">AccelerationEvents</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの列挙子</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;GcAccelerationEvent&gt; AccelerationEvents { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame_" data-uid="GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame*"></a>
+  <h4 id="GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame" data-uid="GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame">DidUpdateAccelerationThisFrame</h4>
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に 加速度イベントの更新があったかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DidUpdateAccelerationThisFrame { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled_" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled*"></a>
   <h4 id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled">IsAccelerometerEnabled</h4>
   <div class="markdown level1 summary"><p>加速度計が有効かどうか</p>
@@ -168,7 +216,7 @@
     </tbody>
   </table>
   <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEvents_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvents*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_TryGetAccelerationEvents_Unity_Collections_NativeArray_GameCanvas_GcAccelerationEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvents(Unity.Collections.NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)">TryGetAccelerationEvents(out NativeArray&lt;GcAccelerationEvent&gt;.ReadOnly, out Int32)</h4>
+  <h4 id="GameCanvas_IInputAcceleration_TryGetAccelerationEvents_NativeArray_GameCanvas_GcAccelerationEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvents(NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)">TryGetAccelerationEvents(out NativeArray&lt;GcAccelerationEvent&gt;.ReadOnly, out Int32)</h4>
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -187,7 +235,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2020.1/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
+        <td><span class="xref">NativeArray.ReadOnly</span>&lt;&gt;</td>
         <td><span class="parametername">array</span></td>
         <td><p>イベント配列</p>
 </td>

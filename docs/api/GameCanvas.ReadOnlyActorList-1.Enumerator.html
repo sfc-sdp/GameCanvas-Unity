@@ -39,8 +39,8 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;T&gt;</div>
-    <div><span class="xref">System.Collections.IEnumerator</span></div>
     <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">System.Collections.IEnumerator</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -57,17 +57,17 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
   <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
   <h5 id="GameCanvas_ReadOnlyActorList_1_Enumerator_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct Enumerator : IEnumerator&lt;T&gt;, IEnumerator, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public struct Enumerator : IEnumerator&lt;T&gt;, IDisposable, IEnumerator</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -165,10 +165,10 @@
       <span class="xref">System.Collections.Generic.IEnumerator&lt;T&gt;</span>
   </div>
   <div>
-      <span class="xref">System.Collections.IEnumerator</span>
+      <span class="xref">System.IDisposable</span>
   </div>
   <div>
-      <span class="xref">System.IDisposable</span>
+      <span class="xref">System.Collections.IEnumerator</span>
   </div>
 </article>
           </div>

@@ -47,10 +47,10 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
@@ -61,6 +61,39 @@
   </div>
   <h3 id="constructors">Constructors
   </h3>
+  <a id="GameCanvas_GcRect__ctor_" data-uid="GameCanvas.GcRect.#ctor*"></a>
+  <h4 id="GameCanvas_GcRect__ctor_Rect__System_Single__" data-uid="GameCanvas.GcRect.#ctor(Rect@,System.Single@)">GcRect(Rect, Single)</h4>
+  <div class="markdown level1 summary"><p>コンストラクタ</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcRect(in Rect rect, in float radian = 0F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Rect</span></td>
+        <td><span class="parametername">rect</span></td>
+        <td><p>矩形</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">radian</span></td>
+        <td><p>回転（弧度法）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_GcRect__ctor_" data-uid="GameCanvas.GcRect.#ctor*"></a>
   <h4 id="GameCanvas_GcRect__ctor_System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.GcRect.#ctor(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">GcRect(Single, Single, Single, Single, Single)</h4>
   <div class="markdown level1 summary"><p>コンストラクタ</p>
@@ -186,39 +219,6 @@
         <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
         <td><span class="parametername">size</span></td>
         <td><p>大きさ</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">radian</span></td>
-        <td><p>回転（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcRect__ctor_" data-uid="GameCanvas.GcRect.#ctor*"></a>
-  <h4 id="GameCanvas_GcRect__ctor_UnityEngine_Rect__System_Single__" data-uid="GameCanvas.GcRect.#ctor(UnityEngine.Rect@,System.Single@)">GcRect(Rect, Single)</h4>
-  <div class="markdown level1 summary"><p>コンストラクタ</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcRect(in Rect rect, in float radian = 0F)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>矩形</p>
 </td>
       </tr>
       <tr>
@@ -482,7 +482,7 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcRect_op_Explicit_" data-uid="GameCanvas.GcRect.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcRect_op_Explicit_UnityEngine_Rect__GameCanvas_GcRect" data-uid="GameCanvas.GcRect.op_Explicit(UnityEngine.Rect)~GameCanvas.GcRect">Explicit(Rect to GcRect)</h4>
+  <h4 id="GameCanvas_GcRect_op_Explicit_Rect__GameCanvas_GcRect" data-uid="GameCanvas.GcRect.op_Explicit(Rect)~GameCanvas.GcRect">Explicit(Rect to GcRect)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -500,7 +500,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
+        <td><span class="xref">Rect</span></td>
         <td><span class="parametername">rect</span></td>
         <td></td>
       </tr>
