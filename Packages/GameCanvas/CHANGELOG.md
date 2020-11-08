@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 5.0.7
+### 性能向上
+- gc.AccelerationEvents 呼び出し時の boxing を回避
+
 ## 5.0.6
 ### 機能追加
 - 加速度計関連のAPI追加

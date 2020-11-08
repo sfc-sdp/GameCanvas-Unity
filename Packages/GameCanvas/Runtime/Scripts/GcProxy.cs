@@ -47,7 +47,7 @@ namespace GameCanvas
             get => m_Context.InputAcceleration.AccelerationEventCount;
         }
 
-        public IEnumerable<GcAccelerationEvent> AccelerationEvents
+        public GcAccelerationEvent.Enumerable AccelerationEvents
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.AccelerationEvents;
