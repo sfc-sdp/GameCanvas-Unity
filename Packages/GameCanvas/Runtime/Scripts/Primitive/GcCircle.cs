@@ -67,8 +67,6 @@ namespace GameCanvas
 
         public override bool Equals(object obj) => (obj is GcCircle other) && Equals(other);
 
-        public GcAABB GetAABB(in float2x3 matrix) => throw new System.NotImplementedException();
-
         public override int GetHashCode() => Position.GetHashCode() ^ Radius.GetHashCode();
 
         public override string ToString()

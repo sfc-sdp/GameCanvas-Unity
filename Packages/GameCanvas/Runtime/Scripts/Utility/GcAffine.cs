@@ -24,7 +24,7 @@ namespace GameCanvas
         /// <summary>
         /// 単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）
         /// </summary>
-        public readonly static float2x3 Identity = new float2x3(1f, 0f, 0f, 0f, 1f, 0f);
+        public static readonly float2x3 Identity = new float2x3(1f, 0f, 0f, 0f, 1f, 0f);
 
         #endregion
 

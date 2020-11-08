@@ -32,7 +32,7 @@ namespace GameCanvas
         {
             to.Length = from.Length;
             if (from.Length == 0) return;
-            
+
             unsafe
             {
                 var src = from.GetUnsafeReadOnlyPtr();

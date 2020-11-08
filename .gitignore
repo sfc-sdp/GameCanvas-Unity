@@ -80,6 +80,7 @@ proguard/
 *.vspx
 *.sap
 .vs
+.vsconfig
 .vscode
 Assets/UnityVS/Editor*
 VSCode.*

@@ -82,21 +82,20 @@ namespace GameCanvas
         /// </summary>
         public float Width => (MaxX - MinX);
 
-        public static bool operator !=(GcMinMaxBox3D lh, GcMinMaxBox3D rh)
-        {
-            return !(lh == rh);
-        }
+        public static bool operator !=(GcMinMaxBox3D lh, GcMinMaxBox3D rh) => !lh.Equals(rh);
 
-        public static bool operator ==(GcMinMaxBox3D lh, GcMinMaxBox3D rh)
-                                                                                                                    => lh.MinX == rh.MinX && lh.MinY == rh.MinY && lh.MinZ == rh.MinZ
-            && lh.MaxX == rh.MaxX && lh.MaxY == rh.MaxY && lh.MaxZ == rh.MaxZ;
+        public static bool operator ==(GcMinMaxBox3D lh, GcMinMaxBox3D rh) => lh.Equals(rh);
 
-        public bool Equals(GcMinMaxBox3D other) => (this == other);
+        public bool Equals(GcMinMaxBox3D other)
+            => MinX == other.MinX && MinY == other.MinY && MinZ == other.MinZ
+            && MaxX == other.MaxX && MaxY == other.MaxY && MaxZ == other.MaxZ;
 
-        public override bool Equals(object obj) => (obj is GcMinMaxBox3D && this == (GcMinMaxBox3D)obj);
+        public override bool Equals(object obj)
+            => (obj is GcMinMaxBox3D other) && Equals(other);
 
         public override int GetHashCode()
-            => MinX.GetHashCode() & MinY.GetHashCode() & MinZ.GetHashCode() & MaxX.GetHashCode() & MaxY.GetHashCode() & MaxZ.GetHashCode();
+            => MinX.GetHashCode() ^ MinY.GetHashCode() ^ MinZ.GetHashCode()
+            & MaxX.GetHashCode() ^ MaxY.GetHashCode() ^ MaxZ.GetHashCode();
 
         public override string ToString()
             => string.Format("{{x:[{0:f3}, {1:f3}], y:[{2:f3}, {3:f3}], z:[{4:f3}, {5:f3}]}}", MinX, MaxX, MinY, MaxY, MinZ, MaxZ);
