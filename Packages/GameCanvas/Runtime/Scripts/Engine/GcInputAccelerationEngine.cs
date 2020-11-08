@@ -36,6 +36,12 @@ namespace GameCanvas.Engine
             get => m_EventList.Length;
         }
 
+        public bool DidUpdateAccelerationThisFrame
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_EventList.Length != 0;
+        }
+
         public bool IsAccelerometerEnabled
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]

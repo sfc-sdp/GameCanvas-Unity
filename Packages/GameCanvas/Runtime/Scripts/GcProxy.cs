@@ -362,6 +362,12 @@ namespace GameCanvas
             get => m_Context.Graphics.DeviceScreenSize.x;
         }
 
+        public bool DidUpdateAccelerationThisFrame
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.DidUpdateAccelerationThisFrame;
+        }
+
         public bool DidUpdateGeolocationThisFrame
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]

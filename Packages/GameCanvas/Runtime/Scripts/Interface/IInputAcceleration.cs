@@ -20,6 +20,11 @@ namespace GameCanvas
         int AccelerationEventCount { get; }
 
         /// <summary>
+        /// 前回のフレーム処理以降に 加速度イベントの更新があったかどうか
+        /// </summary>
+        bool DidUpdateAccelerationThisFrame { get; }
+
+        /// <summary>
         /// 加速度計が有効かどうか
         /// </summary>
         bool IsAccelerometerEnabled { get; set; }
