@@ -1748,6 +1748,9 @@ namespace GameCanvas
         public float Random(in float min, in float max) => GcMath.Random(min, max);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public float Repeat(in float value, in float max) => GcMath.Repeat(value, max);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RegisterScene<T>() where T : GcScene, new()
             => m_SceneDict.Add(typeof(T), new T());
 

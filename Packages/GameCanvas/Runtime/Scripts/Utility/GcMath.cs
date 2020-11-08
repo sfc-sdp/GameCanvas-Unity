@@ -111,6 +111,10 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Random() => s_Random.NextFloat();
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Repeat(in float value, in float max)
+            => UnityEngine.Mathf.Repeat(value, max);
+
         /// <summary>
         /// ベクトルの転回
         /// </summary>

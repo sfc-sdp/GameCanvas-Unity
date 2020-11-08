@@ -54,7 +54,6 @@ namespace GameCanvas
         /// <param name="value">入力値</param>
         /// <param name="min">最小値</param>
         /// <param name="max">最大値</param>
-        /// <returns></returns>
         float Clamp(in float value, in float min, in float max);
 
         /// <summary>
@@ -109,6 +108,13 @@ namespace GameCanvas
         /// <param name="max">最大値</param>
         /// <returns>ランダムな値</returns>
         int Random(in int min, in int max);
+
+        /// <summary>
+        /// 値を 0 から <paramref name="max"/> までの範囲を繰り返すよう値を丸めます
+        /// </summary>
+        /// <param name="value">入力値</param>
+        /// <param name="max">最大値</param>
+        float Repeat(in float value, in float max);
 
         /// <summary>
         /// ベクトルを回転します
