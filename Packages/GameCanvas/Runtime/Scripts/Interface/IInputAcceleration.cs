@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.Collections;
 
@@ -18,6 +19,11 @@ namespace GameCanvas
         /// 前回のフレーム処理以降に検出した 加速度イベントの数
         /// </summary>
         int AccelerationEventCount { get; }
+
+        /// <summary>
+        /// 前回のフレーム処理以降に検出した 加速度イベントの列挙子
+        /// </summary>
+        IEnumerable<GcAccelerationEvent> AccelerationEvents { get; }
 
         /// <summary>
         /// 前回のフレーム処理以降に 加速度イベントの更新があったかどうか

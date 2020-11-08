@@ -47,6 +47,12 @@ namespace GameCanvas
             get => m_Context.InputAcceleration.AccelerationEventCount;
         }
 
+        public IEnumerable<GcAccelerationEvent> AccelerationEvents
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.AccelerationEvents;
+        }
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastX
         {
