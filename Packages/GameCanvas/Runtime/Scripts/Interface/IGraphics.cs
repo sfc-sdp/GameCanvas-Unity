@@ -375,7 +375,7 @@ namespace GameCanvas
         /// キャンバスの横幅
         /// </summary>
         int CanvasWidth { get; }
-        
+
         /// <summary>
         /// 水色
         /// </summary>

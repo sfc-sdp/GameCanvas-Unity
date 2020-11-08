@@ -27,7 +27,7 @@ namespace GameCanvas
             if (TryGet(out SpriteAtlas asset))
             {
                 sprite = asset.GetSprite(name);
-                
+
                 if (m_SpriteDict == null)
                 {
                     m_SpriteDict = new Dictionary<string, Sprite>(asset.spriteCount);
