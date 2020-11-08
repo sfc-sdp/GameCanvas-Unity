@@ -10,12 +10,12 @@ jobs:
     steps:
       - name: Get branch info
         id: comment-branch
-        uses: xt0rted/pull-request-comment-branch@v1.2
+        uses: xt0rted/pull-request-comment-branch@v1.2.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout repo
-        uses: actions/checkout@v2.3
+        uses: actions/checkout@v2.3.4
         if: success()
         with:
           ref: ${{ steps.comment-branch.outputs.head_ref }}
@@ -27,12 +27,12 @@ jobs:
 
       - name: Check folder existence
         id: check_folder
-        uses: andstor/file-existence-action@v1.0
+        uses: andstor/file-existence-action@v1.0.1
         with:
           files: ${{ env.FOLDER_PATH }}
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1.7.2
         with:
           dotnet-version: 3.1.x
 
@@ -43,7 +43,7 @@ jobs:
       - name: Check format
         if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
         id: check
-        uses: brmenchl/dotnet-format@v1.0
+        uses: brmenchl/dotnet-format@v1.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "check"
@@ -52,7 +52,7 @@ jobs:
 
       - name: Run format
         if: steps.check.outputs.has-changes == 'true'
-        uses: brmenchl/dotnet-format@v1.0
+        uses: brmenchl/dotnet-format@v1.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "fix"
@@ -67,7 +67,7 @@ jobs:
 
       - name: Push changes
         if: steps.check.outputs.has-changes == 'true'
-        uses: ad-m/github-push-action@v0.6
+        uses: ad-m/github-push-action@v0.6.0
         with:
           branch: ${{ steps.comment-branch.outputs.ref }}
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
