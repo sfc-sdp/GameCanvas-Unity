@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 5.0.8
+### 仕様変更
+- 推奨エディタバージョンを 2020.1.12f1 に変更
+
 ## 5.0.7
 ### 性能向上
 - gc.AccelerationEvents 呼び出し時の boxing を回避
