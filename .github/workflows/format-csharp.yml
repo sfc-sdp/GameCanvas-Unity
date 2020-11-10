@@ -2,9 +2,11 @@ name: Format C#
 on:
   pull_request:
     types: [opened, synchronize]
+    branches: [master]
 jobs:
   dotnet-format:
     env:
+      DOTNET_VERSION: 3.1.x
       FOLDER_PATH: ./Packages/GameCanvas/
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +17,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout repo
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2
         if: success()
         with:
           ref: ${{ steps.comment-branch.outputs.head_ref }}
@@ -26,24 +28,40 @@ jobs:
         run: echo "::set-output name=message::$(git log --no-merges -1 --oneline)"
 
       - name: Check folder existence
+        if: contains(steps.log.outputs.message, 'skip ci') != 'true'
         id: check_folder
-        uses: andstor/file-existence-action@v1.0.1
+        uses: andstor/file-existence-action@v1
         with:
           files: ${{ env.FOLDER_PATH }}
 
+      - name: .NET Core SDK telemetry opt out
+        if: steps.check_folder.outputs.files_exists == 'true'
+        run: echo "DOTNET_CLI_TELEMETRY_OPTOUT=1" >> $GITHUB_ENV
+
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1.7.2
+        if: steps.check_folder.outputs.files_exists == 'true'
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache .NET Tools
+        if: steps.check_folder.outputs.files_exists == 'true'
+        id: dotnet_tools_cache
+        uses: actions/cache@v2
+        with:
+          path: $${ env.DOTNET_ROOT }/tools
+          key: ${{ runner.os }}-dotnet-tools-${{ env.DOTNET_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-dotnet-tools-
 
       - name: Install dotnet-format
-        if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
+        if: steps.check_folder.outputs.files_exists == 'true'
         run: dotnet tool install -g dotnet-format
 
       - name: Check format
-        if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
+        if: steps.check_folder.outputs.files_exists == 'true'
         id: check
-        uses: brmenchl/dotnet-format@v1.0.2
+        uses: brmenchl/dotnet-format@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "check"
@@ -52,7 +70,7 @@ jobs:
 
       - name: Run format
         if: steps.check.outputs.has-changes == 'true'
-        uses: brmenchl/dotnet-format@v1.0.2
+        uses: brmenchl/dotnet-format@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "fix"
