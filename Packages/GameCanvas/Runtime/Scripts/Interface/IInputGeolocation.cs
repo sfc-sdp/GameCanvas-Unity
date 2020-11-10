@@ -95,3 +95,11 @@ namespace GameCanvas
         bool IsGeolocationRunning { get; }
     }
 }
+
+
+
+
+
+
+
+
