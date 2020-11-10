@@ -16,443 +16,443 @@ namespace GameCanvas
     public interface IGraphics
     {
         /// <summary>
-        /// 背景色
+        /// �w�i�F
         /// </summary>
         Color BackgroundColor { get; set; }
 
         /// <summary>
-        /// キャンバス外に表示される帯の色
+        /// �L�����o�X�O�ɕ\�������т̐F
         /// </summary>
         /// <remarks>
-        /// <see cref="ChangeBorderColor"/> を呼び出すことで変更できます
+        /// <see cref="ChangeBorderColor"/> ���Ăяo�����ƂŕύX�ł��܂�
         /// </remarks>
         Color BorderColor { get; }
 
         /// <summary>
-        /// キャンバス解像度
+        /// �L�����o�X�𑜓x
         /// </summary>
         /// <remarks>
-        /// <see cref="ChangeCanvasSize"/> を呼び出すことで変更できます
+        /// <see cref="ChangeCanvasSize"/> ���Ăяo�����ƂŕύX�ł��܂�
         /// </remarks>
         int2 CanvasSize { get; }
 
         /// <summary>
-        /// 円の解像度
+        /// �~�̉𑜓x
         /// </summary>
         int CircleResolution { get; set; }
 
         /// <summary>
-        /// 描画色
+        /// �`��F
         /// </summary>
         Color Color { get; set; }
 
         /// <summary>
-        /// 現在の座標系（変換行列）
+        /// ���݂̍��W�n�i�ϊ��s��j
         /// </summary>
         float2x3 CurrentCoordinate { get; set; }
 
         /// <summary>
-        /// 現在のスタイル
+        /// ���݂̃X�^�C��
         /// </summary>
         GcStyle CurrentStyle { get; set; }
 
         /// <summary>
-        /// 端末スクリーン解像度
+        /// �[���X�N���[���𑜓x
         /// </summary>
         int2 DeviceScreenSize { get; }
 
         /// <summary>
-        /// フォント種別
+        /// �t�H���g���
         /// </summary>
         GcFont Font { get; set; }
 
         /// <summary>
-        /// フォントサイズ
+        /// �t�H���g�T�C�Y
         /// </summary>
         int FontSize { get; set; }
 
         /// <summary>
-        /// 描線の端点の形状
+        /// �`���̒[�_�̌`��
         /// </summary>
         GcLineCap LineCap { get; set; }
 
         /// <summary>
-        /// 描線の太さ
+        /// �`���̑���
         /// </summary>
         float LineWidth { get; set; }
 
         /// <summary>
-        /// <see cref="PushCoordinate"/> と <see cref="PopCoordinate"/> が自動的に呼び出されるスコープ
+        /// <see cref="PushCoordinate"/> �� <see cref="PopCoordinate"/> �������I�ɌĂяo�����X�R�[�v
         /// </summary>
         CoordianteScope CoordinateScope { get; }
 
         /// <summary>
-        /// 矩形のアンカー位置
+        /// ��`�̃A���J�[�ʒu
         /// </summary>
         GcAnchor RectAnchor { get; set; }
 
         /// <summary>
-        /// 文字列のアンカー位置
+        /// ������̃A���J�[�ʒu
         /// </summary>
         GcAnchor StringAnchor { get; set; }
 
         /// <summary>
-        /// <see cref="PushStyle"/> と <see cref="PopStyle"/> が自動的に呼び出されるスコープ
+        /// <see cref="PushStyle"/> �� <see cref="PopStyle"/> �������I�ɌĂяo�����X�R�[�v
         /// </summary>
         StyleScope StyleScope { get; }
 
         /// <summary>
-        /// 文字列の縦幅を計算します
+        /// ������̏c�����v�Z���܂�
         /// </summary>
-        /// <param name="str">文字列</param>
-        /// <returns>縦幅</returns>
+        /// <param name="str">������</param>
+        /// <returns>�c��</returns>
         float CalcStringHeight(in string str);
 
         /// <summary>
-        /// 文字列のサイズを計算します
+        /// ������̃T�C�Y���v�Z���܂�
         /// </summary>
-        /// <param name="str">文字列</param>
-        /// <returns>サイズ</returns>
+        /// <param name="str">������</param>
+        /// <returns>�T�C�Y</returns>
         float2 CalcStringSize(in string str);
 
         /// <summary>
-        /// 文字列の横幅を計算します
+        /// ������̉������v�Z���܂�
         /// </summary>
-        /// <param name="str">文字列</param>
-        /// <returns>横幅</returns>
+        /// <param name="str">������</param>
+        /// <returns>����</returns>
         float CalcStringWidth(in string str);
 
         /// <summary>
-        /// キャンバス座標を端末スクリーン座標に変換します
+        /// �L�����o�X���W��[���X�N���[�����W�ɕϊ����܂�
         /// </summary>
-        /// <param name="canvas">変換元 キャンバス座標</param>
-        /// <param name="screen">変換後 端末スクリーン座標</param>
+        /// <param name="canvas">�ϊ��� �L�����o�X���W</param>
+        /// <param name="screen">�ϊ��� �[���X�N���[�����W</param>
         void CanvasToScreenPoint(in float2 canvas, out float2 screen);
 
         /// <summary>
-        /// キャンバス座標を端末スクリーン座標に変換します
+        /// �L�����o�X���W��[���X�N���[�����W�ɕϊ����܂�
         /// </summary>
-        /// <param name="canvas">変換元 キャンバス座標</param>
-        /// <param name="screen">変換後 端末スクリーン座標</param>
+        /// <param name="canvas">�ϊ��� �L�����o�X���W</param>
+        /// <param name="screen">�ϊ��� �[���X�N���[�����W</param>
         void CanvasToScreenPoint(in float2 canvas, out int2 screen);
 
         /// <summary>
-        /// キャンバス外の帯の色を変更します
+        /// �L�����o�X�O�̑т̐F��ύX���܂�
         /// </summary>
         /// <remarks>
-        /// 既存キャンバスの描画内容は全て破棄されます
+        /// �����L�����o�X�̕`����e�͑S�Ĕj������܂�
         /// </remarks>
-        /// <param name="color">新しい帯の色</param>
+        /// <param name="color">�V�����т̐F</param>
         void ChangeBorderColor(in Color color);
 
         /// <summary>
-        /// キャンバス解像度を変更します
+        /// �L�����o�X�𑜓x��ύX���܂�
         /// </summary>
         /// <remarks>
-        /// - 初期値は 720x1280 です<br />
-        /// - ディスプレイ解像度と縦横比が異なる場合は、上下もしくは左右に帯がつきます<br />
-        /// - 既存キャンバスの描画内容は全て破棄されます
+        /// - �����l�� 720x1280 �ł�<br />
+        /// - �f�B�X�v���C�𑜓x�Əc���䂪�قȂ�ꍇ�́A�㉺�������͍��E�ɑт����܂�<br />
+        /// - �����L�����o�X�̕`����e�͑S�Ĕj������܂�
         /// </remarks>
-        /// <param name="size">新しいキャンバス解像度</param>
+        /// <param name="size">�V�����L�����o�X�𑜓x</param>
         void ChangeCanvasSize(in int2 size);
 
         /// <summary>
-        /// <see cref="CurrentCoordinate"/> をリセットします
+        /// <see cref="CurrentCoordinate"/> �����Z�b�g���܂�
         /// </summary>
         void ClearCoordinate();
 
         /// <summary>
-        /// キャンバスを <see cref="BackgroundColor"/> で塗りつぶします
+        /// �L�����o�X�� <see cref="BackgroundColor"/> �œh��Ԃ��܂�
         /// </summary>
         void ClearScreen();
 
         /// <summary>
-        /// <see cref="CurrentStyle"/> をリセットします
+        /// <see cref="CurrentStyle"/> �����Z�b�g���܂�
         /// </summary>
         void ClearStyle();
 
         /// <summary>
-        /// 中抜きの円を描画します
+        /// �������̉~��`�悵�܂�
         /// </summary>
         void DrawCircle();
 
         /// <summary>
-        /// 中抜きの円を描画します
+        /// �������̉~��`�悵�܂�
         /// </summary>
-        /// <param name="circle">円</param>
+        /// <param name="circle">�~</param>
         void DrawCircle(in GcCircle circle);
 
         /// <summary>
-        /// 画像を描画します
+        /// �摜��`�悵�܂�
         /// </summary>
-        /// <param name="image">描画する画像</param>
+        /// <param name="image">�`�悷��摜</param>
         void DrawImage(in GcImage image);
 
         /// <summary>
-        /// 画像を描画します
+        /// �摜��`�悵�܂�
         /// </summary>
-        /// <param name="image">描画する画像</param>
-        /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="image">�`�悷��摜</param>
+        /// <param name="position">�ʒu</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawImage(in GcImage image, in float2 position, float degree = 0f);
 
         /// <summary>
-        /// 画像を拡縮して描画します
+        /// �摜���g�k���ĕ`�悵�܂�
         /// </summary>
-        /// <param name="image">描画する画像</param>
-        /// <param name="rect">画像をフィッティングする矩形領域</param>
+        /// <param name="image">�`�悷��摜</param>
+        /// <param name="rect">�摜���t�B�b�e�B���O�����`�̈�</param>
         void DrawImage(in GcImage image, in GcRect rect);
 
         /// <summary>
-        /// 線を描画します
+        /// ����`�悵�܂�
         /// </summary>
         void DrawLine();
 
         /// <summary>
-        /// 線を描画します
+        /// ����`�悵�܂�
         /// </summary>
-        /// <param name="line">線</param>
+        /// <param name="line">��</param>
         void DrawLine(in GcLine line);
 
         /// <summary>
-        /// 矩形を線で描画します
+        /// ��`����ŕ`�悵�܂�
         /// </summary>
         void DrawRect();
 
         /// <summary>
-        /// 矩形を線で描画します
+        /// ��`����ŕ`�悵�܂�
         /// </summary>
-        /// <param name="rect">矩形</param>
+        /// <param name="rect">��`</param>
         void DrawRect(in GcRect rect);
 
         /// <summary>
-        /// 文字列を描画します
+        /// �������`�悵�܂�
         /// </summary>
-        /// <param name="str">描画する文字列</param>
+        /// <param name="str">�`�悷�镶����</param>
         void DrawString(in string str);
 
         /// <summary>
-        /// 文字列を描画します
+        /// �������`�悵�܂�
         /// </summary>
-        /// <param name="str">描画する文字列</param>
-        /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="str">�`�悷�镶����</param>
+        /// <param name="position">�ʒu</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawString(in string str, in float2 position, float degree = 0f);
 
         /// <summary>
-        /// 文字列を拡縮して描画します
+        /// ��������g�k���ĕ`�悵�܂�
         /// </summary>
-        /// <param name="str">描画する文字列</param>
-        /// <param name="rect">文字列をフィッティングする矩形領域</param>
+        /// <param name="str">�`�悷�镶����</param>
+        /// <param name="rect">��������t�B�b�e�B���O�����`�̈�</param>
         void DrawString(in string str, in GcRect rect);
 
         /// <summary>
-        /// テクスチャーを描画します
+        /// �e�N�X�`���[��`�悵�܂�
         /// </summary>
-        /// <param name="texture">描画するテクスチャー</param>
+        /// <param name="texture">�`�悷��e�N�X�`���[</param>
         void DrawTexture(in Texture texture);
 
         /// <summary>
-        /// テクスチャーを描画します
+        /// �e�N�X�`���[��`�悵�܂�
         /// </summary>
-        /// <param name="texture">描画するテクスチャー</param>
-        /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="texture">�`�悷��e�N�X�`���[</param>
+        /// <param name="position">�ʒu</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawTexture(in Texture texture, in float2 position, float degree = 0f);
 
         /// <summary>
-        /// テクスチャーを拡縮して描画します
+        /// �e�N�X�`���[���g�k���ĕ`�悵�܂�
         /// </summary>
-        /// <param name="texture">描画するテクスチャー</param>
-        /// <param name="rect">テクスチャーをフィッティングする矩形領域</param>
+        /// <param name="texture">�`�悷��e�N�X�`���[</param>
+        /// <param name="rect">�e�N�X�`���[���t�B�b�e�B���O�����`�̈�</param>
         void DrawTexture(in Texture texture, in GcRect rect);
 
         /// <summary>
-        /// 円を塗りで描画します
+        /// �~��h��ŕ`�悵�܂�
         /// </summary>
         void FillCircle();
 
         /// <summary>
-        /// 円を塗りで描画します
+        /// �~��h��ŕ`�悵�܂�
         /// </summary>
-        /// <param name="circle">円</param>
+        /// <param name="circle">�~</param>
         void FillCircle(in GcCircle circle);
 
         /// <summary>
-        /// 矩形を塗りで描画します
+        /// ��`��h��ŕ`�悵�܂�
         /// </summary>
         void FillRect();
 
         /// <summary>
-        /// 矩形を塗りで描画します
+        /// ��`��h��ŕ`�悵�܂�
         /// </summary>
-        /// <param name="rect">矩形</param>
+        /// <param name="rect">��`</param>
         void FillRect(in GcRect rect);
 
         /// <summary>
-        /// スタックから座標系（変換行列）を取り出し <see cref="CurrentCoordinate"/> に上書きします
+        /// �X�^�b�N������W�n�i�ϊ��s��j�����o�� <see cref="CurrentCoordinate"/> �ɏ㏑�����܂�
         /// </summary>
         void PopCoordinate();
 
         /// <summary>
-        /// スタックから描画スタイルを取り出し <see cref="CurrentStyle"/> に上書きします
+        /// �X�^�b�N����`��X�^�C�������o�� <see cref="CurrentStyle"/> �ɏ㏑�����܂�
         /// </summary>
         void PopStyle();
 
         /// <summary>
-        /// <see cref="CurrentCoordinate"/> をスタックに保存します
+        /// <see cref="CurrentCoordinate"/> ���X�^�b�N�ɕۑ����܂�
         /// </summary>
         void PushCoordinate();
 
         /// <summary>
-        /// <see cref="CurrentStyle"/> をスタックに保存します
+        /// <see cref="CurrentStyle"/> ���X�^�b�N�ɕۑ����܂�
         /// </summary>
         void PushStyle();
 
         /// <summary>
-        /// 座標系（変換行列）を回転させます
+        /// ���W�n�i�ϊ��s��j����]�����܂�
         /// </summary>
-        /// <param name="degree">回転量（度数法）</param>
+        /// <param name="degree">��]�ʁi�x���@�j</param>
         void RotateCoordinate(in float degree);
 
         /// <summary>
-        /// 座標系（変換行列）を指定した座標を中心に回転させます
+        /// ���W�n�i�ϊ��s��j���w�肵�����W�𒆐S�ɉ�]�����܂�
         /// </summary>
-        /// <param name="degree">回転量（度数法）</param>
-        /// <param name="origin">回転中心</param>
+        /// <param name="degree">��]�ʁi�x���@�j</param>
+        /// <param name="origin">��]���S</param>
         void RotateCoordinate(in float degree, in float2 origin);
 
         /// <summary>
-        /// 座標系（変換行列）を拡縮させます
+        /// ���W�n�i�ϊ��s��j���g�k�����܂�
         /// </summary>
-        /// <param name="scaling">拡縮率</param>
+        /// <param name="scaling">�g�k��</param>
         void ScaleCoordinate(in float2 scaling);
 
         /// <summary>
-        /// 端末スクリーン座標をキャンバス座標に変換します
+        /// �[���X�N���[�����W���L�����o�X���W�ɕϊ����܂�
         /// </summary>
-        /// <param name="screen">変換元 端末スクリーン座標</param>
-        /// <param name="canvas">変換後 キャンバス座標</param>
+        /// <param name="screen">�ϊ��� �[���X�N���[�����W</param>
+        /// <param name="canvas">�ϊ��� �L�����o�X���W</param>
         void ScreenToCanvasPoint(in float2 screen, out float2 canvas);
 
         /// <summary>
-        /// 端末スクリーン座標をキャンバス座標に変換します
+        /// �[���X�N���[�����W���L�����o�X���W�ɕϊ����܂�
         /// </summary>
-        /// <param name="screen">変換元 端末スクリーン座標</param>
-        /// <param name="canvas">変換後 キャンバス座標</param>
+        /// <param name="screen">�ϊ��� �[���X�N���[�����W</param>
+        /// <param name="canvas">�ϊ��� �L�����o�X���W</param>
         void ScreenToCanvasPoint(in float2 screen, out int2 canvas);
 
         /// <summary>
-        /// 座標系（変換行列）を平行移動させます
+        /// ���W�n�i�ϊ��s��j�𕽍s�ړ������܂�
         /// </summary>
-        /// <param name="translation">移動量</param>
+        /// <param name="translation">�ړ���</param>
         void TranslateCoordinate(in float2 translation);
     }
 
     public interface IGraphicsEx : IGraphics
     {
         /// <summary>
-        /// キャンバスのAABB
+        /// �L�����o�X��AABB
         /// </summary>
         GcAABB CanvasAABB { get; }
 
         /// <summary>
-        /// キャンバスの中心座標
+        /// �L�����o�X�̒��S���W
         /// </summary>
         float2 CanvasCenter { get; }
 
         /// <summary>
-        /// キャンバスの縦幅
+        /// �L�����o�X�̏c��
         /// </summary>
         int CanvasHeight { get; }
 
         /// <summary>
-        /// キャンバスの解像度とリフレッシュレート
+        /// �L�����o�X�̉𑜓x�ƃ��t���b�V�����[�g
         /// </summary>
         GcResolution CanvasResolution { get; }
 
         /// <summary>
-        /// キャンバスの横幅
+        /// �L�����o�X�̉���
         /// </summary>
         int CanvasWidth { get; }
 
         /// <summary>
-        /// 水色
+        /// ���F
         /// </summary>
         Color ColorAqua { get; }
 
         /// <summary>
-        /// 黒色
+        /// ���F
         /// </summary>
         Color ColorBlack { get; }
 
         /// <summary>
-        /// 青色
+        /// �F
         /// </summary>
         Color ColorBlue { get; }
 
         /// <summary>
-        /// シアン
+        /// �V�A��
         /// </summary>
         Color ColorCyan { get; }
 
         /// <summary>
-        /// 灰色
+        /// �D�F
         /// </summary>
         Color ColorGray { get; }
 
         /// <summary>
-        /// 緑色
+        /// �ΐF
         /// </summary>
         Color ColorGreen { get; }
 
         /// <summary>
-        /// 紫色
+        /// ���F
         /// </summary>
         Color ColorPurple { get; }
 
         /// <summary>
-        /// 赤色
+        /// �ԐF
         /// </summary>
         Color ColorRed { get; }
 
         /// <summary>
-        /// 白色
+        /// ���F
         /// </summary>
         Color ColorWhite { get; }
 
         /// <summary>
-        /// 黄色
+        /// ���F
         /// </summary>
         Color ColorYellow { get; }
 
         /// <summary>
-        /// 端末スクリーンの縦幅
+        /// �[���X�N���[���̏c��
         /// </summary>
         int DeviceScreenHeight { get; }
 
         /// <summary>
-        /// 端末スクリーンの横幅
+        /// �[���X�N���[���̉���
         /// </summary>
         int DeviceScreenWidth { get; }
 
         /// <summary>
-        /// 帯の色を変更します
+        /// �т̐F��ύX���܂�
         /// </summary>
-        /// <param name="r">帯の色の赤成分</param>
-        /// <param name="g">帯の色の緑成分</param>
-        /// <param name="b">帯の色の青成分</param>
+        /// <param name="r">�т̐F�̐Ԑ���</param>
+        /// <param name="g">�т̐F�̗ΐ���</param>
+        /// <param name="b">�т̐F�̐���</param>
         void ChangeBorderColor(in float r, in float g, in float b);
 
         /// <summary>
-        /// キャンバス解像度を指定します
+        /// �L�����o�X�𑜓x���w�肵�܂�
         /// </summary>
         /// <remarks>
-        /// - 初期値は 720x1280 です<br />
-        /// - ディスプレイ解像度と縦横比が異なる場合は、上下もしくは左右に帯がつきます
+        /// - �����l�� 720x1280 �ł�<br />
+        /// - �f�B�X�v���C�𑜓x�Əc���䂪�قȂ�ꍇ�́A�㉺�������͍��E�ɑт����܂�
         /// </remarks>
-        /// <param name="width">横幅</param>
-        /// <param name="height">縦幅</param>
+        /// <param name="width">����</param>
+        /// <param name="height">�c��</param>
         void ChangeCanvasSize(in int width, in int height);
 
         [System.Obsolete("Use to `DrawRect`  instead.")]
@@ -464,72 +464,72 @@ namespace GameCanvas
         void DrawCenterString(in string str, in float x, in float y, float degree = 0f);
 
         /// <summary>
-        /// 円を線で描画します
+        /// �~����ŕ`�悵�܂�
         /// </summary>
-        /// <param name="x">中心のX座標</param>
-        /// <param name="y">中心のY座標</param>
-        /// <param name="radius">半径</param>
+        /// <param name="x">���S��X���W</param>
+        /// <param name="y">���S��Y���W</param>
+        /// <param name="radius">���a</param>
         void DrawCircle(in float x, in float y, in float radius);
 
         /// <summary>
-        /// 円を線で描画します
+        /// �~����ŕ`�悵�܂�
         /// </summary>
-        /// <param name="position">中心の座標</param>
-        /// <param name="radius">半径</param>
+        /// <param name="position">���S�̍��W</param>
+        /// <param name="radius">���a</param>
         void DrawCircle(in float2 position, in float radius);
 
         /// <summary>
-        /// 画像を描画します
+        /// �摜��`�悵�܂�
         /// </summary>
-        /// <param name="image">描画する画像</param>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="image">�`�悷��摜</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawImage(in GcImage image, in float x, in float y, float degree = 0f);
 
         /// <summary>
-        /// 画像を拡縮して描画します
+        /// �摜���g�k���ĕ`�悵�܂�
         /// </summary>
-        /// <param name="image">描画する画像</param>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="width">横幅。画像の横幅がこれになるように拡縮される</param>
-        /// <param name="height">縦幅。画像の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="image">�`�悷��摜</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="width">�����B�摜�̉���������ɂȂ�悤�Ɋg�k�����</param>
+        /// <param name="height">�c���B�摜�̏c��������ɂȂ�悤�Ɋg�k�����</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float degree = 0f);
 
         /// <summary>
-        /// 線を描画します
+        /// ����`�悵�܂�
         /// </summary>
-        /// <param name="begin">始点</param>
-        /// <param name="end">終点</param>
+        /// <param name="begin">�n�_</param>
+        /// <param name="end">�I�_</param>
         void DrawLine(in float2 begin, in float2 end);
 
         /// <summary>
-        /// 線を描画します
+        /// ����`�悵�܂�
         /// </summary>
-        /// <param name="x0">始点のX座標</param>
-        /// <param name="y0">始点のY座標</param>
-        /// <param name="x1">終点のX座標</param>
-        /// <param name="y1">終点のY座標</param>
+        /// <param name="x0">�n�_��X���W</param>
+        /// <param name="y0">�n�_��Y���W</param>
+        /// <param name="x1">�I�_��X���W</param>
+        /// <param name="y1">�I�_��Y���W</param>
         void DrawLine(in float x0, in float y0, in float x1, in float y1);
 
         /// <summary>
-        /// 矩形を線で描画します
+        /// ��`����ŕ`�悵�܂�
         /// </summary>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="width">横幅</param>
-        /// <param name="height">縦幅</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="width">����</param>
+        /// <param name="height">�c��</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawRect(in float x, in float y, in float width, in float height, float degree = 0f);
 
         /// <summary>
-        /// 矩形を線で描画します
+        /// ��`����ŕ`�悵�܂�
         /// </summary>
-        /// <param name="position">位置</param>
-        /// <param name="size">大きさ</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="position">�ʒu</param>
+        /// <param name="size">�傫��</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawRect(in float2 position, in float2 size, float degree = 0f);
 
         [System.Obsolete("Use to `DrawString`  instead.")]
@@ -537,34 +537,34 @@ namespace GameCanvas
         void DrawRightString(in string str, in float x, in float y, float degree = 0f);
 
         /// <summary>
-        /// 文字列を描画します
+        /// �������`�悵�܂�
         /// </summary>
-        /// <param name="str">描画する文字列</param>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="str">�`�悷�镶����</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawString(in string str, in float x, in float y, float degree = 0f);
 
         /// <summary>
-        /// 文字列を拡縮して描画します
+        /// ��������g�k���ĕ`�悵�܂�
         /// </summary>
-        /// <param name="str">描画する文字列</param>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="width">横幅。文字列の横幅がこれになるように拡縮される</param>
-        /// <param name="height">縦幅。文字列の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="str">�`�悷�镶����</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="width">�����B������̉���������ɂȂ�悤�Ɋg�k�����</param>
+        /// <param name="height">�c���B������̏c��������ɂȂ�悤�Ɋg�k�����</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawString(in string str, in float x, in float y, in float width, in float height, float degree = 0f);
 
         /// <summary>
-        /// テクスチャーを拡縮して描画します
+        /// �e�N�X�`���[���g�k���ĕ`�悵�܂�
         /// </summary>
-        /// <param name="texture">描画するテクスチャー</param>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="width">横幅。画像の横幅がこれになるように拡縮される</param>
-        /// <param name="height">縦幅。画像の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="texture">�`�悷��e�N�X�`���[</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="width">�����B�摜�̉���������ɂȂ�悤�Ɋg�k�����</param>
+        /// <param name="height">�c���B�摜�̏c��������ɂȂ�悤�Ɋg�k�����</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f);
 
         [System.Obsolete("Use to `FillRect`  instead.")]
@@ -572,153 +572,153 @@ namespace GameCanvas
         void FillCenterRect(in float2 center, in float2 size, float degree = 0f);
 
         /// <summary>
-        /// 円を塗りで描画します
+        /// �~��h��ŕ`�悵�܂�
         /// </summary>
-        /// <param name="x">中心のX座標</param>
-        /// <param name="y">中心のY座標</param>
-        /// <param name="radius">半径</param>
+        /// <param name="x">���S��X���W</param>
+        /// <param name="y">���S��Y���W</param>
+        /// <param name="radius">���a</param>
         void FillCircle(in float x, in float y, in float radius);
 
         /// <summary>
-        /// 円を塗りで描画します
+        /// �~��h��ŕ`�悵�܂�
         /// </summary>
-        /// <param name="position">中心の座標</param>
-        /// <param name="radius">半径</param>
+        /// <param name="position">���S�̍��W</param>
+        /// <param name="radius">���a</param>
         void FillCircle(in float2 position, in float radius);
 
         /// <summary>
-        /// 矩形を塗りで描画します
+        /// ��`��h��ŕ`�悵�܂�
         /// </summary>
-        /// <param name="x">X座標</param>
-        /// <param name="y">Y座標</param>
-        /// <param name="width">横幅</param>
-        /// <param name="height">縦幅</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="x">X���W</param>
+        /// <param name="y">Y���W</param>
+        /// <param name="width">����</param>
+        /// <param name="height">�c��</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void FillRect(in float x, in float y, in float width, in float height, float degree = 0f);
 
         /// <summary>
-        /// 矩形を塗りで描画します
+        /// ��`��h��ŕ`�悵�܂�
         /// </summary>
-        /// <param name="position">位置</param>
-        /// <param name="size">大きさ</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="position">�ʒu</param>
+        /// <param name="size">�傫��</param>
+        /// <param name="degree">��]�i�x���@�j</param>
         void FillRect(in float2 position, in float2 size, float degree = 0f);
 
         /// <summary>
-        /// 画像の縦幅を取得します
+        /// �摜�̏c�����擾���܂�
         /// </summary>
-        /// <param name="image">画像</param>
-        /// <returns>縦幅</returns>
+        /// <param name="image">�摜</param>
+        /// <returns>�c��</returns>
         int GetImageHeight(in GcImage image);
 
         /// <summary>
-        /// 画像のサイズを取得します
+        /// �摜�̃T�C�Y���擾���܂�
         /// </summary>
-        /// <param name="image">画像</param>
-        /// <returns>サイズ</returns>
+        /// <param name="image">�摜</param>
+        /// <returns>�T�C�Y</returns>
         int2 GetImageSize(in GcImage image);
 
         /// <summary>
-        /// 画像の横幅を取得します
+        /// �摜�̉������擾���܂�
         /// </summary>
-        /// <param name="image">画像</param>
-        /// <returns>横幅</returns>
+        /// <param name="image">�摜</param>
+        /// <returns>����</returns>
         int GetImageWidth(in GcImage image);
 
         /// <summary>
-        /// 座標系（変換行列）を回転させます
+        /// ���W�n�i�ϊ��s��j����]�����܂�
         /// </summary>
-        /// <param name="degree">回転量（度数法）</param>
-        /// <param name="originX">回転中心のX座標</param>
-        /// <param name="originY">回転中心のY座標</param>
+        /// <param name="degree">��]�ʁi�x���@�j</param>
+        /// <param name="originX">��]���S��X���W</param>
+        /// <param name="originY">��]���S��Y���W</param>
         void RotateCoordinate(in float degree, in float originX, in float originY);
 
         /// <summary>
-        /// 座標系（変換行列）を拡縮させます
+        /// ���W�n�i�ϊ��s��j���g�k�����܂�
         /// </summary>
-        /// <param name="sx">X軸方向の拡縮率</param>
-        /// <param name="sy">Y軸方向の拡縮率</param>
+        /// <param name="sx">X�������̊g�k��</param>
+        /// <param name="sy">Y�������̊g�k��</param>
         void ScaleCoordinate(in float sx, in float sy);
 
         /// <summary>
-        /// 背景色を指定します
+        /// �w�i�F���w�肵�܂�
         /// </summary>
-        /// <param name="color">背景色</param>
+        /// <param name="color">�w�i�F</param>
         void SetBackgroundColor(in Color color);
 
         /// <summary>
-        /// 背景色を指定します
+        /// �w�i�F���w�肵�܂�
         /// </summary>
-        /// <param name="r">背景色の赤成分</param>
-        /// <param name="g">背景色の緑成分</param>
-        /// <param name="b">背景色の青成分</param>
+        /// <param name="r">�w�i�F�̐Ԑ���</param>
+        /// <param name="g">�w�i�F�̗ΐ���</param>
+        /// <param name="b">�w�i�F�̐���</param>
         void SetBackgroundColor(in float r, in float g, in float b);
 
         /// <summary>
-        /// 描画色を指定します
+        /// �`��F���w�肵�܂�
         /// </summary>
-        /// <param name="r">描画色の赤成分</param>
-        /// <param name="g">描画色の緑成分</param>
-        /// <param name="b">描画色の青成分</param>
-        /// <param name="a">描画色の不透明度</param>
+        /// <param name="r">�`��F�̐Ԑ���</param>
+        /// <param name="g">�`��F�̗ΐ���</param>
+        /// <param name="b">�`��F�̐���</param>
+        /// <param name="a">�`��F�̕s�����x</param>
         void SetColor(in float r, in float g, in float b, float a = 1f);
 
         /// <summary>
-        /// 描画色を指定します
+        /// �`��F���w�肵�܂�
         /// </summary>
-        /// <param name="r">描画色の赤成分</param>
-        /// <param name="g">描画色の緑成分</param>
-        /// <param name="b">描画色の青成分</param>
-        /// <param name="a">描画色の不透明度</param>
+        /// <param name="r">�`��F�̐Ԑ���</param>
+        /// <param name="g">�`��F�̗ΐ���</param>
+        /// <param name="b">�`��F�̐���</param>
+        /// <param name="a">�`��F�̕s�����x</param>
         void SetColor(in byte r, in byte g, in byte b, byte a = 255);
 
         /// <summary>
-        /// 描画色を指定します
+        /// �`��F���w�肵�܂�
         /// </summary>
-        /// <param name="color">描画色</param>
+        /// <param name="color">�`��F</param>
         void SetColor(in Color color);
 
         /// <summary>
-        /// 描画色を指定します
+        /// �`��F���w�肵�܂�
         /// </summary>
-        /// <param name="color">描画色</param>
-        /// <param name="alpha">描画色の不透明度</param>
+        /// <param name="color">�`��F</param>
+        /// <param name="alpha">�`��F�̕s�����x</param>
         void SetColor(in Color color, in float alpha);
 
         /// <summary>
-        /// フォントを指定します
+        /// �t�H���g���w�肵�܂�
         /// </summary>
-        /// <param name="font">フォント</param>
+        /// <param name="font">�t�H���g</param>
         void SetFont(in GcFont font);
 
         /// <summary>
-        /// フォントサイズを指定します
+        /// �t�H���g�T�C�Y���w�肵�܂�
         /// </summary>
-        /// <param name="fontSize">フォントサイズ</param>
+        /// <param name="fontSize">�t�H���g�T�C�Y</param>
         void SetFontSize(in int fontSize);
 
         /// <summary>
-        /// 描線の端点の形状を指定します
+        /// �`���̒[�_�̌`����w�肵�܂�
         /// </summary>
-        /// <param name="lineCap">描線の端点の形状</param>
+        /// <param name="lineCap">�`���̒[�_�̌`��</param>
         void SetLineCap(in GcLineCap lineCap);
 
         /// <summary>
-        /// 描線の太さを指定します
+        /// �`���̑������w�肵�܂�
         /// </summary>
-        /// <param name="lineWidth">描線の太さ</param>
+        /// <param name="lineWidth">�`���̑���</param>
         void SetLineWidth(in float lineWidth);
 
         /// <summary>
-        /// 座標系（変換行列）を指定します
+        /// ���W�n�i�ϊ��s��j���w�肵�܂�
         /// </summary>
-        /// <param name="matrix">座標系（変換行列）</param>
+        /// <param name="matrix">���W�n�i�ϊ��s��j</param>
         void SetCoordinate(in float2x3 matrix);
 
         /// <summary>
-        /// 矩形や画像のアンカー位置を指定します
+        /// ��`��摜�̃A���J�[�ʒu���w�肵�܂�
         /// </summary>
-        /// <param name="anchor">アンカー位置</param>
+        /// <param name="anchor">�A���J�[�ʒu</param>
         void SetRectAnchor(in GcAnchor anchor);
 
         [System.Obsolete("Use to `ChangeCanvasSize`  instead.")]
@@ -726,22 +726,22 @@ namespace GameCanvas
         void SetResolution(in int width, in int height);
 
         /// <summary>
-        /// 文字列のアンカー位置を指定します
+        /// ������̃A���J�[�ʒu���w�肵�܂�
         /// </summary>
-        /// <param name="anchor">アンカー位置</param>
+        /// <param name="anchor">�A���J�[�ʒu</param>
         void SetStringAnchor(in GcAnchor anchor);
 
         /// <summary>
-        /// スタイルを指定します
+        /// �X�^�C�����w�肵�܂�
         /// </summary>
         /// <param name="style"></param>
         void SetStyle(in GcStyle style);
 
         /// <summary>
-        /// 座標系（変換行列）を平行移動させます
+        /// ���W�n�i�ϊ��s��j�𕽍s�ړ������܂�
         /// </summary>
-        /// <param name="tx">X軸方向の移動量</param>
-        /// <param name="ty">Y軸方向の移動量</param>
+        /// <param name="tx">X�������̈ړ���</param>
+        /// <param name="ty">Y�������̈ړ���</param>
         void TranslateCoordinate(in float tx, in float ty);
     }
 }

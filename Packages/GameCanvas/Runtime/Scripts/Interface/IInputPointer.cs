@@ -8,8 +8,8 @@
 // </remarks>
 /*------------------------------------------------------------*/
 using System.ComponentModel;
-using Unity.Collections;
 using Unity.Mathematics;
+using Unity.Collections;
 
 namespace GameCanvas
 {
