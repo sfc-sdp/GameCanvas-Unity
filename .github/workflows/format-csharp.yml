@@ -2,72 +2,81 @@ name: Format C#
 on:
   pull_request:
     types: [opened, synchronize]
+    branches: [master]
 jobs:
   dotnet-format:
     env:
-      FOLDER_PATH: ./Packages/GameCanvas/
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_VERSION: 3.1.x
+      GC_PACKAGE_PATH: ./Packages/GameCanvas/
     runs-on: ubuntu-latest
     steps:
-      - name: Get branch info
-        id: comment-branch
-        uses: xt0rted/pull-request-comment-branch@v1.2.0
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Checkout repo
-        uses: actions/checkout@v2.3.4
-        if: success()
-        with:
-          ref: ${{ steps.comment-branch.outputs.head_ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
 
-      - name: Check latest commit message
+      - name: Get commit message
         id: log
         run: echo "::set-output name=message::$(git log --no-merges -1 --oneline)"
 
       - name: Check folder existence
+        if: contains(steps.log.outputs.message, 'skip ci') != 'true'
         id: check_folder
-        uses: andstor/file-existence-action@v1.0.1
+        uses: andstor/file-existence-action@v1
         with:
-          files: ${{ env.FOLDER_PATH }}
+          files: ${{ env.GC_PACKAGE_PATH }}
 
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1.7.2
+        if: steps.check_folder.outputs.files_exists == 'true'
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache .NET Tools
+        if: steps.check_folder.outputs.files_exists == 'true'
+        id: dotnet_tools_cache
+        uses: actions/cache@v2
+        with:
+          path: ${ env.DOTNET_ROOT }/tools
+          key: ${{ runner.os }}-dotnet-tools-${{ env.DOTNET_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-dotnet-tools-
 
       - name: Install dotnet-format
-        if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
+        if: steps.check_folder.outputs.files_exists == 'true'
         run: dotnet tool install -g dotnet-format
 
-      - name: Check format
-        if: "!contains(steps.log.outputs.message, 'skip ci') && steps.check_folder.outputs.files_exists == 'true'"
-        id: check
-        uses: brmenchl/dotnet-format@v1.0.2
+      - name: DryRun dotnet-format
+        if: steps.check_folder.outputs.files_exists == 'true'
+        id: format
+        uses: brmenchl/dotnet-format@v1.0.2 # v1 にすると動かない
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "check"
-          folder: ${{ env.FOLDER_PATH }}
+          folder: ${{ env.GC_PACKAGE_PATH }}
           fail-fast: false
 
-      - name: Run format
-        if: steps.check.outputs.has-changes == 'true'
-        uses: brmenchl/dotnet-format@v1.0.2
+      - name: Run dotnet-format
+        if: steps.format.outputs.has-changes == 'true'
+        uses: brmenchl/dotnet-format@v1.0.2 # v1 にすると動かない
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "fix"
-          folder: ${{ env.FOLDER_PATH }}
+          folder: ${{ env.GC_PACKAGE_PATH }}
 
-      - name: Commit files
-        if: steps.check.outputs.has-changes == 'true'
+      - name: Commit
+        if: steps.format.outputs.has-changes == 'true'
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -a -m 'refactor: dotnet-format による自動整形 [skip ci]' -m 'Co-authored-by: ${{ github.event.pull_request.user.login }} <${{ github.event.pull_request.user.id }}+${{ github.event.pull_request.user.login }}@users.noreply.github.com>'
+          git commit -a -m 'refactor: dotnet-format による自動整形 [skip ci]
+          Co-authored-by: ${{ github.event.pull_request.user.login }} <${{ github.event.pull_request.user.id }}+${{ github.event.pull_request.user.login }}@users.noreply.github.com>'
 
-      - name: Push changes
-        if: steps.check.outputs.has-changes == 'true'
+      - name: Push
+        if: steps.format.outputs.has-changes == 'true'
         uses: ad-m/github-push-action@v0.6.0
         with:
-          branch: ${{ steps.comment-branch.outputs.ref }}
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.event.pull_request.head.ref }}
