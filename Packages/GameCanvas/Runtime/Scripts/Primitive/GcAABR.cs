@@ -94,6 +94,9 @@ namespace GameCanvas
 
         public static implicit operator GcRect(GcAABB aabb) => new GcRect(aabb.Position(), aabb.Size());
 
+        /// <summary>
+        /// 2点を内包する最小の矩形
+        /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static GcAABB MinMax(in float2 a, in float2 b)
         {
