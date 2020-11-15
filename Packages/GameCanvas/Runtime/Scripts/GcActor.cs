@@ -20,12 +20,16 @@ namespace GameCanvas
 
         // ---
 
+        /// <inheritdoc/>
         public virtual int Priority { get { return m_Priority; } set { m_Priority = value; } }
 
+        /// <inheritdoc/>
         public virtual void Update() { }
 
+        /// <inheritdoc/>
         public virtual void Draw() { }
 
+        /// <inheritdoc/>
         public virtual void AfterDraw() { }
 
 #pragma warning disable IDE1006
