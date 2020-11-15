@@ -49,6 +49,45 @@ namespace GameCanvas
             HalfSize = rect.size * 0.5f;
         }
 
+        /// <summary>
+        /// 矩形の指定された点の座標を計算します
+        /// </summary>
+        public float2 GetPoint(in GcAnchor anchor)
+        {
+            switch (anchor)
+            {
+                case GcAnchor.UpperLeft:
+                    return Center - HalfSize;
+
+                case GcAnchor.UpperCenter:
+                    return Center + new float2(0f, -HalfSize.y);
+
+                case GcAnchor.UpperRight:
+                    return Center + new float2(HalfSize.x, -HalfSize.y);
+
+                case GcAnchor.MiddleLeft:
+                    return Center + new float2(-HalfSize.x, 0f);
+
+                case GcAnchor.MiddleCenter:
+                    return Center;
+
+                case GcAnchor.MiddleRight:
+                    return Center + new float2(HalfSize.x, 0f);
+
+                case GcAnchor.LowerLeft:
+                    return Center + new float2(-HalfSize.x, HalfSize.y);
+
+                case GcAnchor.LowerCenter:
+                    return Center + new float2(0f, HalfSize.y);
+
+                case GcAnchor.LowerRight:
+                    return Center + HalfSize;
+
+                default:
+                    throw new System.ComponentModel.InvalidEnumArgumentException(nameof(anchor), (int)anchor, typeof(GcAnchor));
+            }
+        }
+
         public static explicit operator GcAABB(Rect rect) => new GcAABB(rect);
 
         public static explicit operator Rect(GcAABB aabb) => new Rect(aabb.Position(), aabb.Size());
