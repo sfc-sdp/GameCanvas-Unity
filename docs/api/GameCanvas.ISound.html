@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ISound
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.2.0">
+    <meta name="generator" content="docfx 2.56.5.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -170,45 +170,6 @@
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
   <a id="GameCanvas_ISound_PlaySound_" data-uid="GameCanvas.ISound.PlaySound*"></a>
-  <h4 id="GameCanvas_ISound_PlaySound_AudioClip__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.ISound.PlaySound(AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(AudioClip, GcSoundTrack, Boolean)</h4>
-  <div class="markdown level1 summary"><p>サウンドを再生します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">AudioClip</span></td>
-        <td><span class="parametername">clip</span></td>
-        <td><p>サウンド</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></td>
-        <td><span class="parametername">track</span></td>
-        <td><p>対象の音声トラック</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><span class="parametername">loop</span></td>
-        <td><p>ループ再生するかどうか（SEトラック以外）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_ISound_PlaySound_" data-uid="GameCanvas.ISound.PlaySound*"></a>
   <h4 id="GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(GcSound, GcSoundTrack, Boolean)</h4>
   <div class="markdown level1 summary"><p>サウンドを再生します</p>
 </div>
@@ -231,6 +192,45 @@
         <td><a class="xref" href="GameCanvas.GcSound.html">GcSound</a></td>
         <td><span class="parametername">sound</span></td>
         <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></td>
+        <td><span class="parametername">track</span></td>
+        <td><p>対象の音声トラック</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><span class="parametername">loop</span></td>
+        <td><p>ループ再生するかどうか（SEトラック以外）</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_ISound_PlaySound_" data-uid="GameCanvas.ISound.PlaySound*"></a>
+  <h4 id="GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(AudioClip, GcSoundTrack, Boolean)</h4>
+  <div class="markdown level1 summary"><p>サウンドを再生します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/AudioClip.html">AudioClip</a></td>
+        <td><span class="parametername">clip</span></td>
+        <td><p>サウンド</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></td>
@@ -345,7 +345,8 @@
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

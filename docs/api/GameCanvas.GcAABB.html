@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Struct GcAABB
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.2.0">
+    <meta name="generator" content="docfx 2.56.5.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -48,10 +48,10 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Object.GetType()</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
@@ -62,31 +62,6 @@
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
-  <h4 id="GameCanvas_GcAABB__ctor_Rect__" data-uid="GameCanvas.GcAABB.#ctor(Rect@)">GcAABB(Rect)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcAABB(in Rect rect)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Rect</span></td>
-        <td><span class="parametername">rect</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
   <h4 id="GameCanvas_GcAABB__ctor_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.#ctor(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">GcAABB(float2, float2)</h4>
   <div class="markdown level1 summary"></div>
@@ -113,6 +88,31 @@
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
         <td><span class="parametername">halfSize</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
+  <h4 id="GameCanvas_GcAABB__ctor_UnityEngine_Rect__" data-uid="GameCanvas.GcAABB.#ctor(UnityEngine.Rect@)">GcAABB(Rect)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcAABB(in Rect rect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
+        <td><span class="parametername">rect</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -274,9 +274,51 @@
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+  <a id="GameCanvas_GcAABB_GetPoint_" data-uid="GameCanvas.GcAABB.GetPoint*"></a>
+  <h4 id="GameCanvas_GcAABB_GetPoint_GameCanvas_GcAnchor__" data-uid="GameCanvas.GcAABB.GetPoint(GameCanvas.GcAnchor@)">GetPoint(GcAnchor)</h4>
+  <div class="markdown level1 summary"><p>矩形の指定された点の座標を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 GetPoint(in GcAnchor anchor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></td>
+        <td><span class="parametername">anchor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_GcAABB_MinMax_" data-uid="GameCanvas.GcAABB.MinMax*"></a>
   <h4 id="GameCanvas_GcAABB_MinMax_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.MinMax(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">MinMax(float2, float2)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>2点を内包する最小の矩形</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -532,7 +574,7 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Explicit_GameCanvas_GcAABB__Rect" data-uid="GameCanvas.GcAABB.op_Explicit(GameCanvas.GcAABB)~Rect">Explicit(GcAABB to Rect)</h4>
+  <h4 id="GameCanvas_GcAABB_op_Explicit_GameCanvas_GcAABB__UnityEngine_Rect" data-uid="GameCanvas.GcAABB.op_Explicit(GameCanvas.GcAABB)~UnityEngine.Rect">Explicit(GcAABB to Rect)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -566,13 +608,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Rect</span></td>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Explicit_Rect__GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB.op_Explicit(Rect)~GameCanvas.GcAABB">Explicit(Rect to GcAABB)</h4>
+  <h4 id="GameCanvas_GcAABB_op_Explicit_UnityEngine_Rect__GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB.op_Explicit(UnityEngine.Rect)~GameCanvas.GcAABB">Explicit(Rect to GcAABB)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -590,7 +632,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Rect</span></td>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Rect.html">Rect</a></td>
         <td><span class="parametername">rect</span></td>
         <td></td>
       </tr>
@@ -705,37 +747,34 @@
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_Contains_GameCanvas_GcAABB__Unity_Mathematics_float2__">GcCollisionExtension.Contains(GcAABB, float2)</a>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcAABB__Unity_Mathematics_float2__">GcCollisionExtensions.Contains(GcAABB, float2)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcHitResult__">GcCollisionExtension.HitTest(GcAABB, float2, out GcHitResult)</a>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcHitResult__">GcCollisionExtensions.HitTest(GcAABB, float2, out GcHitResult)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB_GameCanvas_GcHitResult__">GcCollisionExtension.HitTest(GcAABB, GcAABB, out GcHitResult)</a>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB_GameCanvas_GcHitResult__">GcCollisionExtensions.HitTest(GcAABB, GcAABB, out GcHitResult)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_Overlaps_GameCanvas_GcAABB__GameCanvas_GcAABB__">GcCollisionExtension.Overlaps(GcAABB, GcAABB)</a>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcAABB__GameCanvas_GcAABB__">GcCollisionExtensions.Overlaps(GcAABB, GcAABB)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtension.SweepTest(GcAABB, float2, float2, out GcSweepResult)</a>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtensions.SweepTest(GcAABB, float2, float2, out GcSweepResult)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtension.SweepTest(GcAABB, float2, float2, float2, out GcSweepResult)</a>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtensions.SweepTest(GcAABB, GcAABB, float2, out GcSweepResult)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtension.html#GameCanvas_GcCollisionExtension_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtension.SweepTest(GcAABB, GcAABB, float2, out GcSweepResult)</a>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Max_GameCanvas_GcAABB__">GcAABBExtensions.Max(GcAABB)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcAABBExtension.html#GameCanvas_GcAABBExtension_Max_GameCanvas_GcAABB__">GcAABBExtension.Max(GcAABB)</a>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Min_GameCanvas_GcAABB__">GcAABBExtensions.Min(GcAABB)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcAABBExtension.html#GameCanvas_GcAABBExtension_Min_GameCanvas_GcAABB__">GcAABBExtension.Min(GcAABB)</a>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Position_GameCanvas_GcAABB__">GcAABBExtensions.Position(GcAABB)</a>
   </div>
   <div>
-      <a class="xref" href="GameCanvas.GcAABBExtension.html#GameCanvas_GcAABBExtension_Position_GameCanvas_GcAABB__">GcAABBExtension.Position(GcAABB)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcAABBExtension.html#GameCanvas_GcAABBExtension_Size_GameCanvas_GcAABB__">GcAABBExtension.Size(GcAABB)</a>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Size_GameCanvas_GcAABB__">GcAABBExtensions.Size(GcAABB)</a>
   </div>
 </article>
           </div>
@@ -743,7 +782,8 @@
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
