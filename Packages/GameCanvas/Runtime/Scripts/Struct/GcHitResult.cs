@@ -11,6 +11,9 @@ using Unity.Mathematics;
 
 namespace GameCanvas
 {
+    /// <summary>
+    /// 衝突点情報
+    /// </summary>
     public readonly struct GcHitResult : System.IEquatable<GcHitResult>
     {
         //----------------------------------------------------------

@@ -36,11 +36,13 @@ namespace GameCanvas
         #region 公開関数
         //----------------------------------------------------------
 
+        /// <inheritdoc/>
         public void AddActor(in GcActor actor)
         {
             AddActor(actor.GetType(), actor);
         }
 
+        /// <inheritdoc/>
         public T CreateActor<T>() where T : GcActor, new()
         {
             var actor = new T();
@@ -48,19 +50,26 @@ namespace GameCanvas
             return actor;
         }
 
+        /// <inheritdoc/>
         public virtual void DrawScene() { }
 
+        /// <inheritdoc/>
         public virtual void EnterScene(object state) { }
 
+        /// <inheritdoc/>
         public int GetActorCount() => m_ActorList.Count;
 
+        /// <inheritdoc/>
         public int GetActorCount<T>() where T : GcActor
             => m_TypeToActors.TryGetValue(typeof(T), out var list) ? list.Count : 0;
 
+        /// <inheritdoc/>
         public virtual void LeaveScene() => gc.RemoveActorAll();
 
+        /// <inheritdoc/>
         public virtual void PauseScene() { }
 
+        /// <inheritdoc/>
         public void RemoveActorAll()
         {
             foreach (var list in m_TypeToActors.Values)
@@ -81,8 +90,10 @@ namespace GameCanvas
             m_AddActorList.Clear();
         }
 
+        /// <inheritdoc/>
         public virtual void ResumeScene() { }
 
+        /// <inheritdoc/>
         public bool TryGetActor(in int i, out GcActor actor)
         {
             if (i >= 0 && m_ActorList.Count > i)
@@ -94,6 +105,7 @@ namespace GameCanvas
             return false;
         }
 
+        /// <inheritdoc/>
         public bool TryGetActor<T>(in int i, out T actor) where T : GcActor
         {
             if (i >= 0 && m_TypeToActors.TryGetValue(typeof(T), out var list) && list.Count > i)
@@ -105,6 +117,7 @@ namespace GameCanvas
             return false;
         }
 
+        /// <inheritdoc/>
         public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
         {
             if (m_TypeToActors.TryGetValue(typeof(T), out var actors))
@@ -116,6 +129,7 @@ namespace GameCanvas
             return false;
         }
 
+        /// <inheritdoc/>
         public bool TryRemoveActor(in GcActor actor)
         {
             if (actor.m_Scene != this) return false;
@@ -136,6 +150,7 @@ namespace GameCanvas
             return false;
         }
 
+        /// <inheritdoc/>
         public virtual void UpdateScene() { }
         #endregion
 

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class GcActor
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.2.0">
+    <meta name="generator" content="docfx 2.56.5.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -50,16 +50,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -69,6 +63,12 @@
     </div>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
@@ -104,7 +104,8 @@
   </table>
   <a id="GameCanvas_GcActor_Priority_" data-uid="GameCanvas.GcActor.Priority*"></a>
   <h4 id="GameCanvas_GcActor_Priority" data-uid="GameCanvas.GcActor.Priority">Priority</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>アクターの処理優先度</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -125,16 +126,28 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="GameCanvas_GcActor_Priority_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><ul>
+<li>初期値は0（無指定）<br></li>
+<li>アクターは、シーン内でこの値が小さい順に処理が回ってきます<br></li>
+<li>同じ値だった場合は、シーンに登録した順序で実行されます<br></li>
+<li>負の値を設定した場合は、そのシーンの処理よりも前に実行されます</li>
+</ul>
+</div>
   <h3 id="methods">Methods
   </h3>
   <a id="GameCanvas_GcActor_AfterDraw_" data-uid="GameCanvas.GcActor.AfterDraw*"></a>
   <h4 id="GameCanvas_GcActor_AfterDraw" data-uid="GameCanvas.GcActor.AfterDraw">AfterDraw()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>アクターの描画後処理</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void AfterDraw()</code></pre>
   </div>
+  <h5 id="GameCanvas_GcActor_AfterDraw_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（描画より後に）GameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_GcActor_CompareTo_" data-uid="GameCanvas.GcActor.CompareTo*"></a>
   <h4 id="GameCanvas_GcActor_CompareTo_GameCanvas_GcActor_" data-uid="GameCanvas.GcActor.CompareTo(GameCanvas.GcActor)">CompareTo(GcActor)</h4>
   <div class="markdown level1 summary"></div>
@@ -177,20 +190,28 @@
   </table>
   <a id="GameCanvas_GcActor_Draw_" data-uid="GameCanvas.GcActor.Draw*"></a>
   <h4 id="GameCanvas_GcActor_Draw" data-uid="GameCanvas.GcActor.Draw">Draw()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>アクターの描画処理</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Draw()</code></pre>
   </div>
+  <h5 id="GameCanvas_GcActor_Draw_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます</p>
+</div>
   <a id="GameCanvas_GcActor_Update_" data-uid="GameCanvas.GcActor.Update*"></a>
   <h4 id="GameCanvas_GcActor_Update" data-uid="GameCanvas.GcActor.Update">Update()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>アクターの計算処理</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Update()</code></pre>
   </div>
+  <h5 id="GameCanvas_GcActor_Update_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます</p>
+</div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="GameCanvas.IActor.html">IActor</a>
@@ -204,7 +225,8 @@
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

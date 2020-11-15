@@ -111,16 +111,4 @@ namespace GameCanvas
 
         #endregion
     }
-
-    /// <summary>
-    /// <see cref="GcRect"/> 拡張クラス
-    /// </summary>
-    public static class GcRectExtension
-    {
-        /// <summary>
-        /// 傾き（弧度法）
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Degree(this in GcRect self) => math.degrees(self.Radian);
-    }
 }

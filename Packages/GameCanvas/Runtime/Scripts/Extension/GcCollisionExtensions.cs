@@ -7,17 +7,24 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 
 namespace GameCanvas
 {
-    public static class GcCollisionExtension
+    public static class GcCollisionExtensions
     {
         //----------------------------------------------------------
         #region 公開関数
         //----------------------------------------------------------
 
+        /// <summary>
+        /// 線と点との距離を求めます
+        /// </summary>
+        /// <param name="self">線</param>
+        /// <param name="point">点</param>
+        /// <returns>線と点との距離</returns>
         public static float CalcDistance(this in GcLine self, in float2 point)
         {
             if (self.IsSegment())
@@ -38,11 +45,23 @@ namespace GameCanvas
             }
         }
 
+        /// <summary>
+        /// 点が円と重なっているかどうかを調べます
+        /// </summary>
+        /// <param name="self">円</param>
+        /// <param name="point">点</param>
+        /// <returns>重なっているかどうか</returns>
         public static bool Contains(this in GcCircle self, in float2 point)
         {
             return math.lengthsq(self.Position - point) <= (self.Radius * self.Radius);
         }
 
+        /// <summary>
+        /// 点が矩形と重なっているかどうかを調べます
+        /// </summary>
+        /// <param name="self">矩形</param>
+        /// <param name="point">点</param>
+        /// <returns>重なっているかどうか</returns>
         public static bool Contains(this in GcAABB self, in float2 point)
         {
             var d = point - self.Center;
@@ -50,6 +69,12 @@ namespace GameCanvas
             return (p.x > -math.EPSILON) && (p.y > -math.EPSILON);
         }
 
+        /// <summary>
+        /// 点が線上に存在するかどうかを調べます
+        /// </summary>
+        /// <param name="self">線</param>
+        /// <param name="point">点</param>
+        /// <returns>存在するかどうか</returns>
         public static bool Contains(this in GcLine self, in float2 point)
         {
             if (self.IsSegment())
@@ -65,6 +90,13 @@ namespace GameCanvas
             }
         }
 
+        /// <summary>
+        /// 点と矩形の衝突判定を行い、詳細な衝突点情報を計算します
+        /// </summary>
+        /// <param name="self">矩形</param>
+        /// <param name="point">点</param>
+        /// <param name="hit">衝突点情報</param>
+        /// <returns>衝突しているかどうか</returns>
         public static bool HitTest(this in GcAABB self, in float2 point, out GcHitResult hit)
         {
             var d = point - self.Center;
@@ -83,6 +115,13 @@ namespace GameCanvas
             return false;
         }
 
+        /// <summary>
+        /// 矩形同士の衝突判定を行い、詳細な衝突点情報を計算します
+        /// </summary>
+        /// <param name="self">矩形1</param>
+        /// <param name="other">矩形2</param>
+        /// <param name="hit">衝突点情報</param>
+        /// <returns>衝突しているかどうか</returns>
         public static bool HitTest(this in GcAABB self, GcAABB other, out GcHitResult hit)
         {
             var d = other.Center - self.Center;
@@ -112,6 +151,12 @@ namespace GameCanvas
             return false;
         }
 
+        /// <summary>
+        /// 線同士が交差しているかどうかを調べます
+        /// </summary>
+        /// <param name="self">線1</param>
+        /// <param name="other">線2</param>
+        /// <returns>交差しているかどうか</returns>
         public static bool Intersects(this in GcLine self, in GcLine other)
         {
             var pattern = (self.IsSegment() ? 0b10 : 0) | (other.IsSegment() ? 0b01 : 0);
@@ -148,6 +193,13 @@ namespace GameCanvas
             }
         }
 
+        /// <summary>
+        /// 線同士が交差しているかどうかを調べます
+        /// </summary>
+        /// <param name="self">線1</param>
+        /// <param name="other">線2</param>
+        /// <param name="intersection">交差座標</param>
+        /// <returns>交差しているかどうか</returns>
         public static bool Intersects(this in GcLine self, in GcLine other, out float2 intersection)
         {
             var pattern = (self.IsSegment() ? 0b10 : 0) | (other.IsSegment() ? 0b01 : 0);
@@ -208,6 +260,12 @@ namespace GameCanvas
             }
         }
 
+        /// <summary>
+        /// 矩形同士が重なっているかどうかを調べます
+        /// </summary>
+        /// <param name="self">矩形1</param>
+        /// <param name="other">矩形2</param>
+        /// <returns>重なっているかどうか</returns>
         public static bool Overlaps(this in GcAABB self, in GcAABB other)
         {
             var d = other.Center - self.Center;
@@ -215,17 +273,32 @@ namespace GameCanvas
             return (p.x > -math.EPSILON && p.y > -math.EPSILON);
         }
 
+        /// <summary>
+        /// 円同士が重なっているかどうかを調べます
+        /// </summary>
+        /// <param name="self">円1</param>
+        /// <param name="other">円2</param>
+        /// <returns>重なっているかどうか</returns>
         public static bool Overlaps(this in GcCircle self, in GcCircle other)
         {
             var sum = self.Radius + other.Radius;
             return math.lengthsq(self.Position - other.Position) <= sum * sum;
         }
 
+        /// <summary>
+        /// 移動量を考慮した 矩形と点の衝突判定を行います
+        /// </summary>
+        /// <param name="static">静止している矩形</param>
+        /// <param name="dynamic">移動する点</param>
+        /// <param name="delta">点の移動量</param>
+        /// <param name="sweep">衝突情報</param>
+        /// <returns>衝突するかどうか</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool SweepTest(this in GcAABB @static, in float2 @dynamic, in float2 delta, out GcSweepResult hit)
-            => SweepTest(@static, @dynamic, delta, float2.zero, out hit);
+        public static bool SweepTest(this in GcAABB @static, in float2 @dynamic, in float2 delta, out GcSweepResult sweep)
+            => SweepTest(@static, @dynamic, delta, float2.zero, out sweep);
 
-        public static bool SweepTest(this in GcAABB @static, in float2 @dynamic, in float2 delta, in float2 padding, out GcSweepResult hit)
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static bool SweepTest(this in GcAABB @static, in float2 @dynamic, in float2 delta, in float2 padding, out GcSweepResult sweep)
         {
             var scale = 1f / delta;
             var sign = math.sign(delta);
@@ -243,14 +316,22 @@ namespace GameCanvas
                         : new float2(0f, -sign.y);
                     var toHit = delta * ratio;
                     var onHit = @dynamic + toHit;
-                    hit = new GcSweepResult(delta, onHit, nrm, toHit, onHit, ratio);
+                    sweep = new GcSweepResult(delta, onHit, nrm, toHit, onHit, ratio);
                     return true;
                 }
             }
-            hit = default;
+            sweep = default;
             return false;
         }
 
+        /// <summary>
+        /// 移動量を考慮した 矩形同士の衝突判定を行います
+        /// </summary>
+        /// <param name="static">静止している矩形</param>
+        /// <param name="dynamic">移動する矩形</param>
+        /// <param name="delta">矩形の移動量</param>
+        /// <param name="sweep">衝突情報</param>
+        /// <returns>衝突するかどうか</returns>
         public static bool SweepTest(this in GcAABB @static, in GcAABB @dynamic, in float2 delta, out GcSweepResult sweep)
         {
             if (GcMath.AlmostZero(delta.x) && GcMath.AlmostZero(delta.y))
