@@ -139,34 +139,4 @@ namespace GameCanvas
                     => $"{nameof(GcAABB)}: {{ cx: {Center.x}, cy: {Center.y}, hw: {HalfSize.x}, hh: {HalfSize.y} }}";
         #endregion
     }
-
-    /// <summary>
-    /// <see cref="GcAABB"/> 拡張クラス
-    /// </summary>
-    public static class GcAABBExtension
-    {
-        /// <summary>
-        /// 領域内の最大座標（右下）
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 Max(this in GcAABB self) => self.Center + self.HalfSize;
-
-        /// <summary>
-        /// 領域内の最小座標（左上。Positionに同じ）
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 Min(this in GcAABB self) => self.Center - self.HalfSize;
-
-        /// <summary>
-        /// 位置
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 Position(this in GcAABB self) => self.Center - self.HalfSize;
-
-        /// <summary>
-        /// 大きさ
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 Size(this in GcAABB self) => self.HalfSize * 2f;
-    }
 }

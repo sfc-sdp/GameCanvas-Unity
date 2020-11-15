@@ -7,14 +7,20 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+using System.Runtime.CompilerServices;
+using Unity.Mathematics;
+
 namespace GameCanvas
 {
-    public enum GcSoundTrack : byte
+    /// <summary>
+    /// <see cref="GcRect"/> 拡張クラス
+    /// </summary>
+    public static class GcRectExtensions
     {
-        BGM1 = 0,
-        BGM2 = 1,
-        BGM3 = 2,
-        SE = 3,
-        Master = 255
+        /// <summary>
+        /// 傾き（弧度法）
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Degree(this in GcRect self) => math.degrees(self.Radian);
     }
 }

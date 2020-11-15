@@ -14,7 +14,7 @@ namespace GameCanvas
     /// <summary>
     /// <see cref="KeyCode"/> と <see cref="char"/> (UTF-16) の相互変換
     /// </summary>
-    public static class UnityKeyCodeExtension
+    public static class UnityKeyCodeExtensions
     {
         public static bool TryGetChar(this KeyCode key, out char c)
         {
