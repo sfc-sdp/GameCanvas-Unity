@@ -15,6 +15,10 @@ namespace GameCanvas
     public enum GcAvailability
     {
         /// <summary>
+        /// 未初期化
+        /// </summary>
+        Null,
+        /// <summary>
         /// 利用不可
         /// </summary>
         NotAvailable,
