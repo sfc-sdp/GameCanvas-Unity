@@ -163,7 +163,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.GcAvailability.html",
-          "hash": "3UkVU4m47gPvHRiqVDQYlg=="
+          "hash": "hWa5lrGtkxpbEmrWyGtwjQ=="
         }
       },
       "is_incremental": false,
@@ -391,7 +391,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.GcProxy.html",
-          "hash": "EN8cKIH8elLyww8xCRq0Ow=="
+          "hash": "2+kpGTlFOxf5CJ1hRVHgfg=="
         }
       },
       "is_incremental": false,
@@ -559,7 +559,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.IGameCanvas.html",
-          "hash": "3w+3/mR5cDCBHbNDEohfCA=="
+          "hash": "BLvPcF5ECwyCzwNfSccATA=="
         }
       },
       "is_incremental": false,
@@ -643,7 +643,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.IInputGeolocation.html",
-          "hash": "kaO7D6NTfdIW7eZEeRmJGQ=="
+          "hash": "0Nwy+2uDwsOVf8UiZ2Yd+Q=="
         }
       },
       "is_incremental": false,
@@ -655,7 +655,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.IInputGeolocationEx.html",
-          "hash": "3NL6rn8rukUSaoogaWGJ5g=="
+          "hash": "vgdke6qzXj7MugD216bvwg=="
         }
       },
       "is_incremental": false,
@@ -835,7 +835,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.ISound.html",
-          "hash": "tA3aAgjTN5Y/7k4HfrMblA=="
+          "hash": "+mKHlEAPcVrY4+cze2H8xQ=="
         }
       },
       "is_incremental": false,
@@ -847,7 +847,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.ISoundEx.html",
-          "hash": "Tj8DvEXKYvhDYyRz8u6XiQ=="
+          "hash": "551uh5dcIqNwGvo5ICxKgg=="
         }
       },
       "is_incremental": false,
@@ -883,7 +883,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.ITime.html",
-          "hash": "xP3wrWl6kuWkHpvOmwG9Kg=="
+          "hash": "SKGPf0zNtyOenIk+DJwqnA=="
         }
       },
       "is_incremental": false,
@@ -895,7 +895,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GameCanvas.ITimeEx.html",
-          "hash": "U5xQ4zb2ICQuJnYJavDs7Q=="
+          "hash": "zA9bOVnqgueOMdRx3tlB5g=="
         }
       },
       "is_incremental": false,

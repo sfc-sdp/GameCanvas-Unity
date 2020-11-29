@@ -69,7 +69,7 @@ namespace GameCanvas
         /// <remarks>
         /// 垂直同期を無効にした場合、間隔の揺らぎは減少しますが、ディスプレイのリフレッシュレートを常に無視して描画するため、画面のちらつきが発生する場合があります。
         /// </remarks>
-        void SetFrameInterval(in double targetDeltaTime, in bool vSyncEnabled = true);
+        void SetFrameInterval(in double targetDeltaTime, bool vSyncEnabled = true);
 
         /// <summary>
         /// フレームレートの目標値を設定します。

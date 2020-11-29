@@ -782,6 +782,7 @@ namespace GameCanvas.Engine
             var vertices = new NativeArray<float3>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             var indices = new NativeArray<ushort>(6, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             var uvs = new NativeArray<float2>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+            var colors = new NativeArray<Color32>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             {
                 vertices[0] = new float3(0f, 0f, 0f); // 左上
                 vertices[1] = new float3(1f, 0f, 0f); // 右上
@@ -800,12 +801,19 @@ namespace GameCanvas.Engine
                 uvs[2] = new float2(1f, 0f); // 右下
                 uvs[3] = new float2(0f, 0f); // 左下
 
+                colors[0] = new Color32(0, 0, 0, 1);
+                colors[1] = new Color32(0, 0, 0, 1);
+                colors[2] = new Color32(0, 0, 0, 1);
+                colors[3] = new Color32(0, 0, 0, 1);
+
                 mesh.name = "FilledRect";
                 mesh.SetVertices(vertices);
                 mesh.SetIndices(indices, MeshTopology.Triangles, 0);
                 mesh.SetUVs(0, uvs);
+                mesh.SetColors(colors);
                 mesh.RecalculateBounds();
             }
+            colors.Dispose();
             uvs.Dispose();
             indices.Dispose();
             vertices.Dispose();

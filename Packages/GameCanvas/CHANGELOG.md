@@ -1,4 +1,13 @@
 # CHANGE LOG
+## 5.0.10
+### 機能追加
+- ネットワーク系APIのサンプルプロジェクトを同梱 (Packages/GameCanvas/Sample~/Networking)
+### 不具合修正
+- [#173](https://github.com/sfc-sdp/GameCanvas-Unity/issues/173) gc.DrawTexture が正しく描画されない不具合の修正
+- [#174](https://github.com/sfc-sdp/GameCanvas-Unity/issues/174) IL2CPPビルドエラーの解消
+### 仕様変更
+- 推奨エディタバージョンを 2020.1.15f1 に変更
+
 ## 5.0.9
 ### 機能追加
 - GcAABB に `float2 GetPoint(GcAnchor)` 関数を追加

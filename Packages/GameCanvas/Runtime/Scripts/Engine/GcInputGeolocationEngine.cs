@@ -66,7 +66,7 @@ namespace GameCanvas.Engine
             m_Context.Behaviour.StartCoroutine(coroutine);
         }
 
-        public void StartGeolocationService(in float desiredAccuracy = 10f, in float updateDistance = 10f)
+        public void StartGeolocationService(float desiredAccuracy = 10f, float updateDistance = 10f)
         {
             if (m_Service.status == LocationServiceStatus.Stopped)
             {

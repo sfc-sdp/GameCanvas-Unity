@@ -173,7 +173,7 @@ PlayerSettings:
     Android: jp.ac.keio.sfc.sdp.acceleration
     Standalone: unity.Keio University.GameCanvas
     Tizen: jp.ac.keio.sfc.sdp
-    iPhone: jp.ac.keio.sfc.sdp
+    iPhone: jp.ac.keio.sfc.sdp.acceleration
     tvOS: jp.ac.keio.sfc.sdp
   buildNumber:
     iPhone: 0

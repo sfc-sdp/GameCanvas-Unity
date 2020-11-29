@@ -1346,7 +1346,7 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetAccelerationX(in int i, in bool normalize = false)
+        public float GetAccelerationX(in int i, bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
             {
@@ -1357,7 +1357,7 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetAccelerationY(in int i, in bool normalize = false)
+        public float GetAccelerationY(in int i, bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
             {
@@ -1368,7 +1368,7 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetAccelerationZ(in int i, in bool normalize = false)
+        public float GetAccelerationZ(in int i, bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
             {
@@ -1526,12 +1526,12 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float GetSoundLevel(in GcSoundTrack track = GcSoundTrack.Master)
+        public float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master)
             => m_Context.Sound.GetSoundLevel(track);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float GetSoundVolume(in GcSoundTrack track = GcSoundTrack.Master)
+        public float GetSoundVolume(GcSoundTrack track = GcSoundTrack.Master)
             => math.pow(10, m_Context.Sound.GetSoundLevel(track) * 0.05f);
 
         /// <inheritdoc/>
@@ -1627,7 +1627,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsPlayingSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.IsPlayingSound(track);
 
         /// <inheritdoc/>
@@ -1918,7 +1918,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void PauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.PauseSound(track);
 
         /// <inheritdoc/>
@@ -1948,12 +1948,12 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void PlaySound(in GcSound sound, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)
+        public void PlaySound(in GcSound sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)
             => m_Context.Sound.PlaySound(sound, track, loop);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)
+        public void PlaySound(in AudioClip clip, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)
             => m_Context.Sound.PlaySound(clip, track, loop);
 
         /// <inheritdoc/>
@@ -2142,7 +2142,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetFrameInterval(in double targetDeltaTime, in bool vSyncEnabled = true)
+        public void SetFrameInterval(in double targetDeltaTime, bool vSyncEnabled = true)
             => m_Context.Time.SetFrameInterval(targetDeltaTime, vSyncEnabled);
 
         /// <inheritdoc/>
@@ -2180,12 +2180,12 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetSoundLevel(in float decibel, in GcSoundTrack track = GcSoundTrack.Master)
+        public void SetSoundLevel(in float decibel, GcSoundTrack track = GcSoundTrack.Master)
             => m_Context.Sound.SetSoundLevel(decibel, track);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetSoundVolume(in float volume, in GcSoundTrack track = GcSoundTrack.Master)
+        public void SetSoundVolume(in float volume, GcSoundTrack track = GcSoundTrack.Master)
             => m_Context.Sound.SetSoundLevel(20f * math.log10(volume), track);
 
         /// <inheritdoc/>
@@ -2218,7 +2218,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void StartGeolocationService(in float desiredAccuracy = 10, in float updateDistance = 10)
+        public void StartGeolocationService(float desiredAccuracy = 10, float updateDistance = 10)
             => m_Context.InputGeolocation.StartGeolocationService(desiredAccuracy, updateDistance);
 
         /// <inheritdoc/>
@@ -2233,7 +2233,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void StopSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.StopSound(track);
 
         /// <inheritdoc/>
@@ -2499,7 +2499,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void UnpauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public void UnpauseSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.UnpauseSound(track);
 
         /// <inheritdoc/>

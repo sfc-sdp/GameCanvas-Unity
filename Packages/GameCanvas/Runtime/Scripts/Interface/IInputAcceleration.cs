@@ -81,14 +81,14 @@ namespace GameCanvas
 
         [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetAccelerationX(in int i, in bool normalize = false);
+        float GetAccelerationX(in int i, bool normalize = false);
 
         [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetAccelerationY(in int i, in bool normalize = false);
+        float GetAccelerationY(in int i, bool normalize = false);
 
         [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetAccelerationZ(in int i, in bool normalize = false);
+        float GetAccelerationZ(in int i, bool normalize = false);
     }
 }

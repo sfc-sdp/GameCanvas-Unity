@@ -54,13 +54,13 @@
     <pre><code class="lang-csharp hljs">void ClearSound()</code></pre>
   </div>
   <a id="GameCanvas_ISound_GetSoundLevel_" data-uid="GameCanvas.ISound.GetSoundLevel*"></a>
-  <h4 id="GameCanvas_ISound_GetSoundLevel_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack@)">GetSoundLevel(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_ISound_GetSoundLevel_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack)">GetSoundLevel(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>トラック音量を取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float GetSoundLevel(in GcSoundTrack track = GcSoundTrack.Master)</code></pre>
+    <pre><code class="lang-csharp hljs">float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -97,13 +97,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_ISound_IsPlayingSound_" data-uid="GameCanvas.ISound.IsPlayingSound*"></a>
-  <h4 id="GameCanvas_ISound_IsPlayingSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack@)">IsPlayingSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_ISound_IsPlayingSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack)">IsPlayingSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックが再生中かどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsPlayingSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,13 +140,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_ISound_PauseSound_" data-uid="GameCanvas.ISound.PauseSound*"></a>
-  <h4 id="GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack@)">PauseSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack)">PauseSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを一時停止します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -166,17 +166,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack___remarks">Remarks</h5>
+  <h5 id="GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
   <a id="GameCanvas_ISound_PlaySound_" data-uid="GameCanvas.ISound.PlaySound*"></a>
-  <h4 id="GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(GcSound, GcSoundTrack, Boolean)</h4>
+  <h4 id="GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_" data-uid="GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack,System.Boolean)">PlaySound(GcSound, GcSoundTrack, Boolean)</h4>
   <div class="markdown level1 summary"><p>サウンドを再生します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySound(in GcSound sound, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySound(in GcSound sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -208,13 +208,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_ISound_PlaySound_" data-uid="GameCanvas.ISound.PlaySound*"></a>
-  <h4 id="GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(AudioClip, GcSoundTrack, Boolean)</h4>
+  <h4 id="GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_" data-uid="GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack,System.Boolean)">PlaySound(AudioClip, GcSoundTrack, Boolean)</h4>
   <div class="markdown level1 summary"><p>サウンドを再生します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySound(in AudioClip clip, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -247,13 +247,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_ISound_SetSoundLevel_" data-uid="GameCanvas.ISound.SetSoundLevel*"></a>
-  <h4 id="GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack__" data-uid="GameCanvas.ISound.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)">SetSoundLevel(Single, GcSoundTrack)</h4>
+  <h4 id="GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISound.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack)">SetSoundLevel(Single, GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>トラック音量を変更します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetSoundLevel(in float decibel, in GcSoundTrack track = GcSoundTrack.Master)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetSoundLevel(in float decibel, GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -280,13 +280,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_ISound_StopSound_" data-uid="GameCanvas.ISound.StopSound*"></a>
-  <h4 id="GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack@)">StopSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack)">StopSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを停止します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void StopSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -306,17 +306,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack___remarks">Remarks</h5>
+  <h5 id="GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
   <a id="GameCanvas_ISound_UnpauseSound_" data-uid="GameCanvas.ISound.UnpauseSound*"></a>
-  <h4 id="GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack@)">UnpauseSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack)">UnpauseSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを一時停止していた場合、再生を再開します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void UnpauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">void UnpauseSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -336,7 +336,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack___remarks">Remarks</h5>
+  <h5 id="GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
 </article>

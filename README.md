@@ -9,8 +9,8 @@
 プログラミング初心者でも、スマートデバイス向けアプリケーションを楽しく開発できる環境を目指して開発されました。
 
 ## 導入方法
-1. [UnityHub](https://unity3d.com/jp/get-unity/download)を入手し、Unity 2020.1.13f1, Androidプラグイン, iOSプラグイン, 日本語言語パックを選択してインストールします  
-※ 推奨バージョンは Unity 2020.1.13f1 です。9GB以上の空き容量が必要です  
+1. [UnityHub](https://unity3d.com/jp/get-unity/download)を入手し、Unity 2020.1.15f1, Androidプラグイン, iOSプラグイン, 日本語言語パックを選択してインストールします  
+※ 推奨バージョンは Unity 2020.1.15f1 です。9GB以上の空き容量が必要です  
 ※ インストール方法が分からない方は[こちらの記事](https://creive.me/archives/13376/)も参考にしてください
 
 2. [最新の GameCanvas](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest) からソースコードを入手・解凍します。UnityHubの「リストに追加」から解凍したフォルダを選択すると、プロジェクトが登録されます

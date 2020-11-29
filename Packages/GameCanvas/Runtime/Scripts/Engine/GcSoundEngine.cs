@@ -105,7 +105,7 @@ namespace GameCanvas.Engine
             mixer.SetFloat("VolumeMaster", 0f);
         }
 
-        public float GetSoundLevel(in GcSoundTrack track = GcSoundTrack.Master)
+        public float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master)
         {
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key)) throw new System.ArgumentException("invalid value", nameof(track));
@@ -114,7 +114,7 @@ namespace GameCanvas.Engine
             return decibel;
         }
 
-        public bool IsPlayingSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)
         {
             if (track == GcSoundTrack.Master)
             {
@@ -132,7 +132,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public void PauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1)
         {
             var i = (int)track;
             if (i >= k_TrackBgmNum) return;
@@ -145,7 +145,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void PlaySound(in GcSound sound, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)
+        public void PlaySound(in GcSound sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)
         {
             switch (track)
             {
@@ -188,7 +188,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)
+        public void PlaySound(in AudioClip clip, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)
         {
             switch (track)
             {
@@ -218,7 +218,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void SetSoundLevel(in float decibel, in GcSoundTrack track = GcSoundTrack.Master)
+        public void SetSoundLevel(in float decibel, GcSoundTrack track = GcSoundTrack.Master)
         {
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key) || float.IsNaN(decibel)) return;
@@ -226,7 +226,7 @@ namespace GameCanvas.Engine
             m_Mixer.Get().SetFloat(key, math.clamp(decibel, -96f, 20f));
         }
 
-        public void StopSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)
         {
             var i = (int)track;
             if (i >= k_TrackBgmNum) return;
@@ -240,7 +240,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void UnpauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)
+        public void UnpauseSound(GcSoundTrack track = GcSoundTrack.BGM1)
         {
             var i = (int)track;
             if (i >= k_TrackBgmNum) return;

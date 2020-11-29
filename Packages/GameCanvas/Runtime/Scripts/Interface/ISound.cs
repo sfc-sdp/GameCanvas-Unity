@@ -23,14 +23,14 @@ namespace GameCanvas
         /// </summary>
         /// <param name="track">対象の音声トラック</param>
         /// <returns>音量（-96db～20db）</returns>
-        float GetSoundLevel(in GcSoundTrack track = GcSoundTrack.Master);
+        float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master);
 
         /// <summary>
         /// 指定された音声トラックが再生中かどうか
         /// </summary>
         /// <param name="track">対象の音声トラック</param>
         /// <returns>再生中かどうか</returns>
-        bool IsPlayingSound(in GcSoundTrack track = GcSoundTrack.BGM1);
+        bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1);
 
         /// <summary>
         /// 指定された音声トラックのサウンドを一時停止します
@@ -39,7 +39,7 @@ namespace GameCanvas
         /// BGMトラック以外では常に無視されます
         /// </remarks>
         /// <param name="track">対象の音声トラック</param>
-        void PauseSound(in GcSoundTrack track = GcSoundTrack.BGM1);
+        void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1);
 
         /// <summary>
         /// サウンドを再生します
@@ -47,7 +47,7 @@ namespace GameCanvas
         /// <param name="soundId">サウンド</param>
         /// <param name="track">対象の音声トラック</param>
         /// <param name="loop">ループ再生するかどうか（SEトラック以外）</param>
-        void PlaySound(in GcSound sound, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false);
+        void PlaySound(in GcSound sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false);
 
         /// <summary>
         /// サウンドを再生します
@@ -55,14 +55,14 @@ namespace GameCanvas
         /// <param name="clip">サウンド</param>
         /// <param name="track">対象の音声トラック</param>
         /// <param name="loop">ループ再生するかどうか（SEトラック以外）</param>
-        void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false);
+        void PlaySound(in AudioClip clip, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false);
 
         /// <summary>
         /// トラック音量を変更します
         /// </summary>
         /// <param name="decibel">音量（-96db～20db）</param>
         /// <param name="track">対象の音声トラック</param>
-        void SetSoundLevel(in float decibel, in GcSoundTrack track = GcSoundTrack.Master);
+        void SetSoundLevel(in float decibel, GcSoundTrack track = GcSoundTrack.Master);
 
         /// <summary>
         /// 指定された音声トラックのサウンドを停止します
@@ -71,7 +71,7 @@ namespace GameCanvas
         /// BGMトラック以外では常に無視されます
         /// </remarks>
         /// <param name="track">対象の音声トラック</param>
-        void StopSound(in GcSoundTrack track = GcSoundTrack.BGM1);
+        void StopSound(GcSoundTrack track = GcSoundTrack.BGM1);
 
         /// <summary>
         /// 指定された音声トラックのサウンドを一時停止していた場合、再生を再開します
@@ -80,7 +80,7 @@ namespace GameCanvas
         /// BGMトラック以外では常に無視されます
         /// </remarks>
         /// <param name="track">対象の音声トラック</param>
-        void UnpauseSound(in GcSoundTrack track = GcSoundTrack.BGM1);
+        void UnpauseSound(GcSoundTrack track = GcSoundTrack.BGM1);
     }
 
     public interface ISoundEx : ISound
@@ -90,7 +90,7 @@ namespace GameCanvas
         /// </summary>
         /// <param name="track">対象の音声トラック</param>
         /// <returns>音量（0f～1f）</returns>
-        float GetSoundVolume(in GcSoundTrack track = GcSoundTrack.Master);
+        float GetSoundVolume(GcSoundTrack track = GcSoundTrack.Master);
 
         /// <summary>
         /// サウンドを1回再生します
@@ -109,6 +109,6 @@ namespace GameCanvas
         /// </summary>
         /// <param name="volume">音量（0f～1f）</param>
         /// <param name="track">対象の音声トラック</param>
-        void SetSoundVolume(in float volume, in GcSoundTrack track = GcSoundTrack.Master);
+        void SetSoundVolume(in float volume, GcSoundTrack track = GcSoundTrack.Master);
     }
 }
