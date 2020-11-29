@@ -52,7 +52,7 @@ namespace GameCanvas.Engine
 
         public bool VSyncEnabled => m_VSyncEnabled;
 
-        public void SetFrameInterval(in double targetDeltaTime, in bool vSyncEnabled = true)
+        public void SetFrameInterval(in double targetDeltaTime, bool vSyncEnabled = true)
         {
             if (targetDeltaTime <= 0)
             {

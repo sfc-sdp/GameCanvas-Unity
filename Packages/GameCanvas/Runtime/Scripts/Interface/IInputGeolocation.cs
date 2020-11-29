@@ -48,7 +48,7 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="desiredAccuracy">望ましいサービス精度（メートル単位）</param>
         /// <param name="updateDistance">位置情報の更新に必要な最小移動距離（メートル単位）</param>
-        void StartGeolocationService(in float desiredAccuracy = 10f, in float updateDistance = 10f);
+        void StartGeolocationService(float desiredAccuracy = 10f, float updateDistance = 10f);
 
         /// <summary>
         /// 位置情報サービスを停止します
