@@ -1036,6 +1036,12 @@ references:
   commentId: F:GameCanvas.GcAvailability.NotReady
   fullName: GameCanvas.GcAvailability.NotReady
   nameWithType: GcAvailability.NotReady
+- uid: GameCanvas.GcAvailability.Null
+  name: "Null"
+  href: api/GameCanvas.GcAvailability.html#GameCanvas_GcAvailability_Null
+  commentId: F:GameCanvas.GcAvailability.Null
+  fullName: GameCanvas.GcAvailability.Null
+  nameWithType: GcAvailability.Null
 - uid: GameCanvas.GcAvailability.Ready
   name: Ready
   href: api/GameCanvas.GcAvailability.html#GameCanvas_GcAvailability_Ready
@@ -4407,15 +4413,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetPrimaryCameraResolution
   nameWithType: GcProxy.GetPrimaryCameraResolution
-- uid: GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack)
   name: GetSoundLevel(GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetSoundLevel_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack@)
-  name.vb: GetSoundLevel(ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetSoundLevel_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.GetSoundLevel(ByRef GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.GetSoundLevel(GcSoundTrack)
-  nameWithType.vb: GcProxy.GetSoundLevel(ByRef GcSoundTrack)
 - uid: GameCanvas.GcProxy.GetSoundLevel*
   name: GetSoundLevel
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetSoundLevel_
@@ -4423,15 +4426,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetSoundLevel
   nameWithType: GcProxy.GetSoundLevel
-- uid: GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack)
   name: GetSoundVolume(GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetSoundVolume_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack@)
-  name.vb: GetSoundVolume(ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetSoundVolume_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.GetSoundVolume(ByRef GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.GetSoundVolume(GcSoundTrack)
-  nameWithType.vb: GcProxy.GetSoundVolume(ByRef GcSoundTrack)
 - uid: GameCanvas.GcProxy.GetSoundVolume*
   name: GetSoundVolume
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetSoundVolume_
@@ -4762,15 +4762,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsPlayingCameraImage
   nameWithType: GcProxy.IsPlayingCameraImage
-- uid: GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack)
   name: IsPlayingSound(GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsPlayingSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack@)
-  name.vb: IsPlayingSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsPlayingSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.IsPlayingSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.IsPlayingSound(GcSoundTrack)
-  nameWithType.vb: GcProxy.IsPlayingSound(ByRef GcSoundTrack)
 - uid: GameCanvas.GcProxy.IsPlayingSound*
   name: IsPlayingSound
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsPlayingSound_
@@ -5327,15 +5324,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.PauseCameraImage
   nameWithType: GcProxy.PauseCameraImage
-- uid: GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack)
   name: PauseSound(GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PauseSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack@)
-  name.vb: PauseSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PauseSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.PauseSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.PauseSound(GcSoundTrack)
-  nameWithType.vb: GcProxy.PauseSound(ByRef GcSoundTrack)
 - uid: GameCanvas.GcProxy.PauseSound*
   name: PauseSound
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PauseSound_
@@ -5402,24 +5396,24 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.PlaySE
   nameWithType: GcProxy.PlaySE
-- uid: GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)
+- uid: GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack,System.Boolean)
   name: PlaySound(GcSound, GcSoundTrack, Boolean)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack__System_Boolean__
-  commentId: M:GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)
-  name.vb: PlaySound(ByRef GcSound, ByRef GcSoundTrack, ByRef Boolean)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_
+  commentId: M:GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack,System.Boolean)
+  name.vb: PlaySound(ByRef GcSound, GcSoundTrack, Boolean)
   fullName: GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound, GameCanvas.GcSoundTrack, System.Boolean)
-  fullName.vb: GameCanvas.GcProxy.PlaySound(ByRef GameCanvas.GcSound, ByRef GameCanvas.GcSoundTrack, ByRef System.Boolean)
+  fullName.vb: GameCanvas.GcProxy.PlaySound(ByRef GameCanvas.GcSound, GameCanvas.GcSoundTrack, System.Boolean)
   nameWithType: GcProxy.PlaySound(GcSound, GcSoundTrack, Boolean)
-  nameWithType.vb: GcProxy.PlaySound(ByRef GcSound, ByRef GcSoundTrack, ByRef Boolean)
-- uid: GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)
+  nameWithType.vb: GcProxy.PlaySound(ByRef GcSound, GcSoundTrack, Boolean)
+- uid: GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack,System.Boolean)
   name: PlaySound(AudioClip, GcSoundTrack, Boolean)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack__System_Boolean__
-  commentId: M:GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)
-  name.vb: PlaySound(ByRef AudioClip, ByRef GcSoundTrack, ByRef Boolean)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_
+  commentId: M:GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack,System.Boolean)
+  name.vb: PlaySound(ByRef AudioClip, GcSoundTrack, Boolean)
   fullName: GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip, GameCanvas.GcSoundTrack, System.Boolean)
-  fullName.vb: GameCanvas.GcProxy.PlaySound(ByRef UnityEngine.AudioClip, ByRef GameCanvas.GcSoundTrack, ByRef System.Boolean)
+  fullName.vb: GameCanvas.GcProxy.PlaySound(ByRef UnityEngine.AudioClip, GameCanvas.GcSoundTrack, System.Boolean)
   nameWithType: GcProxy.PlaySound(AudioClip, GcSoundTrack, Boolean)
-  nameWithType.vb: GcProxy.PlaySound(ByRef AudioClip, ByRef GcSoundTrack, ByRef Boolean)
+  nameWithType.vb: GcProxy.PlaySound(ByRef AudioClip, GcSoundTrack, Boolean)
 - uid: GameCanvas.GcProxy.PlaySound*
   name: PlaySound
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_PlaySound_
@@ -5961,15 +5955,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.SetFontSize
   nameWithType: GcProxy.SetFontSize
-- uid: GameCanvas.GcProxy.SetFrameInterval(System.Double@,System.Boolean@)
+- uid: GameCanvas.GcProxy.SetFrameInterval(System.Double@,System.Boolean)
   name: SetFrameInterval(Double, Boolean)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetFrameInterval_System_Double__System_Boolean__
-  commentId: M:GameCanvas.GcProxy.SetFrameInterval(System.Double@,System.Boolean@)
-  name.vb: SetFrameInterval(ByRef Double, ByRef Boolean)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetFrameInterval_System_Double__System_Boolean_
+  commentId: M:GameCanvas.GcProxy.SetFrameInterval(System.Double@,System.Boolean)
+  name.vb: SetFrameInterval(ByRef Double, Boolean)
   fullName: GameCanvas.GcProxy.SetFrameInterval(System.Double, System.Boolean)
-  fullName.vb: GameCanvas.GcProxy.SetFrameInterval(ByRef System.Double, ByRef System.Boolean)
+  fullName.vb: GameCanvas.GcProxy.SetFrameInterval(ByRef System.Double, System.Boolean)
   nameWithType: GcProxy.SetFrameInterval(Double, Boolean)
-  nameWithType.vb: GcProxy.SetFrameInterval(ByRef Double, ByRef Boolean)
+  nameWithType.vb: GcProxy.SetFrameInterval(ByRef Double, Boolean)
 - uid: GameCanvas.GcProxy.SetFrameInterval*
   name: SetFrameInterval
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetFrameInterval_
@@ -6057,15 +6051,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.SetRectAnchor
   nameWithType: GcProxy.SetRectAnchor
-- uid: GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack)
   name: SetSoundLevel(Single, GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)
-  name.vb: SetSoundLevel(ByRef Single, ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack)
+  name.vb: SetSoundLevel(ByRef Single, GcSoundTrack)
   fullName: GameCanvas.GcProxy.SetSoundLevel(System.Single, GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.SetSoundLevel(ByRef System.Single, ByRef GameCanvas.GcSoundTrack)
+  fullName.vb: GameCanvas.GcProxy.SetSoundLevel(ByRef System.Single, GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.SetSoundLevel(Single, GcSoundTrack)
-  nameWithType.vb: GcProxy.SetSoundLevel(ByRef Single, ByRef GcSoundTrack)
+  nameWithType.vb: GcProxy.SetSoundLevel(ByRef Single, GcSoundTrack)
 - uid: GameCanvas.GcProxy.SetSoundLevel*
   name: SetSoundLevel
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundLevel_
@@ -6073,15 +6067,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.SetSoundLevel
   nameWithType: GcProxy.SetSoundLevel
-- uid: GameCanvas.GcProxy.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)
   name: SetSoundVolume(Single, GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack@)
-  name.vb: SetSoundVolume(ByRef Single, ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)
+  name.vb: SetSoundVolume(ByRef Single, GcSoundTrack)
   fullName: GameCanvas.GcProxy.SetSoundVolume(System.Single, GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.SetSoundVolume(ByRef System.Single, ByRef GameCanvas.GcSoundTrack)
+  fullName.vb: GameCanvas.GcProxy.SetSoundVolume(ByRef System.Single, GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.SetSoundVolume(Single, GcSoundTrack)
-  nameWithType.vb: GcProxy.SetSoundVolume(ByRef Single, ByRef GcSoundTrack)
+  nameWithType.vb: GcProxy.SetSoundVolume(ByRef Single, GcSoundTrack)
 - uid: GameCanvas.GcProxy.SetSoundVolume*
   name: SetSoundVolume
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SetSoundVolume_
@@ -6166,15 +6160,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.Sqrt
   nameWithType: GcProxy.Sqrt
-- uid: GameCanvas.GcProxy.StartGeolocationService(System.Single@,System.Single@)
+- uid: GameCanvas.GcProxy.StartGeolocationService(System.Single,System.Single)
   name: StartGeolocationService(Single, Single)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_StartGeolocationService_System_Single__System_Single__
-  commentId: M:GameCanvas.GcProxy.StartGeolocationService(System.Single@,System.Single@)
-  name.vb: StartGeolocationService(ByRef Single, ByRef Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_StartGeolocationService_System_Single_System_Single_
+  commentId: M:GameCanvas.GcProxy.StartGeolocationService(System.Single,System.Single)
   fullName: GameCanvas.GcProxy.StartGeolocationService(System.Single, System.Single)
-  fullName.vb: GameCanvas.GcProxy.StartGeolocationService(ByRef System.Single, ByRef System.Single)
   nameWithType: GcProxy.StartGeolocationService(Single, Single)
-  nameWithType.vb: GcProxy.StartGeolocationService(ByRef Single, ByRef Single)
 - uid: GameCanvas.GcProxy.StartGeolocationService*
   name: StartGeolocationService
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_StartGeolocationService_
@@ -6211,15 +6202,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.StopGeolocationService
   nameWithType: GcProxy.StopGeolocationService
-- uid: GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack)
   name: StopSound(GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_StopSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack@)
-  name.vb: StopSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_StopSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.StopSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.StopSound(GcSoundTrack)
-  nameWithType.vb: GcProxy.StopSound(ByRef GcSoundTrack)
 - uid: GameCanvas.GcProxy.StopSound*
   name: StopSound
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_StopSound_
@@ -6926,15 +6914,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryRemoveActor
   nameWithType: GcProxy.TryRemoveActor
-- uid: GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack)
   name: UnpauseSound(GcSoundTrack)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_UnpauseSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack@)
-  name.vb: UnpauseSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_UnpauseSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.GcProxy.UnpauseSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: GcProxy.UnpauseSound(GcSoundTrack)
-  nameWithType.vb: GcProxy.UnpauseSound(ByRef GcSoundTrack)
 - uid: GameCanvas.GcProxy.UnpauseSound*
   name: UnpauseSound
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_UnpauseSound_
@@ -10167,15 +10152,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync
   nameWithType: IInputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync
-- uid: GameCanvas.IInputGeolocation.StartGeolocationService(System.Single@,System.Single@)
+- uid: GameCanvas.IInputGeolocation.StartGeolocationService(System.Single,System.Single)
   name: StartGeolocationService(Single, Single)
-  href: api/GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_StartGeolocationService_System_Single__System_Single__
-  commentId: M:GameCanvas.IInputGeolocation.StartGeolocationService(System.Single@,System.Single@)
-  name.vb: StartGeolocationService(ByRef Single, ByRef Single)
+  href: api/GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_StartGeolocationService_System_Single_System_Single_
+  commentId: M:GameCanvas.IInputGeolocation.StartGeolocationService(System.Single,System.Single)
   fullName: GameCanvas.IInputGeolocation.StartGeolocationService(System.Single, System.Single)
-  fullName.vb: GameCanvas.IInputGeolocation.StartGeolocationService(ByRef System.Single, ByRef System.Single)
   nameWithType: IInputGeolocation.StartGeolocationService(Single, Single)
-  nameWithType.vb: IInputGeolocation.StartGeolocationService(ByRef Single, ByRef Single)
 - uid: GameCanvas.IInputGeolocation.StartGeolocationService*
   name: StartGeolocationService
   href: api/GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_StartGeolocationService_
@@ -12293,15 +12275,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.ClearSound
   nameWithType: ISound.ClearSound
-- uid: GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack)
   name: GetSoundLevel(GcSoundTrack)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_GetSoundLevel_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack@)
-  name.vb: GetSoundLevel(ByRef GcSoundTrack)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_GetSoundLevel_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.ISound.GetSoundLevel(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISound.GetSoundLevel(ByRef GameCanvas.GcSoundTrack)
   nameWithType: ISound.GetSoundLevel(GcSoundTrack)
-  nameWithType.vb: ISound.GetSoundLevel(ByRef GcSoundTrack)
 - uid: GameCanvas.ISound.GetSoundLevel*
   name: GetSoundLevel
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_GetSoundLevel_
@@ -12309,15 +12288,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.GetSoundLevel
   nameWithType: ISound.GetSoundLevel
-- uid: GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack)
   name: IsPlayingSound(GcSoundTrack)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_IsPlayingSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack@)
-  name.vb: IsPlayingSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_IsPlayingSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.ISound.IsPlayingSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISound.IsPlayingSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: ISound.IsPlayingSound(GcSoundTrack)
-  nameWithType.vb: ISound.IsPlayingSound(ByRef GcSoundTrack)
 - uid: GameCanvas.ISound.IsPlayingSound*
   name: IsPlayingSound
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_IsPlayingSound_
@@ -12325,15 +12301,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.IsPlayingSound
   nameWithType: ISound.IsPlayingSound
-- uid: GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack)
   name: PauseSound(GcSoundTrack)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack@)
-  name.vb: PauseSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.ISound.PauseSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISound.PauseSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: ISound.PauseSound(GcSoundTrack)
-  nameWithType.vb: ISound.PauseSound(ByRef GcSoundTrack)
 - uid: GameCanvas.ISound.PauseSound*
   name: PauseSound
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_PauseSound_
@@ -12341,24 +12314,24 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.PauseSound
   nameWithType: ISound.PauseSound
-- uid: GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)
+- uid: GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack,System.Boolean)
   name: PlaySound(GcSound, GcSoundTrack, Boolean)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack__System_Boolean__
-  commentId: M:GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)
-  name.vb: PlaySound(ByRef GcSound, ByRef GcSoundTrack, ByRef Boolean)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_
+  commentId: M:GameCanvas.ISound.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack,System.Boolean)
+  name.vb: PlaySound(ByRef GcSound, GcSoundTrack, Boolean)
   fullName: GameCanvas.ISound.PlaySound(GameCanvas.GcSound, GameCanvas.GcSoundTrack, System.Boolean)
-  fullName.vb: GameCanvas.ISound.PlaySound(ByRef GameCanvas.GcSound, ByRef GameCanvas.GcSoundTrack, ByRef System.Boolean)
+  fullName.vb: GameCanvas.ISound.PlaySound(ByRef GameCanvas.GcSound, GameCanvas.GcSoundTrack, System.Boolean)
   nameWithType: ISound.PlaySound(GcSound, GcSoundTrack, Boolean)
-  nameWithType.vb: ISound.PlaySound(ByRef GcSound, ByRef GcSoundTrack, ByRef Boolean)
-- uid: GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)
+  nameWithType.vb: ISound.PlaySound(ByRef GcSound, GcSoundTrack, Boolean)
+- uid: GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack,System.Boolean)
   name: PlaySound(AudioClip, GcSoundTrack, Boolean)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack__System_Boolean__
-  commentId: M:GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)
-  name.vb: PlaySound(ByRef AudioClip, ByRef GcSoundTrack, ByRef Boolean)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_
+  commentId: M:GameCanvas.ISound.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack,System.Boolean)
+  name.vb: PlaySound(ByRef AudioClip, GcSoundTrack, Boolean)
   fullName: GameCanvas.ISound.PlaySound(UnityEngine.AudioClip, GameCanvas.GcSoundTrack, System.Boolean)
-  fullName.vb: GameCanvas.ISound.PlaySound(ByRef UnityEngine.AudioClip, ByRef GameCanvas.GcSoundTrack, ByRef System.Boolean)
+  fullName.vb: GameCanvas.ISound.PlaySound(ByRef UnityEngine.AudioClip, GameCanvas.GcSoundTrack, System.Boolean)
   nameWithType: ISound.PlaySound(AudioClip, GcSoundTrack, Boolean)
-  nameWithType.vb: ISound.PlaySound(ByRef AudioClip, ByRef GcSoundTrack, ByRef Boolean)
+  nameWithType.vb: ISound.PlaySound(ByRef AudioClip, GcSoundTrack, Boolean)
 - uid: GameCanvas.ISound.PlaySound*
   name: PlaySound
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_
@@ -12366,15 +12339,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.PlaySound
   nameWithType: ISound.PlaySound
-- uid: GameCanvas.ISound.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISound.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack)
   name: SetSoundLevel(Single, GcSoundTrack)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISound.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)
-  name.vb: SetSoundLevel(ByRef Single, ByRef GcSoundTrack)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISound.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack)
+  name.vb: SetSoundLevel(ByRef Single, GcSoundTrack)
   fullName: GameCanvas.ISound.SetSoundLevel(System.Single, GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISound.SetSoundLevel(ByRef System.Single, ByRef GameCanvas.GcSoundTrack)
+  fullName.vb: GameCanvas.ISound.SetSoundLevel(ByRef System.Single, GameCanvas.GcSoundTrack)
   nameWithType: ISound.SetSoundLevel(Single, GcSoundTrack)
-  nameWithType.vb: ISound.SetSoundLevel(ByRef Single, ByRef GcSoundTrack)
+  nameWithType.vb: ISound.SetSoundLevel(ByRef Single, GcSoundTrack)
 - uid: GameCanvas.ISound.SetSoundLevel*
   name: SetSoundLevel
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_
@@ -12382,15 +12355,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.SetSoundLevel
   nameWithType: ISound.SetSoundLevel
-- uid: GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack)
   name: StopSound(GcSoundTrack)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack@)
-  name.vb: StopSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.ISound.StopSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISound.StopSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: ISound.StopSound(GcSoundTrack)
-  nameWithType.vb: ISound.StopSound(ByRef GcSoundTrack)
 - uid: GameCanvas.ISound.StopSound*
   name: StopSound
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_StopSound_
@@ -12398,15 +12368,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISound.StopSound
   nameWithType: ISound.StopSound
-- uid: GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack)
   name: UnpauseSound(GcSoundTrack)
-  href: api/GameCanvas.ISound.html#GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack@)
-  name.vb: UnpauseSound(ByRef GcSoundTrack)
+  href: api/GameCanvas.ISound.html#GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.ISound.UnpauseSound(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISound.UnpauseSound(ByRef GameCanvas.GcSoundTrack)
   nameWithType: ISound.UnpauseSound(GcSoundTrack)
-  nameWithType.vb: ISound.UnpauseSound(ByRef GcSoundTrack)
 - uid: GameCanvas.ISound.UnpauseSound*
   name: UnpauseSound
   href: api/GameCanvas.ISound.html#GameCanvas_ISound_UnpauseSound_
@@ -12420,15 +12387,12 @@ references:
   commentId: T:GameCanvas.ISoundEx
   fullName: GameCanvas.ISoundEx
   nameWithType: ISoundEx
-- uid: GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack)
   name: GetSoundVolume(GcSoundTrack)
-  href: api/GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_GetSoundVolume_GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack@)
-  name.vb: GetSoundVolume(ByRef GcSoundTrack)
+  href: api/GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_GetSoundVolume_GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack)
   fullName: GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISoundEx.GetSoundVolume(ByRef GameCanvas.GcSoundTrack)
   nameWithType: ISoundEx.GetSoundVolume(GcSoundTrack)
-  nameWithType.vb: ISoundEx.GetSoundVolume(ByRef GcSoundTrack)
 - uid: GameCanvas.ISoundEx.GetSoundVolume*
   name: GetSoundVolume
   href: api/GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_GetSoundVolume_
@@ -12461,15 +12425,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ISoundEx.PlaySE
   nameWithType: ISoundEx.PlaySE
-- uid: GameCanvas.ISoundEx.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack@)
+- uid: GameCanvas.ISoundEx.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)
   name: SetSoundVolume(Single, GcSoundTrack)
-  href: api/GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack__
-  commentId: M:GameCanvas.ISoundEx.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack@)
-  name.vb: SetSoundVolume(ByRef Single, ByRef GcSoundTrack)
+  href: api/GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_
+  commentId: M:GameCanvas.ISoundEx.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)
+  name.vb: SetSoundVolume(ByRef Single, GcSoundTrack)
   fullName: GameCanvas.ISoundEx.SetSoundVolume(System.Single, GameCanvas.GcSoundTrack)
-  fullName.vb: GameCanvas.ISoundEx.SetSoundVolume(ByRef System.Single, ByRef GameCanvas.GcSoundTrack)
+  fullName.vb: GameCanvas.ISoundEx.SetSoundVolume(ByRef System.Single, GameCanvas.GcSoundTrack)
   nameWithType: ISoundEx.SetSoundVolume(Single, GcSoundTrack)
-  nameWithType.vb: ISoundEx.SetSoundVolume(ByRef Single, ByRef GcSoundTrack)
+  nameWithType.vb: ISoundEx.SetSoundVolume(ByRef Single, GcSoundTrack)
 - uid: GameCanvas.ISoundEx.SetSoundVolume*
   name: SetSoundVolume
   href: api/GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_SetSoundVolume_
@@ -12676,15 +12640,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.ITime.NowTime
   nameWithType: ITime.NowTime
-- uid: GameCanvas.ITime.SetFrameInterval(System.Double@,System.Boolean@)
+- uid: GameCanvas.ITime.SetFrameInterval(System.Double@,System.Boolean)
   name: SetFrameInterval(Double, Boolean)
-  href: api/GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__
-  commentId: M:GameCanvas.ITime.SetFrameInterval(System.Double@,System.Boolean@)
-  name.vb: SetFrameInterval(ByRef Double, ByRef Boolean)
+  href: api/GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_
+  commentId: M:GameCanvas.ITime.SetFrameInterval(System.Double@,System.Boolean)
+  name.vb: SetFrameInterval(ByRef Double, Boolean)
   fullName: GameCanvas.ITime.SetFrameInterval(System.Double, System.Boolean)
-  fullName.vb: GameCanvas.ITime.SetFrameInterval(ByRef System.Double, ByRef System.Boolean)
+  fullName.vb: GameCanvas.ITime.SetFrameInterval(ByRef System.Double, System.Boolean)
   nameWithType: ITime.SetFrameInterval(Double, Boolean)
-  nameWithType.vb: ITime.SetFrameInterval(ByRef Double, ByRef Boolean)
+  nameWithType.vb: ITime.SetFrameInterval(ByRef Double, Boolean)
 - uid: GameCanvas.ITime.SetFrameInterval*
   name: SetFrameInterval
   href: api/GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_

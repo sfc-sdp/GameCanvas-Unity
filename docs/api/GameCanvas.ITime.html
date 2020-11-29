@@ -261,18 +261,18 @@
     </tbody>
   </table>
   <h5 id="GameCanvas_ITime_VSyncEnabled_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>この設定は、<a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__">SetFrameInterval(Double, Boolean)</a> や <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_">SetFrameRate(Int32, Boolean)</a> の第二引数から変更できます。</p>
+  <div class="markdown level1 remarks"><p>この設定は、<a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_">SetFrameInterval(Double, Boolean)</a> や <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_">SetFrameRate(Int32, Boolean)</a> の第二引数から変更できます。</p>
 </div>
   <h3 id="methods">Methods
   </h3>
   <a id="GameCanvas_ITime_SetFrameInterval_" data-uid="GameCanvas.ITime.SetFrameInterval*"></a>
-  <h4 id="GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__" data-uid="GameCanvas.ITime.SetFrameInterval(System.Double@,System.Boolean@)">SetFrameInterval(Double, Boolean)</h4>
+  <h4 id="GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_" data-uid="GameCanvas.ITime.SetFrameInterval(System.Double@,System.Boolean)">SetFrameInterval(Double, Boolean)</h4>
   <div class="markdown level1 summary"><p>UpdateGame や DrawGame が呼び出される時間間隔を設定します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetFrameInterval(in double targetDeltaTime, in bool vSyncEnabled = true)</code></pre>
+    <pre><code class="lang-csharp hljs">void SetFrameInterval(in double targetDeltaTime, bool vSyncEnabled = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -298,13 +298,13 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean___remarks">Remarks</h5>
+  <h5 id="GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>垂直同期を無効にした場合、間隔の揺らぎは減少しますが、ディスプレイのリフレッシュレートを常に無視して描画するため、画面のちらつきが発生する場合があります。</p>
 </div>
   <a id="GameCanvas_ITime_SetFrameRate_" data-uid="GameCanvas.ITime.SetFrameRate*"></a>
   <h4 id="GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_" data-uid="GameCanvas.ITime.SetFrameRate(System.Int32@,System.Boolean)">SetFrameRate(Int32, Boolean)</h4>
   <div class="markdown level1 summary"><p>フレームレートの目標値を設定します。</p>
-<p>小数点以下を指定したい場合は、この関数の代わりに <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__">SetFrameInterval(Double, Boolean)</a> を使用してください。</p>
+<p>小数点以下を指定したい場合は、この関数の代わりに <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_">SetFrameInterval(Double, Boolean)</a> を使用してください。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>

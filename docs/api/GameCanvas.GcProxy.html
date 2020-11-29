@@ -2184,7 +2184,7 @@
     </tbody>
   </table>
   <h5 id="GameCanvas_GcProxy_VSyncEnabled_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>この設定は、<a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__">SetFrameInterval(Double, Boolean)</a> や <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_">SetFrameRate(Int32, Boolean)</a> の第二引数から変更できます。</p>
+  <div class="markdown level1 remarks"><p>この設定は、<a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_">SetFrameInterval(Double, Boolean)</a> や <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_">SetFrameRate(Int32, Boolean)</a> の第二引数から変更できます。</p>
 </div>
   <h3 id="methods">Methods
   </h3>
@@ -5678,13 +5678,13 @@
   <div class="markdown level1 remarks"><p>推奨解像度を取得できない場合、現在のキャンバス解像度とフレームレートに基づいた適当な値を返します</p>
 </div>
   <a id="GameCanvas_GcProxy_GetSoundLevel_" data-uid="GameCanvas.GcProxy.GetSoundLevel*"></a>
-  <h4 id="GameCanvas_GcProxy_GetSoundLevel_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack@)">GetSoundLevel(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_GetSoundLevel_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack)">GetSoundLevel(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>トラック音量を取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float GetSoundLevel(in GcSoundTrack track = GcSoundTrack.Master)</code></pre>
+    <pre><code class="lang-csharp hljs">public float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -5721,13 +5721,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_GetSoundVolume_" data-uid="GameCanvas.GcProxy.GetSoundVolume*"></a>
-  <h4 id="GameCanvas_GcProxy_GetSoundVolume_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack@)">GetSoundVolume(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_GetSoundVolume_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.GetSoundVolume(GameCanvas.GcSoundTrack)">GetSoundVolume(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>トラック音量を取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float GetSoundVolume(in GcSoundTrack track = GcSoundTrack.Master)</code></pre>
+    <pre><code class="lang-csharp hljs">public float GetSoundVolume(GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -6485,13 +6485,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_IsPlayingSound_" data-uid="GameCanvas.GcProxy.IsPlayingSound*"></a>
-  <h4 id="GameCanvas_GcProxy_IsPlayingSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack@)">IsPlayingSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_IsPlayingSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.IsPlayingSound(GameCanvas.GcSoundTrack)">IsPlayingSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックが再生中かどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsPlayingSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -7832,13 +7832,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_PauseSound_" data-uid="GameCanvas.GcProxy.PauseSound*"></a>
-  <h4 id="GameCanvas_GcProxy_PauseSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack@)">PauseSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_PauseSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.PauseSound(GameCanvas.GcSoundTrack)">PauseSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを一時停止します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">public void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -7858,7 +7858,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_GcProxy_PauseSound_GameCanvas_GcSoundTrack___remarks">Remarks</h5>
+  <h5 id="GameCanvas_GcProxy_PauseSound_GameCanvas_GcSoundTrack__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
   <a id="GameCanvas_GcProxy_PlayCameraImage_" data-uid="GameCanvas.GcProxy.PlayCameraImage*"></a>
@@ -8084,13 +8084,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_PlaySound_" data-uid="GameCanvas.GcProxy.PlaySound*"></a>
-  <h4 id="GameCanvas_GcProxy_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(GcSound, GcSoundTrack, Boolean)</h4>
+  <h4 id="GameCanvas_GcProxy_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_" data-uid="GameCanvas.GcProxy.PlaySound(GameCanvas.GcSound@,GameCanvas.GcSoundTrack,System.Boolean)">PlaySound(GcSound, GcSoundTrack, Boolean)</h4>
   <div class="markdown level1 summary"><p>サウンドを再生します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PlaySound(in GcSound sound, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public void PlaySound(in GcSound sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -8122,13 +8122,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_PlaySound_" data-uid="GameCanvas.GcProxy.PlaySound*"></a>
-  <h4 id="GameCanvas_GcProxy_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack__System_Boolean__" data-uid="GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack@,System.Boolean@)">PlaySound(AudioClip, GcSoundTrack, Boolean)</h4>
+  <h4 id="GameCanvas_GcProxy_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_" data-uid="GameCanvas.GcProxy.PlaySound(UnityEngine.AudioClip@,GameCanvas.GcSoundTrack,System.Boolean)">PlaySound(AudioClip, GcSoundTrack, Boolean)</h4>
   <div class="markdown level1 summary"><p>サウンドを再生します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PlaySound(in AudioClip clip, in GcSoundTrack track = GcSoundTrack.BGM1, in bool loop = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public void PlaySound(in AudioClip clip, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -9324,13 +9324,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_SetFrameInterval_" data-uid="GameCanvas.GcProxy.SetFrameInterval*"></a>
-  <h4 id="GameCanvas_GcProxy_SetFrameInterval_System_Double__System_Boolean__" data-uid="GameCanvas.GcProxy.SetFrameInterval(System.Double@,System.Boolean@)">SetFrameInterval(Double, Boolean)</h4>
+  <h4 id="GameCanvas_GcProxy_SetFrameInterval_System_Double__System_Boolean_" data-uid="GameCanvas.GcProxy.SetFrameInterval(System.Double@,System.Boolean)">SetFrameInterval(Double, Boolean)</h4>
   <div class="markdown level1 summary"><p>UpdateGame や DrawGame が呼び出される時間間隔を設定します。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetFrameInterval(in double targetDeltaTime, in bool vSyncEnabled = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetFrameInterval(in double targetDeltaTime, bool vSyncEnabled = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -9356,13 +9356,13 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_GcProxy_SetFrameInterval_System_Double__System_Boolean___remarks">Remarks</h5>
+  <h5 id="GameCanvas_GcProxy_SetFrameInterval_System_Double__System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>垂直同期を無効にした場合、間隔の揺らぎは減少しますが、ディスプレイのリフレッシュレートを常に無視して描画するため、画面のちらつきが発生する場合があります。</p>
 </div>
   <a id="GameCanvas_GcProxy_SetFrameRate_" data-uid="GameCanvas.GcProxy.SetFrameRate*"></a>
   <h4 id="GameCanvas_GcProxy_SetFrameRate_System_Int32__System_Boolean_" data-uid="GameCanvas.GcProxy.SetFrameRate(System.Int32@,System.Boolean)">SetFrameRate(Int32, Boolean)</h4>
   <div class="markdown level1 summary"><p>フレームレートの目標値を設定します。</p>
-<p>小数点以下を指定したい場合は、この関数の代わりに <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean__">SetFrameInterval(Double, Boolean)</a> を使用してください。</p>
+<p>小数点以下を指定したい場合は、この関数の代わりに <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_">SetFrameInterval(Double, Boolean)</a> を使用してください。</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -9505,13 +9505,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_SetSoundLevel_" data-uid="GameCanvas.GcProxy.SetSoundLevel*"></a>
-  <h4 id="GameCanvas_GcProxy_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack@)">SetSoundLevel(Single, GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.SetSoundLevel(System.Single@,GameCanvas.GcSoundTrack)">SetSoundLevel(Single, GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>トラック音量を変更します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetSoundLevel(in float decibel, in GcSoundTrack track = GcSoundTrack.Master)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetSoundLevel(in float decibel, GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -9538,13 +9538,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_SetSoundVolume_" data-uid="GameCanvas.GcProxy.SetSoundVolume*"></a>
-  <h4 id="GameCanvas_GcProxy_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack@)">SetSoundVolume(Single, GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)">SetSoundVolume(Single, GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>トラック音量を変更します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetSoundVolume(in float volume, in GcSoundTrack track = GcSoundTrack.Master)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetSoundVolume(in float volume, GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -9735,13 +9735,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_StartGeolocationService_" data-uid="GameCanvas.GcProxy.StartGeolocationService*"></a>
-  <h4 id="GameCanvas_GcProxy_StartGeolocationService_System_Single__System_Single__" data-uid="GameCanvas.GcProxy.StartGeolocationService(System.Single@,System.Single@)">StartGeolocationService(Single, Single)</h4>
+  <h4 id="GameCanvas_GcProxy_StartGeolocationService_System_Single_System_Single_" data-uid="GameCanvas.GcProxy.StartGeolocationService(System.Single,System.Single)">StartGeolocationService(Single, Single)</h4>
   <div class="markdown level1 summary"><p>位置情報サービスを起動します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void StartGeolocationService(in float desiredAccuracy = 10F, in float updateDistance = 10F)</code></pre>
+    <pre><code class="lang-csharp hljs">public void StartGeolocationService(float desiredAccuracy = 10F, float updateDistance = 10F)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -9767,7 +9767,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_GcProxy_StartGeolocationService_System_Single__System_Single___remarks">Remarks</h5>
+  <h5 id="GameCanvas_GcProxy_StartGeolocationService_System_Single_System_Single__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>位置情報へのアクセス権限がない場合、この処理は失敗します</p>
 </div>
   <a id="GameCanvas_GcProxy_StopCameraImage_" data-uid="GameCanvas.GcProxy.StopCameraImage*"></a>
@@ -9807,13 +9807,13 @@
     <pre><code class="lang-csharp hljs">public void StopGeolocationService()</code></pre>
   </div>
   <a id="GameCanvas_GcProxy_StopSound_" data-uid="GameCanvas.GcProxy.StopSound*"></a>
-  <h4 id="GameCanvas_GcProxy_StopSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack@)">StopSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_StopSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.StopSound(GameCanvas.GcSoundTrack)">StopSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを停止します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void StopSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -9833,7 +9833,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_GcProxy_StopSound_GameCanvas_GcSoundTrack___remarks">Remarks</h5>
+  <h5 id="GameCanvas_GcProxy_StopSound_GameCanvas_GcSoundTrack__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
   <a id="GameCanvas_GcProxy_SweepTest_" data-uid="GameCanvas.GcProxy.SweepTest*"></a>
@@ -12076,13 +12076,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcProxy_UnpauseSound_" data-uid="GameCanvas.GcProxy.UnpauseSound*"></a>
-  <h4 id="GameCanvas_GcProxy_UnpauseSound_GameCanvas_GcSoundTrack__" data-uid="GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack@)">UnpauseSound(GcSoundTrack)</h4>
+  <h4 id="GameCanvas_GcProxy_UnpauseSound_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.UnpauseSound(GameCanvas.GcSoundTrack)">UnpauseSound(GcSoundTrack)</h4>
   <div class="markdown level1 summary"><p>指定された音声トラックのサウンドを一時停止していた場合、再生を再開します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UnpauseSound(in GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
+    <pre><code class="lang-csharp hljs">public void UnpauseSound(GcSoundTrack track = GcSoundTrack.BGM1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -12102,7 +12102,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_GcProxy_UnpauseSound_GameCanvas_GcSoundTrack___remarks">Remarks</h5>
+  <h5 id="GameCanvas_GcProxy_UnpauseSound_GameCanvas_GcSoundTrack__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>BGMトラック以外では常に無視されます</p>
 </div>
   <a id="GameCanvas_GcProxy_UnregisterScene_" data-uid="GameCanvas.GcProxy.UnregisterScene*"></a>
