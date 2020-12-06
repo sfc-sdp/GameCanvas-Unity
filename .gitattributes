@@ -2,7 +2,7 @@
 
 *.bat text encoding=cp932 diff=sjis eol=crlf
 *.cmd text encoding=cp932 diff=sjis eol=crlf
-*.cs text encoding=utf8 eol=crlf
+*.cs text encoding=utf8 diff=csharp eol=crlf
 *.html text encoding=utf8
 *.json text encoding=utf8
 *.yml text encoding=utf8
