@@ -132,17 +132,14 @@ namespace GameCanvas.Engine
             var texture = GetOrCreateCameraTexture(camera, request);
             if (texture != null)
             {
-                resolution = new int2(texture.width, texture.height);
                 if (!texture.isPlaying)
                 {
                     texture.Play();
-                    return texture.isPlaying;
                 }
+                resolution = new int2(texture.width, texture.height);
+                return texture.isPlaying;
             }
-            else
-            {
-                resolution = default;
-            }
+            resolution = default;
             return false;
         }
 
