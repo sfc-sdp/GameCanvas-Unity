@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b7315baab074c41afb9990eb1c5c0f, type: 3}
+  m_Name: GcAtlas
+  m_EditorClassIdentifier: 
+  m_Reference: {fileID: 4343727234628468602, guid: eac386f177794c14daf190c7461493fb,
+    type: 2}
