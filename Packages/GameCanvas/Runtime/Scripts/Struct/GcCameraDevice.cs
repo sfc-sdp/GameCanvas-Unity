@@ -44,6 +44,9 @@ namespace GameCanvas
         /// <summary>
         /// 解像度とリフレッシュレートの候補
         /// </summary>
+        /// <remarks>
+        /// iOS, Android の実機以外では常に無効（配列長が0）です
+        /// </remarks>
         public readonly GcResolution[] Resolutions;
         #endregion
 

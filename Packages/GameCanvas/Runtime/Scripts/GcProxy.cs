@@ -993,7 +993,8 @@ namespace GameCanvas
                     texture.Play();
                 }
 
-                m_Context.Graphics.DrawTexture(texture);
+                var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
+                m_Context.Graphics.DrawTexture(texture, mtx);
             }
         }
 
@@ -1009,7 +1010,9 @@ namespace GameCanvas
                     texture.Play();
                 }
 
-                m_Context.Graphics.DrawTexture(texture, position, degree);
+                var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
+                mtx = GcAffine.FromTRS(position, math.radians(degree), new float2(1f, 1f)).Mul(mtx);
+                m_Context.Graphics.DrawTexture(texture, mtx);
             }
         }
 
@@ -1025,41 +1028,21 @@ namespace GameCanvas
                     texture.Play();
                 }
 
-                m_Context.Graphics.DrawTexture(texture, rect);
+                var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
+                mtx = GcAffine.FromTRS(rect.Position, rect.Radian, rect.Size).Mul(mtx);
+                m_Context.Graphics.DrawTexture(texture, mtx);
             }
         }
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = true)
-        {
-            var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
-            if (texture != null)
-            {
-                if (autoPlay && !texture.isPlaying)
-                {
-                    texture.Play();
-                }
-
-                m_Context.Graphics.DrawTexture(texture, new GcRect(x, y, width, height, math.radians(degree)));
-            }
-        }
+            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = true)
-        {
-            var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
-            if (texture != null)
-            {
-                if (autoPlay && !texture.isPlaying)
-                {
-                    texture.Play();
-                }
-
-                m_Context.Graphics.DrawTexture(texture, new float2(x, y), degree);
-            }
-        }
+            => DrawCameraImage(camera, new float2(x, y), degree);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -1282,6 +1265,11 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawTexture(in Texture texture, in GcRect rect)
             => m_Context.Graphics.DrawTexture(texture, rect);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawTexture(in Texture texture, in float2x3 matrix)
+            => m_Context.Graphics.DrawTexture(texture, matrix);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1562,7 +1550,7 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsFlippedCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.IsPlayingCameraImage(camera);
+            => m_Context.InputCamera.IsFlippedCameraImage(camera);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1990,10 +1978,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float Repeat(in float value, in float max) => GcMath.Repeat(value, max);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RegisterScene<T>() where T : GcScene, new()
             => m_SceneDict.Add(typeof(T), new T());
 
@@ -2006,6 +1990,10 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RemoveActorAll()
             => m_CurrentScene?.RemoveActorAll();
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public float Repeat(in float value, in float max) => GcMath.Repeat(value, max);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

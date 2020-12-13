@@ -1,4 +1,19 @@
 # CHANGE LOG
+## 5.0.11
+### 機能追加
+- 位置情報系APIのサンプルプロジェクトを同梱 (Packages/GameCanvas/Sample~/Geolocation)
+- カメラ系APIのサンプルプロジェクトを同梱 (Packages/GameCanvas/Sample~/DeviceCamera)
+### 不具合修正
+- [#177](https://github.com/sfc-sdp/GameCanvas-Unity/issues/177) gc.TryGetCameraImageAll でカメラの一覧が取得できない不具合の修正
+- [#178](https://github.com/sfc-sdp/GameCanvas-Unity/issues/178) gc.PlayCameraImage で返る解像度が壊れていたのを修正
+- [#179](https://github.com/sfc-sdp/GameCanvas-Unity/issues/179) gc.IsFlippedCameraImage が正しい値を返すように
+- [#180](https://github.com/sfc-sdp/GameCanvas-Unity/issues/180) gc.DrawTexture(Texture, GcRect) の描画不具合を修正
+- [#182](https://github.com/sfc-sdp/GameCanvas-Unity/issues/182) Android: ランタイムパーミッションの結果を取得できない不具合の修正
+- [#183](https://github.com/sfc-sdp/GameCanvas-Unity/issues/183) 実機でのカメラ描画エラーの修正
+### 仕様変更
+- [#181](https://github.com/sfc-sdp/GameCanvas-Unity/issues/181) gc.DrawCameraImage はカメラの回転や上下反転を考慮して描画するように
+- 推奨エディタバージョンを 2020.1.17f1 に変更
+
 ## 5.0.10
 ### 機能追加
 - ネットワーク系APIのサンプルプロジェクトを同梱 (Packages/GameCanvas/Sample~/Networking)

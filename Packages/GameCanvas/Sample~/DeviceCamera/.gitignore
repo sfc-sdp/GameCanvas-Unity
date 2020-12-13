@@ -1,0 +1,91 @@
+# All platforms
+[Ll]ibrary/
+[Tt]emp/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Bb]uild/
+*.pidb
+*.unityproj
+*.user
+*.userprefs
+*.suo
+*.log
+*.tmp
+*.booproj
+*/PerfLogs/
+
+# Big Files
+*.exe
+*.rar
+*.zip
+*.pdb
+*.pdb.meta
+*.apk
+*.dex
+
+# Unity3D generated files
+*.pidb.meta
+sysinfo.txt
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+*.swp
+*.Trashes
+[Tt]humbs.db
+[Tt]humbs.db.meta
+
+# Android Export
+Android Export/*.ap_
+Android Export/*.dex
+Android Export/*.class
+Android Export/*bin/
+Android Export/*gen/
+Android Export/*local.properties
+Android Export/*.classpath
+Android Export/*.project
+Android Export/*.iml
+Android Export/*.ipr
+Android Export/*.iws
+Android Export/*.idea/
+proguard/
+
+# VisualStudio user files
+*.csproj
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+*.psess
+*.vsp
+*.vspx
+*.sap
+.vs
+.vscode
+Assets/UnityVS/Editor*
+VSCode.*
+Assets/VSCode/Editor*
+CodeCoverage/
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+
+# Nodejs, npm
+node_modules/

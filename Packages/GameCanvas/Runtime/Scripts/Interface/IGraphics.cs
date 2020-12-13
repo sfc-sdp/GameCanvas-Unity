@@ -268,6 +268,13 @@ namespace GameCanvas
         void DrawTexture(in Texture texture, in GcRect rect);
 
         /// <summary>
+        /// テクスチャーを変形して描画します
+        /// </summary>
+        /// <param name="texture">描画するテクスチャー</param>
+        /// <param name="matrix">アフィン変換行列</param>
+        void DrawTexture(in Texture texture, in float2x3 matrix);
+
+        /// <summary>
         /// 円を塗りで描画します
         /// </summary>
         void FillCircle();
