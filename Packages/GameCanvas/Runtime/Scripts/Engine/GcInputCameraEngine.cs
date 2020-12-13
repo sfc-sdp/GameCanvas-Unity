@@ -205,6 +205,7 @@ namespace GameCanvas.Engine
 
         public bool TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice> array)
         {
+            InitCameraDevice();
             if (m_DeviceListReadOnly != null)
             {
                 array = m_DeviceListReadOnly;
