@@ -131,7 +131,7 @@ namespace GameCanvas.Engine
                 m_Context.Behaviour.OnFocusOnce += () => onFocus = true;
                 UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
                 while (!onFocus) yield return null;
-
+                yield return null;
                 callback?.Invoke(HasUserAuthorizedPermissionGeolocation);
             }
 #elif UNITY_IOS

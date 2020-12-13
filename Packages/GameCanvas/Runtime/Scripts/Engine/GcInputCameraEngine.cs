@@ -381,11 +381,12 @@ namespace GameCanvas.Engine
             }
             else
             {
-                if (callback != null)
-                {
-                    m_Context.Behaviour.OnFocusOnce += () => callback.Invoke(HasUserAuthorizedPermissionCamera);
-                }
+                var onFocus = false;
+                m_Context.Behaviour.OnFocusOnce += () => onFocus = true;
                 UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.Camera);
+                while (!onFocus) yield return null;
+                yield return null;
+                callback?.Invoke(HasUserAuthorizedPermissionCamera);
             }
 #elif UNITY_IOS
             if (HasUserAuthorizedPermissionCamera)
