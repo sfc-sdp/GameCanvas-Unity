@@ -483,6 +483,19 @@ namespace GameCanvas.Engine
             DrawMesh(m_MeshRect, texture, mtx);
         }
 
+        public void DrawTexture(in Texture texture, in float2x3 matrix)
+        {
+            if (!m_IsInit || texture == null) return;
+
+            var mtx = matrix.Mul(m_CurrentMatrix);
+            if (m_CurrentStyle.RectAnchor != GcAnchor.UpperLeft)
+            {
+                mtx = mtx.Mul(GcAffine.FromTranslate(GetOffset(m_CurrentStyle.RectAnchor)));
+            }
+
+            DrawMesh(m_MeshRect, texture, mtx);
+        }
+
         public void FillCircle()
         {
             if (!m_IsInit) return;
@@ -688,6 +701,23 @@ namespace GameCanvas.Engine
             m_DrawCount = 0;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static float2 GetOffset(in GcAnchor anchor)
+        {
+            switch (anchor)
+            {
+                case GcAnchor.UpperCenter: return new float2(-0.5f, 0f);
+                case GcAnchor.UpperRight: return new float2(-1f, 0f);
+                case GcAnchor.MiddleRight: return new float2(-1f, -0.5f);
+                case GcAnchor.LowerRight: return new float2(-1f, -1f);
+                case GcAnchor.LowerCenter: return new float2(-0.5f, -1f);
+                case GcAnchor.LowerLeft: return new float2(0f, -1f);
+                case GcAnchor.MiddleLeft: return new float2(0f, -0.5f);
+                case GcAnchor.MiddleCenter: return new float2(-0.5f, -0.5f);
+                default: return float2.zero;
+            }
+        }
+
         internal void Init()
         {
             if (m_IsInit) return;
@@ -710,23 +740,6 @@ namespace GameCanvas.Engine
 
             m_IsInit = true;
             System.GC.ReRegisterForFinalize(this);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static float2 GetOffset(in GcAnchor anchor)
-        {
-            switch (anchor)
-            {
-                case GcAnchor.UpperCenter: return new float2(-0.5f, 0f);
-                case GcAnchor.UpperRight: return new float2(-1f, 0f);
-                case GcAnchor.MiddleRight: return new float2(-1f, -0.5f);
-                case GcAnchor.LowerRight: return new float2(-1f, -1f);
-                case GcAnchor.LowerCenter: return new float2(-0.5f, -1f);
-                case GcAnchor.LowerLeft: return new float2(0f, -1f);
-                case GcAnchor.MiddleLeft: return new float2(0f, -0.5f);
-                case GcAnchor.MiddleCenter: return new float2(-0.5f, -0.5f);
-                default: return float2.zero;
-            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

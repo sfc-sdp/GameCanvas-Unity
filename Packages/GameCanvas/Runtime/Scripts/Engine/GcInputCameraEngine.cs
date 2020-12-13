@@ -136,7 +136,7 @@ namespace GameCanvas.Engine
                 {
                     texture.Play();
                 }
-                resolution = new int2(texture.width, texture.height);
+                resolution = GetRotatedCameraSize(texture);
                 return texture.isPlaying;
             }
             resolution = default;
@@ -171,7 +171,7 @@ namespace GameCanvas.Engine
             texture = GetOrCreateCameraTexture(camera, request);
             if (texture != null)
             {
-                return new int2(texture.width, texture.height);
+                return GetRotatedCameraSize(texture);
             }
             return int2.zero;
         }
@@ -227,7 +227,7 @@ namespace GameCanvas.Engine
         {
             if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
             {
-                resolution = new int2(texture.width, texture.height);
+                resolution = GetRotatedCameraSize(texture);
                 return true;
             }
             resolution = default;
@@ -313,6 +313,50 @@ namespace GameCanvas.Engine
         void IEngine.OnAfterDraw() { }
 
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now) { }
+
+        internal float2x3 CalcCameraMatrix(in WebCamTexture tex, in GcAnchor anchor)
+        {
+            var size = new float2(tex.width, tex.height);
+            var mtx = GcAffine.FromScale(size);
+            var offset = GcGraphicsEngine.GetOffset(anchor) - GcGraphicsEngine.GetOffset(GcAnchor.MiddleCenter);
+
+            if (tex.videoVerticallyMirrored)
+            {
+                var t = size * offset;
+                mtx = GcAffine.FromTranslate(t)
+                    .Mul(GcAffine.FromScale(new float2(1f, -1f)))
+                    .Mul(GcAffine.FromTranslate(-t))
+                    .Mul(mtx);
+            }
+
+            var deg = GcMath.Repeat(tex.videoRotationAngle, 360f);
+            if (GcMath.AlmostSame(deg, 90f) || GcMath.AlmostSame(deg, 270f))
+            {
+                mtx = GcAffine.FromTranslate(new float2(size.y, size.x) * offset)
+                    .Mul(GcAffine.FromRotate(math.radians(deg)))
+                    .Mul(GcAffine.FromTranslate(size * -offset))
+                    .Mul(mtx);
+            }
+            else if (GcMath.AlmostSame(deg, 180f))
+            {
+                var t = size * offset;
+                mtx = GcAffine.FromTranslate(t)
+                    .Mul(GcAffine.FromRotate(math.radians(deg)))
+                    .Mul(GcAffine.FromTranslate(-t))
+                    .Mul(mtx);
+            }
+
+            return mtx;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static int2 GetRotatedCameraSize(in WebCamTexture texture)
+        {
+            var deg = Mathf.Repeat(-texture.videoRotationAngle, 360f);
+            return (GcMath.AlmostSame(deg, 90f) || GcMath.AlmostSame(deg, 270f))
+                ? new int2(texture.height, texture.width)
+                : new int2(texture.width, texture.height);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         void InitCameraDevice()
