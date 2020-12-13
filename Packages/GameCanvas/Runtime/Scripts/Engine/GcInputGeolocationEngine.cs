@@ -52,7 +52,7 @@ namespace GameCanvas.Engine
         public bool HasUserAuthorizedPermissionGeolocation
 #if UNITY_EDITOR
             => m_Service.isEnabledByUser;
-#elif !NITY_ANDROID
+#elif UNITY_ANDROID
             => UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation);
 #elif UNITY_IOS
             => m_Service.isEnabledByUser;
@@ -113,11 +113,12 @@ namespace GameCanvas.Engine
                 m_DidUpdateThisFrame = true;
             }
         }
+
         private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
         {
 #if UNITY_EDITOR
             yield return null;
-            callback?.Invoke(true);
+            callback?.Invoke(m_Service.isEnabledByUser);
 #elif UNITY_ANDROID
             if (HasUserAuthorizedPermissionGeolocation)
             {
@@ -126,11 +127,12 @@ namespace GameCanvas.Engine
             }
             else
             {
-                if (callback != null)
-                {
-                    m_Context.Behaviour.OnFocusOnce += () => callback.Invoke(HasUserAuthorizedPermissionGeolocation);
-                }
+                var onFocus = false;
+                m_Context.Behaviour.OnFocusOnce += () => onFocus = true;
                 UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
+                while (!onFocus) yield return null;
+
+                callback?.Invoke(HasUserAuthorizedPermissionGeolocation);
             }
 #elif UNITY_IOS
             if (HasUserAuthorizedPermissionGeolocation)
