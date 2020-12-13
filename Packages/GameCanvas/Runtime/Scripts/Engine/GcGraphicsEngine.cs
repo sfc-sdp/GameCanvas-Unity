@@ -474,8 +474,7 @@ namespace GameCanvas.Engine
         {
             if (!m_IsInit || texture == null) return;
 
-            var s = rect.Size / new float2(texture.width, texture.height);
-            var mtx = GcAffine.FromTRS(rect.Position, rect.Radian, s).Mul(m_CurrentMatrix);
+            var mtx = GcAffine.FromTRS(rect.Position, rect.Radian, rect.Size).Mul(m_CurrentMatrix);
             if (m_CurrentStyle.RectAnchor != GcAnchor.UpperLeft)
             {
                 mtx = mtx.Mul(GcAffine.FromTranslate(GetOffset(m_CurrentStyle.RectAnchor)));
