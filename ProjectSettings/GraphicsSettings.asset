@@ -28,7 +28,7 @@ GraphicsSettings:
   m_LensFlare:
     m_Mode: 0
     m_Shader: {fileID: 0}
-  m_VideoShadersIncludeMode: 1
+  m_VideoShadersIncludeMode: 2
   m_AlwaysIncludedShaders:
   - {fileID: 4800000, guid: b07486247c81e004087cdab0a27f97cf, type: 3}
   - {fileID: 4800000, guid: 036731672c6122d42aadffff5b94f6cc, type: 3}
