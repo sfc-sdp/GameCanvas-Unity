@@ -1562,7 +1562,7 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsFlippedCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.IsPlayingCameraImage(camera);
+            => m_Context.InputCamera.IsFlippedCameraImage(camera);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
