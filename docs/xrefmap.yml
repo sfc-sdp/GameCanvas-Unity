@@ -4049,6 +4049,15 @@ references:
   fullName.vb: GameCanvas.GcProxy.DrawTexture(ByRef UnityEngine.Texture, ByRef Unity.Mathematics.float2, System.Single)
   nameWithType: GcProxy.DrawTexture(Texture, float2, Single)
   nameWithType.vb: GcProxy.DrawTexture(ByRef Texture, ByRef float2, Single)
+- uid: GameCanvas.GcProxy.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)
+  name: DrawTexture(Texture, float2x3)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__
+  commentId: M:GameCanvas.GcProxy.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)
+  name.vb: DrawTexture(ByRef Texture, ByRef float2x3)
+  fullName: GameCanvas.GcProxy.DrawTexture(UnityEngine.Texture, Unity.Mathematics.float2x3)
+  fullName.vb: GameCanvas.GcProxy.DrawTexture(ByRef UnityEngine.Texture, ByRef Unity.Mathematics.float2x3)
+  nameWithType: GcProxy.DrawTexture(Texture, float2x3)
+  nameWithType.vb: GcProxy.DrawTexture(ByRef Texture, ByRef float2x3)
 - uid: GameCanvas.GcProxy.DrawTexture*
   name: DrawTexture
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawTexture_
@@ -5739,15 +5748,6 @@ references:
   fullName.vb: GameCanvas.GcProxy.Save(ByRef System.String, System.Nullable(Of System.Int32))
   nameWithType: GcProxy.Save(String, Nullable<Int32>)
   nameWithType.vb: GcProxy.Save(ByRef String, Nullable(Of Int32))
-- uid: GameCanvas.GcProxy.Save(System.String@,System.Nullable{System.Numerics.BigInteger})
-  name: Save(String, Nullable<BigInteger>)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_Save_System_String__System_Nullable_System_Numerics_BigInteger__
-  commentId: M:GameCanvas.GcProxy.Save(System.String@,System.Nullable{System.Numerics.BigInteger})
-  name.vb: Save(ByRef String, Nullable(Of BigInteger))
-  fullName: GameCanvas.GcProxy.Save(System.String, System.Nullable<System.Numerics.BigInteger>)
-  fullName.vb: GameCanvas.GcProxy.Save(ByRef System.String, System.Nullable(Of System.Numerics.BigInteger))
-  nameWithType: GcProxy.Save(String, Nullable<BigInteger>)
-  nameWithType.vb: GcProxy.Save(ByRef String, Nullable(Of BigInteger))
 - uid: GameCanvas.GcProxy.Save(System.String@,System.Nullable{System.Single})
   name: Save(String, Nullable<Single>)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_Save_System_String__System_Nullable_System_Single__
@@ -6864,15 +6864,6 @@ references:
   fullName.vb: GameCanvas.GcProxy.TryLoad(ByRef System.String, ByRef System.Int32)
   nameWithType: GcProxy.TryLoad(String, out Int32)
   nameWithType.vb: GcProxy.TryLoad(ByRef String, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryLoad(System.String@,System.Numerics.BigInteger@)
-  name: TryLoad(String, out BigInteger)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryLoad_System_String__System_Numerics_BigInteger__
-  commentId: M:GameCanvas.GcProxy.TryLoad(System.String@,System.Numerics.BigInteger@)
-  name.vb: TryLoad(ByRef String, ByRef BigInteger)
-  fullName: GameCanvas.GcProxy.TryLoad(System.String, out System.Numerics.BigInteger)
-  fullName.vb: GameCanvas.GcProxy.TryLoad(ByRef System.String, ByRef System.Numerics.BigInteger)
-  nameWithType: GcProxy.TryLoad(String, out BigInteger)
-  nameWithType.vb: GcProxy.TryLoad(ByRef String, ByRef BigInteger)
 - uid: GameCanvas.GcProxy.TryLoad(System.String@,System.Single@)
   name: TryLoad(String, out Single)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryLoad_System_String__System_Single__
@@ -8574,6 +8565,15 @@ references:
   fullName.vb: GameCanvas.IGraphics.DrawTexture(ByRef UnityEngine.Texture, ByRef Unity.Mathematics.float2, System.Single)
   nameWithType: IGraphics.DrawTexture(Texture, float2, Single)
   nameWithType.vb: IGraphics.DrawTexture(ByRef Texture, ByRef float2, Single)
+- uid: GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)
+  name: DrawTexture(Texture, float2x3)
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__
+  commentId: M:GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)
+  name.vb: DrawTexture(ByRef Texture, ByRef float2x3)
+  fullName: GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture, Unity.Mathematics.float2x3)
+  fullName.vb: GameCanvas.IGraphics.DrawTexture(ByRef UnityEngine.Texture, ByRef Unity.Mathematics.float2x3)
+  nameWithType: IGraphics.DrawTexture(Texture, float2x3)
+  nameWithType.vb: IGraphics.DrawTexture(ByRef Texture, ByRef float2x3)
 - uid: GameCanvas.IGraphics.DrawTexture*
   name: DrawTexture
   href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_
@@ -12550,38 +12550,6 @@ references:
   commentId: T:GameCanvas.IStorageEx
   fullName: GameCanvas.IStorageEx
   nameWithType: IStorageEx
-- uid: GameCanvas.IStorageEx.Save(System.String@,System.Nullable{System.Numerics.BigInteger})
-  name: Save(String, Nullable<BigInteger>)
-  href: api/GameCanvas.IStorageEx.html#GameCanvas_IStorageEx_Save_System_String__System_Nullable_System_Numerics_BigInteger__
-  commentId: M:GameCanvas.IStorageEx.Save(System.String@,System.Nullable{System.Numerics.BigInteger})
-  name.vb: Save(ByRef String, Nullable(Of BigInteger))
-  fullName: GameCanvas.IStorageEx.Save(System.String, System.Nullable<System.Numerics.BigInteger>)
-  fullName.vb: GameCanvas.IStorageEx.Save(ByRef System.String, System.Nullable(Of System.Numerics.BigInteger))
-  nameWithType: IStorageEx.Save(String, Nullable<BigInteger>)
-  nameWithType.vb: IStorageEx.Save(ByRef String, Nullable(Of BigInteger))
-- uid: GameCanvas.IStorageEx.Save*
-  name: Save
-  href: api/GameCanvas.IStorageEx.html#GameCanvas_IStorageEx_Save_
-  commentId: Overload:GameCanvas.IStorageEx.Save
-  isSpec: "True"
-  fullName: GameCanvas.IStorageEx.Save
-  nameWithType: IStorageEx.Save
-- uid: GameCanvas.IStorageEx.TryLoad(System.String@,System.Numerics.BigInteger@)
-  name: TryLoad(String, out BigInteger)
-  href: api/GameCanvas.IStorageEx.html#GameCanvas_IStorageEx_TryLoad_System_String__System_Numerics_BigInteger__
-  commentId: M:GameCanvas.IStorageEx.TryLoad(System.String@,System.Numerics.BigInteger@)
-  name.vb: TryLoad(ByRef String, ByRef BigInteger)
-  fullName: GameCanvas.IStorageEx.TryLoad(System.String, out System.Numerics.BigInteger)
-  fullName.vb: GameCanvas.IStorageEx.TryLoad(ByRef System.String, ByRef System.Numerics.BigInteger)
-  nameWithType: IStorageEx.TryLoad(String, out BigInteger)
-  nameWithType.vb: IStorageEx.TryLoad(ByRef String, ByRef BigInteger)
-- uid: GameCanvas.IStorageEx.TryLoad*
-  name: TryLoad
-  href: api/GameCanvas.IStorageEx.html#GameCanvas_IStorageEx_TryLoad_
-  commentId: Overload:GameCanvas.IStorageEx.TryLoad
-  isSpec: "True"
-  fullName: GameCanvas.IStorageEx.TryLoad
-  nameWithType: IStorageEx.TryLoad
 - uid: GameCanvas.ITime
   name: ITime
   href: api/GameCanvas.ITime.html
