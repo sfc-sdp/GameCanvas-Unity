@@ -86,24 +86,6 @@ namespace GameCanvas
 
     public interface IStorageEx : IStorage
     {
-        /// <summary>
-        /// ローカルストレージに値を保存します
-        /// </summary>
-        /// <remarks>
-        /// <paramref name="value"/> に null を渡した場合、キーに紐づくデータを削除します
-        /// </remarks>
-        /// <param name="key">キー</param>
-        /// <param name="value">保存する値</param>
-        void Save(in string key, BigInteger? value);
-
-        /// <summary>
-        /// ローカルストレージに保存された値を取り出します
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <param name="value">取り出した値</param>
-        /// <returns>取り出せたかどうか</returns>
-        bool TryLoad(in string key, out BigInteger value);
-
         [System.Obsolete("Use to `SaveScreenshotAsync` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void WriteScreenImage(in string file);
