@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 5.0.12
+### 不具合修正
+- [#186](https://github.com/sfc-sdp/GameCanvas-Unity/issues/186) 整数が保存できない不具合への暫定対処
+
 ## 5.0.11
 ### 機能追加
 - 位置情報系APIのサンプルプロジェクトを同梱 (Packages/GameCanvas/Sample~/Geolocation)

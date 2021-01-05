@@ -4730,6 +4730,39 @@
       </tr>
     </tbody>
   </table>
+  <a id="GameCanvas_GcProxy_DrawTexture_" data-uid="GameCanvas.GcProxy.DrawTexture*"></a>
+  <h4 id="GameCanvas_GcProxy_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcProxy.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)">DrawTexture(Texture, float2x3)</h4>
+  <div class="markdown level1 summary"><p>テクスチャーを変形して描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawTexture(in Texture texture, in float2x3 matrix)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Texture.html">Texture</a></td>
+        <td><span class="parametername">texture</span></td>
+        <td><p>描画するテクスチャー</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
+        <td><span class="parametername">matrix</span></td>
+        <td><p>アフィン変換行列</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_GcProxy_EraseSavedDataAll_" data-uid="GameCanvas.GcProxy.EraseSavedDataAll*"></a>
   <h4 id="GameCanvas_GcProxy_EraseSavedDataAll" data-uid="GameCanvas.GcProxy.EraseSavedDataAll">EraseSavedDataAll()</h4>
   <div class="markdown level1 summary"><p>ローカルストレージに保存された全ての値を削除します</p>
@@ -5675,7 +5708,10 @@
     </tbody>
   </table>
   <h5 id="GameCanvas_GcProxy_GetPrimaryCameraResolution_GameCanvas_GcCameraDevice___remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>推奨解像度を取得できない場合、現在のキャンバス解像度とフレームレートに基づいた適当な値を返します</p>
+  <div class="markdown level1 remarks"><ul>
+<li>推奨解像度を取得できない場合、現在のキャンバス解像度とフレームレートに基づいた適当な値を返します</li>
+<li>エディタでは常に推奨解像度を取得できません</li>
+</ul>
 </div>
   <a id="GameCanvas_GcProxy_GetSoundLevel_" data-uid="GameCanvas.GcProxy.GetSoundLevel*"></a>
   <h4 id="GameCanvas_GcProxy_GetSoundLevel_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.GcProxy.GetSoundLevel(GameCanvas.GcSoundTrack)">GetSoundLevel(GcSoundTrack)</h4>
@@ -8760,42 +8796,6 @@
   <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">value</code> に null を渡した場合、キーに紐づくデータを削除します</p>
 </div>
   <a id="GameCanvas_GcProxy_Save_" data-uid="GameCanvas.GcProxy.Save*"></a>
-  <h4 id="GameCanvas_GcProxy_Save_System_String__System_Nullable_System_Numerics_BigInteger__" data-uid="GameCanvas.GcProxy.Save(System.String@,System.Nullable{System.Numerics.BigInteger})">Save(String, Nullable&lt;BigInteger&gt;)</h4>
-  <div class="markdown level1 summary"><p>ローカルストレージに値を保存します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Save(in string key, BigInteger? value)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>キー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.nullable-1?view=netstandard-2.0">Nullable</a>&lt;<a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.numerics.biginteger?view=netstandard-2.0">BigInteger</a>&gt;</td>
-        <td><span class="parametername">value</span></td>
-        <td><p>保存する値</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_GcProxy_Save_System_String__System_Nullable_System_Numerics_BigInteger___remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">value</code> に null を渡した場合、キーに紐づくデータを削除します</p>
-</div>
-  <a id="GameCanvas_GcProxy_Save_" data-uid="GameCanvas.GcProxy.Save*"></a>
   <h4 id="GameCanvas_GcProxy_Save_System_String__System_Nullable_System_Single__" data-uid="GameCanvas.GcProxy.Save(System.String@,System.Nullable{System.Single})">Save(String, Nullable&lt;Single&gt;)</h4>
   <div class="markdown level1 summary"><p>ローカルストレージに値を保存します</p>
 </div>
@@ -11863,55 +11863,6 @@
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>取り出した値</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>取り出せたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcProxy_TryLoad_" data-uid="GameCanvas.GcProxy.TryLoad*"></a>
-  <h4 id="GameCanvas_GcProxy_TryLoad_System_String__System_Numerics_BigInteger__" data-uid="GameCanvas.GcProxy.TryLoad(System.String@,System.Numerics.BigInteger@)">TryLoad(String, out BigInteger)</h4>
-  <div class="markdown level1 summary"><p>ローカルストレージに保存された値を取り出します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryLoad(in string key, out BigInteger value)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>キー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.numerics.biginteger?view=netstandard-2.0">BigInteger</a></td>
         <td><span class="parametername">value</span></td>
         <td><p>取り出した値</p>
 </td>

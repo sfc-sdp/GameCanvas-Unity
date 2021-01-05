@@ -10,7 +10,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Numerics;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.Mathematics;
@@ -2040,11 +2039,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Save(in string key, BigInteger? value)
-            => m_Context.Storage.Save(key, value.ToString());
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Save(in string key, float? value)
             => m_Context.Storage.Save(key, value);
 
@@ -2458,12 +2452,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetScreenKeyboardArea(out GcAABB area)
             => m_Context.InputKey.TryGetScreenKeyboardArea(out area);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryLoad(in string key, out BigInteger value)
-            => m_Context.Storage.TryLoad(key, out string text)
-            && BigInteger.TryParse(text, out value);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
