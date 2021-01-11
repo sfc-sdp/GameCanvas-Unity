@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Unity.Mathematics;
 
-namespace GameCanvas.Tests.Editor
+namespace GameCanvas.Editor.Tests
 {
     public class EditmodeTest
     {

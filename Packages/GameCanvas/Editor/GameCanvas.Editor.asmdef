@@ -1,5 +1,6 @@
 {
     "name": "GameCanvas.Editor",
+    "rootNamespace": "GameCanvas.Editor",
     "references": [
         "GUID:f6f069d2503f93e449334ed12bfeb77f"
     ],

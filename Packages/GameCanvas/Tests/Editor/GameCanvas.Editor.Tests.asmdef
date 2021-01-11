@@ -1,10 +1,12 @@
 {
     "name": "GameCanvas.Tests.Editor",
+    "rootNamespace": "GameCanvas.Editor.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Unity.Mathematics",
-        "GameCanvas"
+        "GameCanvas",
+        "GameCanvas.Editor"
     ],
     "includePlatforms": [
         "Editor"
