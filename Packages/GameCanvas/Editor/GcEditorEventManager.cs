@@ -130,6 +130,9 @@ namespace GameCanvas.Editor
             var importer = (TextureImporter)assetImporter;
             GcEditorResourceBuilder.OnPreprocessTexture(importer);
         }
+
+        static string OnGeneratedCSProject(string path, string content)
+            => GcEditorCompileModifier.OnGeneratedCSProject(path, content);
 #pragma warning restore IDE0051
         #endregion
     }
