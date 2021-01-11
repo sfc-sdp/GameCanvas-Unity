@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using Unity.Collections;
 using UnityEngine;
 #if !UNITY_ANDROID
@@ -35,7 +36,7 @@ namespace GameCanvas.Engine
         NativeHashMap<int, GcKeyTrace> m_KeyTraceDict;
         NativeList<GcKeyTrace> m_KeyTraceListOnlyHold;
         NativeList<GcKeyTrace> m_KeyTraceListOnlyUp;
-        TouchScreenKeyboard m_ScreenKeyboard;
+        TouchScreenKeyboard? m_ScreenKeyboard;
         #endregion
 
         //----------------------------------------------------------

@@ -7,7 +7,9 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -32,7 +34,7 @@ namespace GameCanvas
         /// <param name="url">リソースURL</param>
         /// <param name="texture">画像リソース。戻り値が<see cref="GcAvailability.Ready"/>以外だとNull</param>
         /// <returns>オンラインリソースの可用性</returns>
-        GcAvailability TryGetOnlineImage(in string url, out Texture2D texture);
+        bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture);
 
         /// <summary>
         /// オンライン画像リソースの寸法を取得します
@@ -48,7 +50,7 @@ namespace GameCanvas
         /// <param name="url">リソースURL</param>
         /// <param name="clip">音声リソース。戻り値が<see cref="GcAvailability.Ready"/>以外だとNull</param>
         /// <returns>オンラインリソースの可用性</returns>
-        GcAvailability TryGetOnlineSound(in string url, out AudioClip clip);
+        bool TryGetOnlineSound(in string url, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip);
 
         /// <summary>
         /// オンライン音声リソースの取得を試みます
@@ -57,7 +59,7 @@ namespace GameCanvas
         /// <param name="type">音声リソースの形式</param>
         /// <param name="clip">音声リソース。戻り値が<see cref="GcAvailability.Ready"/>以外だとNull</param>
         /// <returns>オンラインリソースの可用性</returns>
-        GcAvailability TryGetOnlineSound(in string url, in AudioType type, out AudioClip clip);
+        bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip);
 
         /// <summary>
         /// オンラインテキストの取得を試みます
@@ -65,7 +67,7 @@ namespace GameCanvas
         /// <param name="url">リソースURL</param>
         /// <param name="clip">テキスト。戻り値が<see cref="GcAvailability.Ready"/>以外だとNull</param>
         /// <returns>オンラインリソースの可用性</returns>
-        GcAvailability TryGetOnlineText(in string url, out string str);
+        bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str);
     }
 
     public interface INetworkEx : INetwork
@@ -134,6 +136,6 @@ namespace GameCanvas
 
         [System.Obsolete("Use to `TryGetOnlineText`  instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        GcAvailability GetOnlineTextAsync(in string url, out string str);
+        GcAvailability GetOnlineTextAsync(in string url, out string? str);
     }
 }

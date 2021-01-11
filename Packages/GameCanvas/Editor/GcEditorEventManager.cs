@@ -7,8 +7,8 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.IO;
-using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -42,7 +42,7 @@ namespace GameCanvas.Editor
             AssemblyReloadEvents.beforeAssemblyReload += OnPreCompile;
             EditorApplication.delayCall += OnReload;
 
-            void OnReload()
+            static void OnReload()
             {
                 GcEditorSettings.Load();
 
@@ -121,13 +121,13 @@ namespace GameCanvas.Editor
 #pragma warning disable IDE0051
         void OnPostprocessAudio(AudioClip clip)
         {
-            var importer = assetImporter as AudioImporter;
+            var importer = (AudioImporter)assetImporter;
             GcEditorResourceBuilder.OnPostprocessAudio(importer, clip);
         }
 
         void OnPreprocessTexture()
         {
-            var importer = assetImporter as TextureImporter;
+            var importer = (TextureImporter)assetImporter;
             GcEditorResourceBuilder.OnPreprocessTexture(importer);
         }
 #pragma warning restore IDE0051

@@ -7,7 +7,9 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace GameCanvas
@@ -47,7 +49,7 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="key">キー</param>
         /// <param name="value">保存する値</param>
-        void Save(in string key, string value);
+        void Save(in string key, string? value);
 
         /// <summary>
         /// 現在の画面を 画像として保存します
@@ -57,7 +59,7 @@ namespace GameCanvas
         /// - 保存に失敗した場合、<paramref name="onComplete"/> の引数には null が渡されます
         /// </remarks>
         /// <param name="onComplete">保存完了後に呼び出されるコールバック</param>
-        void SaveScreenshotAsync(in System.Action<string> onComplete = null);
+        void SaveScreenshotAsync(System.Action<string?>? onComplete = null);
 
         /// <summary>
         /// ローカルストレージに保存された値を取り出します
@@ -81,7 +83,7 @@ namespace GameCanvas
         /// <param name="key">キー</param>
         /// <param name="value">取り出した値</param>
         /// <returns>取り出せたかどうか</returns>
-        bool TryLoad(in string key, out string value);
+        bool TryLoad(in string key, [NotNullWhen(true)] out string? value);
     }
 
     public interface IStorageEx : IStorage

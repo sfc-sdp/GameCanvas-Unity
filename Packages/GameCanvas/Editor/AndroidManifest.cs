@@ -7,6 +7,8 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Xml;
 
@@ -26,7 +28,7 @@ namespace GameCanvas.Editor
 
         readonly XmlNamespaceManager m_NamespaceManager;
         readonly string m_Path;
-        XmlElement m_ApplicationElement;
+        XmlElement? m_ApplicationElement;
         #endregion
 
         //----------------------------------------------------------
@@ -77,7 +79,7 @@ namespace GameCanvas.Editor
 
         public void SkipPermissionsDialog(in bool skip)
         {
-            SetMetaData(m_ApplicationElement, "unityplayer.SkipPermissionsDialog", skip ? "true" : "false");
+            SetMetaData(m_ApplicationElement!, "unityplayer.SkipPermissionsDialog", skip ? "true" : "false");
         }
         #endregion
 
@@ -105,7 +107,7 @@ namespace GameCanvas.Editor
             }
         }
 
-        bool TryGetMetaDataElement(in XmlElement parent, in string prefix, in string name, out XmlElement elem)
+        bool TryGetMetaDataElement(in XmlElement parent, in string prefix, in string name, [NotNullWhen(true)] out XmlElement? elem)
         {
             elem = parent.SelectSingleNode($"/meta-data[@{prefix}:name='{name}']", m_NamespaceManager) as XmlElement;
             return (elem != null);

@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.IO;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ namespace GameCanvas.Editor
         private const int k_SerializeVersion = 1;
         private const string k_Path = "ProjectSettings/GameCanvasEditorSettings.json";
 
-        private static GcEditorSettings s_Instance;
+        private static GcEditorSettings? s_Instance;
 
         [SerializeField]
         private int SerializeVersion = k_SerializeVersion;
@@ -37,16 +38,7 @@ namespace GameCanvas.Editor
         //----------------------------------------------------------
 
         public static GcEditorSettings CurrentSettings
-        {
-            get
-            {
-                if (s_Instance == null)
-                {
-                    Load();
-                }
-                return s_Instance;
-            }
-        }
+            => s_Instance ??= Load();
 
         public void Save()
         {
@@ -67,22 +59,25 @@ namespace GameCanvas.Editor
         #region 内部関数
         //----------------------------------------------------------
 
-        internal static void Load()
+        internal static GcEditorSettings Load()
         {
+            GcEditorSettings instance;
+
             if (File.Exists(k_Path))
             {
                 var json = File.ReadAllText(k_Path);
-                s_Instance = JsonUtility.FromJson<GcEditorSettings>(json);
-                if (s_Instance != null)
+                instance = JsonUtility.FromJson<GcEditorSettings>(json);
+                if (instance != null)
                 {
-                    if (s_Instance.SerializeVersion == k_SerializeVersion) return;
+                    if (instance.SerializeVersion == k_SerializeVersion) return instance;
 
                     Debug.LogWarning("[GameCanvas] バージョン更新により、エディタ設定が初期化されました\n");
                 }
             }
 
-            s_Instance = new GcEditorSettings();
-            s_Instance.Save();
+            instance = new GcEditorSettings();
+            instance.Save();
+            return instance;
         }
         #endregion
     }

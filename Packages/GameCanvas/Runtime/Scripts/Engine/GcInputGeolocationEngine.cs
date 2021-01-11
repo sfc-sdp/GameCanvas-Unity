@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using UnityEngine;
 using Coroutine = System.Collections.IEnumerator;
 

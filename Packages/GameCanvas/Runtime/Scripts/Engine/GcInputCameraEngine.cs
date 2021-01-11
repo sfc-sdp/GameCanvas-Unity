@@ -7,8 +7,10 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
@@ -25,7 +27,7 @@ namespace GameCanvas.Engine
         readonly GcContext m_Context;
         readonly List<GcCameraDevice> m_DeviceList;
         readonly Dictionary<string, WebCamTexture> m_TextureDict;
-        ReadOnlyCollection<GcCameraDevice> m_DeviceListReadOnly;
+        readonly ReadOnlyCollection<GcCameraDevice> m_DeviceListReadOnly;
         bool m_IsDeviceListInitialized;
         #endregion
 
@@ -68,7 +70,7 @@ namespace GameCanvas.Engine
             }
         }
 
-        public WebCamTexture GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
+        public WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
         {
             if (string.IsNullOrEmpty(camera.DeviceName)) return null;
 
@@ -161,7 +163,7 @@ namespace GameCanvas.Engine
         {
             if (string.IsNullOrEmpty(camera.DeviceName)) return int2.zero;
 
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
+            if (m_TextureDict.TryGetValue(camera.DeviceName, out WebCamTexture? texture))
             {
                 m_TextureDict.Remove(camera.DeviceName);
                 texture.Stop();
@@ -176,7 +178,7 @@ namespace GameCanvas.Engine
             return int2.zero;
         }
 
-        public bool TryGetCameraImage(out GcCameraDevice camera)
+        public bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera)
         {
             InitCameraDevice();
             if (m_DeviceList.Count > 0)
@@ -188,7 +190,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public bool TryGetCameraImage(in string deviceName, out GcCameraDevice camera)
+        public bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera)
         {
             InitCameraDevice();
             for (var i = 0; i < m_DeviceList.Count; i++)
@@ -200,16 +202,12 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public bool TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice> array)
+        public bool TryGetCameraImageAll([NotNullWhen(true)] out ReadOnlyCollection<GcCameraDevice>? array)
         {
             InitCameraDevice();
-            if (m_DeviceListReadOnly != null)
-            {
-                array = m_DeviceListReadOnly;
-                return true;
-            }
-            array = null;
-            return false;
+            var ret = (m_DeviceListReadOnly.Count != 0);
+            array = ret ? m_DeviceListReadOnly : null;
+            return ret;
         }
 
         public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)
@@ -242,8 +240,6 @@ namespace GameCanvas.Engine
                 Object.Destroy(tex);
             }
             m_TextureDict.Clear();
-
-            m_DeviceListReadOnly = null;
             m_DeviceList.Clear();
 
             foreach (var device in WebCamTexture.devices)
@@ -254,9 +250,12 @@ namespace GameCanvas.Engine
 
                 var resArray = device.availableResolutions;
                 var gcResArray = new GcResolution[resArray?.Length ?? 0];
-                for (var i = 0; i < gcResArray.Length; i++)
+                if (resArray != null)
                 {
-                    gcResArray[i] = (GcResolution)resArray[i];
+                    for (var i = 0; i < gcResArray.Length; i++)
+                    {
+                        gcResArray[i] = (GcResolution)resArray[i];
+                    }
                 }
 
                 if (colorName != depthName)
@@ -269,10 +268,6 @@ namespace GameCanvas.Engine
                 }
             }
 
-            if (m_DeviceList.Count > 0)
-            {
-                m_DeviceListReadOnly = m_DeviceList.AsReadOnly();
-            }
             return m_DeviceList.Count;
         }
         #endregion
@@ -289,6 +284,7 @@ namespace GameCanvas.Engine
             m_Context = context;
             m_DeviceList = new List<GcCameraDevice>();
             m_TextureDict = new Dictionary<string, WebCamTexture>();
+            m_DeviceListReadOnly = m_DeviceList.AsReadOnly();
         }
 
         void System.IDisposable.Dispose()
@@ -306,7 +302,6 @@ namespace GameCanvas.Engine
                 m_TextureDict.Clear();
             }
 
-            m_DeviceListReadOnly = null;
             m_DeviceList.Clear();
         }
 

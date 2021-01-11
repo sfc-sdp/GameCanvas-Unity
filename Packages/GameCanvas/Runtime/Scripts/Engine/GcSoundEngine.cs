@@ -7,11 +7,12 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Audio;
 
 namespace GameCanvas.Engine
 {
@@ -76,7 +77,7 @@ namespace GameCanvas.Engine
                 SetupAudioSource(m_Sources[i]);
 
                 var trackName = ((GcSoundTrack)i).ToString();
-                var candidate = m_Mixer.Get().FindMatchingGroups(trackName);
+                var candidate = m_Mixer.Get()!.FindMatchingGroups(trackName);
                 Assert.IsTrue(candidate.Length == 1);
                 m_Sources[i].outputAudioMixerGroup = candidate[0];
             }
@@ -97,7 +98,7 @@ namespace GameCanvas.Engine
                 }
             }
 
-            var mixer = m_Mixer.Get();
+            var mixer = m_Mixer.Get()!;
             mixer.SetFloat("VolumeBGM1", 0f);
             mixer.SetFloat("VolumeBGM2", 0f);
             mixer.SetFloat("VolumeBGM3", 0f);
@@ -110,7 +111,7 @@ namespace GameCanvas.Engine
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key)) throw new System.ArgumentException("invalid value", nameof(track));
 
-            m_Mixer.Get().GetFloat(key, out var decibel);
+            m_Mixer.Get()!.GetFloat(key, out var decibel);
             return decibel;
         }
 
@@ -223,7 +224,7 @@ namespace GameCanvas.Engine
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key) || float.IsNaN(decibel)) return;
 
-            m_Mixer.Get().SetFloat(key, math.clamp(decibel, -96f, 20f));
+            m_Mixer.Get()!.SetFloat(key, math.clamp(decibel, -96f, 20f));
         }
 
         public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)
@@ -294,7 +295,7 @@ namespace GameCanvas.Engine
             src.volume = 1f;
         }
 
-        private bool TryGetAuidoClip(in GcSound sound, out AudioClip clip)
+        private bool TryGetAuidoClip(in GcSound sound, [NotNullWhen(true)] out AudioClip? clip)
         {
             if (sound == GcSound.Null || sound == GcSound.External)
             {

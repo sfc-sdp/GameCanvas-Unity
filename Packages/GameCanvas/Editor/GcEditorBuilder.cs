@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -23,7 +24,7 @@ namespace GameCanvas.Editor
         const string k_DataPath = "Library/GameCanvasBuilder.json";
         const int k_DataVersion = 2;
 
-        GUIStyle m_LargeText;
+        GUIStyle? m_LargeText;
         Option m_Option;
 
         #endregion
@@ -287,16 +288,6 @@ namespace GameCanvas.Editor
             EditorGUILayout.LabelField(name, GUILayout.Width(120));
             var prev = value;
             value = EditorGUILayout.TextField(value, GUILayout.Width(350));
-            EditorGUILayout.EndHorizontal();
-            return (prev != value);
-        }
-
-        bool DrawToggle(string name, ref bool value)
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(name, GUILayout.Width(120));
-            var prev = value;
-            value = EditorGUILayout.Toggle(value);
             EditorGUILayout.EndHorizontal();
             return (prev != value);
         }

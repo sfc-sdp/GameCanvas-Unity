@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
@@ -86,21 +87,21 @@ namespace GameCanvas.Engine
         readonly DictWithLife<TextGenKey, TextGenerator> m_TextGenerator;
         readonly DictWithLife<TextGenKey, Mesh> m_TextMesh;
         readonly List<UIVertex> m_TextMeshVerticesCache;
-#pragma warning disable IDE0032
+
         GcMinMaxBox3D m_CanvasBox;
         int2 m_CanvasSize;
         Color m_ColorBackground;
         Color m_ColorOutside;
-        CommandBuffer m_CommandBufferEndOfFrame;
-        CommandBuffer m_CommandBufferOpaque;
-        CommandBuffer m_CommandBufferTransparent;
+        CommandBuffer? m_CommandBufferEndOfFrame;
+        CommandBuffer? m_CommandBufferOpaque;
+        CommandBuffer? m_CommandBufferTransparent;
         float2x3 m_CurrentMatrix;
         GcStyle m_CurrentStyle;
         Rect m_DeviceScreenRect;
         int2 m_DeviceScreenSize;
         int m_DrawCount;
         GcFont m_Font;
-        RenderTexture m_FrameBuffer;
+        RenderTexture? m_FrameBuffer;
         bool m_IsInit;
         float m_PixelSizeMin;
         float4x4 m_ProjectionMtx;
@@ -108,7 +109,6 @@ namespace GameCanvas.Engine
         NativeList<GcStyle> m_StackStyle;
         GcMinMaxBox3D m_ViewportBox;
         float4x4 m_ViewportMtx;
-#pragma warning restore IDE0032
         #endregion
 
         //----------------------------------------------------------
@@ -256,7 +256,7 @@ namespace GameCanvas.Engine
         {
             if (!m_IsInit) return;
 
-            m_CommandBufferOpaque.ClearRenderTarget(true, true, m_ColorBackground);
+            m_CommandBufferOpaque!.ClearRenderTarget(true, true, m_ColorBackground);
         }
 
         public void ClearStyle()
@@ -293,7 +293,7 @@ namespace GameCanvas.Engine
 
             if (!m_MeshImage.TryGetValue(image.m_Path, out Mesh mesh))
             {
-                if (!m_Atlas.TryGet(image.m_Path, out Sprite sprite)) return;
+                if (!m_Atlas.TryGet(image.m_Path, out Sprite? sprite)) return;
 
                 SetupMeshAsSprite(out mesh, sprite);
                 m_MeshImage.Add(image.m_Path, mesh);
@@ -313,7 +313,7 @@ namespace GameCanvas.Engine
 
             if (!m_MeshImage.TryGetValue(image.m_Path, out Mesh mesh))
             {
-                if (!m_Atlas.TryGet(image.m_Path, out Sprite sprite)) return;
+                if (!m_Atlas.TryGet(image.m_Path, out Sprite? sprite)) return;
 
                 SetupMeshAsSprite(out mesh, sprite);
                 m_MeshImage.Add(image.m_Path, mesh);
@@ -337,7 +337,7 @@ namespace GameCanvas.Engine
 
             if (!m_MeshImage.TryGetValue(image.m_Path, out Mesh mesh))
             {
-                if (!m_Atlas.TryGet(image.m_Path, out Sprite sprite)) return;
+                if (!m_Atlas.TryGet(image.m_Path, out Sprite? sprite)) return;
 
                 SetupMeshAsSprite(out mesh, sprite);
                 m_MeshImage.Add(image.m_Path, mesh);
@@ -682,7 +682,7 @@ namespace GameCanvas.Engine
                 UpdateBoxAndMtx();
             }
 
-            m_CommandBufferOpaque.Clear();
+            m_CommandBufferOpaque!.Clear();
 #if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX || UNITY_IOS
             m_CommandBufferOpaque.Blit(m_FrameBuffer, BuiltinRenderTextureType.CameraTarget, new float2(1, -1f), new float2(0, 1f));
 #else
@@ -690,7 +690,7 @@ namespace GameCanvas.Engine
 #endif // UNITY_EDITOR_WIN || UNITY_EDITOR_OSX || UNITY_IOS
             m_CommandBufferOpaque.SetViewport(m_DeviceScreenRect);
             m_CommandBufferOpaque.SetViewProjectionMatrices(m_ViewportMtx, m_ProjectionMtx);
-            m_CommandBufferTransparent.Clear();
+            m_CommandBufferTransparent!.Clear();
             m_CommandBufferTransparent.SetRenderTarget(BuiltinRenderTextureType.CameraTarget);
             m_CommandBufferTransparent.SetViewport(m_DeviceScreenRect);
             m_CommandBufferTransparent.SetViewProjectionMatrices(m_ViewportMtx, m_ProjectionMtx);
@@ -704,18 +704,18 @@ namespace GameCanvas.Engine
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static float2 GetOffset(in GcAnchor anchor)
         {
-            switch (anchor)
+            return anchor switch
             {
-                case GcAnchor.UpperCenter: return new float2(-0.5f, 0f);
-                case GcAnchor.UpperRight: return new float2(-1f, 0f);
-                case GcAnchor.MiddleRight: return new float2(-1f, -0.5f);
-                case GcAnchor.LowerRight: return new float2(-1f, -1f);
-                case GcAnchor.LowerCenter: return new float2(-0.5f, -1f);
-                case GcAnchor.LowerLeft: return new float2(0f, -1f);
-                case GcAnchor.MiddleLeft: return new float2(0f, -0.5f);
-                case GcAnchor.MiddleCenter: return new float2(-0.5f, -0.5f);
-                default: return float2.zero;
-            }
+                GcAnchor.UpperCenter => new float2(-0.5f, 0f),
+                GcAnchor.UpperRight => new float2(-1f, 0f),
+                GcAnchor.MiddleRight => new float2(-1f, -0.5f),
+                GcAnchor.LowerRight => new float2(-1f, -1f),
+                GcAnchor.LowerCenter => new float2(-0.5f, -1f),
+                GcAnchor.LowerLeft => new float2(0f, -1f),
+                GcAnchor.MiddleLeft => new float2(0f, -0.5f),
+                GcAnchor.MiddleCenter => new float2(-0.5f, -0.5f),
+                _ => float2.zero,
+            };
         }
 
         internal void Init()
@@ -1113,7 +1113,7 @@ namespace GameCanvas.Engine
             }
             Graphics.SetRenderTarget(null);
 
-            m_CommandBufferEndOfFrame.Clear();
+            m_CommandBufferEndOfFrame!.Clear();
             m_CommandBufferEndOfFrame.Blit(BuiltinRenderTextureType.CameraTarget, m_FrameBuffer);
         }
 
@@ -1154,7 +1154,7 @@ namespace GameCanvas.Engine
                 .ToFloat4x4();
             matrix.c3.z = m_DrawCount++ * 0.001f;
 
-            buffer.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
+            buffer!.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
         }
 
         private void DrawMesh(in Mesh mesh, in Texture tex, in float2x3 mtx)
@@ -1168,7 +1168,7 @@ namespace GameCanvas.Engine
                 .ToFloat4x4();
             matrix.c3.z = m_DrawCount++ * 0.001f;
 
-            m_CommandBufferTransparent.DrawMesh(mesh, matrix, m_MaterialImage, 0, -1, m_MPBlock);
+            m_CommandBufferTransparent!.DrawMesh(mesh, matrix, m_MaterialImage, 0, -1, m_MPBlock);
         }
 
         private void DrawMeshDirect(in Mesh mesh, in Color color)
@@ -1184,11 +1184,11 @@ namespace GameCanvas.Engine
                 .ToFloat4x4();
             matrix.c3.z = m_DrawCount++ * 0.001f;
 
-            buffer.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
+            buffer!.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private CommandBuffer GetCommandBuffer(in bool hasAlpha)
+        private CommandBuffer? GetCommandBuffer(in bool hasAlpha)
 #if UNITY_EDITOR
             => hasAlpha ? m_CommandBufferTransparent : m_CommandBufferOpaque;
 #else
@@ -1244,7 +1244,7 @@ namespace GameCanvas.Engine
             {
                 value = GcReferenceFont.Load(fontName.m_Path);
             }
-            font = value.Get();
+            font = value.Get()!;
         }
 
         private void OnFontTextureRebuild(Font font)

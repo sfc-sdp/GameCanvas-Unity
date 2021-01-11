@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -22,14 +23,11 @@ namespace GameCanvas
         #region 変数
         //----------------------------------------------------------
 
-        internal Camera m_Camera;
-        internal event System.Action OnFocusOnce;
+        internal Camera m_Camera = null!;
+        internal event System.Action? OnFocusOnce;
 
-#pragma warning disable IDE0032
         private bool m_IsPause;
-        private GcProxy m_Proxy;
-        private Sequence m_Sequence;
-#pragma warning restore IDE0032
+        private GcProxy m_Proxy = null!;
 
         #endregion
 
@@ -110,7 +108,7 @@ namespace GameCanvas
             var now = System.DateTimeOffset.Now;
             m_Proxy.OnBeforeUpdate(now);
             InitGame();
-            m_Sequence = Entry();
+            var sequence = Entry();
             m_Proxy.UpdateCurrentScene();
             UpdateGame();
             m_Proxy.DrawCurrentScene();
@@ -191,7 +189,7 @@ namespace GameCanvas
 
                     samplers[6].Begin();
                     {
-                        isRunning = isRunning && m_Sequence.MoveNext();
+                        isRunning = isRunning && sequence.MoveNext();
                     }
                     samplers[6].End();
 

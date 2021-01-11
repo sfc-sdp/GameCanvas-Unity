@@ -1,3 +1,4 @@
+#nullable enable
 using GameCanvas;
 using Unity.Collections;
 using Unity.Mathematics;

@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -320,6 +321,8 @@ namespace GameCanvas.Editor
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+
 namespace GameCanvas
 {{
     public readonly partial struct {className} : System.IEquatable<{className}>
@@ -355,6 +358,8 @@ namespace GameCanvas
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+
 namespace GameCanvas
 {{
     public readonly partial struct {className} : System.IEquatable<{className}>
@@ -381,7 +386,7 @@ namespace GameCanvas
 
             foreach (var assetPath in assetPaths)
             {
-                var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+                var importer = (TextureImporter)AssetImporter.GetAtPath(assetPath);
                 if (OnPreprocessTexture(importer))
                 {
                     importer.SaveAndReimport();
@@ -399,7 +404,7 @@ namespace GameCanvas
             foreach (var assetPath in assetPaths)
             {
                 var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(assetPath);
-                var importer = AssetImporter.GetAtPath(assetPath) as AudioImporter;
+                var importer = (AudioImporter)AssetImporter.GetAtPath(assetPath);
                 if (OnPostprocessAudio(importer, clip))
                 {
                     importer.SaveAndReimport();

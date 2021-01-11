@@ -7,6 +7,7 @@
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using Unity.Mathematics;
 
@@ -29,7 +30,7 @@ namespace GameCanvas
             }
         }
 
-        public T Get()
+        public T? Get()
         {
             var obj = m_Pooled.Dequeue();
             if (obj != null) m_Lent.Enqueue(obj);
