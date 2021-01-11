@@ -28,6 +28,7 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7363023196ab8f541b231b866c0f5b1c, type: 3}
@@ -44,5 +45,6 @@ SpriteAtlas:
   - BallYellow
   - BlueSky
   - BallRed
+  m_RenderDataMap: {}
   m_Tag: SpriteAtlas
   m_IsVariant: 0

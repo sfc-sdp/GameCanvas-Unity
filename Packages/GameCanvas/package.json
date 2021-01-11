@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "com.unity.mathematics": "1.2.1",
-    "com.unity.collections": "0.12.0-preview.13"
+    "com.unity.collections": "0.14.0-preview.16"
   }
 }
