@@ -28,6 +28,6 @@ iOS や Android への書き出しなど、より詳しい解説は、[スマー
 GameCanvasに対する質問や提案、バグ報告は [![Issues](https://img.shields.io/github/issues/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/issues) で受け付けています
 
 ## ライセンス
-Copyright (c) 2015-2020 Smart Device Programming.
+Copyright (c) 2015-2021 Smart Device Programming.
 
 This software is released under the MIT License, see [LICENSE](LICENSE).
