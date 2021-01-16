@@ -94,7 +94,7 @@ jobs:
       UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
     runs-on: ubuntu-latest
     container:
-      image: gableroux/unity3d:${{ matrix.unity-version }}-linux-il2cpp
+      image: unityci/editor:ubuntu-${{ matrix.unity-version }}-base-0
     steps:
       - uses: actions/checkout@v2
 
@@ -106,10 +106,10 @@ jobs:
             ${{ runner.os }}-unity-library-
 
       - name: Activate
-        run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -serial ${{ secrets.UNITY_SERIAL }} -username '${{ secrets.UNITY_EMAIL }}' -password '${{ secrets.UNITY_PASSWORD }}' || exit 0
+        run: unity-editor -quit -batchmode -nographics -silent-crashes -logFile -serial ${{ secrets.UNITY_SERIAL }} -username '${{ secrets.UNITY_EMAIL }}' -password '${{ secrets.UNITY_PASSWORD }}' || exit 0
       
       - name: Test EditMode
-        run: /opt/Unity/Editor/Unity -batchmode -nographics -silent-crashes -logFile -runTests -testResults ./test-result-editor.xml
+        run: unity-editor -batchmode -nographics -silent-crashes -logFile -runTests -testResults ./test-result-editor.xml
 
       - uses: actions/upload-artifact@v2
         with:
@@ -119,4 +119,4 @@ jobs:
           
       - name: Deactivate
         if: always()
-        run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -returnlicense || exit 0
+        run: unity-editor -quit -batchmode -nographics -silent-crashes -logFile -returnlicense || exit 0
