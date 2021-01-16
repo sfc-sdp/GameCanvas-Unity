@@ -160,5 +160,26 @@ namespace GameCanvas.Editor.Tests
                 Assert.IsTrue(v >= min && v < max);
             }
         }
+
+        [Test]
+        public void CompileCaseAndroid()
+        {
+            Assert.True(GcEditorCompiler.TryCompile(GcRuntimePlatform.Android, true));
+            Assert.True(GcEditorCompiler.TryCompile(GcRuntimePlatform.Android, false));
+        }
+
+        [Test]
+        public void CompileCaseiOS()
+        {
+            Assert.True(GcEditorCompiler.TryCompile(GcRuntimePlatform.iOS, true));
+            Assert.True(GcEditorCompiler.TryCompile(GcRuntimePlatform.iOS, false));
+        }
+
+        [Test]
+        public void CompileCaseWebGL()
+        {
+            Assert.True(GcEditorCompiler.TryCompile(GcRuntimePlatform.WebGL, true));
+            Assert.True(GcEditorCompiler.TryCompile(GcRuntimePlatform.WebGL, false));
+        }
     }
 }
