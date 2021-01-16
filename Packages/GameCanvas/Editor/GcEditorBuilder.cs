@@ -34,16 +34,6 @@ namespace GameCanvas.Editor
         //----------------------------------------------------------
 
         /// <summary>
-        /// ビルドプラットフォーム
-        /// </summary>
-        [System.Serializable]
-        public enum Platform
-        {
-            Android = BuildTarget.Android,
-            iOS = BuildTarget.iOS
-        }
-
-        /// <summary>
         /// ビルドオプション
         /// </summary>
         [System.Serializable]
@@ -82,7 +72,7 @@ namespace GameCanvas.Editor
             /// <summary>
             /// ビルドプラットフォーム
             /// </summary>
-            public Platform m_Platform;
+            public GcRuntimePlatform m_Platform;
 
             /// <summary>
             /// 製品名
@@ -127,9 +117,9 @@ namespace GameCanvas.Editor
             EditorUserBuildSettings.connectProfiler = false;
             EditorUserBuildSettings.development = false;
 
-            var buildTarget = (BuildTarget)option.m_Platform;
-            var buildTargetGroup = BuildPipeline.GetBuildTargetGroup(buildTarget);
-            if ((BuildTarget)option.m_Platform != EditorUserBuildSettings.activeBuildTarget)
+            var buildTarget = option.m_Platform.ToBuildTarget();
+            var buildTargetGroup = option.m_Platform.ToBuildTargetGroup();
+            if (buildTarget != EditorUserBuildSettings.activeBuildTarget)
             {
                 EditorUserBuildSettings.SwitchActiveBuildTarget(buildTargetGroup, buildTarget);
             }
@@ -143,7 +133,7 @@ namespace GameCanvas.Editor
             var outFilePath = Path.Combine(option.m_OutputFolderPath, option.m_ProductName);
             switch (option.m_Platform)
             {
-                case Platform.Android:
+                case GcRuntimePlatform.Android:
                     if (Path.GetExtension(outFilePath) != "apk") outFilePath += ".apk";
 
                     PlayerSettings.Android.minSdkVersion = option.m_MinimumSdkVersion;
@@ -162,7 +152,7 @@ namespace GameCanvas.Editor
                     }
                     break;
 
-                case Platform.iOS:
+                case GcRuntimePlatform.iOS:
                     PlayerSettings.iOS.sdkVersion = option.m_SdkType;
                     PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
                     PlayerSettings.iOS.targetOSVersionString = string.Empty;
@@ -187,7 +177,7 @@ namespace GameCanvas.Editor
             var report = BuildPipeline.BuildPlayer(
                 GetEnabledScenePaths(),
                 outFilePath,
-                (BuildTarget)option.m_Platform,
+                buildTarget,
                 buildOption
             );
 
@@ -304,18 +294,7 @@ namespace GameCanvas.Editor
             m_Option.m_TargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
             m_Option.m_MinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
             m_Option.m_SdkType = iOSSdkVersion.DeviceSDK;
-
-            switch (EditorUserBuildSettings.activeBuildTarget)
-            {
-                default:
-                case BuildTarget.Android:
-                    m_Option.m_Platform = Platform.Android;
-                    break;
-
-                case BuildTarget.iOS:
-                    m_Option.m_Platform = Platform.iOS;
-                    break;
-            }
+            m_Option.m_Platform = EditorUserBuildSettings.activeBuildTarget.ToRuntimePlatform();
         }
 
         void LoadData()
@@ -351,15 +330,15 @@ namespace GameCanvas.Editor
             isChange |= DrawTextField("PRODUCT NAME", ref m_Option.m_ProductName);
             isChange |= DrawTextField("COMPANY NAME", ref m_Option.m_CompanyName);
             isChange |= DrawSaveFolderPath("OUTPUT FOLDER", ref m_Option.m_OutputFolderPath);
-            m_Option.m_Platform = (Platform)DrawEnumPopup("BUILD TARGET", m_Option.m_Platform, ref isChange);
+            m_Option.m_Platform = (GcRuntimePlatform)DrawEnumPopup("BUILD TARGET", m_Option.m_Platform, ref isChange);
             switch (m_Option.m_Platform)
             {
-                case Platform.Android:
+                case GcRuntimePlatform.Android:
                     m_Option.m_TargetSdkVersion = (AndroidSdkVersions)DrawEnumPopup("TARGET SDK", m_Option.m_TargetSdkVersion, ref isChange);
                     m_Option.m_MinimumSdkVersion = (AndroidSdkVersions)DrawEnumPopup("MINIMUM SDK", m_Option.m_MinimumSdkVersion, ref isChange);
                     break;
 
-                case Platform.iOS:
+                case GcRuntimePlatform.iOS:
                     m_Option.m_SdkType = (iOSSdkVersion)DrawEnumPopup("SDK VERSION", m_Option.m_SdkType, ref isChange);
                     break;
             }
@@ -370,7 +349,7 @@ namespace GameCanvas.Editor
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
             var button1 = GUILayout.Button("BUILD", GUILayout.Height(25));
-            var button2 = m_Option.m_Platform == Platform.Android && GUILayout.Button("BUILD & RUN", GUILayout.Height(25));
+            var button2 = m_Option.m_Platform == GcRuntimePlatform.Android && GUILayout.Button("BUILD & RUN", GUILayout.Height(25));
             EditorGUILayout.EndHorizontal();
 
             if (button1)
