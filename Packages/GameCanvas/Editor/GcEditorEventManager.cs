@@ -132,7 +132,7 @@ namespace GameCanvas.Editor
         }
 
         static string OnGeneratedCSProject(string path, string content)
-            => GcEditorCompileModifier.OnGeneratedCSProject(path, content);
+            => GcEditorCompiler.OnGeneratedCSProject(path, content);
 #pragma warning restore IDE0051
         #endregion
     }

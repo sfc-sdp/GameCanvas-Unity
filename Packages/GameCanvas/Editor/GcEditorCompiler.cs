@@ -8,14 +8,53 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
+using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using UnityEditor.Build.Player;
 
 namespace GameCanvas.Editor
 {
-    static class GcEditorCompileModifier
+    public static class GcEditorCompiler
     {
-        public static string OnGeneratedCSProject(string _, string content)
+        //----------------------------------------------------------
+        #region 公開関数
+        //----------------------------------------------------------
+
+        public static bool TryCompile(in GcRuntimePlatform target, bool developmentBuild)
+        {
+            const string k_DllOutputPath = "Temp/PlayerScriptOutput";
+
+            var options = developmentBuild
+                ? ScriptCompilationOptions.DevelopmentBuild
+                : ScriptCompilationOptions.None;
+            var settings = new ScriptCompilationSettings()
+            {
+                target = target.ToBuildTarget(),
+                group = target.ToBuildTargetGroup(),
+                options = options,
+                extraScriptingDefines = System.Array.Empty<string>()
+            };
+            DeleteFolderIfExists();
+            var result = PlayerBuildInterface.CompilePlayerScripts(settings, k_DllOutputPath);
+            DeleteFolderIfExists();
+            return (result.typeDB != null && result.assemblies.Count > 0);
+
+            static void DeleteFolderIfExists()
+            {
+                if (Directory.Exists(k_DllOutputPath))
+                {
+                    Directory.Delete(k_DllOutputPath, true);
+                }
+            }
+        }
+        #endregion
+
+        //----------------------------------------------------------
+        #region 内部関数
+        //----------------------------------------------------------
+
+        internal static string OnGeneratedCSProject(string _, string content)
         {
             var document = XDocument.Parse(content);
             ConvertToModernMSBuild(document);
@@ -138,5 +177,6 @@ namespace GameCanvas.Editor
                 .Where(x => (string)x.Attribute("Include") == "Boo.Lang")
                 .Remove();
         }
+        #endregion
     }
 }
