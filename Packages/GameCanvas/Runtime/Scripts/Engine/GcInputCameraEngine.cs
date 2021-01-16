@@ -51,6 +51,8 @@ namespace GameCanvas.Engine
             =>  UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.Camera);
 #elif UNITY_IOS
             =>  Application.HasUserAuthorization(UserAuthorization.WebCam);
+#else
+            => false;
 #endif // UNITY_EDITOR
 
         public bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)
@@ -365,10 +367,7 @@ namespace GameCanvas.Engine
         /// <remarks><see href="https://qiita.com/utibenkei/items/65b56c13f43ce5809561">参考記事</see></remarks>
         private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
         {
-#if UNITY_EDITOR
-            yield return null;
-            callback?.Invoke(true);
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
             if (HasUserAuthorizedPermissionCamera)
             {
                 yield return null;
@@ -408,7 +407,10 @@ namespace GameCanvas.Engine
                     callback?.Invoke(HasUserAuthorizedPermissionCamera);
                 }
             }
-#endif // UNITY_EDITOR
+#else
+            yield return null;
+            callback?.Invoke(true);
+#endif // UNITY_ANDROID
         }
         #endregion
     }

@@ -51,13 +51,11 @@ namespace GameCanvas.Engine
         public LocationServiceStatus GeolocationStatus => m_Status;
 
         public bool HasUserAuthorizedPermissionGeolocation
-#if UNITY_EDITOR
-            => m_Service.isEnabledByUser;
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
             => UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation);
-#elif UNITY_IOS
+#else
             => m_Service.isEnabledByUser;
-#endif // UNITY_EDITOR
+#endif // UNITY_ANDROID
 
         public GcGeolocationEvent LastGeolocationEvent => m_LastEvent;
 
@@ -117,10 +115,7 @@ namespace GameCanvas.Engine
 
         private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
         {
-#if UNITY_EDITOR
-            yield return null;
-            callback?.Invoke(m_Service.isEnabledByUser);
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
             if (HasUserAuthorizedPermissionGeolocation)
             {
                 yield return null;
@@ -145,7 +140,10 @@ namespace GameCanvas.Engine
             {
                 throw new System.NotImplementedException();
             }
-#endif // UNITY_EDITOR
+#else
+            yield return null;
+            callback?.Invoke(m_Service.isEnabledByUser);
+#endif // UNITY_ANDROID
         }
         #endregion
     }
