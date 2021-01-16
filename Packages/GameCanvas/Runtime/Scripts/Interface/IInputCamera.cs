@@ -2,12 +2,14 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -54,7 +56,7 @@ namespace GameCanvas
         /// <param name="camera">カメラ（外部入力映像）</param>
         /// <param name="request">テクスチャーが未生成だった場合に、希望する解像度とリフレッシュレート</param>
         /// <returns>テクスチャー</returns>
-        WebCamTexture GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request);
+        WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request);
 
         /// <summary>
         /// 指定されたカメラ（外部入力映像）は上下が反転しているかどうか
@@ -117,7 +119,7 @@ namespace GameCanvas
         /// </summary>
         /// <param name="camera">カメラ（外部入力映像）</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetCameraImage(out GcCameraDevice camera);
+        bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera);
 
         /// <summary>
         /// デバイス名を指定して、カメラ（外部入力映像）の取得を試みます
@@ -125,7 +127,7 @@ namespace GameCanvas
         /// <param name="deviceName">デバイス名</param>
         /// <param name="camera">カメラ（外部入力映像）</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetCameraImage(in string deviceName, out GcCameraDevice camera);
+        bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera);
 
         /// <summary>
         /// 全ての認識可能なカメラ（外部入力映像）の取得を試みます
@@ -133,7 +135,7 @@ namespace GameCanvas
         /// <param name="array">カメラ（外部入力映像）配列</param>
         /// <param name="count">カメラ（外部入力映像）配列の要素数</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
-        bool TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice> array);
+        bool TryGetCameraImageAll([NotNullWhen(true)] out ReadOnlyCollection<GcCameraDevice>? array);
 
         /// <summary>
         /// 指定されたカメラ（外部入力映像）の回転角度取得を試みます

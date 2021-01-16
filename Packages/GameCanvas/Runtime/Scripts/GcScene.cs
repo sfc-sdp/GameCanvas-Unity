@@ -2,12 +2,14 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GameCanvas
 {
@@ -27,7 +29,7 @@ namespace GameCanvas
 
         private uint m_NextActorIndex;
 #pragma warning disable IDE1006
-        protected static GcProxy gc { get; private set; }
+        protected static GcProxy gc { get; private set; } = null!;
 #pragma warning restore IDE1006
 
         #endregion
@@ -54,7 +56,7 @@ namespace GameCanvas
         public virtual void DrawScene() { }
 
         /// <inheritdoc/>
-        public virtual void EnterScene(object state) { }
+        public virtual void EnterScene(object? state) { }
 
         /// <inheritdoc/>
         public int GetActorCount() => m_ActorList.Count;
@@ -94,7 +96,7 @@ namespace GameCanvas
         public virtual void ResumeScene() { }
 
         /// <inheritdoc/>
-        public bool TryGetActor(in int i, out GcActor actor)
+        public bool TryGetActor(in int i, [NotNullWhen(true)] out GcActor? actor)
         {
             if (i >= 0 && m_ActorList.Count > i)
             {
@@ -106,7 +108,7 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public bool TryGetActor<T>(in int i, out T actor) where T : GcActor
+        public bool TryGetActor<T>(in int i, [NotNullWhen(true)] out T? actor) where T : GcActor
         {
             if (i >= 0 && m_TypeToActors.TryGetValue(typeof(T), out var list) && list.Count > i)
             {

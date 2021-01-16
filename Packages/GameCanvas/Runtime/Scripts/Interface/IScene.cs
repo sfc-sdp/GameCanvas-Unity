@@ -2,11 +2,14 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+using System.Diagnostics.CodeAnalysis;
+
 namespace GameCanvas
 {
     public interface IScene
@@ -101,7 +104,7 @@ namespace GameCanvas
         /// <param name="i">取得するアクターのインデックス（0以上<see cref="GetActorCount"/>未満）</param>
         /// <param name="actor">取得できたアクター</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetActor(in int i, out GcActor actor);
+        bool TryGetActor(in int i, [NotNullWhen(true)] out GcActor? actor);
 
         /// <summary>
         /// シーンに登録されているアクターを 1つだけ取得します
@@ -110,7 +113,7 @@ namespace GameCanvas
         /// <param name="i">取得するアクターのインデックス（0以上<see cref="GetActorCount{T}"/>未満）</param>
         /// <param name="actor">取得できたアクター</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetActor<T>(in int i, out T actor) where T : GcActor;
+        bool TryGetActor<T>(in int i, [NotNullWhen(true)] out T? actor) where T : GcActor;
 
         /// <summary>
         /// シーンに登録されているアクターのうち、指定した型のものを取得します
@@ -139,20 +142,20 @@ namespace GameCanvas
         /// </remarks>
         /// <typeparam name="T">開始するシーンの型</typeparam>
         /// <param name="state">シーンの開始処理 (<see cref="IScene.EnterScene"/>) に引数として渡す任意の値</param>
-        void ChangeScene<T>(object state = null) where T : GcScene;
+        void ChangeScene<T>(object? state = null) where T : GcScene;
 
         /// <summary>
         /// シーンに登録されているアクターのうち、1つだけ取得します
         /// </summary>
         /// <returns>取得できたアクター</returns>
-        GcActor GetActor();
+        GcActor? GetActor();
 
         /// <summary>
         /// シーンに登録されているアクターのうち、指定した型のものを1つだけ取得します
         /// </summary>
         /// <typeparam name="T">取得するアクターの型</typeparam>
         /// <returns>取得できたアクター</returns>
-        T GetActor<T>() where T : GcActor;
+        T? GetActor<T>() where T : GcActor;
 
         /// <summary>
         /// シーンに登録されているアクターのうち、指定した型のものを取得します

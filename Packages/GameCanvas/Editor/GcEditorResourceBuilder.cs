@@ -2,11 +2,12 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -315,11 +316,13 @@ namespace GameCanvas.Editor
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+
 namespace GameCanvas
 {{
     public readonly partial struct {className} : System.IEquatable<{className}>
@@ -350,11 +353,13 @@ namespace GameCanvas
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+
 namespace GameCanvas
 {{
     public readonly partial struct {className} : System.IEquatable<{className}>
@@ -381,7 +386,7 @@ namespace GameCanvas
 
             foreach (var assetPath in assetPaths)
             {
-                var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+                var importer = (TextureImporter)AssetImporter.GetAtPath(assetPath);
                 if (OnPreprocessTexture(importer))
                 {
                     importer.SaveAndReimport();
@@ -399,7 +404,7 @@ namespace GameCanvas
             foreach (var assetPath in assetPaths)
             {
                 var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(assetPath);
-                var importer = AssetImporter.GetAtPath(assetPath) as AudioImporter;
+                var importer = (AudioImporter)AssetImporter.GetAtPath(assetPath);
                 if (OnPostprocessAudio(importer, clip))
                 {
                     importer.SaveAndReimport();

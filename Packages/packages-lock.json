@@ -1,21 +1,28 @@
 {
   "dependencies": {
+    "com.cysharp.runtimeunittesttoolkit": {
+      "version": "https://github.com/Cysharp/RuntimeUnitTestToolkit.git?path=RuntimeUnitTestToolkit/Assets/RuntimeUnitTestToolkit#2.4.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c3e1a6535ae8241bf9606681acf8f1a29bf4d4c7"
+    },
     "com.unity.burst": {
-      "version": "1.3.2",
-      "depth": 2,
+      "version": "1.4.3",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.mathematics": "1.1.0"
+        "com.unity.mathematics": "1.2.1"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-      "version": "0.12.0-preview.13",
+      "version": "0.14.0-preview.16",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework.performance": "2.3.1-preview",
-        "com.unity.burst": "1.3.2"
+        "com.unity.burst": "1.3.7"
       },
       "url": "https://packages.unity.com"
     },
@@ -27,7 +34,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "1.2.1",
+      "version": "2.0.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -57,15 +64,22 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0-preview",
-      "depth": 3,
+      "version": "2.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.scriptablebuildpipeline": {
+      "version": "1.15.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.settings-manager": {
-      "version": "1.0.1",
-      "depth": 1,
+      "version": "1.0.3",
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -82,17 +96,17 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework.performance": {
-      "version": "2.3.1-preview",
-      "depth": 2,
+      "version": "2.6.0-preview",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.0",
-        "com.unity.nuget.newtonsoft-json": "2.0.0-preview"
+        "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.testtools.codecoverage": {
-      "version": "0.4.0-preview",
+      "version": "0.4.1-preview",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -115,8 +129,10 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "com.cysharp.runtimeunittesttoolkit": "2.4.0",
         "com.unity.mathematics": "1.2.1",
-        "com.unity.collections": "0.12.0-preview.13"
+        "com.unity.collections": "0.14.0-preview.16",
+        "com.unity.scriptablebuildpipeline": "1.15.1"
       }
     },
     "com.unity.modules.androidjni": {

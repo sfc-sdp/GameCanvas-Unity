@@ -2,11 +2,13 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace GameCanvas
@@ -18,11 +20,11 @@ namespace GameCanvas
         [SerializeField]
         private LazyLoadReference<TAsset> m_Reference;
         [System.NonSerialized]
-        private TAsset m_Asset;
+        private TAsset? m_Asset;
 
         public bool IsValid => m_Reference.isSet;
 
-        public TAsset Get()
+        public TAsset? Get()
         {
             if (m_Asset)
             {
@@ -31,9 +33,9 @@ namespace GameCanvas
             return m_Asset = (m_Reference.isSet ? m_Reference.asset : null);
         }
 
-        public bool TryGet(out TAsset asset)
+        public bool TryGet([NotNullWhen(true)] out TAsset? asset)
         {
-            if (m_Asset)
+            if (m_Asset != null)
             {
                 asset = m_Asset;
                 return true;

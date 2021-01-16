@@ -2,11 +2,13 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using UnityEngine;
 using Coroutine = System.Collections.IEnumerator;
@@ -31,7 +33,7 @@ namespace GameCanvas.Engine
             PlayerPrefs.DeleteAll();
         }
 
-        public void Save(in string key, string value)
+        public void Save(in string key, string? value)
         {
             if (value != null)
             {
@@ -73,12 +75,12 @@ namespace GameCanvas.Engine
             }
         }
 
-        public void SaveScreenshotAsync(in System.Action<string> onComplete = null)
+        public void SaveScreenshotAsync(System.Action<string?>? onComplete = null)
         {
             m_Context.Behaviour.StartCoroutine(SaveScreenshotCoroutine(onComplete));
         }
 
-        public bool TryLoad(in string key, out string value)
+        public bool TryLoad(in string key, [NotNullWhen(true)] out string? value)
         {
             if (PlayerPrefs.HasKey(key))
             {
@@ -116,7 +118,7 @@ namespace GameCanvas.Engine
         #region 内部関数
         //----------------------------------------------------------
 
-        Coroutine SaveScreenshotCoroutine(System.Action<string> onComplete)
+        Coroutine SaveScreenshotCoroutine(System.Action<string?>? onComplete)
         {
             var filename = $"screenshot-{m_Context.Time.CurrentTimestamp}.png";
 #if UNITY_EDITOR

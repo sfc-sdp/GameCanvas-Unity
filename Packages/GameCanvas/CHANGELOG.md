@@ -1,4 +1,11 @@
 # CHANGE LOG
+## 6.0.0-pre.1
+### 機能追加
+- [#188](https://github.com/sfc-sdp/GameCanvas-Unity/issues/188) null許容参照型に対応
+- [#192](https://github.com/sfc-sdp/GameCanvas-Unity/issues/192) WebGLビルドをサポート
+### 仕様変更
+- [#187](https://github.com/sfc-sdp/GameCanvas-Unity/issues/187) Unity 2020.2.1f1 に更新
+
 ## 5.0.12
 ### 不具合修正
 - [#186](https://github.com/sfc-sdp/GameCanvas-Unity/issues/186) 整数が保存できない不具合への暫定対処

@@ -2,11 +2,13 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
+
 namespace GameCanvas
 {
     /// <summary>
@@ -14,7 +16,7 @@ namespace GameCanvas
     /// </summary>
     public abstract class GcActor : IActor, System.IComparable<GcActor>
     {
-        internal GcScene m_Scene = null;
+        internal GcScene? m_Scene = null;
         internal int m_Priority = 0;
         internal uint m_Index = 0;
 
@@ -33,7 +35,7 @@ namespace GameCanvas
         public virtual void AfterDraw() { }
 
 #pragma warning disable IDE1006
-        protected static GcProxy gc { get; private set; }
+        protected static GcProxy gc { get; private set; } = null!;
 #pragma warning restore IDE1006
 
         internal static void Inject(GcProxy proxy) { gc = proxy; }

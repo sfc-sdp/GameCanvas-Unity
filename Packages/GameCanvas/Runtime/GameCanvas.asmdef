@@ -1,5 +1,6 @@
 {
     "name": "GameCanvas",
+    "rootNamespace": "GameCanvas",
     "references": [
         "Unity.Mathematics",
         "Unity.Collections",

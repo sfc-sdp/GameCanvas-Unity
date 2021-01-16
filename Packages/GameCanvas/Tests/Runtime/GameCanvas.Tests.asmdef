@@ -1,5 +1,6 @@
 {
     "name": "GameCanvas.Tests",
+    "rootNamespace": "GameCanvas.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",

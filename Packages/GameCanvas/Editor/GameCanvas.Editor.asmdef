@@ -1,7 +1,10 @@
 {
     "name": "GameCanvas.Editor",
+    "rootNamespace": "GameCanvas.Editor",
     "references": [
-        "GUID:f6f069d2503f93e449334ed12bfeb77f"
+        "GUID:c5ecc461727906345a35491a0440694f",
+        "GUID:f6f069d2503f93e449334ed12bfeb77f",
+        "GUID:1b735e4770e5be346a2bafdd22e488d7"
     ],
     "includePlatforms": [
         "Editor"

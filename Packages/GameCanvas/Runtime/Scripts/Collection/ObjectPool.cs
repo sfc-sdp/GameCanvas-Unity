@@ -2,11 +2,12 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using Unity.Mathematics;
 
@@ -29,7 +30,7 @@ namespace GameCanvas
             }
         }
 
-        public T Get()
+        public T? Get()
         {
             var obj = m_Pooled.Dequeue();
             if (obj != null) m_Lent.Enqueue(obj);

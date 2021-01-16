@@ -2,11 +2,12 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,11 +23,9 @@ namespace GameCanvas
 
         public struct Enumerator : IEnumerator<T>
         {
-#pragma warning disable IDE0032
             private readonly List<GcActor> m_List;
-            private T m_Current;
+            private T? m_Current;
             private int m_Index;
-#pragma warning restore IDE0032
 
             internal Enumerator(in List<GcActor> list)
             {
@@ -35,8 +34,8 @@ namespace GameCanvas
                 m_Current = null;
             }
 
-            public T Current => m_Current;
-            object IEnumerator.Current => m_Current;
+            public T Current => m_Current ?? throw new System.InvalidOperationException();
+            object? IEnumerator.Current => m_Current;
             public void Dispose() { }
             public bool MoveNext()
             {

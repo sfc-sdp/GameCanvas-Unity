@@ -2,11 +2,12 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using GameCanvas.Engine;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ namespace GameCanvas
         public readonly GcSoundEngine Sound;
         public readonly GcStorageEngine Storage;
         public readonly GcTimeEngine Time;
-        public IEngine[] EngineArray;
+        public readonly IEngine[] EngineArray;
         #endregion
 
         //----------------------------------------------------------
@@ -71,13 +72,10 @@ namespace GameCanvas
 
         public void Dispose()
         {
-            if (EngineArray == null) return;
-
             foreach (var engine in EngineArray)
             {
-                engine?.Dispose();
+                engine.Dispose();
             }
-            EngineArray = null;
         }
 
         #endregion

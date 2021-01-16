@@ -2,12 +2,14 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
@@ -22,7 +24,7 @@ namespace GameCanvas.Engine
         //----------------------------------------------------------
 
         readonly Dictionary<string, UnityWebRequestAsyncOperation> m_DownloaderDict;
-        readonly Dictionary<string, object> m_ObjectDict;
+        readonly Dictionary<string, object?> m_ObjectDict;
         #endregion
 
         //----------------------------------------------------------
@@ -34,7 +36,7 @@ namespace GameCanvas.Engine
         /// </summary>
         internal GcNetworkEngine()
         {
-            m_ObjectDict = new Dictionary<string, object>();
+            m_ObjectDict = new Dictionary<string, object?>();
             m_DownloaderDict = new Dictionary<string, UnityWebRequestAsyncOperation>();
         }
 
@@ -86,25 +88,28 @@ namespace GameCanvas.Engine
             m_DownloaderDict.Clear();
         }
 
-        public GcAvailability TryGetOnlineImage(in string url, out Texture2D texture)
+        public bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture)
         {
             if (m_ObjectDict.TryGetValue(url, out var obj))
             {
                 texture = obj as Texture2D;
-                return (texture != null)
+                availability = (texture != null)
                     ? GcAvailability.Ready
                     : GcAvailability.NotAvailable;
+                return (texture != null);
             }
             texture = null;
 
             if (m_DownloaderDict.TryGetValue(url, out var downloader))
             {
-                return GcAvailability.NotReady;
+                availability = GcAvailability.NotReady;
+                return false;
             }
 
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
-                return GcAvailability.NotAvailable;
+                availability = GcAvailability.NotAvailable;
+                return false;
             }
 
             {
@@ -114,13 +119,14 @@ namespace GameCanvas.Engine
                 m_DownloaderDict.Add(www.url, op);
                 op.completed += OnCompleteGetTexture;
             }
-            return GcAvailability.NotReady;
+            availability = GcAvailability.NotReady;
+            return false;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetOnlineImageSize(in string url, out int2 size)
+        public bool TryGetOnlineImageSize(in string url, [NotNullWhen(true)] out int2 size)
         {
-            if (TryGetOnlineImage(url, out var texture) == GcAvailability.Ready)
+            if (TryGetOnlineImage(url, out _, out var texture))
             {
                 size = new int2(texture.width, texture.height);
                 return true;
@@ -130,43 +136,46 @@ namespace GameCanvas.Engine
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability TryGetOnlineSound(in string url, out AudioClip clip)
+        public bool TryGetOnlineSound(in string url, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)
         {
             if (url.EndsWith(".wav"))
             {
-                return TryGetOnlineSound(url, AudioType.WAV, out clip);
+                return TryGetOnlineSound(url, AudioType.WAV, out availability, out clip);
             }
             if (url.EndsWith(".mp3"))
             {
-                return TryGetOnlineSound(url, AudioType.MPEG, out clip);
+                return TryGetOnlineSound(url, AudioType.MPEG, out availability, out clip);
             }
             if (url.EndsWith(".ogg"))
             {
-                return TryGetOnlineSound(url, AudioType.OGGVORBIS, out clip);
+                return TryGetOnlineSound(url, AudioType.OGGVORBIS, out availability, out clip);
             }
 
-            return TryGetOnlineSound(url, AudioType.UNKNOWN, out clip);
+            return TryGetOnlineSound(url, AudioType.UNKNOWN, out availability, out clip);
         }
 
-        public GcAvailability TryGetOnlineSound(in string url, in AudioType type, out AudioClip clip)
+        public bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)
         {
             if (m_ObjectDict.TryGetValue(url, out var obj))
             {
                 clip = obj as AudioClip;
-                return (clip != null)
+                availability = (clip != null)
                     ? GcAvailability.Ready
                     : GcAvailability.NotAvailable;
+                return (clip != null);
             }
             clip = null;
 
             if (m_DownloaderDict.TryGetValue(url, out var downloader))
             {
-                return GcAvailability.NotReady;
+                availability = GcAvailability.NotReady;
+                return false;
             }
 
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
-                return GcAvailability.NotAvailable;
+                availability = GcAvailability.NotAvailable;
+                return false;
             }
 
             {
@@ -176,28 +185,32 @@ namespace GameCanvas.Engine
                 m_DownloaderDict.Add(www.url, op);
                 op.completed += OnCompleteGetAudioClip;
             }
-            return GcAvailability.NotReady;
+            availability = GcAvailability.NotReady;
+            return false;
         }
 
-        public GcAvailability TryGetOnlineText(in string url, out string str)
+        public bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)
         {
             if (m_ObjectDict.TryGetValue(url, out var obj))
             {
                 str = obj as string;
-                return (str != null)
+                availability = (str != null)
                     ? GcAvailability.Ready
                     : GcAvailability.NotAvailable;
+                return (str != null);
             }
             str = null;
 
             if (m_DownloaderDict.TryGetValue(url, out var downloader))
             {
-                return GcAvailability.NotReady;
+                availability = GcAvailability.NotReady;
+                return false;
             }
 
             if (Application.internetReachability == NetworkReachability.NotReachable)
             {
-                return GcAvailability.NotAvailable;
+                availability = GcAvailability.NotAvailable;
+                return false;
             }
 
             {
@@ -207,7 +220,8 @@ namespace GameCanvas.Engine
                 m_DownloaderDict.Add(www.url, op);
                 op.completed += OnCompleteGetText;
             }
-            return GcAvailability.NotReady;
+            availability = GcAvailability.NotReady;
+            return false;
         }
         #endregion
 
@@ -234,7 +248,7 @@ namespace GameCanvas.Engine
             }
             else
             {
-                var handler = www.downloadHandler as DownloadHandlerAudioClip;
+                var handler = (DownloadHandlerAudioClip)www.downloadHandler;
                 handler.compressed = true;
                 handler.streamAudio = true;
                 m_ObjectDict.Add(url, handler.audioClip);
@@ -276,7 +290,7 @@ namespace GameCanvas.Engine
             }
             else
             {
-                var handler = www.downloadHandler as DownloadHandlerTexture;
+                var handler = (DownloadHandlerTexture)www.downloadHandler;
                 m_ObjectDict.Add(url, handler.texture);
             }
 

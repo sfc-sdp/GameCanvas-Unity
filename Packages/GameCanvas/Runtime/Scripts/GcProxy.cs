@@ -2,14 +2,16 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2020 Smart Device Programming.
+// (c) 2015-2021 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
 /*------------------------------------------------------------*/
+#nullable enable
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.Mathematics;
@@ -29,9 +31,9 @@ namespace GameCanvas
         readonly GcContext m_Context;
         readonly Dictionary<System.Type, GcScene> m_SceneDict;
 
-        GcScene m_CurrentScene;
-        GcScene m_NextScene;
-        object m_NextSceneState;
+        GcScene? m_CurrentScene;
+        GcScene? m_NextScene;
+        object? m_NextSceneState;
         bool m_SceneEnterFlag;
         bool m_SceneLeaveFlag;
         #endregion
@@ -885,7 +887,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ChangeScene<T>(object state = null) where T : GcScene
+        public void ChangeScene<T>(object? state = null) where T : GcScene
         {
             if (m_CurrentScene != null)
             {
@@ -955,7 +957,7 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T CreateActor<T>() where T : GcActor, new()
-            => m_CurrentScene?.CreateActor<T>();
+            => m_CurrentScene?.CreateActor<T>() ?? throw new System.InvalidOperationException();
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1134,8 +1136,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcAvailability DrawOnlineImage(in string url)
         {
-            var ret = m_Context.Network.TryGetOnlineImage(url, out var tex);
-            if (ret == GcAvailability.Ready)
+            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
                 m_Context.Graphics.DrawTexture(tex);
             }
@@ -1146,8 +1147,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcAvailability DrawOnlineImage(in string url, in float2 position, float degree = 0f)
         {
-            var ret = m_Context.Network.TryGetOnlineImage(url, out var tex);
-            if (ret == GcAvailability.Ready)
+            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
                 m_Context.Graphics.DrawTexture(tex, position, degree);
             }
@@ -1158,8 +1158,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float degree = 0f)
         {
-            var ret = m_Context.Network.TryGetOnlineImage(url, out var tex);
-            if (ret == GcAvailability.Ready)
+            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
                 m_Context.Graphics.DrawTexture(tex, new float2(x, y), degree);
             }
@@ -1170,8 +1169,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcAvailability DrawOnlineImage(in string url, in GcRect rect)
         {
-            var ret = m_Context.Network.TryGetOnlineImage(url, out var tex);
-            if (ret == GcAvailability.Ready)
+            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
                 m_Context.Graphics.DrawTexture(tex, rect);
             }
@@ -1182,8 +1180,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float degree = 0f)
         {
-            var ret = m_Context.Network.TryGetOnlineImage(url, out var tex);
-            if (ret == GcAvailability.Ready)
+            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
                 m_Context.Graphics.DrawTexture(tex, new GcRect(x, y, width, height, math.radians(degree)));
             }
@@ -1366,12 +1363,12 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcActor GetActor()
+        public GcActor? GetActor()
             => (m_CurrentScene != null) && m_CurrentScene.TryGetActor(0, out var actor) ? actor : null;
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T GetActor<T>() where T : GcActor
+        public T? GetActor<T>() where T : GcActor
             => (m_CurrentScene != null) && m_CurrentScene.TryGetActor<T>(0, out var actor) ? actor : null;
 
         /// <inheritdoc/>
@@ -1467,12 +1464,15 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public GcAvailability GetOnlineTextAsync(in string url, out string text)
-            => m_Context.Network.TryGetOnlineText(url, out text);
+        public GcAvailability GetOnlineTextAsync(in string url, out string? text)
+        {
+            m_Context.Network.TryGetOnlineText(url, out var availability, out text);
+            return availability;
+        }
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public WebCamTexture GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
+        public WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
             => m_Context.InputCamera.GetOrCreateCameraTexture(camera, request);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2049,12 +2049,12 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Save(in string key, string value)
+        public void Save(in string key, string? value)
             => m_Context.Storage.Save(key, value);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SaveScreenshotAsync(in System.Action<string> onComplete = null)
+        public void SaveScreenshotAsync(System.Action<string?>? onComplete = null)
             => m_Context.Storage.SaveScreenshotAsync(onComplete);
 
         /// <inheritdoc/>
@@ -2255,7 +2255,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetActor(in int i, out GcActor actor)
+        public bool TryGetActor(in int i, [NotNullWhen(true)] out GcActor? actor)
         {
             if (m_CurrentScene != null)
             {
@@ -2267,7 +2267,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetActor<T>(in int i, out T actor) where T : GcActor
+        public bool TryGetActor<T>(in int i, [NotNullWhen(true)] out T? actor) where T : GcActor
         {
             if (m_CurrentScene != null)
             {
@@ -2291,17 +2291,17 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImage(out GcCameraDevice camera)
+        public bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera)
             => m_Context.InputCamera.TryGetCameraImage(out camera);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImage(in string deviceName, out GcCameraDevice camera)
+        public bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera)
             => m_Context.InputCamera.TryGetCameraImage(deviceName, out camera);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice> array)
+        public bool TryGetCameraImageAll([NotNullWhen(true)] out ReadOnlyCollection<GcCameraDevice>? array)
             => m_Context.InputCamera.TryGetCameraImageAll(out array);
 
         /// <inheritdoc/>
@@ -2375,8 +2375,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability TryGetOnlineImage(in string url, out Texture2D texture)
-            => m_Context.Network.TryGetOnlineImage(url, out texture);
+        public bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture)
+            => m_Context.Network.TryGetOnlineImage(url, out availability, out texture);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2385,18 +2385,18 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability TryGetOnlineSound(in string url, out AudioClip clip)
-            => m_Context.Network.TryGetOnlineSound(url, out clip);
+        public bool TryGetOnlineSound(in string url, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)
+            => m_Context.Network.TryGetOnlineSound(url, out availability, out clip);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability TryGetOnlineSound(in string url, in AudioType type, out AudioClip clip)
-            => m_Context.Network.TryGetOnlineSound(url, type, out clip);
+        public bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)
+            => m_Context.Network.TryGetOnlineSound(url, type, out availability, out clip);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability TryGetOnlineText(in string url, out string str)
-            => m_Context.Network.TryGetOnlineText(url, out str);
+        public bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)
+            => m_Context.Network.TryGetOnlineText(url, out availability, out str);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2465,7 +2465,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryLoad(in string key, out string value)
+        public bool TryLoad(in string key, [NotNullWhen(true)] out string? value)
             => m_Context.Storage.TryLoad(key, out value);
 
         /// <inheritdoc/>
