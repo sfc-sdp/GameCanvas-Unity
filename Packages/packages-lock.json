@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.runtimeunittesttoolkit": {
+      "version": "https://github.com/Cysharp/RuntimeUnitTestToolkit.git?path=RuntimeUnitTestToolkit/Assets/RuntimeUnitTestToolkit#2.4.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c3e1a6535ae8241bf9606681acf8f1a29bf4d4c7"
+    },
     "com.unity.burst": {
       "version": "1.3.7",
       "depth": 2,
@@ -122,6 +129,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "com.cysharp.runtimeunittesttoolkit": "2.4.0",
         "com.unity.mathematics": "1.2.1",
         "com.unity.collections": "0.14.0-preview.16",
         "com.unity.scriptablebuildpipeline": "1.15.1"
