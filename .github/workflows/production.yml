@@ -7,7 +7,7 @@ jobs:
   dotnet-format:
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
-      DOTNET_VERSION: 3.1.x
+      DOTNET_VERSION: 5.0.x
       GC_PACKAGE_PATH: ./Packages/GameCanvas/
     runs-on: ubuntu-latest
     steps:
@@ -80,3 +80,43 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.event.pull_request.head.ref }}
+
+  test-unity-editmode:
+    name: Test on Unity ${{ matrix.unity-version }}
+    strategy:
+      matrix:
+        unity-version:
+          - 2020.1.17f1
+          - 2020.2.1f1
+    env:
+      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+    runs-on: ubuntu-latest
+    container:
+      image: gableroux/unity3d:${{ matrix.unity-version }}-linux-il2cpp
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: ./Library
+          key: ${{ runner.os }}-unity-library-${{ matrix.unity-version }}
+          restore-keys: |
+            ${{ runner.os }}-unity-library-
+
+      - name: Activate
+        run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -serial ${{ secrets.UNITY_SERIAL }} -username '${{ secrets.UNITY_EMAIL }}' -password '${{ secrets.UNITY_PASSWORD }}' || exit 0
+      
+      - name: Test EditMode
+        run: /opt/Unity/Editor/Unity -batchmode -nographics -silent-crashes -logFile -runTests -testResults ./test-result-editor.xml
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: TestRunner Result (${{ matrix.unity-version }})
+          path: |
+            ./test-result-editor.xml
+          
+      - name: Deactivate
+        if: always()
+        run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -returnlicense || exit 0
