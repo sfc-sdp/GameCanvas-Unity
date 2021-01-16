@@ -52,52 +52,52 @@ namespace GameCanvas.Editor
             /// <summary>
             /// ビルド後に自動実行するかどうか
             /// </summary>
-            public bool mAndRun;
+            public bool m_BuildAndRun;
 
             /// <summary>
             /// バンドルID
             /// </summary>
-            public string mApplicationId;
+            public string m_ApplicationId;
 
             /// <summary>
             /// バンドルバージョン
             /// </summary>
-            public string mBundleVersion;
+            public string m_BundleVersion;
 
             /// <summary>
             /// 会社名 or 開発者名
             /// </summary>
-            public string mCompanyName;
+            public string m_CompanyName;
 
             /// <summary>
             /// Android 最小SDKバージョン
             /// </summary>
-            public AndroidSdkVersions mMinimumSdkVersion;
+            public AndroidSdkVersions m_MinimumSdkVersion;
 
             /// <summary>
             /// 出力先フォルダ
             /// </summary>
-            public string mOutFolderPath;
+            public string m_OutputFolderPath;
 
             /// <summary>
             /// ビルドプラットフォーム
             /// </summary>
-            public Platform mPlatform;
+            public Platform m_Platform;
 
             /// <summary>
             /// 製品名
             /// </summary>
-            public string mProductName;
+            public string m_ProductName;
 
             /// <summary>
             /// iOS デバイスかシミュレーターか
             /// </summary>
-            public iOSSdkVersion mSdkType;
+            public iOSSdkVersion m_SdkType;
 
             /// <summary>
             /// Android ターゲットSDKバージョン
             /// </summary>
-            public AndroidSdkVersions mTargetSdkVersion;
+            public AndroidSdkVersions m_TargetSdkVersion;
         }
 
         [System.Serializable]
@@ -121,33 +121,33 @@ namespace GameCanvas.Editor
 
         public static void Build(Option option)
         {
-            PlayerSettings.bundleVersion = option.mBundleVersion;
-            PlayerSettings.productName = option.mProductName;
-            PlayerSettings.companyName = option.mCompanyName;
+            PlayerSettings.bundleVersion = option.m_BundleVersion;
+            PlayerSettings.productName = option.m_ProductName;
+            PlayerSettings.companyName = option.m_CompanyName;
             EditorUserBuildSettings.connectProfiler = false;
             EditorUserBuildSettings.development = false;
 
-            var buildTarget = (BuildTarget)option.mPlatform;
+            var buildTarget = (BuildTarget)option.m_Platform;
             var buildTargetGroup = BuildPipeline.GetBuildTargetGroup(buildTarget);
-            if ((BuildTarget)option.mPlatform != EditorUserBuildSettings.activeBuildTarget)
+            if ((BuildTarget)option.m_Platform != EditorUserBuildSettings.activeBuildTarget)
             {
                 EditorUserBuildSettings.SwitchActiveBuildTarget(buildTargetGroup, buildTarget);
             }
-            PlayerSettings.SetApplicationIdentifier(buildTargetGroup, option.mApplicationId);
+            PlayerSettings.SetApplicationIdentifier(buildTargetGroup, option.m_ApplicationId);
 
-            if (!Directory.Exists(option.mOutFolderPath))
+            if (!Directory.Exists(option.m_OutputFolderPath))
             {
-                Directory.CreateDirectory(option.mOutFolderPath);
+                Directory.CreateDirectory(option.m_OutputFolderPath);
             }
 
-            var outFilePath = Path.Combine(option.mOutFolderPath, option.mProductName);
-            switch (option.mPlatform)
+            var outFilePath = Path.Combine(option.m_OutputFolderPath, option.m_ProductName);
+            switch (option.m_Platform)
             {
                 case Platform.Android:
                     if (Path.GetExtension(outFilePath) != "apk") outFilePath += ".apk";
 
-                    PlayerSettings.Android.minSdkVersion = option.mMinimumSdkVersion;
-                    PlayerSettings.Android.targetSdkVersion = option.mTargetSdkVersion;
+                    PlayerSettings.Android.minSdkVersion = option.m_MinimumSdkVersion;
+                    PlayerSettings.Android.targetSdkVersion = option.m_TargetSdkVersion;
                     PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
                     PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
                     PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.Android, ApiCompatibilityLevel.NET_Standard_2_0);
@@ -163,7 +163,7 @@ namespace GameCanvas.Editor
                     break;
 
                 case Platform.iOS:
-                    PlayerSettings.iOS.sdkVersion = option.mSdkType;
+                    PlayerSettings.iOS.sdkVersion = option.m_SdkType;
                     PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
                     PlayerSettings.iOS.targetOSVersionString = string.Empty;
                     PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
@@ -181,13 +181,13 @@ namespace GameCanvas.Editor
 
 
             var buildOption = BuildOptions.CompressWithLz4;
-            buildOption |= option.mAndRun ? BuildOptions.AutoRunPlayer : BuildOptions.ShowBuiltPlayer;
+            buildOption |= option.m_BuildAndRun ? BuildOptions.AutoRunPlayer : BuildOptions.ShowBuiltPlayer;
 
             // ビルドを実行する
             var report = BuildPipeline.BuildPlayer(
                 GetEnabledScenePaths(),
                 outFilePath,
-                (BuildTarget)option.mPlatform,
+                (BuildTarget)option.m_Platform,
                 buildOption
             );
 
@@ -295,25 +295,25 @@ namespace GameCanvas.Editor
         void InitOption()
         {
             m_Option = default;
-            m_Option.mApplicationId = PlayerSettings.applicationIdentifier.Replace(" ", "");
-            m_Option.mBundleVersion = PlayerSettings.bundleVersion;
-            m_Option.mProductName = PlayerSettings.productName;
-            m_Option.mCompanyName = PlayerSettings.companyName;
-            m_Option.mOutFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
-            m_Option.mAndRun = false;
-            m_Option.mTargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
-            m_Option.mMinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
-            m_Option.mSdkType = iOSSdkVersion.DeviceSDK;
+            m_Option.m_ApplicationId = PlayerSettings.applicationIdentifier.Replace(" ", "");
+            m_Option.m_BundleVersion = PlayerSettings.bundleVersion;
+            m_Option.m_ProductName = PlayerSettings.productName;
+            m_Option.m_CompanyName = PlayerSettings.companyName;
+            m_Option.m_OutputFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
+            m_Option.m_BuildAndRun = false;
+            m_Option.m_TargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
+            m_Option.m_MinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel19;
+            m_Option.m_SdkType = iOSSdkVersion.DeviceSDK;
 
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
                 default:
                 case BuildTarget.Android:
-                    m_Option.mPlatform = Platform.Android;
+                    m_Option.m_Platform = Platform.Android;
                     break;
 
                 case BuildTarget.iOS:
-                    m_Option.mPlatform = Platform.iOS;
+                    m_Option.m_Platform = Platform.iOS;
                     break;
             }
         }
@@ -342,25 +342,25 @@ namespace GameCanvas.Editor
             EditorGUILayout.LabelField("APP BUILDER", m_LargeText, GUILayout.Height(32));
 
             var isChange = false;
-            if (DrawTextField("APPLICATION ID", ref m_Option.mApplicationId))
+            if (DrawTextField("APPLICATION ID", ref m_Option.m_ApplicationId))
             {
                 isChange |= true;
-                m_Option.mApplicationId = m_Option.mApplicationId.Replace(" ", "");
+                m_Option.m_ApplicationId = m_Option.m_ApplicationId.Replace(" ", "");
             }
-            isChange |= DrawTextField("BUNDLE VERSION", ref m_Option.mBundleVersion);
-            isChange |= DrawTextField("PRODUCT NAME", ref m_Option.mProductName);
-            isChange |= DrawTextField("COMPANY NAME", ref m_Option.mCompanyName);
-            isChange |= DrawSaveFolderPath("OUTPUT FOLDER", ref m_Option.mOutFolderPath);
-            m_Option.mPlatform = (Platform)DrawEnumPopup("BUILD TARGET", m_Option.mPlatform, ref isChange);
-            switch (m_Option.mPlatform)
+            isChange |= DrawTextField("BUNDLE VERSION", ref m_Option.m_BundleVersion);
+            isChange |= DrawTextField("PRODUCT NAME", ref m_Option.m_ProductName);
+            isChange |= DrawTextField("COMPANY NAME", ref m_Option.m_CompanyName);
+            isChange |= DrawSaveFolderPath("OUTPUT FOLDER", ref m_Option.m_OutputFolderPath);
+            m_Option.m_Platform = (Platform)DrawEnumPopup("BUILD TARGET", m_Option.m_Platform, ref isChange);
+            switch (m_Option.m_Platform)
             {
                 case Platform.Android:
-                    m_Option.mTargetSdkVersion = (AndroidSdkVersions)DrawEnumPopup("TARGET SDK", m_Option.mTargetSdkVersion, ref isChange);
-                    m_Option.mMinimumSdkVersion = (AndroidSdkVersions)DrawEnumPopup("MINIMUM SDK", m_Option.mMinimumSdkVersion, ref isChange);
+                    m_Option.m_TargetSdkVersion = (AndroidSdkVersions)DrawEnumPopup("TARGET SDK", m_Option.m_TargetSdkVersion, ref isChange);
+                    m_Option.m_MinimumSdkVersion = (AndroidSdkVersions)DrawEnumPopup("MINIMUM SDK", m_Option.m_MinimumSdkVersion, ref isChange);
                     break;
 
                 case Platform.iOS:
-                    m_Option.mSdkType = (iOSSdkVersion)DrawEnumPopup("SDK VERSION", m_Option.mSdkType, ref isChange);
+                    m_Option.m_SdkType = (iOSSdkVersion)DrawEnumPopup("SDK VERSION", m_Option.m_SdkType, ref isChange);
                     break;
             }
 
@@ -370,18 +370,18 @@ namespace GameCanvas.Editor
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
             var button1 = GUILayout.Button("BUILD", GUILayout.Height(25));
-            var button2 = m_Option.mPlatform == Platform.Android && GUILayout.Button("BUILD & RUN", GUILayout.Height(25));
+            var button2 = m_Option.m_Platform == Platform.Android && GUILayout.Button("BUILD & RUN", GUILayout.Height(25));
             EditorGUILayout.EndHorizontal();
 
             if (button1)
             {
-                m_Option.mAndRun = false;
+                m_Option.m_BuildAndRun = false;
                 Build(m_Option);
                 //Close();
             }
             if (button2)
             {
-                m_Option.mAndRun = true;
+                m_Option.m_BuildAndRun = true;
                 Build(m_Option);
                 //Close();
             }
