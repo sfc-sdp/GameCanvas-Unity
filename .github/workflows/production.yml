@@ -93,7 +93,7 @@ jobs:
       UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
     runs-on: ubuntu-latest
     container:
-      image: unityci/editor:ubuntu-${{ matrix.unity-version }}-base-0
+      image: unityci/editor:ubuntu-${{ matrix.unity-version }}-linux-il2cpp-0
     steps:
       - uses: actions/checkout@v2
 
@@ -105,17 +105,19 @@ jobs:
             ${{ runner.os }}-unity-library-
 
       - name: Activate
+        id: activate
         run: unity-editor -quit -batchmode -nographics -silent-crashes -logFile -serial ${{ secrets.UNITY_SERIAL }} -username '${{ secrets.UNITY_EMAIL }}' -password '${{ secrets.UNITY_PASSWORD }}' || exit 0
       
       - name: Test EditMode
         run: unity-editor -batchmode -nographics -silent-crashes -logFile -runTests -testResults ./test-result-editor.xml
 
       - uses: actions/upload-artifact@v2
+        if: always() && steps.activate.conclusion == 'success'
         with:
           name: TestRunner Result (${{ matrix.unity-version }})
           path: |
             ./test-result-editor.xml
           
       - name: Deactivate
-        if: always()
+        if: always() && steps.activate.conclusion == 'success'
         run: unity-editor -quit -batchmode -nographics -silent-crashes -logFile -returnlicense || exit 0
