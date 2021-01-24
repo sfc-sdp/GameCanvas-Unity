@@ -11,6 +11,10 @@
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.InputSystem.LowLevel;
 
 namespace GameCanvas.Engine
 {
@@ -20,13 +24,13 @@ namespace GameCanvas.Engine
         #region 変数
         //----------------------------------------------------------
 
-        static readonly int[] k_IdMouseButton = new[] { 1, 2, 3 };
         static readonly bool k_IsTouchSupported = Input.touchSupported && (Application.platform != RuntimePlatform.WindowsEditor);
         static readonly bool k_IsTouchPressureSupported = k_IsTouchSupported && Input.touchPressureSupported;
-        static readonly int k_EventNumMax = (k_IsTouchSupported && Input.multiTouchEnabled) ? 10 : k_IdMouseButton.Length;
+        static readonly int k_EventNumMax = (k_IsTouchSupported && Input.multiTouchEnabled) ? 10 : 3;
 
         readonly GcContext m_Context;
-        GcPointerEvent m_LastPointer;
+        readonly InputStateHistory m_History;
+        GcPointerEvent m_LastPointer = GcPointerEvent.Null;
         NativeList<GcPointerEvent> m_PointerList;
         NativeList<GcPointerEvent> m_PointerListBegin;
         NativeList<GcPointerEvent> m_PointerListEnd;
@@ -261,6 +265,16 @@ namespace GameCanvas.Engine
             m_Context = context;
             m_PointerTraceDict = new NativeHashMap<int, GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
             m_TapSettings = GcTapSettings.Default;
+
+#if !PLATFORM_IOS
+            if (!k_IsTouchSupported)
+            {
+                TouchSimulation.Enable();
+            }
+#endif //!PLATFORM_IOS
+
+            m_History = new InputStateHistory(Touchscreen.current!.touches);
+            m_History.StartRecording();
         }
 
         void System.IDisposable.Dispose()
@@ -275,6 +289,8 @@ namespace GameCanvas.Engine
             if (m_TapPointList.IsCreated) m_TapPointList.Dispose();
 
             if (m_PointerTraceDict.IsCreated) m_PointerTraceDict.Dispose();
+
+            m_History.Dispose();
         }
 
         void IEngine.OnAfterDraw()
@@ -291,103 +307,109 @@ namespace GameCanvas.Engine
 
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now)
         {
-            if (k_IsTouchSupported)
+            using var canditates = new NativeList<GcPointerEvent>(Allocator.Temp);
+
+            foreach (var record in m_History)
             {
-                var count = Input.touchCount;
-                m_PointerList = new NativeList<GcPointerEvent>(count, Allocator.Temp);
-                for (var i = 0; i < count; i++)
+                var touch = (TouchControl)record.control;
+                var time = (float)record.time;
+                canditates.Add(GcPointerEvent.FromTouch(m_Context, touch, time));
+            }
+            m_History.Clear();
+
+            var capacity = math.min(canditates.Length, k_EventNumMax);
+            m_PointerList = new NativeList<GcPointerEvent>(canditates.Length, Allocator.Temp);
+            m_PointerListBegin = new NativeList<GcPointerEvent>(capacity, Allocator.Temp);
+            m_PointerListHold = new NativeList<GcPointerEvent>(capacity, Allocator.Temp);
+            m_PointerListEnd = new NativeList<GcPointerEvent>(capacity, Allocator.Temp);
+            m_PointerTraceList = new NativeList<GcPointerTrace>(capacity, Allocator.Temp);
+            m_PointerTraceListHold = new NativeList<GcPointerTrace>(capacity, Allocator.Temp);
+            m_PointerTraceListEnd = new NativeList<GcPointerTrace>(capacity, Allocator.Temp);
+            m_TapPointList = new NativeList<float2>(capacity, Allocator.Temp);
+
+            for (var i = 0; i < canditates.Length; i++)
+            {
+                var e = canditates[i];
+                switch (e.Phase)
                 {
-                    m_PointerList.Add(new GcPointerEvent(m_Context, Input.GetTouch(i)));
+                    case GcPointerEventPhase.Begin:
+                    {
+                        var t = new GcPointerTrace(e);
+                        if (m_PointerTraceDict.TryAdd(e.Id, t))
+                        {
+                            m_PointerList.Add(e);
+                            m_PointerListBegin.Add(e);
+                            m_PointerTraceList.Add(t);
+                        }
+                    }
+                    break;
+
+                    case GcPointerEventPhase.Hold:
+                    {
+                        if (m_PointerTraceDict.TryGetValue(e.Id, out var t))
+                        {
+                            UpdateTrace(ref t, e);
+                            m_PointerList.Add(e);
+                            m_PointerListHold.Add(e);
+                            m_PointerTraceList.Add(t);
+                            m_PointerTraceListHold.Add(t);
+                            m_PointerTraceDict[e.Id] = t;
+                        }
+                    }
+                    break;
+
+                    case GcPointerEventPhase.End:
+                    {
+                        if (m_PointerTraceDict.TryGetValue(e.Id, out var t))
+                        {
+                            UpdateTrace(ref t, e);
+                            m_PointerList.Add(e);
+                            m_PointerListEnd.Add(e);
+                            m_PointerTraceList.Add(t);
+                            m_PointerTraceListEnd.Add(t);
+                            m_PointerTraceDict.Remove(e.Id);
+
+                            if (m_TapSettings.IsTap(t))
+                            {
+                                m_TapPointList.Add(t.Begin.Point);
+                            }
+                        }
+                    }
+                    break;
                 }
             }
-            else
+
+            // 欠損したHoldイベントを補う
+            using (var traceArray = m_PointerTraceDict.GetValueArray(Allocator.Temp))
             {
-                m_PointerList = new NativeList<GcPointerEvent>(k_IdMouseButton.Length, Allocator.Temp);
-                var point = Input.mousePosition;
-
-                for (var i = 0; i < k_IdMouseButton.Length; i++)
+                for (var i = 0; i < traceArray.Length; i++)
                 {
-                    var on = Input.GetMouseButton(i);
-                    var up = Input.GetMouseButtonUp(i);
-                    if (!on && !up) continue;
+                    var t = traceArray[i];
+                    if (t.Current.Frame == m_Context.Time.CurrentFrame) continue;
 
-                    var id = k_IdMouseButton[i];
-                    var screen = new float2(point.x, point.y);
-                    var phase = up ? GcPointerEventPhase.End
-                        : m_PointerTraceDict.ContainsKey(id) ? GcPointerEventPhase.Hold
-                        : GcPointerEventPhase.Begin;
-                    m_PointerList.Add(new GcPointerEvent(m_Context, id, screen, phase, GcPointerType.Others));
+                    var e = GcPointerEvent.FromTrace(m_Context, t);
+                    UpdateTrace(ref t, e);
+                    m_PointerList.Add(e);
+                    m_PointerListHold.Add(e);
+                    m_PointerTraceList.Add(t);
+                    m_PointerTraceListHold.Add(t);
+                    m_PointerTraceDict[e.Id] = t;
                 }
             }
-
-            m_PointerListBegin = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Temp);
-            m_PointerListHold = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Temp);
-            m_PointerListEnd = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Temp);
-            m_PointerTraceList = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Temp);
-            m_PointerTraceListHold = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Temp);
-            m_PointerTraceListEnd = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Temp);
-            m_TapPointList = new NativeList<float2>(k_EventNumMax, Allocator.Temp);
 
             if (m_PointerList.Length != 0)
             {
-                // イベント時刻でソート
-                m_PointerList.Sort();
+                //m_PointerList.Sort();
                 m_LastPointer = m_PointerList[m_PointerList.Length - 1];
+            }
 
-                for (var i = 0; i < m_PointerList.Length; i++)
-                {
-                    var pointer = m_PointerList[i];
-
-                    switch (pointer.Phase)
-                    {
-                        case GcPointerEventPhase.Begin:
-                            m_PointerListBegin.Add(pointer);
-                            var trace = new GcPointerTrace(pointer);
-                            m_PointerTraceDict.Add(pointer.Id, trace);
-                            m_PointerTraceList.Add(trace);
-                            continue;
-
-                        case GcPointerEventPhase.Hold:
-                            m_PointerListHold.Add(pointer);
-                            break;
-
-                        case GcPointerEventPhase.End:
-                            m_PointerListEnd.Add(pointer);
-                            break;
-                    }
-
-                    if (m_PointerTraceDict.TryGetValue(pointer.Id, out var history))
-                    {
-                        var prev = history.Current;
-                        history.Current = pointer;
-                        history.FrameCount = pointer.Frame - history.Begin.Frame + 1;
-                        history.Duration = pointer.Time - history.Begin.Time;
-                        history.Distance += math.distance(pointer.Point, prev.Point);
-                        m_PointerTraceList.Add(history);
-
-                        switch (pointer.Phase)
-                        {
-                            case GcPointerEventPhase.Hold:
-                                m_PointerTraceListHold.Add(history);
-                                m_PointerTraceDict[pointer.Id] = history;
-                                break;
-
-                            case GcPointerEventPhase.End:
-                                m_PointerTraceListEnd.Add(history);
-                                m_PointerTraceDict.Remove(pointer.Id);
-
-                                if (m_TapSettings.IsTap(history))
-                                {
-                                    m_TapPointList.Add(history.Begin.Point);
-                                }
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"[{nameof(GcInputPointerEngine)}] {pointer.Id} is unknown pointer. ({pointer.Id}, {pointer.Phase})\n");
-                    }
-                }
+            static void UpdateTrace(ref GcPointerTrace t, in GcPointerEvent curr)
+            {
+                var prev = t.Current;
+                t.Current = curr;
+                t.FrameCount = curr.Frame - t.Begin.Frame + 1;
+                t.Duration = curr.Time - t.Begin.Time;
+                t.Distance += math.distance(curr.Point, prev.Point);
             }
         }
         #endregion

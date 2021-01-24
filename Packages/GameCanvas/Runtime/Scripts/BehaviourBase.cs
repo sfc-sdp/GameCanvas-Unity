@@ -62,6 +62,7 @@ namespace GameCanvas
                 {
                     m_IsPause = true;
                     PauseGame();
+                    m_Proxy.OnPause();
                 }
             }
             else
@@ -69,6 +70,7 @@ namespace GameCanvas
                 if (m_IsPause)
                 {
                     m_IsPause = false;
+                    m_Proxy.OnUnpause();
                     ResumeGame();
                 }
             }

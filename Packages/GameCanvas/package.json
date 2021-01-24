@@ -1,6 +1,6 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "6.0.0-pre.1",
+  "version": "6.0.0-pre.2",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
   "unity": "2020.2",
@@ -10,9 +10,9 @@
     "url": "https://github.com/sfc-sdp/GameCanvas-Unity"
   },
   "dependencies": {
-    "com.cysharp.runtimeunittesttoolkit": "2.4.0",
     "com.unity.mathematics": "1.2.1",
     "com.unity.collections": "0.14.0-preview.16",
-    "com.unity.scriptablebuildpipeline": "1.15.1"
+    "com.unity.scriptablebuildpipeline": "1.15.1",
+    "com.unity.inputsystem": "1.0.2"
   }
 }

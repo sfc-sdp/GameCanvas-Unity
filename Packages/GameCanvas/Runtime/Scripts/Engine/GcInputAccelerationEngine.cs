@@ -10,7 +10,8 @@
 #nullable enable
 using System.Runtime.CompilerServices;
 using Unity.Collections;
-using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 namespace GameCanvas.Engine
 {
@@ -20,11 +21,10 @@ namespace GameCanvas.Engine
         #region 変数
         //----------------------------------------------------------
 
-#pragma warning disable IDE0032
+        InputStateHistory? m_History = null;
+        bool m_IsEnabled = false;
         NativeList<GcAccelerationEvent> m_EventList;
         GcAccelerationEvent m_LastAccelerationEvent;
-        bool m_IsEnabled;
-#pragma warning restore IDE0032
         #endregion
 
         //----------------------------------------------------------
@@ -32,36 +32,72 @@ namespace GameCanvas.Engine
         //----------------------------------------------------------
 
         public int AccelerationEventCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_EventList.Length;
-        }
+            => m_EventList.IsCreated ? m_EventList.Length : 0;
 
         public GcAccelerationEvent.Enumerable AccelerationEvents
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new GcAccelerationEvent.Enumerable(m_EventList);
-        }
+            => new GcAccelerationEvent.Enumerable(m_EventList);
 
         public bool DidUpdateAccelerationThisFrame
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_EventList.Length != 0;
-        }
+            => m_EventList.IsCreated && m_EventList.Length != 0;
+
+        public bool IsAccelerometerSupported
+            => Accelerometer.current != null;
 
         public bool IsAccelerometerEnabled
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_IsEnabled;
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            set => m_IsEnabled = value;
+            set
+            {
+                if (m_IsEnabled == value) return;
+                if (value)
+                {
+                    if (!IsAccelerometerSupported)
+                    {
+                        UnityEngine.Debug.LogWarning($"[{nameof(GcInputAccelerationEngine)}] current device is not supported.\n");
+                        return;
+                    }
+                    m_History?.Dispose();
+                    if (!Accelerometer.current.enabled)
+                    {
+                        UnityEngine.Debug.Log($"[{nameof(GcInputAccelerationEngine)}] EnableDevice\n");
+                        InputSystem.EnableDevice(Accelerometer.current);
+                    }
+                    m_History = new InputStateHistory(Accelerometer.current);
+                    m_History.StartRecording();
+                    m_IsEnabled = true;
+                }
+                else
+                {
+                    if (m_History != null)
+                    {
+                        m_History.Dispose();
+                        m_History = null;
+                        if (Accelerometer.current.enabled)
+                        {
+                            InputSystem.DisableDevice(Accelerometer.current);
+                        }
+                    }
+                    m_IsEnabled = false;
+                }
+            }
+        }
+
+        public float AccelerometerSamplingRate
+        {
+            get => Accelerometer.current?.samplingFrequency ?? 0f;
+            set
+            {
+                if (value > 0f && Accelerometer.current != null)
+                {
+                    Accelerometer.current.samplingFrequency = value;
+                }
+            }
         }
 
         public GcAccelerationEvent LastAccelerationEvent
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_LastAccelerationEvent;
-        }
+            => m_LastAccelerationEvent;
 
         public bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)
         {
@@ -97,32 +133,60 @@ namespace GameCanvas.Engine
         /// </summary>
         internal GcInputAccelerationEngine()
         {
-            m_IsEnabled = true;
-            m_EventList = new NativeList<GcAccelerationEvent>(Allocator.Persistent);
+        }
+
+        internal void OnPause()
+        {
+            if (m_IsEnabled)
+            {
+                m_History?.Dispose();
+                m_History = null;
+                InputSystem.DisableDevice(Accelerometer.current);
+            }
+        }
+
+        internal void OnUnpause()
+        {
+            if (m_IsEnabled)
+            {
+                InputSystem.EnableDevice(Accelerometer.current);
+                m_History = new InputStateHistory(Accelerometer.current);
+                m_History.StartRecording();
+            }
         }
 
         void System.IDisposable.Dispose()
         {
             if (m_EventList.IsCreated) m_EventList.Dispose();
+
+            IsAccelerometerEnabled = false;
         }
 
-        void IEngine.OnAfterDraw() { }
+        void IEngine.OnAfterDraw()
+        {
+            if (m_EventList.IsCreated) m_EventList.Dispose();
+        }
 
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now)
         {
-            m_EventList.Length = 0;
-            if (!m_IsEnabled) return;
+            if (!m_IsEnabled || m_History == null) return;
 
-            var count = Input.accelerationEventCount;
-            for (var i = 0; i != count; i++)
+            m_EventList = new NativeList<GcAccelerationEvent>(Allocator.Temp);
+
+            var prevTime = m_LastAccelerationEvent.Time;
+            foreach (var e in m_History)
             {
-                var e = Input.GetAccelerationEvent(i);
-                m_EventList.Add(new GcAccelerationEvent(e));
+                var acce = (Accelerometer)e.control;
+                var time = (float)e.time;
+                UnityEngine.Debug.Log($"[{nameof(GcInputAccelerationEngine)}] {acce.acceleration.ReadValue()}\n");
+                m_EventList.Add(GcAccelerationEvent.FromAccelerometer(acce, time, prevTime));
+                prevTime = time;
             }
+            m_History.Clear();
 
-            if (count > 0)
+            if (m_EventList.Length > 0)
             {
-                m_LastAccelerationEvent = m_EventList[count - 1];
+                m_LastAccelerationEvent = m_EventList[m_EventList.Length - 1];
             }
         }
         #endregion

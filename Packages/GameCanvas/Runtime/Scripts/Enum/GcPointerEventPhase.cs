@@ -9,6 +9,8 @@
 /*------------------------------------------------------------*/
 #nullable enable
 
+using UnityEngine.InputSystem;
+
 namespace GameCanvas
 {
     /// <summary>
@@ -16,6 +18,10 @@ namespace GameCanvas
     /// </summary>
     public enum GcPointerEventPhase : byte
     {
+        /// <summary>
+        /// 不正な値
+        /// </summary>
+        Invalid,
         /// <summary>
         /// タッチした瞬間
         /// </summary>
@@ -28,5 +34,21 @@ namespace GameCanvas
         /// 離した瞬間
         /// </summary>
         End
+    }
+
+    static class UnityTouchPhaseExtension
+    {
+        public static GcPointerEventPhase ToGcPointerPhase(this TouchPhase self)
+        {
+            return self switch
+            {
+                TouchPhase.Began => GcPointerEventPhase.Begin,
+                TouchPhase.Moved => GcPointerEventPhase.Hold,
+                TouchPhase.Stationary => GcPointerEventPhase.Hold,
+                TouchPhase.Ended => GcPointerEventPhase.End,
+                TouchPhase.Canceled => GcPointerEventPhase.End,
+                _ => GcPointerEventPhase.Invalid,
+            };
+        }
     }
 }

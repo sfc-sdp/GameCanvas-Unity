@@ -16,6 +16,7 @@ using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GameCanvas
 {
@@ -75,6 +76,15 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.z;
+        }
+
+        /// <inheritdoc/>
+        public float AccelerometerSamplingRate
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.AccelerometerSamplingRate;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set => m_Context.InputAcceleration.AccelerometerSamplingRate = value;
         }
 
         /// <inheritdoc/>
@@ -514,6 +524,13 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
+        public bool IsAccelerometerSupported
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.IsAccelerometerSupported;
+        }
+
+        /// <inheritdoc/>
         public bool IsAnyKey
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -606,10 +623,10 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public KeyCode KeyEscape
+        public Key KeyEscape
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => KeyCode.Escape;
+            get => Key.Escape;
         }
 
         /// <inheritdoc/>
@@ -1401,16 +1418,16 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool GetIsKeyBegan(in KeyCode key)
-            => m_Context.InputKey.IsKeyDown(key);
+            => m_Context.InputKey.IsKeyDown(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool GetIsKeyEnded(in KeyCode key)
-            => m_Context.InputKey.IsKeyUp(key);
+            => m_Context.InputKey.IsKeyUp(key.ToKey());
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float GetKeyPressDuration(in KeyCode key)
+        public float GetKeyPressDuration(in Key key)
         {
             if (m_Context.InputKey.TryGetKeyTrace(key, out var trace))
             {
@@ -1419,11 +1436,11 @@ namespace GameCanvas
             return 0f;
         }
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public float GetKeyPressDuration(in char key)
         {
-            if (key.TryGetKeyCode(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
+            if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
             {
                 return trace.Duration;
             }
@@ -1432,7 +1449,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetKeyPressFrameCount(in KeyCode key)
+        public int GetKeyPressFrameCount(in Key key)
         {
             if (m_Context.InputKey.TryGetKeyTrace(key, out var trace))
             {
@@ -1443,9 +1460,10 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int GetKeyPressFrameCount(in char key)
         {
-            if (key.TryGetKeyCode(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
+            if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
             {
                 return trace.FrameCount;
             }
@@ -1551,61 +1569,81 @@ namespace GameCanvas
         public bool IsFlippedCameraImage(in GcCameraDevice camera)
             => m_Context.InputCamera.IsFlippedCameraImage(camera);
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyDown(in char key)
-            => key.TryGetKeyCode(out var code)
+            => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyDown(code);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyDown(in KeyCode key)
+        public bool IsKeyDown(in Key key)
             => m_Context.InputKey.IsKeyDown(key);
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyDown(in KeyCode key)
+            => m_Context.InputKey.IsKeyDown(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyHold(in char key)
-            => key.TryGetKeyCode(out var code)
+            => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyHold(code);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyHold(in KeyCode key, out GcKeyTrace trace)
+        public bool IsKeyHold(in Key key, out GcKeyTrace trace)
             => m_Context.InputKey.TryGetKeyTrace(key, out trace)
             && (trace.Current.Phase == GcKeyEventPhase.Hold);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyHold(in KeyCode key)
+        public bool IsKeyHold(in Key key)
             => m_Context.InputKey.IsKeyHold(key);
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyHold(in KeyCode key)
+            => m_Context.InputKey.IsKeyHold(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyPress(in char key)
-            => key.TryGetKeyCode(out var code)
+            => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyPress(code);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyPress(in KeyCode key)
+        public bool IsKeyPress(in Key key)
             => m_Context.InputKey.IsKeyPress(key);
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyPress(in KeyCode key)
+            => m_Context.InputKey.IsKeyPress(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyUp(in char key)
-            => key.TryGetKeyCode(out var code)
+            => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyUp(code);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyUp(in KeyCode key, out GcKeyTrace trace)
+        public bool IsKeyUp(in Key key, out GcKeyTrace trace)
             => m_Context.InputKey.TryGetKeyTrace(key, out trace)
             && (trace.Current.Phase == GcKeyEventPhase.Up);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyUp(in KeyCode key)
+        public bool IsKeyUp(in Key key)
             => m_Context.InputKey.IsKeyUp(key);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyUp(in KeyCode key)
+                    => m_Context.InputKey.IsKeyUp(key.ToKey());
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2319,11 +2357,11 @@ namespace GameCanvas
         public bool TryGetGeolocationEvent(out GcGeolocationEvent data)
             => m_Context.InputGeolocation.TryGetGeolocationEvent(out data);
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEvent(in char key, out GcKeyEvent e)
         {
-            if (key.TryGetKeyCode(out var code))
+            if (key.TryGetKey(out var code))
             {
                 return m_Context.InputKey.TryGetKeyEvent(code, out e);
             }
@@ -2333,8 +2371,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e)
+        public bool TryGetKeyEvent(in Key key, out GcKeyEvent e)
             => m_Context.InputKey.TryGetKeyEvent(key, out e);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e)
+                    => m_Context.InputKey.TryGetKeyEvent(key.ToKey(), out e);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2346,11 +2389,11 @@ namespace GameCanvas
         public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
             => m_Context.InputKey.TryGetKeyEventArray(phase, out array, out count);
 
-        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTrace(in char key, out GcKeyTrace trace)
         {
-            if (key.TryGetKeyCode(out var code))
+            if (key.TryGetKey(out var code))
             {
                 return m_Context.InputKey.TryGetKeyTrace(code, out trace);
             }
@@ -2360,8 +2403,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace)
+        public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)
             => m_Context.InputKey.TryGetKeyTrace(key, out trace);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace)
+                    => m_Context.InputKey.TryGetKeyTrace(key.ToKey(), out trace);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2567,6 +2615,18 @@ namespace GameCanvas
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnEnable() => m_Context.Graphics?.Init();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void OnPause()
+        {
+            m_Context.InputAcceleration.OnPause();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void OnUnpause()
+        {
+            m_Context.InputAcceleration.OnUnpause();
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void UpdateCurrentScene()

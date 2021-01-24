@@ -1,3 +1,4 @@
+#nullable enable
 using GameCanvas;
 using Unity.Collections;
 using Unity.Mathematics;
@@ -13,9 +14,9 @@ public sealed class Game : GameBase
         Fail
     }
 
-    GcCameraDevice m_Camera;
+    GcCameraDevice? m_Camera;
     State m_State;
-    string m_StateMessage;
+    string m_StateMessage = "";
 
     public override void InitGame()
     {
@@ -49,6 +50,7 @@ public sealed class Game : GameBase
     {
         if (m_State == State.Playing)
         {
+            GcAssert.IsNotNull(m_Camera);
             if (!gc.DidUpdateCameraImageThisFrame(m_Camera)) return;
 
             gc.ClearScreen();

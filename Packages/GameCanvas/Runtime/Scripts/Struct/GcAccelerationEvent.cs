@@ -15,6 +15,7 @@ using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GameCanvas
 {
@@ -59,8 +60,8 @@ namespace GameCanvas
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             internal Enumerator(in NativeList<GcAccelerationEvent> eventList)
             {
-                m_Array = eventList.AsParallelReader();
-                m_Count = eventList.Length;
+                m_Array = eventList.IsCreated ? eventList.AsParallelReader() : default;
+                m_Count = eventList.IsCreated ? eventList.Length : 0;
                 m_Index = -1;
             }
 
@@ -103,6 +104,11 @@ namespace GameCanvas
         public readonly float3 Acceleration;
 
         /// <summary>
+        /// 計測時刻（秒）
+        /// </summary>
+        public readonly float Time;
+
+        /// <summary>
         /// 前回の計測からの経過時間（秒）
         /// </summary>
         public readonly float DeltaTime;
@@ -122,17 +128,17 @@ namespace GameCanvas
         public static bool operator ==(GcAccelerationEvent lh, GcAccelerationEvent rh) => lh.Equals(rh);
 
         public bool Equals(GcAccelerationEvent other)
-        {
-            return RawAcceleration.Equals(other.RawAcceleration)
-                && DeltaTime.Equals(other.DeltaTime);
-        }
+            => RawAcceleration.Equals(other.RawAcceleration)
+            && Time.Equals(other.Time);
 
         public override bool Equals(object obj) => (obj is GcAccelerationEvent other) && Equals(other);
 
         public override int GetHashCode()
         {
-            return RawAcceleration.GetHashCode()
-                & DeltaTime.GetHashCode();
+            int hashCode = -1216137635;
+            hashCode = hashCode * -1521134295 + Time.GetHashCode();
+            hashCode = hashCode * -1521134295 + RawAcceleration.GetHashCode();
+            return hashCode;
         }
 
         public override string ToString()
@@ -143,11 +149,19 @@ namespace GameCanvas
         #region 内部関数
         //----------------------------------------------------------
 
-        internal GcAccelerationEvent(in AccelerationEvent e)
+        internal static GcAccelerationEvent FromAccelerometer(in Accelerometer e, in float time, in float prevTime)
         {
-            Acceleration = new float3(e.acceleration.x, -e.acceleration.y, -e.acceleration.z);
-            RawAcceleration = e.acceleration;
-            DeltaTime = e.deltaTime;
+            var raw = e.acceleration.ReadValue();
+            var dt = time - prevTime;
+            return new GcAccelerationEvent(raw, time, dt);
+        }
+
+        internal GcAccelerationEvent(in float3 raw, in float time, in float dt)
+        {
+            RawAcceleration = raw;
+            Acceleration = new float3(RawAcceleration.x, -RawAcceleration.y, -RawAcceleration.z);
+            Time = time;
+            DeltaTime = dt;
         }
         #endregion
     }

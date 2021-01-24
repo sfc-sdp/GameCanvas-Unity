@@ -4,6 +4,7 @@
     "references": [
         "Unity.Mathematics",
         "Unity.Collections",
+        "Unity.InputSystem",
         "GameCanvas.ScriptableObject"
     ],
     "includePlatforms": [],
