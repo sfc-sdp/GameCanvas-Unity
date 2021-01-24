@@ -84,6 +84,18 @@ namespace GameCanvas.Engine
             }
         }
 
+        public float AccelerometerSamplingRate
+        {
+            get => Accelerometer.current?.samplingFrequency ?? 0f;
+            set
+            {
+                if (value > 0f && Accelerometer.current != null)
+                {
+                    Accelerometer.current.samplingFrequency = value;
+                }
+            }
+        }
+
         public GcAccelerationEvent LastAccelerationEvent
             => m_LastAccelerationEvent;
 

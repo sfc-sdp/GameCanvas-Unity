@@ -21,6 +21,11 @@ namespace GameCanvas
         int AccelerationEventCount { get; }
 
         /// <summary>
+        /// 加速度計の動作周波数
+        /// </summary>
+        float AccelerometerSamplingRate { get; set; }
+
+        /// <summary>
         /// 前回のフレーム処理以降に検出した 加速度イベントの列挙子
         /// </summary>
         GcAccelerationEvent.Enumerable AccelerationEvents { get; }

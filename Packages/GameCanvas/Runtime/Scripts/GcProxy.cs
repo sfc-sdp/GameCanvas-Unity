@@ -79,6 +79,15 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
+        public float AccelerometerSamplingRate
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.AccelerometerSamplingRate;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set => m_Context.InputAcceleration.AccelerometerSamplingRate = value;
+        }
+
+        /// <inheritdoc/>
         public Color BackgroundColor
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
