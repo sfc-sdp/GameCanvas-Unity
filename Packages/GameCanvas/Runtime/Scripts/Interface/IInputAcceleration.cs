@@ -31,9 +31,14 @@ namespace GameCanvas
         bool DidUpdateAccelerationThisFrame { get; }
 
         /// <summary>
-        /// 加速度計が有効かどうか
+        /// 加速度計が現在有効かどうか
         /// </summary>
         bool IsAccelerometerEnabled { get; set; }
+
+        /// <summary>
+        /// 端末が加速度計を搭載しているかどうか
+        /// </summary>
+        bool IsAccelerometerSupported { get; }
 
         /// <summary>
         /// 最後に検出した加速度イベント

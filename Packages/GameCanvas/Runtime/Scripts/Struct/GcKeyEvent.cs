@@ -8,8 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-using Unity.Mathematics;
-using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GameCanvas
 {
@@ -32,7 +31,7 @@ namespace GameCanvas
         /// <summary>
         /// キーコード
         /// </summary>
-        public readonly KeyCode KeyCode;
+        public readonly Key Key;
 
         /// <summary>
         /// 段階
@@ -53,31 +52,36 @@ namespace GameCanvas
 
         public static bool operator ==(GcKeyEvent lh, GcKeyEvent rh) => lh.Equals(rh);
 
+        public int CompareTo(GcKeyEvent other) => Time.CompareTo(other.Time);
+
         public bool Equals(GcKeyEvent other)
-        {
-            return KeyCode == other.KeyCode
-                && Phase == other.Phase
-                && Frame == other.Frame;
-        }
+            => Key == other.Key
+            && Phase == other.Phase
+            && Frame == other.Frame;
 
         public override bool Equals(object obj) => (obj is GcKeyEvent other) && Equals(other);
 
         public override int GetHashCode()
-            => (int)KeyCode ^ Frame ^ (int)Phase;
+        {
+            int hashCode = -756422210;
+            hashCode = hashCode * -1521134295 + Frame.GetHashCode();
+            hashCode = hashCode * -1521134295 + Key.GetHashCode();
+            hashCode = hashCode * -1521134295 + Phase.GetHashCode();
+            hashCode = hashCode * -1521134295 + Time.GetHashCode();
+            return hashCode;
+        }
 
         public override string ToString()
-            => $"{nameof(GcKeyEvent)}: {{ key: {KeyCode}, frame: {Frame}, phase: {Phase} }}";
-
-        public int CompareTo(GcKeyEvent other) => Time.CompareTo(other.Time);
+                    => $"{nameof(GcKeyEvent)}: {{ key: {Key}, frame: {Frame}, phase: {Phase} }}";
         #endregion
 
         //----------------------------------------------------------
         #region 内部関数
         //----------------------------------------------------------
 
-        internal GcKeyEvent(in KeyCode key, in GcKeyEventPhase phase, in int frame, in float time)
+        internal GcKeyEvent(in Key key, in GcKeyEventPhase phase, in int frame, in float time)
         {
-            KeyCode = key;
+            Key = key;
             Phase = phase;
             Frame = frame;
             Time = time;

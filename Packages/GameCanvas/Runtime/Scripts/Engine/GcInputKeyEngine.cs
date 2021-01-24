@@ -10,6 +10,9 @@
 #nullable enable
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.LowLevel;
 #if !UNITY_ANDROID
 using Unity.Mathematics;
 #endif // !UNITY_ANDROID
@@ -24,9 +27,9 @@ namespace GameCanvas.Engine
 
         const int k_EventNumMax = 10;
         static readonly bool k_IsScreenKeyboardSupported = TouchScreenKeyboard.isSupported;
-        static readonly KeyCode[] k_KeyCodeArray = (KeyCode[])System.Enum.GetValues(typeof(KeyCode));
 
         readonly GcContext m_Context;
+        readonly InputStateHistory m_History;
         NativeHashMap<int, int> m_KeyCodeToKeyEventIndex;
         NativeList<GcKeyEvent> m_KeyEventList;
         NativeList<GcKeyEvent> m_KeyEventListOnlyDown;
@@ -63,15 +66,15 @@ namespace GameCanvas.Engine
             }
         }
 
-        public bool IsKeyDown(in KeyCode key)
+        public bool IsKeyDown(in Key key)
             => m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index)
             && (m_KeyEventList[index].Phase == GcKeyEventPhase.Down);
 
-        public bool IsKeyHold(in KeyCode key)
+        public bool IsKeyHold(in Key key)
             => m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index)
             && (m_KeyEventList[index].Phase == GcKeyEventPhase.Hold);
 
-        public bool IsKeyPress(in KeyCode key)
+        public bool IsKeyPress(in Key key)
         {
             if (m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index))
             {
@@ -81,7 +84,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public bool IsKeyUp(in KeyCode key)
+        public bool IsKeyUp(in Key key)
             => m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index)
             && (m_KeyEventList[index].Phase == GcKeyEventPhase.Up);
 
@@ -94,7 +97,7 @@ namespace GameCanvas.Engine
             return m_ScreenKeyboard.active;
         }
 
-        public bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e)
+        public bool TryGetKeyEvent(in Key key, out GcKeyEvent e)
         {
             if (m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index))
             {
@@ -153,7 +156,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace)
+        public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)
             => m_KeyTraceDict.TryGetValue((int)key, out trace);
 
         public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
@@ -220,6 +223,21 @@ namespace GameCanvas.Engine
         {
             m_Context = context;
             m_KeyTraceDict = new NativeHashMap<int, GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
+
+            //InputSystem.onEvent += (ptr, dev) =>
+            //{
+            //    if (ptr.IsA<TextEvent>())
+            //    {
+            //        unsafe
+            //        {
+            //            var data = (TextEvent*)ptr.data;
+            //            Debug.Log($"{ptr.time}: {(char)data->character}");
+            //        }
+            //    }
+            //};
+
+            m_History = new InputStateHistory(Keyboard.current.allKeys);
+            m_History.StartRecording();
         }
 
         void System.IDisposable.Dispose()
@@ -236,6 +254,8 @@ namespace GameCanvas.Engine
             if (m_KeyCodeToKeyEventIndex.IsCreated) m_KeyCodeToKeyEventIndex.Dispose();
 
             if (m_KeyTraceDict.IsCreated) m_KeyTraceDict.Dispose();
+
+            m_History.Dispose();
         }
 
         void IEngine.OnAfterDraw()
@@ -261,77 +281,67 @@ namespace GameCanvas.Engine
             m_KeyTraceListOnlyUp = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Temp);
 
             var frame = m_Context.Time.CurrentFrame;
-            var time = m_Context.Time.TimeSinceStartup;
 
-            if (m_KeyTraceDict.Count() != 0)
+            foreach (var record in m_History)
             {
-                using (var keyCodeArray = m_KeyTraceDict.GetKeyArray(Allocator.Temp))
+                var control = (KeyControl)record.control;
+                var key = control.keyCode;
+                var time = (float)record.time;
+
+                if (control.isPressed)
                 {
-                    for (int i = 0, len = keyCodeArray.Length; i != len; i++)
-                    {
-                        var key = keyCodeArray[i];
-                        var t = m_KeyTraceDict[key];
+                    // Down Event
+                    var e = new GcKeyEvent(key, GcKeyEventPhase.Down, frame, time);
+                    AddKeyEvent(e);
+                    m_KeyEventListOnlyDown.Add(e);
+                    m_KeyTraceDict.Add((int)key, new GcKeyTrace(e));
+                }
+                else if (m_KeyTraceDict.TryGetValue((int)key, out var t))
+                {
+                    // Up Event
+                    var e = new GcKeyEvent(key, GcKeyEventPhase.Up, frame, time);
+                    AddKeyEvent(e);
+                    m_KeyEventListOnlyUp.Add(e);
 
-                        if (Input.GetKey((KeyCode)key))
-                        {
-                            var e = new GcKeyEvent((KeyCode)key, GcKeyEventPhase.Hold, frame, time);
-                            m_KeyCodeToKeyEventIndex.Add(key, m_KeyEventList.Length);
-                            m_KeyEventList.Add(e);
-                            m_KeyEventListOnlyHold.Add(e);
+                    t.Current = e;
+                    t.FrameCount = t.Begin.Frame - frame + 1;
+                    t.Duration = t.Begin.Time - time;
+                    m_KeyTraceDict.Remove((int)key);
+                    m_KeyTraceListOnlyUp.Add(t);
+                }
+                else
+                {
+                    Debug.LogWarning($"[{nameof(GcInputKeyEngine)}] missed '{key}' press event.\n");
+                }
+            }
+            m_History.Clear();
 
-                            t.Current = e;
-                            t.FrameCount = t.Begin.Frame - frame + 1;
-                            t.Duration = t.Begin.Time - time;
-                            m_KeyTraceDict[key] = t;
-                            m_KeyTraceListOnlyHold.Add(t);
-                        }
-                        else
-                        {
-                            if (!Input.GetKeyUp((KeyCode)key))
-                            {
-                                Debug.LogWarning($"[{nameof(GcInputKeyEngine)}] dropped keyup event: {(KeyCode)key}.\n");
-                            }
-                            var e = new GcKeyEvent((KeyCode)key, GcKeyEventPhase.Up, frame, time);
-                            m_KeyCodeToKeyEventIndex.Add(key, m_KeyEventList.Length);
-                            m_KeyEventList.Add(e);
-                            m_KeyEventListOnlyUp.Add(e);
+            using (var activeArray = m_KeyTraceDict.GetValueArray(Allocator.Temp))
+            {
+                for (var i = 0; i < activeArray.Length; i++)
+                {
+                    var t = activeArray[i];
+                    if (t.Begin.Frame == frame) continue;
 
-                            t.Current = e;
-                            t.FrameCount = t.Begin.Frame - frame + 1;
-                            t.Duration = t.Begin.Time - time;
-                            m_KeyTraceDict.Remove(key);
-                            m_KeyTraceListOnlyUp.Add(t);
-                        }
-                    }
+                    // Hold Event
+                    var key = t.Begin.Key;
+                    var time = m_Context.Time.TimeSinceStartup;
+                    var e = new GcKeyEvent(key, GcKeyEventPhase.Hold, frame, time);
+                    AddKeyEvent(e);
+                    m_KeyEventListOnlyHold.Add(e);
+
+                    t.Current = e;
+                    t.FrameCount = t.Begin.Frame - frame + 1;
+                    t.Duration = t.Begin.Time - time;
+                    m_KeyTraceDict[(int)key] = t;
+                    m_KeyTraceListOnlyHold.Add(t);
                 }
             }
 
-            if (Input.anyKeyDown)
+            void AddKeyEvent(GcKeyEvent e)
             {
-                foreach (var key in k_KeyCodeArray)
-                {
-                    if (Input.GetKeyDown(key))
-                    {
-                        var e = new GcKeyEvent(key, GcKeyEventPhase.Down, frame, time);
-                        if (m_KeyCodeToKeyEventIndex.TryAdd((int)key, m_KeyEventList.Length))
-                        {
-                            m_KeyEventList.Add(e);
-                            m_KeyEventListOnlyDown.Add(e);
-                            m_KeyTraceDict.TryAdd((int)key, new GcKeyTrace(e));
-                        }
-                    }
-                }
-            }
-
-            m_KeyTraceArray = m_KeyTraceDict.GetValueArray(Allocator.Temp);
-
-            if (m_ScreenKeyboard != null)
-            {
-                if (m_ScreenKeyboard.status != TouchScreenKeyboard.Status.Visible)
-                {
-                    m_ScreenKeyboard.active = false;
-                    m_ScreenKeyboard = null;
-                }
+                m_KeyCodeToKeyEventIndex.Add((int)e.Key, m_KeyEventList.Length);
+                m_KeyEventList.Add(e);
             }
         }
         #endregion

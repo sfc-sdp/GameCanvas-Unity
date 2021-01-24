@@ -3,6 +3,7 @@ using GameCanvas;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// ゲームクラス。

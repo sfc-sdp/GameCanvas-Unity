@@ -11,6 +11,7 @@
 using System.ComponentModel;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace GameCanvas
 {
@@ -51,28 +52,28 @@ namespace GameCanvas
         /// </summary>
         /// <param name="key">キー</param>
         /// <returns>押されたかどうか</returns>
-        bool IsKeyDown(in KeyCode key);
+        bool IsKeyDown(in Key key);
 
         /// <summary>
         /// 指定されたキーが押されているかどうか（押された瞬間を除く）
         /// </summary>
         /// <param name="key">キー</param>
         /// <returns>押されているかどうか（押された瞬間を除く）</returns>
-        bool IsKeyHold(in KeyCode key);
+        bool IsKeyHold(in Key key);
 
         /// <summary>
         /// 指定されたキーが押されているかどうか（押された瞬間を含む）
         /// </summary>
         /// <param name="key">キー</param>
         /// <returns>押されているかどうか（押された瞬間を含む）</returns>
-        bool IsKeyPress(in KeyCode key);
+        bool IsKeyPress(in Key key);
 
         /// <summary>
         /// 指定されたキーが離されたかどうか
         /// </summary>
         /// <param name="key">キー</param>
         /// <returns>離されたかどうか</returns>
-        bool IsKeyUp(in KeyCode key);
+        bool IsKeyUp(in Key key);
 
         /// <summary>
         /// スクリーンキーボードを表示します
@@ -86,7 +87,7 @@ namespace GameCanvas
         /// <param name="key">キー</param>
         /// <param name="e">キーイベント</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e);
+        bool TryGetKeyEvent(in Key key, out GcKeyEvent e);
 
         /// <summary>
         /// 前回のフレーム処理以降に更新された キーイベント全てを取得します
@@ -111,7 +112,7 @@ namespace GameCanvas
         /// <param name="key">キー</param>
         /// <param name="trace">キーの軌跡</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace);
+        bool TryGetKeyTrace(in Key key, out GcKeyTrace trace);
 
         /// <summary>
         /// 前回のフレーム処理以降に更新された キーの軌跡全てを取得します
@@ -173,19 +174,50 @@ namespace GameCanvas
         /// </summary>
         bool IsAnyKeyUp { get; }
 
-        [System.Obsolete("Use to `IsKeyDown` instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        bool IsPressBackButton { get; }
-
         /// <summary>
         /// 戻るボタン（Androidのみ）
         /// </summary>
-        KeyCode KeyEscape { get; }
+        Key KeyEscape { get; }
 
         /// <summary>
         /// 前回のフレームに引き続き 押されているキーの数（押された瞬間を含む）
         /// </summary>
         int KeyPressCount { get; }
+
+        /// <summary>
+        /// 指定されたキーが押されている時間（秒）
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <returns>時間（秒）</returns>
+        float GetKeyPressDuration(in Key key);
+
+        /// <summary>
+        /// 指定されたキーが押されているフレーム数
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <returns>フレーム数</returns>
+        int GetKeyPressFrameCount(in Key key);
+
+        /// <summary>
+        /// 指定されたキーが押されているかどうか（押された瞬間を除く）
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <param name="trace">キーの軌跡</param>
+        /// <returns>押されているかどうか（押された瞬間を除く）</returns>
+        bool IsKeyHold(in Key key, out GcKeyTrace trace);
+
+        /// <summary>
+        /// 指定されたキーが離されたかどうか
+        /// </summary>
+        /// <param name="key">キー</param>
+        /// <param name="trace">キーの軌跡</param>
+        /// <returns>離されたかどうか</returns>
+        bool IsKeyUp(in Key key, out GcKeyTrace trace);
+
+        #region Obsolete
+        [System.Obsolete("Use to `IsKeyDown` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool IsPressBackButton { get; }
 
         [System.Obsolete("Use to `IsKeyDown` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -195,92 +227,61 @@ namespace GameCanvas
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool GetIsKeyEnded(in KeyCode key);
 
-        /// <summary>
-        /// 指定されたキーが押されている時間（秒）
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>時間（秒）</returns>
-        float GetKeyPressDuration(in KeyCode key);
-
-        /// <summary>
-        /// 指定されたキーが押されている時間（秒）
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>時間（秒）</returns>
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         float GetKeyPressDuration(in char key);
 
-        /// <summary>
-        /// 指定されたキーが押されているフレーム数
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>フレーム数</returns>
-        int GetKeyPressFrameCount(in KeyCode key);
-
-        /// <summary>
-        /// 指定されたキーが押されているフレーム数
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>フレーム数</returns>
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         int GetKeyPressFrameCount(in char key);
 
-        /// <summary>
-        /// 指定されたキーが押されたかどうか
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>押されたかどうか</returns>
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyDown(in char key);
 
-        /// <summary>
-        /// 指定されたキーが押されているかどうか（押された瞬間を除く）
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>押されているかどうか（押された瞬間を除く）</returns>
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool IsKeyDown(in KeyCode key);
+
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyHold(in char key);
 
-        /// <summary>
-        /// 指定されたキーが押されているかどうか（押された瞬間を除く）
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <param name="trace">キーの軌跡</param>
-        /// <returns>押されているかどうか（押された瞬間を除く）</returns>
-        bool IsKeyHold(in KeyCode key, out GcKeyTrace trace);
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool IsKeyHold(in KeyCode key);
 
-        /// <summary>
-        /// 指定されたキーが押されているかどうか（押された瞬間を含む）
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>押されているかどうか（押された瞬間を含む）</returns>
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyPress(in char key);
 
-        /// <summary>
-        /// 指定されたキーが離されたかどうか
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <returns>離されたかどうか</returns>
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool IsKeyPress(in KeyCode key);
+
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyUp(in char key);
 
-        /// <summary>
-        /// 指定されたキーが離されたかどうか
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <param name="trace">キーの軌跡</param>
-        /// <returns>離されたかどうか</returns>
-        bool IsKeyUp(in KeyCode key, out GcKeyTrace trace);
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool IsKeyUp(in KeyCode key);
 
-        /// <summary>
-        /// 指定されたキーのキーイベントがあれば取得します
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <param name="e">キーイベント</param>
-        /// <returns>取得できたかどうか</returns>
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyEvent(in char key, out GcKeyEvent e);
 
-        /// <summary>
-        /// 指定されたキーの軌跡があれば取得します
-        /// </summary>
-        /// <param name="key">キー</param>
-        /// <param name="trace">キーの軌跡</param>
-        /// <returns>取得できたかどうか</returns>
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e);
+
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyTrace(in char key, out GcKeyTrace trace);
+
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace);
+        #endregion
     }
 }

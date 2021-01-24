@@ -49,6 +49,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.1",
       "depth": 1,
@@ -124,7 +131,8 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
         "com.unity.collections": "0.14.0-preview.16",
-        "com.unity.scriptablebuildpipeline": "1.15.1"
+        "com.unity.scriptablebuildpipeline": "1.15.1",
+        "com.unity.inputsystem": "1.0.2"
       }
     },
     "com.unity.modules.androidjni": {
