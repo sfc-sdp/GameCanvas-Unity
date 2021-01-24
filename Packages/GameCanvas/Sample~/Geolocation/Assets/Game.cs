@@ -1,5 +1,5 @@
+#nullable enable
 using GameCanvas;
-using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public sealed class Game : GameBase
     const int k_ZoomLv = 18;
 
     private State m_State;
-    private string m_StateMessage;
+    private string m_StateMessage = "";
     private int2 m_TileId;
     private float2 m_Point;
 
@@ -57,6 +57,14 @@ public sealed class Game : GameBase
                     m_StateMessage = "Error: no permission";
                 }
             });
+        }
+
+        void StartGeolocationService()
+        {
+            m_State = State.Running;
+            m_StateMessage = "計測中...";
+
+            gc.StartGeolocationService();
         }
 #endif // UNITY_EDITOR
     }
@@ -120,14 +128,6 @@ public sealed class Game : GameBase
         gc.DrawString(m_StateMessage, 10, 15);
     }
 
-    private void StartGeolocationService()
-    {
-        m_State = State.Running;
-        m_StateMessage = "計測中...";
-
-        gc.StartGeolocationService();
-    }
-
     /// <summary>緯度経度からタイル座標への変換</summary>
     /// <remarks><see href="https://www.trail-note.net/tech/coordinate/"/></remarks>
     private static void CalcTileId(in float lat, in float lng, in int zoom, out int2 tileId, out float2 point)
@@ -139,7 +139,7 @@ public sealed class Game : GameBase
         var y = (int)((a / math.PI) * (-Atanh(math.sin(b * lat)) + Atanh(math.sin(b * L))));
         tileId = new int2(x / k_TileSize, y / k_TileSize);
         point = new float2(x % k_TileSize, y % k_TileSize);
-    }
 
-    private static double Atanh(in double x) => 0.5 * math.log((1 + x) / (1 - x));
+        static double Atanh(in double x) => 0.5 * math.log((1 + x) / (1 - x));
+    }
 }

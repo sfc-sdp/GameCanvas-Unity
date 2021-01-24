@@ -1,3 +1,4 @@
+#nullable enable
 using GameCanvas;
 using Unity.Collections;
 using Unity.Mathematics;
@@ -17,9 +18,9 @@ public sealed class Game : GameBase
     static readonly float2 k_LabelPos1 = new float2(12, 12);
     static readonly float2 k_LabelPos2 = new float2(12, 60);
 
-    Texture2D m_OnlineImage;
+    Texture2D? m_OnlineImage;
     GcAvailability m_OnlineImageState;
-    AudioClip m_OnlineSound;
+    AudioClip? m_OnlineSound;
     GcAvailability m_OnlineSoundState;
 
     public override void InitGame()
@@ -33,14 +34,12 @@ public sealed class Game : GameBase
     {
         if (m_OnlineImage == null && m_OnlineImageState != GcAvailability.NotAvailable)
         {
-            m_OnlineImageState = gc.TryGetOnlineImage(k_ImageUrl, out m_OnlineImage);
+            gc.TryGetOnlineImage(k_ImageUrl, out m_OnlineImageState, out m_OnlineImage);
         }
 
         if (m_OnlineSound == null && m_OnlineSoundState != GcAvailability.NotAvailable)
         {
-            m_OnlineSoundState = gc.TryGetOnlineSound(k_SoundUrl, out m_OnlineSound);
-
-            if (m_OnlineSoundState == GcAvailability.Ready)
+            if (gc.TryGetOnlineSound(k_SoundUrl, out m_OnlineSoundState, out m_OnlineSound))
             {
                 gc.PlaySound(m_OnlineSound, GcSoundTrack.BGM1, true);
             }
@@ -62,6 +61,7 @@ public sealed class Game : GameBase
                 break;
 
             case GcAvailability.Ready:
+                GcAssert.IsNotNull(m_OnlineImage);
                 gc.DrawTexture(m_OnlineImage);
                 gc.DrawString("画像 表示中", k_LabelPos1);
                 break;

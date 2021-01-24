@@ -1,7 +1,9 @@
+#nullable enable
 using GameCanvas;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public sealed class Game : GameBase
 {
@@ -13,13 +15,14 @@ public sealed class Game : GameBase
 
     Ball m_Ball;
     Color m_Color;
-    string m_DebugText;
+    string m_DebugText = "";
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(720, 1280);
         gc.SetFontSize(36);
         gc.SetRectAnchor(GcAnchor.MiddleCenter);
+        gc.IsAccelerometerEnabled = true;
 
         m_Ball = new Ball
         {
