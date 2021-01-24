@@ -153,39 +153,39 @@ namespace GameCanvas.Engine
                 case GcSoundTrack.BGM1:
                 case GcSoundTrack.BGM2:
                 case GcSoundTrack.BGM3:
+                {
+                    var i = (int)track;
+                    if (m_PlayingId[i] == sound) return;
+                    if (m_PausingId[i] == sound)
                     {
-                        var i = (int)track;
-                        if (m_PlayingId[i] == sound) return;
-                        if (m_PausingId[i] == sound)
-                        {
-                            m_Sources[i].loop = loop;
-                            UnpauseSound(track);
-                            return;
-                        }
-                        if (TryGetAuidoClip(sound, out var clip))
-                        {
-                            if (m_Sources[i].isPlaying)
-                            {
-                                m_Sources[i].Stop();
-                            }
-
-                            m_PlayingId[i] = sound;
-                            m_PausingId[i] = GcSound.Null;
-                            m_Sources[i].loop = loop;
-                            m_Sources[i].clip = clip;
-                            m_Sources[i].Play();
-                        }
+                        m_Sources[i].loop = loop;
+                        UnpauseSound(track);
+                        return;
                     }
-                    break;
+                    if (TryGetAuidoClip(sound, out var clip))
+                    {
+                        if (m_Sources[i].isPlaying)
+                        {
+                            m_Sources[i].Stop();
+                        }
+
+                        m_PlayingId[i] = sound;
+                        m_PausingId[i] = GcSound.Null;
+                        m_Sources[i].loop = loop;
+                        m_Sources[i].clip = clip;
+                        m_Sources[i].Play();
+                    }
+                }
+                break;
 
                 case GcSoundTrack.SE:
+                {
+                    if (TryGetAuidoClip(sound, out var clip))
                     {
-                        if (TryGetAuidoClip(sound, out var clip))
-                        {
-                            m_Sources[(int)GcSoundTrack.SE].PlayOneShot(clip);
-                        }
+                        m_Sources[(int)GcSoundTrack.SE].PlayOneShot(clip);
                     }
-                    break;
+                }
+                break;
             }
         }
 
@@ -196,26 +196,26 @@ namespace GameCanvas.Engine
                 case GcSoundTrack.BGM1:
                 case GcSoundTrack.BGM2:
                 case GcSoundTrack.BGM3:
+                {
+                    var i = (int)track;
+                    if (m_Sources[i].isPlaying)
                     {
-                        var i = (int)track;
-                        if (m_Sources[i].isPlaying)
-                        {
-                            m_Sources[i].Stop();
-                        }
-
-                        m_PlayingId[i] = GcSound.External;
-                        m_PausingId[i] = GcSound.Null;
-                        m_Sources[i].loop = loop;
-                        m_Sources[i].clip = clip;
-                        m_Sources[i].Play();
+                        m_Sources[i].Stop();
                     }
-                    break;
+
+                    m_PlayingId[i] = GcSound.External;
+                    m_PausingId[i] = GcSound.Null;
+                    m_Sources[i].loop = loop;
+                    m_Sources[i].clip = clip;
+                    m_Sources[i].Play();
+                }
+                break;
 
                 case GcSoundTrack.SE:
-                    {
-                        m_Sources[(int)GcSoundTrack.SE].PlayOneShot(clip);
-                    }
-                    break;
+                {
+                    m_Sources[(int)GcSoundTrack.SE].PlayOneShot(clip);
+                }
+                break;
             }
         }
 
