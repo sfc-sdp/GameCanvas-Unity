@@ -10,7 +10,6 @@
     "url": "https://github.com/sfc-sdp/GameCanvas-Unity"
   },
   "dependencies": {
-    "com.cysharp.runtimeunittesttoolkit": "2.4.0",
     "com.unity.mathematics": "1.2.1",
     "com.unity.collections": "0.14.0-preview.16",
     "com.unity.scriptablebuildpipeline": "1.15.1"
