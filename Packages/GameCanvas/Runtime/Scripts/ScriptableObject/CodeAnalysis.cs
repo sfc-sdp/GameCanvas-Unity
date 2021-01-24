@@ -9,4 +9,8 @@ namespace System.Diagnostics.CodeAnalysis
         public NotNullWhenAttribute(bool returnValue)
             => ReturnValue = returnValue;
     }
+
+    sealed class NotNullAttribute : Attribute
+    {
+    }
 }
