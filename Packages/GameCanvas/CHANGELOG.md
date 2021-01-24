@@ -1,4 +1,11 @@
 # CHANGE LOG
+## 6.0.0-pre.2
+### 機能追加
+- [#190](https://github.com/sfc-sdp/GameCanvas-Unity/issues/190) InputSystem に移行
+- 加速度計の動作周波数を設定できるように
+### 仕様変更
+- Unity 2020.2.2f1 に更新
+
 ## 6.0.0-pre.1
 ### 機能追加
 - [#188](https://github.com/sfc-sdp/GameCanvas-Unity/issues/188) null許容参照型に対応

@@ -1,6 +1,6 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "6.0.0-pre.1",
+  "version": "6.0.0-pre.2",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
   "unity": "2020.2",
