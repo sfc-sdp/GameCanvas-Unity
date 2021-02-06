@@ -1,4 +1,10 @@
 # CHANGE LOG
+## 6.0.0-pre.3
+### 機能追加
+- [#197](https://github.com/sfc-sdp/GameCanvas-Unity/issues/197) 各種コンテナをSpan構造体に差し替え
+### 仕様変更
+- Unity 2020.2.3f1 に更新
+
 ## 6.0.0-pre.2
 ### 機能追加
 - [#190](https://github.com/sfc-sdp/GameCanvas-Unity/issues/190) InputSystem に移行
