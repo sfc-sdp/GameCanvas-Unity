@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ISceneManagementEx
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -60,7 +60,7 @@
       <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor__1_System_Int32____0__">ISceneManagement.TryGetActor&lt;T&gt;(Int32, T)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___">ISceneManagement.TryGetActorList&lt;T&gt;(ReadOnlyActorList&lt;T&gt;)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorAll__1_System_ReadOnlySpan___0___">ISceneManagement.TryGetActorAll&lt;T&gt;(ReadOnlySpan&lt;T&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryRemoveActor_GameCanvas_GcActor__">ISceneManagement.TryRemoveActor(GcActor)</a>
@@ -82,6 +82,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ChangeScene&lt;T&gt;(object state = null)
+
     where T : GcScene</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -157,6 +158,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">T GetActor&lt;T&gt;()
+
     where T : GcActor</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
@@ -199,6 +201,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">ReadOnlyActorList&lt;T&gt; GetActorList&lt;T&gt;()
+
     where T : GcActor</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
@@ -271,6 +274,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RegisterScene&lt;T&gt;()
+
     where T : GcScene, new()</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
@@ -330,6 +334,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void UnregisterScene&lt;T&gt;()
+
     where T : GcScene</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>

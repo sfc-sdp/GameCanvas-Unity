@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GcLineExtensions
+    <title>Class SpanExtensions
    | GameCanvas </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GcLineExtensions
+    <meta name="title" content="Class SpanExtensions
    | GameCanvas ">
     <meta name="generator" content="docfx 2.56.6.0">
     
@@ -29,18 +29,17 @@
       <div role="main" class="container body-content hide-when-search">
         <div class="article row grid">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcLineExtensions">
+            <article class="content wrap" id="_content" data-uid="GameCanvas.SpanExtensions">
   
   
-  <h1 id="GameCanvas_GcLineExtensions" data-uid="GameCanvas.GcLineExtensions" class="text-break">Class GcLineExtensions
+  <h1 id="GameCanvas_SpanExtensions" data-uid="GameCanvas.SpanExtensions" class="text-break">Class SpanExtensions
   </h1>
-  <div class="markdown level0 summary"><p><a class="xref" href="GameCanvas.GcLine.html">GcLine</a> 拡張クラス</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">GcLineExtensions</span></div>
+    <div class="level1"><span class="xref">SpanExtensions</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -68,20 +67,19 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
   <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcLineExtensions_syntax">Syntax</h5>
+  <h5 id="GameCanvas_SpanExtensions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class GcLineExtensions</code></pre>
+    <pre><code class="lang-csharp hljs">public static class SpanExtensions</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  <a id="GameCanvas_GcLineExtensions_AABB_" data-uid="GameCanvas.GcLineExtensions.AABB*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_AABB_GameCanvas_GcLine__Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcLineExtensions.AABB(GameCanvas.GcLine@,Unity.Mathematics.float2x3@)">AABB(GcLine, float2x3)</h4>
-  <div class="markdown level1 summary"><p>AABB</p>
-</div>
+  <a id="GameCanvas_SpanExtensions_AsReadOnlySpan_" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsReadOnlySpan__1_System_Collections_Generic_List___0__" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan``1(System.Collections.Generic.List{``0})">AsReadOnlySpan&lt;T&gt;(List&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GcAABB AABB(this in GcLine self, in float2x3 matrix)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ReadOnlySpan&lt;T&gt; AsReadOnlySpan&lt;T&gt;(this List&lt;T&gt; self)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -94,53 +92,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">self</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">matrix</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLineExtensions_Begin_" data-uid="GameCanvas.GcLineExtensions.Begin*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_Begin_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.Begin(GameCanvas.GcLine@)">Begin(GcLine)</h4>
-  <div class="markdown level1 summary"><p>始点（線分の場合）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 Begin(this in GcLine self)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -156,19 +108,35 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_GcLineExtensions_Degree_" data-uid="GameCanvas.GcLineExtensions.Degree*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_Degree_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.Degree(GameCanvas.GcLine@)">Degree(GcLine)</h4>
-  <div class="markdown level1 summary"><p>傾き（度数法）</p>
-</div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_SpanExtensions_AsReadOnlySpan_" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsReadOnlySpan__1_Unity_Collections_NativeArray___0___" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan``1(Unity.Collections.NativeArray{``0}@)">AsReadOnlySpan&lt;T&gt;(NativeArray&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float Degree(this in GcLine self)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ReadOnlySpan&lt;T&gt; AsReadOnlySpan&lt;T&gt;(this in NativeArray&lt;T&gt; self)
+
+    where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -181,7 +149,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><a class="xref" href="https://docs.unity3d.com/ScriptReference/Unity.Collections.NativeArray_1.html">NativeArray</a>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -197,19 +165,35 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_GcLineExtensions_End_" data-uid="GameCanvas.GcLineExtensions.End*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_End_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.End(GameCanvas.GcLine@)">End(GcLine)</h4>
-  <div class="markdown level1 summary"><p>終点（線分の場合）</p>
-</div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_SpanExtensions_AsReadOnlySpan_" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsReadOnlySpan__1_Unity_Collections_NativeList___0___" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan``1(Unity.Collections.NativeList{``0}@)">AsReadOnlySpan&lt;T&gt;(NativeList&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 End(this in GcLine self)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ReadOnlySpan&lt;T&gt; AsReadOnlySpan&lt;T&gt;(this in NativeList&lt;T&gt; self)
+
+    where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -222,7 +206,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.collections@0.12/api/Unity.Collections.NativeList-1.html">NativeList</a>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -238,19 +222,35 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_GcLineExtensions_IsSegment_" data-uid="GameCanvas.GcLineExtensions.IsSegment*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_IsSegment_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.IsSegment(GameCanvas.GcLine@)">IsSegment(GcLine)</h4>
-  <div class="markdown level1 summary"><p>線分（長さが有限）かどうか</p>
-</div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_SpanExtensions_AsReadOnlySpan_" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsReadOnlySpan__2_System_Collections_Generic_List___0__" data-uid="GameCanvas.SpanExtensions.AsReadOnlySpan``2(System.Collections.Generic.List{``0})">AsReadOnlySpan&lt;TBase, T&gt;(List&lt;TBase&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsSegment(this in GcLine self)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ReadOnlySpan&lt;T&gt; AsReadOnlySpan&lt;TBase, T&gt;(this List&lt;TBase&gt; self)
+
+    where TBase : class where T : TBase</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -263,7 +263,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;TBase&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -279,19 +279,37 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_GcLineExtensions_IsZero_" data-uid="GameCanvas.GcLineExtensions.IsZero*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_IsZero_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.IsZero(GameCanvas.GcLine@)">IsZero(GcLine)</h4>
-  <div class="markdown level1 summary"><p>長さがないかどうか</p>
-</div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TBase</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_SpanExtensions_AsSpan_" data-uid="GameCanvas.SpanExtensions.AsSpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsSpan__1_System_Collections_Generic_List___0__" data-uid="GameCanvas.SpanExtensions.AsSpan``1(System.Collections.Generic.List{``0})">AsSpan&lt;T&gt;(List&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsZero(this in GcLine self)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Span&lt;T&gt; AsSpan&lt;T&gt;(this List&lt;T&gt; self)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -304,7 +322,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -320,19 +338,35 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td><span class="xref">System.Span</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_GcLineExtensions_Radian_" data-uid="GameCanvas.GcLineExtensions.Radian*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_Radian_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.Radian(GameCanvas.GcLine@)">Radian(GcLine)</h4>
-  <div class="markdown level1 summary"><p>傾き（弧度法）</p>
-</div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_SpanExtensions_AsSpan_" data-uid="GameCanvas.SpanExtensions.AsSpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsSpan__1_Unity_Collections_NativeArray___0___" data-uid="GameCanvas.SpanExtensions.AsSpan``1(Unity.Collections.NativeArray{``0}@)">AsSpan&lt;T&gt;(NativeArray&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float Radian(this in GcLine self)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Span&lt;T&gt; AsSpan&lt;T&gt;(this in NativeArray&lt;T&gt; self)
+
+    where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -345,7 +379,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><a class="xref" href="https://docs.unity3d.com/ScriptReference/Unity.Collections.NativeArray_1.html">NativeArray</a>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -361,19 +395,35 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="xref">System.Span</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_GcLineExtensions_Vector_" data-uid="GameCanvas.GcLineExtensions.Vector*"></a>
-  <h4 id="GameCanvas_GcLineExtensions_Vector_GameCanvas_GcLine__" data-uid="GameCanvas.GcLineExtensions.Vector(GameCanvas.GcLine@)">Vector(GcLine)</h4>
-  <div class="markdown level1 summary"><p>ベクトル（線分の場合）</p>
-</div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_SpanExtensions_AsSpan_" data-uid="GameCanvas.SpanExtensions.AsSpan*"></a>
+  <h4 id="GameCanvas_SpanExtensions_AsSpan__1_Unity_Collections_NativeList___0___" data-uid="GameCanvas.SpanExtensions.AsSpan``1(Unity.Collections.NativeList{``0}@)">AsSpan&lt;T&gt;(NativeList&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 Vector(this in GcLine self)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Span&lt;T&gt; AsSpan&lt;T&gt;(this in NativeList&lt;T&gt; self)
+
+    where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -386,7 +436,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
+        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.collections@0.12/api/Unity.Collections.NativeList-1.html">NativeList</a>&lt;T&gt;</td>
         <td><span class="parametername">self</span></td>
         <td></td>
       </tr>
@@ -402,7 +452,22 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
+        <td><span class="xref">System.Span</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
         <td></td>
       </tr>
     </tbody>

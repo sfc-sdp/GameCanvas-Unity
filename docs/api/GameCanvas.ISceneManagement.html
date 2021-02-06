@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ISceneManagement
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,6 +79,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">T CreateActor&lt;T&gt;()
+
     where T : GcActor, new()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
@@ -146,6 +147,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int GetActorCount&lt;T&gt;()
+
     where T : GcActor</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
@@ -246,6 +248,7 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool TryGetActor&lt;T&gt;(in int i, out T actor)
+
     where T : GcActor</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -304,14 +307,15 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_ISceneManagement_TryGetActorList_" data-uid="GameCanvas.ISceneManagement.TryGetActorList*"></a>
-  <h4 id="GameCanvas_ISceneManagement_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___" data-uid="GameCanvas.ISceneManagement.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)">TryGetActorList&lt;T&gt;(out ReadOnlyActorList&lt;T&gt;)</h4>
+  <a id="GameCanvas_ISceneManagement_TryGetActorAll_" data-uid="GameCanvas.ISceneManagement.TryGetActorAll*"></a>
+  <h4 id="GameCanvas_ISceneManagement_TryGetActorAll__1_System_ReadOnlySpan___0___" data-uid="GameCanvas.ISceneManagement.TryGetActorAll``1(System.ReadOnlySpan{``0}@)">TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt;)</h4>
   <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものを取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetActorList&lt;T&gt;(out ReadOnlyActorList&lt;T&gt; list)
+    <pre><code class="lang-csharp hljs">bool TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt; actors)
+
     where T : GcActor</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -325,9 +329,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.ReadOnlyActorList-1.html">ReadOnlyActorList</a>&lt;T&gt;</td>
-        <td><span class="parametername">list</span></td>
-        <td><p>取得したアクターのリスト</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;T&gt;</td>
+        <td><span class="parametername">actors</span></td>
+        <td><p>取得したアクターの一覧</p>
 </td>
       </tr>
     </tbody>

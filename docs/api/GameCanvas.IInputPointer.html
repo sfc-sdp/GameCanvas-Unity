@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IInputPointer
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -345,14 +345,14 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_IInputPointer_TryGetPointerEventArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray*"></a>
-  <h4 id="GameCanvas_IInputPointer_TryGetPointerEventArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)">TryGetPointerEventArray(GcPointerEventPhase, out NativeArray&lt;GcPointerEvent&gt;.ReadOnly, out Int32)</h4>
+  <a id="GameCanvas_IInputPointer_TryGetPointerEventAll_" data-uid="GameCanvas.IInputPointer.TryGetPointerEventAll*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___" data-uid="GameCanvas.IInputPointer.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)">TryGetPointerEventAll(GcPointerEventPhase, out ReadOnlySpan&lt;GcPointerEvent&gt;)</h4>
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 指定された状態のポインターイベント全てを取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray&lt;GcPointerEvent&gt;.ReadOnly array, out int count)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetPointerEventAll(in GcPointerEventPhase phase, out ReadOnlySpan&lt;GcPointerEvent&gt; events)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -371,15 +371,9 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>イベント配列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>イベント配列の要素数</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a>&gt;</td>
+        <td><span class="parametername">events</span></td>
+        <td><p>イベントの一覧</p>
 </td>
       </tr>
     </tbody>
@@ -400,14 +394,14 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_IInputPointer_TryGetPointerEventArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray*"></a>
-  <h4 id="GameCanvas_IInputPointer_TryGetPointerEventArray_Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerEventArray(Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)">TryGetPointerEventArray(out NativeArray&lt;GcPointerEvent&gt;.ReadOnly, out Int32)</h4>
+  <a id="GameCanvas_IInputPointer_TryGetPointerEventAll_" data-uid="GameCanvas.IInputPointer.TryGetPointerEventAll*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___" data-uid="GameCanvas.IInputPointer.TryGetPointerEventAll(System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)">TryGetPointerEventAll(out ReadOnlySpan&lt;GcPointerEvent&gt;)</h4>
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターイベント全てを取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetPointerEventArray(out NativeArray&lt;GcPointerEvent&gt;.ReadOnly array, out int count)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetPointerEventAll(out ReadOnlySpan&lt;GcPointerEvent&gt; events)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -420,15 +414,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>イベント配列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>イベント配列の要素数</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a>&gt;</td>
+        <td><span class="parametername">events</span></td>
+        <td><p>イベントの一覧</p>
 </td>
       </tr>
     </tbody>
@@ -498,14 +486,14 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_IInputPointer_TryGetPointerTapPointArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPointArray*"></a>
-  <h4 id="GameCanvas_IInputPointer_TryGetPointerTapPointArray_Unity_Collections_NativeArray_Unity_Mathematics_float2__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPointArray(Unity.Collections.NativeArray{Unity.Mathematics.float2}.ReadOnly@,System.Int32@)">TryGetPointerTapPointArray(out NativeArray&lt;float2&gt;.ReadOnly, out Int32)</h4>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTapPointAll_" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPointAll*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___" data-uid="GameCanvas.IInputPointer.TryGetPointerTapPointAll(System.ReadOnlySpan{Unity.Mathematics.float2}@)">TryGetPointerTapPointAll(out ReadOnlySpan&lt;float2&gt;)</h4>
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した タップポイント全てを取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetPointerTapPointArray(out NativeArray&lt;float2&gt;.ReadOnly array, out int count)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTapPointAll(out ReadOnlySpan&lt;float2&gt; points)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -518,15 +506,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>タップポイント配列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>タップポイント配列の要素数</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a>&gt;</td>
+        <td><span class="parametername">points</span></td>
+        <td><p>タップポイントの一覧</p>
 </td>
       </tr>
     </tbody>
@@ -654,14 +636,14 @@
       </tr>
     </tbody>
   </table>
-  <a id="GameCanvas_IInputPointer_TryGetPointerTraceArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray*"></a>
-  <h4 id="GameCanvas_IInputPointer_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)">TryGetPointerTraceArray(GcPointerEventPhase, out NativeArray&lt;GcPointerTrace&gt;.ReadOnly, out Int32)</h4>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTraceAll_" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceAll*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)">TryGetPointerTraceAll(GcPointerEventPhase, out ReadOnlySpan&lt;GcPointerTrace&gt;)</h4>
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 指定された状態のポインターの軌跡全てを取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray&lt;GcPointerTrace&gt;.ReadOnly array, out int count)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out ReadOnlySpan&lt;GcPointerTrace&gt; traces)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -679,15 +661,9 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>軌跡配列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>軌跡配列の要素数</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a>&gt;</td>
+        <td><span class="parametername">traces</span></td>
+        <td><p>軌跡の一覧</p>
 </td>
       </tr>
     </tbody>
@@ -708,17 +684,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_IInputPointer_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32___remarks">Remarks</h5>
+  <h5 id="GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace____remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">phase</code> に指定できる値は <a class="xref" href="GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_Hold">Hold</a> または <a class="xref" href="GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_End">End</a> のみです</p>
 </div>
-  <a id="GameCanvas_IInputPointer_TryGetPointerTraceArray_" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray*"></a>
-  <h4 id="GameCanvas_IInputPointer_TryGetPointerTraceArray_Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceArray(Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)">TryGetPointerTraceArray(out NativeArray&lt;GcPointerTrace&gt;.ReadOnly, out Int32)</h4>
+  <a id="GameCanvas_IInputPointer_TryGetPointerTraceAll_" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceAll*"></a>
+  <h4 id="GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___" data-uid="GameCanvas.IInputPointer.TryGetPointerTraceAll(System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)">TryGetPointerTraceAll(out ReadOnlySpan&lt;GcPointerTrace&gt;)</h4>
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した ポインターの軌跡全てを取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetPointerTraceArray(out NativeArray&lt;GcPointerTrace&gt;.ReadOnly array, out int count)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetPointerTraceAll(out ReadOnlySpan&lt;GcPointerTrace&gt; traces)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -731,15 +707,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/2020.2/Documentation/ScriptReference/Unity.Collections.NativeArray_1.ReadOnly.html">NativeArray.ReadOnly</a>&lt;&gt;</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>軌跡配列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>軌跡配列の要素数</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a>&gt;</td>
+        <td><span class="parametername">traces</span></td>
+        <td><p>軌跡の一覧</p>
 </td>
       </tr>
     </tbody>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IStorage
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -162,13 +162,13 @@
   <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">value</code> に null を渡した場合、キーに紐づくデータを削除します</p>
 </div>
   <a id="GameCanvas_IStorage_SaveScreenshotAsync_" data-uid="GameCanvas.IStorage.SaveScreenshotAsync*"></a>
-  <h4 id="GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String___" data-uid="GameCanvas.IStorage.SaveScreenshotAsync(System.Action{System.String}@)">SaveScreenshotAsync(Action&lt;String&gt;)</h4>
+  <h4 id="GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String__" data-uid="GameCanvas.IStorage.SaveScreenshotAsync(System.Action{System.String})">SaveScreenshotAsync(Action&lt;String&gt;)</h4>
   <div class="markdown level1 summary"><p>現在の画面を 画像として保存します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SaveScreenshotAsync(in Action&lt;string&gt; onComplete = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void SaveScreenshotAsync(Action&lt;string&gt; onComplete = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,7 +188,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String____remarks">Remarks</h5>
+  <h5 id="GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><ul>
 <li>保存に成功した場合、<code data-dev-comment-type="paramref" class="paramref">onComplete</code> の引数には、画像保存先のパスが渡されます<br></li>
 <li>保存に失敗した場合、<code data-dev-comment-type="paramref" class="paramref">onComplete</code> の引数には null が渡されます</li>
