@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface INetwork
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,13 +81,13 @@
     <pre><code class="lang-csharp hljs">void ClearDownloadCacheAll()</code></pre>
   </div>
   <a id="GameCanvas_INetwork_TryGetOnlineImage_" data-uid="GameCanvas.INetwork.TryGetOnlineImage*"></a>
-  <h4 id="GameCanvas_INetwork_TryGetOnlineImage_System_String__UnityEngine_Texture2D__" data-uid="GameCanvas.INetwork.TryGetOnlineImage(System.String@,UnityEngine.Texture2D@)">TryGetOnlineImage(String, out Texture2D)</h4>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineImage_System_String__GameCanvas_GcAvailability__UnityEngine_Texture2D__" data-uid="GameCanvas.INetwork.TryGetOnlineImage(System.String@,GameCanvas.GcAvailability@,UnityEngine.Texture2D@)">TryGetOnlineImage(String, out GcAvailability, out Texture2D)</h4>
   <div class="markdown level1 summary"><p>オンライン画像リソースの取得を試みます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineImage(in string url, out Texture2D texture)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetOnlineImage(in string url, out GcAvailability availability, out Texture2D texture)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -104,6 +104,11 @@
         <td><span class="parametername">url</span></td>
         <td><p>リソースURL</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><span class="parametername">availability</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/Texture2D.html">Texture2D</a></td>
@@ -123,7 +128,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
         <td><p>オンラインリソースの可用性</p>
 </td>
       </tr>
@@ -179,13 +184,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_INetwork_TryGetOnlineSound_" data-uid="GameCanvas.INetwork.TryGetOnlineSound*"></a>
-  <h4 id="GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioClip__" data-uid="GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioClip@)">TryGetOnlineSound(String, out AudioClip)</h4>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineSound_System_String__GameCanvas_GcAvailability__UnityEngine_AudioClip__" data-uid="GameCanvas.INetwork.TryGetOnlineSound(System.String@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)">TryGetOnlineSound(String, out GcAvailability, out AudioClip)</h4>
   <div class="markdown level1 summary"><p>オンライン音声リソースの取得を試みます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineSound(in string url, out AudioClip clip)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetOnlineSound(in string url, out GcAvailability availability, out AudioClip clip)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -202,6 +207,11 @@
         <td><span class="parametername">url</span></td>
         <td><p>リソースURL</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><span class="parametername">availability</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/AudioClip.html">AudioClip</a></td>
@@ -221,20 +231,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
         <td><p>オンラインリソースの可用性</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_INetwork_TryGetOnlineSound_" data-uid="GameCanvas.INetwork.TryGetOnlineSound*"></a>
-  <h4 id="GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__UnityEngine_AudioClip__" data-uid="GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,UnityEngine.AudioClip@)">TryGetOnlineSound(String, AudioType, out AudioClip)</h4>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__GameCanvas_GcAvailability__UnityEngine_AudioClip__" data-uid="GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)">TryGetOnlineSound(String, AudioType, out GcAvailability, out AudioClip)</h4>
   <div class="markdown level1 summary"><p>オンライン音声リソースの取得を試みます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineSound(in string url, in AudioType type, out AudioClip clip)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, out AudioClip clip)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -259,6 +269,11 @@
 </td>
       </tr>
       <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><span class="parametername">availability</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/AudioClip.html">AudioClip</a></td>
         <td><span class="parametername">clip</span></td>
         <td><p>音声リソース。戻り値が<a class="xref" href="GameCanvas.GcAvailability.html#GameCanvas_GcAvailability_Ready">Ready</a>以外だとNull</p>
@@ -276,20 +291,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
         <td><p>オンラインリソースの可用性</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_INetwork_TryGetOnlineText_" data-uid="GameCanvas.INetwork.TryGetOnlineText*"></a>
-  <h4 id="GameCanvas_INetwork_TryGetOnlineText_System_String__System_String__" data-uid="GameCanvas.INetwork.TryGetOnlineText(System.String@,System.String@)">TryGetOnlineText(String, out String)</h4>
+  <h4 id="GameCanvas_INetwork_TryGetOnlineText_System_String__GameCanvas_GcAvailability__System_String__" data-uid="GameCanvas.INetwork.TryGetOnlineText(System.String@,GameCanvas.GcAvailability@,System.String@)">TryGetOnlineText(String, out GcAvailability, out String)</h4>
   <div class="markdown level1 summary"><p>オンラインテキストの取得を試みます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">GcAvailability TryGetOnlineText(in string url, out string str)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetOnlineText(in string url, out GcAvailability availability, out string str)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -308,6 +323,11 @@
 </td>
       </tr>
       <tr>
+        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><span class="parametername">availability</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
         <td><span class="parametername">str</span></td>
         <td></td>
@@ -324,7 +344,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="GameCanvas.GcAvailability.html">GcAvailability</a></td>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
         <td><p>オンラインリソースの可用性</p>
 </td>
       </tr>

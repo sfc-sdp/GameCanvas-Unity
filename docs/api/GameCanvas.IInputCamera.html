@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IInputCamera
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -64,6 +64,30 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IInputCamera_CameraDevices_" data-uid="GameCanvas.IInputCamera.CameraDevices*"></a>
+  <h4 id="GameCanvas_IInputCamera_CameraDevices" data-uid="GameCanvas.IInputCamera.CameraDevices">CameraDevices</h4>
+  <div class="markdown level1 summary"><p>全ての認識可能なカメラ（外部入力映像）の一覧</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ReadOnlySpan&lt;GcCameraDevice&gt; CameraDevices { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -620,13 +644,13 @@
     </tbody>
   </table>
   <a id="GameCanvas_IInputCamera_TryGetCameraImageAll_" data-uid="GameCanvas.IInputCamera.TryGetCameraImageAll*"></a>
-  <h4 id="GameCanvas_IInputCamera_TryGetCameraImageAll_System_Collections_ObjectModel_ReadOnlyCollection_GameCanvas_GcCameraDevice___" data-uid="GameCanvas.IInputCamera.TryGetCameraImageAll(System.Collections.ObjectModel.ReadOnlyCollection{GameCanvas.GcCameraDevice}@)">TryGetCameraImageAll(out ReadOnlyCollection&lt;GcCameraDevice&gt;)</h4>
+  <h4 id="GameCanvas_IInputCamera_TryGetCameraImageAll_System_ReadOnlySpan_GameCanvas_GcCameraDevice___" data-uid="GameCanvas.IInputCamera.TryGetCameraImageAll(System.ReadOnlySpan{GameCanvas.GcCameraDevice}@)">TryGetCameraImageAll(out ReadOnlySpan&lt;GcCameraDevice&gt;)</h4>
   <div class="markdown level1 summary"><p>全ての認識可能なカメラ（外部入力映像）の取得を試みます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetCameraImageAll(out ReadOnlyCollection&lt;GcCameraDevice&gt; array)</code></pre>
+    <pre><code class="lang-csharp hljs">bool TryGetCameraImageAll(out ReadOnlySpan&lt;GcCameraDevice&gt; devices)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -639,9 +663,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.collections.objectmodel.readonlycollection-1?view=netstandard-2.0">ReadOnlyCollection</a>&lt;<a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a>&gt;</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>カメラ（外部入力映像）配列</p>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;<a class="xref" href="GameCanvas.GcCameraDevice.html">GcCameraDevice</a>&gt;</td>
+        <td><span class="parametername">devices</span></td>
+        <td><p>カメラ（外部入力映像）の一覧</p>
 </td>
       </tr>
     </tbody>

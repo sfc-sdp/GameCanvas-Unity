@@ -92,19 +92,17 @@ namespace GameCanvas
         /// <summary>
         /// 前回のフレーム処理以降に更新された キーイベント全てを取得します
         /// </summary>
-        /// <param name="array">キーイベント配列</param>
-        /// <param name="count">キーイベント配列の要素数</param>
+        /// <param name="events">キーイベントの一覧</param>
         /// <returns>要素数が1以上かどうか</returns>
-        bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count);
+        bool TryGetKeyEventAll(out System.ReadOnlySpan<GcKeyEvent> events);
 
         /// <summary>
         /// 前回のフレーム処理以降に更新された 指定された状態のキーイベント全てを取得します
         /// </summary>
         /// <param name="phase">キーイベント状態</param>
-        /// <param name="array">キーイベント配列</param>
-        /// <param name="count">キーイベント配列の要素数</param>
+        /// <param name="events">キーイベントの一覧</param>
         /// <returns>要素数が1以上かどうか</returns>
-        bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count);
+        bool TryGetKeyEventAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyEvent> events);
 
         /// <summary>
         /// 指定されたキーの軌跡があれば取得します
@@ -117,22 +115,17 @@ namespace GameCanvas
         /// <summary>
         /// 前回のフレーム処理以降に更新された キーの軌跡全てを取得します
         /// </summary>
-        /// <param name="array">キーの軌跡配列</param>
-        /// <param name="count">キーの軌跡配列の要素数</param>
+        /// <param name="traces">キーの軌跡の一覧</param>
         /// <returns>要素数が1以上かどうか</returns>
-        bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count);
+        bool TryGetKeyTraceAll(out System.ReadOnlySpan<GcKeyTrace> traces);
 
         /// <summary>
-        /// 前回のフレーム処理以降に更新された 指定された状態のキーの軌跡全てを取得します
+        /// 前回のフレーム処理以降に更新された キーの軌跡全てを取得します
         /// </summary>
-        /// <remarks>
-        /// <paramref name="phase"/> に指定できる値は <see cref="GcKeyEventPhase.Hold"/> または <see cref="GcKeyEventPhase.Up"/> のみです
-        /// </remarks>
         /// <param name="phase">キーイベント状態</param>
-        /// <param name="array">キーの軌跡配列</param>
-        /// <param name="count">キーの軌跡配列の要素数</param>
+        /// <param name="traces">キーの軌跡の一覧</param>
         /// <returns>要素数が1以上かどうか</returns>
-        bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count);
+        bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyTrace> traces);
 
         /// <summary>
         /// スクリーンキーボードの表示位置を取得します
@@ -145,6 +138,24 @@ namespace GameCanvas
         /// <param name="area">表示位置（キャンバス座標系）</param>
         /// <returns>取得できたかどうか</returns>
         bool TryGetScreenKeyboardArea(out GcAABB area);
+
+        #region Obsolete
+        [System.Obsolete("Use to `TryGetKeyEventAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetKeyEventAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetKeyTraceAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetKeyTraceAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count);
+        #endregion
     }
 
     public interface IInputKeyEx : IInputKey

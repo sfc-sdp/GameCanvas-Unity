@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UnityKeyCodeExtensions
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -34,7 +34,7 @@
   
   <h1 id="GameCanvas_UnityKeyCodeExtensions" data-uid="GameCanvas.UnityKeyCodeExtensions" class="text-break">Class UnityKeyCodeExtensions
   </h1>
-  <div class="markdown level0 summary"><p><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/KeyCode.html">KeyCode</a> と <a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.char?view=netstandard-2.0">char</a> (UTF-16) の相互変換</p>
+  <div class="markdown level0 summary"><p><span class="xref">UnityEngine.InputSystem.Key</span> と <a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.char?view=netstandard-2.0">char</a> (UTF-16) の相互変換</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -74,6 +74,91 @@
   </div>
   <h3 id="methods">Methods
   </h3>
+  <a id="GameCanvas_UnityKeyCodeExtensions_ToKey_" data-uid="GameCanvas.UnityKeyCodeExtensions.ToKey*"></a>
+  <h4 id="GameCanvas_UnityKeyCodeExtensions_ToKey_UnityEngine_KeyCode_" data-uid="GameCanvas.UnityKeyCodeExtensions.ToKey(UnityEngine.KeyCode)">ToKey(KeyCode)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Key ToKey(this KeyCode code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.unity3d.com/ja/2019.4/ScriptReference/KeyCode.html">KeyCode</a></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.InputSystem.Key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_UnityKeyCodeExtensions_TryGetChar_" data-uid="GameCanvas.UnityKeyCodeExtensions.TryGetChar*"></a>
+  <h4 id="GameCanvas_UnityKeyCodeExtensions_TryGetChar_UnityEngine_InputSystem_Key_System_Char__" data-uid="GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.InputSystem.Key,System.Char@)">TryGetChar(Key, out Char)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryGetChar(this Key key, out char c)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">UnityEngine.InputSystem.Key</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.char?view=netstandard-2.0">Char</a></td>
+        <td><span class="parametername">c</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_UnityKeyCodeExtensions_TryGetChar_" data-uid="GameCanvas.UnityKeyCodeExtensions.TryGetChar*"></a>
   <h4 id="GameCanvas_UnityKeyCodeExtensions_TryGetChar_UnityEngine_KeyCode_System_Char__" data-uid="GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.KeyCode,System.Char@)">TryGetChar(KeyCode, out Char)</h4>
   <div class="markdown level1 summary"></div>
@@ -100,6 +185,51 @@
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.char?view=netstandard-2.0">Char</a></td>
         <td><span class="parametername">c</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_UnityKeyCodeExtensions_TryGetKey_" data-uid="GameCanvas.UnityKeyCodeExtensions.TryGetKey*"></a>
+  <h4 id="GameCanvas_UnityKeyCodeExtensions_TryGetKey_System_Char__UnityEngine_InputSystem_Key__" data-uid="GameCanvas.UnityKeyCodeExtensions.TryGetKey(System.Char@,UnityEngine.InputSystem.Key@)">TryGetKey(Char, out Key)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryGetKey(this in char c, out Key key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.char?view=netstandard-2.0">Char</a></td>
+        <td><span class="parametername">c</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">UnityEngine.InputSystem.Key</span></td>
+        <td><span class="parametername">key</span></td>
         <td></td>
       </tr>
     </tbody>

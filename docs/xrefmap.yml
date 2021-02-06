@@ -598,6 +598,12 @@ references:
   commentId: F:GameCanvas.GcAccelerationEvent.RawAcceleration
   fullName: GameCanvas.GcAccelerationEvent.RawAcceleration
   nameWithType: GcAccelerationEvent.RawAcceleration
+- uid: GameCanvas.GcAccelerationEvent.Time
+  name: Time
+  href: api/GameCanvas.GcAccelerationEvent.html#GameCanvas_GcAccelerationEvent_Time
+  commentId: F:GameCanvas.GcAccelerationEvent.Time
+  fullName: GameCanvas.GcAccelerationEvent.Time
+  nameWithType: GcAccelerationEvent.Time
 - uid: GameCanvas.GcAccelerationEvent.ToString
   name: ToString()
   href: api/GameCanvas.GcAccelerationEvent.html#GameCanvas_GcAccelerationEvent_ToString
@@ -1018,6 +1024,76 @@ references:
   commentId: F:GameCanvas.GcAnchor.UpperRight
   fullName: GameCanvas.GcAnchor.UpperRight
   nameWithType: GcAnchor.UpperRight
+- uid: GameCanvas.GcAssert
+  name: GcAssert
+  href: api/GameCanvas.GcAssert.html
+  commentId: T:GameCanvas.GcAssert
+  fullName: GameCanvas.GcAssert
+  nameWithType: GcAssert
+- uid: GameCanvas.GcAssert.AssertionException
+  name: GcAssert.AssertionException
+  href: api/GameCanvas.GcAssert.AssertionException.html
+  commentId: T:GameCanvas.GcAssert.AssertionException
+  fullName: GameCanvas.GcAssert.AssertionException
+  nameWithType: GcAssert.AssertionException
+- uid: GameCanvas.GcAssert.AssertionException.#ctor(System.String)
+  name: AssertionException(String)
+  href: api/GameCanvas.GcAssert.AssertionException.html#GameCanvas_GcAssert_AssertionException__ctor_System_String_
+  commentId: M:GameCanvas.GcAssert.AssertionException.#ctor(System.String)
+  fullName: GameCanvas.GcAssert.AssertionException.AssertionException(System.String)
+  nameWithType: GcAssert.AssertionException.AssertionException(String)
+- uid: GameCanvas.GcAssert.AssertionException.#ctor*
+  name: AssertionException
+  href: api/GameCanvas.GcAssert.AssertionException.html#GameCanvas_GcAssert_AssertionException__ctor_
+  commentId: Overload:GameCanvas.GcAssert.AssertionException.#ctor
+  isSpec: "True"
+  fullName: GameCanvas.GcAssert.AssertionException.AssertionException
+  nameWithType: GcAssert.AssertionException.AssertionException
+- uid: GameCanvas.GcAssert.IsNotNull*
+  name: IsNotNull
+  href: api/GameCanvas.GcAssert.html#GameCanvas_GcAssert_IsNotNull_
+  commentId: Overload:GameCanvas.GcAssert.IsNotNull
+  isSpec: "True"
+  fullName: GameCanvas.GcAssert.IsNotNull
+  nameWithType: GcAssert.IsNotNull
+- uid: GameCanvas.GcAssert.IsNotNull``1(``0)
+  name: IsNotNull<T>(T)
+  href: api/GameCanvas.GcAssert.html#GameCanvas_GcAssert_IsNotNull__1___0_
+  commentId: M:GameCanvas.GcAssert.IsNotNull``1(``0)
+  name.vb: IsNotNull(Of T)(T)
+  fullName: GameCanvas.GcAssert.IsNotNull<T>(T)
+  fullName.vb: GameCanvas.GcAssert.IsNotNull(Of T)(T)
+  nameWithType: GcAssert.IsNotNull<T>(T)
+  nameWithType.vb: GcAssert.IsNotNull(Of T)(T)
+- uid: GameCanvas.GcAssert.IsNull*
+  name: IsNull
+  href: api/GameCanvas.GcAssert.html#GameCanvas_GcAssert_IsNull_
+  commentId: Overload:GameCanvas.GcAssert.IsNull
+  isSpec: "True"
+  fullName: GameCanvas.GcAssert.IsNull
+  nameWithType: GcAssert.IsNull
+- uid: GameCanvas.GcAssert.IsNull``1(``0)
+  name: IsNull<T>(T)
+  href: api/GameCanvas.GcAssert.html#GameCanvas_GcAssert_IsNull__1___0_
+  commentId: M:GameCanvas.GcAssert.IsNull``1(``0)
+  name.vb: IsNull(Of T)(T)
+  fullName: GameCanvas.GcAssert.IsNull<T>(T)
+  fullName.vb: GameCanvas.GcAssert.IsNull(Of T)(T)
+  nameWithType: GcAssert.IsNull<T>(T)
+  nameWithType.vb: GcAssert.IsNull(Of T)(T)
+- uid: GameCanvas.GcAssert.IsThrowException
+  name: IsThrowException
+  href: api/GameCanvas.GcAssert.html#GameCanvas_GcAssert_IsThrowException
+  commentId: P:GameCanvas.GcAssert.IsThrowException
+  fullName: GameCanvas.GcAssert.IsThrowException
+  nameWithType: GcAssert.IsThrowException
+- uid: GameCanvas.GcAssert.IsThrowException*
+  name: IsThrowException
+  href: api/GameCanvas.GcAssert.html#GameCanvas_GcAssert_IsThrowException_
+  commentId: Overload:GameCanvas.GcAssert.IsThrowException
+  isSpec: "True"
+  fullName: GameCanvas.GcAssert.IsThrowException
+  nameWithType: GcAssert.IsThrowException
 - uid: GameCanvas.GcAvailability
   name: GcAvailability
   href: api/GameCanvas.GcAvailability.html
@@ -1676,12 +1752,12 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcKeyEvent.GetHashCode
   nameWithType: GcKeyEvent.GetHashCode
-- uid: GameCanvas.GcKeyEvent.KeyCode
-  name: KeyCode
-  href: api/GameCanvas.GcKeyEvent.html#GameCanvas_GcKeyEvent_KeyCode
-  commentId: F:GameCanvas.GcKeyEvent.KeyCode
-  fullName: GameCanvas.GcKeyEvent.KeyCode
-  nameWithType: GcKeyEvent.KeyCode
+- uid: GameCanvas.GcKeyEvent.Key
+  name: Key
+  href: api/GameCanvas.GcKeyEvent.html#GameCanvas_GcKeyEvent_Key
+  commentId: F:GameCanvas.GcKeyEvent.Key
+  fullName: GameCanvas.GcKeyEvent.Key
+  nameWithType: GcKeyEvent.Key
 - uid: GameCanvas.GcKeyEvent.Null
   name: "Null"
   href: api/GameCanvas.GcKeyEvent.html#GameCanvas_GcKeyEvent_Null
@@ -1793,6 +1869,12 @@ references:
   commentId: M:GameCanvas.GcKeyTrace.Equals(GameCanvas.GcKeyTrace)
   fullName: GameCanvas.GcKeyTrace.Equals(GameCanvas.GcKeyTrace)
   nameWithType: GcKeyTrace.Equals(GcKeyTrace)
+- uid: GameCanvas.GcKeyTrace.Equals(System.Object)
+  name: Equals(Object)
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_Equals_System_Object_
+  commentId: M:GameCanvas.GcKeyTrace.Equals(System.Object)
+  fullName: GameCanvas.GcKeyTrace.Equals(System.Object)
+  nameWithType: GcKeyTrace.Equals(Object)
 - uid: GameCanvas.GcKeyTrace.Equals*
   name: Equals
   href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_Equals_
@@ -1806,6 +1888,45 @@ references:
   commentId: F:GameCanvas.GcKeyTrace.FrameCount
   fullName: GameCanvas.GcKeyTrace.FrameCount
   nameWithType: GcKeyTrace.FrameCount
+- uid: GameCanvas.GcKeyTrace.GetHashCode
+  name: GetHashCode()
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_GetHashCode
+  commentId: M:GameCanvas.GcKeyTrace.GetHashCode
+  fullName: GameCanvas.GcKeyTrace.GetHashCode()
+  nameWithType: GcKeyTrace.GetHashCode()
+- uid: GameCanvas.GcKeyTrace.GetHashCode*
+  name: GetHashCode
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_GetHashCode_
+  commentId: Overload:GameCanvas.GcKeyTrace.GetHashCode
+  isSpec: "True"
+  fullName: GameCanvas.GcKeyTrace.GetHashCode
+  nameWithType: GcKeyTrace.GetHashCode
+- uid: GameCanvas.GcKeyTrace.op_Equality(GameCanvas.GcKeyTrace,GameCanvas.GcKeyTrace)
+  name: Equality(GcKeyTrace, GcKeyTrace)
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_op_Equality_GameCanvas_GcKeyTrace_GameCanvas_GcKeyTrace_
+  commentId: M:GameCanvas.GcKeyTrace.op_Equality(GameCanvas.GcKeyTrace,GameCanvas.GcKeyTrace)
+  fullName: GameCanvas.GcKeyTrace.Equality(GameCanvas.GcKeyTrace, GameCanvas.GcKeyTrace)
+  nameWithType: GcKeyTrace.Equality(GcKeyTrace, GcKeyTrace)
+- uid: GameCanvas.GcKeyTrace.op_Equality*
+  name: Equality
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_op_Equality_
+  commentId: Overload:GameCanvas.GcKeyTrace.op_Equality
+  isSpec: "True"
+  fullName: GameCanvas.GcKeyTrace.Equality
+  nameWithType: GcKeyTrace.Equality
+- uid: GameCanvas.GcKeyTrace.op_Inequality(GameCanvas.GcKeyTrace,GameCanvas.GcKeyTrace)
+  name: Inequality(GcKeyTrace, GcKeyTrace)
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_op_Inequality_GameCanvas_GcKeyTrace_GameCanvas_GcKeyTrace_
+  commentId: M:GameCanvas.GcKeyTrace.op_Inequality(GameCanvas.GcKeyTrace,GameCanvas.GcKeyTrace)
+  fullName: GameCanvas.GcKeyTrace.Inequality(GameCanvas.GcKeyTrace, GameCanvas.GcKeyTrace)
+  nameWithType: GcKeyTrace.Inequality(GcKeyTrace, GcKeyTrace)
+- uid: GameCanvas.GcKeyTrace.op_Inequality*
+  name: Inequality
+  href: api/GameCanvas.GcKeyTrace.html#GameCanvas_GcKeyTrace_op_Inequality_
+  commentId: Overload:GameCanvas.GcKeyTrace.op_Inequality
+  isSpec: "True"
+  fullName: GameCanvas.GcKeyTrace.Inequality
+  nameWithType: GcKeyTrace.Inequality
 - uid: GameCanvas.GcLine
   name: GcLine
   href: api/GameCanvas.GcLine.html
@@ -2542,30 +2663,6 @@ references:
   commentId: F:GameCanvas.GcPointerEvent.PointScreen
   fullName: GameCanvas.GcPointerEvent.PointScreen
   nameWithType: GcPointerEvent.PointScreen
-- uid: GameCanvas.GcPointerEvent.Pressure
-  name: Pressure
-  href: api/GameCanvas.GcPointerEvent.html#GameCanvas_GcPointerEvent_Pressure
-  commentId: F:GameCanvas.GcPointerEvent.Pressure
-  fullName: GameCanvas.GcPointerEvent.Pressure
-  nameWithType: GcPointerEvent.Pressure
-- uid: GameCanvas.GcPointerEvent.PressureMax
-  name: PressureMax
-  href: api/GameCanvas.GcPointerEvent.html#GameCanvas_GcPointerEvent_PressureMax
-  commentId: F:GameCanvas.GcPointerEvent.PressureMax
-  fullName: GameCanvas.GcPointerEvent.PressureMax
-  nameWithType: GcPointerEvent.PressureMax
-- uid: GameCanvas.GcPointerEvent.TiltX
-  name: TiltX
-  href: api/GameCanvas.GcPointerEvent.html#GameCanvas_GcPointerEvent_TiltX
-  commentId: F:GameCanvas.GcPointerEvent.TiltX
-  fullName: GameCanvas.GcPointerEvent.TiltX
-  nameWithType: GcPointerEvent.TiltX
-- uid: GameCanvas.GcPointerEvent.TiltY
-  name: TiltY
-  href: api/GameCanvas.GcPointerEvent.html#GameCanvas_GcPointerEvent_TiltY
-  commentId: F:GameCanvas.GcPointerEvent.TiltY
-  fullName: GameCanvas.GcPointerEvent.TiltY
-  nameWithType: GcPointerEvent.TiltY
 - uid: GameCanvas.GcPointerEvent.Time
   name: Time
   href: api/GameCanvas.GcPointerEvent.html#GameCanvas_GcPointerEvent_Time
@@ -2585,12 +2682,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcPointerEvent.ToString
   nameWithType: GcPointerEvent.ToString
-- uid: GameCanvas.GcPointerEvent.Type
-  name: Type
-  href: api/GameCanvas.GcPointerEvent.html#GameCanvas_GcPointerEvent_Type
-  commentId: F:GameCanvas.GcPointerEvent.Type
-  fullName: GameCanvas.GcPointerEvent.Type
-  nameWithType: GcPointerEvent.Type
 - uid: GameCanvas.GcPointerEventPhase
   name: GcPointerEventPhase
   href: api/GameCanvas.GcPointerEventPhase.html
@@ -2615,6 +2706,12 @@ references:
   commentId: F:GameCanvas.GcPointerEventPhase.Hold
   fullName: GameCanvas.GcPointerEventPhase.Hold
   nameWithType: GcPointerEventPhase.Hold
+- uid: GameCanvas.GcPointerEventPhase.Invalid
+  name: Invalid
+  href: api/GameCanvas.GcPointerEventPhase.html#GameCanvas_GcPointerEventPhase_Invalid
+  commentId: F:GameCanvas.GcPointerEventPhase.Invalid
+  fullName: GameCanvas.GcPointerEventPhase.Invalid
+  nameWithType: GcPointerEventPhase.Invalid
 - uid: GameCanvas.GcPointerTrace
   name: GcPointerTrace
   href: api/GameCanvas.GcPointerTrace.html
@@ -2751,6 +2848,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.AccelerationEvents
   nameWithType: GcProxy.AccelerationEvents
+- uid: GameCanvas.GcProxy.AccelerometerSamplingRate
+  name: AccelerometerSamplingRate
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerometerSamplingRate
+  commentId: P:GameCanvas.GcProxy.AccelerometerSamplingRate
+  fullName: GameCanvas.GcProxy.AccelerometerSamplingRate
+  nameWithType: GcProxy.AccelerometerSamplingRate
+- uid: GameCanvas.GcProxy.AccelerometerSamplingRate*
+  name: AccelerometerSamplingRate
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AccelerometerSamplingRate_
+  commentId: Overload:GameCanvas.GcProxy.AccelerometerSamplingRate
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.AccelerometerSamplingRate
+  nameWithType: GcProxy.AccelerometerSamplingRate
 - uid: GameCanvas.GcProxy.AddActor(GameCanvas.GcActor@)
   name: AddActor(GcActor)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_AddActor_GameCanvas_GcActor__
@@ -2911,6 +3021,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.CameraDeviceCount
   nameWithType: GcProxy.CameraDeviceCount
+- uid: GameCanvas.GcProxy.CameraDevices
+  name: CameraDevices
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CameraDevices
+  commentId: P:GameCanvas.GcProxy.CameraDevices
+  fullName: GameCanvas.GcProxy.CameraDevices
+  nameWithType: GcProxy.CameraDevices
+- uid: GameCanvas.GcProxy.CameraDevices*
+  name: CameraDevices
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CameraDevices_
+  commentId: Overload:GameCanvas.GcProxy.CameraDevices
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.CameraDevices
+  nameWithType: GcProxy.CameraDevices
 - uid: GameCanvas.GcProxy.CanvasAABB
   name: CanvasAABB
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CanvasAABB
@@ -4244,22 +4367,6 @@ references:
   fullName.vb: GameCanvas.GcProxy.GetActorCount(Of T)()
   nameWithType: GcProxy.GetActorCount<T>()
   nameWithType.vb: GcProxy.GetActorCount(Of T)()
-- uid: GameCanvas.GcProxy.GetActorList*
-  name: GetActorList
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetActorList_
-  commentId: Overload:GameCanvas.GcProxy.GetActorList
-  isSpec: "True"
-  fullName: GameCanvas.GcProxy.GetActorList
-  nameWithType: GcProxy.GetActorList
-- uid: GameCanvas.GcProxy.GetActorList``1
-  name: GetActorList<T>()
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetActorList__1
-  commentId: M:GameCanvas.GcProxy.GetActorList``1
-  name.vb: GetActorList(Of T)()
-  fullName: GameCanvas.GcProxy.GetActorList<T>()
-  fullName.vb: GameCanvas.GcProxy.GetActorList(Of T)()
-  nameWithType: GcProxy.GetActorList<T>()
-  nameWithType.vb: GcProxy.GetActorList(Of T)()
 - uid: GameCanvas.GcProxy.GetImageHeight(GameCanvas.GcImage@)
   name: GetImageHeight(GcImage)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetImageHeight_GameCanvas_GcImage__
@@ -4308,24 +4415,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetImageWidth
   nameWithType: GcProxy.GetImageWidth
-- uid: GameCanvas.GcProxy.GetKeyPressDuration(System.Char@)
-  name: GetKeyPressDuration(Char)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressDuration_System_Char__
-  commentId: M:GameCanvas.GcProxy.GetKeyPressDuration(System.Char@)
-  name.vb: GetKeyPressDuration(ByRef Char)
-  fullName: GameCanvas.GcProxy.GetKeyPressDuration(System.Char)
-  fullName.vb: GameCanvas.GcProxy.GetKeyPressDuration(ByRef System.Char)
-  nameWithType: GcProxy.GetKeyPressDuration(Char)
-  nameWithType.vb: GcProxy.GetKeyPressDuration(ByRef Char)
-- uid: GameCanvas.GcProxy.GetKeyPressDuration(UnityEngine.KeyCode@)
-  name: GetKeyPressDuration(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressDuration_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.GetKeyPressDuration(UnityEngine.KeyCode@)
-  name.vb: GetKeyPressDuration(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.GetKeyPressDuration(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.GetKeyPressDuration(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.GetKeyPressDuration(KeyCode)
-  nameWithType.vb: GcProxy.GetKeyPressDuration(ByRef KeyCode)
+- uid: GameCanvas.GcProxy.GetKeyPressDuration(UnityEngine.InputSystem.Key@)
+  name: GetKeyPressDuration(Key)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressDuration_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.GcProxy.GetKeyPressDuration(UnityEngine.InputSystem.Key@)
+  name.vb: GetKeyPressDuration(ByRef Key)
+  fullName: GameCanvas.GcProxy.GetKeyPressDuration(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.GcProxy.GetKeyPressDuration(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: GcProxy.GetKeyPressDuration(Key)
+  nameWithType.vb: GcProxy.GetKeyPressDuration(ByRef Key)
 - uid: GameCanvas.GcProxy.GetKeyPressDuration*
   name: GetKeyPressDuration
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressDuration_
@@ -4333,24 +4431,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.GetKeyPressDuration
   nameWithType: GcProxy.GetKeyPressDuration
-- uid: GameCanvas.GcProxy.GetKeyPressFrameCount(System.Char@)
-  name: GetKeyPressFrameCount(Char)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressFrameCount_System_Char__
-  commentId: M:GameCanvas.GcProxy.GetKeyPressFrameCount(System.Char@)
-  name.vb: GetKeyPressFrameCount(ByRef Char)
-  fullName: GameCanvas.GcProxy.GetKeyPressFrameCount(System.Char)
-  fullName.vb: GameCanvas.GcProxy.GetKeyPressFrameCount(ByRef System.Char)
-  nameWithType: GcProxy.GetKeyPressFrameCount(Char)
-  nameWithType.vb: GcProxy.GetKeyPressFrameCount(ByRef Char)
-- uid: GameCanvas.GcProxy.GetKeyPressFrameCount(UnityEngine.KeyCode@)
-  name: GetKeyPressFrameCount(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressFrameCount_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.GetKeyPressFrameCount(UnityEngine.KeyCode@)
-  name.vb: GetKeyPressFrameCount(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.GetKeyPressFrameCount(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.GetKeyPressFrameCount(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.GetKeyPressFrameCount(KeyCode)
-  nameWithType.vb: GcProxy.GetKeyPressFrameCount(ByRef KeyCode)
+- uid: GameCanvas.GcProxy.GetKeyPressFrameCount(UnityEngine.InputSystem.Key@)
+  name: GetKeyPressFrameCount(Key)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.GcProxy.GetKeyPressFrameCount(UnityEngine.InputSystem.Key@)
+  name.vb: GetKeyPressFrameCount(ByRef Key)
+  fullName: GameCanvas.GcProxy.GetKeyPressFrameCount(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.GcProxy.GetKeyPressFrameCount(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: GcProxy.GetKeyPressFrameCount(Key)
+  nameWithType.vb: GcProxy.GetKeyPressFrameCount(ByRef Key)
 - uid: GameCanvas.GcProxy.GetKeyPressFrameCount*
   name: GetKeyPressFrameCount
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_GetKeyPressFrameCount_
@@ -4543,6 +4632,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsAccelerometerEnabled
   nameWithType: GcProxy.IsAccelerometerEnabled
+- uid: GameCanvas.GcProxy.IsAccelerometerSupported
+  name: IsAccelerometerSupported
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsAccelerometerSupported
+  commentId: P:GameCanvas.GcProxy.IsAccelerometerSupported
+  fullName: GameCanvas.GcProxy.IsAccelerometerSupported
+  nameWithType: GcProxy.IsAccelerometerSupported
+- uid: GameCanvas.GcProxy.IsAccelerometerSupported*
+  name: IsAccelerometerSupported
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsAccelerometerSupported_
+  commentId: Overload:GameCanvas.GcProxy.IsAccelerometerSupported
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.IsAccelerometerSupported
+  nameWithType: GcProxy.IsAccelerometerSupported
 - uid: GameCanvas.GcProxy.IsAnyKey
   name: IsAnyKey
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsAnyKey
@@ -4637,24 +4739,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsGeolocationRunning
   nameWithType: GcProxy.IsGeolocationRunning
-- uid: GameCanvas.GcProxy.IsKeyDown(System.Char@)
-  name: IsKeyDown(Char)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyDown_System_Char__
-  commentId: M:GameCanvas.GcProxy.IsKeyDown(System.Char@)
-  name.vb: IsKeyDown(ByRef Char)
-  fullName: GameCanvas.GcProxy.IsKeyDown(System.Char)
-  fullName.vb: GameCanvas.GcProxy.IsKeyDown(ByRef System.Char)
-  nameWithType: GcProxy.IsKeyDown(Char)
-  nameWithType.vb: GcProxy.IsKeyDown(ByRef Char)
-- uid: GameCanvas.GcProxy.IsKeyDown(UnityEngine.KeyCode@)
-  name: IsKeyDown(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyDown_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.IsKeyDown(UnityEngine.KeyCode@)
-  name.vb: IsKeyDown(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.IsKeyDown(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.IsKeyDown(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.IsKeyDown(KeyCode)
-  nameWithType.vb: GcProxy.IsKeyDown(ByRef KeyCode)
+- uid: GameCanvas.GcProxy.IsKeyDown(UnityEngine.InputSystem.Key@)
+  name: IsKeyDown(Key)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyDown_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.GcProxy.IsKeyDown(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyDown(ByRef Key)
+  fullName: GameCanvas.GcProxy.IsKeyDown(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.GcProxy.IsKeyDown(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: GcProxy.IsKeyDown(Key)
+  nameWithType.vb: GcProxy.IsKeyDown(ByRef Key)
 - uid: GameCanvas.GcProxy.IsKeyDown*
   name: IsKeyDown
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyDown_
@@ -4662,33 +4755,24 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsKeyDown
   nameWithType: GcProxy.IsKeyDown
-- uid: GameCanvas.GcProxy.IsKeyHold(System.Char@)
-  name: IsKeyHold(Char)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyHold_System_Char__
-  commentId: M:GameCanvas.GcProxy.IsKeyHold(System.Char@)
-  name.vb: IsKeyHold(ByRef Char)
-  fullName: GameCanvas.GcProxy.IsKeyHold(System.Char)
-  fullName.vb: GameCanvas.GcProxy.IsKeyHold(ByRef System.Char)
-  nameWithType: GcProxy.IsKeyHold(Char)
-  nameWithType.vb: GcProxy.IsKeyHold(ByRef Char)
-- uid: GameCanvas.GcProxy.IsKeyHold(UnityEngine.KeyCode@)
-  name: IsKeyHold(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyHold_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.IsKeyHold(UnityEngine.KeyCode@)
-  name.vb: IsKeyHold(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.IsKeyHold(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.IsKeyHold(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.IsKeyHold(KeyCode)
-  nameWithType.vb: GcProxy.IsKeyHold(ByRef KeyCode)
-- uid: GameCanvas.GcProxy.IsKeyHold(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name: IsKeyHold(KeyCode, out GcKeyTrace)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyHold_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.GcProxy.IsKeyHold(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name.vb: IsKeyHold(ByRef KeyCode, ByRef GcKeyTrace)
-  fullName: GameCanvas.GcProxy.IsKeyHold(UnityEngine.KeyCode, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.GcProxy.IsKeyHold(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: GcProxy.IsKeyHold(KeyCode, out GcKeyTrace)
-  nameWithType.vb: GcProxy.IsKeyHold(ByRef KeyCode, ByRef GcKeyTrace)
+- uid: GameCanvas.GcProxy.IsKeyHold(UnityEngine.InputSystem.Key@)
+  name: IsKeyHold(Key)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyHold_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.GcProxy.IsKeyHold(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyHold(ByRef Key)
+  fullName: GameCanvas.GcProxy.IsKeyHold(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.GcProxy.IsKeyHold(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: GcProxy.IsKeyHold(Key)
+  nameWithType.vb: GcProxy.IsKeyHold(ByRef Key)
+- uid: GameCanvas.GcProxy.IsKeyHold(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name: IsKeyHold(Key, out GcKeyTrace)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__
+  commentId: M:GameCanvas.GcProxy.IsKeyHold(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name.vb: IsKeyHold(ByRef Key, ByRef GcKeyTrace)
+  fullName: GameCanvas.GcProxy.IsKeyHold(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyTrace)
+  fullName.vb: GameCanvas.GcProxy.IsKeyHold(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyTrace)
+  nameWithType: GcProxy.IsKeyHold(Key, out GcKeyTrace)
+  nameWithType.vb: GcProxy.IsKeyHold(ByRef Key, ByRef GcKeyTrace)
 - uid: GameCanvas.GcProxy.IsKeyHold*
   name: IsKeyHold
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyHold_
@@ -4696,24 +4780,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsKeyHold
   nameWithType: GcProxy.IsKeyHold
-- uid: GameCanvas.GcProxy.IsKeyPress(System.Char@)
-  name: IsKeyPress(Char)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyPress_System_Char__
-  commentId: M:GameCanvas.GcProxy.IsKeyPress(System.Char@)
-  name.vb: IsKeyPress(ByRef Char)
-  fullName: GameCanvas.GcProxy.IsKeyPress(System.Char)
-  fullName.vb: GameCanvas.GcProxy.IsKeyPress(ByRef System.Char)
-  nameWithType: GcProxy.IsKeyPress(Char)
-  nameWithType.vb: GcProxy.IsKeyPress(ByRef Char)
-- uid: GameCanvas.GcProxy.IsKeyPress(UnityEngine.KeyCode@)
-  name: IsKeyPress(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyPress_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.IsKeyPress(UnityEngine.KeyCode@)
-  name.vb: IsKeyPress(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.IsKeyPress(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.IsKeyPress(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.IsKeyPress(KeyCode)
-  nameWithType.vb: GcProxy.IsKeyPress(ByRef KeyCode)
+- uid: GameCanvas.GcProxy.IsKeyPress(UnityEngine.InputSystem.Key@)
+  name: IsKeyPress(Key)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyPress_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.GcProxy.IsKeyPress(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyPress(ByRef Key)
+  fullName: GameCanvas.GcProxy.IsKeyPress(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.GcProxy.IsKeyPress(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: GcProxy.IsKeyPress(Key)
+  nameWithType.vb: GcProxy.IsKeyPress(ByRef Key)
 - uid: GameCanvas.GcProxy.IsKeyPress*
   name: IsKeyPress
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyPress_
@@ -4721,33 +4796,24 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.IsKeyPress
   nameWithType: GcProxy.IsKeyPress
-- uid: GameCanvas.GcProxy.IsKeyUp(System.Char@)
-  name: IsKeyUp(Char)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyUp_System_Char__
-  commentId: M:GameCanvas.GcProxy.IsKeyUp(System.Char@)
-  name.vb: IsKeyUp(ByRef Char)
-  fullName: GameCanvas.GcProxy.IsKeyUp(System.Char)
-  fullName.vb: GameCanvas.GcProxy.IsKeyUp(ByRef System.Char)
-  nameWithType: GcProxy.IsKeyUp(Char)
-  nameWithType.vb: GcProxy.IsKeyUp(ByRef Char)
-- uid: GameCanvas.GcProxy.IsKeyUp(UnityEngine.KeyCode@)
-  name: IsKeyUp(KeyCode)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyUp_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.GcProxy.IsKeyUp(UnityEngine.KeyCode@)
-  name.vb: IsKeyUp(ByRef KeyCode)
-  fullName: GameCanvas.GcProxy.IsKeyUp(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.GcProxy.IsKeyUp(ByRef UnityEngine.KeyCode)
-  nameWithType: GcProxy.IsKeyUp(KeyCode)
-  nameWithType.vb: GcProxy.IsKeyUp(ByRef KeyCode)
-- uid: GameCanvas.GcProxy.IsKeyUp(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name: IsKeyUp(KeyCode, out GcKeyTrace)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyUp_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.GcProxy.IsKeyUp(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name.vb: IsKeyUp(ByRef KeyCode, ByRef GcKeyTrace)
-  fullName: GameCanvas.GcProxy.IsKeyUp(UnityEngine.KeyCode, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.GcProxy.IsKeyUp(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: GcProxy.IsKeyUp(KeyCode, out GcKeyTrace)
-  nameWithType.vb: GcProxy.IsKeyUp(ByRef KeyCode, ByRef GcKeyTrace)
+- uid: GameCanvas.GcProxy.IsKeyUp(UnityEngine.InputSystem.Key@)
+  name: IsKeyUp(Key)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyUp_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.GcProxy.IsKeyUp(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyUp(ByRef Key)
+  fullName: GameCanvas.GcProxy.IsKeyUp(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.GcProxy.IsKeyUp(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: GcProxy.IsKeyUp(Key)
+  nameWithType.vb: GcProxy.IsKeyUp(ByRef Key)
+- uid: GameCanvas.GcProxy.IsKeyUp(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name: IsKeyUp(Key, out GcKeyTrace)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__
+  commentId: M:GameCanvas.GcProxy.IsKeyUp(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name.vb: IsKeyUp(ByRef Key, ByRef GcKeyTrace)
+  fullName: GameCanvas.GcProxy.IsKeyUp(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyTrace)
+  fullName.vb: GameCanvas.GcProxy.IsKeyUp(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyTrace)
+  nameWithType: GcProxy.IsKeyUp(Key, out GcKeyTrace)
+  nameWithType.vb: GcProxy.IsKeyUp(ByRef Key, ByRef GcKeyTrace)
 - uid: GameCanvas.GcProxy.IsKeyUp*
   name: IsKeyUp
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_IsKeyUp_
@@ -5773,15 +5839,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.Save
   nameWithType: GcProxy.Save
-- uid: GameCanvas.GcProxy.SaveScreenshotAsync(System.Action{System.String}@)
+- uid: GameCanvas.GcProxy.SaveScreenshotAsync(System.Action{System.String})
   name: SaveScreenshotAsync(Action<String>)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SaveScreenshotAsync_System_Action_System_String___
-  commentId: M:GameCanvas.GcProxy.SaveScreenshotAsync(System.Action{System.String}@)
-  name.vb: SaveScreenshotAsync(ByRef Action(Of String))
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SaveScreenshotAsync_System_Action_System_String__
+  commentId: M:GameCanvas.GcProxy.SaveScreenshotAsync(System.Action{System.String})
+  name.vb: SaveScreenshotAsync(Action(Of String))
   fullName: GameCanvas.GcProxy.SaveScreenshotAsync(System.Action<System.String>)
-  fullName.vb: GameCanvas.GcProxy.SaveScreenshotAsync(ByRef System.Action(Of System.String))
+  fullName.vb: GameCanvas.GcProxy.SaveScreenshotAsync(System.Action(Of System.String))
   nameWithType: GcProxy.SaveScreenshotAsync(Action<String>)
-  nameWithType.vb: GcProxy.SaveScreenshotAsync(ByRef Action(Of String))
+  nameWithType.vb: GcProxy.SaveScreenshotAsync(Action(Of String))
 - uid: GameCanvas.GcProxy.SaveScreenshotAsync*
   name: SaveScreenshotAsync
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_SaveScreenshotAsync_
@@ -6388,22 +6454,22 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetAccelerationEvent
   nameWithType: GcProxy.TryGetAccelerationEvent
-- uid: GameCanvas.GcProxy.TryGetAccelerationEvents(Unity.Collections.NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)
-  name: TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetAccelerationEvents_Unity_Collections_NativeArray_GameCanvas_GcAccelerationEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetAccelerationEvents(Unity.Collections.NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetAccelerationEvents(ByRef NativeArray(Of GcAccelerationEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetAccelerationEvents(out Unity.Collections.NativeArray<GameCanvas.GcAccelerationEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetAccelerationEvents(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcAccelerationEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetAccelerationEvents(ByRef NativeArray(Of GcAccelerationEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetAccelerationEvents*
-  name: TryGetAccelerationEvents
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetAccelerationEvents_
-  commentId: Overload:GameCanvas.GcProxy.TryGetAccelerationEvents
+- uid: GameCanvas.GcProxy.TryGetAccelerationEventAll(System.ReadOnlySpan{GameCanvas.GcAccelerationEvent}@)
+  name: TryGetAccelerationEventAll(out ReadOnlySpan<GcAccelerationEvent>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___
+  commentId: M:GameCanvas.GcProxy.TryGetAccelerationEventAll(System.ReadOnlySpan{GameCanvas.GcAccelerationEvent}@)
+  name.vb: TryGetAccelerationEventAll(ByRef ReadOnlySpan(Of GcAccelerationEvent))
+  fullName: GameCanvas.GcProxy.TryGetAccelerationEventAll(out System.ReadOnlySpan<GameCanvas.GcAccelerationEvent>)
+  fullName.vb: GameCanvas.GcProxy.TryGetAccelerationEventAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcAccelerationEvent))
+  nameWithType: GcProxy.TryGetAccelerationEventAll(out ReadOnlySpan<GcAccelerationEvent>)
+  nameWithType.vb: GcProxy.TryGetAccelerationEventAll(ByRef ReadOnlySpan(Of GcAccelerationEvent))
+- uid: GameCanvas.GcProxy.TryGetAccelerationEventAll*
+  name: TryGetAccelerationEventAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetAccelerationEventAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetAccelerationEventAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetAccelerationEvents
-  nameWithType: GcProxy.TryGetAccelerationEvents
+  fullName: GameCanvas.GcProxy.TryGetAccelerationEventAll
+  nameWithType: GcProxy.TryGetAccelerationEventAll
 - uid: GameCanvas.GcProxy.TryGetActor(System.Int32@,GameCanvas.GcActor@)
   name: TryGetActor(Int32, out GcActor)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetActor_System_Int32__GameCanvas_GcActor__
@@ -6429,22 +6495,22 @@ references:
   fullName.vb: GameCanvas.GcProxy.TryGetActor(Of T)(ByRef System.Int32, ByRef T)
   nameWithType: GcProxy.TryGetActor<T>(Int32, out T)
   nameWithType.vb: GcProxy.TryGetActor(Of T)(ByRef Int32, ByRef T)
-- uid: GameCanvas.GcProxy.TryGetActorList*
-  name: TryGetActorList
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetActorList_
-  commentId: Overload:GameCanvas.GcProxy.TryGetActorList
+- uid: GameCanvas.GcProxy.TryGetActorAll*
+  name: TryGetActorAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetActorAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetActorAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetActorList
-  nameWithType: GcProxy.TryGetActorList
-- uid: GameCanvas.GcProxy.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)
-  name: TryGetActorList<T>(out ReadOnlyActorList<T>)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___
-  commentId: M:GameCanvas.GcProxy.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)
-  name.vb: TryGetActorList(Of T)(ByRef ReadOnlyActorList(Of T))
-  fullName: GameCanvas.GcProxy.TryGetActorList<T>(out GameCanvas.ReadOnlyActorList<T>)
-  fullName.vb: GameCanvas.GcProxy.TryGetActorList(Of T)(ByRef GameCanvas.ReadOnlyActorList(Of T))
-  nameWithType: GcProxy.TryGetActorList<T>(out ReadOnlyActorList<T>)
-  nameWithType.vb: GcProxy.TryGetActorList(Of T)(ByRef ReadOnlyActorList(Of T))
+  fullName: GameCanvas.GcProxy.TryGetActorAll
+  nameWithType: GcProxy.TryGetActorAll
+- uid: GameCanvas.GcProxy.TryGetActorAll``1(System.ReadOnlySpan{``0}@)
+  name: TryGetActorAll<T>(out ReadOnlySpan<T>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetActorAll__1_System_ReadOnlySpan___0___
+  commentId: M:GameCanvas.GcProxy.TryGetActorAll``1(System.ReadOnlySpan{``0}@)
+  name.vb: TryGetActorAll(Of T)(ByRef ReadOnlySpan(Of T))
+  fullName: GameCanvas.GcProxy.TryGetActorAll<T>(out System.ReadOnlySpan<T>)
+  fullName.vb: GameCanvas.GcProxy.TryGetActorAll(Of T)(ByRef System.ReadOnlySpan(Of T))
+  nameWithType: GcProxy.TryGetActorAll<T>(out ReadOnlySpan<T>)
+  nameWithType.vb: GcProxy.TryGetActorAll(Of T)(ByRef ReadOnlySpan(Of T))
 - uid: GameCanvas.GcProxy.TryGetCameraImage(GameCanvas.GcCameraDevice@)
   name: TryGetCameraImage(out GcCameraDevice)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetCameraImage_GameCanvas_GcCameraDevice__
@@ -6470,15 +6536,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetCameraImage
   nameWithType: GcProxy.TryGetCameraImage
-- uid: GameCanvas.GcProxy.TryGetCameraImageAll(System.Collections.ObjectModel.ReadOnlyCollection{GameCanvas.GcCameraDevice}@)
-  name: TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice>)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetCameraImageAll_System_Collections_ObjectModel_ReadOnlyCollection_GameCanvas_GcCameraDevice___
-  commentId: M:GameCanvas.GcProxy.TryGetCameraImageAll(System.Collections.ObjectModel.ReadOnlyCollection{GameCanvas.GcCameraDevice}@)
-  name.vb: TryGetCameraImageAll(ByRef ReadOnlyCollection(Of GcCameraDevice))
-  fullName: GameCanvas.GcProxy.TryGetCameraImageAll(out System.Collections.ObjectModel.ReadOnlyCollection<GameCanvas.GcCameraDevice>)
-  fullName.vb: GameCanvas.GcProxy.TryGetCameraImageAll(ByRef System.Collections.ObjectModel.ReadOnlyCollection(Of GameCanvas.GcCameraDevice))
-  nameWithType: GcProxy.TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice>)
-  nameWithType.vb: GcProxy.TryGetCameraImageAll(ByRef ReadOnlyCollection(Of GcCameraDevice))
+- uid: GameCanvas.GcProxy.TryGetCameraImageAll(System.ReadOnlySpan{GameCanvas.GcCameraDevice}@)
+  name: TryGetCameraImageAll(out ReadOnlySpan<GcCameraDevice>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetCameraImageAll_System_ReadOnlySpan_GameCanvas_GcCameraDevice___
+  commentId: M:GameCanvas.GcProxy.TryGetCameraImageAll(System.ReadOnlySpan{GameCanvas.GcCameraDevice}@)
+  name.vb: TryGetCameraImageAll(ByRef ReadOnlySpan(Of GcCameraDevice))
+  fullName: GameCanvas.GcProxy.TryGetCameraImageAll(out System.ReadOnlySpan<GameCanvas.GcCameraDevice>)
+  fullName.vb: GameCanvas.GcProxy.TryGetCameraImageAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcCameraDevice))
+  nameWithType: GcProxy.TryGetCameraImageAll(out ReadOnlySpan<GcCameraDevice>)
+  nameWithType.vb: GcProxy.TryGetCameraImageAll(ByRef ReadOnlySpan(Of GcCameraDevice))
 - uid: GameCanvas.GcProxy.TryGetCameraImageAll*
   name: TryGetCameraImageAll
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetCameraImageAll_
@@ -6534,24 +6600,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetGeolocationEvent
   nameWithType: GcProxy.TryGetGeolocationEvent
-- uid: GameCanvas.GcProxy.TryGetKeyEvent(System.Char@,GameCanvas.GcKeyEvent@)
-  name: TryGetKeyEvent(Char, out GcKeyEvent)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEvent_System_Char__GameCanvas_GcKeyEvent__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyEvent(System.Char@,GameCanvas.GcKeyEvent@)
-  name.vb: TryGetKeyEvent(ByRef Char, ByRef GcKeyEvent)
-  fullName: GameCanvas.GcProxy.TryGetKeyEvent(System.Char, out GameCanvas.GcKeyEvent)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyEvent(ByRef System.Char, ByRef GameCanvas.GcKeyEvent)
-  nameWithType: GcProxy.TryGetKeyEvent(Char, out GcKeyEvent)
-  nameWithType.vb: GcProxy.TryGetKeyEvent(ByRef Char, ByRef GcKeyEvent)
-- uid: GameCanvas.GcProxy.TryGetKeyEvent(UnityEngine.KeyCode@,GameCanvas.GcKeyEvent@)
-  name: TryGetKeyEvent(KeyCode, out GcKeyEvent)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEvent_UnityEngine_KeyCode__GameCanvas_GcKeyEvent__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyEvent(UnityEngine.KeyCode@,GameCanvas.GcKeyEvent@)
-  name.vb: TryGetKeyEvent(ByRef KeyCode, ByRef GcKeyEvent)
-  fullName: GameCanvas.GcProxy.TryGetKeyEvent(UnityEngine.KeyCode, out GameCanvas.GcKeyEvent)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyEvent(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyEvent)
-  nameWithType: GcProxy.TryGetKeyEvent(KeyCode, out GcKeyEvent)
-  nameWithType.vb: GcProxy.TryGetKeyEvent(ByRef KeyCode, ByRef GcKeyEvent)
+- uid: GameCanvas.GcProxy.TryGetKeyEvent(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyEvent@)
+  name: TryGetKeyEvent(Key, out GcKeyEvent)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__
+  commentId: M:GameCanvas.GcProxy.TryGetKeyEvent(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyEvent@)
+  name.vb: TryGetKeyEvent(ByRef Key, ByRef GcKeyEvent)
+  fullName: GameCanvas.GcProxy.TryGetKeyEvent(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyEvent)
+  fullName.vb: GameCanvas.GcProxy.TryGetKeyEvent(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyEvent)
+  nameWithType: GcProxy.TryGetKeyEvent(Key, out GcKeyEvent)
+  nameWithType.vb: GcProxy.TryGetKeyEvent(ByRef Key, ByRef GcKeyEvent)
 - uid: GameCanvas.GcProxy.TryGetKeyEvent*
   name: TryGetKeyEvent
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEvent_
@@ -6559,49 +6616,40 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetKeyEvent
   nameWithType: GcProxy.TryGetKeyEvent
-- uid: GameCanvas.GcProxy.TryGetKeyEventArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name: TryGetKeyEventArray(GcKeyEventPhase, out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEventArray_GameCanvas_GcKeyEventPhase__Unity_Collections_NativeArray_GameCanvas_GcKeyEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyEventArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyEventArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetKeyEventArray(GameCanvas.GcKeyEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcKeyEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyEventArray(ByRef GameCanvas.GcKeyEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetKeyEventArray(GcKeyEventPhase, out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetKeyEventArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetKeyEventArray(Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name: TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEventArray_Unity_Collections_NativeArray_GameCanvas_GcKeyEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyEventArray(Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyEventArray(ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetKeyEventArray(out Unity.Collections.NativeArray<GameCanvas.GcKeyEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyEventArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetKeyEventArray(ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetKeyEventArray*
-  name: TryGetKeyEventArray
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEventArray_
-  commentId: Overload:GameCanvas.GcProxy.TryGetKeyEventArray
+- uid: GameCanvas.GcProxy.TryGetKeyEventAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name: TryGetKeyEventAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyEvent>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___
+  commentId: M:GameCanvas.GcProxy.TryGetKeyEventAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name.vb: TryGetKeyEventAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyEvent))
+  fullName: GameCanvas.GcProxy.TryGetKeyEventAll(GameCanvas.GcKeyEventPhase, out System.ReadOnlySpan<GameCanvas.GcKeyEvent>)
+  fullName.vb: GameCanvas.GcProxy.TryGetKeyEventAll(ByRef GameCanvas.GcKeyEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyEvent))
+  nameWithType: GcProxy.TryGetKeyEventAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyEvent>)
+  nameWithType.vb: GcProxy.TryGetKeyEventAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyEvent))
+- uid: GameCanvas.GcProxy.TryGetKeyEventAll(System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name: TryGetKeyEventAll(out ReadOnlySpan<GcKeyEvent>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___
+  commentId: M:GameCanvas.GcProxy.TryGetKeyEventAll(System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name.vb: TryGetKeyEventAll(ByRef ReadOnlySpan(Of GcKeyEvent))
+  fullName: GameCanvas.GcProxy.TryGetKeyEventAll(out System.ReadOnlySpan<GameCanvas.GcKeyEvent>)
+  fullName.vb: GameCanvas.GcProxy.TryGetKeyEventAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyEvent))
+  nameWithType: GcProxy.TryGetKeyEventAll(out ReadOnlySpan<GcKeyEvent>)
+  nameWithType.vb: GcProxy.TryGetKeyEventAll(ByRef ReadOnlySpan(Of GcKeyEvent))
+- uid: GameCanvas.GcProxy.TryGetKeyEventAll*
+  name: TryGetKeyEventAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyEventAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetKeyEventAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetKeyEventArray
-  nameWithType: GcProxy.TryGetKeyEventArray
-- uid: GameCanvas.GcProxy.TryGetKeyTrace(System.Char@,GameCanvas.GcKeyTrace@)
-  name: TryGetKeyTrace(Char, out GcKeyTrace)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTrace_System_Char__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyTrace(System.Char@,GameCanvas.GcKeyTrace@)
-  name.vb: TryGetKeyTrace(ByRef Char, ByRef GcKeyTrace)
-  fullName: GameCanvas.GcProxy.TryGetKeyTrace(System.Char, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyTrace(ByRef System.Char, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: GcProxy.TryGetKeyTrace(Char, out GcKeyTrace)
-  nameWithType.vb: GcProxy.TryGetKeyTrace(ByRef Char, ByRef GcKeyTrace)
-- uid: GameCanvas.GcProxy.TryGetKeyTrace(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name: TryGetKeyTrace(KeyCode, out GcKeyTrace)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTrace_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyTrace(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name.vb: TryGetKeyTrace(ByRef KeyCode, ByRef GcKeyTrace)
-  fullName: GameCanvas.GcProxy.TryGetKeyTrace(UnityEngine.KeyCode, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyTrace(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: GcProxy.TryGetKeyTrace(KeyCode, out GcKeyTrace)
-  nameWithType.vb: GcProxy.TryGetKeyTrace(ByRef KeyCode, ByRef GcKeyTrace)
+  fullName: GameCanvas.GcProxy.TryGetKeyEventAll
+  nameWithType: GcProxy.TryGetKeyEventAll
+- uid: GameCanvas.GcProxy.TryGetKeyTrace(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name: TryGetKeyTrace(Key, out GcKeyTrace)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__
+  commentId: M:GameCanvas.GcProxy.TryGetKeyTrace(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name.vb: TryGetKeyTrace(ByRef Key, ByRef GcKeyTrace)
+  fullName: GameCanvas.GcProxy.TryGetKeyTrace(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyTrace)
+  fullName.vb: GameCanvas.GcProxy.TryGetKeyTrace(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyTrace)
+  nameWithType: GcProxy.TryGetKeyTrace(Key, out GcKeyTrace)
+  nameWithType.vb: GcProxy.TryGetKeyTrace(ByRef Key, ByRef GcKeyTrace)
 - uid: GameCanvas.GcProxy.TryGetKeyTrace*
   name: TryGetKeyTrace
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTrace_
@@ -6609,40 +6657,40 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetKeyTrace
   nameWithType: GcProxy.TryGetKeyTrace
-- uid: GameCanvas.GcProxy.TryGetKeyTraceArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name: TryGetKeyTraceArray(GcKeyEventPhase, out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTraceArray_GameCanvas_GcKeyEventPhase__Unity_Collections_NativeArray_GameCanvas_GcKeyTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyTraceArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyTraceArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetKeyTraceArray(GameCanvas.GcKeyEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcKeyTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyTraceArray(ByRef GameCanvas.GcKeyEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetKeyTraceArray(GcKeyEventPhase, out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetKeyTraceArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetKeyTraceArray(Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name: TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTraceArray_Unity_Collections_NativeArray_GameCanvas_GcKeyTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetKeyTraceArray(Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyTraceArray(ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetKeyTraceArray(out Unity.Collections.NativeArray<GameCanvas.GcKeyTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetKeyTraceArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetKeyTraceArray(ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetKeyTraceArray*
-  name: TryGetKeyTraceArray
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTraceArray_
-  commentId: Overload:GameCanvas.GcProxy.TryGetKeyTraceArray
+- uid: GameCanvas.GcProxy.TryGetKeyTraceAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name: TryGetKeyTraceAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyTrace>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___
+  commentId: M:GameCanvas.GcProxy.TryGetKeyTraceAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name.vb: TryGetKeyTraceAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyTrace))
+  fullName: GameCanvas.GcProxy.TryGetKeyTraceAll(GameCanvas.GcKeyEventPhase, out System.ReadOnlySpan<GameCanvas.GcKeyTrace>)
+  fullName.vb: GameCanvas.GcProxy.TryGetKeyTraceAll(ByRef GameCanvas.GcKeyEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyTrace))
+  nameWithType: GcProxy.TryGetKeyTraceAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyTrace>)
+  nameWithType.vb: GcProxy.TryGetKeyTraceAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyTrace))
+- uid: GameCanvas.GcProxy.TryGetKeyTraceAll(System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name: TryGetKeyTraceAll(out ReadOnlySpan<GcKeyTrace>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___
+  commentId: M:GameCanvas.GcProxy.TryGetKeyTraceAll(System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name.vb: TryGetKeyTraceAll(ByRef ReadOnlySpan(Of GcKeyTrace))
+  fullName: GameCanvas.GcProxy.TryGetKeyTraceAll(out System.ReadOnlySpan<GameCanvas.GcKeyTrace>)
+  fullName.vb: GameCanvas.GcProxy.TryGetKeyTraceAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyTrace))
+  nameWithType: GcProxy.TryGetKeyTraceAll(out ReadOnlySpan<GcKeyTrace>)
+  nameWithType.vb: GcProxy.TryGetKeyTraceAll(ByRef ReadOnlySpan(Of GcKeyTrace))
+- uid: GameCanvas.GcProxy.TryGetKeyTraceAll*
+  name: TryGetKeyTraceAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetKeyTraceAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetKeyTraceAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetKeyTraceArray
-  nameWithType: GcProxy.TryGetKeyTraceArray
-- uid: GameCanvas.GcProxy.TryGetOnlineImage(System.String@,UnityEngine.Texture2D@)
-  name: TryGetOnlineImage(String, out Texture2D)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineImage_System_String__UnityEngine_Texture2D__
-  commentId: M:GameCanvas.GcProxy.TryGetOnlineImage(System.String@,UnityEngine.Texture2D@)
-  name.vb: TryGetOnlineImage(ByRef String, ByRef Texture2D)
-  fullName: GameCanvas.GcProxy.TryGetOnlineImage(System.String, out UnityEngine.Texture2D)
-  fullName.vb: GameCanvas.GcProxy.TryGetOnlineImage(ByRef System.String, ByRef UnityEngine.Texture2D)
-  nameWithType: GcProxy.TryGetOnlineImage(String, out Texture2D)
-  nameWithType.vb: GcProxy.TryGetOnlineImage(ByRef String, ByRef Texture2D)
+  fullName: GameCanvas.GcProxy.TryGetKeyTraceAll
+  nameWithType: GcProxy.TryGetKeyTraceAll
+- uid: GameCanvas.GcProxy.TryGetOnlineImage(System.String@,GameCanvas.GcAvailability@,UnityEngine.Texture2D@)
+  name: TryGetOnlineImage(String, out GcAvailability, out Texture2D)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineImage_System_String__GameCanvas_GcAvailability__UnityEngine_Texture2D__
+  commentId: M:GameCanvas.GcProxy.TryGetOnlineImage(System.String@,GameCanvas.GcAvailability@,UnityEngine.Texture2D@)
+  name.vb: TryGetOnlineImage(ByRef String, ByRef GcAvailability, ByRef Texture2D)
+  fullName: GameCanvas.GcProxy.TryGetOnlineImage(System.String, out GameCanvas.GcAvailability, out UnityEngine.Texture2D)
+  fullName.vb: GameCanvas.GcProxy.TryGetOnlineImage(ByRef System.String, ByRef GameCanvas.GcAvailability, ByRef UnityEngine.Texture2D)
+  nameWithType: GcProxy.TryGetOnlineImage(String, out GcAvailability, out Texture2D)
+  nameWithType.vb: GcProxy.TryGetOnlineImage(ByRef String, ByRef GcAvailability, ByRef Texture2D)
 - uid: GameCanvas.GcProxy.TryGetOnlineImage*
   name: TryGetOnlineImage
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineImage_
@@ -6666,24 +6714,24 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetOnlineImageSize
   nameWithType: GcProxy.TryGetOnlineImageSize
-- uid: GameCanvas.GcProxy.TryGetOnlineSound(System.String@,UnityEngine.AudioClip@)
-  name: TryGetOnlineSound(String, out AudioClip)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineSound_System_String__UnityEngine_AudioClip__
-  commentId: M:GameCanvas.GcProxy.TryGetOnlineSound(System.String@,UnityEngine.AudioClip@)
-  name.vb: TryGetOnlineSound(ByRef String, ByRef AudioClip)
-  fullName: GameCanvas.GcProxy.TryGetOnlineSound(System.String, out UnityEngine.AudioClip)
-  fullName.vb: GameCanvas.GcProxy.TryGetOnlineSound(ByRef System.String, ByRef UnityEngine.AudioClip)
-  nameWithType: GcProxy.TryGetOnlineSound(String, out AudioClip)
-  nameWithType.vb: GcProxy.TryGetOnlineSound(ByRef String, ByRef AudioClip)
-- uid: GameCanvas.GcProxy.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,UnityEngine.AudioClip@)
-  name: TryGetOnlineSound(String, AudioType, out AudioClip)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineSound_System_String__UnityEngine_AudioType__UnityEngine_AudioClip__
-  commentId: M:GameCanvas.GcProxy.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,UnityEngine.AudioClip@)
-  name.vb: TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef AudioClip)
-  fullName: GameCanvas.GcProxy.TryGetOnlineSound(System.String, UnityEngine.AudioType, out UnityEngine.AudioClip)
-  fullName.vb: GameCanvas.GcProxy.TryGetOnlineSound(ByRef System.String, ByRef UnityEngine.AudioType, ByRef UnityEngine.AudioClip)
-  nameWithType: GcProxy.TryGetOnlineSound(String, AudioType, out AudioClip)
-  nameWithType.vb: GcProxy.TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef AudioClip)
+- uid: GameCanvas.GcProxy.TryGetOnlineSound(System.String@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name: TryGetOnlineSound(String, out GcAvailability, out AudioClip)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineSound_System_String__GameCanvas_GcAvailability__UnityEngine_AudioClip__
+  commentId: M:GameCanvas.GcProxy.TryGetOnlineSound(System.String@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name.vb: TryGetOnlineSound(ByRef String, ByRef GcAvailability, ByRef AudioClip)
+  fullName: GameCanvas.GcProxy.TryGetOnlineSound(System.String, out GameCanvas.GcAvailability, out UnityEngine.AudioClip)
+  fullName.vb: GameCanvas.GcProxy.TryGetOnlineSound(ByRef System.String, ByRef GameCanvas.GcAvailability, ByRef UnityEngine.AudioClip)
+  nameWithType: GcProxy.TryGetOnlineSound(String, out GcAvailability, out AudioClip)
+  nameWithType.vb: GcProxy.TryGetOnlineSound(ByRef String, ByRef GcAvailability, ByRef AudioClip)
+- uid: GameCanvas.GcProxy.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name: TryGetOnlineSound(String, AudioType, out GcAvailability, out AudioClip)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineSound_System_String__UnityEngine_AudioType__GameCanvas_GcAvailability__UnityEngine_AudioClip__
+  commentId: M:GameCanvas.GcProxy.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name.vb: TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef GcAvailability, ByRef AudioClip)
+  fullName: GameCanvas.GcProxy.TryGetOnlineSound(System.String, UnityEngine.AudioType, out GameCanvas.GcAvailability, out UnityEngine.AudioClip)
+  fullName.vb: GameCanvas.GcProxy.TryGetOnlineSound(ByRef System.String, ByRef UnityEngine.AudioType, ByRef GameCanvas.GcAvailability, ByRef UnityEngine.AudioClip)
+  nameWithType: GcProxy.TryGetOnlineSound(String, AudioType, out GcAvailability, out AudioClip)
+  nameWithType.vb: GcProxy.TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef GcAvailability, ByRef AudioClip)
 - uid: GameCanvas.GcProxy.TryGetOnlineSound*
   name: TryGetOnlineSound
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineSound_
@@ -6691,15 +6739,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetOnlineSound
   nameWithType: GcProxy.TryGetOnlineSound
-- uid: GameCanvas.GcProxy.TryGetOnlineText(System.String@,System.String@)
-  name: TryGetOnlineText(String, out String)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineText_System_String__System_String__
-  commentId: M:GameCanvas.GcProxy.TryGetOnlineText(System.String@,System.String@)
-  name.vb: TryGetOnlineText(ByRef String, ByRef String)
-  fullName: GameCanvas.GcProxy.TryGetOnlineText(System.String, out System.String)
-  fullName.vb: GameCanvas.GcProxy.TryGetOnlineText(ByRef System.String, ByRef System.String)
-  nameWithType: GcProxy.TryGetOnlineText(String, out String)
-  nameWithType.vb: GcProxy.TryGetOnlineText(ByRef String, ByRef String)
+- uid: GameCanvas.GcProxy.TryGetOnlineText(System.String@,GameCanvas.GcAvailability@,System.String@)
+  name: TryGetOnlineText(String, out GcAvailability, out String)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineText_System_String__GameCanvas_GcAvailability__System_String__
+  commentId: M:GameCanvas.GcProxy.TryGetOnlineText(System.String@,GameCanvas.GcAvailability@,System.String@)
+  name.vb: TryGetOnlineText(ByRef String, ByRef GcAvailability, ByRef String)
+  fullName: GameCanvas.GcProxy.TryGetOnlineText(System.String, out GameCanvas.GcAvailability, out System.String)
+  fullName.vb: GameCanvas.GcProxy.TryGetOnlineText(ByRef System.String, ByRef GameCanvas.GcAvailability, ByRef System.String)
+  nameWithType: GcProxy.TryGetOnlineText(String, out GcAvailability, out String)
+  nameWithType.vb: GcProxy.TryGetOnlineText(ByRef String, ByRef GcAvailability, ByRef String)
 - uid: GameCanvas.GcProxy.TryGetOnlineText*
   name: TryGetOnlineText
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetOnlineText_
@@ -6732,31 +6780,31 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetPointerEvent
   nameWithType: GcProxy.TryGetPointerEvent
-- uid: GameCanvas.GcProxy.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name: TryGetPointerEventArray(GcPointerEventPhase, out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerEventArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerEventArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcPointerEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetPointerEventArray(ByRef GameCanvas.GcPointerEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetPointerEventArray(GcPointerEventPhase, out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetPointerEventArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetPointerEventArray(Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name: TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerEventArray_Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetPointerEventArray(Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerEventArray(ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetPointerEventArray(out Unity.Collections.NativeArray<GameCanvas.GcPointerEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetPointerEventArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetPointerEventArray(ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetPointerEventArray*
-  name: TryGetPointerEventArray
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerEventArray_
-  commentId: Overload:GameCanvas.GcProxy.TryGetPointerEventArray
+- uid: GameCanvas.GcProxy.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name: TryGetPointerEventAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerEvent>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___
+  commentId: M:GameCanvas.GcProxy.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name.vb: TryGetPointerEventAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerEvent))
+  fullName: GameCanvas.GcProxy.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase, out System.ReadOnlySpan<GameCanvas.GcPointerEvent>)
+  fullName.vb: GameCanvas.GcProxy.TryGetPointerEventAll(ByRef GameCanvas.GcPointerEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerEvent))
+  nameWithType: GcProxy.TryGetPointerEventAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerEvent>)
+  nameWithType.vb: GcProxy.TryGetPointerEventAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerEvent))
+- uid: GameCanvas.GcProxy.TryGetPointerEventAll(System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name: TryGetPointerEventAll(out ReadOnlySpan<GcPointerEvent>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___
+  commentId: M:GameCanvas.GcProxy.TryGetPointerEventAll(System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name.vb: TryGetPointerEventAll(ByRef ReadOnlySpan(Of GcPointerEvent))
+  fullName: GameCanvas.GcProxy.TryGetPointerEventAll(out System.ReadOnlySpan<GameCanvas.GcPointerEvent>)
+  fullName.vb: GameCanvas.GcProxy.TryGetPointerEventAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerEvent))
+  nameWithType: GcProxy.TryGetPointerEventAll(out ReadOnlySpan<GcPointerEvent>)
+  nameWithType.vb: GcProxy.TryGetPointerEventAll(ByRef ReadOnlySpan(Of GcPointerEvent))
+- uid: GameCanvas.GcProxy.TryGetPointerEventAll*
+  name: TryGetPointerEventAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerEventAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetPointerEventAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetPointerEventArray
-  nameWithType: GcProxy.TryGetPointerEventArray
+  fullName: GameCanvas.GcProxy.TryGetPointerEventAll
+  nameWithType: GcProxy.TryGetPointerEventAll
 - uid: GameCanvas.GcProxy.TryGetPointerTapPoint(System.Int32@,Unity.Mathematics.float2@)
   name: TryGetPointerTapPoint(Int32, out float2)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__
@@ -6773,22 +6821,22 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetPointerTapPoint
   nameWithType: GcProxy.TryGetPointerTapPoint
-- uid: GameCanvas.GcProxy.TryGetPointerTapPointArray(Unity.Collections.NativeArray{Unity.Mathematics.float2}.ReadOnly@,System.Int32@)
-  name: TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTapPointArray_Unity_Collections_NativeArray_Unity_Mathematics_float2__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetPointerTapPointArray(Unity.Collections.NativeArray{Unity.Mathematics.float2}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerTapPointArray(ByRef NativeArray(Of float2).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetPointerTapPointArray(out Unity.Collections.NativeArray<Unity.Mathematics.float2>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetPointerTapPointArray(ByRef Unity.Collections.NativeArray(Of Unity.Mathematics.float2).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetPointerTapPointArray(ByRef NativeArray(Of float2).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetPointerTapPointArray*
-  name: TryGetPointerTapPointArray
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTapPointArray_
-  commentId: Overload:GameCanvas.GcProxy.TryGetPointerTapPointArray
+- uid: GameCanvas.GcProxy.TryGetPointerTapPointAll(System.ReadOnlySpan{Unity.Mathematics.float2}@)
+  name: TryGetPointerTapPointAll(out ReadOnlySpan<float2>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___
+  commentId: M:GameCanvas.GcProxy.TryGetPointerTapPointAll(System.ReadOnlySpan{Unity.Mathematics.float2}@)
+  name.vb: TryGetPointerTapPointAll(ByRef ReadOnlySpan(Of float2))
+  fullName: GameCanvas.GcProxy.TryGetPointerTapPointAll(out System.ReadOnlySpan<Unity.Mathematics.float2>)
+  fullName.vb: GameCanvas.GcProxy.TryGetPointerTapPointAll(ByRef System.ReadOnlySpan(Of Unity.Mathematics.float2))
+  nameWithType: GcProxy.TryGetPointerTapPointAll(out ReadOnlySpan<float2>)
+  nameWithType.vb: GcProxy.TryGetPointerTapPointAll(ByRef ReadOnlySpan(Of float2))
+- uid: GameCanvas.GcProxy.TryGetPointerTapPointAll*
+  name: TryGetPointerTapPointAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTapPointAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetPointerTapPointAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetPointerTapPointArray
-  nameWithType: GcProxy.TryGetPointerTapPointArray
+  fullName: GameCanvas.GcProxy.TryGetPointerTapPointAll
+  nameWithType: GcProxy.TryGetPointerTapPointAll
 - uid: GameCanvas.GcProxy.TryGetPointerTrace(GameCanvas.GcPointerEventPhase@,System.Int32@,GameCanvas.GcPointerTrace@)
   name: TryGetPointerTrace(GcPointerEventPhase, Int32, out GcPointerTrace)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__
@@ -6814,31 +6862,31 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.TryGetPointerTrace
   nameWithType: GcProxy.TryGetPointerTrace
-- uid: GameCanvas.GcProxy.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name: TryGetPointerTraceArray(GcPointerEventPhase, out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerTraceArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcPointerTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetPointerTraceArray(ByRef GameCanvas.GcPointerEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetPointerTraceArray(GcPointerEventPhase, out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetPointerTraceArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetPointerTraceArray(Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name: TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTraceArray_Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.GcProxy.TryGetPointerTraceArray(Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerTraceArray(ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.GcProxy.TryGetPointerTraceArray(out Unity.Collections.NativeArray<GameCanvas.GcPointerTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.GcProxy.TryGetPointerTraceArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: GcProxy.TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  nameWithType.vb: GcProxy.TryGetPointerTraceArray(ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.GcProxy.TryGetPointerTraceArray*
-  name: TryGetPointerTraceArray
-  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTraceArray_
-  commentId: Overload:GameCanvas.GcProxy.TryGetPointerTraceArray
+- uid: GameCanvas.GcProxy.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name: TryGetPointerTraceAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerTrace>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___
+  commentId: M:GameCanvas.GcProxy.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name.vb: TryGetPointerTraceAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerTrace))
+  fullName: GameCanvas.GcProxy.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase, out System.ReadOnlySpan<GameCanvas.GcPointerTrace>)
+  fullName.vb: GameCanvas.GcProxy.TryGetPointerTraceAll(ByRef GameCanvas.GcPointerEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerTrace))
+  nameWithType: GcProxy.TryGetPointerTraceAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerTrace>)
+  nameWithType.vb: GcProxy.TryGetPointerTraceAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerTrace))
+- uid: GameCanvas.GcProxy.TryGetPointerTraceAll(System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name: TryGetPointerTraceAll(out ReadOnlySpan<GcPointerTrace>)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___
+  commentId: M:GameCanvas.GcProxy.TryGetPointerTraceAll(System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name.vb: TryGetPointerTraceAll(ByRef ReadOnlySpan(Of GcPointerTrace))
+  fullName: GameCanvas.GcProxy.TryGetPointerTraceAll(out System.ReadOnlySpan<GameCanvas.GcPointerTrace>)
+  fullName.vb: GameCanvas.GcProxy.TryGetPointerTraceAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerTrace))
+  nameWithType: GcProxy.TryGetPointerTraceAll(out ReadOnlySpan<GcPointerTrace>)
+  nameWithType.vb: GcProxy.TryGetPointerTraceAll(ByRef ReadOnlySpan(Of GcPointerTrace))
+- uid: GameCanvas.GcProxy.TryGetPointerTraceAll*
+  name: TryGetPointerTraceAll
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetPointerTraceAll_
+  commentId: Overload:GameCanvas.GcProxy.TryGetPointerTraceAll
   isSpec: "True"
-  fullName: GameCanvas.GcProxy.TryGetPointerTraceArray
-  nameWithType: GcProxy.TryGetPointerTraceArray
+  fullName: GameCanvas.GcProxy.TryGetPointerTraceAll
+  nameWithType: GcProxy.TryGetPointerTraceAll
 - uid: GameCanvas.GcProxy.TryGetScreenKeyboardArea(GameCanvas.GcAABB@)
   name: TryGetScreenKeyboardArea(out GcAABB)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_TryGetScreenKeyboardArea_GameCanvas_GcAABB__
@@ -7334,6 +7382,36 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcResolution.Width
   nameWithType: GcResolution.Width
+- uid: GameCanvas.GcRuntimePlatform
+  name: GcRuntimePlatform
+  href: api/GameCanvas.GcRuntimePlatform.html
+  commentId: T:GameCanvas.GcRuntimePlatform
+  fullName: GameCanvas.GcRuntimePlatform
+  nameWithType: GcRuntimePlatform
+- uid: GameCanvas.GcRuntimePlatform.Android
+  name: Android
+  href: api/GameCanvas.GcRuntimePlatform.html#GameCanvas_GcRuntimePlatform_Android
+  commentId: F:GameCanvas.GcRuntimePlatform.Android
+  fullName: GameCanvas.GcRuntimePlatform.Android
+  nameWithType: GcRuntimePlatform.Android
+- uid: GameCanvas.GcRuntimePlatform.iOS
+  name: iOS
+  href: api/GameCanvas.GcRuntimePlatform.html#GameCanvas_GcRuntimePlatform_iOS
+  commentId: F:GameCanvas.GcRuntimePlatform.iOS
+  fullName: GameCanvas.GcRuntimePlatform.iOS
+  nameWithType: GcRuntimePlatform.iOS
+- uid: GameCanvas.GcRuntimePlatform.Unknown
+  name: Unknown
+  href: api/GameCanvas.GcRuntimePlatform.html#GameCanvas_GcRuntimePlatform_Unknown
+  commentId: F:GameCanvas.GcRuntimePlatform.Unknown
+  fullName: GameCanvas.GcRuntimePlatform.Unknown
+  nameWithType: GcRuntimePlatform.Unknown
+- uid: GameCanvas.GcRuntimePlatform.WebGL
+  name: WebGL
+  href: api/GameCanvas.GcRuntimePlatform.html#GameCanvas_GcRuntimePlatform_WebGL
+  commentId: F:GameCanvas.GcRuntimePlatform.WebGL
+  fullName: GameCanvas.GcRuntimePlatform.WebGL
+  nameWithType: GcRuntimePlatform.WebGL
 - uid: GameCanvas.GcScene
   name: GcScene
   href: api/GameCanvas.GcScene.html
@@ -7510,22 +7588,22 @@ references:
   fullName.vb: GameCanvas.GcScene.TryGetActor(Of T)(ByRef System.Int32, ByRef T)
   nameWithType: GcScene.TryGetActor<T>(Int32, out T)
   nameWithType.vb: GcScene.TryGetActor(Of T)(ByRef Int32, ByRef T)
-- uid: GameCanvas.GcScene.TryGetActorList*
-  name: TryGetActorList
-  href: api/GameCanvas.GcScene.html#GameCanvas_GcScene_TryGetActorList_
-  commentId: Overload:GameCanvas.GcScene.TryGetActorList
+- uid: GameCanvas.GcScene.TryGetActorAll*
+  name: TryGetActorAll
+  href: api/GameCanvas.GcScene.html#GameCanvas_GcScene_TryGetActorAll_
+  commentId: Overload:GameCanvas.GcScene.TryGetActorAll
   isSpec: "True"
-  fullName: GameCanvas.GcScene.TryGetActorList
-  nameWithType: GcScene.TryGetActorList
-- uid: GameCanvas.GcScene.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)
-  name: TryGetActorList<T>(out ReadOnlyActorList<T>)
-  href: api/GameCanvas.GcScene.html#GameCanvas_GcScene_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___
-  commentId: M:GameCanvas.GcScene.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)
-  name.vb: TryGetActorList(Of T)(ByRef ReadOnlyActorList(Of T))
-  fullName: GameCanvas.GcScene.TryGetActorList<T>(out GameCanvas.ReadOnlyActorList<T>)
-  fullName.vb: GameCanvas.GcScene.TryGetActorList(Of T)(ByRef GameCanvas.ReadOnlyActorList(Of T))
-  nameWithType: GcScene.TryGetActorList<T>(out ReadOnlyActorList<T>)
-  nameWithType.vb: GcScene.TryGetActorList(Of T)(ByRef ReadOnlyActorList(Of T))
+  fullName: GameCanvas.GcScene.TryGetActorAll
+  nameWithType: GcScene.TryGetActorAll
+- uid: GameCanvas.GcScene.TryGetActorAll``1(System.ReadOnlySpan{``0}@)
+  name: TryGetActorAll<T>(out ReadOnlySpan<T>)
+  href: api/GameCanvas.GcScene.html#GameCanvas_GcScene_TryGetActorAll__1_System_ReadOnlySpan___0___
+  commentId: M:GameCanvas.GcScene.TryGetActorAll``1(System.ReadOnlySpan{``0}@)
+  name.vb: TryGetActorAll(Of T)(ByRef ReadOnlySpan(Of T))
+  fullName: GameCanvas.GcScene.TryGetActorAll<T>(out System.ReadOnlySpan<T>)
+  fullName.vb: GameCanvas.GcScene.TryGetActorAll(Of T)(ByRef System.ReadOnlySpan(Of T))
+  nameWithType: GcScene.TryGetActorAll<T>(out ReadOnlySpan<T>)
+  nameWithType.vb: GcScene.TryGetActorAll(Of T)(ByRef ReadOnlySpan(Of T))
 - uid: GameCanvas.GcScene.TryRemoveActor(GameCanvas.GcActor@)
   name: TryRemoveActor(GcActor)
   href: api/GameCanvas.GcScene.html#GameCanvas_GcScene_TryRemoveActor_GameCanvas_GcActor__
@@ -9624,6 +9702,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputAcceleration.AccelerationEvents
   nameWithType: IInputAcceleration.AccelerationEvents
+- uid: GameCanvas.IInputAcceleration.AccelerometerSamplingRate
+  name: AccelerometerSamplingRate
+  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerometerSamplingRate
+  commentId: P:GameCanvas.IInputAcceleration.AccelerometerSamplingRate
+  fullName: GameCanvas.IInputAcceleration.AccelerometerSamplingRate
+  nameWithType: IInputAcceleration.AccelerometerSamplingRate
+- uid: GameCanvas.IInputAcceleration.AccelerometerSamplingRate*
+  name: AccelerometerSamplingRate
+  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerometerSamplingRate_
+  commentId: Overload:GameCanvas.IInputAcceleration.AccelerometerSamplingRate
+  isSpec: "True"
+  fullName: GameCanvas.IInputAcceleration.AccelerometerSamplingRate
+  nameWithType: IInputAcceleration.AccelerometerSamplingRate
 - uid: GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame
   name: DidUpdateAccelerationThisFrame
   href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame
@@ -9650,6 +9741,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputAcceleration.IsAccelerometerEnabled
   nameWithType: IInputAcceleration.IsAccelerometerEnabled
+- uid: GameCanvas.IInputAcceleration.IsAccelerometerSupported
+  name: IsAccelerometerSupported
+  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_IsAccelerometerSupported
+  commentId: P:GameCanvas.IInputAcceleration.IsAccelerometerSupported
+  fullName: GameCanvas.IInputAcceleration.IsAccelerometerSupported
+  nameWithType: IInputAcceleration.IsAccelerometerSupported
+- uid: GameCanvas.IInputAcceleration.IsAccelerometerSupported*
+  name: IsAccelerometerSupported
+  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_IsAccelerometerSupported_
+  commentId: Overload:GameCanvas.IInputAcceleration.IsAccelerometerSupported
+  isSpec: "True"
+  fullName: GameCanvas.IInputAcceleration.IsAccelerometerSupported
+  nameWithType: IInputAcceleration.IsAccelerometerSupported
 - uid: GameCanvas.IInputAcceleration.LastAccelerationEvent
   name: LastAccelerationEvent
   href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_LastAccelerationEvent
@@ -9679,22 +9783,22 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputAcceleration.TryGetAccelerationEvent
   nameWithType: IInputAcceleration.TryGetAccelerationEvent
-- uid: GameCanvas.IInputAcceleration.TryGetAccelerationEvents(Unity.Collections.NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)
-  name: TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEvents_Unity_Collections_NativeArray_GameCanvas_GcAccelerationEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputAcceleration.TryGetAccelerationEvents(Unity.Collections.NativeArray{GameCanvas.GcAccelerationEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetAccelerationEvents(ByRef NativeArray(Of GcAccelerationEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputAcceleration.TryGetAccelerationEvents(out Unity.Collections.NativeArray<GameCanvas.GcAccelerationEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputAcceleration.TryGetAccelerationEvents(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcAccelerationEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputAcceleration.TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly, out Int32)
-  nameWithType.vb: IInputAcceleration.TryGetAccelerationEvents(ByRef NativeArray(Of GcAccelerationEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputAcceleration.TryGetAccelerationEvents*
-  name: TryGetAccelerationEvents
-  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEvents_
-  commentId: Overload:GameCanvas.IInputAcceleration.TryGetAccelerationEvents
+- uid: GameCanvas.IInputAcceleration.TryGetAccelerationEventAll(System.ReadOnlySpan{GameCanvas.GcAccelerationEvent}@)
+  name: TryGetAccelerationEventAll(out ReadOnlySpan<GcAccelerationEvent>)
+  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___
+  commentId: M:GameCanvas.IInputAcceleration.TryGetAccelerationEventAll(System.ReadOnlySpan{GameCanvas.GcAccelerationEvent}@)
+  name.vb: TryGetAccelerationEventAll(ByRef ReadOnlySpan(Of GcAccelerationEvent))
+  fullName: GameCanvas.IInputAcceleration.TryGetAccelerationEventAll(out System.ReadOnlySpan<GameCanvas.GcAccelerationEvent>)
+  fullName.vb: GameCanvas.IInputAcceleration.TryGetAccelerationEventAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcAccelerationEvent))
+  nameWithType: IInputAcceleration.TryGetAccelerationEventAll(out ReadOnlySpan<GcAccelerationEvent>)
+  nameWithType.vb: IInputAcceleration.TryGetAccelerationEventAll(ByRef ReadOnlySpan(Of GcAccelerationEvent))
+- uid: GameCanvas.IInputAcceleration.TryGetAccelerationEventAll*
+  name: TryGetAccelerationEventAll
+  href: api/GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_
+  commentId: Overload:GameCanvas.IInputAcceleration.TryGetAccelerationEventAll
   isSpec: "True"
-  fullName: GameCanvas.IInputAcceleration.TryGetAccelerationEvents
-  nameWithType: IInputAcceleration.TryGetAccelerationEvents
+  fullName: GameCanvas.IInputAcceleration.TryGetAccelerationEventAll
+  nameWithType: IInputAcceleration.TryGetAccelerationEventAll
 - uid: GameCanvas.IInputAccelerationEx
   name: IInputAccelerationEx
   href: api/GameCanvas.IInputAccelerationEx.html
@@ -9720,6 +9824,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputCamera.CameraDeviceCount
   nameWithType: IInputCamera.CameraDeviceCount
+- uid: GameCanvas.IInputCamera.CameraDevices
+  name: CameraDevices
+  href: api/GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_CameraDevices
+  commentId: P:GameCanvas.IInputCamera.CameraDevices
+  fullName: GameCanvas.IInputCamera.CameraDevices
+  nameWithType: IInputCamera.CameraDevices
+- uid: GameCanvas.IInputCamera.CameraDevices*
+  name: CameraDevices
+  href: api/GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_CameraDevices_
+  commentId: Overload:GameCanvas.IInputCamera.CameraDevices
+  isSpec: "True"
+  fullName: GameCanvas.IInputCamera.CameraDevices
+  nameWithType: IInputCamera.CameraDevices
 - uid: GameCanvas.IInputCamera.DidUpdateCameraImageThisFrame(GameCanvas.GcCameraDevice@)
   name: DidUpdateCameraImageThisFrame(GcCameraDevice)
   href: api/GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_DidUpdateCameraImageThisFrame_GameCanvas_GcCameraDevice__
@@ -9918,15 +10035,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputCamera.TryGetCameraImage
   nameWithType: IInputCamera.TryGetCameraImage
-- uid: GameCanvas.IInputCamera.TryGetCameraImageAll(System.Collections.ObjectModel.ReadOnlyCollection{GameCanvas.GcCameraDevice}@)
-  name: TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice>)
-  href: api/GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_System_Collections_ObjectModel_ReadOnlyCollection_GameCanvas_GcCameraDevice___
-  commentId: M:GameCanvas.IInputCamera.TryGetCameraImageAll(System.Collections.ObjectModel.ReadOnlyCollection{GameCanvas.GcCameraDevice}@)
-  name.vb: TryGetCameraImageAll(ByRef ReadOnlyCollection(Of GcCameraDevice))
-  fullName: GameCanvas.IInputCamera.TryGetCameraImageAll(out System.Collections.ObjectModel.ReadOnlyCollection<GameCanvas.GcCameraDevice>)
-  fullName.vb: GameCanvas.IInputCamera.TryGetCameraImageAll(ByRef System.Collections.ObjectModel.ReadOnlyCollection(Of GameCanvas.GcCameraDevice))
-  nameWithType: IInputCamera.TryGetCameraImageAll(out ReadOnlyCollection<GcCameraDevice>)
-  nameWithType.vb: IInputCamera.TryGetCameraImageAll(ByRef ReadOnlyCollection(Of GcCameraDevice))
+- uid: GameCanvas.IInputCamera.TryGetCameraImageAll(System.ReadOnlySpan{GameCanvas.GcCameraDevice}@)
+  name: TryGetCameraImageAll(out ReadOnlySpan<GcCameraDevice>)
+  href: api/GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_System_ReadOnlySpan_GameCanvas_GcCameraDevice___
+  commentId: M:GameCanvas.IInputCamera.TryGetCameraImageAll(System.ReadOnlySpan{GameCanvas.GcCameraDevice}@)
+  name.vb: TryGetCameraImageAll(ByRef ReadOnlySpan(Of GcCameraDevice))
+  fullName: GameCanvas.IInputCamera.TryGetCameraImageAll(out System.ReadOnlySpan<GameCanvas.GcCameraDevice>)
+  fullName.vb: GameCanvas.IInputCamera.TryGetCameraImageAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcCameraDevice))
+  nameWithType: IInputCamera.TryGetCameraImageAll(out ReadOnlySpan<GcCameraDevice>)
+  nameWithType.vb: IInputCamera.TryGetCameraImageAll(ByRef ReadOnlySpan(Of GcCameraDevice))
 - uid: GameCanvas.IInputCamera.TryGetCameraImageAll*
   name: TryGetCameraImageAll
   href: api/GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_
@@ -10232,15 +10349,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.HideScreenKeyboard
   nameWithType: IInputKey.HideScreenKeyboard
-- uid: GameCanvas.IInputKey.IsKeyDown(UnityEngine.KeyCode@)
-  name: IsKeyDown(KeyCode)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.IInputKey.IsKeyDown(UnityEngine.KeyCode@)
-  name.vb: IsKeyDown(ByRef KeyCode)
-  fullName: GameCanvas.IInputKey.IsKeyDown(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.IInputKey.IsKeyDown(ByRef UnityEngine.KeyCode)
-  nameWithType: IInputKey.IsKeyDown(KeyCode)
-  nameWithType.vb: IInputKey.IsKeyDown(ByRef KeyCode)
+- uid: GameCanvas.IInputKey.IsKeyDown(UnityEngine.InputSystem.Key@)
+  name: IsKeyDown(Key)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.IInputKey.IsKeyDown(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyDown(ByRef Key)
+  fullName: GameCanvas.IInputKey.IsKeyDown(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.IInputKey.IsKeyDown(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: IInputKey.IsKeyDown(Key)
+  nameWithType.vb: IInputKey.IsKeyDown(ByRef Key)
 - uid: GameCanvas.IInputKey.IsKeyDown*
   name: IsKeyDown
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_
@@ -10248,15 +10365,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.IsKeyDown
   nameWithType: IInputKey.IsKeyDown
-- uid: GameCanvas.IInputKey.IsKeyHold(UnityEngine.KeyCode@)
-  name: IsKeyHold(KeyCode)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.IInputKey.IsKeyHold(UnityEngine.KeyCode@)
-  name.vb: IsKeyHold(ByRef KeyCode)
-  fullName: GameCanvas.IInputKey.IsKeyHold(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.IInputKey.IsKeyHold(ByRef UnityEngine.KeyCode)
-  nameWithType: IInputKey.IsKeyHold(KeyCode)
-  nameWithType.vb: IInputKey.IsKeyHold(ByRef KeyCode)
+- uid: GameCanvas.IInputKey.IsKeyHold(UnityEngine.InputSystem.Key@)
+  name: IsKeyHold(Key)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.IInputKey.IsKeyHold(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyHold(ByRef Key)
+  fullName: GameCanvas.IInputKey.IsKeyHold(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.IInputKey.IsKeyHold(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: IInputKey.IsKeyHold(Key)
+  nameWithType.vb: IInputKey.IsKeyHold(ByRef Key)
 - uid: GameCanvas.IInputKey.IsKeyHold*
   name: IsKeyHold
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_
@@ -10264,15 +10381,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.IsKeyHold
   nameWithType: IInputKey.IsKeyHold
-- uid: GameCanvas.IInputKey.IsKeyPress(UnityEngine.KeyCode@)
-  name: IsKeyPress(KeyCode)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.IInputKey.IsKeyPress(UnityEngine.KeyCode@)
-  name.vb: IsKeyPress(ByRef KeyCode)
-  fullName: GameCanvas.IInputKey.IsKeyPress(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.IInputKey.IsKeyPress(ByRef UnityEngine.KeyCode)
-  nameWithType: IInputKey.IsKeyPress(KeyCode)
-  nameWithType.vb: IInputKey.IsKeyPress(ByRef KeyCode)
+- uid: GameCanvas.IInputKey.IsKeyPress(UnityEngine.InputSystem.Key@)
+  name: IsKeyPress(Key)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.IInputKey.IsKeyPress(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyPress(ByRef Key)
+  fullName: GameCanvas.IInputKey.IsKeyPress(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.IInputKey.IsKeyPress(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: IInputKey.IsKeyPress(Key)
+  nameWithType.vb: IInputKey.IsKeyPress(ByRef Key)
 - uid: GameCanvas.IInputKey.IsKeyPress*
   name: IsKeyPress
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_
@@ -10280,15 +10397,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.IsKeyPress
   nameWithType: IInputKey.IsKeyPress
-- uid: GameCanvas.IInputKey.IsKeyUp(UnityEngine.KeyCode@)
-  name: IsKeyUp(KeyCode)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.IInputKey.IsKeyUp(UnityEngine.KeyCode@)
-  name.vb: IsKeyUp(ByRef KeyCode)
-  fullName: GameCanvas.IInputKey.IsKeyUp(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.IInputKey.IsKeyUp(ByRef UnityEngine.KeyCode)
-  nameWithType: IInputKey.IsKeyUp(KeyCode)
-  nameWithType.vb: IInputKey.IsKeyUp(ByRef KeyCode)
+- uid: GameCanvas.IInputKey.IsKeyUp(UnityEngine.InputSystem.Key@)
+  name: IsKeyUp(Key)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.IInputKey.IsKeyUp(UnityEngine.InputSystem.Key@)
+  name.vb: IsKeyUp(ByRef Key)
+  fullName: GameCanvas.IInputKey.IsKeyUp(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.IInputKey.IsKeyUp(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: IInputKey.IsKeyUp(Key)
+  nameWithType.vb: IInputKey.IsKeyUp(ByRef Key)
 - uid: GameCanvas.IInputKey.IsKeyUp*
   name: IsKeyUp
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_
@@ -10374,15 +10491,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.ShowScreenKeyboard
   nameWithType: IInputKey.ShowScreenKeyboard
-- uid: GameCanvas.IInputKey.TryGetKeyEvent(UnityEngine.KeyCode@,GameCanvas.GcKeyEvent@)
-  name: TryGetKeyEvent(KeyCode, out GcKeyEvent)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_KeyCode__GameCanvas_GcKeyEvent__
-  commentId: M:GameCanvas.IInputKey.TryGetKeyEvent(UnityEngine.KeyCode@,GameCanvas.GcKeyEvent@)
-  name.vb: TryGetKeyEvent(ByRef KeyCode, ByRef GcKeyEvent)
-  fullName: GameCanvas.IInputKey.TryGetKeyEvent(UnityEngine.KeyCode, out GameCanvas.GcKeyEvent)
-  fullName.vb: GameCanvas.IInputKey.TryGetKeyEvent(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyEvent)
-  nameWithType: IInputKey.TryGetKeyEvent(KeyCode, out GcKeyEvent)
-  nameWithType.vb: IInputKey.TryGetKeyEvent(ByRef KeyCode, ByRef GcKeyEvent)
+- uid: GameCanvas.IInputKey.TryGetKeyEvent(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyEvent@)
+  name: TryGetKeyEvent(Key, out GcKeyEvent)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__
+  commentId: M:GameCanvas.IInputKey.TryGetKeyEvent(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyEvent@)
+  name.vb: TryGetKeyEvent(ByRef Key, ByRef GcKeyEvent)
+  fullName: GameCanvas.IInputKey.TryGetKeyEvent(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyEvent)
+  fullName.vb: GameCanvas.IInputKey.TryGetKeyEvent(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyEvent)
+  nameWithType: IInputKey.TryGetKeyEvent(Key, out GcKeyEvent)
+  nameWithType.vb: IInputKey.TryGetKeyEvent(ByRef Key, ByRef GcKeyEvent)
 - uid: GameCanvas.IInputKey.TryGetKeyEvent*
   name: TryGetKeyEvent
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_
@@ -10390,40 +10507,40 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.TryGetKeyEvent
   nameWithType: IInputKey.TryGetKeyEvent
-- uid: GameCanvas.IInputKey.TryGetKeyEventArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name: TryGetKeyEventArray(GcKeyEventPhase, out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventArray_GameCanvas_GcKeyEventPhase__Unity_Collections_NativeArray_GameCanvas_GcKeyEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputKey.TryGetKeyEventArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyEventArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputKey.TryGetKeyEventArray(GameCanvas.GcKeyEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcKeyEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputKey.TryGetKeyEventArray(ByRef GameCanvas.GcKeyEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputKey.TryGetKeyEventArray(GcKeyEventPhase, out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  nameWithType.vb: IInputKey.TryGetKeyEventArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputKey.TryGetKeyEventArray(Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name: TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventArray_Unity_Collections_NativeArray_GameCanvas_GcKeyEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputKey.TryGetKeyEventArray(Unity.Collections.NativeArray{GameCanvas.GcKeyEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyEventArray(ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputKey.TryGetKeyEventArray(out Unity.Collections.NativeArray<GameCanvas.GcKeyEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputKey.TryGetKeyEventArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputKey.TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly, out Int32)
-  nameWithType.vb: IInputKey.TryGetKeyEventArray(ByRef NativeArray(Of GcKeyEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputKey.TryGetKeyEventArray*
-  name: TryGetKeyEventArray
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventArray_
-  commentId: Overload:GameCanvas.IInputKey.TryGetKeyEventArray
+- uid: GameCanvas.IInputKey.TryGetKeyEventAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name: TryGetKeyEventAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyEvent>)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___
+  commentId: M:GameCanvas.IInputKey.TryGetKeyEventAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name.vb: TryGetKeyEventAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyEvent))
+  fullName: GameCanvas.IInputKey.TryGetKeyEventAll(GameCanvas.GcKeyEventPhase, out System.ReadOnlySpan<GameCanvas.GcKeyEvent>)
+  fullName.vb: GameCanvas.IInputKey.TryGetKeyEventAll(ByRef GameCanvas.GcKeyEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyEvent))
+  nameWithType: IInputKey.TryGetKeyEventAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyEvent>)
+  nameWithType.vb: IInputKey.TryGetKeyEventAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyEvent))
+- uid: GameCanvas.IInputKey.TryGetKeyEventAll(System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name: TryGetKeyEventAll(out ReadOnlySpan<GcKeyEvent>)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___
+  commentId: M:GameCanvas.IInputKey.TryGetKeyEventAll(System.ReadOnlySpan{GameCanvas.GcKeyEvent}@)
+  name.vb: TryGetKeyEventAll(ByRef ReadOnlySpan(Of GcKeyEvent))
+  fullName: GameCanvas.IInputKey.TryGetKeyEventAll(out System.ReadOnlySpan<GameCanvas.GcKeyEvent>)
+  fullName.vb: GameCanvas.IInputKey.TryGetKeyEventAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyEvent))
+  nameWithType: IInputKey.TryGetKeyEventAll(out ReadOnlySpan<GcKeyEvent>)
+  nameWithType.vb: IInputKey.TryGetKeyEventAll(ByRef ReadOnlySpan(Of GcKeyEvent))
+- uid: GameCanvas.IInputKey.TryGetKeyEventAll*
+  name: TryGetKeyEventAll
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_
+  commentId: Overload:GameCanvas.IInputKey.TryGetKeyEventAll
   isSpec: "True"
-  fullName: GameCanvas.IInputKey.TryGetKeyEventArray
-  nameWithType: IInputKey.TryGetKeyEventArray
-- uid: GameCanvas.IInputKey.TryGetKeyTrace(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name: TryGetKeyTrace(KeyCode, out GcKeyTrace)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.IInputKey.TryGetKeyTrace(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name.vb: TryGetKeyTrace(ByRef KeyCode, ByRef GcKeyTrace)
-  fullName: GameCanvas.IInputKey.TryGetKeyTrace(UnityEngine.KeyCode, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.IInputKey.TryGetKeyTrace(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: IInputKey.TryGetKeyTrace(KeyCode, out GcKeyTrace)
-  nameWithType.vb: IInputKey.TryGetKeyTrace(ByRef KeyCode, ByRef GcKeyTrace)
+  fullName: GameCanvas.IInputKey.TryGetKeyEventAll
+  nameWithType: IInputKey.TryGetKeyEventAll
+- uid: GameCanvas.IInputKey.TryGetKeyTrace(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name: TryGetKeyTrace(Key, out GcKeyTrace)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__
+  commentId: M:GameCanvas.IInputKey.TryGetKeyTrace(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name.vb: TryGetKeyTrace(ByRef Key, ByRef GcKeyTrace)
+  fullName: GameCanvas.IInputKey.TryGetKeyTrace(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyTrace)
+  fullName.vb: GameCanvas.IInputKey.TryGetKeyTrace(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyTrace)
+  nameWithType: IInputKey.TryGetKeyTrace(Key, out GcKeyTrace)
+  nameWithType.vb: IInputKey.TryGetKeyTrace(ByRef Key, ByRef GcKeyTrace)
 - uid: GameCanvas.IInputKey.TryGetKeyTrace*
   name: TryGetKeyTrace
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_
@@ -10431,31 +10548,31 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKey.TryGetKeyTrace
   nameWithType: IInputKey.TryGetKeyTrace
-- uid: GameCanvas.IInputKey.TryGetKeyTraceArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name: TryGetKeyTraceArray(GcKeyEventPhase, out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceArray_GameCanvas_GcKeyEventPhase__Unity_Collections_NativeArray_GameCanvas_GcKeyTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputKey.TryGetKeyTraceArray(GameCanvas.GcKeyEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyTraceArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputKey.TryGetKeyTraceArray(GameCanvas.GcKeyEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcKeyTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputKey.TryGetKeyTraceArray(ByRef GameCanvas.GcKeyEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputKey.TryGetKeyTraceArray(GcKeyEventPhase, out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  nameWithType.vb: IInputKey.TryGetKeyTraceArray(ByRef GcKeyEventPhase, ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputKey.TryGetKeyTraceArray(Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name: TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceArray_Unity_Collections_NativeArray_GameCanvas_GcKeyTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputKey.TryGetKeyTraceArray(Unity.Collections.NativeArray{GameCanvas.GcKeyTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetKeyTraceArray(ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputKey.TryGetKeyTraceArray(out Unity.Collections.NativeArray<GameCanvas.GcKeyTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputKey.TryGetKeyTraceArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcKeyTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputKey.TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly, out Int32)
-  nameWithType.vb: IInputKey.TryGetKeyTraceArray(ByRef NativeArray(Of GcKeyTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputKey.TryGetKeyTraceArray*
-  name: TryGetKeyTraceArray
-  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceArray_
-  commentId: Overload:GameCanvas.IInputKey.TryGetKeyTraceArray
+- uid: GameCanvas.IInputKey.TryGetKeyTraceAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name: TryGetKeyTraceAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyTrace>)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___
+  commentId: M:GameCanvas.IInputKey.TryGetKeyTraceAll(GameCanvas.GcKeyEventPhase@,System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name.vb: TryGetKeyTraceAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyTrace))
+  fullName: GameCanvas.IInputKey.TryGetKeyTraceAll(GameCanvas.GcKeyEventPhase, out System.ReadOnlySpan<GameCanvas.GcKeyTrace>)
+  fullName.vb: GameCanvas.IInputKey.TryGetKeyTraceAll(ByRef GameCanvas.GcKeyEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyTrace))
+  nameWithType: IInputKey.TryGetKeyTraceAll(GcKeyEventPhase, out ReadOnlySpan<GcKeyTrace>)
+  nameWithType.vb: IInputKey.TryGetKeyTraceAll(ByRef GcKeyEventPhase, ByRef ReadOnlySpan(Of GcKeyTrace))
+- uid: GameCanvas.IInputKey.TryGetKeyTraceAll(System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name: TryGetKeyTraceAll(out ReadOnlySpan<GcKeyTrace>)
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___
+  commentId: M:GameCanvas.IInputKey.TryGetKeyTraceAll(System.ReadOnlySpan{GameCanvas.GcKeyTrace}@)
+  name.vb: TryGetKeyTraceAll(ByRef ReadOnlySpan(Of GcKeyTrace))
+  fullName: GameCanvas.IInputKey.TryGetKeyTraceAll(out System.ReadOnlySpan<GameCanvas.GcKeyTrace>)
+  fullName.vb: GameCanvas.IInputKey.TryGetKeyTraceAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcKeyTrace))
+  nameWithType: IInputKey.TryGetKeyTraceAll(out ReadOnlySpan<GcKeyTrace>)
+  nameWithType.vb: IInputKey.TryGetKeyTraceAll(ByRef ReadOnlySpan(Of GcKeyTrace))
+- uid: GameCanvas.IInputKey.TryGetKeyTraceAll*
+  name: TryGetKeyTraceAll
+  href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_
+  commentId: Overload:GameCanvas.IInputKey.TryGetKeyTraceAll
   isSpec: "True"
-  fullName: GameCanvas.IInputKey.TryGetKeyTraceArray
-  nameWithType: IInputKey.TryGetKeyTraceArray
+  fullName: GameCanvas.IInputKey.TryGetKeyTraceAll
+  nameWithType: IInputKey.TryGetKeyTraceAll
 - uid: GameCanvas.IInputKey.TryGetScreenKeyboardArea(GameCanvas.GcAABB@)
   name: TryGetScreenKeyboardArea(out GcAABB)
   href: api/GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetScreenKeyboardArea_GameCanvas_GcAABB__
@@ -10478,24 +10595,15 @@ references:
   commentId: T:GameCanvas.IInputKeyEx
   fullName: GameCanvas.IInputKeyEx
   nameWithType: IInputKeyEx
-- uid: GameCanvas.IInputKeyEx.GetKeyPressDuration(System.Char@)
-  name: GetKeyPressDuration(Char)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_System_Char__
-  commentId: M:GameCanvas.IInputKeyEx.GetKeyPressDuration(System.Char@)
-  name.vb: GetKeyPressDuration(ByRef Char)
-  fullName: GameCanvas.IInputKeyEx.GetKeyPressDuration(System.Char)
-  fullName.vb: GameCanvas.IInputKeyEx.GetKeyPressDuration(ByRef System.Char)
-  nameWithType: IInputKeyEx.GetKeyPressDuration(Char)
-  nameWithType.vb: IInputKeyEx.GetKeyPressDuration(ByRef Char)
-- uid: GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.KeyCode@)
-  name: GetKeyPressDuration(KeyCode)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.KeyCode@)
-  name.vb: GetKeyPressDuration(ByRef KeyCode)
-  fullName: GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.IInputKeyEx.GetKeyPressDuration(ByRef UnityEngine.KeyCode)
-  nameWithType: IInputKeyEx.GetKeyPressDuration(KeyCode)
-  nameWithType.vb: IInputKeyEx.GetKeyPressDuration(ByRef KeyCode)
+- uid: GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.InputSystem.Key@)
+  name: GetKeyPressDuration(Key)
+  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.InputSystem.Key@)
+  name.vb: GetKeyPressDuration(ByRef Key)
+  fullName: GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.IInputKeyEx.GetKeyPressDuration(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: IInputKeyEx.GetKeyPressDuration(Key)
+  nameWithType.vb: IInputKeyEx.GetKeyPressDuration(ByRef Key)
 - uid: GameCanvas.IInputKeyEx.GetKeyPressDuration*
   name: GetKeyPressDuration
   href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_
@@ -10503,24 +10611,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKeyEx.GetKeyPressDuration
   nameWithType: IInputKeyEx.GetKeyPressDuration
-- uid: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(System.Char@)
-  name: GetKeyPressFrameCount(Char)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_System_Char__
-  commentId: M:GameCanvas.IInputKeyEx.GetKeyPressFrameCount(System.Char@)
-  name.vb: GetKeyPressFrameCount(ByRef Char)
-  fullName: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(System.Char)
-  fullName.vb: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(ByRef System.Char)
-  nameWithType: IInputKeyEx.GetKeyPressFrameCount(Char)
-  nameWithType.vb: IInputKeyEx.GetKeyPressFrameCount(ByRef Char)
-- uid: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.KeyCode@)
-  name: GetKeyPressFrameCount(KeyCode)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_KeyCode__
-  commentId: M:GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.KeyCode@)
-  name.vb: GetKeyPressFrameCount(ByRef KeyCode)
-  fullName: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.KeyCode)
-  fullName.vb: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(ByRef UnityEngine.KeyCode)
-  nameWithType: IInputKeyEx.GetKeyPressFrameCount(KeyCode)
-  nameWithType.vb: IInputKeyEx.GetKeyPressFrameCount(ByRef KeyCode)
+- uid: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.InputSystem.Key@)
+  name: GetKeyPressFrameCount(Key)
+  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.InputSystem.Key@)
+  name.vb: GetKeyPressFrameCount(ByRef Key)
+  fullName: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.IInputKeyEx.GetKeyPressFrameCount(ByRef UnityEngine.InputSystem.Key)
+  nameWithType: IInputKeyEx.GetKeyPressFrameCount(Key)
+  nameWithType.vb: IInputKeyEx.GetKeyPressFrameCount(ByRef Key)
 - uid: GameCanvas.IInputKeyEx.GetKeyPressFrameCount*
   name: GetKeyPressFrameCount
   href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_
@@ -10593,40 +10692,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKeyEx.IsAnyKeyUp
   nameWithType: IInputKeyEx.IsAnyKeyUp
-- uid: GameCanvas.IInputKeyEx.IsKeyDown(System.Char@)
-  name: IsKeyDown(Char)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyDown_System_Char__
-  commentId: M:GameCanvas.IInputKeyEx.IsKeyDown(System.Char@)
-  name.vb: IsKeyDown(ByRef Char)
-  fullName: GameCanvas.IInputKeyEx.IsKeyDown(System.Char)
-  fullName.vb: GameCanvas.IInputKeyEx.IsKeyDown(ByRef System.Char)
-  nameWithType: IInputKeyEx.IsKeyDown(Char)
-  nameWithType.vb: IInputKeyEx.IsKeyDown(ByRef Char)
-- uid: GameCanvas.IInputKeyEx.IsKeyDown*
-  name: IsKeyDown
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyDown_
-  commentId: Overload:GameCanvas.IInputKeyEx.IsKeyDown
-  isSpec: "True"
-  fullName: GameCanvas.IInputKeyEx.IsKeyDown
-  nameWithType: IInputKeyEx.IsKeyDown
-- uid: GameCanvas.IInputKeyEx.IsKeyHold(System.Char@)
-  name: IsKeyHold(Char)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_System_Char__
-  commentId: M:GameCanvas.IInputKeyEx.IsKeyHold(System.Char@)
-  name.vb: IsKeyHold(ByRef Char)
-  fullName: GameCanvas.IInputKeyEx.IsKeyHold(System.Char)
-  fullName.vb: GameCanvas.IInputKeyEx.IsKeyHold(ByRef System.Char)
-  nameWithType: IInputKeyEx.IsKeyHold(Char)
-  nameWithType.vb: IInputKeyEx.IsKeyHold(ByRef Char)
-- uid: GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name: IsKeyHold(KeyCode, out GcKeyTrace)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name.vb: IsKeyHold(ByRef KeyCode, ByRef GcKeyTrace)
-  fullName: GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.KeyCode, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.IInputKeyEx.IsKeyHold(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: IInputKeyEx.IsKeyHold(KeyCode, out GcKeyTrace)
-  nameWithType.vb: IInputKeyEx.IsKeyHold(ByRef KeyCode, ByRef GcKeyTrace)
+- uid: GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name: IsKeyHold(Key, out GcKeyTrace)
+  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__
+  commentId: M:GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name.vb: IsKeyHold(ByRef Key, ByRef GcKeyTrace)
+  fullName: GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyTrace)
+  fullName.vb: GameCanvas.IInputKeyEx.IsKeyHold(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyTrace)
+  nameWithType: IInputKeyEx.IsKeyHold(Key, out GcKeyTrace)
+  nameWithType.vb: IInputKeyEx.IsKeyHold(ByRef Key, ByRef GcKeyTrace)
 - uid: GameCanvas.IInputKeyEx.IsKeyHold*
   name: IsKeyHold
   href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_
@@ -10634,40 +10708,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKeyEx.IsKeyHold
   nameWithType: IInputKeyEx.IsKeyHold
-- uid: GameCanvas.IInputKeyEx.IsKeyPress(System.Char@)
-  name: IsKeyPress(Char)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyPress_System_Char__
-  commentId: M:GameCanvas.IInputKeyEx.IsKeyPress(System.Char@)
-  name.vb: IsKeyPress(ByRef Char)
-  fullName: GameCanvas.IInputKeyEx.IsKeyPress(System.Char)
-  fullName.vb: GameCanvas.IInputKeyEx.IsKeyPress(ByRef System.Char)
-  nameWithType: IInputKeyEx.IsKeyPress(Char)
-  nameWithType.vb: IInputKeyEx.IsKeyPress(ByRef Char)
-- uid: GameCanvas.IInputKeyEx.IsKeyPress*
-  name: IsKeyPress
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyPress_
-  commentId: Overload:GameCanvas.IInputKeyEx.IsKeyPress
-  isSpec: "True"
-  fullName: GameCanvas.IInputKeyEx.IsKeyPress
-  nameWithType: IInputKeyEx.IsKeyPress
-- uid: GameCanvas.IInputKeyEx.IsKeyUp(System.Char@)
-  name: IsKeyUp(Char)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_System_Char__
-  commentId: M:GameCanvas.IInputKeyEx.IsKeyUp(System.Char@)
-  name.vb: IsKeyUp(ByRef Char)
-  fullName: GameCanvas.IInputKeyEx.IsKeyUp(System.Char)
-  fullName.vb: GameCanvas.IInputKeyEx.IsKeyUp(ByRef System.Char)
-  nameWithType: IInputKeyEx.IsKeyUp(Char)
-  nameWithType.vb: IInputKeyEx.IsKeyUp(ByRef Char)
-- uid: GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name: IsKeyUp(KeyCode, out GcKeyTrace)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.KeyCode@,GameCanvas.GcKeyTrace@)
-  name.vb: IsKeyUp(ByRef KeyCode, ByRef GcKeyTrace)
-  fullName: GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.KeyCode, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.IInputKeyEx.IsKeyUp(ByRef UnityEngine.KeyCode, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: IInputKeyEx.IsKeyUp(KeyCode, out GcKeyTrace)
-  nameWithType.vb: IInputKeyEx.IsKeyUp(ByRef KeyCode, ByRef GcKeyTrace)
+- uid: GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name: IsKeyUp(Key, out GcKeyTrace)
+  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__
+  commentId: M:GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)
+  name.vb: IsKeyUp(ByRef Key, ByRef GcKeyTrace)
+  fullName: GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.InputSystem.Key, out GameCanvas.GcKeyTrace)
+  fullName.vb: GameCanvas.IInputKeyEx.IsKeyUp(ByRef UnityEngine.InputSystem.Key, ByRef GameCanvas.GcKeyTrace)
+  nameWithType: IInputKeyEx.IsKeyUp(Key, out GcKeyTrace)
+  nameWithType.vb: IInputKeyEx.IsKeyUp(ByRef Key, ByRef GcKeyTrace)
 - uid: GameCanvas.IInputKeyEx.IsKeyUp*
   name: IsKeyUp
   href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_
@@ -10701,38 +10750,6 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputKeyEx.KeyPressCount
   nameWithType: IInputKeyEx.KeyPressCount
-- uid: GameCanvas.IInputKeyEx.TryGetKeyEvent(System.Char@,GameCanvas.GcKeyEvent@)
-  name: TryGetKeyEvent(Char, out GcKeyEvent)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_TryGetKeyEvent_System_Char__GameCanvas_GcKeyEvent__
-  commentId: M:GameCanvas.IInputKeyEx.TryGetKeyEvent(System.Char@,GameCanvas.GcKeyEvent@)
-  name.vb: TryGetKeyEvent(ByRef Char, ByRef GcKeyEvent)
-  fullName: GameCanvas.IInputKeyEx.TryGetKeyEvent(System.Char, out GameCanvas.GcKeyEvent)
-  fullName.vb: GameCanvas.IInputKeyEx.TryGetKeyEvent(ByRef System.Char, ByRef GameCanvas.GcKeyEvent)
-  nameWithType: IInputKeyEx.TryGetKeyEvent(Char, out GcKeyEvent)
-  nameWithType.vb: IInputKeyEx.TryGetKeyEvent(ByRef Char, ByRef GcKeyEvent)
-- uid: GameCanvas.IInputKeyEx.TryGetKeyEvent*
-  name: TryGetKeyEvent
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_TryGetKeyEvent_
-  commentId: Overload:GameCanvas.IInputKeyEx.TryGetKeyEvent
-  isSpec: "True"
-  fullName: GameCanvas.IInputKeyEx.TryGetKeyEvent
-  nameWithType: IInputKeyEx.TryGetKeyEvent
-- uid: GameCanvas.IInputKeyEx.TryGetKeyTrace(System.Char@,GameCanvas.GcKeyTrace@)
-  name: TryGetKeyTrace(Char, out GcKeyTrace)
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_TryGetKeyTrace_System_Char__GameCanvas_GcKeyTrace__
-  commentId: M:GameCanvas.IInputKeyEx.TryGetKeyTrace(System.Char@,GameCanvas.GcKeyTrace@)
-  name.vb: TryGetKeyTrace(ByRef Char, ByRef GcKeyTrace)
-  fullName: GameCanvas.IInputKeyEx.TryGetKeyTrace(System.Char, out GameCanvas.GcKeyTrace)
-  fullName.vb: GameCanvas.IInputKeyEx.TryGetKeyTrace(ByRef System.Char, ByRef GameCanvas.GcKeyTrace)
-  nameWithType: IInputKeyEx.TryGetKeyTrace(Char, out GcKeyTrace)
-  nameWithType.vb: IInputKeyEx.TryGetKeyTrace(ByRef Char, ByRef GcKeyTrace)
-- uid: GameCanvas.IInputKeyEx.TryGetKeyTrace*
-  name: TryGetKeyTrace
-  href: api/GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_TryGetKeyTrace_
-  commentId: Overload:GameCanvas.IInputKeyEx.TryGetKeyTrace
-  isSpec: "True"
-  fullName: GameCanvas.IInputKeyEx.TryGetKeyTrace
-  nameWithType: IInputKeyEx.TryGetKeyTrace
 - uid: GameCanvas.IInputPointer
   name: IInputPointer
   href: api/GameCanvas.IInputPointer.html
@@ -10868,31 +10885,31 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputPointer.TryGetPointerEvent
   nameWithType: IInputPointer.TryGetPointerEvent
-- uid: GameCanvas.IInputPointer.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name: TryGetPointerEventArray(GcPointerEventPhase, out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputPointer.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerEventArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputPointer.TryGetPointerEventArray(GameCanvas.GcPointerEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcPointerEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputPointer.TryGetPointerEventArray(ByRef GameCanvas.GcPointerEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputPointer.TryGetPointerEventArray(GcPointerEventPhase, out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  nameWithType.vb: IInputPointer.TryGetPointerEventArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputPointer.TryGetPointerEventArray(Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name: TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventArray_Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputPointer.TryGetPointerEventArray(Unity.Collections.NativeArray{GameCanvas.GcPointerEvent}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerEventArray(ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputPointer.TryGetPointerEventArray(out Unity.Collections.NativeArray<GameCanvas.GcPointerEvent>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputPointer.TryGetPointerEventArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerEvent).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputPointer.TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly, out Int32)
-  nameWithType.vb: IInputPointer.TryGetPointerEventArray(ByRef NativeArray(Of GcPointerEvent).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputPointer.TryGetPointerEventArray*
-  name: TryGetPointerEventArray
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventArray_
-  commentId: Overload:GameCanvas.IInputPointer.TryGetPointerEventArray
+- uid: GameCanvas.IInputPointer.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name: TryGetPointerEventAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerEvent>)
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___
+  commentId: M:GameCanvas.IInputPointer.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name.vb: TryGetPointerEventAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerEvent))
+  fullName: GameCanvas.IInputPointer.TryGetPointerEventAll(GameCanvas.GcPointerEventPhase, out System.ReadOnlySpan<GameCanvas.GcPointerEvent>)
+  fullName.vb: GameCanvas.IInputPointer.TryGetPointerEventAll(ByRef GameCanvas.GcPointerEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerEvent))
+  nameWithType: IInputPointer.TryGetPointerEventAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerEvent>)
+  nameWithType.vb: IInputPointer.TryGetPointerEventAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerEvent))
+- uid: GameCanvas.IInputPointer.TryGetPointerEventAll(System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name: TryGetPointerEventAll(out ReadOnlySpan<GcPointerEvent>)
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___
+  commentId: M:GameCanvas.IInputPointer.TryGetPointerEventAll(System.ReadOnlySpan{GameCanvas.GcPointerEvent}@)
+  name.vb: TryGetPointerEventAll(ByRef ReadOnlySpan(Of GcPointerEvent))
+  fullName: GameCanvas.IInputPointer.TryGetPointerEventAll(out System.ReadOnlySpan<GameCanvas.GcPointerEvent>)
+  fullName.vb: GameCanvas.IInputPointer.TryGetPointerEventAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerEvent))
+  nameWithType: IInputPointer.TryGetPointerEventAll(out ReadOnlySpan<GcPointerEvent>)
+  nameWithType.vb: IInputPointer.TryGetPointerEventAll(ByRef ReadOnlySpan(Of GcPointerEvent))
+- uid: GameCanvas.IInputPointer.TryGetPointerEventAll*
+  name: TryGetPointerEventAll
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_
+  commentId: Overload:GameCanvas.IInputPointer.TryGetPointerEventAll
   isSpec: "True"
-  fullName: GameCanvas.IInputPointer.TryGetPointerEventArray
-  nameWithType: IInputPointer.TryGetPointerEventArray
+  fullName: GameCanvas.IInputPointer.TryGetPointerEventAll
+  nameWithType: IInputPointer.TryGetPointerEventAll
 - uid: GameCanvas.IInputPointer.TryGetPointerTapPoint(System.Int32@,Unity.Mathematics.float2@)
   name: TryGetPointerTapPoint(Int32, out float2)
   href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__
@@ -10909,22 +10926,22 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputPointer.TryGetPointerTapPoint
   nameWithType: IInputPointer.TryGetPointerTapPoint
-- uid: GameCanvas.IInputPointer.TryGetPointerTapPointArray(Unity.Collections.NativeArray{Unity.Mathematics.float2}.ReadOnly@,System.Int32@)
-  name: TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointArray_Unity_Collections_NativeArray_Unity_Mathematics_float2__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputPointer.TryGetPointerTapPointArray(Unity.Collections.NativeArray{Unity.Mathematics.float2}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerTapPointArray(ByRef NativeArray(Of float2).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputPointer.TryGetPointerTapPointArray(out Unity.Collections.NativeArray<Unity.Mathematics.float2>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputPointer.TryGetPointerTapPointArray(ByRef Unity.Collections.NativeArray(Of Unity.Mathematics.float2).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputPointer.TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly, out Int32)
-  nameWithType.vb: IInputPointer.TryGetPointerTapPointArray(ByRef NativeArray(Of float2).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputPointer.TryGetPointerTapPointArray*
-  name: TryGetPointerTapPointArray
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointArray_
-  commentId: Overload:GameCanvas.IInputPointer.TryGetPointerTapPointArray
+- uid: GameCanvas.IInputPointer.TryGetPointerTapPointAll(System.ReadOnlySpan{Unity.Mathematics.float2}@)
+  name: TryGetPointerTapPointAll(out ReadOnlySpan<float2>)
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___
+  commentId: M:GameCanvas.IInputPointer.TryGetPointerTapPointAll(System.ReadOnlySpan{Unity.Mathematics.float2}@)
+  name.vb: TryGetPointerTapPointAll(ByRef ReadOnlySpan(Of float2))
+  fullName: GameCanvas.IInputPointer.TryGetPointerTapPointAll(out System.ReadOnlySpan<Unity.Mathematics.float2>)
+  fullName.vb: GameCanvas.IInputPointer.TryGetPointerTapPointAll(ByRef System.ReadOnlySpan(Of Unity.Mathematics.float2))
+  nameWithType: IInputPointer.TryGetPointerTapPointAll(out ReadOnlySpan<float2>)
+  nameWithType.vb: IInputPointer.TryGetPointerTapPointAll(ByRef ReadOnlySpan(Of float2))
+- uid: GameCanvas.IInputPointer.TryGetPointerTapPointAll*
+  name: TryGetPointerTapPointAll
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_
+  commentId: Overload:GameCanvas.IInputPointer.TryGetPointerTapPointAll
   isSpec: "True"
-  fullName: GameCanvas.IInputPointer.TryGetPointerTapPointArray
-  nameWithType: IInputPointer.TryGetPointerTapPointArray
+  fullName: GameCanvas.IInputPointer.TryGetPointerTapPointAll
+  nameWithType: IInputPointer.TryGetPointerTapPointAll
 - uid: GameCanvas.IInputPointer.TryGetPointerTrace(GameCanvas.GcPointerEventPhase@,System.Int32@,GameCanvas.GcPointerTrace@)
   name: TryGetPointerTrace(GcPointerEventPhase, Int32, out GcPointerTrace)
   href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__
@@ -10950,31 +10967,31 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IInputPointer.TryGetPointerTrace
   nameWithType: IInputPointer.TryGetPointerTrace
-- uid: GameCanvas.IInputPointer.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name: TryGetPointerTraceArray(GcPointerEventPhase, out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputPointer.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase@,Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerTraceArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputPointer.TryGetPointerTraceArray(GameCanvas.GcPointerEventPhase, out Unity.Collections.NativeArray<GameCanvas.GcPointerTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputPointer.TryGetPointerTraceArray(ByRef GameCanvas.GcPointerEventPhase, ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputPointer.TryGetPointerTraceArray(GcPointerEventPhase, out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  nameWithType.vb: IInputPointer.TryGetPointerTraceArray(ByRef GcPointerEventPhase, ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputPointer.TryGetPointerTraceArray(Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name: TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceArray_Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__
-  commentId: M:GameCanvas.IInputPointer.TryGetPointerTraceArray(Unity.Collections.NativeArray{GameCanvas.GcPointerTrace}.ReadOnly@,System.Int32@)
-  name.vb: TryGetPointerTraceArray(ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-  fullName: GameCanvas.IInputPointer.TryGetPointerTraceArray(out Unity.Collections.NativeArray<GameCanvas.GcPointerTrace>.ReadOnly, out System.Int32)
-  fullName.vb: GameCanvas.IInputPointer.TryGetPointerTraceArray(ByRef Unity.Collections.NativeArray(Of GameCanvas.GcPointerTrace).ReadOnly, ByRef System.Int32)
-  nameWithType: IInputPointer.TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly, out Int32)
-  nameWithType.vb: IInputPointer.TryGetPointerTraceArray(ByRef NativeArray(Of GcPointerTrace).ReadOnly, ByRef Int32)
-- uid: GameCanvas.IInputPointer.TryGetPointerTraceArray*
-  name: TryGetPointerTraceArray
-  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceArray_
-  commentId: Overload:GameCanvas.IInputPointer.TryGetPointerTraceArray
+- uid: GameCanvas.IInputPointer.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name: TryGetPointerTraceAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerTrace>)
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___
+  commentId: M:GameCanvas.IInputPointer.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase@,System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name.vb: TryGetPointerTraceAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerTrace))
+  fullName: GameCanvas.IInputPointer.TryGetPointerTraceAll(GameCanvas.GcPointerEventPhase, out System.ReadOnlySpan<GameCanvas.GcPointerTrace>)
+  fullName.vb: GameCanvas.IInputPointer.TryGetPointerTraceAll(ByRef GameCanvas.GcPointerEventPhase, ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerTrace))
+  nameWithType: IInputPointer.TryGetPointerTraceAll(GcPointerEventPhase, out ReadOnlySpan<GcPointerTrace>)
+  nameWithType.vb: IInputPointer.TryGetPointerTraceAll(ByRef GcPointerEventPhase, ByRef ReadOnlySpan(Of GcPointerTrace))
+- uid: GameCanvas.IInputPointer.TryGetPointerTraceAll(System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name: TryGetPointerTraceAll(out ReadOnlySpan<GcPointerTrace>)
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___
+  commentId: M:GameCanvas.IInputPointer.TryGetPointerTraceAll(System.ReadOnlySpan{GameCanvas.GcPointerTrace}@)
+  name.vb: TryGetPointerTraceAll(ByRef ReadOnlySpan(Of GcPointerTrace))
+  fullName: GameCanvas.IInputPointer.TryGetPointerTraceAll(out System.ReadOnlySpan<GameCanvas.GcPointerTrace>)
+  fullName.vb: GameCanvas.IInputPointer.TryGetPointerTraceAll(ByRef System.ReadOnlySpan(Of GameCanvas.GcPointerTrace))
+  nameWithType: IInputPointer.TryGetPointerTraceAll(out ReadOnlySpan<GcPointerTrace>)
+  nameWithType.vb: IInputPointer.TryGetPointerTraceAll(ByRef ReadOnlySpan(Of GcPointerTrace))
+- uid: GameCanvas.IInputPointer.TryGetPointerTraceAll*
+  name: TryGetPointerTraceAll
+  href: api/GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_
+  commentId: Overload:GameCanvas.IInputPointer.TryGetPointerTraceAll
   isSpec: "True"
-  fullName: GameCanvas.IInputPointer.TryGetPointerTraceArray
-  nameWithType: IInputPointer.TryGetPointerTraceArray
+  fullName: GameCanvas.IInputPointer.TryGetPointerTraceAll
+  nameWithType: IInputPointer.TryGetPointerTraceAll
 - uid: GameCanvas.IInputPointerEx
   name: IInputPointerEx
   href: api/GameCanvas.IInputPointerEx.html
@@ -11655,15 +11672,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.INetwork.ClearDownloadCacheAll
   nameWithType: INetwork.ClearDownloadCacheAll
-- uid: GameCanvas.INetwork.TryGetOnlineImage(System.String@,UnityEngine.Texture2D@)
-  name: TryGetOnlineImage(String, out Texture2D)
-  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__UnityEngine_Texture2D__
-  commentId: M:GameCanvas.INetwork.TryGetOnlineImage(System.String@,UnityEngine.Texture2D@)
-  name.vb: TryGetOnlineImage(ByRef String, ByRef Texture2D)
-  fullName: GameCanvas.INetwork.TryGetOnlineImage(System.String, out UnityEngine.Texture2D)
-  fullName.vb: GameCanvas.INetwork.TryGetOnlineImage(ByRef System.String, ByRef UnityEngine.Texture2D)
-  nameWithType: INetwork.TryGetOnlineImage(String, out Texture2D)
-  nameWithType.vb: INetwork.TryGetOnlineImage(ByRef String, ByRef Texture2D)
+- uid: GameCanvas.INetwork.TryGetOnlineImage(System.String@,GameCanvas.GcAvailability@,UnityEngine.Texture2D@)
+  name: TryGetOnlineImage(String, out GcAvailability, out Texture2D)
+  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__GameCanvas_GcAvailability__UnityEngine_Texture2D__
+  commentId: M:GameCanvas.INetwork.TryGetOnlineImage(System.String@,GameCanvas.GcAvailability@,UnityEngine.Texture2D@)
+  name.vb: TryGetOnlineImage(ByRef String, ByRef GcAvailability, ByRef Texture2D)
+  fullName: GameCanvas.INetwork.TryGetOnlineImage(System.String, out GameCanvas.GcAvailability, out UnityEngine.Texture2D)
+  fullName.vb: GameCanvas.INetwork.TryGetOnlineImage(ByRef System.String, ByRef GameCanvas.GcAvailability, ByRef UnityEngine.Texture2D)
+  nameWithType: INetwork.TryGetOnlineImage(String, out GcAvailability, out Texture2D)
+  nameWithType.vb: INetwork.TryGetOnlineImage(ByRef String, ByRef GcAvailability, ByRef Texture2D)
 - uid: GameCanvas.INetwork.TryGetOnlineImage*
   name: TryGetOnlineImage
   href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_
@@ -11687,24 +11704,24 @@ references:
   isSpec: "True"
   fullName: GameCanvas.INetwork.TryGetOnlineImageSize
   nameWithType: INetwork.TryGetOnlineImageSize
-- uid: GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioClip@)
-  name: TryGetOnlineSound(String, out AudioClip)
-  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioClip__
-  commentId: M:GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioClip@)
-  name.vb: TryGetOnlineSound(ByRef String, ByRef AudioClip)
-  fullName: GameCanvas.INetwork.TryGetOnlineSound(System.String, out UnityEngine.AudioClip)
-  fullName.vb: GameCanvas.INetwork.TryGetOnlineSound(ByRef System.String, ByRef UnityEngine.AudioClip)
-  nameWithType: INetwork.TryGetOnlineSound(String, out AudioClip)
-  nameWithType.vb: INetwork.TryGetOnlineSound(ByRef String, ByRef AudioClip)
-- uid: GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,UnityEngine.AudioClip@)
-  name: TryGetOnlineSound(String, AudioType, out AudioClip)
-  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__UnityEngine_AudioClip__
-  commentId: M:GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,UnityEngine.AudioClip@)
-  name.vb: TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef AudioClip)
-  fullName: GameCanvas.INetwork.TryGetOnlineSound(System.String, UnityEngine.AudioType, out UnityEngine.AudioClip)
-  fullName.vb: GameCanvas.INetwork.TryGetOnlineSound(ByRef System.String, ByRef UnityEngine.AudioType, ByRef UnityEngine.AudioClip)
-  nameWithType: INetwork.TryGetOnlineSound(String, AudioType, out AudioClip)
-  nameWithType.vb: INetwork.TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef AudioClip)
+- uid: GameCanvas.INetwork.TryGetOnlineSound(System.String@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name: TryGetOnlineSound(String, out GcAvailability, out AudioClip)
+  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__GameCanvas_GcAvailability__UnityEngine_AudioClip__
+  commentId: M:GameCanvas.INetwork.TryGetOnlineSound(System.String@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name.vb: TryGetOnlineSound(ByRef String, ByRef GcAvailability, ByRef AudioClip)
+  fullName: GameCanvas.INetwork.TryGetOnlineSound(System.String, out GameCanvas.GcAvailability, out UnityEngine.AudioClip)
+  fullName.vb: GameCanvas.INetwork.TryGetOnlineSound(ByRef System.String, ByRef GameCanvas.GcAvailability, ByRef UnityEngine.AudioClip)
+  nameWithType: INetwork.TryGetOnlineSound(String, out GcAvailability, out AudioClip)
+  nameWithType.vb: INetwork.TryGetOnlineSound(ByRef String, ByRef GcAvailability, ByRef AudioClip)
+- uid: GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name: TryGetOnlineSound(String, AudioType, out GcAvailability, out AudioClip)
+  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__GameCanvas_GcAvailability__UnityEngine_AudioClip__
+  commentId: M:GameCanvas.INetwork.TryGetOnlineSound(System.String@,UnityEngine.AudioType@,GameCanvas.GcAvailability@,UnityEngine.AudioClip@)
+  name.vb: TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef GcAvailability, ByRef AudioClip)
+  fullName: GameCanvas.INetwork.TryGetOnlineSound(System.String, UnityEngine.AudioType, out GameCanvas.GcAvailability, out UnityEngine.AudioClip)
+  fullName.vb: GameCanvas.INetwork.TryGetOnlineSound(ByRef System.String, ByRef UnityEngine.AudioType, ByRef GameCanvas.GcAvailability, ByRef UnityEngine.AudioClip)
+  nameWithType: INetwork.TryGetOnlineSound(String, AudioType, out GcAvailability, out AudioClip)
+  nameWithType.vb: INetwork.TryGetOnlineSound(ByRef String, ByRef AudioType, ByRef GcAvailability, ByRef AudioClip)
 - uid: GameCanvas.INetwork.TryGetOnlineSound*
   name: TryGetOnlineSound
   href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_
@@ -11712,15 +11729,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.INetwork.TryGetOnlineSound
   nameWithType: INetwork.TryGetOnlineSound
-- uid: GameCanvas.INetwork.TryGetOnlineText(System.String@,System.String@)
-  name: TryGetOnlineText(String, out String)
-  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__System_String__
-  commentId: M:GameCanvas.INetwork.TryGetOnlineText(System.String@,System.String@)
-  name.vb: TryGetOnlineText(ByRef String, ByRef String)
-  fullName: GameCanvas.INetwork.TryGetOnlineText(System.String, out System.String)
-  fullName.vb: GameCanvas.INetwork.TryGetOnlineText(ByRef System.String, ByRef System.String)
-  nameWithType: INetwork.TryGetOnlineText(String, out String)
-  nameWithType.vb: INetwork.TryGetOnlineText(ByRef String, ByRef String)
+- uid: GameCanvas.INetwork.TryGetOnlineText(System.String@,GameCanvas.GcAvailability@,System.String@)
+  name: TryGetOnlineText(String, out GcAvailability, out String)
+  href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__GameCanvas_GcAvailability__System_String__
+  commentId: M:GameCanvas.INetwork.TryGetOnlineText(System.String@,GameCanvas.GcAvailability@,System.String@)
+  name.vb: TryGetOnlineText(ByRef String, ByRef GcAvailability, ByRef String)
+  fullName: GameCanvas.INetwork.TryGetOnlineText(System.String, out GameCanvas.GcAvailability, out System.String)
+  fullName.vb: GameCanvas.INetwork.TryGetOnlineText(ByRef System.String, ByRef GameCanvas.GcAvailability, ByRef System.String)
+  nameWithType: INetwork.TryGetOnlineText(String, out GcAvailability, out String)
+  nameWithType.vb: INetwork.TryGetOnlineText(ByRef String, ByRef GcAvailability, ByRef String)
 - uid: GameCanvas.INetwork.TryGetOnlineText*
   name: TryGetOnlineText
   href: api/GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_
@@ -12114,22 +12131,22 @@ references:
   fullName.vb: GameCanvas.ISceneManagement.TryGetActor(Of T)(ByRef System.Int32, ByRef T)
   nameWithType: ISceneManagement.TryGetActor<T>(Int32, out T)
   nameWithType.vb: ISceneManagement.TryGetActor(Of T)(ByRef Int32, ByRef T)
-- uid: GameCanvas.ISceneManagement.TryGetActorList*
-  name: TryGetActorList
-  href: api/GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorList_
-  commentId: Overload:GameCanvas.ISceneManagement.TryGetActorList
+- uid: GameCanvas.ISceneManagement.TryGetActorAll*
+  name: TryGetActorAll
+  href: api/GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorAll_
+  commentId: Overload:GameCanvas.ISceneManagement.TryGetActorAll
   isSpec: "True"
-  fullName: GameCanvas.ISceneManagement.TryGetActorList
-  nameWithType: ISceneManagement.TryGetActorList
-- uid: GameCanvas.ISceneManagement.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)
-  name: TryGetActorList<T>(out ReadOnlyActorList<T>)
-  href: api/GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___
-  commentId: M:GameCanvas.ISceneManagement.TryGetActorList``1(GameCanvas.ReadOnlyActorList{``0}@)
-  name.vb: TryGetActorList(Of T)(ByRef ReadOnlyActorList(Of T))
-  fullName: GameCanvas.ISceneManagement.TryGetActorList<T>(out GameCanvas.ReadOnlyActorList<T>)
-  fullName.vb: GameCanvas.ISceneManagement.TryGetActorList(Of T)(ByRef GameCanvas.ReadOnlyActorList(Of T))
-  nameWithType: ISceneManagement.TryGetActorList<T>(out ReadOnlyActorList<T>)
-  nameWithType.vb: ISceneManagement.TryGetActorList(Of T)(ByRef ReadOnlyActorList(Of T))
+  fullName: GameCanvas.ISceneManagement.TryGetActorAll
+  nameWithType: ISceneManagement.TryGetActorAll
+- uid: GameCanvas.ISceneManagement.TryGetActorAll``1(System.ReadOnlySpan{``0}@)
+  name: TryGetActorAll<T>(out ReadOnlySpan<T>)
+  href: api/GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorAll__1_System_ReadOnlySpan___0___
+  commentId: M:GameCanvas.ISceneManagement.TryGetActorAll``1(System.ReadOnlySpan{``0}@)
+  name.vb: TryGetActorAll(Of T)(ByRef ReadOnlySpan(Of T))
+  fullName: GameCanvas.ISceneManagement.TryGetActorAll<T>(out System.ReadOnlySpan<T>)
+  fullName.vb: GameCanvas.ISceneManagement.TryGetActorAll(Of T)(ByRef System.ReadOnlySpan(Of T))
+  nameWithType: ISceneManagement.TryGetActorAll<T>(out ReadOnlySpan<T>)
+  nameWithType.vb: ISceneManagement.TryGetActorAll(Of T)(ByRef ReadOnlySpan(Of T))
 - uid: GameCanvas.ISceneManagement.TryRemoveActor(GameCanvas.GcActor@)
   name: TryRemoveActor(GcActor)
   href: api/GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryRemoveActor_GameCanvas_GcActor__
@@ -12494,15 +12511,15 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IStorage.Save
   nameWithType: IStorage.Save
-- uid: GameCanvas.IStorage.SaveScreenshotAsync(System.Action{System.String}@)
+- uid: GameCanvas.IStorage.SaveScreenshotAsync(System.Action{System.String})
   name: SaveScreenshotAsync(Action<String>)
-  href: api/GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String___
-  commentId: M:GameCanvas.IStorage.SaveScreenshotAsync(System.Action{System.String}@)
-  name.vb: SaveScreenshotAsync(ByRef Action(Of String))
+  href: api/GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String__
+  commentId: M:GameCanvas.IStorage.SaveScreenshotAsync(System.Action{System.String})
+  name.vb: SaveScreenshotAsync(Action(Of String))
   fullName: GameCanvas.IStorage.SaveScreenshotAsync(System.Action<System.String>)
-  fullName.vb: GameCanvas.IStorage.SaveScreenshotAsync(ByRef System.Action(Of System.String))
+  fullName.vb: GameCanvas.IStorage.SaveScreenshotAsync(System.Action(Of System.String))
   nameWithType: IStorage.SaveScreenshotAsync(Action<String>)
-  nameWithType.vb: IStorage.SaveScreenshotAsync(ByRef Action(Of String))
+  nameWithType.vb: IStorage.SaveScreenshotAsync(Action(Of String))
 - uid: GameCanvas.IStorage.SaveScreenshotAsync*
   name: SaveScreenshotAsync
   href: api/GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_
@@ -13241,6 +13258,89 @@ references:
   fullName.vb: GameCanvas.ReadOnlyActorList(Of T).System.Collections.IEnumerable.GetEnumerator
   nameWithType: ReadOnlyActorList<T>.IEnumerable.GetEnumerator
   nameWithType.vb: ReadOnlyActorList(Of T).System.Collections.IEnumerable.GetEnumerator
+- uid: GameCanvas.SpanExtensions
+  name: SpanExtensions
+  href: api/GameCanvas.SpanExtensions.html
+  commentId: T:GameCanvas.SpanExtensions
+  fullName: GameCanvas.SpanExtensions
+  nameWithType: SpanExtensions
+- uid: GameCanvas.SpanExtensions.AsReadOnlySpan*
+  name: AsReadOnlySpan
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsReadOnlySpan_
+  commentId: Overload:GameCanvas.SpanExtensions.AsReadOnlySpan
+  isSpec: "True"
+  fullName: GameCanvas.SpanExtensions.AsReadOnlySpan
+  nameWithType: SpanExtensions.AsReadOnlySpan
+- uid: GameCanvas.SpanExtensions.AsReadOnlySpan``1(System.Collections.Generic.List{``0})
+  name: AsReadOnlySpan<T>(List<T>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsReadOnlySpan__1_System_Collections_Generic_List___0__
+  commentId: M:GameCanvas.SpanExtensions.AsReadOnlySpan``1(System.Collections.Generic.List{``0})
+  name.vb: AsReadOnlySpan(Of T)(List(Of T))
+  fullName: GameCanvas.SpanExtensions.AsReadOnlySpan<T>(System.Collections.Generic.List<T>)
+  fullName.vb: GameCanvas.SpanExtensions.AsReadOnlySpan(Of T)(System.Collections.Generic.List(Of T))
+  nameWithType: SpanExtensions.AsReadOnlySpan<T>(List<T>)
+  nameWithType.vb: SpanExtensions.AsReadOnlySpan(Of T)(List(Of T))
+- uid: GameCanvas.SpanExtensions.AsReadOnlySpan``1(Unity.Collections.NativeArray{``0}@)
+  name: AsReadOnlySpan<T>(NativeArray<T>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsReadOnlySpan__1_Unity_Collections_NativeArray___0___
+  commentId: M:GameCanvas.SpanExtensions.AsReadOnlySpan``1(Unity.Collections.NativeArray{``0}@)
+  name.vb: AsReadOnlySpan(Of T)(ByRef NativeArray(Of T))
+  fullName: GameCanvas.SpanExtensions.AsReadOnlySpan<T>(Unity.Collections.NativeArray<T>)
+  fullName.vb: GameCanvas.SpanExtensions.AsReadOnlySpan(Of T)(ByRef Unity.Collections.NativeArray(Of T))
+  nameWithType: SpanExtensions.AsReadOnlySpan<T>(NativeArray<T>)
+  nameWithType.vb: SpanExtensions.AsReadOnlySpan(Of T)(ByRef NativeArray(Of T))
+- uid: GameCanvas.SpanExtensions.AsReadOnlySpan``1(Unity.Collections.NativeList{``0}@)
+  name: AsReadOnlySpan<T>(NativeList<T>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsReadOnlySpan__1_Unity_Collections_NativeList___0___
+  commentId: M:GameCanvas.SpanExtensions.AsReadOnlySpan``1(Unity.Collections.NativeList{``0}@)
+  name.vb: AsReadOnlySpan(Of T)(ByRef NativeList(Of T))
+  fullName: GameCanvas.SpanExtensions.AsReadOnlySpan<T>(Unity.Collections.NativeList<T>)
+  fullName.vb: GameCanvas.SpanExtensions.AsReadOnlySpan(Of T)(ByRef Unity.Collections.NativeList(Of T))
+  nameWithType: SpanExtensions.AsReadOnlySpan<T>(NativeList<T>)
+  nameWithType.vb: SpanExtensions.AsReadOnlySpan(Of T)(ByRef NativeList(Of T))
+- uid: GameCanvas.SpanExtensions.AsReadOnlySpan``2(System.Collections.Generic.List{``0})
+  name: AsReadOnlySpan<TBase, T>(List<TBase>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsReadOnlySpan__2_System_Collections_Generic_List___0__
+  commentId: M:GameCanvas.SpanExtensions.AsReadOnlySpan``2(System.Collections.Generic.List{``0})
+  name.vb: AsReadOnlySpan(Of TBase, T)(List(Of TBase))
+  fullName: GameCanvas.SpanExtensions.AsReadOnlySpan<TBase, T>(System.Collections.Generic.List<TBase>)
+  fullName.vb: GameCanvas.SpanExtensions.AsReadOnlySpan(Of TBase, T)(System.Collections.Generic.List(Of TBase))
+  nameWithType: SpanExtensions.AsReadOnlySpan<TBase, T>(List<TBase>)
+  nameWithType.vb: SpanExtensions.AsReadOnlySpan(Of TBase, T)(List(Of TBase))
+- uid: GameCanvas.SpanExtensions.AsSpan*
+  name: AsSpan
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsSpan_
+  commentId: Overload:GameCanvas.SpanExtensions.AsSpan
+  isSpec: "True"
+  fullName: GameCanvas.SpanExtensions.AsSpan
+  nameWithType: SpanExtensions.AsSpan
+- uid: GameCanvas.SpanExtensions.AsSpan``1(System.Collections.Generic.List{``0})
+  name: AsSpan<T>(List<T>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsSpan__1_System_Collections_Generic_List___0__
+  commentId: M:GameCanvas.SpanExtensions.AsSpan``1(System.Collections.Generic.List{``0})
+  name.vb: AsSpan(Of T)(List(Of T))
+  fullName: GameCanvas.SpanExtensions.AsSpan<T>(System.Collections.Generic.List<T>)
+  fullName.vb: GameCanvas.SpanExtensions.AsSpan(Of T)(System.Collections.Generic.List(Of T))
+  nameWithType: SpanExtensions.AsSpan<T>(List<T>)
+  nameWithType.vb: SpanExtensions.AsSpan(Of T)(List(Of T))
+- uid: GameCanvas.SpanExtensions.AsSpan``1(Unity.Collections.NativeArray{``0}@)
+  name: AsSpan<T>(NativeArray<T>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsSpan__1_Unity_Collections_NativeArray___0___
+  commentId: M:GameCanvas.SpanExtensions.AsSpan``1(Unity.Collections.NativeArray{``0}@)
+  name.vb: AsSpan(Of T)(ByRef NativeArray(Of T))
+  fullName: GameCanvas.SpanExtensions.AsSpan<T>(Unity.Collections.NativeArray<T>)
+  fullName.vb: GameCanvas.SpanExtensions.AsSpan(Of T)(ByRef Unity.Collections.NativeArray(Of T))
+  nameWithType: SpanExtensions.AsSpan<T>(NativeArray<T>)
+  nameWithType.vb: SpanExtensions.AsSpan(Of T)(ByRef NativeArray(Of T))
+- uid: GameCanvas.SpanExtensions.AsSpan``1(Unity.Collections.NativeList{``0}@)
+  name: AsSpan<T>(NativeList<T>)
+  href: api/GameCanvas.SpanExtensions.html#GameCanvas_SpanExtensions_AsSpan__1_Unity_Collections_NativeList___0___
+  commentId: M:GameCanvas.SpanExtensions.AsSpan``1(Unity.Collections.NativeList{``0}@)
+  name.vb: AsSpan(Of T)(ByRef NativeList(Of T))
+  fullName: GameCanvas.SpanExtensions.AsSpan<T>(Unity.Collections.NativeList<T>)
+  fullName.vb: GameCanvas.SpanExtensions.AsSpan(Of T)(ByRef Unity.Collections.NativeList(Of T))
+  nameWithType: SpanExtensions.AsSpan<T>(NativeList<T>)
+  nameWithType.vb: SpanExtensions.AsSpan(Of T)(ByRef NativeList(Of T))
 - uid: GameCanvas.StyleScope
   name: StyleScope
   href: api/GameCanvas.StyleScope.html
@@ -13266,6 +13366,28 @@ references:
   commentId: T:GameCanvas.UnityKeyCodeExtensions
   fullName: GameCanvas.UnityKeyCodeExtensions
   nameWithType: UnityKeyCodeExtensions
+- uid: GameCanvas.UnityKeyCodeExtensions.ToKey(UnityEngine.KeyCode)
+  name: ToKey(KeyCode)
+  href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_ToKey_UnityEngine_KeyCode_
+  commentId: M:GameCanvas.UnityKeyCodeExtensions.ToKey(UnityEngine.KeyCode)
+  fullName: GameCanvas.UnityKeyCodeExtensions.ToKey(UnityEngine.KeyCode)
+  nameWithType: UnityKeyCodeExtensions.ToKey(KeyCode)
+- uid: GameCanvas.UnityKeyCodeExtensions.ToKey*
+  name: ToKey
+  href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_ToKey_
+  commentId: Overload:GameCanvas.UnityKeyCodeExtensions.ToKey
+  isSpec: "True"
+  fullName: GameCanvas.UnityKeyCodeExtensions.ToKey
+  nameWithType: UnityKeyCodeExtensions.ToKey
+- uid: GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.InputSystem.Key,System.Char@)
+  name: TryGetChar(Key, out Char)
+  href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_TryGetChar_UnityEngine_InputSystem_Key_System_Char__
+  commentId: M:GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.InputSystem.Key,System.Char@)
+  name.vb: TryGetChar(Key, ByRef Char)
+  fullName: GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.InputSystem.Key, out System.Char)
+  fullName.vb: GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.InputSystem.Key, ByRef System.Char)
+  nameWithType: UnityKeyCodeExtensions.TryGetChar(Key, out Char)
+  nameWithType.vb: UnityKeyCodeExtensions.TryGetChar(Key, ByRef Char)
 - uid: GameCanvas.UnityKeyCodeExtensions.TryGetChar(UnityEngine.KeyCode,System.Char@)
   name: TryGetChar(KeyCode, out Char)
   href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_TryGetChar_UnityEngine_KeyCode_System_Char__
@@ -13282,6 +13404,22 @@ references:
   isSpec: "True"
   fullName: GameCanvas.UnityKeyCodeExtensions.TryGetChar
   nameWithType: UnityKeyCodeExtensions.TryGetChar
+- uid: GameCanvas.UnityKeyCodeExtensions.TryGetKey(System.Char@,UnityEngine.InputSystem.Key@)
+  name: TryGetKey(Char, out Key)
+  href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_TryGetKey_System_Char__UnityEngine_InputSystem_Key__
+  commentId: M:GameCanvas.UnityKeyCodeExtensions.TryGetKey(System.Char@,UnityEngine.InputSystem.Key@)
+  name.vb: TryGetKey(ByRef Char, ByRef Key)
+  fullName: GameCanvas.UnityKeyCodeExtensions.TryGetKey(System.Char, out UnityEngine.InputSystem.Key)
+  fullName.vb: GameCanvas.UnityKeyCodeExtensions.TryGetKey(ByRef System.Char, ByRef UnityEngine.InputSystem.Key)
+  nameWithType: UnityKeyCodeExtensions.TryGetKey(Char, out Key)
+  nameWithType.vb: UnityKeyCodeExtensions.TryGetKey(ByRef Char, ByRef Key)
+- uid: GameCanvas.UnityKeyCodeExtensions.TryGetKey*
+  name: TryGetKey
+  href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_TryGetKey_
+  commentId: Overload:GameCanvas.UnityKeyCodeExtensions.TryGetKey
+  isSpec: "True"
+  fullName: GameCanvas.UnityKeyCodeExtensions.TryGetKey
+  nameWithType: UnityKeyCodeExtensions.TryGetKey
 - uid: GameCanvas.UnityKeyCodeExtensions.TryGetKeyCode(System.Char@,UnityEngine.KeyCode@)
   name: TryGetKeyCode(Char, out KeyCode)
   href: api/GameCanvas.UnityKeyCodeExtensions.html#GameCanvas_UnityKeyCodeExtensions_TryGetKeyCode_System_Char__UnityEngine_KeyCode__

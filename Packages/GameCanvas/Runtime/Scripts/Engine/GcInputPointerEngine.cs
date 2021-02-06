@@ -8,6 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
+using System.ComponentModel;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -110,6 +111,34 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        public bool TryGetPointerEventAll(out System.ReadOnlySpan<GcPointerEvent> events)
+        {
+            events = m_PointerList.AsReadOnlySpan();
+            return (m_PointerList.Length != 0);
+        }
+
+        public bool TryGetPointerEventAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerEvent> events)
+        {
+            switch (phase)
+            {
+                case GcPointerEventPhase.Begin:
+                    events = m_PointerListBegin.AsReadOnlySpan();
+                    return (m_PointerListBegin.Length != 0);
+
+                case GcPointerEventPhase.Hold:
+                    events = m_PointerListHold.AsReadOnlySpan();
+                    return (m_PointerListHold.Length != 0);
+
+                case GcPointerEventPhase.End:
+                    events = m_PointerListEnd.AsReadOnlySpan();
+                    return (m_PointerListEnd.Length != 0);
+            }
+            events = System.ReadOnlySpan<GcPointerEvent>.Empty;
+            return false;
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
         {
             count = m_PointerList.Length;
@@ -122,6 +151,8 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
         {
             switch (phase)
@@ -169,6 +200,14 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        public bool TryGetPointerTapPointAll(out System.ReadOnlySpan<float2> points)
+        {
+            points = m_TapPointList.AsReadOnlySpan();
+            return (m_TapPointList.Length != 0);
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count)
         {
             count = m_TapPointList.Length;
@@ -216,6 +255,30 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        public bool TryGetPointerTraceAll(out System.ReadOnlySpan<GcPointerTrace> traces)
+        {
+            traces = m_PointerTraceList.AsReadOnlySpan();
+            return (m_PointerTraceList.Length != 0);
+        }
+
+        public bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerTrace> traces)
+        {
+            switch (phase)
+            {
+                case GcPointerEventPhase.Hold:
+                    traces = m_PointerTraceListHold.AsReadOnlySpan();
+                    return (m_PointerTraceListHold.Length != 0);
+
+                case GcPointerEventPhase.End:
+                    traces = m_PointerTraceListEnd.AsReadOnlySpan();
+                    return (m_PointerTraceListEnd.Length != 0);
+            }
+            traces = System.ReadOnlySpan<GcPointerTrace>.Empty;
+            return false;
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
         {
             count = m_PointerTraceList.Length;
@@ -228,6 +291,8 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
         {
             switch (phase)

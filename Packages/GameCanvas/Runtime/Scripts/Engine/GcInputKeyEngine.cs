@@ -8,6 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
+using System.ComponentModel;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -108,6 +109,34 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        public bool TryGetKeyEventAll(out System.ReadOnlySpan<GcKeyEvent> events)
+        {
+            events = m_KeyEventList.AsReadOnlySpan();
+            return (m_KeyEventList.Length != 0);
+        }
+
+        public bool TryGetKeyEventAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyEvent> events)
+        {
+            switch (phase)
+            {
+                case GcKeyEventPhase.Down:
+                    events = m_KeyEventListOnlyDown.AsReadOnlySpan();
+                    return (m_KeyEventListOnlyDown.Length != 0);
+
+                case GcKeyEventPhase.Hold:
+                    events = m_KeyEventListOnlyHold.AsReadOnlySpan();
+                    return (m_KeyEventListOnlyHold.Length != 0);
+
+                case GcKeyEventPhase.Up:
+                    events = m_KeyEventListOnlyUp.AsReadOnlySpan();
+                    return (m_KeyEventListOnlyUp.Length != 0);
+            }
+            events = System.ReadOnlySpan<GcKeyEvent>.Empty;
+            return false;
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
         {
             count = m_KeyEventList.Length;
@@ -120,6 +149,8 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
         {
             switch (phase)
@@ -159,6 +190,30 @@ namespace GameCanvas.Engine
         public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)
             => m_KeyTraceDict.TryGetValue((int)key, out trace);
 
+        public bool TryGetKeyTraceAll(out System.ReadOnlySpan<GcKeyTrace> traces)
+        {
+            traces = m_KeyTraceArray.AsReadOnlySpan();
+            return (m_KeyTraceArray.Length != 0);
+        }
+
+        public bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyTrace> traces)
+        {
+            switch (phase)
+            {
+                case GcKeyEventPhase.Hold:
+                    traces = m_KeyTraceListOnlyHold.AsReadOnlySpan();
+                    return (m_KeyTraceListOnlyHold.Length != 0);
+
+                case GcKeyEventPhase.Up:
+                    traces = m_KeyTraceListOnlyHold.AsReadOnlySpan();
+                    return (m_KeyTraceListOnlyUp.Length != 0);
+            }
+            traces = System.ReadOnlySpan<GcKeyTrace>.Empty;
+            return false;
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
         {
             count = m_KeyTraceArray.Length;
@@ -171,6 +226,8 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
         {
             switch (phase)

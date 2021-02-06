@@ -51,31 +51,10 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public GcAccelerationEvent.Enumerable AccelerationEvents
+        public System.ReadOnlySpan<GcAccelerationEvent> AccelerationEvents
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.AccelerationEvents;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float AccelerationLastX
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.x;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float AccelerationLastY
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.y;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float AccelerationLastZ
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.z;
         }
 
         /// <inheritdoc/>
@@ -108,6 +87,13 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputCamera.CameraDeviceCount;
+        }
+
+        /// <inheritdoc/>
+        public System.ReadOnlySpan<GcCameraDevice> CameraDevices
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputCamera.CameraDevices;
         }
 
         /// <inheritdoc/>
@@ -256,60 +242,11 @@ namespace GameCanvas
             set { m_Context.Graphics.CurrentCoordinate = value; }
         }
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentDay
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Day;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public System.DayOfWeek CurrentDayOfWeek
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.DayOfWeek;
-        }
-
         /// <inheritdoc/>
         public int CurrentFrame
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentFrame;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentHour
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Hour;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentMillisecond
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Millisecond;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentMinute
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Minute;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentMonth
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Month;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentSecond
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Second;
         }
 
         /// <inheritdoc/>
@@ -391,13 +328,6 @@ namespace GameCanvas
             get => m_Context.Time.CurrentTime.Year;
         }
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int CurrentYear
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.Time.CurrentTime.Year;
-        }
-
         /// <inheritdoc/>
         public int DeviceScreenHeight
         {
@@ -449,55 +379,6 @@ namespace GameCanvas
             get => m_Context.Graphics.FontSize;
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { m_Context.Graphics.FontSize = value; }
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GeolocationLastAltitude
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.LastGeolocationEvent.Altitude;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GeolocationLastLatitude
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.LastGeolocationEvent.Latitude;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GeolocationLastLongitude
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.LastGeolocationEvent.Longitude;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public System.DateTimeOffset GeolocationLastTime
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.LastGeolocationEvent.Time;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public LocationServiceStatus GeolocationStatus
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.GeolocationStatus;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool HasGeolocationPermission
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.HasUserAuthorizedPermissionGeolocation;
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool HasGeolocationUpdate
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.DidUpdateGeolocationThisFrame;
         }
 
         /// <inheritdoc/>
@@ -578,13 +459,6 @@ namespace GameCanvas
                 return (status == LocationServiceStatus.Initializing)
                     || (status == LocationServiceStatus.Running);
             }
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsPressBackButton
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputKey.IsKeyPress(KeyEscape);
         }
 
         /// <inheritdoc/>
@@ -820,7 +694,6 @@ namespace GameCanvas
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.TimeSinceStartup;
         }
-
         /// <inheritdoc/>
         public bool VSyncEnabled
         {
@@ -919,16 +792,6 @@ namespace GameCanvas
             }
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool CheckHitCircle(in float x1, in float y1, in float r1, in float x2, in float y2, in float r2)
-            => new GcCircle(x1, y1, r1).Overlaps(new GcCircle(x2, y2, r2));
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool CheckHitRect(in float x1, in float y1, in float w1, in float h1, in float x2, in float y2, in float w2, in float h2)
-            => GcAABB.XYWH(x1, y1, w1, h1).Overlaps(GcAABB.XYWH(x2, y2, w2, h2));
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float Clamp(in float value, in float min, in float max)
@@ -938,11 +801,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ClearCoordinate()
             => m_Context.Graphics.ClearCoordinate();
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void ClearDownloadCache()
-            => m_Context.Network.ClearDownloadCacheAll();
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1061,28 +919,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = true)
             => DrawCameraImage(camera, new float2(x, y), degree);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void DrawCenterRect(in float2 center, in float2 size, float degree = 0f)
-        {
-            using (StyleScope)
-            {
-                SetRectAnchor(GcAnchor.MiddleCenter);
-                DrawRect(center, size, degree);
-            }
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void DrawCenterString(in string str, in float x, in float y, float degree = 0f)
-        {
-            using (StyleScope)
-            {
-                SetStringAnchor(GcAnchor.UpperCenter);
-                DrawString(str, x, y, degree);
-            }
-        }
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1224,17 +1060,6 @@ namespace GameCanvas
         public void DrawRect(in GcRect rect)
             => m_Context.Graphics.DrawRect(rect);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void DrawRightString(in string str, in float x, in float y, float degree = 0f)
-        {
-            using (StyleScope)
-            {
-                SetStringAnchor(GcAnchor.UpperRight);
-                DrawString(str, x, y, degree);
-            }
-        }
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawString(in string str)
@@ -1289,17 +1114,6 @@ namespace GameCanvas
         public void EraseSavedDataAll()
             => m_Context.Storage.EraseSavedDataAll();
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void FillCenterRect(in float2 center, in float2 size, float degree = 0f)
-        {
-            using (StyleScope)
-            {
-                SetRectAnchor(GcAnchor.MiddleCenter);
-                FillRect(center, size, degree);
-            }
-        }
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void FillCircle()
@@ -1345,39 +1159,6 @@ namespace GameCanvas
         public void FocusCameraImage(in GcCameraDevice camera, in float2? uv)
             => m_Context.InputCamera.FocusCameraImage(camera, uv);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetAccelerationX(in int i, bool normalize = false)
-        {
-            if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
-            {
-                return normalize ? math.normalizesafe(e.Acceleration).x : e.Acceleration.x;
-            }
-            return 0f;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetAccelerationY(in int i, bool normalize = false)
-        {
-            if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
-            {
-                return normalize ? math.normalizesafe(e.Acceleration).y : e.Acceleration.y;
-            }
-            return 0f;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetAccelerationZ(in int i, bool normalize = false)
-        {
-            if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
-            {
-                return normalize ? math.normalizesafe(e.Acceleration).z : e.Acceleration.z;
-            }
-            return 0f;
-        }
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcActor? GetActor()
@@ -1400,11 +1181,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ReadOnlyActorList<T> GetActorList<T>() where T : GcActor
-            => (m_CurrentScene != null) && m_CurrentScene.TryGetActorList<T>(out var list) ? list : default;
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetImageHeight(in GcImage image) => image.m_Size.y;
 
         /// <inheritdoc/>
@@ -1415,32 +1191,11 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetImageWidth(in GcImage image) => image.m_Size.x;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool GetIsKeyBegan(in KeyCode key)
-            => m_Context.InputKey.IsKeyDown(key.ToKey());
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool GetIsKeyEnded(in KeyCode key)
-            => m_Context.InputKey.IsKeyUp(key.ToKey());
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetKeyPressDuration(in Key key)
         {
             if (m_Context.InputKey.TryGetKeyTrace(key, out var trace))
-            {
-                return trace.Duration;
-            }
-            return 0f;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetKeyPressDuration(in char key)
-        {
-            if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
             {
                 return trace.Duration;
             }
@@ -1460,18 +1215,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int GetKeyPressFrameCount(in char key)
-        {
-            if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
-            {
-                return trace.FrameCount;
-            }
-            return 0;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetOnlineImageHeight(in string url)
             => m_Context.Network.TryGetOnlineImageSize(url, out var size) ? size.y : 0;
 
@@ -1480,43 +1223,10 @@ namespace GameCanvas
         public int GetOnlineImageWidth(in string url)
             => m_Context.Network.TryGetOnlineImageSize(url, out var size) ? size.x : 0;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public GcAvailability GetOnlineTextAsync(in string url, out string? text)
-        {
-            m_Context.Network.TryGetOnlineText(url, out var availability, out text);
-            return availability;
-        }
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
             => m_Context.InputCamera.GetOrCreateCameraTexture(camera, request);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetPointerDistance(in int i)
-            => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Distance : 0f;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetPointerDuration(in int i)
-            => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Duration : 0f;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public int GetPointerFrameCount(in int i)
-            => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.FrameCount : 0;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetPointerX(in int i)
-            => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.x : 0f;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float GetPointerY(in int i)
-            => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.y : 0f;
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1569,27 +1279,10 @@ namespace GameCanvas
         public bool IsFlippedCameraImage(in GcCameraDevice camera)
             => m_Context.InputCamera.IsFlippedCameraImage(camera);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyDown(in char key)
-            => key.TryGetKey(out var code)
-            && m_Context.InputKey.IsKeyDown(code);
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsKeyDown(in Key key)
             => m_Context.InputKey.IsKeyDown(key);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyDown(in KeyCode key)
-            => m_Context.InputKey.IsKeyDown(key.ToKey());
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyHold(in char key)
-            => key.TryGetKey(out var code)
-            && m_Context.InputKey.IsKeyHold(code);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1602,32 +1295,10 @@ namespace GameCanvas
         public bool IsKeyHold(in Key key)
             => m_Context.InputKey.IsKeyHold(key);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyHold(in KeyCode key)
-            => m_Context.InputKey.IsKeyHold(key.ToKey());
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyPress(in char key)
-            => key.TryGetKey(out var code)
-            && m_Context.InputKey.IsKeyPress(code);
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsKeyPress(in Key key)
             => m_Context.InputKey.IsKeyPress(key);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyPress(in KeyCode key)
-            => m_Context.InputKey.IsKeyPress(key.ToKey());
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyUp(in char key)
-            => key.TryGetKey(out var code)
-            && m_Context.InputKey.IsKeyUp(code);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1639,11 +1310,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsKeyUp(in Key key)
             => m_Context.InputKey.IsKeyUp(key);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool IsKeyUp(in KeyCode key)
-                    => m_Context.InputKey.IsKeyUp(key.ToKey());
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1684,12 +1350,15 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsTapped(in GcAABB aabb, out float2 point)
         {
-            if (m_Context.InputPointer.TryGetPointerTapPointArray(out var array, out var count))
+            if (m_Context.InputPointer.TryGetPointerTapPointAll(out var points))
             {
-                for (var i = 0; i != count; i++)
+                foreach (var p in points)
                 {
-                    point = array[i];
-                    if (aabb.Contains(point)) return true;
+                    if (aabb.Contains(p))
+                    {
+                        point = p;
+                        return true;
+                    }
                 }
             }
             point = default;
@@ -1753,12 +1422,15 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsTouchBegan(in GcAABB aabb, out float2 point)
         {
-            if (m_Context.InputPointer.TryGetPointerEventArray(GcPointerEventPhase.Begin, out var array, out var count))
+            if (m_Context.InputPointer.TryGetPointerEventAll(GcPointerEventPhase.Begin, out var events))
             {
-                for (var i = 0; i != count; i++)
+                foreach (var e in events)
                 {
-                    point = array[i].Point;
-                    if (aabb.Contains(point)) return true;
+                    if (aabb.Contains(e.Point))
+                    {
+                        point = e.Point;
+                        return true;
+                    }
                 }
             }
             point = default;
@@ -1827,12 +1499,15 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsTouched(in GcAABB aabb, out float2 point)
         {
-            if (m_Context.InputPointer.TryGetPointerEventArray(out var array, out var count))
+            if (m_Context.InputPointer.TryGetPointerEventAll(out var events))
             {
-                for (var i = 0; i != count; i++)
+                foreach (var e in events)
                 {
-                    point = array[i].Point;
-                    if (aabb.Contains(point)) return true;
+                    if (aabb.Contains(e.Point))
+                    {
+                        point = e.Point;
+                        return true;
+                    }
                 }
             }
             point = default;
@@ -1901,12 +1576,15 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsTouchEnded(in GcAABB aabb, out float2 point)
         {
-            if (m_Context.InputPointer.TryGetPointerEventArray(GcPointerEventPhase.End, out var array, out var count))
+            if (m_Context.InputPointer.TryGetPointerEventAll(GcPointerEventPhase.End, out var events))
             {
-                for (var i = 0; i != count; i++)
+                foreach (var e in events)
                 {
-                    point = array[i].Point;
-                    if (aabb.Contains(point)) return true;
+                    if (aabb.Contains(e.Point))
+                    {
+                        point = e.Point;
+                        return true;
+                    }
                 }
             }
             point = default;
@@ -2041,11 +1719,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RequestUserAuthorizedPermissionGeolocationAsync(in System.Action<bool> callback)
             => m_Context.InputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync(callback);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public float2 Rotate(in float2 vector, in float degree)
-            => GcMath.RotateVector(vector, degree);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2189,15 +1862,6 @@ namespace GameCanvas
         public void SetRectAnchor(in GcAnchor anchor)
             => m_Context.Graphics.RectAnchor = anchor;
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void SetResolution(in int width, in int height)
-            => m_Context.Graphics.ChangeCanvasSize(new int2(width, height));
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void SetSeed(in int seed) => GcMath.SetRandomSeed((uint)seed);
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetSoundLevel(in float decibel, GcSoundTrack track = GcSoundTrack.Master)
@@ -2217,11 +1881,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetStyle(in GcStyle style)
             => m_Context.Graphics.CurrentStyle = style;
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public void SetTapSensitivity(in float maxDuration, in float maxDistance)
-            => m_Context.InputPointer.TapSettings = new GcTapSettings(maxDistance, maxDuration);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2288,8 +1947,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count)
-            => m_Context.InputAcceleration.TryGetAccelerationEvents(out array, out count);
+        public bool TryGetAccelerationEventAll(out System.ReadOnlySpan<GcAccelerationEvent> events)
+            => m_Context.InputAcceleration.TryGetAccelerationEventAll(out events);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2317,13 +1976,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
+        public bool TryGetActorAll<T>(out System.ReadOnlySpan<T> actors) where T : GcActor
         {
             if (m_CurrentScene != null)
             {
-                return m_CurrentScene.TryGetActorList(out list);
+                return m_CurrentScene.TryGetActorAll(out actors);
             }
-            list = default;
+            actors = default;
             return false;
         }
 
@@ -2339,8 +1998,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImageAll([NotNullWhen(true)] out ReadOnlyCollection<GcCameraDevice>? array)
-            => m_Context.InputCamera.TryGetCameraImageAll(out array);
+        public bool TryGetCameraImageAll(out System.ReadOnlySpan<GcCameraDevice> devices)
+            => m_Context.InputCamera.TryGetCameraImageAll(out devices);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2357,69 +2016,35 @@ namespace GameCanvas
         public bool TryGetGeolocationEvent(out GcGeolocationEvent data)
             => m_Context.InputGeolocation.TryGetGeolocationEvent(out data);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyEvent(in char key, out GcKeyEvent e)
-        {
-            if (key.TryGetKey(out var code))
-            {
-                return m_Context.InputKey.TryGetKeyEvent(code, out e);
-            }
-            e = default;
-            return false;
-        }
-
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetKeyEvent(in Key key, out GcKeyEvent e)
             => m_Context.InputKey.TryGetKeyEvent(key, out e);
 
+        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e)
-                    => m_Context.InputKey.TryGetKeyEvent(key.ToKey(), out e);
+        public bool TryGetKeyEventAll(out System.ReadOnlySpan<GcKeyEvent> events)
+            => m_Context.InputKey.TryGetKeyEventAll(out events);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
-            => m_Context.InputKey.TryGetKeyEventArray(out array, out count);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
-            => m_Context.InputKey.TryGetKeyEventArray(phase, out array, out count);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyTrace(in char key, out GcKeyTrace trace)
-        {
-            if (key.TryGetKey(out var code))
-            {
-                return m_Context.InputKey.TryGetKeyTrace(code, out trace);
-            }
-            trace = default;
-            return false;
-        }
+        public bool TryGetKeyEventAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyEvent> events)
+            => m_Context.InputKey.TryGetKeyEventAll(phase, out events);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)
             => m_Context.InputKey.TryGetKeyTrace(key, out trace);
 
+        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace)
-                    => m_Context.InputKey.TryGetKeyTrace(key.ToKey(), out trace);
+        public bool TryGetKeyTraceAll(out System.ReadOnlySpan<GcKeyTrace> traces)
+            => m_Context.InputKey.TryGetKeyTraceAll(out traces);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
-            => m_Context.InputKey.TryGetKeyTraceArray(out array, out count);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
-            => m_Context.InputKey.TryGetKeyTraceArray(phase, out array, out count);
+        public bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyTrace> traces)
+            => m_Context.InputKey.TryGetKeyTraceAll(phase, out traces);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2458,13 +2083,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
-            => m_Context.InputPointer.TryGetPointerEventArray(out array, out count);
+        public bool TryGetPointerEventAll(out System.ReadOnlySpan<GcPointerEvent> events)
+            => m_Context.InputPointer.TryGetPointerEventAll(out events);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
-            => m_Context.InputPointer.TryGetPointerEventArray(phase, out array, out count);
+        public bool TryGetPointerEventAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerEvent> events)
+            => m_Context.InputPointer.TryGetPointerEventAll(phase, out events);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2473,8 +2098,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count)
-            => m_Context.InputPointer.TryGetPointerTapPointArray(out array, out count);
+        public bool TryGetPointerTapPointAll(out System.ReadOnlySpan<float2> points)
+            => m_Context.InputPointer.TryGetPointerTapPointAll(out points);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2488,13 +2113,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
-            => m_Context.InputPointer.TryGetPointerTraceArray(out array, out count);
+        public bool TryGetPointerTraceAll(out System.ReadOnlySpan<GcPointerTrace> traces)
+            => m_Context.InputPointer.TryGetPointerTraceAll(out traces);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
-            => m_Context.InputPointer.TryGetPointerTraceArray(phase, out array, out count);
+        public bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerTrace> traces)
+            => m_Context.InputPointer.TryGetPointerTraceAll(phase, out traces);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2561,9 +2186,481 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int UpdateCameraDevice()
             => m_Context.InputCamera.UpdateCameraDevice();
+        #endregion
+
+        //----------------------------------------------------------
+        #region 公開関数（廃止）
+        //----------------------------------------------------------
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float AccelerationLastX
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.x;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float AccelerationLastY
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.y;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float AccelerationLastZ
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.z;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentDay
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Day;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public System.DayOfWeek CurrentDayOfWeek
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.DayOfWeek;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentHour
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Hour;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentMillisecond
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Millisecond;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentMinute
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Minute;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentMonth
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Month;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentSecond
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Second;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int CurrentYear
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Time.CurrentTime.Year;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GeolocationLastAltitude
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.LastGeolocationEvent.Altitude;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GeolocationLastLatitude
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.LastGeolocationEvent.Latitude;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GeolocationLastLongitude
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.LastGeolocationEvent.Longitude;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public System.DateTimeOffset GeolocationLastTime
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.LastGeolocationEvent.Time;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public LocationServiceStatus GeolocationStatus
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.GeolocationStatus;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool HasGeolocationPermission
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.HasUserAuthorizedPermissionGeolocation;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool HasGeolocationUpdate
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputGeolocation.DidUpdateGeolocationThisFrame;
+        }
+
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsPressBackButton
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.InputKey.IsKeyPress(KeyEscape);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool CheckHitCircle(in float x1, in float y1, in float r1, in float x2, in float y2, in float r2)
+            => new GcCircle(x1, y1, r1).Overlaps(new GcCircle(x2, y2, r2));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool CheckHitRect(in float x1, in float y1, in float w1, in float h1, in float x2, in float y2, in float w2, in float h2)
+            => GcAABB.XYWH(x1, y1, w1, h1).Overlaps(GcAABB.XYWH(x2, y2, w2, h2));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void ClearDownloadCache()
+            => m_Context.Network.ClearDownloadCacheAll();
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void DrawCenterRect(in float2 center, in float2 size, float degree = 0f)
+        {
+            using (StyleScope)
+            {
+                SetRectAnchor(GcAnchor.MiddleCenter);
+                DrawRect(center, size, degree);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void DrawCenterString(in string str, in float x, in float y, float degree = 0f)
+        {
+            using (StyleScope)
+            {
+                SetStringAnchor(GcAnchor.UpperCenter);
+                DrawString(str, x, y, degree);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void DrawRightString(in string str, in float x, in float y, float degree = 0f)
+        {
+            using (StyleScope)
+            {
+                SetStringAnchor(GcAnchor.UpperRight);
+                DrawString(str, x, y, degree);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void FillCenterRect(in float2 center, in float2 size, float degree = 0f)
+        {
+            using (StyleScope)
+            {
+                SetRectAnchor(GcAnchor.MiddleCenter);
+                FillRect(center, size, degree);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetAccelerationX(in int i, bool normalize = false)
+        {
+            if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
+            {
+                return normalize ? math.normalizesafe(e.Acceleration).x : e.Acceleration.x;
+            }
+            return 0f;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetAccelerationY(in int i, bool normalize = false)
+        {
+            if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
+            {
+                return normalize ? math.normalizesafe(e.Acceleration).y : e.Acceleration.y;
+            }
+            return 0f;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetAccelerationZ(in int i, bool normalize = false)
+        {
+            if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
+            {
+                return normalize ? math.normalizesafe(e.Acceleration).z : e.Acceleration.z;
+            }
+            return 0f;
+        }
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public ReadOnlyActorList<T> GetActorList<T>() where T : GcActor
+            => (m_CurrentScene != null) && m_CurrentScene.TryGetActorList<T>(out var list) ? list : default;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool GetIsKeyBegan(in KeyCode key)
+            => m_Context.InputKey.IsKeyDown(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool GetIsKeyEnded(in KeyCode key)
+            => m_Context.InputKey.IsKeyUp(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetKeyPressDuration(in char key)
+        {
+            if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
+            {
+                return trace.Duration;
+            }
+            return 0f;
+        }
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int GetKeyPressFrameCount(in char key)
+        {
+            if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
+            {
+                return trace.FrameCount;
+            }
+            return 0;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public GcAvailability GetOnlineTextAsync(in string url, out string? text)
+        {
+            m_Context.Network.TryGetOnlineText(url, out var availability, out text);
+            return availability;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetPointerDistance(in int i)
+            => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Distance : 0f;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetPointerDuration(in int i)
+            => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Duration : 0f;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public int GetPointerFrameCount(in int i)
+            => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.FrameCount : 0;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetPointerX(in int i)
+            => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.x : 0f;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float GetPointerY(in int i)
+            => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.y : 0f;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyDown(in char key)
+            => key.TryGetKey(out var code)
+            && m_Context.InputKey.IsKeyDown(code);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyDown(in KeyCode key)
+            => m_Context.InputKey.IsKeyDown(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyHold(in char key)
+            => key.TryGetKey(out var code)
+            && m_Context.InputKey.IsKeyHold(code);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyHold(in KeyCode key)
+            => m_Context.InputKey.IsKeyHold(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyPress(in char key)
+            => key.TryGetKey(out var code)
+            && m_Context.InputKey.IsKeyPress(code);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyPress(in KeyCode key)
+            => m_Context.InputKey.IsKeyPress(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyUp(in char key)
+            => key.TryGetKey(out var code)
+            && m_Context.InputKey.IsKeyUp(code);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsKeyUp(in KeyCode key)
+                    => m_Context.InputKey.IsKeyUp(key.ToKey());
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public float2 Rotate(in float2 vector, in float degree)
+            => GcMath.RotateVector(vector, degree);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void SetResolution(in int width, in int height)
+            => m_Context.Graphics.ChangeCanvasSize(new int2(width, height));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void SetSeed(in int seed) => GcMath.SetRandomSeed((uint)seed);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public void SetTapSensitivity(in float maxDuration, in float maxDistance)
+            => m_Context.InputPointer.TapSettings = new GcTapSettings(maxDistance, maxDuration);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count)
+            => m_Context.InputAcceleration.TryGetAccelerationEvents(out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
+        {
+            if (m_CurrentScene != null)
+            {
+                return m_CurrentScene.TryGetActorList(out list);
+            }
+            list = default;
+            return false;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyEvent(in char key, out GcKeyEvent e)
+        {
+            if (key.TryGetKey(out var code))
+            {
+                return m_Context.InputKey.TryGetKeyEvent(code, out e);
+            }
+            e = default;
+            return false;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e)
+                    => m_Context.InputKey.TryGetKeyEvent(key.ToKey(), out e);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
+            => m_Context.InputKey.TryGetKeyEventArray(out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
+            => m_Context.InputKey.TryGetKeyEventArray(phase, out array, out count);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyTrace(in char key, out GcKeyTrace trace)
+        {
+            if (key.TryGetKey(out var code))
+            {
+                return m_Context.InputKey.TryGetKeyTrace(code, out trace);
+            }
+            trace = default;
+            return false;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace)
+                    => m_Context.InputKey.TryGetKeyTrace(key.ToKey(), out trace);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
+            => m_Context.InputKey.TryGetKeyTraceArray(out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
+            => m_Context.InputKey.TryGetKeyTraceArray(phase, out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
+            => m_Context.InputPointer.TryGetPointerEventArray(out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
+            => m_Context.InputPointer.TryGetPointerEventArray(phase, out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count)
+            => m_Context.InputPointer.TryGetPointerTapPointArray(out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
+            => m_Context.InputPointer.TryGetPointerTraceArray(out array, out count);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        public bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
+            => m_Context.InputPointer.TryGetPointerTraceArray(phase, out array, out count);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
         public void WriteScreenImage(in string _)
             => m_Context.Storage.SaveScreenshotAsync();
         #endregion

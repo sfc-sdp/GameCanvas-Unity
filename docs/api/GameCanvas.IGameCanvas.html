@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IGameCanvas
    | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.5.0">
+    <meta name="generator" content="docfx 2.56.6.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -435,19 +435,19 @@
       <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_ClearDownloadCacheAll">INetwork.ClearDownloadCacheAll()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__UnityEngine_Texture2D__">INetwork.TryGetOnlineImage(String, Texture2D)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__GameCanvas_GcAvailability__UnityEngine_Texture2D__">INetwork.TryGetOnlineImage(String, GcAvailability, Texture2D)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImageSize_System_String__Unity_Mathematics_int2__">INetwork.TryGetOnlineImageSize(String, int2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, AudioClip)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__GameCanvas_GcAvailability__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, GcAvailability, AudioClip)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, AudioType, AudioClip)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__GameCanvas_GcAvailability__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, AudioType, GcAvailability, AudioClip)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__System_String__">INetwork.TryGetOnlineText(String, String)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__GameCanvas_GcAvailability__System_String__">INetwork.TryGetOnlineText(String, GcAvailability, String)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ISceneManagementEx.ChangeScene&lt;T&gt;(Object)</a>
@@ -495,7 +495,7 @@
       <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor__1_System_Int32____0__">ISceneManagement.TryGetActor&lt;T&gt;(Int32, T)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorList__1_GameCanvas_ReadOnlyActorList___0___">ISceneManagement.TryGetActorList&lt;T&gt;(ReadOnlyActorList&lt;T&gt;)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorAll__1_System_ReadOnlySpan___0___">ISceneManagement.TryGetActorAll&lt;T&gt;(ReadOnlySpan&lt;T&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryRemoveActor_GameCanvas_GcActor__">ISceneManagement.TryRemoveActor(GcActor)</a>
@@ -594,7 +594,7 @@
       <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_String_">IStorage.Save(String, String)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String___">IStorage.SaveScreenshotAsync(Action&lt;String&gt;)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String__">IStorage.SaveScreenshotAsync(Action&lt;String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_Single__">IStorage.TryLoad(String, Single)</a>
@@ -792,16 +792,16 @@
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(GcPointerEventPhase, Int32, GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventArray_Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__">IInputPointer.TryGetPointerEventArray(NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerEvent__ReadOnly__System_Int32__">IInputPointer.TryGetPointerEventArray(GcPointerEventPhase, NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(GcPointerEventPhase, ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__">IInputPointer.TryGetPointerTapPoint(Int32, float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointArray_Unity_Collections_NativeArray_Unity_Mathematics_float2__ReadOnly__System_Int32__">IInputPointer.TryGetPointerTapPointArray(NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___">IInputPointer.TryGetPointerTapPointAll(ReadOnlySpan&lt;float2&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(Int32, GcPointerTrace)</a>
@@ -810,10 +810,10 @@
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(GcPointerEventPhase, Int32, GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceArray_Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__">IInputPointer.TryGetPointerTraceArray(NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceArray_GameCanvas_GcPointerEventPhase__Unity_Collections_NativeArray_GameCanvas_GcPointerTrace__ReadOnly__System_Int32__">IInputPointer.TryGetPointerTraceArray(GcPointerEventPhase, NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(GcPointerEventPhase, ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsAnyKey">IInputKeyEx.IsAnyKey</a>
@@ -837,40 +837,16 @@
       <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_KeyPressCount">IInputKeyEx.KeyPressCount</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_KeyCode__">IInputKeyEx.GetKeyPressDuration(KeyCode)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_InputSystem_Key__">IInputKeyEx.GetKeyPressDuration(Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_System_Char__">IInputKeyEx.GetKeyPressDuration(Char)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__">IInputKeyEx.GetKeyPressFrameCount(Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_KeyCode__">IInputKeyEx.GetKeyPressFrameCount(KeyCode)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyHold(Key, GcKeyTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_System_Char__">IInputKeyEx.GetKeyPressFrameCount(Char)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyDown_System_Char__">IInputKeyEx.IsKeyDown(Char)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_System_Char__">IInputKeyEx.IsKeyHold(Char)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyHold(KeyCode, GcKeyTrace)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyPress_System_Char__">IInputKeyEx.IsKeyPress(Char)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_System_Char__">IInputKeyEx.IsKeyUp(Char)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyUp(KeyCode, GcKeyTrace)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_TryGetKeyEvent_System_Char__GameCanvas_GcKeyEvent__">IInputKeyEx.TryGetKeyEvent(Char, GcKeyEvent)</a>
-    </div>
-    <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_TryGetKeyTrace_System_Char__GameCanvas_GcKeyTrace__">IInputKeyEx.TryGetKeyTrace(Char, GcKeyTrace)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyUp(Key, GcKeyTrace)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsScreenKeyboardSupported">IInputKey.IsScreenKeyboardSupported</a>
@@ -891,37 +867,37 @@
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_HideScreenKeyboard">IInputKey.HideScreenKeyboard()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_KeyCode__">IInputKey.IsKeyDown(KeyCode)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_InputSystem_Key__">IInputKey.IsKeyDown(Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_KeyCode__">IInputKey.IsKeyHold(KeyCode)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_InputSystem_Key__">IInputKey.IsKeyHold(Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_KeyCode__">IInputKey.IsKeyPress(KeyCode)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_InputSystem_Key__">IInputKey.IsKeyPress(Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_KeyCode__">IInputKey.IsKeyUp(KeyCode)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_InputSystem_Key__">IInputKey.IsKeyUp(Key)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_ShowScreenKeyboard">IInputKey.ShowScreenKeyboard()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_KeyCode__GameCanvas_GcKeyEvent__">IInputKey.TryGetKeyEvent(KeyCode, GcKeyEvent)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__">IInputKey.TryGetKeyEvent(Key, GcKeyEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventArray_Unity_Collections_NativeArray_GameCanvas_GcKeyEvent__ReadOnly__System_Int32__">IInputKey.TryGetKeyEventArray(NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventArray_GameCanvas_GcKeyEventPhase__Unity_Collections_NativeArray_GameCanvas_GcKeyEvent__ReadOnly__System_Int32__">IInputKey.TryGetKeyEventArray(GcKeyEventPhase, NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(GcKeyEventPhase, ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_KeyCode__GameCanvas_GcKeyTrace__">IInputKey.TryGetKeyTrace(KeyCode, GcKeyTrace)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKey.TryGetKeyTrace(Key, GcKeyTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceArray_Unity_Collections_NativeArray_GameCanvas_GcKeyTrace__ReadOnly__System_Int32__">IInputKey.TryGetKeyTraceArray(NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceArray_GameCanvas_GcKeyEventPhase__Unity_Collections_NativeArray_GameCanvas_GcKeyTrace__ReadOnly__System_Int32__">IInputKey.TryGetKeyTraceArray(GcKeyEventPhase, NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(GcKeyEventPhase, ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetScreenKeyboardArea_GameCanvas_GcAABB__">IInputKey.TryGetScreenKeyboardArea(GcAABB)</a>
@@ -933,10 +909,16 @@
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerationEvents">IInputAcceleration.AccelerationEvents</a>
     </div>
     <div>
+      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerometerSamplingRate">IInputAcceleration.AccelerometerSamplingRate</a>
+    </div>
+    <div>
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame">IInputAcceleration.DidUpdateAccelerationThisFrame</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_IsAccelerometerEnabled">IInputAcceleration.IsAccelerometerEnabled</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_IsAccelerometerSupported">IInputAcceleration.IsAccelerometerSupported</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_LastAccelerationEvent">IInputAcceleration.LastAccelerationEvent</a>
@@ -945,7 +927,7 @@
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEvent_System_Int32_GameCanvas_GcAccelerationEvent__">IInputAcceleration.TryGetAccelerationEvent(Int32, GcAccelerationEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEvents_Unity_Collections_NativeArray_GameCanvas_GcAccelerationEvent__ReadOnly__System_Int32__">IInputAcceleration.TryGetAccelerationEvents(NativeArray.ReadOnly&lt;&gt;, Int32)</a>
+      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___">IInputAcceleration.TryGetAccelerationEventAll(ReadOnlySpan&lt;GcAccelerationEvent&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputGeolocationEx.html#GameCanvas_IInputGeolocationEx_IsGeolocationRunning">IInputGeolocationEx.IsGeolocationRunning</a>
@@ -1002,6 +984,9 @@
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_CameraDeviceCount">IInputCamera.CameraDeviceCount</a>
     </div>
     <div>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_CameraDevices">IInputCamera.CameraDevices</a>
+    </div>
+    <div>
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_HasUserAuthorizedPermissionCamera">IInputCamera.HasUserAuthorizedPermissionCamera</a>
     </div>
     <div>
@@ -1041,7 +1026,7 @@
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImage_System_String__GameCanvas_GcCameraDevice__">IInputCamera.TryGetCameraImage(String, GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_System_Collections_ObjectModel_ReadOnlyCollection_GameCanvas_GcCameraDevice___">IInputCamera.TryGetCameraImageAll(ReadOnlyCollection&lt;GcCameraDevice&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_System_ReadOnlySpan_GameCanvas_GcCameraDevice___">IInputCamera.TryGetCameraImageAll(ReadOnlySpan&lt;GcCameraDevice&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageRotation_GameCanvas_GcCameraDevice__System_Single__">IInputCamera.TryGetCameraImageRotation(GcCameraDevice, Single)</a>

@@ -9,6 +9,7 @@
 /*------------------------------------------------------------*/
 #nullable enable
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
 namespace GameCanvas
@@ -120,6 +121,19 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
+        public bool TryGetActorAll<T>(out System.ReadOnlySpan<T> actors) where T : GcActor
+        {
+            if (m_TypeToActors.TryGetValue(typeof(T), out var value))
+            {
+                actors = value.AsReadOnlySpan<GcActor, T>();
+                return true;
+            }
+            actors = default;
+            return false;
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
         {
             if (m_TypeToActors.TryGetValue(typeof(T), out var actors))
