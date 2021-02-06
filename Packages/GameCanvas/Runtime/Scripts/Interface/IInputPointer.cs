@@ -79,19 +79,17 @@ namespace GameCanvas
         /// <summary>
         /// 前回のフレーム処理以降に検出した ポインターイベント全てを取得します
         /// </summary>
-        /// <param name="array">イベント配列</param>
-        /// <param name="count">イベント配列の要素数</param>
+        /// <param name="events">イベントの一覧</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
-        bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count);
+        bool TryGetPointerEventAll(out System.ReadOnlySpan<GcPointerEvent> events);
 
         /// <summary>
         /// 前回のフレーム処理以降に検出した 指定された状態のポインターイベント全てを取得します
         /// </summary>
         /// <param name="phase">イベント状態</param>
-        /// <param name="array">イベント配列</param>
-        /// <param name="count">イベント配列の要素数</param>
+        /// <param name="events">イベントの一覧</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
-        bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count);
+        bool TryGetPointerEventAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerEvent> events);
 
         /// <summary>
         /// 前回のフレーム処理以降に検出した タップポイントのうち、1つを取得します
@@ -104,10 +102,9 @@ namespace GameCanvas
         /// <summary>
         /// 前回のフレーム処理以降に検出した タップポイント全てを取得します
         /// </summary>
-        /// <param name="array">タップポイント配列</param>
-        /// <param name="count">タップポイント配列の要素数</param>
+        /// <param name="points">タップポイントの一覧</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
-        bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count);
+        bool TryGetPointerTapPointAll(out System.ReadOnlySpan<float2> points);
 
         /// <summary>
         /// 現在有効なポインターのうち、1つの軌跡を取得します
@@ -132,10 +129,9 @@ namespace GameCanvas
         /// <summary>
         /// 前回のフレーム処理以降に検出した ポインターの軌跡全てを取得します
         /// </summary>
-        /// <param name="array">軌跡配列</param>
-        /// <param name="count">軌跡配列の要素数</param>
+        /// <param name="traces">軌跡の一覧</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
-        bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count);
+        bool TryGetPointerTraceAll(out System.ReadOnlySpan<GcPointerTrace> traces);
 
         /// <summary>
         /// 前回のフレーム処理以降に検出した 指定された状態のポインターの軌跡全てを取得します
@@ -143,10 +139,31 @@ namespace GameCanvas
         /// <remarks>
         /// <paramref name="phase"/> に指定できる値は <see cref="GcPointerEventPhase.Hold"/> または <see cref="GcPointerEventPhase.End"/> のみです
         /// </remarks>
-        /// <param name="array">軌跡配列</param>
-        /// <param name="count">軌跡配列の要素数</param>
+        /// <param name="traces">軌跡の一覧</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
+        bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerTrace> traces);
+
+        #region Obsolete
+        [System.Obsolete("Use to `TryGetPointerEventAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetPointerEventAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetPointerTapPointAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetPointerTraceAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count);
+
+        [System.Obsolete("Use to `TryGetPointerTraceAll` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count);
+        #endregion
     }
 
     public interface IInputPointerEx : IInputPointer
@@ -175,66 +192,6 @@ namespace GameCanvas
         /// 最後に検出したポインターイベントの Y座標
         /// </summary>
         float LastPointerY { get; }
-
-        /// <summary>
-        /// 現在有効なポインターイベントのうち、指定した1つの累計移動距離を取得します
-        /// </summary>
-        /// <remarks>
-        /// 有効なイベントがなかった場合は 0 を返します
-        /// </remarks>
-        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
-        /// <returns>イベントの累計移動距離</returns>
-        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetPointerDistance(in int i);
-
-        /// <summary>
-        /// 現在有効なポインターイベントのうち、指定した1つの継続時間を取得します
-        /// </summary>
-        /// <remarks>
-        /// 有効なイベントがなかった場合は 0 を返します
-        /// </remarks>
-        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
-        /// <returns>イベントの継続時間</returns>
-        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetPointerDuration(in int i);
-
-        /// <summary>
-        /// 現在有効なポインターイベントのうち、指定した1つの継続フレーム数を取得します
-        /// </summary>
-        /// <remarks>
-        /// 有効なイベントがなかった場合は 0 を返します
-        /// </remarks>
-        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
-        /// <returns>イベントの継続フレーム数</returns>
-        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int GetPointerFrameCount(in int i);
-
-        /// <summary>
-        /// 現在有効なポインターイベントのうち、指定した1つのX座標を取得します
-        /// </summary>
-        /// <remarks>
-        /// 有効なイベントがなかった場合は 0 を返します
-        /// </remarks>
-        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
-        /// <returns>イベントのX座標</returns>
-        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetPointerX(in int i);
-
-        /// <summary>
-        /// 現在有効なポインターイベントのうち、指定した1つのY座標を取得します
-        /// </summary>
-        /// <remarks>
-        /// 有効なイベントがなかった場合は 0 を返します
-        /// </remarks>
-        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
-        /// <returns>イベントのY座標</returns>
-        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        float GetPointerY(in int i);
 
         /// <summary>
         /// 前回のフレーム処理以降に タップされたかどうか
@@ -435,8 +392,70 @@ namespace GameCanvas
         /// <returns>指定した領域がタッチされ終えたかどうか</returns>
         bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py);
 
+        #region Obsolete
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つの累計移動距離を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントの累計移動距離</returns>
+        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        float GetPointerDistance(in int i);
+
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つの継続時間を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントの継続時間</returns>
+        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        float GetPointerDuration(in int i);
+
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つの継続フレーム数を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントの継続フレーム数</returns>
+        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        int GetPointerFrameCount(in int i);
+
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つのX座標を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントのX座標</returns>
+        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        float GetPointerX(in int i);
+
+        /// <summary>
+        /// 現在有効なポインターイベントのうち、指定した1つのY座標を取得します
+        /// </summary>
+        /// <remarks>
+        /// 有効なイベントがなかった場合は 0 を返します
+        /// </remarks>
+        /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
+        /// <returns>イベントのY座標</returns>
+        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        float GetPointerY(in int i);
+
         [System.Obsolete("Use `gc.TapSettings` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void SetTapSensitivity(in float maxDuration, in float maxDistance);
+        #endregion
     }
 }

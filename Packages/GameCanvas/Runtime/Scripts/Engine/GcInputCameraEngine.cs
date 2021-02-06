@@ -9,7 +9,6 @@
 /*------------------------------------------------------------*/
 #nullable enable
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
@@ -27,7 +26,6 @@ namespace GameCanvas.Engine
         readonly GcContext m_Context;
         readonly List<GcCameraDevice> m_DeviceList;
         readonly Dictionary<string, WebCamTexture> m_TextureDict;
-        readonly ReadOnlyCollection<GcCameraDevice> m_DeviceListReadOnly;
         bool m_IsDeviceListInitialized;
         #endregion
 
@@ -54,6 +52,8 @@ namespace GameCanvas.Engine
 #else
             => false;
 #endif // UNITY_EDITOR
+
+        public System.ReadOnlySpan<GcCameraDevice> CameraDevices => m_DeviceList.AsReadOnlySpan();
 
         public bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)
         {
@@ -204,12 +204,16 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public bool TryGetCameraImageAll([NotNullWhen(true)] out ReadOnlyCollection<GcCameraDevice>? array)
+        public bool TryGetCameraImageAll(out System.ReadOnlySpan<GcCameraDevice> devices)
         {
             InitCameraDevice();
-            var ret = (m_DeviceListReadOnly.Count != 0);
-            array = ret ? m_DeviceListReadOnly : null;
-            return ret;
+            if (m_DeviceList.Count > 0)
+            {
+                devices = m_DeviceList.AsReadOnlySpan();
+                return true;
+            }
+            devices = default;
+            return false;
         }
 
         public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)
@@ -286,7 +290,6 @@ namespace GameCanvas.Engine
             m_Context = context;
             m_DeviceList = new List<GcCameraDevice>();
             m_TextureDict = new Dictionary<string, WebCamTexture>();
-            m_DeviceListReadOnly = m_DeviceList.AsReadOnly();
         }
 
         void System.IDisposable.Dispose()

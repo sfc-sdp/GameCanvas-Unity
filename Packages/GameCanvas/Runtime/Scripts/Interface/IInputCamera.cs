@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using Unity.Mathematics;
 using UnityEngine;
@@ -21,6 +20,11 @@ namespace GameCanvas
         /// 認識可能なカメラ（外部入力映像）の数
         /// </summary>
         int CameraDeviceCount { get; }
+
+        /// <summary>
+        /// 全ての認識可能なカメラ（外部入力映像）の一覧
+        /// </summary>
+        System.ReadOnlySpan<GcCameraDevice> CameraDevices { get; }
 
         /// <summary>
         /// カメラデバイスへのアクセス権限を取得済みかどうか
@@ -132,10 +136,9 @@ namespace GameCanvas
         /// <summary>
         /// 全ての認識可能なカメラ（外部入力映像）の取得を試みます
         /// </summary>
-        /// <param name="array">カメラ（外部入力映像）配列</param>
-        /// <param name="count">カメラ（外部入力映像）配列の要素数</param>
+        /// <param name="devices">カメラ（外部入力映像）の一覧</param>
         /// <returns>1つ以上 取得できたかどうか</returns>
-        bool TryGetCameraImageAll([NotNullWhen(true)] out ReadOnlyCollection<GcCameraDevice>? array);
+        bool TryGetCameraImageAll(out System.ReadOnlySpan<GcCameraDevice> devices);
 
         /// <summary>
         /// 指定されたカメラ（外部入力映像）の回転角度取得を試みます

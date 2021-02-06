@@ -8,6 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Unity.Collections;
 using UnityEngine.InputSystem;
@@ -34,8 +35,8 @@ namespace GameCanvas.Engine
         public int AccelerationEventCount
             => m_EventList.IsCreated ? m_EventList.Length : 0;
 
-        public GcAccelerationEvent.Enumerable AccelerationEvents
-            => new GcAccelerationEvent.Enumerable(m_EventList);
+        public System.ReadOnlySpan<GcAccelerationEvent> AccelerationEvents
+            => m_EventList.AsReadOnlySpan();
 
         public bool DidUpdateAccelerationThisFrame
             => m_EventList.IsCreated && m_EventList.Length != 0;
@@ -110,6 +111,14 @@ namespace GameCanvas.Engine
             return false;
         }
 
+        public bool TryGetAccelerationEventAll(out System.ReadOnlySpan<GcAccelerationEvent> events)
+        {
+            events = m_EventList.AsReadOnlySpan();
+            return (m_EventList.Length > 0);
+        }
+
+        [System.Obsolete]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count)
         {
             count = m_EventList.Length;

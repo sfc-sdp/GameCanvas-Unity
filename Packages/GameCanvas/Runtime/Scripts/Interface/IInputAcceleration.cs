@@ -21,14 +21,14 @@ namespace GameCanvas
         int AccelerationEventCount { get; }
 
         /// <summary>
+        /// 前回のフレーム処理以降に検出した 加速度イベントの列挙子
+        /// </summary>
+        System.ReadOnlySpan<GcAccelerationEvent> AccelerationEvents { get; }
+
+        /// <summary>
         /// 加速度計の動作周波数
         /// </summary>
         float AccelerometerSamplingRate { get; set; }
-
-        /// <summary>
-        /// 前回のフレーム処理以降に検出した 加速度イベントの列挙子
-        /// </summary>
-        GcAccelerationEvent.Enumerable AccelerationEvents { get; }
 
         /// <summary>
         /// 前回のフレーム処理以降に 加速度イベントの更新があったかどうか
@@ -61,9 +61,12 @@ namespace GameCanvas
         /// <summary>
         /// 前回のフレーム処理以降に検出した 加速度イベントの取得を試みます
         /// </summary>
-        /// <param name="array">イベント配列</param>
-        /// <param name="count">イベント配列の要素数</param>
+        /// <param name="events">イベント配列</param>
         /// <returns>1つ以上の加速度イベントがあったかどうか</returns>
+        bool TryGetAccelerationEventAll(out System.ReadOnlySpan<GcAccelerationEvent> events);
+
+        [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count);
     }
 
