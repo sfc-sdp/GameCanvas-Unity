@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 6.0.0-pre.5
+### 不具合修正
+- [#201](https://github.com/sfc-sdp/GameCanvas-Unity/issues/201) macOSエディターで実行できない件の修正
+
 ## 6.0.0-pre.4
 ### 不具合修正
 - [#199](https://github.com/sfc-sdp/GameCanvas-Unity/issues/199) WebGLターゲットでビルドが通らない件の修正
