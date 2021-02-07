@@ -331,12 +331,10 @@ namespace GameCanvas.Engine
             m_PointerTraceDict = new NativeHashMap<int, GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
             m_TapSettings = GcTapSettings.Default;
 
-#if !PLATFORM_IOS
             if (!k_IsTouchSupported)
             {
                 TouchSimulation.Enable();
             }
-#endif //!PLATFORM_IOS
 
             GcAssert.IsNotNull(Touchscreen.current);
             m_History = new InputStateHistory(Touchscreen.current.touches);
