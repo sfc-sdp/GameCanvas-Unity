@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.unity.burst": {
-      "version": "1.3.7",
+      "version": "1.4.1",
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -10,18 +10,18 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-      "version": "0.14.0-preview.16",
+      "version": "0.15.0-preview.21",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework.performance": "2.3.1-preview",
-        "com.unity.burst": "1.3.7"
+        "com.unity.burst": "1.4.1"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -63,23 +63,16 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0-preview",
-      "depth": 3,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.scriptablebuildpipeline": {
-      "version": "1.15.1",
+      "version": "1.15.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.22",
-      "depth": 0,
+      "version": "1.1.20",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6",
@@ -89,18 +82,18 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework.performance": {
-      "version": "2.3.1-preview",
-      "depth": 2,
+      "version": "2.6.0-preview",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.0",
-        "com.unity.nuget.newtonsoft-json": "2.0.0-preview"
+        "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.ugui": {
       "version": "1.0.0",
-      "depth": 0,
+      "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
@@ -112,10 +105,12 @@
       "depth": 0,
       "source": "local",
       "dependencies": {
+        "com.unity.collections": "0.15.0-preview.21",
+        "com.unity.inputsystem": "1.0.2",
         "com.unity.mathematics": "1.2.1",
-        "com.unity.collections": "0.14.0-preview.16",
-        "com.unity.scriptablebuildpipeline": "1.15.1",
-        "com.unity.inputsystem": "1.0.2"
+        "com.unity.scriptablebuildpipeline": "1.15.2",
+        "com.unity.test-framework.performance": "2.6.0-preview",
+        "com.unity.ugui": "1.0.0"
       }
     },
     "com.unity.modules.ai": {
