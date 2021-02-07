@@ -109,6 +109,7 @@ namespace GameCanvas.Engine
         NativeList<GcStyle> m_StackStyle;
         GcMinMaxBox3D m_ViewportBox;
         float4x4 m_ViewportMtx;
+        bool m_RebuildFontTextureFlag;
         #endregion
 
         //----------------------------------------------------------
@@ -583,6 +584,11 @@ namespace GameCanvas.Engine
             m_StackStyle.Add(m_CurrentStyle);
         }
 
+        public void RebuildFontTexture()
+        {
+            m_RebuildFontTextureFlag = true;
+        }
+
         public void RotateCoordinate(in float degree)
         {
             m_CurrentMatrix = GcAffine.FromRotate(math.radians(degree)).Mul(m_CurrentMatrix);
@@ -696,9 +702,19 @@ namespace GameCanvas.Engine
             m_CommandBufferTransparent.SetViewProjectionMatrices(m_ViewportMtx, m_ProjectionMtx);
 
             m_MeshPool.ReleaseAll();
-            m_TextMesh.DecrementLife();
-            m_TextGenerator.DecrementLife();
             m_DrawCount = 0;
+
+            if (m_RebuildFontTextureFlag)
+            {
+                m_TextMesh.ReleaseAll();
+                m_TextGenerator.ReleaseAll();
+                m_RebuildFontTextureFlag = false;
+            }
+            else
+            {
+                m_TextMesh.DecrementLife();
+                m_TextGenerator.DecrementLife();
+            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

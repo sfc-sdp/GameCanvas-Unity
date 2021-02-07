@@ -1,5 +1,7 @@
 # CHANGE LOG
-## 6.0.0-pre.6
+## 6.0.0-pre.7
+### 機能追加
+- [#204](https://github.com/sfc-sdp/GameCanvas-Unity/issues/204) フォントアトラスを強制的に再生成するAPIを追加
 ### 不具合修正
 - [#199](https://github.com/sfc-sdp/GameCanvas-Unity/issues/199) WebGLターゲットでビルドが通らない件の修正
 - [#201](https://github.com/sfc-sdp/GameCanvas-Unity/issues/201) macOSエディターで実行できない件の修正
