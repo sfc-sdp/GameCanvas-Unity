@@ -25,7 +25,7 @@ namespace GameCanvas.Engine
         #region 変数
         //----------------------------------------------------------
 
-        static readonly bool k_IsTouchSupported = Input.touchSupported && (Application.platform != RuntimePlatform.WindowsEditor);
+        static readonly bool k_IsTouchSupported = (Touchscreen.current != null) && (Application.platform != RuntimePlatform.WindowsEditor);
         static readonly bool k_IsTouchPressureSupported = k_IsTouchSupported && Input.touchPressureSupported;
         static readonly int k_EventNumMax = (k_IsTouchSupported && Input.multiTouchEnabled) ? 10 : 3;
 
@@ -338,7 +338,8 @@ namespace GameCanvas.Engine
             }
 #endif //!PLATFORM_IOS
 
-            m_History = new InputStateHistory(Touchscreen.current!.touches);
+            GcAssert.IsNotNull(Touchscreen.current);
+            m_History = new InputStateHistory(Touchscreen.current.touches);
             m_History.StartRecording();
         }
 
