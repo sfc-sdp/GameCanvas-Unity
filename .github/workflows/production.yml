@@ -1,8 +1,9 @@
-name: Format C#
+name: PR (production)
 on:
   pull_request:
     types: [opened, synchronize]
     branches: [master]
+    paths: "**.cs"
 jobs:
   dotnet-format:
     env:
