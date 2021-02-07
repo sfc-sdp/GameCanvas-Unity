@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 6.0.0-pre.4
+### 不具合修正
+- [#199](https://github.com/sfc-sdp/GameCanvas-Unity/issues/199) WebGLターゲットでビルドが通らない件の修正
+
 ## 6.0.0-pre.3
 ### 機能追加
 - [#197](https://github.com/sfc-sdp/GameCanvas-Unity/issues/197) 各種コンテナをSpan構造体に差し替え
