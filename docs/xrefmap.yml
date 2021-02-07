@@ -5631,6 +5631,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.Random
   nameWithType: GcProxy.Random
+- uid: GameCanvas.GcProxy.RebuildFontTexture
+  name: RebuildFontTexture()
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_RebuildFontTexture
+  commentId: M:GameCanvas.GcProxy.RebuildFontTexture
+  fullName: GameCanvas.GcProxy.RebuildFontTexture()
+  nameWithType: GcProxy.RebuildFontTexture()
+- uid: GameCanvas.GcProxy.RebuildFontTexture*
+  name: RebuildFontTexture
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_RebuildFontTexture_
+  commentId: Overload:GameCanvas.GcProxy.RebuildFontTexture
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.RebuildFontTexture
+  nameWithType: GcProxy.RebuildFontTexture
 - uid: GameCanvas.GcProxy.RectAnchor
   name: RectAnchor
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_RectAnchor
@@ -8807,6 +8820,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IGraphics.PushStyle
   nameWithType: IGraphics.PushStyle
+- uid: GameCanvas.IGraphics.RebuildFontTexture
+  name: RebuildFontTexture()
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_RebuildFontTexture
+  commentId: M:GameCanvas.IGraphics.RebuildFontTexture
+  fullName: GameCanvas.IGraphics.RebuildFontTexture()
+  nameWithType: IGraphics.RebuildFontTexture()
+- uid: GameCanvas.IGraphics.RebuildFontTexture*
+  name: RebuildFontTexture
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_RebuildFontTexture_
+  commentId: Overload:GameCanvas.IGraphics.RebuildFontTexture
+  isSpec: "True"
+  fullName: GameCanvas.IGraphics.RebuildFontTexture
+  nameWithType: IGraphics.RebuildFontTexture
 - uid: GameCanvas.IGraphics.RectAnchor
   name: RectAnchor
   href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_RectAnchor
