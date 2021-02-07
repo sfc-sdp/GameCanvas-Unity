@@ -48,6 +48,11 @@ namespace GameCanvas
         Color Color { get; set; }
 
         /// <summary>
+        /// <see cref="PushCoordinate"/> と <see cref="PopCoordinate"/> が自動的に呼び出されるスコープ
+        /// </summary>
+        CoordianteScope CoordinateScope { get; }
+
+        /// <summary>
         /// 現在の座標系（変換行列）
         /// </summary>
         float2x3 CurrentCoordinate { get; set; }
@@ -81,11 +86,6 @@ namespace GameCanvas
         /// 描線の太さ
         /// </summary>
         float LineWidth { get; set; }
-
-        /// <summary>
-        /// <see cref="PushCoordinate"/> と <see cref="PopCoordinate"/> が自動的に呼び出されるスコープ
-        /// </summary>
-        CoordianteScope CoordinateScope { get; }
 
         /// <summary>
         /// 矩形のアンカー位置
@@ -316,6 +316,15 @@ namespace GameCanvas
         /// <see cref="CurrentStyle"/> をスタックに保存します
         /// </summary>
         void PushStyle();
+
+        /// <summary>
+        /// フォントテクスチャ―を再生成します
+        /// </summary>
+        /// <remarks>
+        /// - テキスト描画が乱れた場合にのみ呼び出すことを想定しています<br />
+        /// - 実際に再生成が行われるのは、この関数を呼び出した次のフレームの冒頭です
+        /// </remarks>
+        void RebuildFontTexture();
 
         /// <summary>
         /// 座標系（変換行列）を回転させます
@@ -694,6 +703,12 @@ namespace GameCanvas
         void SetColor(in Color color, in float alpha);
 
         /// <summary>
+        /// 座標系（変換行列）を指定します
+        /// </summary>
+        /// <param name="matrix">座標系（変換行列）</param>
+        void SetCoordinate(in float2x3 matrix);
+
+        /// <summary>
         /// フォントを指定します
         /// </summary>
         /// <param name="font">フォント</param>
@@ -716,12 +731,6 @@ namespace GameCanvas
         /// </summary>
         /// <param name="lineWidth">描線の太さ</param>
         void SetLineWidth(in float lineWidth);
-
-        /// <summary>
-        /// 座標系（変換行列）を指定します
-        /// </summary>
-        /// <param name="matrix">座標系（変換行列）</param>
-        void SetCoordinate(in float2x3 matrix);
 
         /// <summary>
         /// 矩形や画像のアンカー位置を指定します

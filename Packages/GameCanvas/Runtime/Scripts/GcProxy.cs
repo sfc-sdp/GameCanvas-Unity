@@ -1693,6 +1693,11 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void RebuildFontTexture()
+            => m_Context.Graphics.RebuildFontTexture();
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RegisterScene<T>() where T : GcScene, new()
             => m_SceneDict.Add(typeof(T), new T());
 
