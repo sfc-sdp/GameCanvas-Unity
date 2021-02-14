@@ -400,10 +400,9 @@ namespace GameCanvas.Engine
 
             var mesh = m_MeshPool.GetOrCreate();
             var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
-            if (TrySetupMeshAsWiredRect(mesh, m_CurrentStyle.RectAnchor, lineWidth, m_CurrentMatrix))
-            {
-                DrawMeshDirect(mesh, m_CurrentStyle.Color);
-            }
+            var lineWidthScale = new float2(lineWidth, lineWidth);
+            SetupMeshAsWiredRect(mesh, m_CurrentStyle.RectAnchor, lineWidthScale, m_CurrentMatrix);
+            DrawMeshDirect(mesh, m_CurrentStyle.Color);
         }
 
         public void DrawRect(in GcRect rect)
@@ -414,10 +413,9 @@ namespace GameCanvas.Engine
 
             var mesh = m_MeshPool.GetOrCreate();
             var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
-            if (TrySetupMeshAsWiredRect(mesh, m_CurrentStyle.RectAnchor, lineWidth, mtx))
-            {
-                DrawMeshDirect(mesh, m_CurrentStyle.Color);
-            }
+            var lineWidthScale = new float2(lineWidth / rect.Size.x, lineWidth / rect.Size.y);
+            SetupMeshAsWiredRect(mesh, m_CurrentStyle.RectAnchor, lineWidthScale, mtx);
+            DrawMeshDirect(mesh, m_CurrentStyle.Color);
         }
 
         public void DrawRoundedRect()
@@ -1088,81 +1086,49 @@ namespace GameCanvas.Engine
             return true;
         }
 
-        private static bool TrySetupMeshAsWiredRect(in Mesh mesh, in GcAnchor anchor, in float lineWidth, in float2x3 matrix)
+        private static void SetupMeshAsWiredRect(in Mesh mesh, in GcAnchor anchor, in float2 lineWidthScale, in float2x3 matrix)
         {
-            var valid = false;
             var vertices = new NativeArray<float3>(8, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             var indices = new NativeArray<ushort>(24, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
             {
                 var offset = GetOffset(anchor);
 
                 var pos = new NativeArray<float2>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
-                var dir = new NativeArray<float2>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
-                var nrm = new NativeArray<float2>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
-                var line = new NativeArray<GcLine>(8, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+                var lineWidth = new NativeArray<float2>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
                 {
-                    pos[0] = matrix.Mul(offset);
-                    pos[1] = matrix.Mul(offset + new float2(1f, 0f));
-                    pos[2] = matrix.Mul(offset + new float2(1f, 1f));
-                    pos[3] = matrix.Mul(offset + new float2(0f, 1f));
-                    dir[0] = math.normalize(pos[1] - pos[0]);
-                    dir[1] = math.normalize(pos[2] - pos[1]);
-                    dir[2] = math.normalize(pos[3] - pos[2]);
-                    dir[3] = math.normalize(pos[0] - pos[3]);
-                    for (var i = 0; i < 4; i++)
+                    pos[0] = offset;
+                    lineWidth[0] = lineWidthScale * 0.5f;
+                    pos[1] = offset + new float2(1f, 0f);
+                    lineWidth[1] = new float2(-lineWidthScale.x, lineWidthScale.y) * 0.5f;
+                    pos[2] = offset + new float2(1f, 1f);
+                    lineWidth[2] = new float2(-lineWidthScale.x, -lineWidthScale.y) * 0.5f;
+                    pos[3] = offset + new float2(0f, 1f);
+                    lineWidth[3] = new float2(lineWidthScale.x, -lineWidthScale.y) * 0.5f;
+
+                    for (var i = 0; i < 4; ++i)
                     {
-                        nrm[i] = new float2(-dir[i].y, dir[i].x) * (lineWidth * 0.5f);
-                        line[i] = new GcLine(pos[i] - nrm[i], dir[i]);
-                        line[i + 4] = new GcLine(pos[i] + nrm[i], dir[i]);
-                    }
-                    for (var i = 0; i < 8; i += 4)
-                    {
-                        if (line[i].Intersects(line[i + 1], out var crs1)
-                            && line[i + 1].Intersects(line[i + 2], out var crs2)
-                            && line[i + 2].Intersects(line[i + 3], out var crs3)
-                            && line[i + 3].Intersects(line[i], out var crs0))
-                        {
-                            vertices[i] = new float3(crs0, 0f);
-                            vertices[i + 1] = new float3(crs1, 0f);
-                            vertices[i + 2] = new float3(crs2, 0f);
-                            vertices[i + 3] = new float3(crs3, 0f);
-                            valid = true;
-                        }
+                        var baseIndex = i * 2;
+                        vertices[baseIndex] = new float3(matrix.Mul(pos[i] - lineWidth[i]), 0f);
+                        vertices[baseIndex + 1] = new float3(matrix.Mul(pos[i] + lineWidth[i]), 0f);
+
+                        var baseIndices = i * 6;
+                        var nextIndex = i == 3 ? 0 : baseIndex + 2;
+                        indices[baseIndices++] = (ushort)baseIndex;
+                        indices[baseIndices++] = (ushort)(baseIndex + 1);
+                        indices[baseIndices++] = (ushort)(nextIndex);
+                        indices[baseIndices++] = (ushort)(baseIndex + 1);
+                        indices[baseIndices++] = (ushort)(nextIndex + 1);
+                        indices[baseIndices++] = (ushort)(nextIndex);
                     }
                 }
-                line.Dispose();
-                nrm.Dispose();
-                dir.Dispose();
                 pos.Dispose();
-
-                if (valid)
-                {
-                    for (var i = 0; i < 3; i++)
-                    {
-                        var j = i * 6;
-                        indices[j] = (ushort)i;
-                        indices[j + 1] = (ushort)(i + 4);
-                        indices[j + 2] = (ushort)(i + 5);
-                        indices[j + 3] = (ushort)i;
-                        indices[j + 4] = (ushort)(i + 5);
-                        indices[j + 5] = (ushort)(i + 1);
-                    }
-                    indices[18] = 3;
-                    indices[19] = 7;
-                    indices[20] = 4;
-                    indices[21] = 3;
-                    indices[22] = 4;
-                    indices[23] = 0;
-
-                    mesh.Clear();
-                    mesh.SetVertices(vertices);
-                    mesh.SetIndices(indices, MeshTopology.Triangles, 0);
-                    mesh.RecalculateBounds();
-                }
             }
+            mesh.Clear();
+            mesh.SetVertices(vertices);
+            mesh.SetIndices(indices, MeshTopology.Triangles, 0);
+            mesh.RecalculateBounds();
             indices.Dispose();
             vertices.Dispose();
-            return valid;
         }
 
         private static void SetupMeshAsFillRoundedRect(in Mesh mesh, in GcAnchor anchor, in int resolution, in float2 cornerRadius, in float2x3 matrix)
