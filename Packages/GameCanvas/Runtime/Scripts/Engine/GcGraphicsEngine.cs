@@ -1220,7 +1220,7 @@ namespace GameCanvas.Engine
                 indices[nextIndex++] = (ushort)((cornerResolution + 2) * 2 + 1);
                 indices[nextIndex++] = 1;
                 indices[nextIndex++] = (ushort)((cornerResolution + 2) * 2 + 1);
-                indices[nextIndex++] = (ushort)((cornerResolution + 2) * 4 - 1);
+                indices[nextIndex] = (ushort)((cornerResolution + 2) * 4 - 1);
             }
             mesh.Clear();
             mesh.SetVertices(vertices);
