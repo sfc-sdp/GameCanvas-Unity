@@ -232,6 +232,17 @@ namespace GameCanvas
         void DrawRect(in GcRect rect);
 
         /// <summary>
+        /// 角丸矩形を線で描画します
+        /// </summary>
+        void DrawRoundedRect();
+
+        /// <summary>
+        /// 角丸矩形を線で描画します
+        /// </summary>
+        /// <param name="rect">二等辺三角形が収まる矩形</param>
+        void DrawRoundedRect(in GcRect rect);
+
+        /// <summary>
         /// 文字列を描画します
         /// </summary>
         /// <param name="str">描画する文字列</param>
@@ -564,6 +575,24 @@ namespace GameCanvas
         /// <param name="size">大きさ</param>
         /// <param name="degree">回転（度数法）</param>
         void DrawRect(in float2 position, in float2 size, float degree = 0f);
+
+        /// <summary>
+        /// 角丸矩形を線で描画します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="width">横幅</param>
+        /// <param name="height">縦幅</param>
+        /// <param name="degree">回転（度数法）</param>
+        void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f);
+
+        /// <summary>
+        /// 角丸矩形を線で描画します
+        /// </summary>
+        /// <param name="position">位置</param>
+        /// <param name="size">大きさ</param>
+        /// <param name="degree">回転（度数法）</param>
+        void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f);
 
         [System.Obsolete("Use to `DrawString`  instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
