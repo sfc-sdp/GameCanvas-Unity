@@ -1070,6 +1070,26 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect()
+            => m_Context.Graphics.DrawRoundedRect();
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(degree)));
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(degree)));
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in GcRect rect)
+            => m_Context.Graphics.DrawRoundedRect(rect);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawString(in string str)
             => m_Context.Graphics.DrawString(str);
 

@@ -420,6 +420,33 @@ namespace GameCanvas.Engine
             }
         }
 
+        public void DrawRoundedRect()
+        {
+            if (!m_IsInit) return;
+
+            var mesh = m_MeshPool.GetOrCreate();
+            var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
+            var cornerRadius = math.min(0.5f, m_CurrentStyle.CornerRadius);
+            var radiusScale = new float2(cornerRadius, cornerRadius);
+
+            SetupMeshAsWiredRoundedRect(mesh, m_CurrentStyle.RectAnchor, lineWidth, m_CurrentStyle.CircleResolution, radiusScale, m_CurrentMatrix);
+            DrawMeshDirect(mesh, m_CurrentStyle.Color);
+        }
+
+        public void DrawRoundedRect(in GcRect rect)
+        {
+            if (!m_IsInit) return;
+
+            var mesh = m_MeshPool.GetOrCreate();
+            var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
+            var cornerRadius = math.min(math.min(rect.Size.x / 2, rect.Size.y / 2), m_CurrentStyle.CornerRadius);
+            var radiusScale = new float2(cornerRadius / rect.Size.x, cornerRadius / rect.Size.y);
+            var mtx = GcAffine.FromTRS(rect.Position, rect.Radian, rect.Size).Mul(m_CurrentMatrix);
+
+            SetupMeshAsWiredRoundedRect(mesh, m_CurrentStyle.RectAnchor, lineWidth, m_CurrentStyle.CircleResolution, radiusScale, mtx);
+            DrawMeshDirect(mesh, m_CurrentStyle.Color);
+        }
+
         public void DrawString(in string str)
         {
             GetOrCreateTextMesh(str, out var mesh, out var texture);
@@ -1194,6 +1221,55 @@ namespace GameCanvas.Engine
                 indices[nextIndex++] = 1;
                 indices[nextIndex++] = (ushort)((cornerResolution + 2) * 2 + 1);
                 indices[nextIndex++] = (ushort)((cornerResolution + 2) * 4 - 1);
+            }
+            mesh.Clear();
+            mesh.SetVertices(vertices);
+            mesh.SetIndices(indices, MeshTopology.Triangles, 0);
+            mesh.RecalculateBounds();
+            indices.Dispose();
+            vertices.Dispose();
+        }
+
+        private static void SetupMeshAsWiredRoundedRect(in Mesh mesh, in GcAnchor anchor, in float lineWidth, in int resolution, in float2 cornerRadius, in float2x3 matrix)
+        {
+            var cornerResolution = math.max(1, resolution / 4);
+            var vertices = new NativeArray<float3>((cornerResolution + 1) * 8, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+            var indices = new NativeArray<ushort>((cornerResolution + 1) * 24, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+            {
+                var offset = GetOffset(anchor);
+                var unit = math.PI / 2 / cornerResolution;
+                var center = new float2(0.5f, 0.5f);
+                var pad = new NativeArray<float2>(4, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+                {
+                    pad[0] = center - cornerRadius;
+                    pad[1] = new float2(pad[0].x, -pad[0].y);
+                    pad[2] = new float2(-pad[0].x, -pad[0].y);
+                    pad[3] = new float2(-pad[0].x, pad[0].y);
+                    for (var j = 0; j < 4; ++j)
+                    {
+                        var cornerCenter = matrix.Mul(center + pad[j]);
+                        var baseIndex = (cornerResolution + 1) * 2 * j;
+                        for (var i = 0; i <= cornerResolution; ++i)
+                        {
+                            var rad = (j * cornerResolution + i) * unit;
+                            var pos = matrix.Mul(center + pad[j] + new float2(cornerRadius.x * math.sin(rad), cornerRadius.y * math.cos(rad)) + offset);
+                            var vec = math.normalize(pos - cornerCenter) * (lineWidth * 0.5f);
+                            var currentIndex = baseIndex + i * 2;
+                            vertices[currentIndex] = new float3(pos - vec, 0f);
+                            vertices[currentIndex + 1] = new float3(pos + vec, 0f);
+
+                            var indicesBase = ((cornerResolution + 1) * j + i) * 6;
+                            var nextIndex = (currentIndex + 2) % ((cornerResolution + 1) * 8);
+                            indices[indicesBase++] = (ushort)(currentIndex);
+                            indices[indicesBase++] = (ushort)(currentIndex + 1);
+                            indices[indicesBase++] = (ushort)nextIndex;
+                            indices[indicesBase++] = (ushort)(currentIndex + 1);
+                            indices[indicesBase++] = (ushort)(nextIndex + 1);
+                            indices[indicesBase] = (ushort)nextIndex;
+                        }
+                    }
+                }
+                pad.Dispose();
             }
             mesh.Clear();
             mesh.SetVertices(vertices);
