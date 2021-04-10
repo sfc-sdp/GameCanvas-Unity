@@ -194,6 +194,30 @@
       </tr>
     </tbody>
   </table>
+  <a id="GameCanvas_IGraphics_CornerRadius_" data-uid="GameCanvas.IGraphics.CornerRadius*"></a>
+  <h4 id="GameCanvas_IGraphics_CornerRadius" data-uid="GameCanvas.IGraphics.CornerRadius">CornerRadius</h4>
+  <div class="markdown level1 summary"><p>角丸の半径</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float CornerRadius { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_IGraphics_CurrentCoordinate_" data-uid="GameCanvas.IGraphics.CurrentCoordinate*"></a>
   <h4 id="GameCanvas_IGraphics_CurrentCoordinate" data-uid="GameCanvas.IGraphics.CurrentCoordinate">CurrentCoordinate</h4>
   <div class="markdown level1 summary"><p>現在の座標系（変換行列）</p>
@@ -929,6 +953,75 @@
       </tr>
     </tbody>
   </table>
+  <a id="GameCanvas_IGraphics_DrawRoundedRect_" data-uid="GameCanvas.IGraphics.DrawRoundedRect*"></a>
+  <h4 id="GameCanvas_IGraphics_DrawRoundedRect" data-uid="GameCanvas.IGraphics.DrawRoundedRect">DrawRoundedRect()</h4>
+  <div class="markdown level1 summary"><p>角丸矩形を線で描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DrawRoundedRect()</code></pre>
+  </div>
+  <a id="GameCanvas_IGraphics_DrawRoundedRect_" data-uid="GameCanvas.IGraphics.DrawRoundedRect*"></a>
+  <h4 id="GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@)">DrawRoundedRect(GcRect)</h4>
+  <div class="markdown level1 summary"><p>角丸矩形を線で描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DrawRoundedRect(in GcRect rect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
+        <td><span class="parametername">rect</span></td>
+        <td><p>二等辺三角形が収まる矩形</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IGraphics_DrawRoundedRect_" data-uid="GameCanvas.IGraphics.DrawRoundedRect*"></a>
+  <h4 id="GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__System_Single_" data-uid="GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@,System.Single)">DrawRoundedRect(GcRect, Single)</h4>
+  <div class="markdown level1 summary"><p>角丸矩形を線で描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DrawRoundedRect(in GcRect rect, float cornerRadius)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
+        <td><span class="parametername">rect</span></td>
+        <td><p>二等辺三角形が収まる矩形</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">cornerRadius</span></td>
+        <td><p>角丸の半径</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="GameCanvas_IGraphics_DrawString_" data-uid="GameCanvas.IGraphics.DrawString*"></a>
   <h4 id="GameCanvas_IGraphics_DrawString_System_String__" data-uid="GameCanvas.IGraphics.DrawString(System.String@)">DrawString(String)</h4>
   <div class="markdown level1 summary"><p>文字列を描画します</p>
@@ -1228,6 +1321,75 @@
         <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
         <td><span class="parametername">rect</span></td>
         <td><p>矩形</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IGraphics_FillRoundedRect_" data-uid="GameCanvas.IGraphics.FillRoundedRect*"></a>
+  <h4 id="GameCanvas_IGraphics_FillRoundedRect" data-uid="GameCanvas.IGraphics.FillRoundedRect">FillRoundedRect()</h4>
+  <div class="markdown level1 summary"><p>角丸矩形を塗りで描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FillRoundedRect()</code></pre>
+  </div>
+  <a id="GameCanvas_IGraphics_FillRoundedRect_" data-uid="GameCanvas.IGraphics.FillRoundedRect*"></a>
+  <h4 id="GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@)">FillRoundedRect(GcRect)</h4>
+  <div class="markdown level1 summary"><p>角丸矩形を塗りで描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FillRoundedRect(in GcRect rect)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
+        <td><span class="parametername">rect</span></td>
+        <td><p>二等辺三角形が収まる矩形</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="GameCanvas_IGraphics_FillRoundedRect_" data-uid="GameCanvas.IGraphics.FillRoundedRect*"></a>
+  <h4 id="GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__System_Single_" data-uid="GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@,System.Single)">FillRoundedRect(GcRect, Single)</h4>
+  <div class="markdown level1 summary"><p>角丸矩形を塗りで描画します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FillRoundedRect(in GcRect rect, float cornerRadius)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
+        <td><span class="parametername">rect</span></td>
+        <td><p>二等辺三角形が収まる矩形</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
+        <td><span class="parametername">cornerRadius</span></td>
+        <td><p>角丸の半径</p>
 </td>
       </tr>
     </tbody>

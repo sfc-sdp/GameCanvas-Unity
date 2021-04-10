@@ -3469,6 +3469,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.CoordinateScope
   nameWithType: GcProxy.CoordinateScope
+- uid: GameCanvas.GcProxy.CornerRadius
+  name: CornerRadius
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CornerRadius
+  commentId: P:GameCanvas.GcProxy.CornerRadius
+  fullName: GameCanvas.GcProxy.CornerRadius
+  nameWithType: GcProxy.CornerRadius
+- uid: GameCanvas.GcProxy.CornerRadius*
+  name: CornerRadius
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_CornerRadius_
+  commentId: Overload:GameCanvas.GcProxy.CornerRadius
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.CornerRadius
+  nameWithType: GcProxy.CornerRadius
 - uid: GameCanvas.GcProxy.Cos(System.Single@)
   name: Cos(Single)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_Cos_System_Single__
@@ -4084,6 +4097,73 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.DrawRect
   nameWithType: GcProxy.DrawRect
+- uid: GameCanvas.GcProxy.DrawRoundedRect
+  name: DrawRoundedRect()
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect
+  fullName: GameCanvas.GcProxy.DrawRoundedRect()
+  nameWithType: GcProxy.DrawRoundedRect()
+- uid: GameCanvas.GcProxy.DrawRoundedRect(GameCanvas.GcRect@)
+  name: DrawRoundedRect(GcRect)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_GameCanvas_GcRect__
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect(GameCanvas.GcRect@)
+  name.vb: DrawRoundedRect(ByRef GcRect)
+  fullName: GameCanvas.GcProxy.DrawRoundedRect(GameCanvas.GcRect)
+  fullName.vb: GameCanvas.GcProxy.DrawRoundedRect(ByRef GameCanvas.GcRect)
+  nameWithType: GcProxy.DrawRoundedRect(GcRect)
+  nameWithType.vb: GcProxy.DrawRoundedRect(ByRef GcRect)
+- uid: GameCanvas.GcProxy.DrawRoundedRect(GameCanvas.GcRect@,System.Single)
+  name: DrawRoundedRect(GcRect, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_GameCanvas_GcRect__System_Single_
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect(GameCanvas.GcRect@,System.Single)
+  name.vb: DrawRoundedRect(ByRef GcRect, Single)
+  fullName: GameCanvas.GcProxy.DrawRoundedRect(GameCanvas.GcRect, System.Single)
+  fullName.vb: GameCanvas.GcProxy.DrawRoundedRect(ByRef GameCanvas.GcRect, System.Single)
+  nameWithType: GcProxy.DrawRoundedRect(GcRect, Single)
+  nameWithType.vb: GcProxy.DrawRoundedRect(ByRef GcRect, Single)
+- uid: GameCanvas.GcProxy.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name: DrawRoundedRect(Single, Single, Single, Single, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name.vb: DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+  fullName: GameCanvas.GcProxy.DrawRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.GcProxy.DrawRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single)
+  nameWithType: GcProxy.DrawRoundedRect(Single, Single, Single, Single, Single)
+  nameWithType.vb: GcProxy.DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+- uid: GameCanvas.GcProxy.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name: DrawRoundedRect(Single, Single, Single, Single, Single, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name.vb: DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+  fullName: GameCanvas.GcProxy.DrawRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.GcProxy.DrawRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single, System.Single)
+  nameWithType: GcProxy.DrawRoundedRect(Single, Single, Single, Single, Single, Single)
+  nameWithType.vb: GcProxy.DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+- uid: GameCanvas.GcProxy.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name: DrawRoundedRect(float2, float2, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name.vb: DrawRoundedRect(ByRef float2, ByRef float2, Single)
+  fullName: GameCanvas.GcProxy.DrawRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single)
+  fullName.vb: GameCanvas.GcProxy.DrawRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single)
+  nameWithType: GcProxy.DrawRoundedRect(float2, float2, Single)
+  nameWithType.vb: GcProxy.DrawRoundedRect(ByRef float2, ByRef float2, Single)
+- uid: GameCanvas.GcProxy.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name: DrawRoundedRect(float2, float2, Single, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_
+  commentId: M:GameCanvas.GcProxy.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name.vb: DrawRoundedRect(ByRef float2, ByRef float2, Single, Single)
+  fullName: GameCanvas.GcProxy.DrawRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single, System.Single)
+  fullName.vb: GameCanvas.GcProxy.DrawRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single, System.Single)
+  nameWithType: GcProxy.DrawRoundedRect(float2, float2, Single, Single)
+  nameWithType.vb: GcProxy.DrawRoundedRect(ByRef float2, ByRef float2, Single, Single)
+- uid: GameCanvas.GcProxy.DrawRoundedRect*
+  name: DrawRoundedRect
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawRoundedRect_
+  commentId: Overload:GameCanvas.GcProxy.DrawRoundedRect
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.DrawRoundedRect
+  nameWithType: GcProxy.DrawRoundedRect
 - uid: GameCanvas.GcProxy.DrawString(System.String@)
   name: DrawString(String)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_DrawString_System_String__
@@ -4281,6 +4361,73 @@ references:
   isSpec: "True"
   fullName: GameCanvas.GcProxy.FillRect
   nameWithType: GcProxy.FillRect
+- uid: GameCanvas.GcProxy.FillRoundedRect
+  name: FillRoundedRect()
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect
+  fullName: GameCanvas.GcProxy.FillRoundedRect()
+  nameWithType: GcProxy.FillRoundedRect()
+- uid: GameCanvas.GcProxy.FillRoundedRect(GameCanvas.GcRect@)
+  name: FillRoundedRect(GcRect)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_GameCanvas_GcRect__
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect(GameCanvas.GcRect@)
+  name.vb: FillRoundedRect(ByRef GcRect)
+  fullName: GameCanvas.GcProxy.FillRoundedRect(GameCanvas.GcRect)
+  fullName.vb: GameCanvas.GcProxy.FillRoundedRect(ByRef GameCanvas.GcRect)
+  nameWithType: GcProxy.FillRoundedRect(GcRect)
+  nameWithType.vb: GcProxy.FillRoundedRect(ByRef GcRect)
+- uid: GameCanvas.GcProxy.FillRoundedRect(GameCanvas.GcRect@,System.Single)
+  name: FillRoundedRect(GcRect, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_GameCanvas_GcRect__System_Single_
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect(GameCanvas.GcRect@,System.Single)
+  name.vb: FillRoundedRect(ByRef GcRect, Single)
+  fullName: GameCanvas.GcProxy.FillRoundedRect(GameCanvas.GcRect, System.Single)
+  fullName.vb: GameCanvas.GcProxy.FillRoundedRect(ByRef GameCanvas.GcRect, System.Single)
+  nameWithType: GcProxy.FillRoundedRect(GcRect, Single)
+  nameWithType.vb: GcProxy.FillRoundedRect(ByRef GcRect, Single)
+- uid: GameCanvas.GcProxy.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name: FillRoundedRect(Single, Single, Single, Single, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name.vb: FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+  fullName: GameCanvas.GcProxy.FillRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.GcProxy.FillRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single)
+  nameWithType: GcProxy.FillRoundedRect(Single, Single, Single, Single, Single)
+  nameWithType.vb: GcProxy.FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+- uid: GameCanvas.GcProxy.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name: FillRoundedRect(Single, Single, Single, Single, Single, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name.vb: FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+  fullName: GameCanvas.GcProxy.FillRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.GcProxy.FillRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single, System.Single)
+  nameWithType: GcProxy.FillRoundedRect(Single, Single, Single, Single, Single, Single)
+  nameWithType.vb: GcProxy.FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+- uid: GameCanvas.GcProxy.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name: FillRoundedRect(float2, float2, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name.vb: FillRoundedRect(ByRef float2, ByRef float2, Single)
+  fullName: GameCanvas.GcProxy.FillRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single)
+  fullName.vb: GameCanvas.GcProxy.FillRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single)
+  nameWithType: GcProxy.FillRoundedRect(float2, float2, Single)
+  nameWithType.vb: GcProxy.FillRoundedRect(ByRef float2, ByRef float2, Single)
+- uid: GameCanvas.GcProxy.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name: FillRoundedRect(float2, float2, Single, Single)
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_
+  commentId: M:GameCanvas.GcProxy.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name.vb: FillRoundedRect(ByRef float2, ByRef float2, Single, Single)
+  fullName: GameCanvas.GcProxy.FillRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single, System.Single)
+  fullName.vb: GameCanvas.GcProxy.FillRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single, System.Single)
+  nameWithType: GcProxy.FillRoundedRect(float2, float2, Single, Single)
+  nameWithType.vb: GcProxy.FillRoundedRect(ByRef float2, ByRef float2, Single, Single)
+- uid: GameCanvas.GcProxy.FillRoundedRect*
+  name: FillRoundedRect
+  href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FillRoundedRect_
+  commentId: Overload:GameCanvas.GcProxy.FillRoundedRect
+  isSpec: "True"
+  fullName: GameCanvas.GcProxy.FillRoundedRect
+  nameWithType: GcProxy.FillRoundedRect
 - uid: GameCanvas.GcProxy.FocusCameraImage(GameCanvas.GcCameraDevice@,System.Nullable{Unity.Mathematics.float2}@)
   name: FocusCameraImage(GcCameraDevice, Nullable<float2>)
   href: api/GameCanvas.GcProxy.html#GameCanvas_GcProxy_FocusCameraImage_GameCanvas_GcCameraDevice__System_Nullable_Unity_Mathematics_float2___
@@ -7719,6 +7866,12 @@ references:
   commentId: F:GameCanvas.GcStyle.Color
   fullName: GameCanvas.GcStyle.Color
   nameWithType: GcStyle.Color
+- uid: GameCanvas.GcStyle.CornerRadius
+  name: CornerRadius
+  href: api/GameCanvas.GcStyle.html#GameCanvas_GcStyle_CornerRadius
+  commentId: F:GameCanvas.GcStyle.CornerRadius
+  fullName: GameCanvas.GcStyle.CornerRadius
+  nameWithType: GcStyle.CornerRadius
 - uid: GameCanvas.GcStyle.Default
   name: Default
   href: api/GameCanvas.GcStyle.html#GameCanvas_GcStyle_Default
@@ -8456,6 +8609,19 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IGraphics.CoordinateScope
   nameWithType: IGraphics.CoordinateScope
+- uid: GameCanvas.IGraphics.CornerRadius
+  name: CornerRadius
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_CornerRadius
+  commentId: P:GameCanvas.IGraphics.CornerRadius
+  fullName: GameCanvas.IGraphics.CornerRadius
+  nameWithType: IGraphics.CornerRadius
+- uid: GameCanvas.IGraphics.CornerRadius*
+  name: CornerRadius
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_CornerRadius_
+  commentId: Overload:GameCanvas.IGraphics.CornerRadius
+  isSpec: "True"
+  fullName: GameCanvas.IGraphics.CornerRadius
+  nameWithType: IGraphics.CornerRadius
 - uid: GameCanvas.IGraphics.CurrentCoordinate
   name: CurrentCoordinate
   href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentCoordinate
@@ -8595,6 +8761,37 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IGraphics.DrawRect
   nameWithType: IGraphics.DrawRect
+- uid: GameCanvas.IGraphics.DrawRoundedRect
+  name: DrawRoundedRect()
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect
+  commentId: M:GameCanvas.IGraphics.DrawRoundedRect
+  fullName: GameCanvas.IGraphics.DrawRoundedRect()
+  nameWithType: IGraphics.DrawRoundedRect()
+- uid: GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@)
+  name: DrawRoundedRect(GcRect)
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__
+  commentId: M:GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@)
+  name.vb: DrawRoundedRect(ByRef GcRect)
+  fullName: GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect)
+  fullName.vb: GameCanvas.IGraphics.DrawRoundedRect(ByRef GameCanvas.GcRect)
+  nameWithType: IGraphics.DrawRoundedRect(GcRect)
+  nameWithType.vb: IGraphics.DrawRoundedRect(ByRef GcRect)
+- uid: GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@,System.Single)
+  name: DrawRoundedRect(GcRect, Single)
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__System_Single_
+  commentId: M:GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@,System.Single)
+  name.vb: DrawRoundedRect(ByRef GcRect, Single)
+  fullName: GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect, System.Single)
+  fullName.vb: GameCanvas.IGraphics.DrawRoundedRect(ByRef GameCanvas.GcRect, System.Single)
+  nameWithType: IGraphics.DrawRoundedRect(GcRect, Single)
+  nameWithType.vb: IGraphics.DrawRoundedRect(ByRef GcRect, Single)
+- uid: GameCanvas.IGraphics.DrawRoundedRect*
+  name: DrawRoundedRect
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_
+  commentId: Overload:GameCanvas.IGraphics.DrawRoundedRect
+  isSpec: "True"
+  fullName: GameCanvas.IGraphics.DrawRoundedRect
+  nameWithType: IGraphics.DrawRoundedRect
 - uid: GameCanvas.IGraphics.DrawString(System.String@)
   name: DrawString(String)
   href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__
@@ -8716,6 +8913,37 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IGraphics.FillRect
   nameWithType: IGraphics.FillRect
+- uid: GameCanvas.IGraphics.FillRoundedRect
+  name: FillRoundedRect()
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect
+  commentId: M:GameCanvas.IGraphics.FillRoundedRect
+  fullName: GameCanvas.IGraphics.FillRoundedRect()
+  nameWithType: IGraphics.FillRoundedRect()
+- uid: GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@)
+  name: FillRoundedRect(GcRect)
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__
+  commentId: M:GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@)
+  name.vb: FillRoundedRect(ByRef GcRect)
+  fullName: GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect)
+  fullName.vb: GameCanvas.IGraphics.FillRoundedRect(ByRef GameCanvas.GcRect)
+  nameWithType: IGraphics.FillRoundedRect(GcRect)
+  nameWithType.vb: IGraphics.FillRoundedRect(ByRef GcRect)
+- uid: GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@,System.Single)
+  name: FillRoundedRect(GcRect, Single)
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__System_Single_
+  commentId: M:GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@,System.Single)
+  name.vb: FillRoundedRect(ByRef GcRect, Single)
+  fullName: GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect, System.Single)
+  fullName.vb: GameCanvas.IGraphics.FillRoundedRect(ByRef GameCanvas.GcRect, System.Single)
+  nameWithType: IGraphics.FillRoundedRect(GcRect, Single)
+  nameWithType.vb: IGraphics.FillRoundedRect(ByRef GcRect, Single)
+- uid: GameCanvas.IGraphics.FillRoundedRect*
+  name: FillRoundedRect
+  href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_
+  commentId: Overload:GameCanvas.IGraphics.FillRoundedRect
+  isSpec: "True"
+  fullName: GameCanvas.IGraphics.FillRoundedRect
+  nameWithType: IGraphics.FillRoundedRect
 - uid: GameCanvas.IGraphics.Font
   name: Font
   href: api/GameCanvas.IGraphics.html#GameCanvas_IGraphics_Font
@@ -9313,6 +9541,49 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IGraphicsEx.DrawRect
   nameWithType: IGraphicsEx.DrawRect
+- uid: GameCanvas.IGraphicsEx.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name: DrawRoundedRect(Single, Single, Single, Single, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name.vb: DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+  fullName: GameCanvas.IGraphicsEx.DrawRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.DrawRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single)
+  nameWithType: IGraphicsEx.DrawRoundedRect(Single, Single, Single, Single, Single)
+  nameWithType.vb: IGraphicsEx.DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+- uid: GameCanvas.IGraphicsEx.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name: DrawRoundedRect(Single, Single, Single, Single, Single, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.DrawRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name.vb: DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+  fullName: GameCanvas.IGraphicsEx.DrawRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.DrawRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single, System.Single)
+  nameWithType: IGraphicsEx.DrawRoundedRect(Single, Single, Single, Single, Single, Single)
+  nameWithType.vb: IGraphicsEx.DrawRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+- uid: GameCanvas.IGraphicsEx.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name: DrawRoundedRect(float2, float2, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name.vb: DrawRoundedRect(ByRef float2, ByRef float2, Single)
+  fullName: GameCanvas.IGraphicsEx.DrawRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.DrawRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single)
+  nameWithType: IGraphicsEx.DrawRoundedRect(float2, float2, Single)
+  nameWithType.vb: IGraphicsEx.DrawRoundedRect(ByRef float2, ByRef float2, Single)
+- uid: GameCanvas.IGraphicsEx.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name: DrawRoundedRect(float2, float2, Single, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.DrawRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name.vb: DrawRoundedRect(ByRef float2, ByRef float2, Single, Single)
+  fullName: GameCanvas.IGraphicsEx.DrawRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.DrawRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single, System.Single)
+  nameWithType: IGraphicsEx.DrawRoundedRect(float2, float2, Single, Single)
+  nameWithType.vb: IGraphicsEx.DrawRoundedRect(ByRef float2, ByRef float2, Single, Single)
+- uid: GameCanvas.IGraphicsEx.DrawRoundedRect*
+  name: DrawRoundedRect
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_
+  commentId: Overload:GameCanvas.IGraphicsEx.DrawRoundedRect
+  isSpec: "True"
+  fullName: GameCanvas.IGraphicsEx.DrawRoundedRect
+  nameWithType: IGraphicsEx.DrawRoundedRect
 - uid: GameCanvas.IGraphicsEx.DrawString(System.String@,System.Single@,System.Single@,System.Single)
   name: DrawString(String, Single, Single, Single)
   href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawString_System_String__System_Single__System_Single__System_Single_
@@ -9404,6 +9675,49 @@ references:
   isSpec: "True"
   fullName: GameCanvas.IGraphicsEx.FillRect
   nameWithType: IGraphicsEx.FillRect
+- uid: GameCanvas.IGraphicsEx.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name: FillRoundedRect(Single, Single, Single, Single, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single)
+  name.vb: FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+  fullName: GameCanvas.IGraphicsEx.FillRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.FillRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single)
+  nameWithType: IGraphicsEx.FillRoundedRect(Single, Single, Single, Single, Single)
+  nameWithType.vb: IGraphicsEx.FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single)
+- uid: GameCanvas.IGraphicsEx.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name: FillRoundedRect(Single, Single, Single, Single, Single, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.FillRoundedRect(System.Single@,System.Single@,System.Single@,System.Single@,System.Single,System.Single)
+  name.vb: FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+  fullName: GameCanvas.IGraphicsEx.FillRoundedRect(System.Single, System.Single, System.Single, System.Single, System.Single, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.FillRoundedRect(ByRef System.Single, ByRef System.Single, ByRef System.Single, ByRef System.Single, System.Single, System.Single)
+  nameWithType: IGraphicsEx.FillRoundedRect(Single, Single, Single, Single, Single, Single)
+  nameWithType.vb: IGraphicsEx.FillRoundedRect(ByRef Single, ByRef Single, ByRef Single, ByRef Single, Single, Single)
+- uid: GameCanvas.IGraphicsEx.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name: FillRoundedRect(float2, float2, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single)
+  name.vb: FillRoundedRect(ByRef float2, ByRef float2, Single)
+  fullName: GameCanvas.IGraphicsEx.FillRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.FillRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single)
+  nameWithType: IGraphicsEx.FillRoundedRect(float2, float2, Single)
+  nameWithType.vb: IGraphicsEx.FillRoundedRect(ByRef float2, ByRef float2, Single)
+- uid: GameCanvas.IGraphicsEx.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name: FillRoundedRect(float2, float2, Single, Single)
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_
+  commentId: M:GameCanvas.IGraphicsEx.FillRoundedRect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single,System.Single)
+  name.vb: FillRoundedRect(ByRef float2, ByRef float2, Single, Single)
+  fullName: GameCanvas.IGraphicsEx.FillRoundedRect(Unity.Mathematics.float2, Unity.Mathematics.float2, System.Single, System.Single)
+  fullName.vb: GameCanvas.IGraphicsEx.FillRoundedRect(ByRef Unity.Mathematics.float2, ByRef Unity.Mathematics.float2, System.Single, System.Single)
+  nameWithType: IGraphicsEx.FillRoundedRect(float2, float2, Single, Single)
+  nameWithType.vb: IGraphicsEx.FillRoundedRect(ByRef float2, ByRef float2, Single, Single)
+- uid: GameCanvas.IGraphicsEx.FillRoundedRect*
+  name: FillRoundedRect
+  href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_
+  commentId: Overload:GameCanvas.IGraphicsEx.FillRoundedRect
+  isSpec: "True"
+  fullName: GameCanvas.IGraphicsEx.FillRoundedRect
+  nameWithType: IGraphicsEx.FillRoundedRect
 - uid: GameCanvas.IGraphicsEx.GetImageHeight(GameCanvas.GcImage@)
   name: GetImageHeight(GcImage)
   href: api/GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageHeight_GameCanvas_GcImage__
