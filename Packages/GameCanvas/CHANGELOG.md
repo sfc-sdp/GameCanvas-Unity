@@ -1,30 +1,17 @@
 # CHANGE LOG
-## 6.0.0-pre.7
-### 機能追加
-- [#204](https://github.com/sfc-sdp/GameCanvas-Unity/issues/204) フォントアトラスを強制的に再生成するAPIを追加
-### 不具合修正
-- [#199](https://github.com/sfc-sdp/GameCanvas-Unity/issues/199) WebGLターゲットでビルドが通らない件の修正
-- [#201](https://github.com/sfc-sdp/GameCanvas-Unity/issues/201) macOSエディターで実行できない件の修正
-
-## 6.0.0-pre.3
-### 機能追加
-- [#197](https://github.com/sfc-sdp/GameCanvas-Unity/issues/197) 各種コンテナをSpan構造体に差し替え
-### 仕様変更
-- Unity 2020.2.3f1 に更新
-
-## 6.0.0-pre.2
-### 機能追加
-- [#190](https://github.com/sfc-sdp/GameCanvas-Unity/issues/190) InputSystem に移行
-- 加速度計の動作周波数を設定できるように
-### 仕様変更
-- Unity 2020.2.2f1 に更新
-
-## 6.0.0-pre.1
+## 6.0.0
 ### 機能追加
 - [#188](https://github.com/sfc-sdp/GameCanvas-Unity/issues/188) null許容参照型に対応
 - [#192](https://github.com/sfc-sdp/GameCanvas-Unity/issues/192) WebGLビルドをサポート
+- [#190](https://github.com/sfc-sdp/GameCanvas-Unity/issues/190) InputSystem に移行
+- [#197](https://github.com/sfc-sdp/GameCanvas-Unity/issues/197) 各種コンテナをSpan構造体に差し替え
+- [#204](https://github.com/sfc-sdp/GameCanvas-Unity/issues/204) フォントアトラスを強制的に再生成するAPIを追加
+- 加速度計の動作周波数を設定できるように
+### 不具合修正
+- [#199](https://github.com/sfc-sdp/GameCanvas-Unity/issues/199) WebGLターゲットでビルドが通らない件の修正
+- [#201](https://github.com/sfc-sdp/GameCanvas-Unity/issues/201) macOSエディターで実行できない件の修正
 ### 仕様変更
-- [#187](https://github.com/sfc-sdp/GameCanvas-Unity/issues/187) Unity 2020.2.1f1 に更新
+- Unity 2020.3.3f1 に更新
 
 ## 5.0.12
 ### 不具合修正
