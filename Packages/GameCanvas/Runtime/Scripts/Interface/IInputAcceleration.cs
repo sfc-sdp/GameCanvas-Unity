@@ -65,7 +65,7 @@ namespace GameCanvas
         /// <returns>1つ以上の加速度イベントがあったかどうか</returns>
         bool TryGetAccelerationEventAll(out System.ReadOnlySpan<GcAccelerationEvent> events);
 
-        [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [System.Obsolete("Use to `TryGetAccelerationEventAll` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count);
     }
@@ -75,33 +75,33 @@ namespace GameCanvas
         /// <summary>
         /// 最後に検出した加速度イベントの X方向の加速度
         /// </summary>
-        [System.Obsolete("Use to `LastAcceleration`  instead.")]
+        [System.Obsolete("Use to `LastAcceleration` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float AccelerationLastX { get; }
 
         /// <summary>
         /// 最後に検出した加速度イベントの Y方向の加速度
         /// </summary>
-        [System.Obsolete("Use to `LastAcceleration`  instead.")]
+        [System.Obsolete("Use to `LastAcceleration` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float AccelerationLastY { get; }
 
         /// <summary>
         /// 最後に検出した加速度イベントの Z方向の加速度
         /// </summary>
-        [System.Obsolete("Use to `LastAcceleration`  instead.")]
+        [System.Obsolete("Use to `LastAcceleration` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float AccelerationLastZ { get; }
 
-        [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [System.Obsolete("Use to `TryGetAccelerationEvent` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetAccelerationX(in int i, bool normalize = false);
 
-        [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [System.Obsolete("Use to `TryGetAccelerationEvent` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetAccelerationY(in int i, bool normalize = false);
 
-        [System.Obsolete("Use to `TryGetAccelerationEvent`  instead.")]
+        [System.Obsolete("Use to `TryGetAccelerationEvent` instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetAccelerationZ(in int i, bool normalize = false);
     }

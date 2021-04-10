@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-
 namespace GameCanvas
 {
     public interface IEngine : System.IDisposable

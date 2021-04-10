@@ -9,7 +9,6 @@
 /*------------------------------------------------------------*/
 #nullable enable
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
@@ -231,6 +230,15 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Graphics.CoordinateScope;
+        }
+
+        /// <inheritdoc/>
+        public float CornerRadius
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => m_Context.Graphics.CornerRadius;
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set { m_Context.Graphics.CornerRadius = value; }
         }
 
         /// <inheritdoc/>
@@ -694,6 +702,7 @@ namespace GameCanvas
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.TimeSinceStartup;
         }
+
         /// <inheritdoc/>
         public bool VSyncEnabled
         {
@@ -1062,6 +1071,41 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect()
+            => m_Context.Graphics.DrawRoundedRect();
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(degree)));
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(degree)), cornerRadius);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(degree)));
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(degree)), cornerRadius);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in GcRect rect)
+            => m_Context.Graphics.DrawRoundedRect(rect);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void DrawRoundedRect(in GcRect rect, float cornerRect)
+            => m_Context.Graphics.DrawRoundedRect(rect, cornerRect);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawString(in string str)
             => m_Context.Graphics.DrawString(str);
 
@@ -1153,6 +1197,41 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void FillRect(in GcRect rect)
             => m_Context.Graphics.FillRect(rect);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect()
+            => m_Context.Graphics.FillRoundedRect();
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(x, y, width, height, math.radians(degree)));
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(x, y, width, height, math.radians(degree)), cornerRadius);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect(in float2 position, in float2 size, float degree = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(position, size, math.radians(degree)));
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(position, size, math.radians(degree)), cornerRadius);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect(in GcRect rect)
+            => m_Context.Graphics.FillRoundedRect(rect);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void FillRoundedRect(in GcRect rect, float cornerRadius)
+            => m_Context.Graphics.FillRoundedRect(rect, cornerRadius);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -9,7 +9,6 @@
 /*------------------------------------------------------------*/
 #nullable enable
 using Unity.Mathematics;
-using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
 namespace GameCanvas

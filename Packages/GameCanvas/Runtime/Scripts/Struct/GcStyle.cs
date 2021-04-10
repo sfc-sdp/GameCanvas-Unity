@@ -25,7 +25,8 @@ namespace GameCanvas
             LineCap = GcLineCap.Butt,
             LineWidth = 1f,
             RectAnchor = GcAnchor.UpperLeft,
-            StringAnchor = GcAnchor.UpperLeft
+            StringAnchor = GcAnchor.UpperLeft,
+            CornerRadius = 10
         };
 
         public int CircleResolution;
@@ -35,6 +36,7 @@ namespace GameCanvas
         public float LineWidth;
         public GcAnchor RectAnchor;
         public GcAnchor StringAnchor;
+        public float CornerRadius;
 
         public bool Equals(GcStyle other)
             => CircleResolution.Equals(other.CircleResolution)
@@ -43,7 +45,8 @@ namespace GameCanvas
             && (LineCap == other.LineCap)
             && LineWidth.Equals(other.LineWidth)
             && (RectAnchor == other.RectAnchor)
-            && (StringAnchor == other.StringAnchor);
+            && (StringAnchor == other.StringAnchor)
+            && (CornerRadius == other.CornerRadius);
 
         public override bool Equals(object obj)
             => (obj is GcStyle other) && Equals(other);
@@ -55,6 +58,7 @@ namespace GameCanvas
             ^ ((int)LineCap)
             ^ LineWidth.GetHashCode()
             ^ (int)RectAnchor
-            ^ (int)StringAnchor;
+            ^ (int)StringAnchor
+            ^ CornerRadius.GetHashCode();
     }
 }

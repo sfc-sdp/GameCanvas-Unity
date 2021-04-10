@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-
 namespace GameCanvas
 {
     /// <summary>

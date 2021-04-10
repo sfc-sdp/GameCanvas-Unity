@@ -67,7 +67,7 @@ namespace GameCanvas
         /// <param name="y2">円2の中心Y座標</param>
         /// <param name="r2">円2の半径</param>
         /// <returns>接触しているかどうか</returns>
-        [System.Obsolete("Use to `HitTest`  instead.")]
+        [System.Obsolete("Use to `HitTest` instead.")]
         bool CheckHitCircle(in float x1, in float y1, in float r1, in float x2, in float y2, in float r2);
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace GameCanvas
         /// <param name="w2">矩形2の横幅</param>
         /// <param name="h2">矩形2の縦幅</param>
         /// <returns>接触しているかどうか</returns>
-        [System.Obsolete("Use to `HitTest`  instead.")]
+        [System.Obsolete("Use to `HitTest` instead.")]
         bool CheckHitRect(in float x1, in float y1, in float w1, in float h1, in float x2, in float y2, in float w2, in float h2);
     }
 }

@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-
 namespace GameCanvas
 {
     public readonly partial struct GcSound : System.IEquatable<GcSound>
