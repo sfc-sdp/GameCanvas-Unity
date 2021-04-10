@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-
 namespace GameCanvas
 {
     public readonly partial struct GcText : System.IEquatable<GcText>

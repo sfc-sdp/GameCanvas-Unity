@@ -8,13 +8,7 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Unity.Collections;
 using Unity.Mathematics;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace GameCanvas
