@@ -1,4 +1,8 @@
 # CHANGE LOG
+## 6.1.0
+### 機能追加
+- [#61](https://github.com/sfc-sdp/GameCanvas-Unity/issues/61), [#208](https://github.com/sfc-sdp/GameCanvas-Unity/pull/208) 角丸長方形の描画関数を追加
+
 ## 6.0.0
 ### 機能追加
 - [#188](https://github.com/sfc-sdp/GameCanvas-Unity/issues/188) null許容参照型に対応
