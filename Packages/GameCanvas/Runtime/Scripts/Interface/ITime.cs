@@ -2,7 +2,7 @@
 // <summary>GameCanvas for Unity</summary>
 // <author>Seibe TAKAHASHI</author>
 // <remarks>
-// (c) 2015-2021 Smart Device Programming.
+// (c) 2015-2022 Smart Device Programming.
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // </remarks>
@@ -74,7 +74,7 @@ namespace GameCanvas
 
         /// <summary>
         /// フレームレートの目標値を設定します。
-        /// 
+        ///
         /// 小数点以下を指定したい場合は、この関数の代わりに <see cref="SetFrameInterval"/> を使用してください。
         /// </summary>
         /// <param name="targetFrameRate">フレームレート（1秒あたりのフレーム数）の目標値</param>
