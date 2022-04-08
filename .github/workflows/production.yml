@@ -56,7 +56,6 @@ jobs:
         uses: brmenchl/dotnet-format@v1.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ env.DOTNET_FORMAT_VERSION }}
           action: "check"
           folder: ${{ env.GC_PACKAGE_PATH }}
           fail-fast: false
@@ -66,7 +65,6 @@ jobs:
         uses: brmenchl/dotnet-format@v1.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ env.DOTNET_FORMAT_VERSION }}
           action: "fix"
           folder: ${{ env.GC_PACKAGE_PATH }}
 
