@@ -1,4 +1,12 @@
 # CHANGE LOG
+## 6.1.2
+### 不具合修正
+- [#215](https://github.com/sfc-sdp/GameCanvas-Unity/issues/215) AppBuilderからWebGLビルドできない件の修正
+
+## 6.1.1
+### 仕様変更
+- Unity 2020.3.32f1 に更新
+
 ## 6.1.0
 ### 機能追加
 - [#61](https://github.com/sfc-sdp/GameCanvas-Unity/issues/61), [#208](https://github.com/sfc-sdp/GameCanvas-Unity/pull/208) 角丸長方形の描画関数を追加
