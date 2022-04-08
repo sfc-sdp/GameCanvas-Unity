@@ -3,17 +3,18 @@ on:
   pull_request:
     types: [opened, synchronize]
     branches: [master]
-    paths: "**.cs"
+    paths: ["**.cs"]
 jobs:
   dotnet-format:
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       DOTNET_VERSION: 5.0.x
+      DOTNET_FORMAT_VERSION: 5.1.250801
       GC_PACKAGE_PATH: ./Packages/GameCanvas/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
@@ -31,14 +32,14 @@ jobs:
 
       - name: Setup .NET Core SDK
         if: steps.check_folder.outputs.files_exists == 'true'
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Cache .NET Tools
         if: steps.check_folder.outputs.files_exists == 'true'
         id: dotnet_tools_cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${ env.DOTNET_ROOT }/tools
           key: ${{ runner.os }}-dotnet-tools-${{ env.DOTNET_VERSION }}
@@ -47,12 +48,12 @@ jobs:
 
       - name: Install dotnet-format
         if: steps.check_folder.outputs.files_exists == 'true'
-        run: dotnet tool install -g dotnet-format
+        run: dotnet tool install -g dotnet-format --version ${{ env.DOTNET_FORMAT_VERSION }}
 
       - name: DryRun dotnet-format
         if: steps.check_folder.outputs.files_exists == 'true'
         id: format
-        uses: brmenchl/dotnet-format@v1.0.2 # v1 にすると動かない
+        uses: brmenchl/dotnet-format@v1.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "check"
@@ -61,7 +62,7 @@ jobs:
 
       - name: Run dotnet-format
         if: steps.format.outputs.has-changes == 'true'
-        uses: brmenchl/dotnet-format@v1.0.2 # v1 にすると動かない
+        uses: brmenchl/dotnet-format@v1.0.2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           action: "fix"
@@ -87,14 +88,14 @@ jobs:
     strategy:
       matrix:
         unity-version:
-          - 2020.3.3f1
+          - 2020.3.32f1
     env:
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
       UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
     runs-on: ubuntu-latest
     container:
-      image: unityci/editor:ubuntu-${{ matrix.unity-version }}-linux-il2cpp-0
+      image: unityci/editor:ubuntu-${{ matrix.unity-version }}-linux-il2cpp-1
     steps:
       - uses: actions/checkout@v2
 
