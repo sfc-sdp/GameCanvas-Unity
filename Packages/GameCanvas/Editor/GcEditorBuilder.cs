@@ -165,8 +165,14 @@ namespace GameCanvas.Editor
                     EditorUserBuildSettings.symlinkLibraries = true;
                     break;
 
+                case GcRuntimePlatform.WebGL:
+                    PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
+                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.WebGL, ScriptingImplementation.IL2CPP);
+                    PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.WebGL, ApiCompatibilityLevel.NET_Standard_2_0);
+                    break;
+
                 default:
-                    return;
+                    throw new System.NotImplementedException($"[GameCanvas] {option.m_Platform} ターゲットのビルドスクリプトがありません");
             }
 
 
