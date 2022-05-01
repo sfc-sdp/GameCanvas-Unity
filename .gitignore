@@ -88,6 +88,7 @@ VSCode.*
 Assets/VSCode/Editor*
 CodeCoverage/
 ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+UserSettings/
 
 # Nodejs, npm
 node_modules/

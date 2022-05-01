@@ -88,7 +88,7 @@ jobs:
     strategy:
       matrix:
         unity-version:
-          - 2020.3.32f1
+          - 2021.3.1f1
     env:
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}

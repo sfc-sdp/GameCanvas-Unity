@@ -14,27 +14,16 @@ dotnet_style_require_accessibility_modifiers = omit_if_default
 dotnet_style_prefer_compound_assignment = false
 dotnet_style_object_initializer = true:silent
 
-csharp_prefer_simple_using_statement = false
-
+csharp_prefer_simple_using_statement = true
 csharp_prefer_braces = when_multiline
-
 csharp_preferred_modifier_order = public, private, protected, internal, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, volatile, async:suggestion
-
-csharp_style_var_elsewhere = false
-
+csharp_style_var_elsewhere = true
 csharp_style_expression_bodied_methods = when_on_single_line
 csharp_style_expression_bodied_constructors = when_on_single_line
 csharp_style_expression_bodied_operators = when_on_single_line
 csharp_style_expression_bodied_local_functions = when_on_single_line
-
 csharp_using_directive_placement = outside_namespace
-
 csharp_indent_case_contents_when_block = false
-
-# C#9
-csharp_style_prefer_pattern_matching = true:none
-csharp_style_prefer_not_pattern = true:none
-csharp_style_implicit_object_creation_when_type_is_apparent = true:none
 
 # Unity
 dotnet_diagnostic.UNT0008.severity = silent

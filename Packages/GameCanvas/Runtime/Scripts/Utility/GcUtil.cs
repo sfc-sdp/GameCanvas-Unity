@@ -29,7 +29,7 @@ namespace GameCanvas
         }
 
         public static void Memcpy<T>(in NativeList<T> from, NativeList<T> to)
-            where T : struct
+            where T : unmanaged
         {
             to.Length = from.Length;
             if (from.Length == 0) return;

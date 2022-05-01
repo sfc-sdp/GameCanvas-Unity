@@ -125,7 +125,7 @@ namespace GameCanvas
         {
             if (m_TypeToActors.TryGetValue(typeof(T), out var value))
             {
-                actors = value.AsReadOnlySpan<GcActor, T>();
+                actors = (T[])value.ToArray();
                 return true;
             }
             actors = default;
