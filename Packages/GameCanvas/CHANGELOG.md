@@ -1,11 +1,18 @@
 # CHANGE LOG
+## 6.2.0
+### 仕様変更
+- 推奨エディタバージョンを Unity 2021.3.11f1 に更新
+    - 内部で依存する各種パッケージのバージョンを更新
+    - .NET バージョンを .NET Standard 2.1 に変更
+    - ビルド可能な Android OS バージョンの下限を 5.1 に変更
+
 ## 6.1.2
 ### 不具合修正
 - [#215](https://github.com/sfc-sdp/GameCanvas-Unity/issues/215) AppBuilderからWebGLビルドできない件の修正
 
 ## 6.1.1
 ### 仕様変更
-- Unity 2020.3.32f1 に更新
+- 推奨エディタバージョンを Unity 2020.3.32f1 に更新
 
 ## 6.1.0
 ### 機能追加

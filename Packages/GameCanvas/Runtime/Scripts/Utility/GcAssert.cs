@@ -23,10 +23,12 @@ namespace GameCanvas
             set;
         } = true;
 
+#pragma warning disable CS8777
         public static void IsNotNull<T>([NotNull] T? obj) where T : class
         {
             if (obj is null) Assert($"{typeof(T).Name} is null");
         }
+#pragma warning restore CS8777
 
         public static void IsNull<T>(T? obj) where T : class
         {

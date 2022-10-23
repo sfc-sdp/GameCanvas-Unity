@@ -53,7 +53,7 @@ namespace GameCanvas.Engine
             => false;
 #endif // UNITY_EDITOR
 
-        public System.ReadOnlySpan<GcCameraDevice> CameraDevices => m_DeviceList.AsReadOnlySpan();
+        public System.ReadOnlySpan<GcCameraDevice> CameraDevices => m_DeviceList.ToArray();
 
         public bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)
         {
@@ -209,7 +209,7 @@ namespace GameCanvas.Engine
             InitCameraDevice();
             if (m_DeviceList.Count > 0)
             {
-                devices = m_DeviceList.AsReadOnlySpan();
+                devices = m_DeviceList.ToArray();
                 return true;
             }
             devices = default;

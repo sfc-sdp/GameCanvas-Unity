@@ -42,24 +42,6 @@ namespace GameCanvas
             }
         }
 
-        public static ReadOnlySpan<T> AsReadOnlySpan<T>(this List<T> self)
-        {
-            if (self is null || self.Count == 0)
-            {
-                return ReadOnlySpan<T>.Empty;
-            }
-            return new ReadOnlySpan<T>(Unsafe.As<Tuple<T[]>>(self).Item1, 0, self.Count);
-        }
-
-        public static ReadOnlySpan<T> AsReadOnlySpan<TBase, T>(this List<TBase> self) where T : TBase where TBase : class
-        {
-            if (self is null || self.Count == 0)
-            {
-                return ReadOnlySpan<T>.Empty;
-            }
-            return new ReadOnlySpan<T>(Unsafe.As<Tuple<T[]>>(self).Item1, 0, self.Count);
-        }
-
         public static Span<T> AsSpan<T>(this in NativeArray<T> self) where T : unmanaged
         {
             if (!self.IsCreated || self.Length == 0)
@@ -82,15 +64,6 @@ namespace GameCanvas
             {
                 return new Span<T>(self.GetUnsafePtr(), self.Length);
             }
-        }
-
-        public static Span<T> AsSpan<T>(this List<T> self)
-        {
-            if (self is null || self.Count == 0)
-            {
-                return Span<T>.Empty;
-            }
-            return new Span<T>(Unsafe.As<Tuple<T[]>>(self).Item1, 0, self.Count);
         }
     }
 }
