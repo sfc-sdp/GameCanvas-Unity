@@ -1,6 +1,6 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "6.2.0-pre.1",
+  "version": "6.2.0-pre.2",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
   "unity": "2021.3",
@@ -10,11 +10,11 @@
     "url": "https://github.com/sfc-sdp/GameCanvas-Unity"
   },
   "dependencies": {
-    "com.unity.collections": "1.2.3",
-    "com.unity.inputsystem": "1.3.0",
+    "com.unity.collections": "1.2.4",
+    "com.unity.inputsystem": "1.4.3",
     "com.unity.mathematics": "1.2.6",
-    "com.unity.scriptablebuildpipeline": "1.19.6",
-    "com.unity.test-framework": "1.1.31",
+    "com.unity.scriptablebuildpipeline": "1.20.2",
+    "com.unity.test-framework": "1.1.33",
     "com.unity.ugui": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.screencapture": "1.0.0",
