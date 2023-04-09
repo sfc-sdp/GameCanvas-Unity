@@ -1,6 +1,6 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
   "unity": "2021.3",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "com.unity.collections": "1.2.4",
-    "com.unity.inputsystem": "1.4.3",
+    "com.unity.inputsystem": "1.5.1",
     "com.unity.mathematics": "1.2.6",
     "com.unity.scriptablebuildpipeline": "1.20.2",
     "com.unity.test-framework": "1.1.33",
@@ -22,5 +22,28 @@
     "com.unity.modules.unitywebrequestaudio": "1.0.0",
     "com.unity.modules.unitywebrequesttexture": "1.0.0",
     "com.unity.modules.video": "1.0.0"
-  }
+  },
+  "license": "MIT License",
+  "samples": [
+      {
+          "displayName": "Acceleration",
+          "description": "An example of accelerometer.",
+          "path": "Samples~/Acceleration"
+      },
+      {
+          "displayName": "DeviceCamera",
+          "description": "An example of device camera.",
+          "path": "Samples~/DeviceCamera"
+      },
+      {
+          "displayName": "Geolocation",
+          "description": "An example of GNSS positioning.",
+          "path": "Samples~/Geolocation"
+      },
+      {
+          "displayName": "Networking",
+          "description": "An example of network communication.",
+          "path": "Samples~/Networking"
+      }
+  ]
 }
