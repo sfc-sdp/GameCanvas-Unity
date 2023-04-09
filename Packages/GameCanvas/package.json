@@ -22,5 +22,28 @@
     "com.unity.modules.unitywebrequestaudio": "1.0.0",
     "com.unity.modules.unitywebrequesttexture": "1.0.0",
     "com.unity.modules.video": "1.0.0"
-  }
+  },
+  "license": "MIT License",
+  "samples": [
+      {
+          "displayName": "Acceleration",
+          "description": "An example of accelerometer.",
+          "path": "Samples~/Acceleration"
+      },
+      {
+          "displayName": "DeviceCamera",
+          "description": "An example of device camera.",
+          "path": "Samples~/DeviceCamera"
+      },
+      {
+          "displayName": "Geolocation",
+          "description": "An example of GNSS positioning.",
+          "path": "Samples~/Geolocation"
+      },
+      {
+          "displayName": "Networking",
+          "description": "An example of network communication.",
+          "path": "Samples~/Networking"
+      }
+  ]
 }
