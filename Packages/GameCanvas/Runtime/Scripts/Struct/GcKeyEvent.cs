@@ -59,17 +59,11 @@ namespace GameCanvas
             && Phase == other.Phase
             && Frame == other.Frame;
 
-        public override bool Equals(object obj) => (obj is GcKeyEvent other) && Equals(other);
+        public override bool Equals(object obj)
+            => (obj is GcKeyEvent other) && Equals(other);
 
         public override int GetHashCode()
-        {
-            int hashCode = -756422210;
-            hashCode = hashCode * -1521134295 + Frame.GetHashCode();
-            hashCode = hashCode * -1521134295 + Key.GetHashCode();
-            hashCode = hashCode * -1521134295 + Phase.GetHashCode();
-            hashCode = hashCode * -1521134295 + Time.GetHashCode();
-            return hashCode;
-        }
+            => System.HashCode.Combine(Frame, Key, Phase, Time);
 
         public override string ToString()
                     => $"{nameof(GcKeyEvent)}: {{ key: {Key}, frame: {Frame}, phase: {Phase} }}";

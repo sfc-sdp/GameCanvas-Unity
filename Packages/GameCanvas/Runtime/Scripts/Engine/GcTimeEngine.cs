@@ -25,7 +25,7 @@ namespace GameCanvas.Engine
         int m_FrameCount;
         float m_SincePrevFrame;
         float m_SinceStartup;
-        System.DateTimeOffset m_StartupTime;
+        readonly System.DateTimeOffset m_StartupTime;
         double m_TargetFrameInterval;
         bool m_VSyncEnabled;
 #pragma warning restore IDE0032

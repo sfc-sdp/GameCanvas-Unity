@@ -86,7 +86,7 @@ namespace GameCanvas.Engine
                 return null;
             }
 
-            texture = new WebCamTexture(camera.DeviceName, request.Size.x, request.Size.y, request.RefreshRate);
+            texture = new WebCamTexture(camera.DeviceName, request.Size.x, request.Size.y, Mathf.RoundToInt((float)request.RefreshRate.value));
             if (texture != null)
             {
                 m_TextureDict.Add(camera.DeviceName, texture);

@@ -23,7 +23,7 @@ namespace GameCanvas
         //----------------------------------------------------------
 
         public static readonly GcGeolocationEvent Null = default;
-        internal static readonly System.DateTimeOffset EpocTime = new System.DateTimeOffset(1970, 1, 1, 0, 0, 0, System.TimeSpan.Zero);
+        internal static readonly System.DateTimeOffset EpocTime = new(1970, 1, 1, 0, 0, 0, System.TimeSpan.Zero);
 
         /// <summary>
         /// 水平精度（メートル単位）

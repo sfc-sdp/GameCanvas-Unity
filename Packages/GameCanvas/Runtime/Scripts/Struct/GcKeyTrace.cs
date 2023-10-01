@@ -51,21 +51,15 @@ namespace GameCanvas
             => left.Equals(right);
 
         public readonly bool Equals(GcKeyTrace other)
-                            => Begin.Equals(other.Begin)
+            => Begin.Equals(other.Begin)
             && FrameCount.Equals(other.FrameCount)
             && Duration.Equals(other.Duration);
 
-        public readonly override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
             => (obj is GcKeyTrace other) && Equals(other);
 
-        public readonly override int GetHashCode()
-        {
-            int hashCode = -110147384;
-            hashCode = hashCode * -1521134295 + Begin.GetHashCode();
-            hashCode = hashCode * -1521134295 + Duration.GetHashCode();
-            hashCode = hashCode * -1521134295 + FrameCount.GetHashCode();
-            return hashCode;
-        }
+        public override readonly int GetHashCode()
+            => System.HashCode.Combine(Begin, Duration, FrameCount);
         #endregion
 
         //----------------------------------------------------------

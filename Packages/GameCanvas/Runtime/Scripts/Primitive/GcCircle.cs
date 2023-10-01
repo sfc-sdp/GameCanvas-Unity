@@ -63,14 +63,14 @@ namespace GameCanvas
 
         public static bool operator ==(GcCircle lh, GcCircle rh) => lh.Equals(rh);
 
-        public bool Equals(GcCircle other)
+        public readonly bool Equals(GcCircle other)
             => Position.Equals(other.Position) && Radius.Equals(other.Radius);
 
-        public override bool Equals(object obj) => (obj is GcCircle other) && Equals(other);
+        public override readonly bool Equals(object obj) => (obj is GcCircle other) && Equals(other);
 
-        public override int GetHashCode() => Position.GetHashCode() ^ Radius.GetHashCode();
+        public override readonly int GetHashCode() => Position.GetHashCode() ^ Radius.GetHashCode();
 
-        public override string ToString()
+        public override readonly string ToString()
             => $"{nameof(GcCircle)}: {{ x: {Position.x}, y: {Position.y}, radius: {Radius} }}";
 
         #endregion

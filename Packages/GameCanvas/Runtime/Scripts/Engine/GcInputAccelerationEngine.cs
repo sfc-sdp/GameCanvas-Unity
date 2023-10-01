@@ -195,7 +195,7 @@ namespace GameCanvas.Engine
 
             if (m_EventList.Length > 0)
             {
-                m_LastAccelerationEvent = m_EventList[m_EventList.Length - 1];
+                m_LastAccelerationEvent = m_EventList[^1];
             }
         }
         #endregion

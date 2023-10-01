@@ -62,13 +62,7 @@ namespace GameCanvas
 
         public override bool Equals(object obj) => (obj is GcAccelerationEvent other) && Equals(other);
 
-        public override int GetHashCode()
-        {
-            int hashCode = -1216137635;
-            hashCode = hashCode * -1521134295 + Time.GetHashCode();
-            hashCode = hashCode * -1521134295 + RawAcceleration.GetHashCode();
-            return hashCode;
-        }
+        public override int GetHashCode() => System.HashCode.Combine(Time, RawAcceleration);
 
         public override string ToString()
             => $"{nameof(GcAccelerationEvent)}: {{ x: {Acceleration.x:0.00}, y: {Acceleration.y:0.00}, z: {Acceleration.z}, dt: {DeltaTime:0.00} }}";

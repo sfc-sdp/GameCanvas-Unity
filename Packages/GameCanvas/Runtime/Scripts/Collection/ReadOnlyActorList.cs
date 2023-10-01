@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace GameCanvas
 {
-    public struct ReadOnlyActorList<T>
+    public readonly struct ReadOnlyActorList<T>
         : ICollection<T>, IEnumerable<T>, IList<T>, IReadOnlyCollection<T>, IReadOnlyList<T>
         where T : GcActor
     {
@@ -34,9 +34,9 @@ namespace GameCanvas
                 m_Current = null;
             }
 
-            public T Current => m_Current ?? throw new System.InvalidOperationException();
-            object? IEnumerator.Current => m_Current;
-            public void Dispose() { }
+            public readonly T Current => m_Current ?? throw new System.InvalidOperationException();
+            readonly object? IEnumerator.Current => m_Current;
+            public readonly void Dispose() { }
             public bool MoveNext()
             {
                 if (m_List != null && ++m_Index < m_List.Count)
@@ -67,24 +67,24 @@ namespace GameCanvas
         #region 公開関数
         //----------------------------------------------------------
 
-        public int Count => (m_List == null) ? 0 : m_List.Count;
-        public bool IsReadOnly => true;
+        public readonly int Count => (m_List == null) ? 0 : m_List.Count;
+        public readonly bool IsReadOnly => true;
 
         public T this[int index]
         {
-            get => (T)m_List[index];
+            readonly get => (T)m_List[index];
             set => throw new System.NotSupportedException();
         }
         public void Add(T item) => throw new System.NotSupportedException();
         public void Clear() => throw new System.NotSupportedException();
-        public bool Contains(T item) => (m_List != null) && m_List.Contains(item);
-        public void CopyTo(T[] array, int arrayIndex) => m_List?.CopyTo(array, arrayIndex);
-        public Enumerator GetEnumerator() => new Enumerator(m_List);
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-        IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
-        public int IndexOf(T item) => (m_List == null) ? -1 : m_List.IndexOf(item);
+        public readonly bool Contains(T item) => (m_List != null) && m_List.Contains(item);
+        public readonly void CopyTo(T[] array, int arrayIndex) => m_List?.CopyTo(array, arrayIndex);
+        public readonly Enumerator GetEnumerator() => new(m_List);
+        readonly IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        readonly IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
+        public readonly int IndexOf(T item) => (m_List == null) ? -1 : m_List.IndexOf(item);
         public void Insert(int index, T item) => throw new System.NotSupportedException();
-        public bool Remove(T item) => throw new System.NotSupportedException();
+        public readonly bool Remove(T item) => throw new System.NotSupportedException();
         public void RemoveAt(int index) => throw new System.NotSupportedException();
 
         #endregion

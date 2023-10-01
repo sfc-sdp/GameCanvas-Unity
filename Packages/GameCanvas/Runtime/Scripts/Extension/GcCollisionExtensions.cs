@@ -187,7 +187,7 @@ namespace GameCanvas
             }
             throw new System.NotImplementedException();
 
-            bool IntersectsLS(in GcLine line, in GcLine segment)
+            static bool IntersectsLS(in GcLine line, in GcLine segment)
             {
                 var d = line.Direction;
                 return GcMath.Cross(segment.Origin - line.Origin, d) * GcMath.Cross(segment.End() - line.Origin, d) < math.EPSILON;
@@ -243,7 +243,7 @@ namespace GameCanvas
             }
             throw new System.NotImplementedException();
 
-            bool IntersectsLS(in GcLine line, in GcLine segment, out float2 result)
+            static bool IntersectsLS(in GcLine line, in GcLine segment, out float2 result)
             {
                 if (segment.Intersects(line))
                 {

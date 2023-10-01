@@ -72,19 +72,14 @@ namespace GameCanvas
             && GcMath.AlmostSame(PointScreen, other.PointScreen)
             && GcMath.AlmostSame(Time, other.Time);
 
-        public readonly override bool Equals(object obj) => (obj is GcPointerEvent other) && Equals(other);
+        public override readonly bool Equals(object obj) => (obj is GcPointerEvent other) && Equals(other);
 
-        public readonly override int GetHashCode()
+        public override readonly int GetHashCode()
         {
-            int hashCode = 248693243;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + Phase.GetHashCode();
-            hashCode = hashCode * -1521134295 + PointScreen.GetHashCode();
-            hashCode = hashCode * -1521134295 + Time.GetHashCode();
-            return hashCode;
+            return System.HashCode.Combine(Id, Phase, PointScreen, Time);
         }
 
-        public readonly override string ToString()
+        public override readonly string ToString()
             => $"{nameof(GcPointerEvent)}: {{ x: {Point.x:0.0}, y: {Point.y:0.0}, frame: {Frame}, phase: {Phase} }}";
         #endregion
 
