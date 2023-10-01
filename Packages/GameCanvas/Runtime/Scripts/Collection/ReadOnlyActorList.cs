@@ -71,7 +71,8 @@ namespace GameCanvas
         public readonly bool IsReadOnly => true;
 
         public T this[int index]
-        { readonly get => (T)m_List[index];
+        {
+            readonly get => (T)m_List[index];
             set => throw new System.NotSupportedException();
         }
         public void Add(T item) => throw new System.NotSupportedException();
