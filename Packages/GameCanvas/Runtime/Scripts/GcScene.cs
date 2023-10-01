@@ -23,10 +23,10 @@ namespace GameCanvas
         #region 変数
         //----------------------------------------------------------
 
-        private readonly List<GcActor> m_ActorList = new List<GcActor>();
-        private readonly List<GcActor> m_AddActorList = new List<GcActor>();
-        private readonly List<GcActor> m_RemoveActorList = new List<GcActor>();
-        private readonly Dictionary<System.Type, List<GcActor>> m_TypeToActors = new Dictionary<System.Type, List<GcActor>>();
+        private readonly List<GcActor> m_ActorList = new();
+        private readonly List<GcActor> m_AddActorList = new();
+        private readonly List<GcActor> m_RemoveActorList = new();
+        private readonly Dictionary<System.Type, List<GcActor>> m_TypeToActors = new();
 
         private uint m_NextActorIndex;
 #pragma warning disable IDE1006

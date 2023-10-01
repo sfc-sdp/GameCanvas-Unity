@@ -19,7 +19,7 @@ namespace GameCanvas
         #region 変数
         //----------------------------------------------------------
 
-        public static readonly GcTapSettings Default = new GcTapSettings(25f, 0.125f);
+        public static readonly GcTapSettings Default = new(25f, 0.125f);
 
         public float MaxDistance;
 
@@ -36,16 +36,16 @@ namespace GameCanvas
             MaxDistance = maxDistance;
         }
 
-        public bool Equals(GcTapSettings other)
+        public readonly bool Equals(GcTapSettings other)
             => MaxDistance.Equals(other.MaxDistance) && MaxDuration.Equals(other.MaxDuration);
 
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
             => (obj is GcTapSettings other) && Equals(other);
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
             => MaxDistance.GetHashCode() ^ MaxDuration.GetHashCode();
 
-        public override string ToString()
+        public override readonly string ToString()
             => $"{nameof(GcTapSettings)}: {{ {nameof(MaxDistance)}: {MaxDistance}, {nameof(MaxDuration)}: {MaxDuration} }}";
         #endregion
 
@@ -53,7 +53,7 @@ namespace GameCanvas
         #region 内部関数
         //----------------------------------------------------------
 
-        internal bool IsTap(in GcPointerTrace trace)
+        internal readonly bool IsTap(in GcPointerTrace trace)
             => (trace.Duration <= MaxDuration) && (trace.Distance <= MaxDistance);
 
         #endregion

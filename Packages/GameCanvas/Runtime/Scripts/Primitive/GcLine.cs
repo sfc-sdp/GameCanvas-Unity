@@ -102,17 +102,17 @@ namespace GameCanvas
         /// <param name="p0">始点</param>
         /// <param name="p1">終点</param>
         public static GcLine Segment(in float2 p0, in float2 p1)
-            => new GcLine(p0, math.distance(p0, p1), math.normalizesafe(p1 - p0));
+            => new(p0, math.distance(p0, p1), math.normalizesafe(p1 - p0));
 
-        public bool Equals(GcLine other)
+        public readonly bool Equals(GcLine other)
             => Origin.Equals(other.Origin) && Length.Equals(other.Length) && Direction.Equals(other.Direction);
 
-        public override bool Equals(object obj) => (obj is GcLine other) && Equals(other);
+        public override readonly bool Equals(object obj) => (obj is GcLine other) && Equals(other);
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
             => Origin.GetHashCode() ^ Length.GetHashCode() ^ Direction.GetHashCode();
 
-        public override string ToString()
+        public override readonly string ToString()
             => $"{nameof(GcLine)}: {{ Origin: ({Origin.x}, {Origin.y}), Angle: {this.Degree()}, Len: ({Length}) }}";
 
         #endregion

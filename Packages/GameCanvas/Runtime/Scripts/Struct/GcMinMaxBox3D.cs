@@ -51,7 +51,7 @@ namespace GameCanvas
         /// <summary>
         /// 中心
         /// </summary>
-        public Vector3 Center => new Vector3(CenterX, CenterY, CenterZ);
+        public Vector3 Center => new(CenterX, CenterY, CenterZ);
 
         public float CenterX => (MinX + MaxX) * 0.5f;
 
@@ -69,14 +69,14 @@ namespace GameCanvas
         /// </summary>
         public float Height => (MaxY - MinY);
 
-        public Vector3 Max => new Vector3(MaxX, MaxY, MaxZ);
+        public Vector3 Max => new(MaxX, MaxY, MaxZ);
 
-        public Vector3 Min => new Vector3(MinX, MinY, MinZ);
+        public Vector3 Min => new(MinX, MinY, MinZ);
 
         /// <summary>
         /// 大きさ
         /// </summary>
-        public Vector3 Size => new Vector3(Width, Height, Depth);
+        public Vector3 Size => new(Width, Height, Depth);
 
         /// <summary>
         /// 幅

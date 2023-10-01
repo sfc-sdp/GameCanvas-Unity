@@ -243,10 +243,8 @@ namespace GameCanvas.Editor
         {
             var manifestPath = Path.Combine(path, "src/main/AndroidManifest.xml");
 
-            using (var manifest = AndroidManifest.Load(manifestPath))
-            {
-                manifest.SkipPermissionsDialog(true);
-            }
+            using var manifest = AndroidManifest.Load(manifestPath);
+            manifest.SkipPermissionsDialog(true);
         }
 #endif // UNITY_ANDROID
 

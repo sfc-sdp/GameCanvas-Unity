@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -93,21 +92,21 @@ namespace GameCanvas
             Radian = radian;
         }
 
-        public static explicit operator GcRect(Rect rect) => new GcRect(rect);
+        public static explicit operator GcRect(Rect rect) => new(rect);
 
         public static bool operator !=(GcRect lh, GcRect rh) => !lh.Equals(rh);
 
         public static bool operator ==(GcRect lh, GcRect rh) => lh.Equals(rh);
 
-        public bool Equals(GcRect other)
+        public readonly bool Equals(GcRect other)
             => Position.Equals(other.Position) && Size.Equals(other.Size) && Radian.Equals(other.Radian);
 
-        public override bool Equals(object obj) => (obj is GcRect other) && Equals(other);
+        public override readonly bool Equals(object obj) => (obj is GcRect other) && Equals(other);
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
             => Position.GetHashCode() ^ Size.GetHashCode() ^ Radian.GetHashCode();
 
-        public override string ToString()
+        public override readonly string ToString()
             => $"{nameof(GcRect)}: {{ x: {Position.x}, y: {Position.y}, w: {Size.x}, h: {Size.y}, angle: {this.Degree()} }}";
 
         #endregion

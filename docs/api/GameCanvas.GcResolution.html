@@ -62,13 +62,13 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="GameCanvas_GcResolution__ctor_" data-uid="GameCanvas.GcResolution.#ctor*"></a>
-  <h4 id="GameCanvas_GcResolution__ctor_System_Int32__System_Int32__System_Int32__" data-uid="GameCanvas.GcResolution.#ctor(System.Int32@,System.Int32@,System.Int32@)">GcResolution(Int32, Int32, Int32)</h4>
+  <h4 id="GameCanvas_GcResolution__ctor_System_Int32_System_Int32_UnityEngine_RefreshRate__" data-uid="GameCanvas.GcResolution.#ctor(System.Int32,System.Int32,UnityEngine.RefreshRate@)">GcResolution(Int32, Int32, RefreshRate)</h4>
   <div class="markdown level1 summary"><p>コンストラクタ</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcResolution(in int width, in int height, in int refreshRate)</code></pre>
+    <pre><code class="lang-csharp hljs">public GcResolution(int width, int height, in RefreshRate refreshRate)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -91,20 +91,20 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="xref">UnityEngine.RefreshRate</span></td>
         <td><span class="parametername">refreshRate</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="GameCanvas_GcResolution__ctor_" data-uid="GameCanvas.GcResolution.#ctor*"></a>
-  <h4 id="GameCanvas_GcResolution__ctor_Unity_Mathematics_int2__System_Int32__" data-uid="GameCanvas.GcResolution.#ctor(Unity.Mathematics.int2@,System.Int32@)">GcResolution(int2, Int32)</h4>
+  <h4 id="GameCanvas_GcResolution__ctor_Unity_Mathematics_int2__UnityEngine_RefreshRate__" data-uid="GameCanvas.GcResolution.#ctor(Unity.Mathematics.int2@,UnityEngine.RefreshRate@)">GcResolution(int2, RefreshRate)</h4>
   <div class="markdown level1 summary"><p>コンストラクタ</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcResolution(in int2 size, in int refreshRate)</code></pre>
+    <pre><code class="lang-csharp hljs">public GcResolution(in int2 size, in RefreshRate refreshRate)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -122,7 +122,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="xref">UnityEngine.RefreshRate</span></td>
         <td><span class="parametername">refreshRate</span></td>
         <td></td>
       </tr>
@@ -136,7 +136,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly int RefreshRate</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly RefreshRate RefreshRate</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,7 +148,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
+        <td><span class="xref">UnityEngine.RefreshRate</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -408,46 +408,6 @@
     </tbody>
   </table>
   <a id="GameCanvas_GcResolution_op_Explicit_" data-uid="GameCanvas.GcResolution.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcResolution_op_Explicit_GameCanvas_GcResolution__Unity_Mathematics_int3" data-uid="GameCanvas.GcResolution.op_Explicit(GameCanvas.GcResolution)~Unity.Mathematics.int3">Explicit(GcResolution to int3)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static explicit operator int3(GcResolution src)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcResolution.html">GcResolution</a></td>
-        <td><span class="parametername">src</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Unity.Mathematics.int3</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcResolution_op_Explicit_" data-uid="GameCanvas.GcResolution.op_Explicit*"></a>
   <h4 id="GameCanvas_GcResolution_op_Explicit_GameCanvas_GcResolution__UnityEngine_Resolution" data-uid="GameCanvas.GcResolution.op_Explicit(GameCanvas.GcResolution)~UnityEngine.Resolution">Explicit(GcResolution to Resolution)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
@@ -483,46 +443,6 @@
     <tbody>
       <tr>
         <td><span class="xref">UnityEngine.Resolution</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcResolution_op_Explicit_" data-uid="GameCanvas.GcResolution.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcResolution_op_Explicit_Unity_Mathematics_int3__GameCanvas_GcResolution" data-uid="GameCanvas.GcResolution.op_Explicit(Unity.Mathematics.int3)~GameCanvas.GcResolution">Explicit(int3 to GcResolution)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static explicit operator GcResolution(int3 src)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Unity.Mathematics.int3</span></td>
-        <td><span class="parametername">src</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcResolution.html">GcResolution</a></td>
         <td></td>
       </tr>
     </tbody>

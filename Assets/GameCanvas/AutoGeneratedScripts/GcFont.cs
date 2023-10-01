@@ -14,6 +14,6 @@ namespace GameCanvas
     public readonly partial struct GcFont : System.IEquatable<GcFont>
     {
         internal const int __Length__ = 1;
-        public static readonly GcFont DefaultFont = new GcFont("GcFontDefaultFont");
+        public static readonly GcFont DefaultFont = new("GcFontDefaultFont");
     }
 }

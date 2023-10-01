@@ -49,7 +49,7 @@ namespace GameCanvas
         #region 公開関数
         //----------------------------------------------------------
 
-        public bool Equals(GcPointerTrace other)
+        public readonly bool Equals(GcPointerTrace other)
             => Begin.Equals(other.Begin)
             && FrameCount.Equals(other.FrameCount)
             && Distance.Equals(other.Distance)

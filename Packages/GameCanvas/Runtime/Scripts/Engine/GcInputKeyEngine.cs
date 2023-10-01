@@ -373,26 +373,24 @@ namespace GameCanvas.Engine
             }
             m_History.Clear();
 
-            using (var activeArray = m_KeyTraceDict.GetValueArray(Allocator.Temp))
+            using var activeArray = m_KeyTraceDict.GetValueArray(Allocator.Temp);
+            for (var i = 0; i < activeArray.Length; i++)
             {
-                for (var i = 0; i < activeArray.Length; i++)
-                {
-                    var t = activeArray[i];
-                    if (t.Begin.Frame == frame) continue;
+                var t = activeArray[i];
+                if (t.Begin.Frame == frame) continue;
 
-                    // Hold Event
-                    var key = t.Begin.Key;
-                    var time = m_Context.Time.TimeSinceStartup;
-                    var e = new GcKeyEvent(key, GcKeyEventPhase.Hold, frame, time);
-                    AddKeyEvent(e);
-                    m_KeyEventListOnlyHold.Add(e);
+                // Hold Event
+                var key = t.Begin.Key;
+                var time = m_Context.Time.TimeSinceStartup;
+                var e = new GcKeyEvent(key, GcKeyEventPhase.Hold, frame, time);
+                AddKeyEvent(e);
+                m_KeyEventListOnlyHold.Add(e);
 
-                    t.Current = e;
-                    t.FrameCount = t.Begin.Frame - frame + 1;
-                    t.Duration = t.Begin.Time - time;
-                    m_KeyTraceDict[(int)key] = t;
-                    m_KeyTraceListOnlyHold.Add(t);
-                }
+                t.Current = e;
+                t.FrameCount = t.Begin.Frame - frame + 1;
+                t.Duration = t.Begin.Time - time;
+                m_KeyTraceDict[(int)key] = t;
+                m_KeyTraceListOnlyHold.Add(t);
             }
 
             void AddKeyEvent(GcKeyEvent e)

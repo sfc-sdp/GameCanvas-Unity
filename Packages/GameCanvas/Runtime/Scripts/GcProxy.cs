@@ -120,7 +120,7 @@ namespace GameCanvas
         public GcResolution CanvasResolution
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new GcResolution(m_Context.Graphics.CanvasSize, m_Context.Time.TargetFrameRate);
+            get => new(m_Context.Graphics.CanvasSize, new() { denominator = 1, numerator = (uint)m_Context.Time.TargetFrameRate });
         }
 
         /// <inheritdoc/>
@@ -159,70 +159,70 @@ namespace GameCanvas
         public Color ColorAqua
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(0.5f, 0.5f, 1f);
+            get => new(0.5f, 0.5f, 1f);
         }
 
         /// <inheritdoc/>
         public Color ColorBlack
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(0f, 0f, 0f);
+            get => new(0f, 0f, 0f);
         }
 
         /// <inheritdoc/>
         public Color ColorBlue
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(0f, 0f, 1f);
+            get => new(0f, 0f, 1f);
         }
 
         /// <inheritdoc/>
         public Color ColorCyan
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(0f, 1f, 1f);
+            get => new(0f, 1f, 1f);
         }
 
         /// <inheritdoc/>
         public Color ColorGray
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(0.5f, 0.5f, 0.5f);
+            get => new(0.5f, 0.5f, 0.5f);
         }
 
         /// <inheritdoc/>
         public Color ColorGreen
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(0f, 1f, 0f);
+            get => new(0f, 1f, 0f);
         }
 
         /// <inheritdoc/>
         public Color ColorPurple
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(1f, 0f, 1f);
+            get => new(1f, 0f, 1f);
         }
 
         /// <inheritdoc/>
         public Color ColorRed
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(1f, 0f, 0f);
+            get => new(1f, 0f, 0f);
         }
 
         /// <inheritdoc/>
         public Color ColorWhite
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(1f, 1f, 1f);
+            get => new(1f, 1f, 1f);
         }
 
         /// <inheritdoc/>
         public Color ColorYellow
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => new Color(1f, 1f, 0f);
+            get => new(1f, 1f, 0f);
         }
 
         /// <inheritdoc/>

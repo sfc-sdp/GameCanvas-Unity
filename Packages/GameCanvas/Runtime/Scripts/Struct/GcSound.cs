@@ -12,7 +12,7 @@ namespace GameCanvas
 {
     public readonly partial struct GcSound : System.IEquatable<GcSound>
     {
-        internal static readonly GcSound External = new GcSound("@External");
+        internal static readonly GcSound External = new("@External");
         internal static readonly GcSound Null = default;
         internal readonly string m_Path;
 

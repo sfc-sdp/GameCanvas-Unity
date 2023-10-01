@@ -15,15 +15,15 @@ namespace GameCanvas
     {
         public static string GetVolumeKey(this GcSoundTrack track)
         {
-            switch (track)
+            return track switch
             {
-                case GcSoundTrack.BGM1: return "VolumeBGM1";
-                case GcSoundTrack.BGM2: return "VolumeBGM2";
-                case GcSoundTrack.BGM3: return "VolumeBGM3";
-                case GcSoundTrack.SE: return "VolumeSE";
-                case GcSoundTrack.Master: return "VolumeMaster";
-                default: throw new System.NotImplementedException();
-            }
+                GcSoundTrack.BGM1 => "VolumeBGM1",
+                GcSoundTrack.BGM2 => "VolumeBGM2",
+                GcSoundTrack.BGM3 => "VolumeBGM3",
+                GcSoundTrack.SE => "VolumeSE",
+                GcSoundTrack.Master => "VolumeMaster",
+                _ => throw new System.NotImplementedException(),
+            };
         }
     }
 }

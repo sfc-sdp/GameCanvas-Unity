@@ -26,7 +26,7 @@ namespace GameCanvas
         /// <summary>
         /// リフレッシュレート（1秒間の更新回数）
         /// </summary>
-        public readonly int RefreshRate;
+        public readonly RefreshRate RefreshRate;
 
         /// <summary>
         /// 解像度
@@ -41,7 +41,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public GcResolution(in int width, in int height, in int refreshRate)
+        public GcResolution(int width, int height, in RefreshRate refreshRate)
         {
             Size = new int2(width, height);
             RefreshRate = refreshRate;
@@ -50,7 +50,7 @@ namespace GameCanvas
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public GcResolution(in int2 size, in int refreshRate)
+        public GcResolution(in int2 size, in RefreshRate refreshRate)
         {
             Size = size;
             RefreshRate = refreshRate;
@@ -74,13 +74,9 @@ namespace GameCanvas
             get => Size.x;
         }
 
-        public static explicit operator GcResolution(int3 src) => new GcResolution(src.x, src.y, src.z);
+        public static explicit operator GcResolution(Resolution src) => new(src.width, src.height, src.refreshRateRatio);
 
-        public static explicit operator GcResolution(Resolution src) => new GcResolution(src.width, src.height, src.refreshRate);
-
-        public static explicit operator int3(GcResolution src) => new int3(src.Size, src.RefreshRate);
-
-        public static explicit operator Resolution(GcResolution src) => new Resolution { width = src.Size.x, height = src.Size.y, refreshRate = src.RefreshRate };
+        public static explicit operator Resolution(GcResolution src) => new() { width = src.Size.x, height = src.Size.y, refreshRateRatio = src.RefreshRate };
 
         public static bool operator !=(GcResolution lh, GcResolution rh) => !lh.Equals(rh);
 
@@ -92,10 +88,10 @@ namespace GameCanvas
 
         public override bool Equals(object obj) => (obj is GcResolution other) && Equals(other);
 
-        public override int GetHashCode() => Size.x ^ Size.y ^ RefreshRate;
+        public override int GetHashCode() => System.HashCode.Combine(Size, RefreshRate);
 
         public override string ToString()
-            => $"{nameof(GcResolution)}: {{ Size: {Size.x}x{Size.y}, RefrashRate: {RefreshRate}Hz }}";
+            => $"{nameof(GcResolution)}: {{ Size: {Size.x}x{Size.y}, RefrashRate: {RefreshRate.value:0.00}Hz }}";
         #endregion
     }
 }

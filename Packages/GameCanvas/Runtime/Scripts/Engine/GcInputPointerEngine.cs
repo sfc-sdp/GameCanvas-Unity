@@ -464,7 +464,7 @@ namespace GameCanvas.Engine
             if (m_PointerList.Length != 0)
             {
                 //m_PointerList.Sort();
-                m_LastPointer = m_PointerList[m_PointerList.Length - 1];
+                m_LastPointer = m_PointerList[^1];
             }
 
             static void UpdateTrace(ref GcPointerTrace t, in GcPointerEvent curr)

@@ -70,11 +70,9 @@ namespace GameCanvas.Editor
 
         public void Save()
         {
-            using (var writer = new XmlTextWriter(m_Path, new UTF8Encoding(false)))
-            {
-                writer.Formatting = Formatting.Indented;
-                Save(writer);
-            }
+            using var writer = new XmlTextWriter(m_Path, new UTF8Encoding(false));
+            writer.Formatting = Formatting.Indented;
+            Save(writer);
         }
 
         public void SkipPermissionsDialog(in bool skip)

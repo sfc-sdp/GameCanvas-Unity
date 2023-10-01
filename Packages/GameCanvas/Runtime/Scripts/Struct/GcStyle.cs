@@ -17,7 +17,7 @@ namespace GameCanvas
     /// </summary>
     public struct GcStyle : System.IEquatable<GcStyle>
     {
-        public static readonly GcStyle Default = new GcStyle
+        public static readonly GcStyle Default = new()
         {
             CircleResolution = 24,
             Color = Color.black,
@@ -38,7 +38,7 @@ namespace GameCanvas
         public GcAnchor StringAnchor;
         public float CornerRadius;
 
-        public bool Equals(GcStyle other)
+        public readonly bool Equals(GcStyle other)
             => CircleResolution.Equals(other.CircleResolution)
             && Color.Equals(other.Color)
             && FontSize.Equals(other.FontSize)
@@ -48,10 +48,10 @@ namespace GameCanvas
             && (StringAnchor == other.StringAnchor)
             && (CornerRadius == other.CornerRadius);
 
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object obj)
             => (obj is GcStyle other) && Equals(other);
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
             => CircleResolution.GetHashCode()
             ^ Color.GetHashCode()
             ^ FontSize.GetHashCode()

@@ -23,9 +23,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Swap<T>(ref T a, ref T b)
         {
-            var temp = a;
-            a = b;
-            b = temp;
+            (b, a) = (a, b);
         }
 
         public static void Memcpy<T>(in NativeList<T> from, NativeList<T> to)
