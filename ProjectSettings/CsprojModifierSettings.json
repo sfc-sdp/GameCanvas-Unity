@@ -1,0 +1,1 @@
+{"AdditionalImports":[{"Path":"Packages/GameCanvas/LangVersion.props","Position":2}],"AdditionalImportsAdditionalProjects":["Game.csproj","GameCanvas.csproj","GameCanvas.Editor.csproj","GameCanvas.ScriptableObject.csproj","GameCanvas.Tests.csproj"],"EnableAddAnalyzerReferences":false,"AddAnalyzerReferencesAdditionalProjects":[]}
