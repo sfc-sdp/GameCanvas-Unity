@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.cysharp.csprojmodifier": {
+      "version": "file:CsprojModifier",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.13",
       "depth": 2,
