@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -42,7 +42,7 @@ namespace CsprojModifier.Editor.Features
                 else
                 {
                     // HACK: Make it look like a dummy file has been added.
-                    CodeEditor.CurrentEditor.SyncIfNeeded(new [] { "RegenerateProjectFeature.cs" }, Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>());
+                    CodeEditor.CurrentEditor.SyncIfNeeded(new[] { "RegenerateProjectFeature.cs" }, Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>(), Array.Empty<string>());
                 }
             }
         }

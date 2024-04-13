@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace CsprojModifier.Editor
 
         [SettingsProvider]
         public static SettingsProvider Create()
-            => new CsprojModifierSettingsProvider("Project/Editor/C# Project Modifier", SettingsScope.Project, new []{ "Analyzer", "C#", "csproj", "Project", "Import" } /* TODO */);
+            => new CsprojModifierSettingsProvider("Project/Editor/C# Project Modifier", SettingsScope.Project, new[] { "Analyzer", "C#", "csproj", "Project", "Import" } /* TODO */);
 
         public override void OnActivate(string searchContext, VisualElement rootElement)
         {
