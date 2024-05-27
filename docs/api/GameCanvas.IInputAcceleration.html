@@ -1,341 +1,454 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IInputAcceleration
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IInputAcceleration
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Interface IInputAcceleration | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IInputAcceleration | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_IInputAcceleration.md&amp;value=---%0Auid%3A%20GameCanvas.IInputAcceleration%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.IInputAcceleration">
-  
-  
-  <h1 id="GameCanvas_IInputAcceleration" data-uid="GameCanvas.IInputAcceleration" class="text-break">Interface IInputAcceleration
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_IInputAcceleration_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IInputAcceleration</code></pre>
-  </div>
-  <h3 id="properties">Properties
-  </h3>
-  <a id="GameCanvas_IInputAcceleration_AccelerationEventCount_" data-uid="GameCanvas.IInputAcceleration.AccelerationEventCount*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_AccelerationEventCount" data-uid="GameCanvas.IInputAcceleration.AccelerationEventCount">AccelerationEventCount</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの数</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int AccelerationEventCount { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_AccelerationEvents_" data-uid="GameCanvas.IInputAcceleration.AccelerationEvents*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_AccelerationEvents" data-uid="GameCanvas.IInputAcceleration.AccelerationEvents">AccelerationEvents</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの列挙子</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ReadOnlySpan&lt;GcAccelerationEvent&gt; AccelerationEvents { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.readonlyspan-1?view=netstandard-2.1">ReadOnlySpan</a>&lt;<a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_AccelerometerSamplingRate_" data-uid="GameCanvas.IInputAcceleration.AccelerometerSamplingRate*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_AccelerometerSamplingRate" data-uid="GameCanvas.IInputAcceleration.AccelerometerSamplingRate">AccelerometerSamplingRate</h4>
-  <div class="markdown level1 summary"><p>加速度計の動作周波数</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float AccelerometerSamplingRate { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame_" data-uid="GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame" data-uid="GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame">DidUpdateAccelerationThisFrame</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降に 加速度イベントの更新があったかどうか</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool DidUpdateAccelerationThisFrame { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled_" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled">IsAccelerometerEnabled</h4>
-  <div class="markdown level1 summary"><p>加速度計が現在有効かどうか</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsAccelerometerEnabled { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_IsAccelerometerSupported_" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerSupported*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_IsAccelerometerSupported" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerSupported">IsAccelerometerSupported</h4>
-  <div class="markdown level1 summary"><p>端末が加速度計を搭載しているかどうか</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsAccelerometerSupported { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_LastAccelerationEvent_" data-uid="GameCanvas.IInputAcceleration.LastAccelerationEvent*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_LastAccelerationEvent" data-uid="GameCanvas.IInputAcceleration.LastAccelerationEvent">LastAccelerationEvent</h4>
-  <div class="markdown level1 summary"><p>最後に検出した加速度イベント</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">GcAccelerationEvent LastAccelerationEvent { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEvent_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvent*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_TryGetAccelerationEvent_System_Int32_GameCanvas_GcAccelerationEvent__" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvent(System.Int32,GameCanvas.GcAccelerationEvent@)">TryGetAccelerationEvent(Int32, out GcAccelerationEvent)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">i</span></td>
-        <td><p>イベントインデックス（0 から <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerationEventCount">AccelerationEventCount</a>-1 までの連番）</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></td>
-        <td><span class="parametername">e</span></td>
-        <td><p>イベント</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>ポインターイベントを取得できたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEventAll*"></a>
-  <h4 id="GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEventAll(System.ReadOnlySpan{GameCanvas.GcAccelerationEvent}@)">TryGetAccelerationEventAll(out ReadOnlySpan&lt;GcAccelerationEvent&gt;)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool TryGetAccelerationEventAll(out ReadOnlySpan&lt;GcAccelerationEvent&gt; events)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.readonlyspan-1?view=netstandard-2.1">ReadOnlySpan</a>&lt;<a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a>&gt;</td>
-        <td><span class="parametername">events</span></td>
-        <td><p>イベント配列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>1つ以上の加速度イベントがあったかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.IInputAcceleration">
+
+
+
+  <h1 id="GameCanvas_IInputAcceleration" data-uid="GameCanvas.IInputAcceleration" class="text-break">
+Interface IInputAcceleration  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputAcceleration</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="GameCanvas_IInputAcceleration_AccelerationEventCount_" data-uid="GameCanvas.IInputAcceleration.AccelerationEventCount*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_AccelerationEventCount" data-uid="GameCanvas.IInputAcceleration.AccelerationEventCount">
+  AccelerationEventCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int AccelerationEventCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_AccelerationEvents_" data-uid="GameCanvas.IInputAcceleration.AccelerationEvents*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_AccelerationEvents" data-uid="GameCanvas.IInputAcceleration.AccelerationEvents">
+  AccelerationEvents
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの列挙子</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ReadOnlySpan&lt;GcAccelerationEvent&gt; AccelerationEvents { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_AccelerometerSamplingRate_" data-uid="GameCanvas.IInputAcceleration.AccelerometerSamplingRate*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_AccelerometerSamplingRate" data-uid="GameCanvas.IInputAcceleration.AccelerometerSamplingRate">
+  AccelerometerSamplingRate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>加速度計の動作周波数</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float AccelerometerSamplingRate { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame_" data-uid="GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_DidUpdateAccelerationThisFrame" data-uid="GameCanvas.IInputAcceleration.DidUpdateAccelerationThisFrame">
+  DidUpdateAccelerationThisFrame
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に 加速度イベントの更新があったかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DidUpdateAccelerationThisFrame { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled_" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_IsAccelerometerEnabled" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerEnabled">
+  IsAccelerometerEnabled
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>加速度計が現在有効かどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsAccelerometerEnabled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_IsAccelerometerSupported_" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerSupported*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_IsAccelerometerSupported" data-uid="GameCanvas.IInputAcceleration.IsAccelerometerSupported">
+  IsAccelerometerSupported
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>端末が加速度計を搭載しているかどうか</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsAccelerometerSupported { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_LastAccelerationEvent_" data-uid="GameCanvas.IInputAcceleration.LastAccelerationEvent*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_LastAccelerationEvent" data-uid="GameCanvas.IInputAcceleration.LastAccelerationEvent">
+  LastAccelerationEvent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>最後に検出した加速度イベント</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GcAccelerationEvent LastAccelerationEvent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEvent_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvent*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_TryGetAccelerationEvent_System_Int32_GameCanvas_GcAccelerationEvent__" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEvent(System.Int32,GameCanvas.GcAccelerationEvent@)">
+  TryGetAccelerationEvent(int, out GcAccelerationEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>i</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>イベントインデックス（0 から <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerationEventCount">AccelerationEventCount</a>-1 までの連番）</p>
+</dd>
+    <dt><code>e</code> <a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a></dt>
+    <dd><p>イベント</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>ポインターイベントを取得できたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEventAll*"></a>
+
+  <h3 id="GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___" data-uid="GameCanvas.IInputAcceleration.TryGetAccelerationEventAll(System.ReadOnlySpan{GameCanvas.GcAccelerationEvent}@)">
+  TryGetAccelerationEventAll(out ReadOnlySpan&lt;GcAccelerationEvent&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputAcceleration.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降に検出した 加速度イベントの取得を試みます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGetAccelerationEventAll(out ReadOnlySpan&lt;GcAccelerationEvent&gt; events)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>events</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="GameCanvas.GcAccelerationEvent.html">GcAccelerationEvent</a>&gt;</dt>
+    <dd><p>イベント配列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>1つ以上の加速度イベントがあったかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

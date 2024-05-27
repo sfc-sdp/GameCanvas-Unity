@@ -1,1024 +1,900 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GcAffine
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GcAffine
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Class GcAffine | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GcAffine | GameCanvas ">
+      
+      <meta name="description" content="2次元アフィン変換">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_GcAffine.md&amp;value=---%0Auid%3A%20GameCanvas.GcAffine%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcAffine">
-  
-  
-  <h1 id="GameCanvas_GcAffine" data-uid="GameCanvas.GcAffine" class="text-break">Class GcAffine
-  </h1>
-  <div class="markdown level0 summary"><p>2次元アフィン変換</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">GcAffine</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcAffine_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class GcAffine</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <h4 id="GameCanvas_GcAffine_" data-uid="GameCanvas.GcAffine.">GcAffine</h4>
-  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float2x3</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcAffine_" data-uid="GameCanvas.GcAffine.">GcAffine</h4>
-  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float2x3</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcAffine_" data-uid="GameCanvas.GcAffine.">GcAffine</h4>
-  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float2x3</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcAffine_" data-uid="GameCanvas.GcAffine.">GcAffine</h4>
-  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float2x3</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcAffine_" data-uid="GameCanvas.GcAffine.">GcAffine</h4>
-  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float2x3</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcAffine_Identity" data-uid="GameCanvas.GcAffine.Identity">Identity</h4>
-  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float2x3 Identity</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_GcAffine_CalcRotate_" data-uid="GameCanvas.GcAffine.CalcRotate*"></a>
-  <h4 id="GameCanvas_GcAffine_CalcRotate_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.CalcRotate(Unity.Mathematics.float2x3@)">CalcRotate(float2x3)</h4>
-  <div class="markdown level1 summary"><p>変換行列から回転成分を取り出します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float CalcRotate(this in float2x3 mtx)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><p>回転量（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_CalcScale_" data-uid="GameCanvas.GcAffine.CalcScale*"></a>
-  <h4 id="GameCanvas_GcAffine_CalcScale_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.CalcScale(Unity.Mathematics.float2x3@)">CalcScale(float2x3)</h4>
-  <div class="markdown level1 summary"><p>変換行列から拡縮成分を取り出します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 CalcScale(this in float2x3 mtx)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_CalcTRS_" data-uid="GameCanvas.GcAffine.CalcTRS*"></a>
-  <h4 id="GameCanvas_GcAffine_CalcTRS_Unity_Mathematics_float2x3__Unity_Mathematics_float2__System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.CalcTRS(Unity.Mathematics.float2x3@,Unity.Mathematics.float2@,System.Single@,Unity.Mathematics.float2@)">CalcTRS(float2x3, out float2, out Single, out float2)</h4>
-  <div class="markdown level1 summary"><p>変換行列から移動・回転・拡縮成分を取り出します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CalcTRS(this in float2x3 mtx, out float2 translate, out float rotate, out float2 scale)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">translate</span></td>
-        <td><p>移動量</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">rotate</span></td>
-        <td><p>回転量（弧度法）</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">scale</span></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromRotate_" data-uid="GameCanvas.GcAffine.FromRotate*"></a>
-  <h4 id="GameCanvas_GcAffine_FromRotate_System_Single__" data-uid="GameCanvas.GcAffine.FromRotate(System.Single@)">FromRotate(Single)</h4>
-  <div class="markdown level1 summary"><p>回転成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromRotate(in float radian)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">radian</span></td>
-        <td><p>回転量（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromRotate_" data-uid="GameCanvas.GcAffine.FromRotate*"></a>
-  <h4 id="GameCanvas_GcAffine_FromRotate_Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcAffine.FromRotate(Unity.Mathematics.float2@,System.Single@)">FromRotate(float2, Single)</h4>
-  <div class="markdown level1 summary"><p><code data-dev-comment-type="paramref" class="paramref">ahchor</code>を中心とした回転成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromRotate(in float2 ahchor, in float radian)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">ahchor</span></td>
-        <td><p>回転中心</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">radian</span></td>
-        <td><p>回転量（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromScale_" data-uid="GameCanvas.GcAffine.FromScale*"></a>
-  <h4 id="GameCanvas_GcAffine_FromScale_System_Single__" data-uid="GameCanvas.GcAffine.FromScale(System.Single@)">FromScale(Single)</h4>
-  <div class="markdown level1 summary"><p>拡縮成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromScale(in float scale)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">scale</span></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromScale_" data-uid="GameCanvas.GcAffine.FromScale*"></a>
-  <h4 id="GameCanvas_GcAffine_FromScale_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromScale(Unity.Mathematics.float2@)">FromScale(float2)</h4>
-  <div class="markdown level1 summary"><p>拡縮成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromScale(in float2 scale)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">scale</span></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromShear_" data-uid="GameCanvas.GcAffine.FromShear*"></a>
-  <h4 id="GameCanvas_GcAffine_FromShear_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromShear(Unity.Mathematics.float2@)">FromShear(float2)</h4>
-  <div class="markdown level1 summary"><p>せん断成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromShear(in float2 shear)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">shear</span></td>
-        <td><p>せん断係数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromTranslate_" data-uid="GameCanvas.GcAffine.FromTranslate*"></a>
-  <h4 id="GameCanvas_GcAffine_FromTranslate_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromTranslate(Unity.Mathematics.float2@)">FromTranslate(float2)</h4>
-  <div class="markdown level1 summary"><p>移動成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromTranslate(in float2 translate)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">translate</span></td>
-        <td><p>移動量</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromTRS_" data-uid="GameCanvas.GcAffine.FromTRS*"></a>
-  <h4 id="GameCanvas_GcAffine_FromTRS_Unity_Mathematics_float2__System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromTRS(Unity.Mathematics.float2@,System.Single@,Unity.Mathematics.float2@)">FromTRS(float2, Single, float2)</h4>
-  <div class="markdown level1 summary"><p>移動・回転・拡縮成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromTRS(in float2 translate, in float rotate, in float2 scale)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">translate</span></td>
-        <td><p>移動量</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">rotate</span></td>
-        <td><p>回転量（弧度法）</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">scale</span></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_FromTS_" data-uid="GameCanvas.GcAffine.FromTS*"></a>
-  <h4 id="GameCanvas_GcAffine_FromTS_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromTS(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">FromTS(float2, float2)</h4>
-  <div class="markdown level1 summary"><p>移動・拡縮成分から変換行列を作ります</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 FromTS(in float2 translate, in float2 scale)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">translate</span></td>
-        <td><p>移動量</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">scale</span></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_GetShear_" data-uid="GameCanvas.GcAffine.GetShear*"></a>
-  <h4 id="GameCanvas_GcAffine_GetShear_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.GetShear(Unity.Mathematics.float2x3@)">GetShear(float2x3)</h4>
-  <div class="markdown level1 summary"><p>変換行列からせん断成分を取り出します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 GetShear(this in float2x3 mtx)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>せん断係数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_GetTranslate_" data-uid="GameCanvas.GcAffine.GetTranslate*"></a>
-  <h4 id="GameCanvas_GcAffine_GetTranslate_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.GetTranslate(Unity.Mathematics.float2x3@)">GetTranslate(float2x3)</h4>
-  <div class="markdown level1 summary"><p>変換行列から移動成分を取り出します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 GetTranslate(this in float2x3 mtx)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>移動量</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_Mul_" data-uid="GameCanvas.GcAffine.Mul*"></a>
-  <h4 id="GameCanvas_GcAffine_Mul_Unity_Mathematics_float2x3__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.Mul(Unity.Mathematics.float2x3@,Unity.Mathematics.float2@)">Mul(float2x3, float2)</h4>
-  <div class="markdown level1 summary"><p>行列とベクトルの積を求めます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 Mul(this in float2x3 mtx, in float2 vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>変換前の行列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td><p>ベクトル</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>行列とベクトルの積</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_Mul_" data-uid="GameCanvas.GcAffine.Mul*"></a>
-  <h4 id="GameCanvas_GcAffine_Mul_Unity_Mathematics_float2x3__Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.Mul(Unity.Mathematics.float2x3@,Unity.Mathematics.float2x3@)">Mul(float2x3, float2x3)</h4>
-  <div class="markdown level1 summary"><p>行列同士の積を求めます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2x3 Mul(this in float2x3 lhs, in float2x3 rhs)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">lhs</span></td>
-        <td><p>左辺</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">rhs</span></td>
-        <td><p>右辺</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><p>行列同士の積</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_Rotate_" data-uid="GameCanvas.GcAffine.Rotate*"></a>
-  <h4 id="GameCanvas_GcAffine_Rotate_Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcAffine.Rotate(Unity.Mathematics.float2@,System.Single@)">Rotate(float2, Single)</h4>
-  <div class="markdown level1 summary"><p>ベクトルを回転させます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float2 Rotate(this in float2 vec, in float radian)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td><p>回転前のベクトル</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">radian</span></td>
-        <td><p>回転量（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>回転後のベクトル</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAffine_ToFloat4x4_" data-uid="GameCanvas.GcAffine.ToFloat4x4*"></a>
-  <h4 id="GameCanvas_GcAffine_ToFloat4x4_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.ToFloat4x4(Unity.Mathematics.float2x3@)">ToFloat4x4(float2x3)</h4>
-  <div class="markdown level1 summary"><p>2次元変換行列を3次元変換行列に変換します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float4x4 ToFloat4x4(this in float2x3 mtx)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">mtx</span></td>
-        <td><p>2次元変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float4x4.html">float4x4</a></td>
-        <td><p>3次元変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.GcAffine">
+
+
+
+  <h1 id="GameCanvas_GcAffine" data-uid="GameCanvas.GcAffine" class="text-break">
+Class GcAffine  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>2次元アフィン変換</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class GcAffine</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GcAffine</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="GameCanvas_GcAffine_Identity" data-uid="GameCanvas.GcAffine.Identity">
+  Identity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>単位行列（なにも移動・回転・拡縮を行わない場合の変換行列）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly float2x3 Identity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_GcAffine_CalcRotate_" data-uid="GameCanvas.GcAffine.CalcRotate*"></a>
+
+  <h3 id="GameCanvas_GcAffine_CalcRotate_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.CalcRotate(Unity.Mathematics.float2x3@)">
+  CalcRotate(in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>変換行列から回転成分を取り出します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float CalcRotate(this in float2x3 mtx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（弧度法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_CalcScale_" data-uid="GameCanvas.GcAffine.CalcScale*"></a>
+
+  <h3 id="GameCanvas_GcAffine_CalcScale_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.CalcScale(Unity.Mathematics.float2x3@)">
+  CalcScale(in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>変換行列から拡縮成分を取り出します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2 CalcScale(this in float2x3 mtx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_CalcTRS_" data-uid="GameCanvas.GcAffine.CalcTRS*"></a>
+
+  <h3 id="GameCanvas_GcAffine_CalcTRS_Unity_Mathematics_float2x3__Unity_Mathematics_float2__System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.CalcTRS(Unity.Mathematics.float2x3@,Unity.Mathematics.float2@,System.Single@,Unity.Mathematics.float2@)">
+  CalcTRS(in float2x3, out float2, out float, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>変換行列から移動・回転・拡縮成分を取り出します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CalcTRS(this in float2x3 mtx, out float2 translate, out float rotate, out float2 scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+    <dt><code>translate</code> <span class="xref">float2</span></dt>
+    <dd><p>移動量</p>
+</dd>
+    <dt><code>rotate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（弧度法）</p>
+</dd>
+    <dt><code>scale</code> <span class="xref">float2</span></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromRotate_" data-uid="GameCanvas.GcAffine.FromRotate*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromRotate_System_Single__" data-uid="GameCanvas.GcAffine.FromRotate(System.Single@)">
+  FromRotate(in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>回転成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromRotate(in float radian)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>radian</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（弧度法）</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromRotate_" data-uid="GameCanvas.GcAffine.FromRotate*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromRotate_Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcAffine.FromRotate(Unity.Mathematics.float2@,System.Single@)">
+  FromRotate(in float2, in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p><code class="paramref">ahchor</code>を中心とした回転成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromRotate(in float2 ahchor, in float radian)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ahchor</code> <span class="xref">float2</span></dt>
+    <dd><p>回転中心</p>
+</dd>
+    <dt><code>radian</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（弧度法）</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromScale_" data-uid="GameCanvas.GcAffine.FromScale*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromScale_System_Single__" data-uid="GameCanvas.GcAffine.FromScale(System.Single@)">
+  FromScale(in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>拡縮成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromScale(in float scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromScale_" data-uid="GameCanvas.GcAffine.FromScale*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromScale_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromScale(Unity.Mathematics.float2@)">
+  FromScale(in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>拡縮成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromScale(in float2 scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scale</code> <span class="xref">float2</span></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromShear_" data-uid="GameCanvas.GcAffine.FromShear*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromShear_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromShear(Unity.Mathematics.float2@)">
+  FromShear(in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>せん断成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromShear(in float2 shear)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>shear</code> <span class="xref">float2</span></dt>
+    <dd><p>せん断係数</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromTRS_" data-uid="GameCanvas.GcAffine.FromTRS*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromTRS_Unity_Mathematics_float2__System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromTRS(Unity.Mathematics.float2@,System.Single@,Unity.Mathematics.float2@)">
+  FromTRS(in float2, in float, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>移動・回転・拡縮成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromTRS(in float2 translate, in float rotate, in float2 scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>translate</code> <span class="xref">float2</span></dt>
+    <dd><p>移動量</p>
+</dd>
+    <dt><code>rotate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（弧度法）</p>
+</dd>
+    <dt><code>scale</code> <span class="xref">float2</span></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromTS_" data-uid="GameCanvas.GcAffine.FromTS*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromTS_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromTS(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  FromTS(in float2, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>移動・拡縮成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromTS(in float2 translate, in float2 scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>translate</code> <span class="xref">float2</span></dt>
+    <dd><p>移動量</p>
+</dd>
+    <dt><code>scale</code> <span class="xref">float2</span></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_FromTranslate_" data-uid="GameCanvas.GcAffine.FromTranslate*"></a>
+
+  <h3 id="GameCanvas_GcAffine_FromTranslate_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.FromTranslate(Unity.Mathematics.float2@)">
+  FromTranslate(in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>移動成分から変換行列を作ります</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 FromTranslate(in float2 translate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>translate</code> <span class="xref">float2</span></dt>
+    <dd><p>移動量</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_GetShear_" data-uid="GameCanvas.GcAffine.GetShear*"></a>
+
+  <h3 id="GameCanvas_GcAffine_GetShear_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.GetShear(Unity.Mathematics.float2x3@)">
+  GetShear(in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>変換行列からせん断成分を取り出します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2 GetShear(this in float2x3 mtx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>せん断係数</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_GetTranslate_" data-uid="GameCanvas.GcAffine.GetTranslate*"></a>
+
+  <h3 id="GameCanvas_GcAffine_GetTranslate_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.GetTranslate(Unity.Mathematics.float2x3@)">
+  GetTranslate(in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>変換行列から移動成分を取り出します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2 GetTranslate(this in float2x3 mtx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>変換行列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>移動量</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_Mul_" data-uid="GameCanvas.GcAffine.Mul*"></a>
+
+  <h3 id="GameCanvas_GcAffine_Mul_Unity_Mathematics_float2x3__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAffine.Mul(Unity.Mathematics.float2x3@,Unity.Mathematics.float2@)">
+  Mul(in float2x3, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>行列とベクトルの積を求めます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2 Mul(this in float2x3 mtx, in float2 vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>変換前の行列</p>
+</dd>
+    <dt><code>vec</code> <span class="xref">float2</span></dt>
+    <dd><p>ベクトル</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>行列とベクトルの積</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_Mul_" data-uid="GameCanvas.GcAffine.Mul*"></a>
+
+  <h3 id="GameCanvas_GcAffine_Mul_Unity_Mathematics_float2x3__Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.Mul(Unity.Mathematics.float2x3@,Unity.Mathematics.float2x3@)">
+  Mul(in float2x3, in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>行列同士の積を求めます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2x3 Mul(this in float2x3 lhs, in float2x3 rhs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lhs</code> <span class="xref">float2x3</span></dt>
+    <dd><p>左辺</p>
+</dd>
+    <dt><code>rhs</code> <span class="xref">float2x3</span></dt>
+    <dd><p>右辺</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd><p>行列同士の積</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_Rotate_" data-uid="GameCanvas.GcAffine.Rotate*"></a>
+
+  <h3 id="GameCanvas_GcAffine_Rotate_Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcAffine.Rotate(Unity.Mathematics.float2@,System.Single@)">
+  Rotate(in float2, in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ベクトルを回転させます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float2 Rotate(this in float2 vec, in float radian)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <span class="xref">float2</span></dt>
+    <dd><p>回転前のベクトル</p>
+</dd>
+    <dt><code>radian</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（弧度法）</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>回転後のベクトル</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAffine_ToFloat4x4_" data-uid="GameCanvas.GcAffine.ToFloat4x4*"></a>
+
+  <h3 id="GameCanvas_GcAffine_ToFloat4x4_Unity_Mathematics_float2x3__" data-uid="GameCanvas.GcAffine.ToFloat4x4(Unity.Mathematics.float2x3@)">
+  ToFloat4x4(in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Utility/GcAffine.cs/#L260"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>2次元変換行列を3次元変換行列に変換します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float4x4 ToFloat4x4(this in float2x3 mtx)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mtx</code> <span class="xref">float2x3</span></dt>
+    <dd><p>2次元変換行列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float4x4</span></dt>
+    <dd><p>3次元変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

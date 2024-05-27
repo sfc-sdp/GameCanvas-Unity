@@ -1,660 +1,788 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct GcSweepResult
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct GcSweepResult
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Struct GcSweepResult | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct GcSweepResult | GameCanvas ">
+      
+      <meta name="description" content="衝突情報">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_GcSweepResult.md&amp;value=---%0Auid%3A%20GameCanvas.GcSweepResult%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcSweepResult">
-  
-  
-  <h1 id="GameCanvas_GcSweepResult" data-uid="GameCanvas.GcSweepResult" class="text-break">Struct GcSweepResult
-  </h1>
-  <div class="markdown level0 summary"><p>衝突情報</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcSweepResult_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct GcSweepResult : IEquatable&lt;GcSweepResult&gt;</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <h4 id="GameCanvas_GcSweepResult_ForwardVector" data-uid="GameCanvas.GcSweepResult.ForwardVector">ForwardVector</h4>
-  <div class="markdown level1 summary"><p>進行ベクトル（SweepTest関数のdelta引数に与えられた値）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 ForwardVector</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcSweepResult_HitNormal" data-uid="GameCanvas.GcSweepResult.HitNormal">HitNormal</h4>
-  <div class="markdown level1 summary"><p>衝突点の法線を表す単位ベクトル</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 HitNormal</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcSweepResult_HitPoint" data-uid="GameCanvas.GcSweepResult.HitPoint">HitPoint</h4>
-  <div class="markdown level1 summary"><p>衝突点</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 HitPoint</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcSweepResult_PositionOnHit" data-uid="GameCanvas.GcSweepResult.PositionOnHit">PositionOnHit</h4>
-  <div class="markdown level1 summary"><p>衝突時（めり込む直前）のオブジェクト座標</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 PositionOnHit</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcSweepResult_SweepRatioOnHit" data-uid="GameCanvas.GcSweepResult.SweepRatioOnHit">SweepRatioOnHit</h4>
-  <div class="markdown level1 summary"><p>移動量に対して、めり込む直前までの移動量の割合</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float SweepRatioOnHit</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_GcSweepResult_SweepRatioOnHit_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>初期位置で既にめり込んでいた場合、0よりも小さい値になります</p>
-</div>
-  <h4 id="GameCanvas_GcSweepResult_VectorToHit" data-uid="GameCanvas.GcSweepResult.VectorToHit">VectorToHit</h4>
-  <div class="markdown level1 summary"><p>初期位置から衝突点（めり込む直前）までの移動量ベクトル</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly float2 VectorToHit</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_GcSweepResult_VectorToHit_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>初期位置で既にめり込んでいた場合、<a class="xref" href="GameCanvas.GcSweepResult.html#GameCanvas_GcSweepResult_ForwardVector">ForwardVector</a> * <a class="xref" href="GameCanvas.GcSweepResult.html#GameCanvas_GcSweepResult_SweepRatioOnHit">SweepRatioOnHit</a> と異なる値になります</p>
-</div>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_GcSweepResult_CalcReflect_" data-uid="GameCanvas.GcSweepResult.CalcReflect*"></a>
-  <h4 id="GameCanvas_GcSweepResult_CalcReflect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcSweepResult.CalcReflect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single@)">CalcReflect(out float2, out float2, Single)</h4>
-  <div class="markdown level1 summary"><p>反射を考慮した移動後の座標を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void CalcReflect(out float2 dir, out float2 pos, in float coefficient = 1F)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">dir</span></td>
-        <td><p>反射方向を表す単位ベクトル</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td><p>反射を考慮した移動後の座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">coefficient</span></td>
-        <td><p>反射係数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_CalcReflectDir_" data-uid="GameCanvas.GcSweepResult.CalcReflectDir*"></a>
-  <h4 id="GameCanvas_GcSweepResult_CalcReflectDir" data-uid="GameCanvas.GcSweepResult.CalcReflectDir">CalcReflectDir()</h4>
-  <div class="markdown level1 summary"><p>反射方向を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 CalcReflectDir()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>反射方向を表す単位ベクトル</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_CalcReflectPoint_" data-uid="GameCanvas.GcSweepResult.CalcReflectPoint*"></a>
-  <h4 id="GameCanvas_GcSweepResult_CalcReflectPoint_System_Single__" data-uid="GameCanvas.GcSweepResult.CalcReflectPoint(System.Single@)">CalcReflectPoint(Single)</h4>
-  <div class="markdown level1 summary"><p>反射を考慮した移動後の座標を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 CalcReflectPoint(in float coefficient = 1F)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">coefficient</span></td>
-        <td><p>反射係数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>反射を考慮した移動後の座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_CalcWallScratch_" data-uid="GameCanvas.GcSweepResult.CalcWallScratch*"></a>
-  <h4 id="GameCanvas_GcSweepResult_CalcWallScratch_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcSweepResult.CalcWallScratch(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">CalcWallScratch(out float2, out float2)</h4>
-  <div class="markdown level1 summary"><p>壁ずりを考慮した移動後の座標を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void CalcWallScratch(out float2 dir, out float2 pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">dir</span></td>
-        <td><p>壁ずり方向を表す単位ベクトル</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td><p>壁ずりを考慮した移動後の座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_CalcWallScratchDir_" data-uid="GameCanvas.GcSweepResult.CalcWallScratchDir*"></a>
-  <h4 id="GameCanvas_GcSweepResult_CalcWallScratchDir" data-uid="GameCanvas.GcSweepResult.CalcWallScratchDir">CalcWallScratchDir()</h4>
-  <div class="markdown level1 summary"><p>壁ずり方向を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 CalcWallScratchDir()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>壁ずり方向を表す単位ベクトル</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_CalcWallScratchPoint_" data-uid="GameCanvas.GcSweepResult.CalcWallScratchPoint*"></a>
-  <h4 id="GameCanvas_GcSweepResult_CalcWallScratchPoint" data-uid="GameCanvas.GcSweepResult.CalcWallScratchPoint">CalcWallScratchPoint()</h4>
-  <div class="markdown level1 summary"><p>壁ずりを考慮した移動後の座標を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 CalcWallScratchPoint()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>壁ずりを考慮した移動後の座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_Equals_" data-uid="GameCanvas.GcSweepResult.Equals*"></a>
-  <h4 id="GameCanvas_GcSweepResult_Equals_GameCanvas_GcSweepResult_" data-uid="GameCanvas.GcSweepResult.Equals(GameCanvas.GcSweepResult)">Equals(GcSweepResult)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(GcSweepResult other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">other</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_Equals_" data-uid="GameCanvas.GcSweepResult.Equals*"></a>
-  <h4 id="GameCanvas_GcSweepResult_Equals_System_Object_" data-uid="GameCanvas.GcSweepResult.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
-  <a id="GameCanvas_GcSweepResult_GetHashCode_" data-uid="GameCanvas.GcSweepResult.GetHashCode*"></a>
-  <h4 id="GameCanvas_GcSweepResult_GetHashCode" data-uid="GameCanvas.GcSweepResult.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
-  <a id="GameCanvas_GcSweepResult_ToString_" data-uid="GameCanvas.GcSweepResult.ToString*"></a>
-  <h4 id="GameCanvas_GcSweepResult_ToString" data-uid="GameCanvas.GcSweepResult.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.ToString()</span></div>
-  <h3 id="operators">Operators
-  </h3>
-  <a id="GameCanvas_GcSweepResult_op_Equality_" data-uid="GameCanvas.GcSweepResult.op_Equality*"></a>
-  <h4 id="GameCanvas_GcSweepResult_op_Equality_GameCanvas_GcSweepResult_GameCanvas_GcSweepResult_" data-uid="GameCanvas.GcSweepResult.op_Equality(GameCanvas.GcSweepResult,GameCanvas.GcSweepResult)">Equality(GcSweepResult, GcSweepResult)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(GcSweepResult lh, GcSweepResult rh)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">lh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">rh</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcSweepResult_op_Inequality_" data-uid="GameCanvas.GcSweepResult.op_Inequality*"></a>
-  <h4 id="GameCanvas_GcSweepResult_op_Inequality_GameCanvas_GcSweepResult_GameCanvas_GcSweepResult_" data-uid="GameCanvas.GcSweepResult.op_Inequality(GameCanvas.GcSweepResult,GameCanvas.GcSweepResult)">Inequality(GcSweepResult, GcSweepResult)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(GcSweepResult lh, GcSweepResult rh)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">lh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">rh</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <span class="xref">System.IEquatable&lt;T&gt;</span>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.GcSweepResult">
+
+
+
+  <h1 id="GameCanvas_GcSweepResult" data-uid="GameCanvas.GcSweepResult" class="text-break">
+Struct GcSweepResult  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>衝突情報</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly struct GcSweepResult : IEquatable&lt;GcSweepResult&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="GameCanvas_GcSweepResult_ForwardVector" data-uid="GameCanvas.GcSweepResult.ForwardVector">
+  ForwardVector
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>進行ベクトル（SweepTest関数のdelta引数に与えられた値）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 ForwardVector</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcSweepResult_HitNormal" data-uid="GameCanvas.GcSweepResult.HitNormal">
+  HitNormal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>衝突点の法線を表す単位ベクトル</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 HitNormal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcSweepResult_HitPoint" data-uid="GameCanvas.GcSweepResult.HitPoint">
+  HitPoint
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>衝突点</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 HitPoint</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcSweepResult_PositionOnHit" data-uid="GameCanvas.GcSweepResult.PositionOnHit">
+  PositionOnHit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>衝突時（めり込む直前）のオブジェクト座標</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 PositionOnHit</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcSweepResult_SweepRatioOnHit" data-uid="GameCanvas.GcSweepResult.SweepRatioOnHit">
+  SweepRatioOnHit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>移動量に対して、めり込む直前までの移動量の割合</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float SweepRatioOnHit</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcSweepResult_SweepRatioOnHit_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>初期位置で既にめり込んでいた場合、0よりも小さい値になります</p>
+</div>
+
+
+
+
+
+  <h3 id="GameCanvas_GcSweepResult_VectorToHit" data-uid="GameCanvas.GcSweepResult.VectorToHit">
+  VectorToHit
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>初期位置から衝突点（めり込む直前）までの移動量ベクトル</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 VectorToHit</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcSweepResult_VectorToHit_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>初期位置で既にめり込んでいた場合、<a class="xref" href="GameCanvas.GcSweepResult.html#GameCanvas_GcSweepResult_ForwardVector">ForwardVector</a> * <a class="xref" href="GameCanvas.GcSweepResult.html#GameCanvas_GcSweepResult_SweepRatioOnHit">SweepRatioOnHit</a> と異なる値になります</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_GcSweepResult_CalcReflect_" data-uid="GameCanvas.GcSweepResult.CalcReflect*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_CalcReflect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcSweepResult.CalcReflect(Unity.Mathematics.float2@,Unity.Mathematics.float2@,System.Single@)">
+  CalcReflect(out float2, out float2, in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>反射を考慮した移動後の座標を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CalcReflect(out float2 dir, out float2 pos, in float coefficient = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dir</code> <span class="xref">float2</span></dt>
+    <dd><p>反射方向を表す単位ベクトル</p>
+</dd>
+    <dt><code>pos</code> <span class="xref">float2</span></dt>
+    <dd><p>反射を考慮した移動後の座標</p>
+</dd>
+    <dt><code>coefficient</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>反射係数</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_CalcReflectDir_" data-uid="GameCanvas.GcSweepResult.CalcReflectDir*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_CalcReflectDir" data-uid="GameCanvas.GcSweepResult.CalcReflectDir">
+  CalcReflectDir()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>反射方向を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 CalcReflectDir()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>反射方向を表す単位ベクトル</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_CalcReflectPoint_" data-uid="GameCanvas.GcSweepResult.CalcReflectPoint*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_CalcReflectPoint_System_Single__" data-uid="GameCanvas.GcSweepResult.CalcReflectPoint(System.Single@)">
+  CalcReflectPoint(in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>反射を考慮した移動後の座標を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 CalcReflectPoint(in float coefficient = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>coefficient</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>反射係数</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>反射を考慮した移動後の座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_CalcWallScratch_" data-uid="GameCanvas.GcSweepResult.CalcWallScratch*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_CalcWallScratch_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcSweepResult.CalcWallScratch(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  CalcWallScratch(out float2, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>壁ずりを考慮した移動後の座標を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CalcWallScratch(out float2 dir, out float2 pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dir</code> <span class="xref">float2</span></dt>
+    <dd><p>壁ずり方向を表す単位ベクトル</p>
+</dd>
+    <dt><code>pos</code> <span class="xref">float2</span></dt>
+    <dd><p>壁ずりを考慮した移動後の座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_CalcWallScratchDir_" data-uid="GameCanvas.GcSweepResult.CalcWallScratchDir*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_CalcWallScratchDir" data-uid="GameCanvas.GcSweepResult.CalcWallScratchDir">
+  CalcWallScratchDir()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>壁ずり方向を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 CalcWallScratchDir()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>壁ずり方向を表す単位ベクトル</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_CalcWallScratchPoint_" data-uid="GameCanvas.GcSweepResult.CalcWallScratchPoint*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_CalcWallScratchPoint" data-uid="GameCanvas.GcSweepResult.CalcWallScratchPoint">
+  CalcWallScratchPoint()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>壁ずりを考慮した移動後の座標を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 CalcWallScratchPoint()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>壁ずりを考慮した移動後の座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_Equals_" data-uid="GameCanvas.GcSweepResult.Equals*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_Equals_GameCanvas_GcSweepResult_" data-uid="GameCanvas.GcSweepResult.Equals(GameCanvas.GcSweepResult)">
+  Equals(GcSweepResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(GcSweepResult other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_Equals_" data-uid="GameCanvas.GcSweepResult.Equals*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_Equals_System_Object_" data-uid="GameCanvas.GcSweepResult.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_GetHashCode_" data-uid="GameCanvas.GcSweepResult.GetHashCode*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_GetHashCode" data-uid="GameCanvas.GcSweepResult.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_ToString_" data-uid="GameCanvas.GcSweepResult.ToString*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_ToString" data-uid="GameCanvas.GcSweepResult.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="GameCanvas_GcSweepResult_op_Equality_" data-uid="GameCanvas.GcSweepResult.op_Equality*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_op_Equality_GameCanvas_GcSweepResult_GameCanvas_GcSweepResult_" data-uid="GameCanvas.GcSweepResult.op_Equality(GameCanvas.GcSweepResult,GameCanvas.GcSweepResult)">
+  operator ==(GcSweepResult, GcSweepResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(GcSweepResult lh, GcSweepResult rh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lh</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd></dd>
+    <dt><code>rh</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcSweepResult_op_Inequality_" data-uid="GameCanvas.GcSweepResult.op_Inequality*"></a>
+
+  <h3 id="GameCanvas_GcSweepResult_op_Inequality_GameCanvas_GcSweepResult_GameCanvas_GcSweepResult_" data-uid="GameCanvas.GcSweepResult.op_Inequality(GameCanvas.GcSweepResult,GameCanvas.GcSweepResult)">
+  operator !=(GcSweepResult, GcSweepResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Struct/GcSweepResult.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(GcSweepResult lh, GcSweepResult rh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lh</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd></dd>
+    <dt><code>rh</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

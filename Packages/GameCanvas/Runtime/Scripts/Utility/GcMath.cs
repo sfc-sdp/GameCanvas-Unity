@@ -133,10 +133,22 @@ namespace GameCanvas
         public static int Round(in double value) => (int)System.Math.Round(value);
 
         /// <summary>
+        /// 乱数のステートの取得
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint GetRandomState() => s_Random.state;
+
+        /// <summary>
         /// 乱数の種の設定
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetRandomSeed(in uint seed) => s_Random.InitState(seed);
+
+        /// <summary>
+        /// 乱数の種を連番から設定
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetRandomSeedByIndex(in uint index) => s_Random = Unity.Mathematics.Random.CreateFromIndex(index);
 
         /// <summary>
         /// サイン

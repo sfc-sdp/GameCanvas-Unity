@@ -1,43 +1,118 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IInputPointerEx
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IInputPointerEx
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Interface IInputPointerEx | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IInputPointerEx | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_IInputPointerEx.md&amp;value=---%0Auid%3A%20GameCanvas.IInputPointerEx%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.IInputPointerEx">
-  
-  
-  <h1 id="GameCanvas_IInputPointerEx" data-uid="GameCanvas.IInputPointerEx" class="text-break">Interface IInputPointerEx
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.IInputPointerEx">
+
+
+
+  <h1 id="GameCanvas_IInputPointerEx" data-uid="GameCanvas.IInputPointerEx" class="text-break">
+Interface IInputPointerEx  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputPointerEx : IInputPointer</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_IsTouchPressureSupported">IInputPointer.IsTouchPressureSupported</a>
     </div>
@@ -63,1365 +138,1263 @@
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TapSettings">IInputPointer.TapSettings</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(Int32, GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(in int, out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(GcPointerEventPhase, Int32, GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(in GcPointerEventPhase, in int, out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(out ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(GcPointerEventPhase, ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(in GcPointerEventPhase, out ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__">IInputPointer.TryGetPointerTapPoint(Int32, float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__">IInputPointer.TryGetPointerTapPoint(in int, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___">IInputPointer.TryGetPointerTapPointAll(ReadOnlySpan&lt;float2&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___">IInputPointer.TryGetPointerTapPointAll(out ReadOnlySpan&lt;float2&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(Int32, GcPointerTrace)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(in int, out GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(GcPointerEventPhase, Int32, GcPointerTrace)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(in GcPointerEventPhase, in int, out GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(out ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(GcPointerEventPhase, ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(in GcPointerEventPhase, out ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_IInputPointerEx_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IInputPointerEx : IInputPointer</code></pre>
-  </div>
-  <h3 id="properties">Properties
-  </h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="GameCanvas_IInputPointerEx_LastPointerFrame_" data-uid="GameCanvas.IInputPointerEx.LastPointerFrame*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_LastPointerFrame" data-uid="GameCanvas.IInputPointerEx.LastPointerFrame">LastPointerFrame</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_LastPointerFrame" data-uid="GameCanvas.IInputPointerEx.LastPointerFrame">
+  LastPointerFrame
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>最後に検出したポインターイベントの 検出フレーム番号</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int LastPointerFrame { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_LastPointerPoint_" data-uid="GameCanvas.IInputPointerEx.LastPointerPoint*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_LastPointerPoint" data-uid="GameCanvas.IInputPointerEx.LastPointerPoint">LastPointerPoint</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_LastPointerPoint" data-uid="GameCanvas.IInputPointerEx.LastPointerPoint">
+  LastPointerPoint
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>最後に検出したポインターイベントの位置</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float2 LastPointerPoint { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_LastPointerTime_" data-uid="GameCanvas.IInputPointerEx.LastPointerTime*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_LastPointerTime" data-uid="GameCanvas.IInputPointerEx.LastPointerTime">LastPointerTime</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_LastPointerTime" data-uid="GameCanvas.IInputPointerEx.LastPointerTime">
+  LastPointerTime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>最後に検出したポインターイベントの 検出時間（起動からの経過秒数）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float LastPointerTime { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_LastPointerX_" data-uid="GameCanvas.IInputPointerEx.LastPointerX*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_LastPointerX" data-uid="GameCanvas.IInputPointerEx.LastPointerX">LastPointerX</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_LastPointerX" data-uid="GameCanvas.IInputPointerEx.LastPointerX">
+  LastPointerX
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>最後に検出したポインターイベントの X座標</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float LastPointerX { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_LastPointerY_" data-uid="GameCanvas.IInputPointerEx.LastPointerY*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_LastPointerY" data-uid="GameCanvas.IInputPointerEx.LastPointerY">LastPointerY</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_LastPointerY" data-uid="GameCanvas.IInputPointerEx.LastPointerY">
+  LastPointerY
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>最後に検出したポインターイベントの Y座標</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float LastPointerY { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="GameCanvas_IInputPointerEx_IsTapped_" data-uid="GameCanvas.IInputPointerEx.IsTapped*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTapped" data-uid="GameCanvas.IInputPointerEx.IsTapped">IsTapped()</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTapped" data-uid="GameCanvas.IInputPointerEx.IsTapped">
+  IsTapped()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タップされたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTapped()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タップされたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タップされたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTapped_" data-uid="GameCanvas.IInputPointerEx.IsTapped*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTapped_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTapped(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">IsTapped(GcAABB, out float2)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTapped_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTapped(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">
+  IsTapped(in GcAABB, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に 指定した領域がタップされたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTapped(in GcAABB aabb, out float2 point)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">aabb</span></td>
-        <td><p>領域</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タップ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタップされたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aabb</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>領域</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タップ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタップされたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTapped_" data-uid="GameCanvas.IInputPointerEx.IsTapped*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTapped(System.Single@,System.Single@)">IsTapped(out Single, out Single)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTapped(System.Single@,System.Single@)">
+  IsTapped(out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タップされたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTapped(out float x, out float y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>タップ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>タップ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タップされたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タップ位置 X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タップ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タップされたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTapped_" data-uid="GameCanvas.IInputPointerEx.IsTapped*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTapped(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">IsTapped(Single, Single, Single, Single, out Single, out Single)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTapped(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">
+  IsTapped(in float, in float, in float, in float, out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に 指定した領域がタップされたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTapped(in float x, in float y, in float width, in float height, out float px, out float py)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>領域 左上X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>領域 左上Y座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">width</span></td>
-        <td><p>領域 横幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">height</span></td>
-        <td><p>領域 縦幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">px</span></td>
-        <td><p>タップ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">py</span></td>
-        <td><p>タップ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタップされたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上Y座標</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 横幅</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 縦幅</p>
+</dd>
+    <dt><code>px</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タップ位置 X座標</p>
+</dd>
+    <dt><code>py</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タップ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタップされたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTapped_" data-uid="GameCanvas.IInputPointerEx.IsTapped*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTapped_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTapped(Unity.Mathematics.float2@)">IsTapped(out float2)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTapped_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTapped(Unity.Mathematics.float2@)">
+  IsTapped(out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L207"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タップされたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTapped(out float2 point)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タップ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タップされたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タップ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タップされたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchBegan_" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchBegan" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan">IsTouchBegan()</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchBegan" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan">
+  IsTouchBegan()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タッチされ始めたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchBegan()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ始めたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ始めたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchBegan_" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">IsTouchBegan(GcAABB, out float2)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">
+  IsTouchBegan(in GcAABB, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に 指定した領域がタッチされ始めたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchBegan(in GcAABB aabb, out float2 point)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">aabb</span></td>
-        <td><p>領域</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タッチ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタッチされ始めたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aabb</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>領域</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タッチ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタッチされ始めたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchBegan_" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(GameCanvas.GcPointerEvent@)">IsTouchBegan(out GcPointerEvent)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(GameCanvas.GcPointerEvent@)">
+  IsTouchBegan(out GcPointerEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L255"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タッチされ始めたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchBegan(out GcPointerEvent pointer)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></td>
-        <td><span class="parametername">pointer</span></td>
-        <td><p>ポインターイベント</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ始めたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pointer</code> <a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></dt>
+    <dd><p>ポインターイベント</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ始めたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchBegan_" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(System.Single@,System.Single@)">IsTouchBegan(out Single, out Single)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(System.Single@,System.Single@)">
+  IsTouchBegan(out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L263"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タッチされ始めたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchBegan(out float x, out float y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>タッチ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>タッチ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ始めたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ始めたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchBegan_" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">IsTouchBegan(Single, Single, Single, Single, out Single, out Single)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">
+  IsTouchBegan(in float, in float, in float, in float, out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L283"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に 指定した領域がタッチされ始めたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchBegan(in float x, in float y, in float width, in float height, out float px, out float py)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>領域 左上X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>領域 左上Y座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">width</span></td>
-        <td><p>領域 横幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">height</span></td>
-        <td><p>領域 縦幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">px</span></td>
-        <td><p>タッチ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">py</span></td>
-        <td><p>タッチ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタッチされ始めたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上Y座標</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 横幅</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 縦幅</p>
+</dd>
+    <dt><code>px</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 X座標</p>
+</dd>
+    <dt><code>py</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタッチされ始めたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchBegan_" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchBegan_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(Unity.Mathematics.float2@)">IsTouchBegan(out float2)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchBegan_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchBegan(Unity.Mathematics.float2@)">
+  IsTouchBegan(out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L248"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降に タッチされ始めたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchBegan(out float2 point)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タッチ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ始めたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched" data-uid="GameCanvas.IInputPointerEx.IsTouched">IsTouched()</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouched(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">IsTouched(GcAABB, out float2)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 指定した領域がタッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched(in GcAABB aabb, out float2 point)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">aabb</span></td>
-        <td><p>領域</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タッチ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointerEx.IsTouched(GameCanvas.GcPointerEvent@)">IsTouched(out GcPointerEvent)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched(out GcPointerEvent e)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></td>
-        <td><span class="parametername">e</span></td>
-        <td><p>ポインターイベント</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerTrace__" data-uid="GameCanvas.IInputPointerEx.IsTouched(GameCanvas.GcPointerTrace@)">IsTouched(out GcPointerTrace)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched(out GcPointerTrace trace)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a></td>
-        <td><span class="parametername">trace</span></td>
-        <td><p>タッチの軌跡</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouched(System.Single@,System.Single@)">IsTouched(out Single, out Single)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched(out float x, out float y)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>タッチ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>タッチ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouched(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">IsTouched(Single, Single, Single, Single, out Single, out Single)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 指定した領域がタッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched(in float x, in float y, in float width, in float height, out float px, out float py)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>領域 左上X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>領域 左上Y座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">width</span></td>
-        <td><p>領域 横幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">height</span></td>
-        <td><p>領域 縦幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">px</span></td>
-        <td><p>タッチ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">py</span></td>
-        <td><p>タッチ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouched_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouched(Unity.Mathematics.float2@)">IsTouched(out float2)</h4>
-  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsTouched(out float2 point)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タッチ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされていたか（開始と終了を含む）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タッチ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ始めたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded">IsTouchEnded()</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded">
+  IsTouchEnded()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">IsTouchEnded(GcAABB, out float2)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">
+  IsTouchEnded(in GcAABB, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L381"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 指定した領域がタッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded(in GcAABB aabb, out float2 point)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">aabb</span></td>
-        <td><p>領域</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タッチ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aabb</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>領域</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タッチ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(GameCanvas.GcPointerEvent@)">IsTouchEnded(out GcPointerEvent)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(GameCanvas.GcPointerEvent@)">
+  IsTouchEnded(out GcPointerEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L358"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded(out GcPointerEvent e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerTrace__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(GameCanvas.GcPointerTrace@)">IsTouchEnded(out GcPointerTrace)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerTrace__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(GameCanvas.GcPointerTrace@)">
+  IsTouchEnded(out GcPointerTrace)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded(out GcPointerTrace trace)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a></td>
-        <td><span class="parametername">trace</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trace</code> <a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(System.Single@,System.Single@)">IsTouchEnded(out Single, out Single)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(System.Single@,System.Single@)">
+  IsTouchEnded(out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L373"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded(out float x, out float y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>タッチ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>タッチ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">IsTouchEnded(Single, Single, Single, Single, out Single, out Single)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">
+  IsTouchEnded(in float, in float, in float, in float, out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 指定した領域がタッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td><p>領域 左上X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td><p>領域 左上Y座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">width</span></td>
-        <td><p>領域 横幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">height</span></td>
-        <td><p>領域 縦幅</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">px</span></td>
-        <td><p>タッチ位置 X座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">py</span></td>
-        <td><p>タッチ位置 Y座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>指定した領域がタッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上Y座標</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 横幅</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 縦幅</p>
+</dd>
+    <dt><code>px</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 X座標</p>
+</dd>
+    <dt><code>py</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputPointerEx_IsTouchEnded_" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded*"></a>
-  <h4 id="GameCanvas_IInputPointerEx_IsTouchEnded_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(Unity.Mathematics.float2@)">IsTouchEnded(out float2)</h4>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouchEnded_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouchEnded(Unity.Mathematics.float2@)">
+  IsTouchEnded(out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L351"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされ終えたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsTouchEnded(out float2 point)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>タッチ位置</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>タッチされ終えたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タッチ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされ終えたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched" data-uid="GameCanvas.IInputPointerEx.IsTouched">
+  IsTouched()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouched(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">
+  IsTouched(in GcAABB, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 指定した領域がタッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched(in GcAABB aabb, out float2 point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aabb</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>領域</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タッチ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerEvent__" data-uid="GameCanvas.IInputPointerEx.IsTouched(GameCanvas.GcPointerEvent@)">
+  IsTouched(out GcPointerEvent)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L303"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched(out GcPointerEvent e)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="GameCanvas.GcPointerEvent.html">GcPointerEvent</a></dt>
+    <dd><p>ポインターイベント</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerTrace__" data-uid="GameCanvas.IInputPointerEx.IsTouched(GameCanvas.GcPointerTrace@)">
+  IsTouched(out GcPointerTrace)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched(out GcPointerTrace trace)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trace</code> <a class="xref" href="GameCanvas.GcPointerTrace.html">GcPointerTrace</a></dt>
+    <dd><p>タッチの軌跡</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouched(System.Single@,System.Single@)">
+  IsTouched(out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched(out float x, out float y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.IInputPointerEx.IsTouched(System.Single@,System.Single@,System.Single@,System.Single@,System.Single@,System.Single@)">
+  IsTouched(in float, in float, in float, in float, out float, out float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L338"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 指定した領域がタッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched(in float x, in float y, in float width, in float height, out float px, out float py)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上X座標</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 左上Y座標</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 横幅</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>領域 縦幅</p>
+</dd>
+    <dt><code>px</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 X座標</p>
+</dd>
+    <dt><code>py</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>タッチ位置 Y座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>指定した領域がタッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_IInputPointerEx_IsTouched_" data-uid="GameCanvas.IInputPointerEx.IsTouched*"></a>
+
+  <h3 id="GameCanvas_IInputPointerEx_IsTouched_Unity_Mathematics_float2__" data-uid="GameCanvas.IInputPointerEx.IsTouched(Unity.Mathematics.float2@)">
+  IsTouched(out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputPointer.cs/#L296"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>前回のフレーム処理以降 タッチされていたか（開始と終了を含む）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsTouched(out float2 point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>タッチ位置</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>タッチされていたか（開始と終了を含む）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

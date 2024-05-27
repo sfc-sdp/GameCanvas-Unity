@@ -1,738 +1,702 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GcCollisionExtensions
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GcCollisionExtensions
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Class GcCollisionExtensions | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GcCollisionExtensions | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_GcCollisionExtensions.md&amp;value=---%0Auid%3A%20GameCanvas.GcCollisionExtensions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcCollisionExtensions">
-  
-  
-  <h1 id="GameCanvas_GcCollisionExtensions" data-uid="GameCanvas.GcCollisionExtensions" class="text-break">Class GcCollisionExtensions
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">GcCollisionExtensions</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcCollisionExtensions_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class GcCollisionExtensions</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_GcCollisionExtensions_CalcDistance_" data-uid="GameCanvas.GcCollisionExtensions.CalcDistance*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_CalcDistance_GameCanvas_GcLine__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.CalcDistance(GameCanvas.GcLine@,Unity.Mathematics.float2@)">CalcDistance(GcLine, float2)</h4>
-  <div class="markdown level1 summary"><p>線と点との距離を求めます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static float CalcDistance(this in GcLine self, in float2 point)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>線</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>点</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><p>線と点との距離</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Contains_" data-uid="GameCanvas.GcCollisionExtensions.Contains*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Contains(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">Contains(GcAABB, float2)</h4>
-  <div class="markdown level1 summary"><p>点が矩形と重なっているかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Contains(this in GcAABB self, in float2 point)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>点</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>重なっているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Contains_" data-uid="GameCanvas.GcCollisionExtensions.Contains*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcCircle__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Contains(GameCanvas.GcCircle@,Unity.Mathematics.float2@)">Contains(GcCircle, float2)</h4>
-  <div class="markdown level1 summary"><p>点が円と重なっているかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Contains(this in GcCircle self, in float2 point)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>円</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>点</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>重なっているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Contains_" data-uid="GameCanvas.GcCollisionExtensions.Contains*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcLine__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Contains(GameCanvas.GcLine@,Unity.Mathematics.float2@)">Contains(GcLine, float2)</h4>
-  <div class="markdown level1 summary"><p>点が線上に存在するかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Contains(this in GcLine self, in float2 point)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>線</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>点</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>存在するかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_HitTest_" data-uid="GameCanvas.GcCollisionExtensions.HitTest*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB_GameCanvas_GcHitResult__" data-uid="GameCanvas.GcCollisionExtensions.HitTest(GameCanvas.GcAABB@,GameCanvas.GcAABB,GameCanvas.GcHitResult@)">HitTest(GcAABB, GcAABB, out GcHitResult)</h4>
-  <div class="markdown level1 summary"><p>矩形同士の衝突判定を行い、詳細な衝突点情報を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool HitTest(this in GcAABB self, GcAABB other, out GcHitResult hit)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>矩形1</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>矩形2</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcHitResult.html">GcHitResult</a></td>
-        <td><span class="parametername">hit</span></td>
-        <td><p>衝突点情報</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>衝突しているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_HitTest_" data-uid="GameCanvas.GcCollisionExtensions.HitTest*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcHitResult__" data-uid="GameCanvas.GcCollisionExtensions.HitTest(GameCanvas.GcAABB@,Unity.Mathematics.float2@,GameCanvas.GcHitResult@)">HitTest(GcAABB, float2, out GcHitResult)</h4>
-  <div class="markdown level1 summary"><p>点と矩形の衝突判定を行い、詳細な衝突点情報を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool HitTest(this in GcAABB self, in float2 point, out GcHitResult hit)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">point</span></td>
-        <td><p>点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcHitResult.html">GcHitResult</a></td>
-        <td><span class="parametername">hit</span></td>
-        <td><p>衝突点情報</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>衝突しているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Intersects_" data-uid="GameCanvas.GcCollisionExtensions.Intersects*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__" data-uid="GameCanvas.GcCollisionExtensions.Intersects(GameCanvas.GcLine@,GameCanvas.GcLine@)">Intersects(GcLine, GcLine)</h4>
-  <div class="markdown level1 summary"><p>線同士が交差しているかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Intersects(this in GcLine self, in GcLine other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>線1</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>線2</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>交差しているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Intersects_" data-uid="GameCanvas.GcCollisionExtensions.Intersects*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Intersects(GameCanvas.GcLine@,GameCanvas.GcLine@,Unity.Mathematics.float2@)">Intersects(GcLine, GcLine, out float2)</h4>
-  <div class="markdown level1 summary"><p>線同士が交差しているかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Intersects(this in GcLine self, in GcLine other, out float2 intersection)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>線1</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>線2</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">intersection</span></td>
-        <td><p>交差座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>交差しているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Overlaps_" data-uid="GameCanvas.GcCollisionExtensions.Overlaps*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcAABB__GameCanvas_GcAABB__" data-uid="GameCanvas.GcCollisionExtensions.Overlaps(GameCanvas.GcAABB@,GameCanvas.GcAABB@)">Overlaps(GcAABB, GcAABB)</h4>
-  <div class="markdown level1 summary"><p>矩形同士が重なっているかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Overlaps(this in GcAABB self, in GcAABB other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>矩形1</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>矩形2</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>重なっているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_Overlaps_" data-uid="GameCanvas.GcCollisionExtensions.Overlaps*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcCircle__GameCanvas_GcCircle__" data-uid="GameCanvas.GcCollisionExtensions.Overlaps(GameCanvas.GcCircle@,GameCanvas.GcCircle@)">Overlaps(GcCircle, GcCircle)</h4>
-  <div class="markdown level1 summary"><p>円同士が重なっているかどうかを調べます</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool Overlaps(this in GcCircle self, in GcCircle other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></td>
-        <td><span class="parametername">self</span></td>
-        <td><p>円1</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>円2</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>重なっているかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_SweepTest_" data-uid="GameCanvas.GcCollisionExtensions.SweepTest*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__" data-uid="GameCanvas.GcCollisionExtensions.SweepTest(GameCanvas.GcAABB@,GameCanvas.GcAABB@,Unity.Mathematics.float2@,GameCanvas.GcSweepResult@)">SweepTest(GcAABB, GcAABB, float2, out GcSweepResult)</h4>
-  <div class="markdown level1 summary"><p>移動量を考慮した 矩形同士の衝突判定を行います</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool SweepTest(this in GcAABB static, in GcAABB dynamic, in float2 delta, out GcSweepResult sweep)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">static</span></td>
-        <td><p>静止している矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">dynamic</span></td>
-        <td><p>移動する矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">delta</span></td>
-        <td><p>矩形の移動量</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">sweep</span></td>
-        <td><p>衝突情報</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>衝突するかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcCollisionExtensions_SweepTest_" data-uid="GameCanvas.GcCollisionExtensions.SweepTest*"></a>
-  <h4 id="GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__" data-uid="GameCanvas.GcCollisionExtensions.SweepTest(GameCanvas.GcAABB@,Unity.Mathematics.float2@,Unity.Mathematics.float2@,GameCanvas.GcSweepResult@)">SweepTest(GcAABB, float2, float2, out GcSweepResult)</h4>
-  <div class="markdown level1 summary"><p>移動量を考慮した 矩形と点の衝突判定を行います</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool SweepTest(this in GcAABB static, in float2 dynamic, in float2 delta, out GcSweepResult sweep)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">static</span></td>
-        <td><p>静止している矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">dynamic</span></td>
-        <td><p>移動する点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">delta</span></td>
-        <td><p>点の移動量</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></td>
-        <td><span class="parametername">sweep</span></td>
-        <td><p>衝突情報</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>衝突するかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.GcCollisionExtensions">
+
+
+
+  <h1 id="GameCanvas_GcCollisionExtensions" data-uid="GameCanvas.GcCollisionExtensions" class="text-break">
+Class GcCollisionExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class GcCollisionExtensions</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GcCollisionExtensions</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_GcCollisionExtensions_CalcDistance_" data-uid="GameCanvas.GcCollisionExtensions.CalcDistance*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_CalcDistance_GameCanvas_GcLine__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.CalcDistance(GameCanvas.GcLine@,Unity.Mathematics.float2@)">
+  CalcDistance(in GcLine, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>線と点との距離を求めます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float CalcDistance(this in GcLine self, in float2 point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>点</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>線と点との距離</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Contains_" data-uid="GameCanvas.GcCollisionExtensions.Contains*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcAABB__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Contains(GameCanvas.GcAABB@,Unity.Mathematics.float2@)">
+  Contains(in GcAABB, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>点が矩形と重なっているかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Contains(this in GcAABB self, in float2 point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>矩形</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>点</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>重なっているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Contains_" data-uid="GameCanvas.GcCollisionExtensions.Contains*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcCircle__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Contains(GameCanvas.GcCircle@,Unity.Mathematics.float2@)">
+  Contains(in GcCircle, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>点が円と重なっているかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Contains(this in GcCircle self, in float2 point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></dt>
+    <dd><p>円</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>点</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>重なっているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Contains_" data-uid="GameCanvas.GcCollisionExtensions.Contains*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcLine__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Contains(GameCanvas.GcLine@,Unity.Mathematics.float2@)">
+  Contains(in GcLine, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>点が線上に存在するかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Contains(this in GcLine self, in float2 point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>点</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>存在するかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_HitTest_" data-uid="GameCanvas.GcCollisionExtensions.HitTest*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB_GameCanvas_GcHitResult__" data-uid="GameCanvas.GcCollisionExtensions.HitTest(GameCanvas.GcAABB@,GameCanvas.GcAABB,GameCanvas.GcHitResult@)">
+  HitTest(in GcAABB, GcAABB, out GcHitResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>矩形同士の衝突判定を行い、詳細な衝突点情報を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HitTest(this in GcAABB self, GcAABB other, out GcHitResult hit)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>矩形1</p>
+</dd>
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>矩形2</p>
+</dd>
+    <dt><code>hit</code> <a class="xref" href="GameCanvas.GcHitResult.html">GcHitResult</a></dt>
+    <dd><p>衝突点情報</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>衝突しているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_HitTest_" data-uid="GameCanvas.GcCollisionExtensions.HitTest*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcHitResult__" data-uid="GameCanvas.GcCollisionExtensions.HitTest(GameCanvas.GcAABB@,Unity.Mathematics.float2@,GameCanvas.GcHitResult@)">
+  HitTest(in GcAABB, in float2, out GcHitResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>点と矩形の衝突判定を行い、詳細な衝突点情報を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool HitTest(this in GcAABB self, in float2 point, out GcHitResult hit)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>矩形</p>
+</dd>
+    <dt><code>point</code> <span class="xref">float2</span></dt>
+    <dd><p>点</p>
+</dd>
+    <dt><code>hit</code> <a class="xref" href="GameCanvas.GcHitResult.html">GcHitResult</a></dt>
+    <dd><p>衝突点情報</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>衝突しているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Intersects_" data-uid="GameCanvas.GcCollisionExtensions.Intersects*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__" data-uid="GameCanvas.GcCollisionExtensions.Intersects(GameCanvas.GcLine@,GameCanvas.GcLine@)">
+  Intersects(in GcLine, in GcLine)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>線同士が交差しているかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Intersects(this in GcLine self, in GcLine other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線1</p>
+</dd>
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>交差しているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Intersects_" data-uid="GameCanvas.GcCollisionExtensions.Intersects*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__Unity_Mathematics_float2__" data-uid="GameCanvas.GcCollisionExtensions.Intersects(GameCanvas.GcLine@,GameCanvas.GcLine@,Unity.Mathematics.float2@)">
+  Intersects(in GcLine, in GcLine, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>線同士が交差しているかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Intersects(this in GcLine self, in GcLine other, out float2 intersection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線1</p>
+</dd>
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線2</p>
+</dd>
+    <dt><code>intersection</code> <span class="xref">float2</span></dt>
+    <dd><p>交差座標</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>交差しているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Overlaps_" data-uid="GameCanvas.GcCollisionExtensions.Overlaps*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcAABB__GameCanvas_GcAABB__" data-uid="GameCanvas.GcCollisionExtensions.Overlaps(GameCanvas.GcAABB@,GameCanvas.GcAABB@)">
+  Overlaps(in GcAABB, in GcAABB)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L270"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>矩形同士が重なっているかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Overlaps(this in GcAABB self, in GcAABB other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>矩形1</p>
+</dd>
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>矩形2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>重なっているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_Overlaps_" data-uid="GameCanvas.GcCollisionExtensions.Overlaps*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcCircle__GameCanvas_GcCircle__" data-uid="GameCanvas.GcCollisionExtensions.Overlaps(GameCanvas.GcCircle@,GameCanvas.GcCircle@)">
+  Overlaps(in GcCircle, in GcCircle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L283"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>円同士が重なっているかどうかを調べます</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Overlaps(this in GcCircle self, in GcCircle other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></dt>
+    <dd><p>円1</p>
+</dd>
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></dt>
+    <dd><p>円2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>重なっているかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_SweepTest_" data-uid="GameCanvas.GcCollisionExtensions.SweepTest*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__" data-uid="GameCanvas.GcCollisionExtensions.SweepTest(GameCanvas.GcAABB@,GameCanvas.GcAABB@,Unity.Mathematics.float2@,GameCanvas.GcSweepResult@)">
+  SweepTest(in GcAABB, in GcAABB, in float2, out GcSweepResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L336"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>移動量を考慮した 矩形同士の衝突判定を行います</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SweepTest(this in GcAABB @static, in GcAABB dynamic, in float2 delta, out GcSweepResult sweep)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>static</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>静止している矩形</p>
+</dd>
+    <dt><code>dynamic</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>移動する矩形</p>
+</dd>
+    <dt><code>delta</code> <span class="xref">float2</span></dt>
+    <dd><p>矩形の移動量</p>
+</dd>
+    <dt><code>sweep</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd><p>衝突情報</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>衝突するかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcCollisionExtensions_SweepTest_" data-uid="GameCanvas.GcCollisionExtensions.SweepTest*"></a>
+
+  <h3 id="GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__" data-uid="GameCanvas.GcCollisionExtensions.SweepTest(GameCanvas.GcAABB@,Unity.Mathematics.float2@,Unity.Mathematics.float2@,GameCanvas.GcSweepResult@)">
+  SweepTest(in GcAABB, in float2, in float2, out GcSweepResult)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Extension/GcCollisionExtensions.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>移動量を考慮した 矩形と点の衝突判定を行います</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SweepTest(this in GcAABB @static, in float2 dynamic, in float2 delta, out GcSweepResult sweep)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>static</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd><p>静止している矩形</p>
+</dd>
+    <dt><code>dynamic</code> <span class="xref">float2</span></dt>
+    <dd><p>移動する点</p>
+</dd>
+    <dt><code>delta</code> <span class="xref">float2</span></dt>
+    <dd><p>点の移動量</p>
+</dd>
+    <dt><code>sweep</code> <a class="xref" href="GameCanvas.GcSweepResult.html">GcSweepResult</a></dt>
+    <dd><p>衝突情報</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>衝突するかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

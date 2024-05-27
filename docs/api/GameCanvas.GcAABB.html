@@ -1,811 +1,848 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct GcAABB
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct GcAABB
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Struct GcAABB | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct GcAABB | GameCanvas ">
+      
+      <meta name="description" content="軸に平行な矩形 (Axis Aligned Bounding Box)">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_GcAABB.md&amp;value=---%0Auid%3A%20GameCanvas.GcAABB%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcAABB">
-  
-  
-  <h1 id="GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB" class="text-break">Struct GcAABB
-  </h1>
-  <div class="markdown level0 summary"><p>軸に平行な矩形 (Axis Aligned Bounding Box)</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="GameCanvas.IPrimitive-1.html">IPrimitive</a>&lt;<a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a>&gt;</div>
-    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcAABB_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct GcAABB : IPrimitive&lt;GcAABB&gt;, IEquatable&lt;GcAABB&gt;</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
-  <h4 id="GameCanvas_GcAABB__ctor_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.#ctor(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">GcAABB(float2, float2)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcAABB(in float2 center, in float2 halfSize)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">center</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">halfSize</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
-  <h4 id="GameCanvas_GcAABB__ctor_UnityEngine_Rect__" data-uid="GameCanvas.GcAABB.#ctor(UnityEngine.Rect@)">GcAABB(Rect)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcAABB(in Rect rect)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Rect.html">Rect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <h4 id="GameCanvas_GcAABB_Center" data-uid="GameCanvas.GcAABB.Center">Center</h4>
-  <div class="markdown level1 summary"><p>中心座標</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 Center</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcAABB_HalfSize" data-uid="GameCanvas.GcAABB.HalfSize">HalfSize</h4>
-  <div class="markdown level1 summary"><p>大きさの半値</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 HalfSize</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_GcAABB_Equals_" data-uid="GameCanvas.GcAABB.Equals*"></a>
-  <h4 id="GameCanvas_GcAABB_Equals_GameCanvas_GcAABB_" data-uid="GameCanvas.GcAABB.Equals(GameCanvas.GcAABB)">Equals(GcAABB)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(GcAABB other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">other</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_Equals_" data-uid="GameCanvas.GcAABB.Equals*"></a>
-  <h4 id="GameCanvas_GcAABB_Equals_System_Object_" data-uid="GameCanvas.GcAABB.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
-  <a id="GameCanvas_GcAABB_GetHashCode_" data-uid="GameCanvas.GcAABB.GetHashCode*"></a>
-  <h4 id="GameCanvas_GcAABB_GetHashCode" data-uid="GameCanvas.GcAABB.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
-  <a id="GameCanvas_GcAABB_GetPoint_" data-uid="GameCanvas.GcAABB.GetPoint*"></a>
-  <h4 id="GameCanvas_GcAABB_GetPoint_GameCanvas_GcAnchor__" data-uid="GameCanvas.GcAABB.GetPoint(GameCanvas.GcAnchor@)">GetPoint(GcAnchor)</h4>
-  <div class="markdown level1 summary"><p>矩形の指定された点の座標を計算します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 GetPoint(in GcAnchor anchor)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></td>
-        <td><span class="parametername">anchor</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_MinMax_" data-uid="GameCanvas.GcAABB.MinMax*"></a>
-  <h4 id="GameCanvas_GcAABB_MinMax_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.MinMax(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">MinMax(float2, float2)</h4>
-  <div class="markdown level1 summary"><p>2点を内包する最小の矩形</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GcAABB MinMax(in float2 a, in float2 b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_ToString_" data-uid="GameCanvas.GcAABB.ToString*"></a>
-  <h4 id="GameCanvas_GcAABB_ToString" data-uid="GameCanvas.GcAABB.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.ToString()</span></div>
-  <a id="GameCanvas_GcAABB_WH_" data-uid="GameCanvas.GcAABB.WH*"></a>
-  <h4 id="GameCanvas_GcAABB_WH_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.WH(Unity.Mathematics.float2@)">WH(float2)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GcAABB WH(in float2 size)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">size</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_XYWH_" data-uid="GameCanvas.GcAABB.XYWH*"></a>
-  <h4 id="GameCanvas_GcAABB_XYWH_System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.GcAABB.XYWH(System.Single@,System.Single@,System.Single@,System.Single@)">XYWH(Single, Single, Single, Single)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GcAABB XYWH(in float x, in float y, in float width, in float height)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">width</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">height</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_XYWH_" data-uid="GameCanvas.GcAABB.XYWH*"></a>
-  <h4 id="GameCanvas_GcAABB_XYWH_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.XYWH(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">XYWH(float2, float2)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GcAABB XYWH(in float2 position, in float2 size)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">position</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">size</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="operators">Operators
-  </h3>
-  <a id="GameCanvas_GcAABB_op_Equality_" data-uid="GameCanvas.GcAABB.op_Equality*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Equality_GameCanvas_GcAABB_GameCanvas_GcAABB_" data-uid="GameCanvas.GcAABB.op_Equality(GameCanvas.GcAABB,GameCanvas.GcAABB)">Equality(GcAABB, GcAABB)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(GcAABB lh, GcAABB rh)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">lh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">rh</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Explicit_GameCanvas_GcAABB__UnityEngine_Rect" data-uid="GameCanvas.GcAABB.op_Explicit(GameCanvas.GcAABB)~UnityEngine.Rect">Explicit(GcAABB to Rect)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static explicit operator Rect(GcAABB aabb)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">aabb</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Rect.html">Rect</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Explicit_UnityEngine_Rect__GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB.op_Explicit(UnityEngine.Rect)~GameCanvas.GcAABB">Explicit(Rect to GcAABB)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static explicit operator GcAABB(Rect rect)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Rect.html">Rect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_op_Implicit_" data-uid="GameCanvas.GcAABB.op_Implicit*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Implicit_GameCanvas_GcAABB__GameCanvas_GcRect" data-uid="GameCanvas.GcAABB.op_Implicit(GameCanvas.GcAABB)~GameCanvas.GcRect">Implicit(GcAABB to GcRect)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static implicit operator GcRect(GcAABB aabb)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">aabb</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcAABB_op_Inequality_" data-uid="GameCanvas.GcAABB.op_Inequality*"></a>
-  <h4 id="GameCanvas_GcAABB_op_Inequality_GameCanvas_GcAABB_GameCanvas_GcAABB_" data-uid="GameCanvas.GcAABB.op_Inequality(GameCanvas.GcAABB,GameCanvas.GcAABB)">Inequality(GcAABB, GcAABB)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(GcAABB lh, GcAABB rh)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">lh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></td>
-        <td><span class="parametername">rh</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="GameCanvas.IPrimitive-1.html">IPrimitive&lt;T&gt;</a>
-  </div>
-  <div>
-      <span class="xref">System.IEquatable&lt;T&gt;</span>
-  </div>
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcAABB__Unity_Mathematics_float2__">GcCollisionExtensions.Contains(GcAABB, float2)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcHitResult__">GcCollisionExtensions.HitTest(GcAABB, float2, out GcHitResult)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB_GameCanvas_GcHitResult__">GcCollisionExtensions.HitTest(GcAABB, GcAABB, out GcHitResult)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcAABB__GameCanvas_GcAABB__">GcCollisionExtensions.Overlaps(GcAABB, GcAABB)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtensions.SweepTest(GcAABB, float2, float2, out GcSweepResult)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtensions.SweepTest(GcAABB, GcAABB, float2, out GcSweepResult)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Max_GameCanvas_GcAABB__">GcAABBExtensions.Max(GcAABB)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Min_GameCanvas_GcAABB__">GcAABBExtensions.Min(GcAABB)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Position_GameCanvas_GcAABB__">GcAABBExtensions.Position(GcAABB)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Size_GameCanvas_GcAABB__">GcAABBExtensions.Size(GcAABB)</a>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.GcAABB">
+
+
+
+  <h1 id="GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB" class="text-break">
+Struct GcAABB  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>軸に平行な矩形 (Axis Aligned Bounding Box)</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct GcAABB : IPrimitive&lt;GcAABB&gt;, IEquatable&lt;GcAABB&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="GameCanvas.IPrimitive-1.html">IPrimitive</a>&lt;<a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Max_GameCanvas_GcAABB__">GcAABBExtensions.Max(in GcAABB)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Min_GameCanvas_GcAABB__">GcAABBExtensions.Min(in GcAABB)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Position_GameCanvas_GcAABB__">GcAABBExtensions.Position(in GcAABB)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcAABBExtensions.html#GameCanvas_GcAABBExtensions_Size_GameCanvas_GcAABB__">GcAABBExtensions.Size(in GcAABB)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcAABB__Unity_Mathematics_float2__">GcCollisionExtensions.Contains(in GcAABB, in float2)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB_GameCanvas_GcHitResult__">GcCollisionExtensions.HitTest(in GcAABB, GcAABB, out GcHitResult)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcHitResult__">GcCollisionExtensions.HitTest(in GcAABB, in float2, out GcHitResult)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Overlaps_GameCanvas_GcAABB__GameCanvas_GcAABB__">GcCollisionExtensions.Overlaps(in GcAABB, in GcAABB)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtensions.SweepTest(in GcAABB, in GcAABB, in float2, out GcSweepResult)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">GcCollisionExtensions.SweepTest(in GcAABB, in float2, in float2, out GcSweepResult)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
+
+  <h3 id="GameCanvas_GcAABB__ctor_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.#ctor(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  GcAABB(in float2, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcAABB(in float2 center, in float2 halfSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>center</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+    <dt><code>halfSize</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB__ctor_" data-uid="GameCanvas.GcAABB.#ctor*"></a>
+
+  <h3 id="GameCanvas_GcAABB__ctor_UnityEngine_Rect__" data-uid="GameCanvas.GcAABB.#ctor(UnityEngine.Rect@)">
+  GcAABB(in Rect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcAABB(in Rect rect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <span class="xref">Rect</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="GameCanvas_GcAABB_Center" data-uid="GameCanvas.GcAABB.Center">
+  Center
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>中心座標</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 Center</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcAABB_HalfSize" data-uid="GameCanvas.GcAABB.HalfSize">
+  HalfSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>大きさの半値</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 HalfSize</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_GcAABB_Equals_" data-uid="GameCanvas.GcAABB.Equals*"></a>
+
+  <h3 id="GameCanvas_GcAABB_Equals_GameCanvas_GcAABB_" data-uid="GameCanvas.GcAABB.Equals(GameCanvas.GcAABB)">
+  Equals(GcAABB)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(GcAABB other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_Equals_" data-uid="GameCanvas.GcAABB.Equals*"></a>
+
+  <h3 id="GameCanvas_GcAABB_Equals_System_Object_" data-uid="GameCanvas.GcAABB.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_GetHashCode_" data-uid="GameCanvas.GcAABB.GetHashCode*"></a>
+
+  <h3 id="GameCanvas_GcAABB_GetHashCode" data-uid="GameCanvas.GcAABB.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_GetPoint_" data-uid="GameCanvas.GcAABB.GetPoint*"></a>
+
+  <h3 id="GameCanvas_GcAABB_GetPoint_GameCanvas_GcAnchor__" data-uid="GameCanvas.GcAABB.GetPoint(GameCanvas.GcAnchor@)">
+  GetPoint(in GcAnchor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>矩形の指定された点の座標を計算します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly float2 GetPoint(in GcAnchor anchor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>anchor</code> <a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_MinMax_" data-uid="GameCanvas.GcAABB.MinMax*"></a>
+
+  <h3 id="GameCanvas_GcAABB_MinMax_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.MinMax(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  MinMax(in float2, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>2点を内包する最小の矩形</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GcAABB MinMax(in float2 a, in float2 b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+    <dt><code>b</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_ToString_" data-uid="GameCanvas.GcAABB.ToString*"></a>
+
+  <h3 id="GameCanvas_GcAABB_ToString" data-uid="GameCanvas.GcAABB.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_WH_" data-uid="GameCanvas.GcAABB.WH*"></a>
+
+  <h3 id="GameCanvas_GcAABB_WH_Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.WH(Unity.Mathematics.float2@)">
+  WH(in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GcAABB WH(in float2 size)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>size</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_XYWH_" data-uid="GameCanvas.GcAABB.XYWH*"></a>
+
+  <h3 id="GameCanvas_GcAABB_XYWH_System_Single__System_Single__System_Single__System_Single__" data-uid="GameCanvas.GcAABB.XYWH(System.Single@,System.Single@,System.Single@,System.Single@)">
+  XYWH(in float, in float, in float, in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GcAABB XYWH(in float x, in float y, in float width, in float height)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_XYWH_" data-uid="GameCanvas.GcAABB.XYWH*"></a>
+
+  <h3 id="GameCanvas_GcAABB_XYWH_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcAABB.XYWH(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  XYWH(in float2, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GcAABB XYWH(in float2 position, in float2 size)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+    <dt><code>size</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="GameCanvas_GcAABB_op_Equality_" data-uid="GameCanvas.GcAABB.op_Equality*"></a>
+
+  <h3 id="GameCanvas_GcAABB_op_Equality_GameCanvas_GcAABB_GameCanvas_GcAABB_" data-uid="GameCanvas.GcAABB.op_Equality(GameCanvas.GcAABB,GameCanvas.GcAABB)">
+  operator ==(GcAABB, GcAABB)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(GcAABB lh, GcAABB rh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lh</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+    <dt><code>rh</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
+
+  <h3 id="GameCanvas_GcAABB_op_Explicit_GameCanvas_GcAABB__UnityEngine_Rect" data-uid="GameCanvas.GcAABB.op_Explicit(GameCanvas.GcAABB)~UnityEngine.Rect">
+  explicit operator Rect(GcAABB)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator Rect(GcAABB aabb)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aabb</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Rect</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_op_Explicit_" data-uid="GameCanvas.GcAABB.op_Explicit*"></a>
+
+  <h3 id="GameCanvas_GcAABB_op_Explicit_UnityEngine_Rect__GameCanvas_GcAABB" data-uid="GameCanvas.GcAABB.op_Explicit(UnityEngine.Rect)~GameCanvas.GcAABB">
+  explicit operator GcAABB(Rect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator GcAABB(Rect rect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <span class="xref">Rect</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_op_Implicit_" data-uid="GameCanvas.GcAABB.op_Implicit*"></a>
+
+  <h3 id="GameCanvas_GcAABB_op_Implicit_GameCanvas_GcAABB__GameCanvas_GcRect" data-uid="GameCanvas.GcAABB.op_Implicit(GameCanvas.GcAABB)~GameCanvas.GcRect">
+  implicit operator GcRect(GcAABB)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator GcRect(GcAABB aabb)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>aabb</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcAABB_op_Inequality_" data-uid="GameCanvas.GcAABB.op_Inequality*"></a>
+
+  <h3 id="GameCanvas_GcAABB_op_Inequality_GameCanvas_GcAABB_GameCanvas_GcAABB_" data-uid="GameCanvas.GcAABB.op_Inequality(GameCanvas.GcAABB,GameCanvas.GcAABB)">
+  operator !=(GcAABB, GcAABB)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcAABR.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(GcAABB lh, GcAABB rh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lh</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+    <dt><code>rh</code> <a class="xref" href="GameCanvas.GcAABB.html">GcAABB</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

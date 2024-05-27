@@ -1,4 +1,10 @@
 # CHANGE LOG
+## 6.6.0
+### 機能追加
+- [#230](https://github.com/sfc-sdp/GameCanvas-Unity/issues/230) gc.SetRandomSeedByIndex を追加
+### その他
+- ドキュメントフォーマットの更新 (docfx 2.76.0)
+
 ## 6.5.0
 ### 仕様変更
 - 推奨エディタバージョンを Unity 2022.3.24f1 に更新
