@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v6.0](https://img.shields.io/badge/GameCanvas%20API-v6.0-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/)
+[![Latest Release](https://img.shields.io/github/release/sfc-sdp/GameCanvas-Unity.svg)](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)　[![GameCanvas API v6.6](https://img.shields.io/badge/GameCanvas%20API-v6.6-yellow.svg)](https://sfc-sdp.github.io/GameCanvas-Unity/)
 [<img alt="GameCanvas" align="right" src="Assets/GameCanvas/Icons/icon_android_full.png"/>](https://github.com/sfc-sdp/GameCanvas-Unity/releases/latest)
 
 ## GameCanvas にようこそ！
