@@ -140,10 +140,22 @@ namespace GameCanvas
         int Round(in double value);
 
         /// <summary>
-        /// ランダム計算のシード値を設定します
+        /// 乱数計算の現在の状態（≒シード値）を取得します
+        /// </summary>
+        /// <returns>シード値</returns>
+        uint GetRandomState();
+
+        /// <summary>
+        /// 乱数計算のシード値を設定します
         /// </summary>
         /// <param name="seed">シード値</param>
         void SetRandomSeed(in uint seed);
+
+        /// <summary>
+        /// 乱数計算のシード値をインデックスから設定します
+        /// </summary>
+        /// <param name="index">インデックス</param>
+        void SetRandomSeedByIndex(in uint index);
 
         /// <summary>
         /// サインを計算します

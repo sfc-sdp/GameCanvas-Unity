@@ -1939,7 +1939,15 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public uint GetRandomState() => GcMath.GetRandomState();
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetRandomSeed(in uint seed) => GcMath.SetRandomSeed(seed);
+
+        /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetRandomSeedByIndex(in uint index) => GcMath.SetRandomSeedByIndex(index);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
