@@ -1,43 +1,118 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ISoundEx
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ISoundEx
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Interface ISoundEx | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ISoundEx | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_ISoundEx.md&amp;value=---%0Auid%3A%20GameCanvas.ISoundEx%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.ISoundEx">
-  
-  
-  <h1 id="GameCanvas_ISoundEx" data-uid="GameCanvas.ISoundEx" class="text-break">Interface ISoundEx
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.ISoundEx">
+
+
+
+  <h1 id="GameCanvas_ISoundEx" data-uid="GameCanvas.ISoundEx" class="text-break">
+Interface ISoundEx  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/ISound.cs/#L87"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ISoundEx : ISound</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_ClearSound">ISound.ClearSound()</a>
     </div>
@@ -51,13 +126,13 @@
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack_">ISound.PauseSound(GcSoundTrack)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(GcSound, GcSoundTrack, Boolean)</a>
+      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(in GcSound, GcSoundTrack, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(AudioClip, GcSoundTrack, Boolean)</a>
+      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(in AudioClip, GcSoundTrack, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_">ISound.SetSoundLevel(Single, GcSoundTrack)</a>
+      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_">ISound.SetSoundLevel(in float, GcSoundTrack)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack_">ISound.StopSound(GcSoundTrack)</a>
@@ -65,175 +140,178 @@
     <div>
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack_">ISound.UnpauseSound(GcSoundTrack)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_ISoundEx_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ISoundEx : ISound</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="GameCanvas_ISoundEx_GetSoundVolume_" data-uid="GameCanvas.ISoundEx.GetSoundVolume*"></a>
-  <h4 id="GameCanvas_ISoundEx_GetSoundVolume_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack)">GetSoundVolume(GcSoundTrack)</h4>
+
+  <h3 id="GameCanvas_ISoundEx_GetSoundVolume_GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISoundEx.GetSoundVolume(GameCanvas.GcSoundTrack)">
+  GetSoundVolume(GcSoundTrack)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/ISound.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>トラック音量を取得します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float GetSoundVolume(GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></td>
-        <td><span class="parametername">track</span></td>
-        <td><p>対象の音声トラック</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><p>音量（0f～1f）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>track</code> <a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></dt>
+    <dd><p>対象の音声トラック</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>音量（0f～1f）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_ISoundEx_PlaySE_" data-uid="GameCanvas.ISoundEx.PlaySE*"></a>
-  <h4 id="GameCanvas_ISoundEx_PlaySE_GameCanvas_GcSound__" data-uid="GameCanvas.ISoundEx.PlaySE(GameCanvas.GcSound@)">PlaySE(GcSound)</h4>
+
+  <h3 id="GameCanvas_ISoundEx_PlaySE_GameCanvas_GcSound__" data-uid="GameCanvas.ISoundEx.PlaySE(GameCanvas.GcSound@)">
+  PlaySE(in GcSound)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/ISound.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>サウンドを1回再生します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PlaySE(in GcSound sound)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSound.html">GcSound</a></td>
-        <td><span class="parametername">sound</span></td>
-        <td><p>サウンド</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="GameCanvas.GcSound.html">GcSound</a></dt>
+    <dd><p>サウンド</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_ISoundEx_PlaySE_" data-uid="GameCanvas.ISoundEx.PlaySE*"></a>
-  <h4 id="GameCanvas_ISoundEx_PlaySE_UnityEngine_AudioClip__" data-uid="GameCanvas.ISoundEx.PlaySE(UnityEngine.AudioClip@)">PlaySE(AudioClip)</h4>
+
+  <h3 id="GameCanvas_ISoundEx_PlaySE_UnityEngine_AudioClip__" data-uid="GameCanvas.ISoundEx.PlaySE(UnityEngine.AudioClip@)">
+  PlaySE(in AudioClip)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/ISound.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>サウンドを1回再生します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PlaySE(in AudioClip clip)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/AudioClip.html">AudioClip</a></td>
-        <td><span class="parametername">clip</span></td>
-        <td><p>サウンド</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clip</code> <span class="xref">AudioClip</span></dt>
+    <dd><p>サウンド</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_ISoundEx_SetSoundVolume_" data-uid="GameCanvas.ISoundEx.SetSoundVolume*"></a>
-  <h4 id="GameCanvas_ISoundEx_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISoundEx.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)">SetSoundVolume(Single, GcSoundTrack)</h4>
+
+  <h3 id="GameCanvas_ISoundEx_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_" data-uid="GameCanvas.ISoundEx.SetSoundVolume(System.Single@,GameCanvas.GcSoundTrack)">
+  SetSoundVolume(in float, GcSoundTrack)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/ISound.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>トラック音量を変更します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void SetSoundVolume(in float volume, GcSoundTrack track = GcSoundTrack.Master)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">volume</span></td>
-        <td><p>音量（0f～1f）</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></td>
-        <td><span class="parametername">track</span></td>
-        <td><p>対象の音声トラック</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>volume</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>音量（0f～1f）</p>
+</dd>
+    <dt><code>track</code> <a class="xref" href="GameCanvas.GcSoundTrack.html">GcSoundTrack</a></dt>
+    <dd><p>対象の音声トラック</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

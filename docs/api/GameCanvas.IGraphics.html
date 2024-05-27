@@ -1,1660 +1,2245 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IGraphics
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IGraphics
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Interface IGraphics | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IGraphics | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_IGraphics.md&amp;value=---%0Auid%3A%20GameCanvas.IGraphics%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.IGraphics">
-  
-  
-  <h1 id="GameCanvas_IGraphics" data-uid="GameCanvas.IGraphics" class="text-break">Interface IGraphics
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.IGraphics">
+
+
+
+  <h1 id="GameCanvas_IGraphics" data-uid="GameCanvas.IGraphics" class="text-break">
+Interface IGraphics  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L17"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_IGraphics_syntax">Syntax</h5>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IGraphics</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="GameCanvas_IGraphics_BackgroundColor_" data-uid="GameCanvas.IGraphics.BackgroundColor*"></a>
-  <h4 id="GameCanvas_IGraphics_BackgroundColor" data-uid="GameCanvas.IGraphics.BackgroundColor">BackgroundColor</h4>
+
+  <h3 id="GameCanvas_IGraphics_BackgroundColor" data-uid="GameCanvas.IGraphics.BackgroundColor">
+  BackgroundColor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>背景色</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">Color BackgroundColor { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Color.html">Color</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_BorderColor_" data-uid="GameCanvas.IGraphics.BorderColor*"></a>
-  <h4 id="GameCanvas_IGraphics_BorderColor" data-uid="GameCanvas.IGraphics.BorderColor">BorderColor</h4>
+
+  <h3 id="GameCanvas_IGraphics_BorderColor" data-uid="GameCanvas.IGraphics.BorderColor">
+  BorderColor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバス外に表示される帯の色</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">Color BorderColor { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Color.html">Color</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_IGraphics_BorderColor_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__">ChangeBorderColor(Color)</a> を呼び出すことで変更できます</p>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="GameCanvas_IGraphics_BorderColor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__">ChangeBorderColor(in Color)</a> を呼び出すことで変更できます</p>
 </div>
+
+
+
+
   <a id="GameCanvas_IGraphics_CanvasSize_" data-uid="GameCanvas.IGraphics.CanvasSize*"></a>
-  <h4 id="GameCanvas_IGraphics_CanvasSize" data-uid="GameCanvas.IGraphics.CanvasSize">CanvasSize</h4>
+
+  <h3 id="GameCanvas_IGraphics_CanvasSize" data-uid="GameCanvas.IGraphics.CanvasSize">
+  CanvasSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバス解像度</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int2 CanvasSize { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_IGraphics_CanvasSize_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2__">ChangeCanvasSize(int2)</a> を呼び出すことで変更できます</p>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="GameCanvas_IGraphics_CanvasSize_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2__">ChangeCanvasSize(in int2)</a> を呼び出すことで変更できます</p>
 </div>
+
+
+
+
   <a id="GameCanvas_IGraphics_CircleResolution_" data-uid="GameCanvas.IGraphics.CircleResolution*"></a>
-  <h4 id="GameCanvas_IGraphics_CircleResolution" data-uid="GameCanvas.IGraphics.CircleResolution">CircleResolution</h4>
+
+  <h3 id="GameCanvas_IGraphics_CircleResolution" data-uid="GameCanvas.IGraphics.CircleResolution">
+  CircleResolution
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>円の解像度</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int CircleResolution { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_Color_" data-uid="GameCanvas.IGraphics.Color*"></a>
-  <h4 id="GameCanvas_IGraphics_Color" data-uid="GameCanvas.IGraphics.Color">Color</h4>
+
+  <h3 id="GameCanvas_IGraphics_Color" data-uid="GameCanvas.IGraphics.Color">
+  Color
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>描画色</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">Color Color { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Color.html">Color</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Color</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CoordinateScope_" data-uid="GameCanvas.IGraphics.CoordinateScope*"></a>
-  <h4 id="GameCanvas_IGraphics_CoordinateScope" data-uid="GameCanvas.IGraphics.CoordinateScope">CoordinateScope</h4>
+
+  <h3 id="GameCanvas_IGraphics_CoordinateScope" data-uid="GameCanvas.IGraphics.CoordinateScope">
+  CoordinateScope
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_PushCoordinate">PushCoordinate()</a> と <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_PopCoordinate">PopCoordinate()</a> が自動的に呼び出されるスコープ</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">CoordianteScope CoordinateScope { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.CoordianteScope.html">CoordianteScope</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.CoordianteScope.html">CoordianteScope</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CornerRadius_" data-uid="GameCanvas.IGraphics.CornerRadius*"></a>
-  <h4 id="GameCanvas_IGraphics_CornerRadius" data-uid="GameCanvas.IGraphics.CornerRadius">CornerRadius</h4>
+
+  <h3 id="GameCanvas_IGraphics_CornerRadius" data-uid="GameCanvas.IGraphics.CornerRadius">
+  CornerRadius
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸の半径</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float CornerRadius { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CurrentCoordinate_" data-uid="GameCanvas.IGraphics.CurrentCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_CurrentCoordinate" data-uid="GameCanvas.IGraphics.CurrentCoordinate">CurrentCoordinate</h4>
+
+  <h3 id="GameCanvas_IGraphics_CurrentCoordinate" data-uid="GameCanvas.IGraphics.CurrentCoordinate">
+  CurrentCoordinate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>現在の座標系（変換行列）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float2x3 CurrentCoordinate { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2x3</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CurrentStyle_" data-uid="GameCanvas.IGraphics.CurrentStyle*"></a>
-  <h4 id="GameCanvas_IGraphics_CurrentStyle" data-uid="GameCanvas.IGraphics.CurrentStyle">CurrentStyle</h4>
+
+  <h3 id="GameCanvas_IGraphics_CurrentStyle" data-uid="GameCanvas.IGraphics.CurrentStyle">
+  CurrentStyle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>現在のスタイル</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">GcStyle CurrentStyle { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcStyle.html">GcStyle</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcStyle.html">GcStyle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DeviceScreenSize_" data-uid="GameCanvas.IGraphics.DeviceScreenSize*"></a>
-  <h4 id="GameCanvas_IGraphics_DeviceScreenSize" data-uid="GameCanvas.IGraphics.DeviceScreenSize">DeviceScreenSize</h4>
+
+  <h3 id="GameCanvas_IGraphics_DeviceScreenSize" data-uid="GameCanvas.IGraphics.DeviceScreenSize">
+  DeviceScreenSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>端末スクリーン解像度</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int2 DeviceScreenSize { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">int2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_Font_" data-uid="GameCanvas.IGraphics.Font*"></a>
-  <h4 id="GameCanvas_IGraphics_Font" data-uid="GameCanvas.IGraphics.Font">Font</h4>
+
+  <h3 id="GameCanvas_IGraphics_Font" data-uid="GameCanvas.IGraphics.Font">
+  Font
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>フォント種別</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">GcFont Font { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcFont.html">GcFont</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcFont.html">GcFont</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FontSize_" data-uid="GameCanvas.IGraphics.FontSize*"></a>
-  <h4 id="GameCanvas_IGraphics_FontSize" data-uid="GameCanvas.IGraphics.FontSize">FontSize</h4>
+
+  <h3 id="GameCanvas_IGraphics_FontSize" data-uid="GameCanvas.IGraphics.FontSize">
+  FontSize
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>フォントサイズ</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int FontSize { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_LineCap_" data-uid="GameCanvas.IGraphics.LineCap*"></a>
-  <h4 id="GameCanvas_IGraphics_LineCap" data-uid="GameCanvas.IGraphics.LineCap">LineCap</h4>
+
+  <h3 id="GameCanvas_IGraphics_LineCap" data-uid="GameCanvas.IGraphics.LineCap">
+  LineCap
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>描線の端点の形状</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">GcLineCap LineCap { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLineCap.html">GcLineCap</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcLineCap.html">GcLineCap</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_LineWidth_" data-uid="GameCanvas.IGraphics.LineWidth*"></a>
-  <h4 id="GameCanvas_IGraphics_LineWidth" data-uid="GameCanvas.IGraphics.LineWidth">LineWidth</h4>
+
+  <h3 id="GameCanvas_IGraphics_LineWidth" data-uid="GameCanvas.IGraphics.LineWidth">
+  LineWidth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>描線の太さ</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float LineWidth { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_RectAnchor_" data-uid="GameCanvas.IGraphics.RectAnchor*"></a>
-  <h4 id="GameCanvas_IGraphics_RectAnchor" data-uid="GameCanvas.IGraphics.RectAnchor">RectAnchor</h4>
+
+  <h3 id="GameCanvas_IGraphics_RectAnchor" data-uid="GameCanvas.IGraphics.RectAnchor">
+  RectAnchor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>矩形のアンカー位置</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">GcAnchor RectAnchor { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_StringAnchor_" data-uid="GameCanvas.IGraphics.StringAnchor*"></a>
-  <h4 id="GameCanvas_IGraphics_StringAnchor" data-uid="GameCanvas.IGraphics.StringAnchor">StringAnchor</h4>
+
+  <h3 id="GameCanvas_IGraphics_StringAnchor" data-uid="GameCanvas.IGraphics.StringAnchor">
+  StringAnchor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列のアンカー位置</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">GcAnchor StringAnchor { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcAnchor.html">GcAnchor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_StyleScope_" data-uid="GameCanvas.IGraphics.StyleScope*"></a>
-  <h4 id="GameCanvas_IGraphics_StyleScope" data-uid="GameCanvas.IGraphics.StyleScope">StyleScope</h4>
+
+  <h3 id="GameCanvas_IGraphics_StyleScope" data-uid="GameCanvas.IGraphics.StyleScope">
+  StyleScope
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_PushStyle">PushStyle()</a> と <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_PopStyle">PopStyle()</a> が自動的に呼び出されるスコープ</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">StyleScope StyleScope { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.StyleScope.html">StyleScope</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.StyleScope.html">StyleScope</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="GameCanvas_IGraphics_CalcStringHeight_" data-uid="GameCanvas.IGraphics.CalcStringHeight*"></a>
-  <h4 id="GameCanvas_IGraphics_CalcStringHeight_System_String__" data-uid="GameCanvas.IGraphics.CalcStringHeight(System.String@)">CalcStringHeight(String)</h4>
+
+  <h3 id="GameCanvas_IGraphics_CalcStringHeight_System_String__" data-uid="GameCanvas.IGraphics.CalcStringHeight(System.String@)">
+  CalcStringHeight(in string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列の縦幅を計算します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float CalcStringHeight(in string str)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">str</span></td>
-        <td><p>文字列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><p>縦幅</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>文字列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>縦幅</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CalcStringSize_" data-uid="GameCanvas.IGraphics.CalcStringSize*"></a>
-  <h4 id="GameCanvas_IGraphics_CalcStringSize_System_String__" data-uid="GameCanvas.IGraphics.CalcStringSize(System.String@)">CalcStringSize(String)</h4>
+
+  <h3 id="GameCanvas_IGraphics_CalcStringSize_System_String__" data-uid="GameCanvas.IGraphics.CalcStringSize(System.String@)">
+  CalcStringSize(in string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列のサイズを計算します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float2 CalcStringSize(in string str)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">str</span></td>
-        <td><p>文字列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><p>サイズ</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>文字列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd><p>サイズ</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CalcStringWidth_" data-uid="GameCanvas.IGraphics.CalcStringWidth*"></a>
-  <h4 id="GameCanvas_IGraphics_CalcStringWidth_System_String__" data-uid="GameCanvas.IGraphics.CalcStringWidth(System.String@)">CalcStringWidth(String)</h4>
+
+  <h3 id="GameCanvas_IGraphics_CalcStringWidth_System_String__" data-uid="GameCanvas.IGraphics.CalcStringWidth(System.String@)">
+  CalcStringWidth(in string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列の横幅を計算します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float CalcStringWidth(in string str)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">str</span></td>
-        <td><p>文字列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><p>横幅</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>文字列</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>横幅</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CanvasToScreenPoint_" data-uid="GameCanvas.IGraphics.CanvasToScreenPoint*"></a>
-  <h4 id="GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.CanvasToScreenPoint(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">CanvasToScreenPoint(float2, out float2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.CanvasToScreenPoint(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  CanvasToScreenPoint(in float2, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバス座標を端末スクリーン座標に変換します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void CanvasToScreenPoint(in float2 canvas, out float2 screen)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">canvas</span></td>
-        <td><p>変換元 キャンバス座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">screen</span></td>
-        <td><p>変換後 端末スクリーン座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>canvas</code> <span class="xref">float2</span></dt>
+    <dd><p>変換元 キャンバス座標</p>
+</dd>
+    <dt><code>screen</code> <span class="xref">float2</span></dt>
+    <dd><p>変換後 端末スクリーン座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_CanvasToScreenPoint_" data-uid="GameCanvas.IGraphics.CanvasToScreenPoint*"></a>
-  <h4 id="GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__" data-uid="GameCanvas.IGraphics.CanvasToScreenPoint(Unity.Mathematics.float2@,Unity.Mathematics.int2@)">CanvasToScreenPoint(float2, out int2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__" data-uid="GameCanvas.IGraphics.CanvasToScreenPoint(Unity.Mathematics.float2@,Unity.Mathematics.int2@)">
+  CanvasToScreenPoint(in float2, out int2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバス座標を端末スクリーン座標に変換します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void CanvasToScreenPoint(in float2 canvas, out int2 screen)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">canvas</span></td>
-        <td><p>変換元 キャンバス座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
-        <td><span class="parametername">screen</span></td>
-        <td><p>変換後 端末スクリーン座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>canvas</code> <span class="xref">float2</span></dt>
+    <dd><p>変換元 キャンバス座標</p>
+</dd>
+    <dt><code>screen</code> <span class="xref">int2</span></dt>
+    <dd><p>変換後 端末スクリーン座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_ChangeBorderColor_" data-uid="GameCanvas.IGraphics.ChangeBorderColor*"></a>
-  <h4 id="GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__" data-uid="GameCanvas.IGraphics.ChangeBorderColor(UnityEngine.Color@)">ChangeBorderColor(Color)</h4>
+
+  <h3 id="GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__" data-uid="GameCanvas.IGraphics.ChangeBorderColor(UnityEngine.Color@)">
+  ChangeBorderColor(in Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバス外の帯の色を変更します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ChangeBorderColor(in Color color)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Color.html">Color</a></td>
-        <td><span class="parametername">color</span></td>
-        <td><p>新しい帯の色</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color___remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>color</code> <span class="xref">Color</span></dt>
+    <dd><p>新しい帯の色</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>既存キャンバスの描画内容は全て破棄されます</p>
 </div>
+
+
+
+
   <a id="GameCanvas_IGraphics_ChangeCanvasSize_" data-uid="GameCanvas.IGraphics.ChangeCanvasSize*"></a>
-  <h4 id="GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2__" data-uid="GameCanvas.IGraphics.ChangeCanvasSize(Unity.Mathematics.int2@)">ChangeCanvasSize(int2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2__" data-uid="GameCanvas.IGraphics.ChangeCanvasSize(Unity.Mathematics.int2@)">
+  ChangeCanvasSize(in int2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバス解像度を変更します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ChangeCanvasSize(in int2 size)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
-        <td><span class="parametername">size</span></td>
-        <td><p>新しいキャンバス解像度</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2___remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>size</code> <span class="xref">int2</span></dt>
+    <dd><p>新しいキャンバス解像度</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ul>
 <li>初期値は 720x1280 です<br></li>
 <li>ディスプレイ解像度と縦横比が異なる場合は、上下もしくは左右に帯がつきます<br></li>
 <li>既存キャンバスの描画内容は全て破棄されます</li>
 </ul>
 </div>
+
+
+
+
   <a id="GameCanvas_IGraphics_ClearCoordinate_" data-uid="GameCanvas.IGraphics.ClearCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_ClearCoordinate" data-uid="GameCanvas.IGraphics.ClearCoordinate">ClearCoordinate()</h4>
+
+  <h3 id="GameCanvas_IGraphics_ClearCoordinate" data-uid="GameCanvas.IGraphics.ClearCoordinate">
+  ClearCoordinate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentCoordinate">CurrentCoordinate</a> をリセットします</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ClearCoordinate()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_ClearScreen_" data-uid="GameCanvas.IGraphics.ClearScreen*"></a>
-  <h4 id="GameCanvas_IGraphics_ClearScreen" data-uid="GameCanvas.IGraphics.ClearScreen">ClearScreen()</h4>
+
+  <h3 id="GameCanvas_IGraphics_ClearScreen" data-uid="GameCanvas.IGraphics.ClearScreen">
+  ClearScreen()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>キャンバスを <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_BackgroundColor">BackgroundColor</a> で塗りつぶします</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ClearScreen()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_ClearStyle_" data-uid="GameCanvas.IGraphics.ClearStyle*"></a>
-  <h4 id="GameCanvas_IGraphics_ClearStyle" data-uid="GameCanvas.IGraphics.ClearStyle">ClearStyle()</h4>
+
+  <h3 id="GameCanvas_IGraphics_ClearStyle" data-uid="GameCanvas.IGraphics.ClearStyle">
+  ClearStyle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentStyle">CurrentStyle</a> をリセットします</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ClearStyle()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawCircle_" data-uid="GameCanvas.IGraphics.DrawCircle*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawCircle" data-uid="GameCanvas.IGraphics.DrawCircle">DrawCircle()</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawCircle" data-uid="GameCanvas.IGraphics.DrawCircle">
+  DrawCircle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L183"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>中抜きの円を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawCircle()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawCircle_" data-uid="GameCanvas.IGraphics.DrawCircle*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawCircle_GameCanvas_GcCircle__" data-uid="GameCanvas.IGraphics.DrawCircle(GameCanvas.GcCircle@)">DrawCircle(GcCircle)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawCircle_GameCanvas_GcCircle__" data-uid="GameCanvas.IGraphics.DrawCircle(GameCanvas.GcCircle@)">
+  DrawCircle(in GcCircle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>中抜きの円を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawCircle(in GcCircle circle)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></td>
-        <td><span class="parametername">circle</span></td>
-        <td><p>円</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>circle</code> <a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></dt>
+    <dd><p>円</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawImage_" data-uid="GameCanvas.IGraphics.DrawImage*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__" data-uid="GameCanvas.IGraphics.DrawImage(GameCanvas.GcImage@)">DrawImage(GcImage)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__" data-uid="GameCanvas.IGraphics.DrawImage(GameCanvas.GcImage@)">
+  DrawImage(in GcImage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>画像を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawImage(in GcImage image)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcImage.html">GcImage</a></td>
-        <td><span class="parametername">image</span></td>
-        <td><p>描画する画像</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <a class="xref" href="GameCanvas.GcImage.html">GcImage</a></dt>
+    <dd><p>描画する画像</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawImage_" data-uid="GameCanvas.IGraphics.DrawImage*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawImage(GameCanvas.GcImage@,GameCanvas.GcRect@)">DrawImage(GcImage, GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawImage(GameCanvas.GcImage@,GameCanvas.GcRect@)">
+  DrawImage(in GcImage, in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>画像を拡縮して描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawImage(in GcImage image, in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcImage.html">GcImage</a></td>
-        <td><span class="parametername">image</span></td>
-        <td><p>描画する画像</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>画像をフィッティングする矩形領域</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <a class="xref" href="GameCanvas.GcImage.html">GcImage</a></dt>
+    <dd><p>描画する画像</p>
+</dd>
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>画像をフィッティングする矩形領域</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawImage_" data-uid="GameCanvas.IGraphics.DrawImage*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.IGraphics.DrawImage(GameCanvas.GcImage@,Unity.Mathematics.float2@,System.Single)">DrawImage(GcImage, float2, Single)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.IGraphics.DrawImage(GameCanvas.GcImage@,Unity.Mathematics.float2@,System.Single)">
+  DrawImage(in GcImage, in float2, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>画像を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void DrawImage(in GcImage image, in float2 position, float degree = 0F)</code></pre>
+    <pre><code class="lang-csharp hljs">void DrawImage(in GcImage image, in float2 position, float degree = 0)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcImage.html">GcImage</a></td>
-        <td><span class="parametername">image</span></td>
-        <td><p>描画する画像</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">position</span></td>
-        <td><p>位置</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">degree</span></td>
-        <td><p>回転（度数法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <a class="xref" href="GameCanvas.GcImage.html">GcImage</a></dt>
+    <dd><p>描画する画像</p>
+</dd>
+    <dt><code>position</code> <span class="xref">float2</span></dt>
+    <dd><p>位置</p>
+</dd>
+    <dt><code>degree</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転（度数法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawLine_" data-uid="GameCanvas.IGraphics.DrawLine*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawLine" data-uid="GameCanvas.IGraphics.DrawLine">DrawLine()</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawLine" data-uid="GameCanvas.IGraphics.DrawLine">
+  DrawLine()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>線を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawLine()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawLine_" data-uid="GameCanvas.IGraphics.DrawLine*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawLine_GameCanvas_GcLine__" data-uid="GameCanvas.IGraphics.DrawLine(GameCanvas.GcLine@)">DrawLine(GcLine)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawLine_GameCanvas_GcLine__" data-uid="GameCanvas.IGraphics.DrawLine(GameCanvas.GcLine@)">
+  DrawLine(in GcLine)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>線を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawLine(in GcLine line)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">line</span></td>
-        <td><p>線</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd><p>線</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawRect_" data-uid="GameCanvas.IGraphics.DrawRect*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawRect" data-uid="GameCanvas.IGraphics.DrawRect">DrawRect()</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawRect" data-uid="GameCanvas.IGraphics.DrawRect">
+  DrawRect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L226"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>矩形を線で描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawRect()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawRect_" data-uid="GameCanvas.IGraphics.DrawRect*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawRect(GameCanvas.GcRect@)">DrawRect(GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawRect(GameCanvas.GcRect@)">
+  DrawRect(in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>矩形を線で描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawRect(in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>矩形</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>矩形</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawRoundedRect_" data-uid="GameCanvas.IGraphics.DrawRoundedRect*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawRoundedRect" data-uid="GameCanvas.IGraphics.DrawRoundedRect">DrawRoundedRect()</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawRoundedRect" data-uid="GameCanvas.IGraphics.DrawRoundedRect">
+  DrawRoundedRect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸矩形を線で描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawRoundedRect()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawRoundedRect_" data-uid="GameCanvas.IGraphics.DrawRoundedRect*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@)">DrawRoundedRect(GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@)">
+  DrawRoundedRect(in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L243"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸矩形を線で描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawRoundedRect(in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>二等辺三角形が収まる矩形</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>二等辺三角形が収まる矩形</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawRoundedRect_" data-uid="GameCanvas.IGraphics.DrawRoundedRect*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__System_Single_" data-uid="GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@,System.Single)">DrawRoundedRect(GcRect, Single)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__System_Single_" data-uid="GameCanvas.IGraphics.DrawRoundedRect(GameCanvas.GcRect@,System.Single)">
+  DrawRoundedRect(in GcRect, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L250"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸矩形を線で描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawRoundedRect(in GcRect rect, float cornerRadius)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>二等辺三角形が収まる矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">cornerRadius</span></td>
-        <td><p>角丸の半径</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>二等辺三角形が収まる矩形</p>
+</dd>
+    <dt><code>cornerRadius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>角丸の半径</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawString_" data-uid="GameCanvas.IGraphics.DrawString*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawString_System_String__" data-uid="GameCanvas.IGraphics.DrawString(System.String@)">DrawString(String)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawString_System_String__" data-uid="GameCanvas.IGraphics.DrawString(System.String@)">
+  DrawString(in string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawString(in string str)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">str</span></td>
-        <td><p>描画する文字列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>描画する文字列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawString_" data-uid="GameCanvas.IGraphics.DrawString*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawString_System_String__GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawString(System.String@,GameCanvas.GcRect@)">DrawString(String, GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawString_System_String__GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawString(System.String@,GameCanvas.GcRect@)">
+  DrawString(in string, in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列を拡縮して描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawString(in string str, in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">str</span></td>
-        <td><p>描画する文字列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>文字列をフィッティングする矩形領域</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>描画する文字列</p>
+</dd>
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>文字列をフィッティングする矩形領域</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawString_" data-uid="GameCanvas.IGraphics.DrawString*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawString_System_String__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.IGraphics.DrawString(System.String@,Unity.Mathematics.float2@,System.Single)">DrawString(String, float2, Single)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawString_System_String__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.IGraphics.DrawString(System.String@,Unity.Mathematics.float2@,System.Single)">
+  DrawString(in string, in float2, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L264"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>文字列を描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void DrawString(in string str, in float2 position, float degree = 0F)</code></pre>
+    <pre><code class="lang-csharp hljs">void DrawString(in string str, in float2 position, float degree = 0)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td><span class="parametername">str</span></td>
-        <td><p>描画する文字列</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">position</span></td>
-        <td><p>位置</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">degree</span></td>
-        <td><p>回転（度数法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>描画する文字列</p>
+</dd>
+    <dt><code>position</code> <span class="xref">float2</span></dt>
+    <dd><p>位置</p>
+</dd>
+    <dt><code>degree</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転（度数法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawTexture_" data-uid="GameCanvas.IGraphics.DrawTexture*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@)">DrawTexture(Texture)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@)">
+  DrawTexture(in Texture)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>テクスチャーを描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawTexture(in Texture texture)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Texture.html">Texture</a></td>
-        <td><span class="parametername">texture</span></td>
-        <td><p>描画するテクスチャー</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd><p>描画するテクスチャー</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawTexture_" data-uid="GameCanvas.IGraphics.DrawTexture*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,GameCanvas.GcRect@)">DrawTexture(Texture, GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,GameCanvas.GcRect@)">
+  DrawTexture(in Texture, in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>テクスチャーを拡縮して描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawTexture(in Texture texture, in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Texture.html">Texture</a></td>
-        <td><span class="parametername">texture</span></td>
-        <td><p>描画するテクスチャー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>テクスチャーをフィッティングする矩形領域</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd><p>描画するテクスチャー</p>
+</dd>
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>テクスチャーをフィッティングする矩形領域</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawTexture_" data-uid="GameCanvas.IGraphics.DrawTexture*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2@,System.Single)">DrawTexture(Texture, float2, Single)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2__System_Single_" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2@,System.Single)">
+  DrawTexture(in Texture, in float2, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>テクスチャーを描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void DrawTexture(in Texture texture, in float2 position, float degree = 0F)</code></pre>
+    <pre><code class="lang-csharp hljs">void DrawTexture(in Texture texture, in float2 position, float degree = 0)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Texture.html">Texture</a></td>
-        <td><span class="parametername">texture</span></td>
-        <td><p>描画するテクスチャー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">position</span></td>
-        <td><p>位置</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">degree</span></td>
-        <td><p>回転（度数法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd><p>描画するテクスチャー</p>
+</dd>
+    <dt><code>position</code> <span class="xref">float2</span></dt>
+    <dd><p>位置</p>
+</dd>
+    <dt><code>degree</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転（度数法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_DrawTexture_" data-uid="GameCanvas.IGraphics.DrawTexture*"></a>
-  <h4 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)">DrawTexture(Texture, float2x3)</h4>
+
+  <h3 id="GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__" data-uid="GameCanvas.IGraphics.DrawTexture(UnityEngine.Texture@,Unity.Mathematics.float2x3@)">
+  DrawTexture(in Texture, in float2x3)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L299"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>テクスチャーを変形して描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void DrawTexture(in Texture texture, in float2x3 matrix)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/ja/2022.3/ScriptReference/Texture.html">Texture</a></td>
-        <td><span class="parametername">texture</span></td>
-        <td><p>描画するテクスチャー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2x3.html">float2x3</a></td>
-        <td><span class="parametername">matrix</span></td>
-        <td><p>アフィン変換行列</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd><p>描画するテクスチャー</p>
+</dd>
+    <dt><code>matrix</code> <span class="xref">float2x3</span></dt>
+    <dd><p>アフィン変換行列</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillCircle_" data-uid="GameCanvas.IGraphics.FillCircle*"></a>
-  <h4 id="GameCanvas_IGraphics_FillCircle" data-uid="GameCanvas.IGraphics.FillCircle">FillCircle()</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillCircle" data-uid="GameCanvas.IGraphics.FillCircle">
+  FillCircle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L304"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>円を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillCircle()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillCircle_" data-uid="GameCanvas.IGraphics.FillCircle*"></a>
-  <h4 id="GameCanvas_IGraphics_FillCircle_GameCanvas_GcCircle__" data-uid="GameCanvas.IGraphics.FillCircle(GameCanvas.GcCircle@)">FillCircle(GcCircle)</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillCircle_GameCanvas_GcCircle__" data-uid="GameCanvas.IGraphics.FillCircle(GameCanvas.GcCircle@)">
+  FillCircle(in GcCircle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>円を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillCircle(in GcCircle circle)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></td>
-        <td><span class="parametername">circle</span></td>
-        <td><p>円</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>circle</code> <a class="xref" href="GameCanvas.GcCircle.html">GcCircle</a></dt>
+    <dd><p>円</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillRect_" data-uid="GameCanvas.IGraphics.FillRect*"></a>
-  <h4 id="GameCanvas_IGraphics_FillRect" data-uid="GameCanvas.IGraphics.FillRect">FillRect()</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillRect" data-uid="GameCanvas.IGraphics.FillRect">
+  FillRect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L315"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>矩形を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillRect()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillRect_" data-uid="GameCanvas.IGraphics.FillRect*"></a>
-  <h4 id="GameCanvas_IGraphics_FillRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.FillRect(GameCanvas.GcRect@)">FillRect(GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.FillRect(GameCanvas.GcRect@)">
+  FillRect(in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L321"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>矩形を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillRect(in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>矩形</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>矩形</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillRoundedRect_" data-uid="GameCanvas.IGraphics.FillRoundedRect*"></a>
-  <h4 id="GameCanvas_IGraphics_FillRoundedRect" data-uid="GameCanvas.IGraphics.FillRoundedRect">FillRoundedRect()</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillRoundedRect" data-uid="GameCanvas.IGraphics.FillRoundedRect">
+  FillRoundedRect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸矩形を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillRoundedRect()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillRoundedRect_" data-uid="GameCanvas.IGraphics.FillRoundedRect*"></a>
-  <h4 id="GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@)">FillRoundedRect(GcRect)</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__" data-uid="GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@)">
+  FillRoundedRect(in GcRect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸矩形を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillRoundedRect(in GcRect rect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>二等辺三角形が収まる矩形</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>二等辺三角形が収まる矩形</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_FillRoundedRect_" data-uid="GameCanvas.IGraphics.FillRoundedRect*"></a>
-  <h4 id="GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__System_Single_" data-uid="GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@,System.Single)">FillRoundedRect(GcRect, Single)</h4>
+
+  <h3 id="GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__System_Single_" data-uid="GameCanvas.IGraphics.FillRoundedRect(GameCanvas.GcRect@,System.Single)">
+  FillRoundedRect(in GcRect, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L339"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>角丸矩形を塗りで描画します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void FillRoundedRect(in GcRect rect, float cornerRadius)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcRect.html">GcRect</a></td>
-        <td><span class="parametername">rect</span></td>
-        <td><p>二等辺三角形が収まる矩形</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">cornerRadius</span></td>
-        <td><p>角丸の半径</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rect</code> <a class="xref" href="GameCanvas.GcRect.html">GcRect</a></dt>
+    <dd><p>二等辺三角形が収まる矩形</p>
+</dd>
+    <dt><code>cornerRadius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>角丸の半径</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_PopCoordinate_" data-uid="GameCanvas.IGraphics.PopCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_PopCoordinate" data-uid="GameCanvas.IGraphics.PopCoordinate">PopCoordinate()</h4>
+
+  <h3 id="GameCanvas_IGraphics_PopCoordinate" data-uid="GameCanvas.IGraphics.PopCoordinate">
+  PopCoordinate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>スタックから座標系（変換行列）を取り出し <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentCoordinate">CurrentCoordinate</a> に上書きします</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PopCoordinate()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_PopStyle_" data-uid="GameCanvas.IGraphics.PopStyle*"></a>
-  <h4 id="GameCanvas_IGraphics_PopStyle" data-uid="GameCanvas.IGraphics.PopStyle">PopStyle()</h4>
+
+  <h3 id="GameCanvas_IGraphics_PopStyle" data-uid="GameCanvas.IGraphics.PopStyle">
+  PopStyle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>スタックから描画スタイルを取り出し <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentStyle">CurrentStyle</a> に上書きします</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PopStyle()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_PushCoordinate_" data-uid="GameCanvas.IGraphics.PushCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_PushCoordinate" data-uid="GameCanvas.IGraphics.PushCoordinate">PushCoordinate()</h4>
+
+  <h3 id="GameCanvas_IGraphics_PushCoordinate" data-uid="GameCanvas.IGraphics.PushCoordinate">
+  PushCoordinate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L354"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentCoordinate">CurrentCoordinate</a> をスタックに保存します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PushCoordinate()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_PushStyle_" data-uid="GameCanvas.IGraphics.PushStyle*"></a>
-  <h4 id="GameCanvas_IGraphics_PushStyle" data-uid="GameCanvas.IGraphics.PushStyle">PushStyle()</h4>
+
+  <h3 id="GameCanvas_IGraphics_PushStyle" data-uid="GameCanvas.IGraphics.PushStyle">
+  PushStyle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L359"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p><a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CurrentStyle">CurrentStyle</a> をスタックに保存します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void PushStyle()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_RebuildFontTexture_" data-uid="GameCanvas.IGraphics.RebuildFontTexture*"></a>
-  <h4 id="GameCanvas_IGraphics_RebuildFontTexture" data-uid="GameCanvas.IGraphics.RebuildFontTexture">RebuildFontTexture()</h4>
+
+  <h3 id="GameCanvas_IGraphics_RebuildFontTexture" data-uid="GameCanvas.IGraphics.RebuildFontTexture">
+  RebuildFontTexture()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L368"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>フォントテクスチャ―を再生成します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RebuildFontTexture()</code></pre>
   </div>
-  <h5 id="GameCanvas_IGraphics_RebuildFontTexture_remarks">Remarks</h5>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_IGraphics_RebuildFontTexture_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><ul>
 <li>テキスト描画が乱れた場合にのみ呼び出すことを想定しています<br></li>
 <li>実際に再生成が行われるのは、この関数を呼び出した次のフレームの冒頭です</li>
 </ul>
 </div>
+
+
+
+
   <a id="GameCanvas_IGraphics_RotateCoordinate_" data-uid="GameCanvas.IGraphics.RotateCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_RotateCoordinate_System_Single__" data-uid="GameCanvas.IGraphics.RotateCoordinate(System.Single@)">RotateCoordinate(Single)</h4>
+
+  <h3 id="GameCanvas_IGraphics_RotateCoordinate_System_Single__" data-uid="GameCanvas.IGraphics.RotateCoordinate(System.Single@)">
+  RotateCoordinate(in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>座標系（変換行列）を回転させます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RotateCoordinate(in float degree)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">degree</span></td>
-        <td><p>回転量（度数法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>degree</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（度数法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_RotateCoordinate_" data-uid="GameCanvas.IGraphics.RotateCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_RotateCoordinate_System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.RotateCoordinate(System.Single@,Unity.Mathematics.float2@)">RotateCoordinate(Single, float2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_RotateCoordinate_System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.RotateCoordinate(System.Single@,Unity.Mathematics.float2@)">
+  RotateCoordinate(in float, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L381"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>座標系（変換行列）を指定した座標を中心に回転させます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RotateCoordinate(in float degree, in float2 origin)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">degree</span></td>
-        <td><p>回転量（度数法）</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">origin</span></td>
-        <td><p>回転中心</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>degree</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>回転量（度数法）</p>
+</dd>
+    <dt><code>origin</code> <span class="xref">float2</span></dt>
+    <dd><p>回転中心</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_ScaleCoordinate_" data-uid="GameCanvas.IGraphics.ScaleCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_ScaleCoordinate_Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.ScaleCoordinate(Unity.Mathematics.float2@)">ScaleCoordinate(float2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_ScaleCoordinate_Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.ScaleCoordinate(Unity.Mathematics.float2@)">
+  ScaleCoordinate(in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L387"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>座標系（変換行列）を拡縮させます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ScaleCoordinate(in float2 scaling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">scaling</span></td>
-        <td><p>拡縮率</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scaling</code> <span class="xref">float2</span></dt>
+    <dd><p>拡縮率</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_ScreenToCanvasPoint_" data-uid="GameCanvas.IGraphics.ScreenToCanvasPoint*"></a>
-  <h4 id="GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.ScreenToCanvasPoint(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">ScreenToCanvasPoint(float2, out float2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.ScreenToCanvasPoint(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  ScreenToCanvasPoint(in float2, out float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L394"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>端末スクリーン座標をキャンバス座標に変換します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ScreenToCanvasPoint(in float2 screen, out float2 canvas)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">screen</span></td>
-        <td><p>変換元 端末スクリーン座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">canvas</span></td>
-        <td><p>変換後 キャンバス座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>screen</code> <span class="xref">float2</span></dt>
+    <dd><p>変換元 端末スクリーン座標</p>
+</dd>
+    <dt><code>canvas</code> <span class="xref">float2</span></dt>
+    <dd><p>変換後 キャンバス座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_ScreenToCanvasPoint_" data-uid="GameCanvas.IGraphics.ScreenToCanvasPoint*"></a>
-  <h4 id="GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__" data-uid="GameCanvas.IGraphics.ScreenToCanvasPoint(Unity.Mathematics.float2@,Unity.Mathematics.int2@)">ScreenToCanvasPoint(float2, out int2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__" data-uid="GameCanvas.IGraphics.ScreenToCanvasPoint(Unity.Mathematics.float2@,Unity.Mathematics.int2@)">
+  ScreenToCanvasPoint(in float2, out int2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>端末スクリーン座標をキャンバス座標に変換します</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ScreenToCanvasPoint(in float2 screen, out int2 canvas)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">screen</span></td>
-        <td><p>変換元 端末スクリーン座標</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.int2.html">int2</a></td>
-        <td><span class="parametername">canvas</span></td>
-        <td><p>変換後 キャンバス座標</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>screen</code> <span class="xref">float2</span></dt>
+    <dd><p>変換元 端末スクリーン座標</p>
+</dd>
+    <dt><code>canvas</code> <span class="xref">int2</span></dt>
+    <dd><p>変換後 キャンバス座標</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IGraphics_TranslateCoordinate_" data-uid="GameCanvas.IGraphics.TranslateCoordinate*"></a>
-  <h4 id="GameCanvas_IGraphics_TranslateCoordinate_Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.TranslateCoordinate(Unity.Mathematics.float2@)">TranslateCoordinate(float2)</h4>
+
+  <h3 id="GameCanvas_IGraphics_TranslateCoordinate_Unity_Mathematics_float2__" data-uid="GameCanvas.IGraphics.TranslateCoordinate(Unity.Mathematics.float2@)">
+  TranslateCoordinate(in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGraphics.cs/#L407"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>座標系（変換行列）を平行移動させます</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void TranslateCoordinate(in float2 translation)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">translation</span></td>
-        <td><p>移動量</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>translation</code> <span class="xref">float2</span></dt>
+    <dd><p>移動量</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

@@ -1,599 +1,751 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GcScene
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GcScene
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Class GcScene | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GcScene | GameCanvas ">
+      
+      <meta name="description" content="シーン基底">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_GcScene.md&amp;value=---%0Auid%3A%20GameCanvas.GcScene%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcScene">
-  
-  
-  <h1 id="GameCanvas_GcScene" data-uid="GameCanvas.GcScene" class="text-break">Class GcScene
-  </h1>
-  <div class="markdown level0 summary"><p>シーン基底</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">GcScene</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="GameCanvas.IScene.html">IScene</a></div>
-    <div><a class="xref" href="GameCanvas.ISceneManagement.html">ISceneManagement</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcScene_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class GcScene : IScene, ISceneManagement</code></pre>
-  </div>
-  <h3 id="properties">Properties
-  </h3>
-  <a id="GameCanvas_GcScene_gc_" data-uid="GameCanvas.GcScene.gc*"></a>
-  <h4 id="GameCanvas_GcScene_gc" data-uid="GameCanvas.GcScene.gc">gc</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected static GcProxy gc { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcProxy.html">GcProxy</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_GcScene_AddActor_" data-uid="GameCanvas.GcScene.AddActor*"></a>
-  <h4 id="GameCanvas_GcScene_AddActor_GameCanvas_GcActor__" data-uid="GameCanvas.GcScene.AddActor(GameCanvas.GcActor@)">AddActor(GcActor)</h4>
-  <div class="markdown level1 summary"><p>指定したアクターをシーンに登録します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddActor(in GcActor actor)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcActor.html">GcActor</a></td>
-        <td><span class="parametername">actor</span></td>
-        <td><p>登録するアクター</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_CreateActor_" data-uid="GameCanvas.GcScene.CreateActor*"></a>
-  <h4 id="GameCanvas_GcScene_CreateActor__1" data-uid="GameCanvas.GcScene.CreateActor``1">CreateActor&lt;T&gt;()</h4>
-  <div class="markdown level1 summary"><p>指定したアクターを生成し、シーンに登録します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T CreateActor&lt;T&gt;()
-    where T : GcActor, new()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><p>登録したアクター</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>生成・登録するアクターの型</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_DrawScene_" data-uid="GameCanvas.GcScene.DrawScene*"></a>
-  <h4 id="GameCanvas_GcScene_DrawScene" data-uid="GameCanvas.GcScene.DrawScene">DrawScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの描画処理</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void DrawScene()</code></pre>
-  </div>
-  <h5 id="GameCanvas_GcScene_DrawScene_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます</p>
-</div>
-  <a id="GameCanvas_GcScene_EnterScene_" data-uid="GameCanvas.GcScene.EnterScene*"></a>
-  <h4 id="GameCanvas_GcScene_EnterScene_System_Object_" data-uid="GameCanvas.GcScene.EnterScene(System.Object)">EnterScene(Object)</h4>
-  <div class="markdown level1 summary"><p>シーンの開始処理</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void EnterScene(object state)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">state</span></td>
-        <td><p><a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(Object)</a>を通じて渡される任意の値。未設定の場合はnull</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="GameCanvas_GcScene_EnterScene_System_Object__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>シーン遷移時にGameCanvasにより自動的に呼び出されます</p>
-</div>
-  <a id="GameCanvas_GcScene_GetActorCount_" data-uid="GameCanvas.GcScene.GetActorCount*"></a>
-  <h4 id="GameCanvas_GcScene_GetActorCount" data-uid="GameCanvas.GcScene.GetActorCount">GetActorCount()</h4>
-  <div class="markdown level1 summary"><p>シーンに登録されているアクターの総数を取得します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GetActorCount()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><p>アクターの数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_GetActorCount_" data-uid="GameCanvas.GcScene.GetActorCount*"></a>
-  <h4 id="GameCanvas_GcScene_GetActorCount__1" data-uid="GameCanvas.GcScene.GetActorCount``1">GetActorCount&lt;T&gt;()</h4>
-  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものが幾つあるか取得します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GetActorCount&lt;T&gt;()
-    where T : GcActor</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><p>アクターの数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>取得するアクターの型</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_LeaveScene_" data-uid="GameCanvas.GcScene.LeaveScene*"></a>
-  <h4 id="GameCanvas_GcScene_LeaveScene" data-uid="GameCanvas.GcScene.LeaveScene">LeaveScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの終了処理</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void LeaveScene()</code></pre>
-  </div>
-  <h5 id="GameCanvas_GcScene_LeaveScene_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>シーン遷移時にGameCanvasにより自動的に呼び出されます</p>
-</div>
-  <a id="GameCanvas_GcScene_PauseScene_" data-uid="GameCanvas.GcScene.PauseScene*"></a>
-  <h4 id="GameCanvas_GcScene_PauseScene" data-uid="GameCanvas.GcScene.PauseScene">PauseScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの中断処理</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void PauseScene()</code></pre>
-  </div>
-  <h5 id="GameCanvas_GcScene_PauseScene_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>アプリが一時停止する直前にGameCanvasにより自動的に呼び出されます</p>
-</div>
-  <a id="GameCanvas_GcScene_RemoveActorAll_" data-uid="GameCanvas.GcScene.RemoveActorAll*"></a>
-  <h4 id="GameCanvas_GcScene_RemoveActorAll" data-uid="GameCanvas.GcScene.RemoveActorAll">RemoveActorAll()</h4>
-  <div class="markdown level1 summary"><p>シーンに登録されているすべてのアクターを登録解除します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void RemoveActorAll()</code></pre>
-  </div>
-  <a id="GameCanvas_GcScene_ResumeScene_" data-uid="GameCanvas.GcScene.ResumeScene*"></a>
-  <h4 id="GameCanvas_GcScene_ResumeScene" data-uid="GameCanvas.GcScene.ResumeScene">ResumeScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの再開処理</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void ResumeScene()</code></pre>
-  </div>
-  <h5 id="GameCanvas_GcScene_ResumeScene_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>アプリが再開する直前にGameCanvasにより自動的に呼び出されます</p>
-</div>
-  <a id="GameCanvas_GcScene_TryGetActor_" data-uid="GameCanvas.GcScene.TryGetActor*"></a>
-  <h4 id="GameCanvas_GcScene_TryGetActor_System_Int32__GameCanvas_GcActor__" data-uid="GameCanvas.GcScene.TryGetActor(System.Int32@,GameCanvas.GcActor@)">TryGetActor(Int32, out GcActor)</h4>
-  <div class="markdown level1 summary"><p>シーンに登録されているアクターを 1つだけ取得します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryGetActor(in int i, out GcActor actor)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">i</span></td>
-        <td><p>取得するアクターのインデックス（0以上<a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_GetActorCount">GetActorCount()</a>未満）</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcActor.html">GcActor</a></td>
-        <td><span class="parametername">actor</span></td>
-        <td><p>取得できたアクター</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>取得できたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_TryGetActor_" data-uid="GameCanvas.GcScene.TryGetActor*"></a>
-  <h4 id="GameCanvas_GcScene_TryGetActor__1_System_Int32____0__" data-uid="GameCanvas.GcScene.TryGetActor``1(System.Int32@,``0@)">TryGetActor&lt;T&gt;(Int32, out T)</h4>
-  <div class="markdown level1 summary"><p>シーンに登録されているアクターを 1つだけ取得します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryGetActor&lt;T&gt;(in int i, out T actor)
-    where T : GcActor</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><span class="parametername">i</span></td>
-        <td><p>取得するアクターのインデックス（0以上<a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_GetActorCount__1">GetActorCount&lt;T&gt;()</a>未満）</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">actor</span></td>
-        <td><p>取得できたアクター</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>取得できたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>取得するアクターの型</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_TryGetActorAll_" data-uid="GameCanvas.GcScene.TryGetActorAll*"></a>
-  <h4 id="GameCanvas_GcScene_TryGetActorAll__1_System_ReadOnlySpan___0___" data-uid="GameCanvas.GcScene.TryGetActorAll``1(System.ReadOnlySpan{``0}@)">TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt;)</h4>
-  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものを取得します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt; actors)
-    where T : GcActor</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.readonlyspan-1?view=netstandard-2.1">ReadOnlySpan</a>&lt;T&gt;</td>
-        <td><span class="parametername">actors</span></td>
-        <td><p>取得したアクターの一覧</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>1つ以上 取得できたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>取得するアクターの型</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_TryRemoveActor_" data-uid="GameCanvas.GcScene.TryRemoveActor*"></a>
-  <h4 id="GameCanvas_GcScene_TryRemoveActor_GameCanvas_GcActor__" data-uid="GameCanvas.GcScene.TryRemoveActor(GameCanvas.GcActor@)">TryRemoveActor(GcActor)</h4>
-  <div class="markdown level1 summary"><p>指定したアクターをシーンから登録解除します</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryRemoveActor(in GcActor actor)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcActor.html">GcActor</a></td>
-        <td><span class="parametername">actor</span></td>
-        <td><p>登録解除するアクター</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>登録解除できたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcScene_UpdateScene_" data-uid="GameCanvas.GcScene.UpdateScene*"></a>
-  <h4 id="GameCanvas_GcScene_UpdateScene" data-uid="GameCanvas.GcScene.UpdateScene">UpdateScene()</h4>
-  <div class="markdown level1 summary"><p>シーンの計算処理</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void UpdateScene()</code></pre>
-  </div>
-  <h5 id="GameCanvas_GcScene_UpdateScene_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます</p>
-</div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="GameCanvas.IScene.html">IScene</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html">ISceneManagement</a>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.GcScene">
+
+
+
+  <h1 id="GameCanvas_GcScene" data-uid="GameCanvas.GcScene" class="text-break">
+Class GcScene  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>シーン基底</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class GcScene : IScene, ISceneManagement</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GcScene</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="GameCanvas.IScene.html">IScene</a></div>
+      <div><a class="xref" href="GameCanvas.ISceneManagement.html">ISceneManagement</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="GameCanvas_GcScene_gc_" data-uid="GameCanvas.GcScene.gc*"></a>
+
+  <h3 id="GameCanvas_GcScene_gc" data-uid="GameCanvas.GcScene.gc">
+  gc
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static GcProxy gc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcProxy.html">GcProxy</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_GcScene_AddActor_" data-uid="GameCanvas.GcScene.AddActor*"></a>
+
+  <h3 id="GameCanvas_GcScene_AddActor_GameCanvas_GcActor__" data-uid="GameCanvas.GcScene.AddActor(GameCanvas.GcActor@)">
+  AddActor(in GcActor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>指定したアクターをシーンに登録します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddActor(in GcActor actor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>actor</code> <a class="xref" href="GameCanvas.GcActor.html">GcActor</a></dt>
+    <dd><p>登録するアクター</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_CreateActor_" data-uid="GameCanvas.GcScene.CreateActor*"></a>
+
+  <h3 id="GameCanvas_GcScene_CreateActor__1" data-uid="GameCanvas.GcScene.CreateActor``1">
+  CreateActor&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>指定したアクターを生成し、シーンに登録します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T CreateActor&lt;T&gt;() where T : GcActor, new()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>登録したアクター</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>生成・登録するアクターの型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_DrawScene_" data-uid="GameCanvas.GcScene.DrawScene*"></a>
+
+  <h3 id="GameCanvas_GcScene_DrawScene" data-uid="GameCanvas.GcScene.DrawScene">
+  DrawScene()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンの描画処理</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void DrawScene()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcScene_DrawScene_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>毎フレーム（計算より後に）GameCanvasにより自動的に呼び出されます</p>
+</div>
+
+
+
+
+  <a id="GameCanvas_GcScene_EnterScene_" data-uid="GameCanvas.GcScene.EnterScene*"></a>
+
+  <h3 id="GameCanvas_GcScene_EnterScene_System_Object_" data-uid="GameCanvas.GcScene.EnterScene(System.Object)">
+  EnterScene(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンの開始処理</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void EnterScene(object? state)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>state</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p><a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ChangeScene&lt;T&gt;(object?)</a>を通じて渡される任意の値。未設定の場合はnull</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcScene_EnterScene_System_Object__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>シーン遷移時にGameCanvasにより自動的に呼び出されます</p>
+</div>
+
+
+
+
+  <a id="GameCanvas_GcScene_GetActorCount_" data-uid="GameCanvas.GcScene.GetActorCount*"></a>
+
+  <h3 id="GameCanvas_GcScene_GetActorCount" data-uid="GameCanvas.GcScene.GetActorCount">
+  GetActorCount()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターの総数を取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetActorCount()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>アクターの数</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_GetActorCount_" data-uid="GameCanvas.GcScene.GetActorCount*"></a>
+
+  <h3 id="GameCanvas_GcScene_GetActorCount__1" data-uid="GameCanvas.GcScene.GetActorCount``1">
+  GetActorCount&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものが幾つあるか取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetActorCount&lt;T&gt;() where T : GcActor</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>アクターの数</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>取得するアクターの型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_LeaveScene_" data-uid="GameCanvas.GcScene.LeaveScene*"></a>
+
+  <h3 id="GameCanvas_GcScene_LeaveScene" data-uid="GameCanvas.GcScene.LeaveScene">
+  LeaveScene()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンの終了処理</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LeaveScene()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcScene_LeaveScene_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>シーン遷移時にGameCanvasにより自動的に呼び出されます</p>
+</div>
+
+
+
+
+  <a id="GameCanvas_GcScene_PauseScene_" data-uid="GameCanvas.GcScene.PauseScene*"></a>
+
+  <h3 id="GameCanvas_GcScene_PauseScene" data-uid="GameCanvas.GcScene.PauseScene">
+  PauseScene()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンの中断処理</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void PauseScene()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcScene_PauseScene_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>アプリが一時停止する直前にGameCanvasにより自動的に呼び出されます</p>
+</div>
+
+
+
+
+  <a id="GameCanvas_GcScene_RemoveActorAll_" data-uid="GameCanvas.GcScene.RemoveActorAll*"></a>
+
+  <h3 id="GameCanvas_GcScene_RemoveActorAll" data-uid="GameCanvas.GcScene.RemoveActorAll">
+  RemoveActorAll()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンに登録されているすべてのアクターを登録解除します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveActorAll()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_ResumeScene_" data-uid="GameCanvas.GcScene.ResumeScene*"></a>
+
+  <h3 id="GameCanvas_GcScene_ResumeScene" data-uid="GameCanvas.GcScene.ResumeScene">
+  ResumeScene()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンの再開処理</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ResumeScene()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcScene_ResumeScene_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>アプリが再開する直前にGameCanvasにより自動的に呼び出されます</p>
+</div>
+
+
+
+
+  <a id="GameCanvas_GcScene_TryGetActor_" data-uid="GameCanvas.GcScene.TryGetActor*"></a>
+
+  <h3 id="GameCanvas_GcScene_TryGetActor_System_Int32__GameCanvas_GcActor__" data-uid="GameCanvas.GcScene.TryGetActor(System.Int32@,GameCanvas.GcActor@)">
+  TryGetActor(in int, out GcActor?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターを 1つだけ取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetActor(in int i, out GcActor? actor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>i</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>取得するアクターのインデックス（0以上<a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_GetActorCount">GetActorCount()</a>未満）</p>
+</dd>
+    <dt><code>actor</code> <a class="xref" href="GameCanvas.GcActor.html">GcActor</a></dt>
+    <dd><p>取得できたアクター</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>取得できたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_TryGetActorAll_" data-uid="GameCanvas.GcScene.TryGetActorAll*"></a>
+
+  <h3 id="GameCanvas_GcScene_TryGetActorAll__1_System_ReadOnlySpan___0___" data-uid="GameCanvas.GcScene.TryGetActorAll``1(System.ReadOnlySpan{``0}@)">
+  TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターのうち、指定した型のものを取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt; actors) where T : GcActor</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>actors</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;T&gt;</dt>
+    <dd><p>取得したアクターの一覧</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>1つ以上 取得できたかどうか</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>取得するアクターの型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_TryGetActor_" data-uid="GameCanvas.GcScene.TryGetActor*"></a>
+
+  <h3 id="GameCanvas_GcScene_TryGetActor__1_System_Int32____0__" data-uid="GameCanvas.GcScene.TryGetActor``1(System.Int32@,``0@)">
+  TryGetActor&lt;T&gt;(in int, out T?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンに登録されているアクターを 1つだけ取得します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetActor&lt;T&gt;(in int i, out T? actor) where T : GcActor</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>i</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>取得するアクターのインデックス（0以上<a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_GetActorCount__1">GetActorCount&lt;T&gt;()</a>未満）</p>
+</dd>
+    <dt><code>actor</code> <span class="xref">T</span></dt>
+    <dd><p>取得できたアクター</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>取得できたかどうか</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>取得するアクターの型</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_TryRemoveActor_" data-uid="GameCanvas.GcScene.TryRemoveActor*"></a>
+
+  <h3 id="GameCanvas_GcScene_TryRemoveActor_GameCanvas_GcActor__" data-uid="GameCanvas.GcScene.TryRemoveActor(GameCanvas.GcActor@)">
+  TryRemoveActor(in GcActor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>指定したアクターをシーンから登録解除します</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryRemoveActor(in GcActor actor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>actor</code> <a class="xref" href="GameCanvas.GcActor.html">GcActor</a></dt>
+    <dd><p>登録解除するアクター</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>登録解除できたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcScene_UpdateScene_" data-uid="GameCanvas.GcScene.UpdateScene*"></a>
+
+  <h3 id="GameCanvas_GcScene_UpdateScene" data-uid="GameCanvas.GcScene.UpdateScene">
+  UpdateScene()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/GcScene.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>シーンの計算処理</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UpdateScene()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="GameCanvas_GcScene_UpdateScene_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>毎フレーム（描画より前に）GameCanvasにより自動的に呼び出されます</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

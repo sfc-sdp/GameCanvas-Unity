@@ -1,43 +1,118 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IInputKeyEx
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IInputKeyEx
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Interface IInputKeyEx | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IInputKeyEx | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_IInputKeyEx.md&amp;value=---%0Auid%3A%20GameCanvas.IInputKeyEx%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.IInputKeyEx">
-  
-  
-  <h1 id="GameCanvas_IInputKeyEx" data-uid="GameCanvas.IInputKeyEx" class="text-break">Interface IInputKeyEx
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.IInputKeyEx">
+
+
+
+  <h1 id="GameCanvas_IInputKeyEx" data-uid="GameCanvas.IInputKeyEx" class="text-break">
+Interface IInputKeyEx  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputKeyEx : IInputKey</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsScreenKeyboardSupported">IInputKey.IsScreenKeyboardSupported</a>
     </div>
@@ -57,434 +132,462 @@
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_HideScreenKeyboard">IInputKey.HideScreenKeyboard()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_InputSystem_Key__">IInputKey.IsKeyDown(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_InputSystem_Key__">IInputKey.IsKeyDown(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_InputSystem_Key__">IInputKey.IsKeyHold(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_InputSystem_Key__">IInputKey.IsKeyHold(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_InputSystem_Key__">IInputKey.IsKeyPress(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_InputSystem_Key__">IInputKey.IsKeyPress(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_InputSystem_Key__">IInputKey.IsKeyUp(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_InputSystem_Key__">IInputKey.IsKeyUp(in Key)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_ShowScreenKeyboard">IInputKey.ShowScreenKeyboard()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__">IInputKey.TryGetKeyEvent(Key, GcKeyEvent)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__">IInputKey.TryGetKeyEvent(in Key, out GcKeyEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(out ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(GcKeyEventPhase, ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(in GcKeyEventPhase, out ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKey.TryGetKeyTrace(Key, GcKeyTrace)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKey.TryGetKeyTrace(in Key, out GcKeyTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(out ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(GcKeyEventPhase, ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(in GcKeyEventPhase, out ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetScreenKeyboardArea_GameCanvas_GcAABB__">IInputKey.TryGetScreenKeyboardArea(GcAABB)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetScreenKeyboardArea_GameCanvas_GcAABB__">IInputKey.TryGetScreenKeyboardArea(out GcAABB)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_IInputKeyEx_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IInputKeyEx : IInputKey</code></pre>
-  </div>
-  <h3 id="properties">Properties
-  </h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="GameCanvas_IInputKeyEx_IsAnyKey_" data-uid="GameCanvas.IInputKeyEx.IsAnyKey*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsAnyKey" data-uid="GameCanvas.IInputKeyEx.IsAnyKey">IsAnyKey</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsAnyKey" data-uid="GameCanvas.IInputKeyEx.IsAnyKey">
+  IsAnyKey
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>なんらかのキーイベントがあるかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsAnyKey { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_IsAnyKeyDown_" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyDown*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsAnyKeyDown" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyDown">IsAnyKeyDown</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsAnyKeyDown" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyDown">
+  IsAnyKeyDown
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>いずれかのキーが押されたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsAnyKeyDown { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_IsAnyKeyHold_" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyHold*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsAnyKeyHold" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyHold">IsAnyKeyHold</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsAnyKeyHold" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyHold">
+  IsAnyKeyHold
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>いずれかのキーが押されているかどうか（押された瞬間を除く）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsAnyKeyHold { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_IsAnyKeyPress_" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyPress*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsAnyKeyPress" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyPress">IsAnyKeyPress</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsAnyKeyPress" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyPress">
+  IsAnyKeyPress
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>いずれかのキーが押されているかどうか（押された瞬間を含む）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsAnyKeyPress { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_IsAnyKeyUp_" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyUp*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsAnyKeyUp" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyUp">IsAnyKeyUp</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsAnyKeyUp" data-uid="GameCanvas.IInputKeyEx.IsAnyKeyUp">
+  IsAnyKeyUp
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>いずれかのキーが離されたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsAnyKeyUp { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_KeyEscape_" data-uid="GameCanvas.IInputKeyEx.KeyEscape*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_KeyEscape" data-uid="GameCanvas.IInputKeyEx.KeyEscape">KeyEscape</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_KeyEscape" data-uid="GameCanvas.IInputKeyEx.KeyEscape">
+  KeyEscape
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>戻るボタン（Androidのみ）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">Key KeyEscape { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.Key.html">Key</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Key</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_KeyPressCount_" data-uid="GameCanvas.IInputKeyEx.KeyPressCount*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_KeyPressCount" data-uid="GameCanvas.IInputKeyEx.KeyPressCount">KeyPressCount</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_KeyPressCount" data-uid="GameCanvas.IInputKeyEx.KeyPressCount">
+  KeyPressCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>前回のフレームに引き続き 押されているキーの数（押された瞬間を含む）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int KeyPressCount { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="GameCanvas_IInputKeyEx_GetKeyPressDuration_" data-uid="GameCanvas.IInputKeyEx.GetKeyPressDuration*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_InputSystem_Key__" data-uid="GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.InputSystem.Key@)">GetKeyPressDuration(Key)</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_InputSystem_Key__" data-uid="GameCanvas.IInputKeyEx.GetKeyPressDuration(UnityEngine.InputSystem.Key@)">
+  GetKeyPressDuration(in Key)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>指定されたキーが押されている時間（秒）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">float GetKeyPressDuration(in Key key)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.Key.html">Key</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>キー</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><p>時間（秒）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">Key</span></dt>
+    <dd><p>キー</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>時間（秒）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_GetKeyPressFrameCount_" data-uid="GameCanvas.IInputKeyEx.GetKeyPressFrameCount*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__" data-uid="GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.InputSystem.Key@)">GetKeyPressFrameCount(Key)</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__" data-uid="GameCanvas.IInputKeyEx.GetKeyPressFrameCount(UnityEngine.InputSystem.Key@)">
+  GetKeyPressFrameCount(in Key)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>指定されたキーが押されているフレーム数</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">int GetKeyPressFrameCount(in Key key)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.Key.html">Key</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>キー</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td><p>フレーム数</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">Key</span></dt>
+    <dd><p>キー</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>フレーム数</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_IsKeyHold_" data-uid="GameCanvas.IInputKeyEx.IsKeyHold*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__" data-uid="GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)">IsKeyHold(Key, out GcKeyTrace)</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__" data-uid="GameCanvas.IInputKeyEx.IsKeyHold(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)">
+  IsKeyHold(in Key, out GcKeyTrace)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>指定されたキーが押されているかどうか（押された瞬間を除く）</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsKeyHold(in Key key, out GcKeyTrace trace)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.Key.html">Key</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>キー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcKeyTrace.html">GcKeyTrace</a></td>
-        <td><span class="parametername">trace</span></td>
-        <td><p>キーの軌跡</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>押されているかどうか（押された瞬間を除く）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">Key</span></dt>
+    <dd><p>キー</p>
+</dd>
+    <dt><code>trace</code> <a class="xref" href="GameCanvas.GcKeyTrace.html">GcKeyTrace</a></dt>
+    <dd><p>キーの軌跡</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>押されているかどうか（押された瞬間を除く）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="GameCanvas_IInputKeyEx_IsKeyUp_" data-uid="GameCanvas.IInputKeyEx.IsKeyUp*"></a>
-  <h4 id="GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__" data-uid="GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)">IsKeyUp(Key, out GcKeyTrace)</h4>
+
+  <h3 id="GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__" data-uid="GameCanvas.IInputKeyEx.IsKeyUp(UnityEngine.InputSystem.Key@,GameCanvas.GcKeyTrace@)">
+  IsKeyUp(in Key, out GcKeyTrace)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IInputKey.cs/#L226"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>指定されたキーが離されたかどうか</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool IsKeyUp(in Key key, out GcKeyTrace trace)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/api/UnityEngine.InputSystem.Key.html">Key</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>キー</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcKeyTrace.html">GcKeyTrace</a></td>
-        <td><span class="parametername">trace</span></td>
-        <td><p>キーの軌跡</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td><p>離されたかどうか</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">Key</span></dt>
+    <dd><p>キー</p>
+</dd>
+    <dt><code>trace</code> <a class="xref" href="GameCanvas.GcKeyTrace.html">GcKeyTrace</a></dt>
+    <dd><p>キーの軌跡</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>離されたかどうか</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

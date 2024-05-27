@@ -1,629 +1,711 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct GcLine
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct GcLine
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Struct GcLine | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct GcLine | GameCanvas ">
+      
+      <meta name="description" content="直線もしくは線分">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_GcLine.md&amp;value=---%0Auid%3A%20GameCanvas.GcLine%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.GcLine">
-  
-  
-  <h1 id="GameCanvas_GcLine" data-uid="GameCanvas.GcLine" class="text-break">Struct GcLine
-  </h1>
-  <div class="markdown level0 summary"><p>直線もしくは線分</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="GameCanvas.IPrimitive-1.html">IPrimitive</a>&lt;<a class="xref" href="GameCanvas.GcLine.html">GcLine</a>&gt;</div>
-    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="GameCanvas.GcLine.html">GcLine</a>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_GcLine_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct GcLine : IPrimitive&lt;GcLine&gt;, IEquatable&lt;GcLine&gt;</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
-  <h4 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,System.Single@)">GcLine(float2, Single)</h4>
-  <div class="markdown level1 summary"><p>コンストラクタ（直線）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcLine(in float2 origin, in float radian)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">origin</span></td>
-        <td><p>基準点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">radian</span></td>
-        <td><p>傾き（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
-  <h4 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__System_Single__System_Single__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,System.Single@,System.Single@)">GcLine(float2, Single, Single)</h4>
-  <div class="markdown level1 summary"><p>コンストラクタ（線分）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcLine(in float2 oridin, in float length, in float radian)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">oridin</span></td>
-        <td><p>基準点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">length</span></td>
-        <td><p>長さ</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">radian</span></td>
-        <td><p>傾き（弧度法）</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
-  <h4 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,System.Single@,Unity.Mathematics.float2@)">GcLine(float2, Single, float2)</h4>
-  <div class="markdown level1 summary"><p>コンストラクタ（線分）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcLine(in float2 oridin, in float length, in float2 direction)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">oridin</span></td>
-        <td><p>基準点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td><span class="parametername">length</span></td>
-        <td><p>長さ</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">direction</span></td>
-        <td><p>傾きを表す単位ベクトル</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
-  <h4 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">GcLine(float2, float2)</h4>
-  <div class="markdown level1 summary"><p>コンストラクタ（直線）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GcLine(in float2 origin, in float2 direction)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">origin</span></td>
-        <td><p>基準点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">direction</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <h4 id="GameCanvas_GcLine_Direction" data-uid="GameCanvas.GcLine.Direction">Direction</h4>
-  <div class="markdown level1 summary"><p>傾きを表す単位ベクトル</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 Direction</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcLine_Length" data-uid="GameCanvas.GcLine.Length">Length</h4>
-  <div class="markdown level1 summary"><p>線分の長さ</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Length</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.single?view=netstandard-2.0">Single</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h4 id="GameCanvas_GcLine_Origin" data-uid="GameCanvas.GcLine.Origin">Origin</h4>
-  <div class="markdown level1 summary"><p>基準点</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float2 Origin</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="GameCanvas_GcLine_Equals_" data-uid="GameCanvas.GcLine.Equals*"></a>
-  <h4 id="GameCanvas_GcLine_Equals_GameCanvas_GcLine_" data-uid="GameCanvas.GcLine.Equals(GameCanvas.GcLine)">Equals(GcLine)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(GcLine other)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">other</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLine_Equals_" data-uid="GameCanvas.GcLine.Equals*"></a>
-  <h4 id="GameCanvas_GcLine_Equals_System_Object_" data-uid="GameCanvas.GcLine.Equals(System.Object)">Equals(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">obj</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
-  <a id="GameCanvas_GcLine_GetHashCode_" data-uid="GameCanvas.GcLine.GetHashCode*"></a>
-  <h4 id="GameCanvas_GcLine_GetHashCode" data-uid="GameCanvas.GcLine.GetHashCode">GetHashCode()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.int32?view=netstandard-2.0">Int32</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
-  <a id="GameCanvas_GcLine_Segment_" data-uid="GameCanvas.GcLine.Segment*"></a>
-  <h4 id="GameCanvas_GcLine_Segment_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcLine.Segment(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">Segment(float2, float2)</h4>
-  <div class="markdown level1 summary"><p>コンストラクタ（線分）</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GcLine Segment(in float2 p0, in float2 p1)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">p0</span></td>
-        <td><p>始点</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.2/api/Unity.Mathematics.float2.html">float2</a></td>
-        <td><span class="parametername">p1</span></td>
-        <td><p>終点</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLine_ToString_" data-uid="GameCanvas.GcLine.ToString*"></a>
-  <h4 id="GameCanvas_GcLine_ToString" data-uid="GameCanvas.GcLine.ToString">ToString()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.string?view=netstandard-2.0">String</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">System.ValueType.ToString()</span></div>
-  <h3 id="operators">Operators
-  </h3>
-  <a id="GameCanvas_GcLine_op_Equality_" data-uid="GameCanvas.GcLine.op_Equality*"></a>
-  <h4 id="GameCanvas_GcLine_op_Equality_GameCanvas_GcLine_GameCanvas_GcLine_" data-uid="GameCanvas.GcLine.op_Equality(GameCanvas.GcLine,GameCanvas.GcLine)">Equality(GcLine, GcLine)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(GcLine lh, GcLine rh)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">lh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">rh</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="GameCanvas_GcLine_op_Inequality_" data-uid="GameCanvas.GcLine.op_Inequality*"></a>
-  <h4 id="GameCanvas_GcLine_op_Inequality_GameCanvas_GcLine_GameCanvas_GcLine_" data-uid="GameCanvas.GcLine.op_Inequality(GameCanvas.GcLine,GameCanvas.GcLine)">Inequality(GcLine, GcLine)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(GcLine lh, GcLine rh)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">lh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></td>
-        <td><span class="parametername">rh</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/ja-jp/dotnet/api/system.boolean?view=netstandard-2.0">Boolean</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="GameCanvas.IPrimitive-1.html">IPrimitive&lt;T&gt;</a>
-  </div>
-  <div>
-      <span class="xref">System.IEquatable&lt;T&gt;</span>
-  </div>
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_CalcDistance_GameCanvas_GcLine__Unity_Mathematics_float2__">GcCollisionExtensions.CalcDistance(GcLine, float2)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcLine__Unity_Mathematics_float2__">GcCollisionExtensions.Contains(GcLine, float2)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__">GcCollisionExtensions.Intersects(GcLine, GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__Unity_Mathematics_float2__">GcCollisionExtensions.Intersects(GcLine, GcLine, out float2)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_AABB_GameCanvas_GcLine__Unity_Mathematics_float2x3__">GcLineExtensions.AABB(GcLine, float2x3)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Begin_GameCanvas_GcLine__">GcLineExtensions.Begin(GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Degree_GameCanvas_GcLine__">GcLineExtensions.Degree(GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_End_GameCanvas_GcLine__">GcLineExtensions.End(GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_IsSegment_GameCanvas_GcLine__">GcLineExtensions.IsSegment(GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_IsZero_GameCanvas_GcLine__">GcLineExtensions.IsZero(GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Radian_GameCanvas_GcLine__">GcLineExtensions.Radian(GcLine)</a>
-  </div>
-  <div>
-      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Vector_GameCanvas_GcLine__">GcLineExtensions.Vector(GcLine)</a>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
             </div>
           </div>
         </div>
-      </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.GcLine">
+
+
+
+  <h1 id="GameCanvas_GcLine" data-uid="GameCanvas.GcLine" class="text-break">
+Struct GcLine  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>直線もしくは線分</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct GcLine : IPrimitive&lt;GcLine&gt;, IEquatable&lt;GcLine&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="GameCanvas.IPrimitive-1.html">IPrimitive</a>&lt;<a class="xref" href="GameCanvas.GcLine.html">GcLine</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="GameCanvas.GcLine.html">GcLine</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_CalcDistance_GameCanvas_GcLine__Unity_Mathematics_float2__">GcCollisionExtensions.CalcDistance(in GcLine, in float2)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Contains_GameCanvas_GcLine__Unity_Mathematics_float2__">GcCollisionExtensions.Contains(in GcLine, in float2)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__">GcCollisionExtensions.Intersects(in GcLine, in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcCollisionExtensions.html#GameCanvas_GcCollisionExtensions_Intersects_GameCanvas_GcLine__GameCanvas_GcLine__Unity_Mathematics_float2__">GcCollisionExtensions.Intersects(in GcLine, in GcLine, out float2)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_AABB_GameCanvas_GcLine__Unity_Mathematics_float2x3__">GcLineExtensions.AABB(in GcLine, in float2x3)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Begin_GameCanvas_GcLine__">GcLineExtensions.Begin(in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Degree_GameCanvas_GcLine__">GcLineExtensions.Degree(in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_End_GameCanvas_GcLine__">GcLineExtensions.End(in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_IsSegment_GameCanvas_GcLine__">GcLineExtensions.IsSegment(in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_IsZero_GameCanvas_GcLine__">GcLineExtensions.IsZero(in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Radian_GameCanvas_GcLine__">GcLineExtensions.Radian(in GcLine)</a>
+  </div>
+  <div>
+      <a class="xref" href="GameCanvas.GcLineExtensions.html#GameCanvas_GcLineExtensions_Vector_GameCanvas_GcLine__">GcLineExtensions.Vector(in GcLine)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
+
+  <h3 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__System_Single__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,System.Single@)">
+  GcLine(in float2, in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>コンストラクタ（直線）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcLine(in float2 origin, in float radian)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>origin</code> <span class="xref">float2</span></dt>
+    <dd><p>基準点</p>
+</dd>
+    <dt><code>radian</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>傾き（弧度法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
+
+  <h3 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__System_Single__System_Single__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,System.Single@,System.Single@)">
+  GcLine(in float2, in float, in float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>コンストラクタ（線分）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcLine(in float2 oridin, in float length, in float radian)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>oridin</code> <span class="xref">float2</span></dt>
+    <dd><p>基準点</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>長さ</p>
+</dd>
+    <dt><code>radian</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>傾き（弧度法）</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
+
+  <h3 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__System_Single__Unity_Mathematics_float2__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,System.Single@,Unity.Mathematics.float2@)">
+  GcLine(in float2, in float, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>コンストラクタ（線分）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcLine(in float2 oridin, in float length, in float2 direction)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>oridin</code> <span class="xref">float2</span></dt>
+    <dd><p>基準点</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>長さ</p>
+</dd>
+    <dt><code>direction</code> <span class="xref">float2</span></dt>
+    <dd><p>傾きを表す単位ベクトル</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine__ctor_" data-uid="GameCanvas.GcLine.#ctor*"></a>
+
+  <h3 id="GameCanvas_GcLine__ctor_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcLine.#ctor(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  GcLine(in float2, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>コンストラクタ（直線）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GcLine(in float2 origin, in float2 direction)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>origin</code> <span class="xref">float2</span></dt>
+    <dd><p>基準点</p>
+</dd>
+    <dt><code>direction</code> <span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="GameCanvas_GcLine_Direction" data-uid="GameCanvas.GcLine.Direction">
+  Direction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>傾きを表す単位ベクトル</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 Direction</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcLine_Length" data-uid="GameCanvas.GcLine.Length">
+  Length
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>線分の長さ</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Length</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="GameCanvas_GcLine_Origin" data-uid="GameCanvas.GcLine.Origin">
+  Origin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>基準点</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float2 Origin</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">float2</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="GameCanvas_GcLine_Equals_" data-uid="GameCanvas.GcLine.Equals*"></a>
+
+  <h3 id="GameCanvas_GcLine_Equals_GameCanvas_GcLine_" data-uid="GameCanvas.GcLine.Equals(GameCanvas.GcLine)">
+  Equals(GcLine)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(GcLine other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine_Equals_" data-uid="GameCanvas.GcLine.Equals*"></a>
+
+  <h3 id="GameCanvas_GcLine_Equals_System_Object_" data-uid="GameCanvas.GcLine.Equals(System.Object)">
+  Equals(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine_GetHashCode_" data-uid="GameCanvas.GcLine.GetHashCode*"></a>
+
+  <h3 id="GameCanvas_GcLine_GetHashCode" data-uid="GameCanvas.GcLine.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L112"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine_Segment_" data-uid="GameCanvas.GcLine.Segment*"></a>
+
+  <h3 id="GameCanvas_GcLine_Segment_Unity_Mathematics_float2__Unity_Mathematics_float2__" data-uid="GameCanvas.GcLine.Segment(Unity.Mathematics.float2@,Unity.Mathematics.float2@)">
+  Segment(in float2, in float2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>コンストラクタ（線分）</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GcLine Segment(in float2 p0, in float2 p1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>p0</code> <span class="xref">float2</span></dt>
+    <dd><p>始点</p>
+</dd>
+    <dt><code>p1</code> <span class="xref">float2</span></dt>
+    <dd><p>終点</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine_ToString_" data-uid="GameCanvas.GcLine.ToString*"></a>
+
+  <h3 id="GameCanvas_GcLine_ToString" data-uid="GameCanvas.GcLine.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override readonly string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="GameCanvas_GcLine_op_Equality_" data-uid="GameCanvas.GcLine.op_Equality*"></a>
+
+  <h3 id="GameCanvas_GcLine_op_Equality_GameCanvas_GcLine_GameCanvas_GcLine_" data-uid="GameCanvas.GcLine.op_Equality(GameCanvas.GcLine,GameCanvas.GcLine)">
+  operator ==(GcLine, GcLine)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(GcLine lh, GcLine rh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lh</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd></dd>
+    <dt><code>rh</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="GameCanvas_GcLine_op_Inequality_" data-uid="GameCanvas.GcLine.op_Inequality*"></a>
+
+  <h3 id="GameCanvas_GcLine_op_Inequality_GameCanvas_GcLine_GameCanvas_GcLine_" data-uid="GameCanvas.GcLine.op_Inequality(GameCanvas.GcLine,GameCanvas.GcLine)">
+  operator !=(GcLine, GcLine)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Primitive/GcLine.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(GcLine lh, GcLine rh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lh</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd></dd>
+    <dt><code>rh</code> <a class="xref" href="GameCanvas.GcLine.html">GcLine</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

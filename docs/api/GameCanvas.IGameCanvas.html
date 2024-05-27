@@ -1,43 +1,118 @@
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
+﻿<!DOCTYPE html>
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IGameCanvas
-   | GameCanvas </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IGameCanvas
-   | GameCanvas ">
-    <meta name="generator" content="docfx 2.56.6.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc">
-    
-    
-    
+      <title>Interface IGameCanvas | GameCanvas </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IGameCanvas | GameCanvas ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/sfc-sdp/GameCanvas-Unity/new/feature/#227/apiSpec/new?filename=GameCanvas_IGameCanvas.md&amp;value=---%0Auid%3A%20GameCanvas.IGameCanvas%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        <div class="article row grid">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="GameCanvas.IGameCanvas">
-  
-  
-  <h1 id="GameCanvas_IGameCanvas" data-uid="GameCanvas.IGameCanvas" class="text-break">Interface IGameCanvas
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="GameCanvas">
+            GameCanvas
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GameCanvas.IGameCanvas">
+
+
+
+  <h1 id="GameCanvas_IGameCanvas" data-uid="GameCanvas.IGameCanvas" class="text-break">
+Interface IGameCanvas  <a class="header-action link-secondary" title="View source" href="https://github.com/sfc-sdp/GameCanvas-Unity/blob/feature/#227/Packages/GameCanvas/Runtime/Scripts/Interface/IGameCanvas.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GameCanvas.html">GameCanvas</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GameCanvas.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IGameCanvas : IGraphicsEx, IGraphics, ISoundEx, ISound, INetworkEx, INetwork, ISceneManagementEx, ISceneManagement, ITimeEx, ITime, IPhysicsEx, IPhysics, IStorageEx, IStorage, IMathEx, IMath, IInputPointerEx, IInputPointer, IInputKeyEx, IInputKey, IInputAccelerationEx, IInputAcceleration, IInputGeolocationEx, IInputGeolocation, IInputCameraEx, IInputCamera</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_CanvasAABB">IGraphicsEx.CanvasAABB</a>
     </div>
@@ -90,139 +165,139 @@
       <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DeviceScreenWidth">IGraphicsEx.DeviceScreenWidth</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_ChangeBorderColor_System_Single__System_Single__System_Single__">IGraphicsEx.ChangeBorderColor(Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_ChangeBorderColor_System_Single__System_Single__System_Single__">IGraphicsEx.ChangeBorderColor(in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_ChangeCanvasSize_System_Int32__System_Int32__">IGraphicsEx.ChangeCanvasSize(Int32, Int32)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_ChangeCanvasSize_System_Int32__System_Int32__">IGraphicsEx.ChangeCanvasSize(in int, in int)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawCircle_System_Single__System_Single__System_Single__">IGraphicsEx.DrawCircle(Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawCircle_System_Single__System_Single__System_Single__">IGraphicsEx.DrawCircle(in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawCircle_Unity_Mathematics_float2__System_Single__">IGraphicsEx.DrawCircle(float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawCircle_Unity_Mathematics_float2__System_Single__">IGraphicsEx.DrawCircle(in float2, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawImage_GameCanvas_GcImage__System_Single__System_Single__System_Single_">IGraphicsEx.DrawImage(GcImage, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawImage_GameCanvas_GcImage__System_Single__System_Single__System_Single_">IGraphicsEx.DrawImage(in GcImage, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawImage_GameCanvas_GcImage__System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawImage(GcImage, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawImage_GameCanvas_GcImage__System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawImage(in GcImage, in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawLine_Unity_Mathematics_float2__Unity_Mathematics_float2__">IGraphicsEx.DrawLine(float2, float2)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawLine_Unity_Mathematics_float2__Unity_Mathematics_float2__">IGraphicsEx.DrawLine(in float2, in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawLine_System_Single__System_Single__System_Single__System_Single__">IGraphicsEx.DrawLine(Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawLine_System_Single__System_Single__System_Single__System_Single__">IGraphicsEx.DrawLine(in float, in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawRect(Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawRect(in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.DrawRect(float2, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.DrawRect(in float2, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawRoundedRect(Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawRoundedRect(in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_">IGraphicsEx.DrawRoundedRect(Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_">IGraphicsEx.DrawRoundedRect(in float, in float, in float, in float, float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.DrawRoundedRect(float2, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.DrawRoundedRect(in float2, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_">IGraphicsEx.DrawRoundedRect(float2, float2, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_">IGraphicsEx.DrawRoundedRect(in float2, in float2, float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawString_System_String__System_Single__System_Single__System_Single_">IGraphicsEx.DrawString(String, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawString_System_String__System_Single__System_Single__System_Single_">IGraphicsEx.DrawString(in string, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawString_System_String__System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawString(String, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawString_System_String__System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawString(in string, in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawTexture_UnityEngine_Texture__System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawTexture(Texture, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_DrawTexture_UnityEngine_Texture__System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.DrawTexture(in Texture, in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillCircle_System_Single__System_Single__System_Single__">IGraphicsEx.FillCircle(Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillCircle_System_Single__System_Single__System_Single__">IGraphicsEx.FillCircle(in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillCircle_Unity_Mathematics_float2__System_Single__">IGraphicsEx.FillCircle(float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillCircle_Unity_Mathematics_float2__System_Single__">IGraphicsEx.FillCircle(in float2, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.FillRect(Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.FillRect(in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.FillRect(float2, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.FillRect(in float2, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.FillRoundedRect(Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.FillRoundedRect(in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_">IGraphicsEx.FillRoundedRect(Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_System_Single__System_Single__System_Single__System_Single__System_Single_System_Single_">IGraphicsEx.FillRoundedRect(in float, in float, in float, in float, float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.FillRoundedRect(float2, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_">IGraphicsEx.FillRoundedRect(in float2, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_">IGraphicsEx.FillRoundedRect(float2, float2, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_FillRoundedRect_Unity_Mathematics_float2__Unity_Mathematics_float2__System_Single_System_Single_">IGraphicsEx.FillRoundedRect(in float2, in float2, float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageHeight_GameCanvas_GcImage__">IGraphicsEx.GetImageHeight(GcImage)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageHeight_GameCanvas_GcImage__">IGraphicsEx.GetImageHeight(in GcImage)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageSize_GameCanvas_GcImage__">IGraphicsEx.GetImageSize(GcImage)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageSize_GameCanvas_GcImage__">IGraphicsEx.GetImageSize(in GcImage)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageWidth_GameCanvas_GcImage__">IGraphicsEx.GetImageWidth(GcImage)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_GetImageWidth_GameCanvas_GcImage__">IGraphicsEx.GetImageWidth(in GcImage)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_RotateCoordinate_System_Single__System_Single__System_Single__">IGraphicsEx.RotateCoordinate(Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_RotateCoordinate_System_Single__System_Single__System_Single__">IGraphicsEx.RotateCoordinate(in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_ScaleCoordinate_System_Single__System_Single__">IGraphicsEx.ScaleCoordinate(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_ScaleCoordinate_System_Single__System_Single__">IGraphicsEx.ScaleCoordinate(in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetBackgroundColor_UnityEngine_Color__">IGraphicsEx.SetBackgroundColor(Color)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetBackgroundColor_UnityEngine_Color__">IGraphicsEx.SetBackgroundColor(in Color)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetBackgroundColor_System_Single__System_Single__System_Single__">IGraphicsEx.SetBackgroundColor(Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetBackgroundColor_System_Single__System_Single__System_Single__">IGraphicsEx.SetBackgroundColor(in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.SetColor(Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_System_Single__System_Single__System_Single__System_Single_">IGraphicsEx.SetColor(in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_System_Byte__System_Byte__System_Byte__System_Byte_">IGraphicsEx.SetColor(Byte, Byte, Byte, Byte)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_System_Byte__System_Byte__System_Byte__System_Byte_">IGraphicsEx.SetColor(in byte, in byte, in byte, byte)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_UnityEngine_Color__">IGraphicsEx.SetColor(Color)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_UnityEngine_Color__">IGraphicsEx.SetColor(in Color)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_UnityEngine_Color__System_Single__">IGraphicsEx.SetColor(Color, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetColor_UnityEngine_Color__System_Single__">IGraphicsEx.SetColor(in Color, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetCoordinate_Unity_Mathematics_float2x3__">IGraphicsEx.SetCoordinate(float2x3)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetCoordinate_Unity_Mathematics_float2x3__">IGraphicsEx.SetCoordinate(in float2x3)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetFont_GameCanvas_GcFont__">IGraphicsEx.SetFont(GcFont)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetFont_GameCanvas_GcFont__">IGraphicsEx.SetFont(in GcFont)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetFontSize_System_Int32__">IGraphicsEx.SetFontSize(Int32)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetFontSize_System_Int32__">IGraphicsEx.SetFontSize(in int)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetLineCap_GameCanvas_GcLineCap__">IGraphicsEx.SetLineCap(GcLineCap)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetLineCap_GameCanvas_GcLineCap__">IGraphicsEx.SetLineCap(in GcLineCap)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetLineWidth_System_Single__">IGraphicsEx.SetLineWidth(Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetLineWidth_System_Single__">IGraphicsEx.SetLineWidth(in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetRectAnchor_GameCanvas_GcAnchor__">IGraphicsEx.SetRectAnchor(GcAnchor)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetRectAnchor_GameCanvas_GcAnchor__">IGraphicsEx.SetRectAnchor(in GcAnchor)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetStringAnchor_GameCanvas_GcAnchor__">IGraphicsEx.SetStringAnchor(GcAnchor)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetStringAnchor_GameCanvas_GcAnchor__">IGraphicsEx.SetStringAnchor(in GcAnchor)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetStyle_GameCanvas_GcStyle__">IGraphicsEx.SetStyle(GcStyle)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_SetStyle_GameCanvas_GcStyle__">IGraphicsEx.SetStyle(in GcStyle)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_TranslateCoordinate_System_Single__System_Single__">IGraphicsEx.TranslateCoordinate(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphicsEx.html#GameCanvas_IGraphicsEx_TranslateCoordinate_System_Single__System_Single__">IGraphicsEx.TranslateCoordinate(in float, in float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_BackgroundColor">IGraphics.BackgroundColor</a>
@@ -276,25 +351,25 @@
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_StyleScope">IGraphics.StyleScope</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CalcStringHeight_System_String__">IGraphics.CalcStringHeight(String)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CalcStringHeight_System_String__">IGraphics.CalcStringHeight(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CalcStringSize_System_String__">IGraphics.CalcStringSize(String)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CalcStringSize_System_String__">IGraphics.CalcStringSize(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CalcStringWidth_System_String__">IGraphics.CalcStringWidth(String)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CalcStringWidth_System_String__">IGraphics.CalcStringWidth(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__">IGraphics.CanvasToScreenPoint(float2, float2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__">IGraphics.CanvasToScreenPoint(in float2, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__">IGraphics.CanvasToScreenPoint(float2, int2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_CanvasToScreenPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__">IGraphics.CanvasToScreenPoint(in float2, out int2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__">IGraphics.ChangeBorderColor(Color)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeBorderColor_UnityEngine_Color__">IGraphics.ChangeBorderColor(in Color)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2__">IGraphics.ChangeCanvasSize(int2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ChangeCanvasSize_Unity_Mathematics_int2__">IGraphics.ChangeCanvasSize(in int2)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ClearCoordinate">IGraphics.ClearCoordinate()</a>
@@ -309,79 +384,79 @@
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawCircle">IGraphics.DrawCircle()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawCircle_GameCanvas_GcCircle__">IGraphics.DrawCircle(GcCircle)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawCircle_GameCanvas_GcCircle__">IGraphics.DrawCircle(in GcCircle)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__">IGraphics.DrawImage(GcImage)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__">IGraphics.DrawImage(in GcImage)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__Unity_Mathematics_float2__System_Single_">IGraphics.DrawImage(GcImage, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__Unity_Mathematics_float2__System_Single_">IGraphics.DrawImage(in GcImage, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__GameCanvas_GcRect__">IGraphics.DrawImage(GcImage, GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawImage_GameCanvas_GcImage__GameCanvas_GcRect__">IGraphics.DrawImage(in GcImage, in GcRect)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawLine">IGraphics.DrawLine()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawLine_GameCanvas_GcLine__">IGraphics.DrawLine(GcLine)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawLine_GameCanvas_GcLine__">IGraphics.DrawLine(in GcLine)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRect">IGraphics.DrawRect()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRect_GameCanvas_GcRect__">IGraphics.DrawRect(GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRect_GameCanvas_GcRect__">IGraphics.DrawRect(in GcRect)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect">IGraphics.DrawRoundedRect()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__">IGraphics.DrawRoundedRect(GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__">IGraphics.DrawRoundedRect(in GcRect)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__System_Single_">IGraphics.DrawRoundedRect(GcRect, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawRoundedRect_GameCanvas_GcRect__System_Single_">IGraphics.DrawRoundedRect(in GcRect, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__">IGraphics.DrawString(String)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__">IGraphics.DrawString(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__Unity_Mathematics_float2__System_Single_">IGraphics.DrawString(String, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__Unity_Mathematics_float2__System_Single_">IGraphics.DrawString(in string, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__GameCanvas_GcRect__">IGraphics.DrawString(String, GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawString_System_String__GameCanvas_GcRect__">IGraphics.DrawString(in string, in GcRect)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__">IGraphics.DrawTexture(Texture)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__">IGraphics.DrawTexture(in Texture)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2__System_Single_">IGraphics.DrawTexture(Texture, float2, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2__System_Single_">IGraphics.DrawTexture(in Texture, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__GameCanvas_GcRect__">IGraphics.DrawTexture(Texture, GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__GameCanvas_GcRect__">IGraphics.DrawTexture(in Texture, in GcRect)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__">IGraphics.DrawTexture(Texture, float2x3)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_DrawTexture_UnityEngine_Texture__Unity_Mathematics_float2x3__">IGraphics.DrawTexture(in Texture, in float2x3)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillCircle">IGraphics.FillCircle()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillCircle_GameCanvas_GcCircle__">IGraphics.FillCircle(GcCircle)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillCircle_GameCanvas_GcCircle__">IGraphics.FillCircle(in GcCircle)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRect">IGraphics.FillRect()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRect_GameCanvas_GcRect__">IGraphics.FillRect(GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRect_GameCanvas_GcRect__">IGraphics.FillRect(in GcRect)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect">IGraphics.FillRoundedRect()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__">IGraphics.FillRoundedRect(GcRect)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__">IGraphics.FillRoundedRect(in GcRect)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__System_Single_">IGraphics.FillRoundedRect(GcRect, Single)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_FillRoundedRect_GameCanvas_GcRect__System_Single_">IGraphics.FillRoundedRect(in GcRect, float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_PopCoordinate">IGraphics.PopCoordinate()</a>
@@ -399,34 +474,34 @@
       <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_RebuildFontTexture">IGraphics.RebuildFontTexture()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_RotateCoordinate_System_Single__">IGraphics.RotateCoordinate(Single)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_RotateCoordinate_System_Single__">IGraphics.RotateCoordinate(in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_RotateCoordinate_System_Single__Unity_Mathematics_float2__">IGraphics.RotateCoordinate(Single, float2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_RotateCoordinate_System_Single__Unity_Mathematics_float2__">IGraphics.RotateCoordinate(in float, in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ScaleCoordinate_Unity_Mathematics_float2__">IGraphics.ScaleCoordinate(float2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ScaleCoordinate_Unity_Mathematics_float2__">IGraphics.ScaleCoordinate(in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__">IGraphics.ScreenToCanvasPoint(float2, float2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_float2__">IGraphics.ScreenToCanvasPoint(in float2, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__">IGraphics.ScreenToCanvasPoint(float2, int2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_ScreenToCanvasPoint_Unity_Mathematics_float2__Unity_Mathematics_int2__">IGraphics.ScreenToCanvasPoint(in float2, out int2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_TranslateCoordinate_Unity_Mathematics_float2__">IGraphics.TranslateCoordinate(float2)</a>
+      <a class="xref" href="GameCanvas.IGraphics.html#GameCanvas_IGraphics_TranslateCoordinate_Unity_Mathematics_float2__">IGraphics.TranslateCoordinate(in float2)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_GetSoundVolume_GameCanvas_GcSoundTrack_">ISoundEx.GetSoundVolume(GcSoundTrack)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_PlaySE_GameCanvas_GcSound__">ISoundEx.PlaySE(GcSound)</a>
+      <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_PlaySE_GameCanvas_GcSound__">ISoundEx.PlaySE(in GcSound)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_PlaySE_UnityEngine_AudioClip__">ISoundEx.PlaySE(AudioClip)</a>
+      <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_PlaySE_UnityEngine_AudioClip__">ISoundEx.PlaySE(in AudioClip)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_">ISoundEx.SetSoundVolume(Single, GcSoundTrack)</a>
+      <a class="xref" href="GameCanvas.ISoundEx.html#GameCanvas_ISoundEx_SetSoundVolume_System_Single__GameCanvas_GcSoundTrack_">ISoundEx.SetSoundVolume(in float, GcSoundTrack)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_ClearSound">ISound.ClearSound()</a>
@@ -441,13 +516,13 @@
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PauseSound_GameCanvas_GcSoundTrack_">ISound.PauseSound(GcSoundTrack)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(GcSound, GcSoundTrack, Boolean)</a>
+      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_GameCanvas_GcSound__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(in GcSound, GcSoundTrack, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(AudioClip, GcSoundTrack, Boolean)</a>
+      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_PlaySound_UnityEngine_AudioClip__GameCanvas_GcSoundTrack_System_Boolean_">ISound.PlaySound(in AudioClip, GcSoundTrack, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_">ISound.SetSoundLevel(Single, GcSoundTrack)</a>
+      <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_SetSoundLevel_System_Single__GameCanvas_GcSoundTrack_">ISound.SetSoundLevel(in float, GcSoundTrack)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_StopSound_GameCanvas_GcSoundTrack_">ISound.StopSound(GcSoundTrack)</a>
@@ -456,49 +531,49 @@
       <a class="xref" href="GameCanvas.ISound.html#GameCanvas_ISound_UnpauseSound_GameCanvas_GcSoundTrack_">ISound.UnpauseSound(GcSoundTrack)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__">INetworkEx.DrawOnlineImage(String)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__">INetworkEx.DrawOnlineImage(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__Unity_Mathematics_float2__System_Single_">INetworkEx.DrawOnlineImage(String, float2, Single)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__Unity_Mathematics_float2__System_Single_">INetworkEx.DrawOnlineImage(in string, in float2, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__System_Single__System_Single__System_Single_">INetworkEx.DrawOnlineImage(String, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__System_Single__System_Single__System_Single_">INetworkEx.DrawOnlineImage(in string, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__GameCanvas_GcRect__">INetworkEx.DrawOnlineImage(String, GcRect)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__GameCanvas_GcRect__">INetworkEx.DrawOnlineImage(in string, in GcRect)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__System_Single__System_Single__System_Single__System_Single__System_Single_">INetworkEx.DrawOnlineImage(String, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_DrawOnlineImage_System_String__System_Single__System_Single__System_Single__System_Single__System_Single_">INetworkEx.DrawOnlineImage(in string, in float, in float, in float, in float, float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_GetOnlineImageHeight_System_String__">INetworkEx.GetOnlineImageHeight(String)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_GetOnlineImageHeight_System_String__">INetworkEx.GetOnlineImageHeight(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_GetOnlineImageWidth_System_String__">INetworkEx.GetOnlineImageWidth(String)</a>
+      <a class="xref" href="GameCanvas.INetworkEx.html#GameCanvas_INetworkEx_GetOnlineImageWidth_System_String__">INetworkEx.GetOnlineImageWidth(in string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_ClearDownloadCache_System_String__">INetwork.ClearDownloadCache(String)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_ClearDownloadCache_System_String__">INetwork.ClearDownloadCache(in string)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_ClearDownloadCacheAll">INetwork.ClearDownloadCacheAll()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__GameCanvas_GcAvailability__UnityEngine_Texture2D__">INetwork.TryGetOnlineImage(String, GcAvailability, Texture2D)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImage_System_String__GameCanvas_GcAvailability__UnityEngine_Texture2D__">INetwork.TryGetOnlineImage(in string, out GcAvailability, out Texture2D)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImageSize_System_String__Unity_Mathematics_int2__">INetwork.TryGetOnlineImageSize(String, int2)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineImageSize_System_String__Unity_Mathematics_int2__">INetwork.TryGetOnlineImageSize(in string, out int2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__GameCanvas_GcAvailability__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, GcAvailability, AudioClip)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__GameCanvas_GcAvailability__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(in string, out GcAvailability, out AudioClip)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__GameCanvas_GcAvailability__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(String, AudioType, GcAvailability, AudioClip)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineSound_System_String__UnityEngine_AudioType__GameCanvas_GcAvailability__UnityEngine_AudioClip__">INetwork.TryGetOnlineSound(in string, in AudioType, out GcAvailability, out AudioClip)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__GameCanvas_GcAvailability__System_String__">INetwork.TryGetOnlineText(String, GcAvailability, String)</a>
+      <a class="xref" href="GameCanvas.INetwork.html#GameCanvas_INetwork_TryGetOnlineText_System_String__GameCanvas_GcAvailability__System_String__">INetwork.TryGetOnlineText(in string, out GcAvailability, out string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ISceneManagementEx.ChangeScene&lt;T&gt;(Object)</a>
+      <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_ChangeScene__1_System_Object_">ISceneManagementEx.ChangeScene&lt;T&gt;(object)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_GetActor">ISceneManagementEx.GetActor()</a>
@@ -513,16 +588,16 @@
       <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_RegisterScene__1">ISceneManagementEx.RegisterScene&lt;T&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_RegisterScene_GameCanvas_GcScene__">ISceneManagementEx.RegisterScene(GcScene)</a>
+      <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_RegisterScene_GameCanvas_GcScene__">ISceneManagementEx.RegisterScene(in GcScene)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_UnregisterScene__1">ISceneManagementEx.UnregisterScene&lt;T&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_UnregisterScene_GameCanvas_GcScene__">ISceneManagementEx.UnregisterScene(GcScene)</a>
+      <a class="xref" href="GameCanvas.ISceneManagementEx.html#GameCanvas_ISceneManagementEx_UnregisterScene_GameCanvas_GcScene__">ISceneManagementEx.UnregisterScene(in GcScene)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_AddActor_GameCanvas_GcActor__">ISceneManagement.AddActor(GcActor)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_AddActor_GameCanvas_GcActor__">ISceneManagement.AddActor(in GcActor)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_CreateActor__1">ISceneManagement.CreateActor&lt;T&gt;()</a>
@@ -537,16 +612,16 @@
       <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_RemoveActorAll">ISceneManagement.RemoveActorAll()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor_System_Int32__GameCanvas_GcActor__">ISceneManagement.TryGetActor(Int32, GcActor)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor_System_Int32__GameCanvas_GcActor__">ISceneManagement.TryGetActor(in int, out GcActor)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor__1_System_Int32____0__">ISceneManagement.TryGetActor&lt;T&gt;(Int32, T)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActor__1_System_Int32____0__">ISceneManagement.TryGetActor&lt;T&gt;(in int, out T)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorAll__1_System_ReadOnlySpan___0___">ISceneManagement.TryGetActorAll&lt;T&gt;(ReadOnlySpan&lt;T&gt;)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryGetActorAll__1_System_ReadOnlySpan___0___">ISceneManagement.TryGetActorAll&lt;T&gt;(out ReadOnlySpan&lt;T&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryRemoveActor_GameCanvas_GcActor__">ISceneManagement.TryRemoveActor(GcActor)</a>
+      <a class="xref" href="GameCanvas.ISceneManagement.html#GameCanvas_ISceneManagement_TryRemoveActor_GameCanvas_GcActor__">ISceneManagement.TryRemoveActor(in GcActor)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.ITimeEx.html#GameCanvas_ITimeEx_CurrentTimeDay">ITimeEx.CurrentTimeDay</a>
@@ -600,124 +675,130 @@
       <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_VSyncEnabled">ITime.VSyncEnabled</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_">ITime.SetFrameInterval(Double, Boolean)</a>
+      <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameInterval_System_Double__System_Boolean_">ITime.SetFrameInterval(in double, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_">ITime.SetFrameRate(Int32, Boolean)</a>
+      <a class="xref" href="GameCanvas.ITime.html#GameCanvas_ITime_SetFrameRate_System_Int32__System_Boolean_">ITime.SetFrameRate(in int, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_CrossTest_GameCanvas_GcLine__GameCanvas_GcLine__">IPhysics.CrossTest(GcLine, GcLine)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_CrossTest_GameCanvas_GcLine__GameCanvas_GcLine__">IPhysics.CrossTest(in GcLine, in GcLine)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_CrossTest_GameCanvas_GcLine__GameCanvas_GcLine__Unity_Mathematics_float2__">IPhysics.CrossTest(GcLine, GcLine, float2)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_CrossTest_GameCanvas_GcLine__GameCanvas_GcLine__Unity_Mathematics_float2__">IPhysics.CrossTest(in GcLine, in GcLine, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB__">IPhysics.HitTest(GcAABB, GcAABB)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcAABB__GameCanvas_GcAABB__">IPhysics.HitTest(in GcAABB, in GcAABB)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__">IPhysics.HitTest(GcAABB, float2)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcAABB__Unity_Mathematics_float2__">IPhysics.HitTest(in GcAABB, in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcCircle__GameCanvas_GcCircle__">IPhysics.HitTest(GcCircle, GcCircle)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcCircle__GameCanvas_GcCircle__">IPhysics.HitTest(in GcCircle, in GcCircle)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcCircle__Unity_Mathematics_float2__">IPhysics.HitTest(GcCircle, float2)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_HitTest_GameCanvas_GcCircle__Unity_Mathematics_float2__">IPhysics.HitTest(in GcCircle, in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">IPhysics.SweepTest(GcAABB, float2, float2, GcSweepResult)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_SweepTest_GameCanvas_GcAABB__Unity_Mathematics_float2__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">IPhysics.SweepTest(in GcAABB, in float2, in float2, out GcSweepResult)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">IPhysics.SweepTest(GcAABB, GcAABB, float2, GcSweepResult)</a>
+      <a class="xref" href="GameCanvas.IPhysics.html#GameCanvas_IPhysics_SweepTest_GameCanvas_GcAABB__GameCanvas_GcAABB__Unity_Mathematics_float2__GameCanvas_GcSweepResult__">IPhysics.SweepTest(in GcAABB, in GcAABB, in float2, out GcSweepResult)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_EraseSavedDataAll">IStorage.EraseSavedDataAll()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_Nullable_System_Single__">IStorage.Save(String, Nullable&lt;Single&gt;)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_Nullable_System_Single__">IStorage.Save(in string, float?)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_Nullable_System_Int32__">IStorage.Save(String, Nullable&lt;Int32&gt;)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_Nullable_System_Int32__">IStorage.Save(in string, int?)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_String_">IStorage.Save(String, String)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_Save_System_String__System_String_">IStorage.Save(in string, string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String__">IStorage.SaveScreenshotAsync(Action&lt;String&gt;)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_SaveScreenshotAsync_System_Action_System_String__">IStorage.SaveScreenshotAsync(Action&lt;string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_Single__">IStorage.TryLoad(String, Single)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_Single__">IStorage.TryLoad(in string, out float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_Int32__">IStorage.TryLoad(String, Int32)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_Int32__">IStorage.TryLoad(in string, out int)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_String__">IStorage.TryLoad(String, String)</a>
+      <a class="xref" href="GameCanvas.IStorage.html#GameCanvas_IStorage_TryLoad_System_String__System_String__">IStorage.TryLoad(in string, out string)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMathEx.html#GameCanvas_IMathEx_Atan2_System_Single__System_Single__">IMathEx.Atan2(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMathEx.html#GameCanvas_IMathEx_Atan2_System_Single__System_Single__">IMathEx.Atan2(in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Abs_System_Single__">IMath.Abs(Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Abs_System_Single__">IMath.Abs(in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Abs_System_Int32__">IMath.Abs(Int32)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Abs_System_Int32__">IMath.Abs(in int)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_AlmostSame_System_Single__System_Single__">IMath.AlmostSame(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_AlmostSame_System_Single__System_Single__">IMath.AlmostSame(in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_AlmostZero_System_Single__">IMath.AlmostZero(Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_AlmostZero_System_Single__">IMath.AlmostZero(in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Atan2_Unity_Mathematics_float2__">IMath.Atan2(float2)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Atan2_Unity_Mathematics_float2__">IMath.Atan2(in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Clamp_System_Single__System_Single__System_Single__">IMath.Clamp(Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Clamp_System_Single__System_Single__System_Single__">IMath.Clamp(in float, in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Cos_System_Single__">IMath.Cos(Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Cos_System_Single__">IMath.Cos(in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Cross_Unity_Mathematics_float2__Unity_Mathematics_float2__">IMath.Cross(float2, float2)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Cross_Unity_Mathematics_float2__Unity_Mathematics_float2__">IMath.Cross(in float2, in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Dot_Unity_Mathematics_float2__Unity_Mathematics_float2__">IMath.Dot(float2, float2)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Dot_Unity_Mathematics_float2__Unity_Mathematics_float2__">IMath.Dot(in float2, in float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Max_System_Single__System_Single__">IMath.Max(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Max_System_Single__System_Single__">IMath.Max(in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Min_System_Single__System_Single__">IMath.Min(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Min_System_Single__System_Single__">IMath.Min(in float, in float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Random">IMath.Random()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Random_System_Single__System_Single__">IMath.Random(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Random_System_Single__System_Single__">IMath.Random(in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Random_System_Int32__System_Int32__">IMath.Random(Int32, Int32)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Random_System_Int32__System_Int32__">IMath.Random(in int, in int)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Repeat_System_Single__System_Single__">IMath.Repeat(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Repeat_System_Single__System_Single__">IMath.Repeat(in float, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_RotateVector_Unity_Mathematics_float2__System_Single__">IMath.RotateVector(float2, Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_RotateVector_Unity_Mathematics_float2__System_Single__">IMath.RotateVector(in float2, in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Round_System_Single__">IMath.Round(Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Round_System_Single__">IMath.Round(in float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Round_System_Double__">IMath.Round(Double)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Round_System_Double__">IMath.Round(in double)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_SetRandomSeed_System_UInt32__">IMath.SetRandomSeed(UInt32)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_GetRandomState">IMath.GetRandomState()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Sin_System_Single__">IMath.Sin(Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_SetRandomSeed_System_UInt32__">IMath.SetRandomSeed(in uint)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Sqrt_System_Single__">IMath.Sqrt(Single)</a>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_SetRandomSeedByIndex_System_UInt32__">IMath.SetRandomSeedByIndex(in uint)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Sin_System_Single__">IMath.Sin(in float)</a>
+    </div>
+    <div>
+      <a class="xref" href="GameCanvas.IMath.html#GameCanvas_IMath_Sqrt_System_Single__">IMath.Sqrt(in float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_LastPointerFrame">IInputPointerEx.LastPointerFrame</a>
@@ -738,76 +819,76 @@
       <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped">IInputPointerEx.IsTapped()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_Unity_Mathematics_float2__">IInputPointerEx.IsTapped(float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_Unity_Mathematics_float2__">IInputPointerEx.IsTapped(out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__">IInputPointerEx.IsTapped(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__">IInputPointerEx.IsTapped(out float, out float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTapped(GcAABB, float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTapped(in GcAABB, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTapped(Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTapped_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTapped(in float, in float, in float, in float, out float, out float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan">IInputPointerEx.IsTouchBegan()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_Unity_Mathematics_float2__">IInputPointerEx.IsTouchBegan(float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_Unity_Mathematics_float2__">IInputPointerEx.IsTouchBegan(out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcPointerEvent__">IInputPointerEx.IsTouchBegan(GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcPointerEvent__">IInputPointerEx.IsTouchBegan(out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__">IInputPointerEx.IsTouchBegan(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__">IInputPointerEx.IsTouchBegan(out float, out float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTouchBegan(GcAABB, float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTouchBegan(in GcAABB, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTouchBegan(Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchBegan_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTouchBegan(in float, in float, in float, in float, out float, out float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched">IInputPointerEx.IsTouched()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_Unity_Mathematics_float2__">IInputPointerEx.IsTouched(float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_Unity_Mathematics_float2__">IInputPointerEx.IsTouched(out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerEvent__">IInputPointerEx.IsTouched(GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerEvent__">IInputPointerEx.IsTouched(out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerTrace__">IInputPointerEx.IsTouched(GcPointerTrace)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcPointerTrace__">IInputPointerEx.IsTouched(out GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__">IInputPointerEx.IsTouched(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__">IInputPointerEx.IsTouched(out float, out float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTouched(GcAABB, float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTouched(in GcAABB, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTouched(Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouched_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTouched(in float, in float, in float, in float, out float, out float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded">IInputPointerEx.IsTouchEnded()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_Unity_Mathematics_float2__">IInputPointerEx.IsTouchEnded(float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_Unity_Mathematics_float2__">IInputPointerEx.IsTouchEnded(out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerEvent__">IInputPointerEx.IsTouchEnded(GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerEvent__">IInputPointerEx.IsTouchEnded(out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerTrace__">IInputPointerEx.IsTouchEnded(GcPointerTrace)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcPointerTrace__">IInputPointerEx.IsTouchEnded(out GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__">IInputPointerEx.IsTouchEnded(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__">IInputPointerEx.IsTouchEnded(out float, out float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTouchEnded(GcAABB, float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_GameCanvas_GcAABB__Unity_Mathematics_float2__">IInputPointerEx.IsTouchEnded(in GcAABB, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTouchEnded(Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputPointerEx.html#GameCanvas_IInputPointerEx_IsTouchEnded_System_Single__System_Single__System_Single__System_Single__System_Single__System_Single__">IInputPointerEx.IsTouchEnded(in float, in float, in float, in float, out float, out float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_IsTouchPressureSupported">IInputPointer.IsTouchPressureSupported</a>
@@ -834,34 +915,34 @@
       <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TapSettings">IInputPointer.TapSettings</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(Int32, GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(in int, out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(GcPointerEventPhase, Int32, GcPointerEvent)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEvent_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerEvent__">IInputPointer.TryGetPointerEvent(in GcPointerEventPhase, in int, out GcPointerEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(out ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(GcPointerEventPhase, ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerEventAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerEvent___">IInputPointer.TryGetPointerEventAll(in GcPointerEventPhase, out ReadOnlySpan&lt;GcPointerEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__">IInputPointer.TryGetPointerTapPoint(Int32, float2)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPoint_System_Int32__Unity_Mathematics_float2__">IInputPointer.TryGetPointerTapPoint(in int, out float2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___">IInputPointer.TryGetPointerTapPointAll(ReadOnlySpan&lt;float2&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTapPointAll_System_ReadOnlySpan_Unity_Mathematics_float2___">IInputPointer.TryGetPointerTapPointAll(out ReadOnlySpan&lt;float2&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(Int32, GcPointerTrace)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(in int, out GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(GcPointerEventPhase, Int32, GcPointerTrace)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTrace_GameCanvas_GcPointerEventPhase__System_Int32__GameCanvas_GcPointerTrace__">IInputPointer.TryGetPointerTrace(in GcPointerEventPhase, in int, out GcPointerTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(out ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(GcPointerEventPhase, ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputPointer.html#GameCanvas_IInputPointer_TryGetPointerTraceAll_GameCanvas_GcPointerEventPhase__System_ReadOnlySpan_GameCanvas_GcPointerTrace___">IInputPointer.TryGetPointerTraceAll(in GcPointerEventPhase, out ReadOnlySpan&lt;GcPointerTrace&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsAnyKey">IInputKeyEx.IsAnyKey</a>
@@ -885,16 +966,16 @@
       <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_KeyPressCount">IInputKeyEx.KeyPressCount</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_InputSystem_Key__">IInputKeyEx.GetKeyPressDuration(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressDuration_UnityEngine_InputSystem_Key__">IInputKeyEx.GetKeyPressDuration(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__">IInputKeyEx.GetKeyPressFrameCount(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_GetKeyPressFrameCount_UnityEngine_InputSystem_Key__">IInputKeyEx.GetKeyPressFrameCount(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyHold(Key, GcKeyTrace)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyHold_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyHold(in Key, out GcKeyTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyUp(Key, GcKeyTrace)</a>
+      <a class="xref" href="GameCanvas.IInputKeyEx.html#GameCanvas_IInputKeyEx_IsKeyUp_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKeyEx.IsKeyUp(in Key, out GcKeyTrace)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsScreenKeyboardSupported">IInputKey.IsScreenKeyboardSupported</a>
@@ -915,40 +996,40 @@
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_HideScreenKeyboard">IInputKey.HideScreenKeyboard()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_InputSystem_Key__">IInputKey.IsKeyDown(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyDown_UnityEngine_InputSystem_Key__">IInputKey.IsKeyDown(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_InputSystem_Key__">IInputKey.IsKeyHold(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyHold_UnityEngine_InputSystem_Key__">IInputKey.IsKeyHold(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_InputSystem_Key__">IInputKey.IsKeyPress(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyPress_UnityEngine_InputSystem_Key__">IInputKey.IsKeyPress(in Key)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_InputSystem_Key__">IInputKey.IsKeyUp(Key)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_IsKeyUp_UnityEngine_InputSystem_Key__">IInputKey.IsKeyUp(in Key)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_ShowScreenKeyboard">IInputKey.ShowScreenKeyboard()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__">IInputKey.TryGetKeyEvent(Key, GcKeyEvent)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEvent_UnityEngine_InputSystem_Key__GameCanvas_GcKeyEvent__">IInputKey.TryGetKeyEvent(in Key, out GcKeyEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(out ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(GcKeyEventPhase, ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyEventAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyEvent___">IInputKey.TryGetKeyEventAll(in GcKeyEventPhase, out ReadOnlySpan&lt;GcKeyEvent&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKey.TryGetKeyTrace(Key, GcKeyTrace)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTrace_UnityEngine_InputSystem_Key__GameCanvas_GcKeyTrace__">IInputKey.TryGetKeyTrace(in Key, out GcKeyTrace)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(out ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(GcKeyEventPhase, ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetKeyTraceAll_GameCanvas_GcKeyEventPhase__System_ReadOnlySpan_GameCanvas_GcKeyTrace___">IInputKey.TryGetKeyTraceAll(in GcKeyEventPhase, out ReadOnlySpan&lt;GcKeyTrace&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetScreenKeyboardArea_GameCanvas_GcAABB__">IInputKey.TryGetScreenKeyboardArea(GcAABB)</a>
+      <a class="xref" href="GameCanvas.IInputKey.html#GameCanvas_IInputKey_TryGetScreenKeyboardArea_GameCanvas_GcAABB__">IInputKey.TryGetScreenKeyboardArea(out GcAABB)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_AccelerationEventCount">IInputAcceleration.AccelerationEventCount</a>
@@ -972,10 +1053,10 @@
       <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_LastAccelerationEvent">IInputAcceleration.LastAccelerationEvent</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEvent_System_Int32_GameCanvas_GcAccelerationEvent__">IInputAcceleration.TryGetAccelerationEvent(Int32, GcAccelerationEvent)</a>
+      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEvent_System_Int32_GameCanvas_GcAccelerationEvent__">IInputAcceleration.TryGetAccelerationEvent(int, out GcAccelerationEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___">IInputAcceleration.TryGetAccelerationEventAll(ReadOnlySpan&lt;GcAccelerationEvent&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputAcceleration.html#GameCanvas_IInputAcceleration_TryGetAccelerationEventAll_System_ReadOnlySpan_GameCanvas_GcAccelerationEvent___">IInputAcceleration.TryGetAccelerationEventAll(out ReadOnlySpan&lt;GcAccelerationEvent&gt;)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputGeolocationEx.html#GameCanvas_IInputGeolocationEx_IsGeolocationRunning">IInputGeolocationEx.IsGeolocationRunning</a>
@@ -993,40 +1074,40 @@
       <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_LastGeolocationEvent">IInputGeolocation.LastGeolocationEvent</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_RequestUserAuthorizedPermissionGeolocationAsync_System_Action_System_Boolean___">IInputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync(Action&lt;Boolean&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_RequestUserAuthorizedPermissionGeolocationAsync_System_Action_System_Boolean___">IInputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync(in Action&lt;bool&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_StartGeolocationService_System_Single_System_Single_">IInputGeolocation.StartGeolocationService(Single, Single)</a>
+      <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_StartGeolocationService_System_Single_System_Single_">IInputGeolocation.StartGeolocationService(float, float)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_StopGeolocationService">IInputGeolocation.StopGeolocationService()</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_TryGetGeolocationEvent_GameCanvas_GcGeolocationEvent__">IInputGeolocation.TryGetGeolocationEvent(GcGeolocationEvent)</a>
+      <a class="xref" href="GameCanvas.IInputGeolocation.html#GameCanvas_IInputGeolocation_TryGetGeolocationEvent_GameCanvas_GcGeolocationEvent__">IInputGeolocation.TryGetGeolocationEvent(out GcGeolocationEvent)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__System_Boolean_">IInputCameraEx.DrawCameraImage(GcCameraDevice, Boolean)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__System_Boolean_">IInputCameraEx.DrawCameraImage(in GcCameraDevice, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__Unity_Mathematics_float2__System_Single_System_Boolean_">IInputCameraEx.DrawCameraImage(GcCameraDevice, float2, Single, Boolean)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__Unity_Mathematics_float2__System_Single_System_Boolean_">IInputCameraEx.DrawCameraImage(in GcCameraDevice, in float2, float, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__System_Single__System_Single__System_Single_System_Boolean_">IInputCameraEx.DrawCameraImage(GcCameraDevice, Single, Single, Single, Boolean)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__System_Single__System_Single__System_Single_System_Boolean_">IInputCameraEx.DrawCameraImage(in GcCameraDevice, in float, in float, float, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcRect__System_Boolean_">IInputCameraEx.DrawCameraImage(GcCameraDevice, GcRect, Boolean)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcRect__System_Boolean_">IInputCameraEx.DrawCameraImage(in GcCameraDevice, in GcRect, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__System_Single__System_Single__System_Single__System_Single__System_Single_System_Boolean_">IInputCameraEx.DrawCameraImage(GcCameraDevice, Single, Single, Single, Single, Single, Boolean)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_DrawCameraImage_GameCanvas_GcCameraDevice__System_Single__System_Single__System_Single__System_Single__System_Single_System_Boolean_">IInputCameraEx.DrawCameraImage(in GcCameraDevice, in float, in float, in float, in float, float, bool)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_GetPrimaryCameraResolution_GameCanvas_GcCameraDevice__">IInputCameraEx.GetPrimaryCameraResolution(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_GetPrimaryCameraResolution_GameCanvas_GcCameraDevice__">IInputCameraEx.GetPrimaryCameraResolution(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_PlayCameraImage_GameCanvas_GcCameraDevice__">IInputCameraEx.PlayCameraImage(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_PlayCameraImage_GameCanvas_GcCameraDevice__">IInputCameraEx.PlayCameraImage(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_PlayCameraImage_GameCanvas_GcCameraDevice__Unity_Mathematics_int2__">IInputCameraEx.PlayCameraImage(GcCameraDevice, int2)</a>
+      <a class="xref" href="GameCanvas.IInputCameraEx.html#GameCanvas_IInputCameraEx_PlayCameraImage_GameCanvas_GcCameraDevice__Unity_Mathematics_int2__">IInputCameraEx.PlayCameraImage(in GcCameraDevice, out int2)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_CameraDeviceCount">IInputCamera.CameraDeviceCount</a>
@@ -1038,90 +1119,80 @@
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_HasUserAuthorizedPermissionCamera">IInputCamera.HasUserAuthorizedPermissionCamera</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_DidUpdateCameraImageThisFrame_GameCanvas_GcCameraDevice__">IInputCamera.DidUpdateCameraImageThisFrame(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_DidUpdateCameraImageThisFrame_GameCanvas_GcCameraDevice__">IInputCamera.DidUpdateCameraImageThisFrame(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_FocusCameraImage_GameCanvas_GcCameraDevice__System_Nullable_Unity_Mathematics_float2___">IInputCamera.FocusCameraImage(GcCameraDevice, Nullable&lt;float2&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_FocusCameraImage_GameCanvas_GcCameraDevice__System_Nullable_Unity_Mathematics_float2___">IInputCamera.FocusCameraImage(in GcCameraDevice, in float2?)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_GetOrCreateCameraTexture_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">IInputCamera.GetOrCreateCameraTexture(GcCameraDevice, GcResolution)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_GetOrCreateCameraTexture_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">IInputCamera.GetOrCreateCameraTexture(in GcCameraDevice, in GcResolution)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_IsFlippedCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.IsFlippedCameraImage(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_IsFlippedCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.IsFlippedCameraImage(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_IsPlayingCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.IsPlayingCameraImage(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_IsPlayingCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.IsPlayingCameraImage(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_PauseCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.PauseCameraImage(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_PauseCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.PauseCameraImage(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_PlayCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__Unity_Mathematics_int2__">IInputCamera.PlayCameraImage(GcCameraDevice, GcResolution, int2)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_PlayCameraImage_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__Unity_Mathematics_int2__">IInputCamera.PlayCameraImage(in GcCameraDevice, in GcResolution, out int2)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_RequestUserAuthorizedPermissionCameraAsync_System_Action_System_Boolean___">IInputCamera.RequestUserAuthorizedPermissionCameraAsync(Action&lt;Boolean&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_RequestUserAuthorizedPermissionCameraAsync_System_Action_System_Boolean___">IInputCamera.RequestUserAuthorizedPermissionCameraAsync(in Action&lt;bool&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_StopCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.StopCameraImage(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_StopCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.StopCameraImage(in GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryChangeCameraImageResolution_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">IInputCamera.TryChangeCameraImageResolution(GcCameraDevice, GcResolution)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryChangeCameraImageResolution_GameCanvas_GcCameraDevice__GameCanvas_GcResolution__">IInputCamera.TryChangeCameraImageResolution(in GcCameraDevice, in GcResolution)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.TryGetCameraImage(GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImage_GameCanvas_GcCameraDevice__">IInputCamera.TryGetCameraImage(out GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImage_System_String__GameCanvas_GcCameraDevice__">IInputCamera.TryGetCameraImage(String, GcCameraDevice)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImage_System_String__GameCanvas_GcCameraDevice__">IInputCamera.TryGetCameraImage(in string, out GcCameraDevice)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_System_ReadOnlySpan_GameCanvas_GcCameraDevice___">IInputCamera.TryGetCameraImageAll(ReadOnlySpan&lt;GcCameraDevice&gt;)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageAll_System_ReadOnlySpan_GameCanvas_GcCameraDevice___">IInputCamera.TryGetCameraImageAll(out ReadOnlySpan&lt;GcCameraDevice&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageRotation_GameCanvas_GcCameraDevice__System_Single__">IInputCamera.TryGetCameraImageRotation(GcCameraDevice, Single)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageRotation_GameCanvas_GcCameraDevice__System_Single__">IInputCamera.TryGetCameraImageRotation(in GcCameraDevice, out float)</a>
     </div>
     <div>
-      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageSize_GameCanvas_GcCameraDevice__Unity_Mathematics_int2__">IInputCamera.TryGetCameraImageSize(GcCameraDevice, int2)</a>
+      <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_TryGetCameraImageSize_GameCanvas_GcCameraDevice__Unity_Mathematics_int2__">IInputCamera.TryGetCameraImageSize(in GcCameraDevice, out int2)</a>
     </div>
     <div>
       <a class="xref" href="GameCanvas.IInputCamera.html#GameCanvas_IInputCamera_UpdateCameraDevice">IInputCamera.UpdateCameraDevice()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="GameCanvas.html">GameCanvas</a></h6>
-  <h6><strong>Assembly</strong>: GameCanvas.dll</h6>
-  <h5 id="GameCanvas_IGameCanvas_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IGameCanvas : IGraphicsEx, IGraphics, ISoundEx, ISound, INetworkEx, INetwork, ISceneManagementEx, ISceneManagement, ITimeEx, ITime, IPhysicsEx, IPhysics, IStorageEx, IStorage, IMathEx, IMath, IInputPointerEx, IInputPointer, IInputKeyEx, IInputKey, IInputAccelerationEx, IInputAcceleration, IInputGeolocationEx, IInputGeolocation, IInputCameraEx, IInputCamera</code></pre>
-  </div>
+  </dd></dl>
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          (c) 2015-2024 Smart Device Programming.
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            (c) 2015-2024 Smart Device Programming.
-            
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>
