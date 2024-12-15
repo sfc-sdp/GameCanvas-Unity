@@ -922,12 +922,12 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = true)
-            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)));
+            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)), autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = true)
-            => DrawCameraImage(camera, new float2(x, y), degree);
+            => DrawCameraImage(camera, new float2(x, y), degree, autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
