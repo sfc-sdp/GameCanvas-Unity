@@ -47,8 +47,12 @@ jobs:
         if: steps.check_folder.outputs.exists == 'true'
         id: format
         run: |
-          if ! dotnet-format "${{ env.GC_PACKAGE_PATH }}" --check; then
+          dotnet-format "${{ env.GC_PACKAGE_PATH }}" --check && rc=0 || rc=$?
+          if [ $rc -eq 2 ]; then
             echo "has-changes=true" >> "$GITHUB_OUTPUT"
+          elif [ $rc -ne 0 ]; then
+            echo "::error::dotnet-format failed with exit code $rc"
+            exit $rc
           else
             echo "has-changes=false" >> "$GITHUB_OUTPUT"
           fi
@@ -58,7 +62,7 @@ jobs:
         run: dotnet-format "${{ env.GC_PACKAGE_PATH }}"
 
       - name: Commit
-        if: steps.format.outputs.has-changes == 'true'
+        if: steps.format.outputs.has-changes == 'true' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -66,7 +70,7 @@ jobs:
           Co-authored-by: ${{ github.event.pull_request.user.login }} <${{ github.event.pull_request.user.id }}+${{ github.event.pull_request.user.login }}@users.noreply.github.com>'
 
       - name: Push
-        if: steps.format.outputs.has-changes == 'true'
+        if: steps.format.outputs.has-changes == 'true' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
           git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push origin HEAD:${{ github.event.pull_request.head.ref }}
