@@ -144,7 +144,7 @@ namespace GameCanvas.Engine
             count = m_PointerList.Length;
             if (count != 0)
             {
-                array = m_PointerList.AsParallelReader();
+                array = m_PointerList.AsArray().AsReadOnly();
                 return true;
             }
             array = default;
@@ -161,7 +161,7 @@ namespace GameCanvas.Engine
                     count = m_PointerListBegin.Length;
                     if (count != 0)
                     {
-                        array = m_PointerListBegin.AsParallelReader();
+                        array = m_PointerListBegin.AsArray().AsReadOnly();
                         return true;
                     }
                     break;
@@ -170,7 +170,7 @@ namespace GameCanvas.Engine
                     count = m_PointerListHold.Length;
                     if (count != 0)
                     {
-                        array = m_PointerListHold.AsParallelReader();
+                        array = m_PointerListHold.AsArray().AsReadOnly();
                         return true;
                     }
                     break;
@@ -179,7 +179,7 @@ namespace GameCanvas.Engine
                     count = m_PointerListEnd.Length;
                     if (count != 0)
                     {
-                        array = m_PointerListEnd.AsParallelReader();
+                        array = m_PointerListEnd.AsArray().AsReadOnly();
                         return true;
                     }
                     break;
@@ -213,7 +213,7 @@ namespace GameCanvas.Engine
             count = m_TapPointList.Length;
             if (count != 0)
             {
-                array = m_TapPointList.AsParallelReader();
+                array = m_TapPointList.AsArray().AsReadOnly();
                 return true;
             }
             array = default;
@@ -284,7 +284,7 @@ namespace GameCanvas.Engine
             count = m_PointerTraceList.Length;
             if (count != 0)
             {
-                array = m_PointerTraceList.AsParallelReader();
+                array = m_PointerTraceList.AsArray().AsReadOnly();
                 return true;
             }
             array = default;
@@ -301,7 +301,7 @@ namespace GameCanvas.Engine
                     count = m_PointerTraceListHold.Length;
                     if (count != 0)
                     {
-                        array = m_PointerTraceListHold.AsParallelReader();
+                        array = m_PointerTraceListHold.AsArray().AsReadOnly();
                         return true;
                     }
                     break;
@@ -310,7 +310,7 @@ namespace GameCanvas.Engine
                     count = m_PointerTraceListEnd.Length;
                     if (count != 0)
                     {
-                        array = m_PointerTraceListEnd.AsParallelReader();
+                        array = m_PointerTraceListEnd.AsArray().AsReadOnly();
                         return true;
                     }
                     break;

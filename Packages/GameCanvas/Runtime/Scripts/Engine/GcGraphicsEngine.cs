@@ -1261,7 +1261,7 @@ namespace GameCanvas.Engine
             }
 
             ReleaseFrameBuffer();
-            m_FrameBuffer = new RenderTexture(m_DeviceScreenSize.x, m_DeviceScreenSize.y, 0, UnityEngine.Experimental.Rendering.DefaultFormat.LDR);
+            m_FrameBuffer = new RenderTexture(m_DeviceScreenSize.x, m_DeviceScreenSize.y, 0, SystemInfo.GetGraphicsFormat(UnityEngine.Experimental.Rendering.DefaultFormat.LDR));
             m_FrameBuffer.name = "GameCanvas FrameBuffer";
             m_FrameBuffer.Create();
             Graphics.SetRenderTarget(m_FrameBuffer);

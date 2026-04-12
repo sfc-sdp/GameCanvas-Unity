@@ -11,6 +11,7 @@
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace GameCanvas.Editor
@@ -123,7 +124,8 @@ namespace GameCanvas.Editor
             {
                 EditorUserBuildSettings.SwitchActiveBuildTarget(buildTargetGroup, buildTarget);
             }
-            PlayerSettings.SetApplicationIdentifier(buildTargetGroup, option.m_ApplicationId);
+            var namedBuildTarget = NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup);
+            PlayerSettings.SetApplicationIdentifier(namedBuildTarget, option.m_ApplicationId);
 
             if (!Directory.Exists(option.m_OutputFolderPath))
             {
@@ -139,8 +141,8 @@ namespace GameCanvas.Editor
                     PlayerSettings.Android.minSdkVersion = option.m_MinimumSdkVersion;
                     PlayerSettings.Android.targetSdkVersion = option.m_TargetSdkVersion;
                     PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
-                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
-                    PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.Android, ApiCompatibilityLevel.NET_Standard);
+                    PlayerSettings.SetScriptingBackend(NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
+                    PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.Android, ApiCompatibilityLevel.NET_Standard);
                     EditorUserBuildSettings.symlinkSources = true;
 
                     // 既に出力ファイルがあれば退避させておく
@@ -154,9 +156,8 @@ namespace GameCanvas.Editor
                     PlayerSettings.iOS.sdkVersion = option.m_SdkType;
                     PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
                     PlayerSettings.iOS.targetOSVersionString = string.Empty;
-                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.iOS, ScriptingImplementation.IL2CPP);
-                    PlayerSettings.SetArchitecture(BuildTargetGroup.iOS, (int)AppleMobileArchitecture.ARM64);
-                    PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.iOS, ApiCompatibilityLevel.NET_Standard);
+                    PlayerSettings.SetScriptingBackend(NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
+                    PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.iOS, ApiCompatibilityLevel.NET_Standard);
                     if (string.IsNullOrEmpty(PlayerSettings.iOS.cameraUsageDescription)) PlayerSettings.iOS.cameraUsageDescription = "GameCanvas";
                     if (string.IsNullOrEmpty(PlayerSettings.iOS.locationUsageDescription)) PlayerSettings.iOS.locationUsageDescription = "GameCanvas";
                     if (string.IsNullOrEmpty(PlayerSettings.iOS.microphoneUsageDescription)) PlayerSettings.iOS.microphoneUsageDescription = "GameCanvas";
@@ -165,8 +166,8 @@ namespace GameCanvas.Editor
 
                 case GcRuntimePlatform.WebGL:
                     PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Disabled;
-                    PlayerSettings.SetScriptingBackend(BuildTargetGroup.WebGL, ScriptingImplementation.IL2CPP);
-                    PlayerSettings.SetApiCompatibilityLevel(BuildTargetGroup.WebGL, ApiCompatibilityLevel.NET_Standard);
+                    PlayerSettings.SetScriptingBackend(NamedBuildTarget.WebGL, ScriptingImplementation.IL2CPP);
+                    PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.WebGL, ApiCompatibilityLevel.NET_Standard);
                     break;
 
                 default:
@@ -294,7 +295,7 @@ namespace GameCanvas.Editor
             m_Option.m_OutputFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
             m_Option.m_BuildAndRun = false;
             m_Option.m_TargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
-            m_Option.m_MinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
+            m_Option.m_MinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
             m_Option.m_SdkType = iOSSdkVersion.DeviceSDK;
             m_Option.m_Platform = EditorUserBuildSettings.activeBuildTarget.ToRuntimePlatform();
         }
