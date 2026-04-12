@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.bigdra50.unity-bridge": "https://github.com/bigdra50/unity-cli.git?path=UnityBridge",
     "com.unity.ide.rider": "3.0.28",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.ide.vscode": "1.2.5",
