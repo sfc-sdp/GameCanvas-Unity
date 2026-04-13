@@ -398,13 +398,20 @@ namespace GameCanvas.Engine
                 m_KeyTraceListOnlyHold.Add(t);
             }
 
-            // Populate m_KeyTraceList with a snapshot of all active traces for
-            // TryGetKeyTraceAll. Previously m_KeyTraceArray was declared but never
-            // assigned, causing the method to always return empty.
+            // Populate m_KeyTraceList with all traces updated this frame for
+            // TryGetKeyTraceAll. Active traces (Down/Hold) come from the dict snapshot.
+            // Terminated traces (Up) were already removed from the dict but must also
+            // be included, so append m_KeyTraceListOnlyUp.
+            // Previously m_KeyTraceArray was declared but never assigned, causing the
+            // method to always return empty.
             using var snapshot = m_KeyTraceDict.GetValueArray(Allocator.Temp);
             for (var i = 0; i < snapshot.Length; i++)
             {
                 m_KeyTraceList.Add(snapshot[i]);
+            }
+            for (var i = 0; i < m_KeyTraceListOnlyUp.Length; i++)
+            {
+                m_KeyTraceList.Add(m_KeyTraceListOnlyUp[i]);
             }
 
             void AddKeyEvent(GcKeyEvent e)

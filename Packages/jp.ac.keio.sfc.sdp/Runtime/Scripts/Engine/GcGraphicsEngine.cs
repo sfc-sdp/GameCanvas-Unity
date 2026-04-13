@@ -402,8 +402,22 @@ namespace GameCanvas.Engine
         /// <summary>
         /// 無限直線をキャンバス矩形とのクリッピング (Liang-Barsky) で線分に変換する
         /// </summary>
+        /// <remarks>
+        /// 現在の座標変換 (m_CurrentMatrix) が適用される前のキャンバス座標系で
+        /// クリッピングを行うため、座標変換を掛けている場合に想定外の端点になる
+        /// 可能性がある。教育用途の基本パスで変換済み無限直線を描くケースは稀。
+        /// 変換考慮版が必要になったら、canvas aabb を逆変換してローカル空間で
+        /// クリップするように拡張する。
+        /// </remarks>
         private bool TryClipInfiniteLineToCanvas(in GcLine line, out GcLine segment)
         {
+            // 方向ベクトルが極小の場合は NaN/Infinity を避けるため早期 return
+            if (math.lengthsq(line.Direction) < math.EPSILON)
+            {
+                segment = default;
+                return false;
+            }
+
             // キャンバス矩形 [0, 0, CanvasSize.x, CanvasSize.y] との交差区間を求める
             var dx = line.Direction.x;
             var dy = line.Direction.y;
@@ -419,6 +433,14 @@ namespace GameCanvas.Engine
             if (!ClipAxis(dx, w - ox, ref tMin, ref tMax)) { segment = default; return false; }
             if (!ClipAxis(-dy, oy, ref tMin, ref tMax)) { segment = default; return false; }
             if (!ClipAxis(dy, h - oy, ref tMin, ref tMax)) { segment = default; return false; }
+
+            // tMin/tMax のどちらかが無限のまま残ったら失敗扱い
+            // (通常 4 方向クリップで有限になるはずだが、数値誤差への保険)
+            if (float.IsInfinity(tMin) || float.IsInfinity(tMax))
+            {
+                segment = default;
+                return false;
+            }
 
             var begin = line.Origin + tMin * line.Direction;
             var end = line.Origin + tMax * line.Direction;
