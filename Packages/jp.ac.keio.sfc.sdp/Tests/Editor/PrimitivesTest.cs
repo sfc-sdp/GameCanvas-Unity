@@ -448,5 +448,38 @@ namespace GameCanvas.Editor.Tests
             Assert.AreEqual(10f, aabb.HalfSize.x, Delta);
             Assert.AreEqual(5f, aabb.HalfSize.y, Delta);
         }
+
+        // ====================================================================
+        // GcRect
+        // ====================================================================
+
+        [Test]
+        public void GcRect_FromDegrees_ConvertsToRadians()
+        {
+            var rect = GcRect.FromDegrees(new float2(1f, 2f), new float2(3f, 4f), 90f);
+            Assert.AreEqual(1f, rect.Position.x, Delta);
+            Assert.AreEqual(2f, rect.Position.y, Delta);
+            Assert.AreEqual(3f, rect.Size.x, Delta);
+            Assert.AreEqual(4f, rect.Size.y, Delta);
+            Assert.AreEqual(math.PI * 0.5f, rect.Radian, Delta);
+        }
+
+        [Test]
+        public void GcRect_FromDegrees_Components_ConvertsToRadians()
+        {
+            var rect = GcRect.FromDegrees(5f, 6f, 7f, 8f, 180f);
+            Assert.AreEqual(5f, rect.Position.x, Delta);
+            Assert.AreEqual(6f, rect.Position.y, Delta);
+            Assert.AreEqual(7f, rect.Size.x, Delta);
+            Assert.AreEqual(8f, rect.Size.y, Delta);
+            Assert.AreEqual(math.PI, rect.Radian, Delta);
+        }
+
+        [Test]
+        public void GcRect_FromDegrees_Zero()
+        {
+            var rect = GcRect.FromDegrees(new float2(0f, 0f), new float2(10f, 10f), 0f);
+            Assert.AreEqual(0f, rect.Radian, Delta);
+        }
     }
 }

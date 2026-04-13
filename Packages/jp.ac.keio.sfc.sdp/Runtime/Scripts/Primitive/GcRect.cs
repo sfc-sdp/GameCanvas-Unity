@@ -92,6 +92,26 @@ namespace GameCanvas
             Radian = radian;
         }
 
+        /// <summary>
+        /// 度数法で回転を指定して GcRect を生成します
+        /// </summary>
+        /// <param name="position">位置</param>
+        /// <param name="size">大きさ</param>
+        /// <param name="degree">回転（度数法）</param>
+        public static GcRect FromDegrees(in float2 position, in float2 size, in float degree)
+            => new(position, size, math.radians(degree));
+
+        /// <summary>
+        /// 度数法で回転を指定して GcRect を生成します
+        /// </summary>
+        /// <param name="x">X座標</param>
+        /// <param name="y">Y座標</param>
+        /// <param name="width">横幅</param>
+        /// <param name="height">縦幅</param>
+        /// <param name="degree">回転（度数法）</param>
+        public static GcRect FromDegrees(in float x, in float y, in float width, in float height, in float degree)
+            => new(new float2(x, y), new float2(width, height), math.radians(degree));
+
         public static explicit operator GcRect(Rect rect) => new(rect);
 
         public static bool operator !=(GcRect lh, GcRect rh) => !lh.Equals(rh);
