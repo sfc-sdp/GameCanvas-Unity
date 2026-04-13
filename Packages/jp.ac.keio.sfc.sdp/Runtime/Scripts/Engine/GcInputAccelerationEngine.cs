@@ -117,7 +117,7 @@ namespace GameCanvas.Engine
             return (m_EventList.Length > 0);
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count)
         {

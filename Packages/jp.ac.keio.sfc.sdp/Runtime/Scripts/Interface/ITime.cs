@@ -87,31 +87,31 @@ namespace GameCanvas
 
     public interface ITimeEx : ITime
     {
-        [System.Obsolete("Use to `CurrentTimeDay` instead.")]
+        [System.Obsolete("Use to `CurrentTimeDay` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentDay { get; }
 
-        [System.Obsolete("Use to `CurrentTimeDayOfWeek` instead.")]
+        [System.Obsolete("Use to `CurrentTimeDayOfWeek` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         System.DayOfWeek CurrentDayOfWeek { get; }
 
-        [System.Obsolete("Use to `CurrentTimeHour` instead.")]
+        [System.Obsolete("Use to `CurrentTimeHour` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentHour { get; }
 
-        [System.Obsolete("Use to `CurrentTimeMillisecond` instead.")]
+        [System.Obsolete("Use to `CurrentTimeMillisecond` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentMillisecond { get; }
 
-        [System.Obsolete("Use to `CurrentTimeMinute` instead.")]
+        [System.Obsolete("Use to `CurrentTimeMinute` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentMinute { get; }
 
-        [System.Obsolete("Use to `CurrentTimeMonth` instead.")]
+        [System.Obsolete("Use to `CurrentTimeMonth` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentMonth { get; }
 
-        [System.Obsolete("Use to `CurrentTimeSecond` instead.")]
+        [System.Obsolete("Use to `CurrentTimeSecond` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentSecond { get; }
 
@@ -155,7 +155,7 @@ namespace GameCanvas
         /// </summary>
         int CurrentTimeYear { get; }
 
-        [System.Obsolete("Use to `CurrentTimeYear` instead.")]
+        [System.Obsolete("Use to `CurrentTimeYear` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int CurrentYear { get; }
     }

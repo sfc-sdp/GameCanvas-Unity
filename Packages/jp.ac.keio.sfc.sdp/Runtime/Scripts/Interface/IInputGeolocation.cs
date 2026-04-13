@@ -66,27 +66,27 @@ namespace GameCanvas
 
     public interface IInputGeolocationEx : IInputGeolocation
     {
-        [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [System.Obsolete("Use to `LastGeolocationEvent` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GeolocationLastAltitude { get; }
 
-        [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [System.Obsolete("Use to `LastGeolocationEvent` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GeolocationLastLatitude { get; }
 
-        [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [System.Obsolete("Use to `LastGeolocationEvent` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GeolocationLastLongitude { get; }
 
-        [System.Obsolete("Use to `LastGeolocationEvent` instead.")]
+        [System.Obsolete("Use to `LastGeolocationEvent` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         System.DateTimeOffset GeolocationLastTime { get; }
 
-        [System.Obsolete("Use to `HasUserAuthorizedPermissionGeolocation` instead.")]
+        [System.Obsolete("Use to `HasUserAuthorizedPermissionGeolocation` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool HasGeolocationPermission { get; }
 
-        [System.Obsolete("Use to `DidUpdateGeolocationThisFrame` instead.")]
+        [System.Obsolete("Use to `DidUpdateGeolocationThisFrame` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool HasGeolocationUpdate { get; }
 

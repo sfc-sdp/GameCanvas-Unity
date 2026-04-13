@@ -513,11 +513,11 @@ namespace GameCanvas
         /// <param name="height">縦幅</param>
         void ChangeCanvasSize(in int width, in int height);
 
-        [System.Obsolete("Use to `DrawRect`  instead.")]
+        [System.Obsolete("Use to `DrawRect`  instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void DrawCenterRect(in float2 center, in float2 size, float degree = 0f);
 
-        [System.Obsolete("Use to `DrawString`  instead.")]
+        [System.Obsolete("Use to `DrawString`  instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void DrawCenterString(in string str, in float x, in float y, float degree = 0f);
 
@@ -590,7 +590,7 @@ namespace GameCanvas
         /// <param name="degree">回転（度数法）</param>
         void DrawRect(in float2 position, in float2 size, float degree = 0f);
 
-        [System.Obsolete("Use to `DrawString`  instead.")]
+        [System.Obsolete("Use to `DrawString`  instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void DrawRightString(in string str, in float x, in float y, float degree = 0f);
 
@@ -663,7 +663,7 @@ namespace GameCanvas
         /// <param name="degree">回転（度数法）</param>
         void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f);
 
-        [System.Obsolete("Use to `FillRect`  instead.")]
+        [System.Obsolete("Use to `FillRect`  instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void FillCenterRect(in float2 center, in float2 size, float degree = 0f);
 
@@ -855,7 +855,7 @@ namespace GameCanvas
         /// <param name="anchor">アンカー位置</param>
         void SetRectAnchor(in GcAnchor anchor);
 
-        [System.Obsolete("Use to `ChangeCanvasSize`  instead.")]
+        [System.Obsolete("Use to `ChangeCanvasSize`  instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void SetResolution(in int width, in int height);
 

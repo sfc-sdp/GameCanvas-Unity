@@ -72,7 +72,7 @@ namespace GameCanvas
 
     public interface INetworkEx : INetwork
     {
-        [System.Obsolete("Use to `ClearDownloadCacheAll` instead.")]
+        [System.Obsolete("Use to `ClearDownloadCacheAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void ClearDownloadCache();
 
@@ -134,7 +134,7 @@ namespace GameCanvas
         /// <returns>オンライン画像リソースの横幅。取得できなかった場合は0を返します</returns>
         int GetOnlineImageWidth(in string url);
 
-        [System.Obsolete("Use to `TryGetOnlineText`  instead.")]
+        [System.Obsolete("Use to `TryGetOnlineText`  instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         GcAvailability GetOnlineTextAsync(in string url, out string? str);
     }
