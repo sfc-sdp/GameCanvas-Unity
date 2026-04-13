@@ -226,7 +226,7 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public CoordianteScope CoordinateScope
+        public CoordinateScope CoordinateScope
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Graphics.CoordinateScope;

@@ -138,7 +138,7 @@ namespace GameCanvas.Engine
             set { m_CurrentStyle.Color = value; }
         }
 
-        public CoordianteScope CoordinateScope => new(this);
+        public CoordinateScope CoordinateScope => new(this);
 
         public float CornerRadius
         {
