@@ -4,7 +4,7 @@
 
 ## Project Structure
 
-- `Packages/GameCanvas/` — フレームワーク本体 (UPM パッケージ `jp.ac.keio.sfc.sdp`)
+- `Packages/jp.ac.keio.sfc.sdp/` — フレームワーク本体 (UPM パッケージ `jp.ac.keio.sfc.sdp`)
 - `Assets/Game.cs` — 学生が編集するゲームロジック (`GameBase` を継承)
 - `docs/` — DocFX 生成の API ドキュメント
 
@@ -18,7 +18,7 @@ unity-editor -batchmode -nographics -runTests -testPlatform EditMode -testResult
 unity-editor -batchmode -nographics -runTests -testPlatform PlayMode -testResults ./test-result-playmode.xml
 
 # コード整形
-dotnet format ./Packages/GameCanvas/
+dotnet format ./Packages/jp.ac.keio.sfc.sdp/
 ```
 
 ## unity-cli (AI Agent Integration)

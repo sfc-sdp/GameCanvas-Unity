@@ -10,7 +10,7 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       DOTNET_VERSION: 5.0.x
       DOTNET_FORMAT_VERSION: 5.1.250801
-      GC_PACKAGE_PATH: ./Packages/GameCanvas/
+      GC_PACKAGE_PATH: ./Packages/jp.ac.keio.sfc.sdp/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
