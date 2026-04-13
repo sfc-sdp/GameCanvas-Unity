@@ -1,4 +1,17 @@
 # CHANGE LOG
+## 7.0.1
+### 不具合修正
+- Input Engine のフレーム境界外アクセスによる ObjectDisposedException を解消
+- TryGetKeyTraceAll が常に空を返していた問題を修正 (m_KeyTraceArray 未初期化)
+- TryGetKeyTraceAll(Phase.Up) が Hold データを返していた問題を修正
+- DrawLine の無限直線が NotImplementedException を投げていた問題を修正 (Liang-Barsky クリッピングで実装)
+- GcSoundEngine のメソッド名 typo 修正 (TryGetAuidoClip → TryGetAudioClip)
+### その他
+- EditMode テストを 12件 → 173件、PlayMode テストを 0件 → 15件に拡充
+- GcGraphicsEngine の DrawMesh 行列計算 3 重複を統合
+- マジックナンバーの定数化 (Sound dB 範囲、Storage poll 上限、DrawOrder Z step)
+- GcStorageEngine の Save 構造を統一
+
 ## 7.0.0
 ### 仕様変更
 - 推奨エディタバージョンを Unity 6000.0.72f1 (Unity 6 LTS) に更新
