@@ -24,6 +24,8 @@ namespace GameCanvas.Engine
 
         const int k_TrackBgmNum = 3;
         const int k_TrackNum = 4;
+        const float k_MinDecibel = -96f;
+        const float k_MaxDecibel = 20f;
 
         readonly GcContext m_Context;
         readonly GcReferenceMixer m_Mixer;
@@ -162,7 +164,7 @@ namespace GameCanvas.Engine
                         UnpauseSound(track);
                         return;
                     }
-                    if (TryGetAuidoClip(sound, out var clip))
+                    if (TryGetAudioClip(sound, out var clip))
                     {
                         if (m_Sources[i].isPlaying)
                         {
@@ -180,7 +182,7 @@ namespace GameCanvas.Engine
 
                 case GcSoundTrack.SE:
                 {
-                    if (TryGetAuidoClip(sound, out var clip))
+                    if (TryGetAudioClip(sound, out var clip))
                     {
                         m_Sources[(int)GcSoundTrack.SE].PlayOneShot(clip);
                     }
@@ -224,7 +226,7 @@ namespace GameCanvas.Engine
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key) || float.IsNaN(decibel)) return;
 
-            m_Mixer.Get()!.SetFloat(key, math.clamp(decibel, -96f, 20f));
+            m_Mixer.Get()!.SetFloat(key, math.clamp(decibel, k_MinDecibel, k_MaxDecibel));
         }
 
         public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)
@@ -295,7 +297,7 @@ namespace GameCanvas.Engine
             src.volume = 1f;
         }
 
-        private bool TryGetAuidoClip(in GcSound sound, [NotNullWhen(true)] out AudioClip? clip)
+        private bool TryGetAudioClip(in GcSound sound, [NotNullWhen(true)] out AudioClip? clip)
         {
             if (sound == GcSound.Null || sound == GcSound.External)
             {
