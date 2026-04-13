@@ -1,4 +1,22 @@
 # CHANGE LOG
+## 7.0.0
+### 仕様変更
+- 推奨エディタバージョンを Unity 6000.0.72f1 (Unity 6 LTS) に更新
+    - 内部で依存する各種パッケージのバージョンを更新
+    - AsParallelReader を AsArray().AsReadOnly() に置換
+    - Experimental.Rendering.DefaultFormat を SystemInfo.GetGraphicsFormat に置換
+    - Editor API を NamedBuildTarget に移行
+    - ビルド可能な Android OS バージョンの下限を 7.0 (API 24) に変更
+    - ビルド可能な iOS バージョンの下限を 16.0 に変更
+- 埋め込みパッケージのディレクトリ名をパッケージ名に統一
+    - Packages/GameCanvas → Packages/jp.ac.keio.sfc.sdp
+    - Packages/CsprojModifier → Packages/com.cysharp.csprojmodifier
+- CI ワークフローを近代化 (GitHub Actions v4, deprecated 構文修正)
+### 機能追加
+- unity-cli (UnityBridge) によるAIエージェント連携を追加
+    - Unity 6 互換性修正を含む埋め込みパッケージとして同梱
+- CI に PlayMode テストを追加
+
 ## 6.6.0
 ### 機能追加
 - [#230](https://github.com/sfc-sdp/GameCanvas-Unity/issues/230) gc.SetRandomSeedByIndex を追加
