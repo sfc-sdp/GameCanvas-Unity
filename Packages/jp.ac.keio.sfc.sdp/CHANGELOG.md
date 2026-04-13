@@ -1,4 +1,17 @@
 # CHANGE LOG
+## 7.0.2
+### 不具合修正
+- [#160](https://github.com/sfc-sdp/GameCanvas-Unity/issues/160) InitGame 内で SetSoundVolume/SetSoundLevel が無視される問題を修正 (AudioMixer の初期化タイミング問題への対策)
+- Unity 6 で Key.IMESelected が deprecated になった警告を解消
+### 機能追加
+- GcRect.FromDegrees ファクトリメソッドを追加 (度数法で回転を指定可能)
+### 仕様変更
+- GcAvailability.Null を Uninitialized にリネーム (旧名は [Obsolete] として v8.0 まで残す)
+- CoordianteScope の typo を修正し CoordinateScope に (旧名は [Obsolete] として v8.0 まで残す)
+- 全ての [Obsolete] API 宣言に "Will be removed in v8.0." メッセージを付記
+### その他
+- CI ワークフローを削除 (ライセンス未整備のため。再整備後に再導入予定)
+
 ## 7.0.1
 ### 不具合修正
 - Input Engine のフレーム境界外アクセスによる ObjectDisposedException を解消

@@ -1,6 +1,6 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
   "unity": "6000.0",
