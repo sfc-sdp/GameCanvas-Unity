@@ -80,7 +80,7 @@ namespace GameCanvas
         bool TryRemoveActor(in GcActor actor);
 
         #region Obsolete
-        [System.Obsolete("Use to `TryGetActorAll` instead.")]
+        [System.Obsolete("Use to `TryGetActorAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor;
         #endregion

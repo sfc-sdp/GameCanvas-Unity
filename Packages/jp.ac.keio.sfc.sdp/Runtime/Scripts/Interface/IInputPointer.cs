@@ -144,23 +144,23 @@ namespace GameCanvas
         bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerTrace> traces);
 
         #region Obsolete
-        [System.Obsolete("Use to `TryGetPointerEventAll` instead.")]
+        [System.Obsolete("Use to `TryGetPointerEventAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetPointerEventAll` instead.")]
+        [System.Obsolete("Use to `TryGetPointerEventAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetPointerTapPointAll` instead.")]
+        [System.Obsolete("Use to `TryGetPointerTapPointAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetPointerTraceAll` instead.")]
+        [System.Obsolete("Use to `TryGetPointerTraceAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetPointerTraceAll` instead.")]
+        [System.Obsolete("Use to `TryGetPointerTraceAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count);
         #endregion
@@ -401,7 +401,7 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントの累計移動距離</returns>
-        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [System.Obsolete("Use to `TryGetPointerTrace` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetPointerDistance(in int i);
 
@@ -413,7 +413,7 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントの継続時間</returns>
-        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [System.Obsolete("Use to `TryGetPointerTrace` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetPointerDuration(in int i);
 
@@ -425,7 +425,7 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントの継続フレーム数</returns>
-        [System.Obsolete("Use to `TryGetPointerTrace` instead.")]
+        [System.Obsolete("Use to `TryGetPointerTrace` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int GetPointerFrameCount(in int i);
 
@@ -437,7 +437,7 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントのX座標</returns>
-        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
+        [System.Obsolete("Use to `TryGetPointerEvent` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetPointerX(in int i);
 
@@ -449,11 +449,11 @@ namespace GameCanvas
         /// </remarks>
         /// <param name="i">イベントインデックス（0 から <see cref="IInputPointer.PointerCount"/>-1 までの連番。イベントIDではない）</param>
         /// <returns>イベントのY座標</returns>
-        [System.Obsolete("Use to `TryGetPointerEvent` instead.")]
+        [System.Obsolete("Use to `TryGetPointerEvent` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetPointerY(in int i);
 
-        [System.Obsolete("Use `gc.TapSettings` instead.")]
+        [System.Obsolete("Use `gc.TapSettings` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void SetTapSensitivity(in float maxDuration, in float maxDistance);
         #endregion

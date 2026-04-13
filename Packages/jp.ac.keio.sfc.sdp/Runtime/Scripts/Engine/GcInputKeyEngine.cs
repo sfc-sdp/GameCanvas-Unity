@@ -135,7 +135,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
         {
@@ -149,7 +149,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
         {
@@ -212,7 +212,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
         {
@@ -226,7 +226,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
         {

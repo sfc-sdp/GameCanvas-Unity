@@ -140,19 +140,19 @@ namespace GameCanvas
         bool TryGetScreenKeyboardArea(out GcAABB area);
 
         #region Obsolete
-        [System.Obsolete("Use to `TryGetKeyEventAll` instead.")]
+        [System.Obsolete("Use to `TryGetKeyEventAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetKeyEventAll` instead.")]
+        [System.Obsolete("Use to `TryGetKeyEventAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetKeyTraceAll` instead.")]
+        [System.Obsolete("Use to `TryGetKeyTraceAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count);
 
-        [System.Obsolete("Use to `TryGetKeyTraceAll` instead.")]
+        [System.Obsolete("Use to `TryGetKeyTraceAll` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count);
         #endregion
@@ -226,71 +226,71 @@ namespace GameCanvas
         bool IsKeyUp(in Key key, out GcKeyTrace trace);
 
         #region Obsolete
-        [System.Obsolete("Use to `IsKeyDown` instead.")]
+        [System.Obsolete("Use to `IsKeyDown` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsPressBackButton { get; }
 
-        [System.Obsolete("Use to `IsKeyDown` instead.")]
+        [System.Obsolete("Use to `IsKeyDown` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool GetIsKeyBegan(in KeyCode key);
 
-        [System.Obsolete("Use to `IsKeyUp` instead.")]
+        [System.Obsolete("Use to `IsKeyUp` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool GetIsKeyEnded(in KeyCode key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         float GetKeyPressDuration(in char key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         int GetKeyPressFrameCount(in char key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyDown(in char key);
 
-        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyDown(in KeyCode key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyHold(in char key);
 
-        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyHold(in KeyCode key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyPress(in char key);
 
-        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyPress(in KeyCode key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyUp(in char key);
 
-        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool IsKeyUp(in KeyCode key);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyEvent(in char key, out GcKeyEvent e);
 
-        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e);
 
-        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("parameter `char` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyTrace(in char key, out GcKeyTrace trace);
 
-        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead.")]
+        [System.Obsolete("`UnityEngine.KeyCode` is depricated. Please Use `UnityEngine.InputSystem.Key` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace);
         #endregion

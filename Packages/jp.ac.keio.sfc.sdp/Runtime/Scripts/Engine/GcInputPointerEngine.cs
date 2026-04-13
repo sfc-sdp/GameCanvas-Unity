@@ -137,7 +137,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
         {
@@ -151,7 +151,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
         {
@@ -206,7 +206,7 @@ namespace GameCanvas.Engine
             return (m_TapPointList.Length != 0);
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count)
         {
@@ -277,7 +277,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
         {
@@ -291,7 +291,7 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
         {

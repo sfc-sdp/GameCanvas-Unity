@@ -2284,133 +2284,133 @@ namespace GameCanvas
         #region 公開関数（廃止）
         //----------------------------------------------------------
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastX
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.x;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastY
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.y;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float AccelerationLastZ
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent.Acceleration.z;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentDay
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Day;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public System.DayOfWeek CurrentDayOfWeek
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.DayOfWeek;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentHour
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Hour;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentMillisecond
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Millisecond;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentMinute
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Minute;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentMonth
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Month;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentSecond
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Second;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int CurrentYear
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.CurrentTime.Year;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GeolocationLastAltitude
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Altitude;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GeolocationLastLatitude
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Latitude;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GeolocationLastLongitude
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Longitude;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public System.DateTimeOffset GeolocationLastTime
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.LastGeolocationEvent.Time;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public LocationServiceStatus GeolocationStatus
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.GeolocationStatus;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool HasGeolocationPermission
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.HasUserAuthorizedPermissionGeolocation;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool HasGeolocationUpdate
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputGeolocation.DidUpdateGeolocationThisFrame;
         }
 
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsPressBackButton
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2418,22 +2418,22 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool CheckHitCircle(in float x1, in float y1, in float r1, in float x2, in float y2, in float r2)
             => new GcCircle(x1, y1, r1).Overlaps(new GcCircle(x2, y2, r2));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool CheckHitRect(in float x1, in float y1, in float w1, in float h1, in float x2, in float y2, in float w2, in float h2)
             => GcAABB.XYWH(x1, y1, w1, h1).Overlaps(GcAABB.XYWH(x2, y2, w2, h2));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void ClearDownloadCache()
             => m_Context.Network.ClearDownloadCacheAll();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void DrawCenterRect(in float2 center, in float2 size, float degree = 0f)
         {
             using (StyleScope)
@@ -2444,7 +2444,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void DrawCenterString(in string str, in float x, in float y, float degree = 0f)
         {
             using (StyleScope)
@@ -2455,7 +2455,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void DrawRightString(in string str, in float x, in float y, float degree = 0f)
         {
             using (StyleScope)
@@ -2466,7 +2466,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void FillCenterRect(in float2 center, in float2 size, float degree = 0f)
         {
             using (StyleScope)
@@ -2477,7 +2477,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetAccelerationX(in int i, bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
@@ -2488,7 +2488,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetAccelerationY(in int i, bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
@@ -2499,7 +2499,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetAccelerationZ(in int i, bool normalize = false)
         {
             if (m_Context.InputAcceleration.TryGetAccelerationEvent(i, out var e))
@@ -2511,22 +2511,22 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public ReadOnlyActorList<T> GetActorList<T>() where T : GcActor
             => (m_CurrentScene != null) && m_CurrentScene.TryGetActorList<T>(out var list) ? list : default;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool GetIsKeyBegan(in KeyCode key)
             => m_Context.InputKey.IsKeyDown(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool GetIsKeyEnded(in KeyCode key)
             => m_Context.InputKey.IsKeyUp(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetKeyPressDuration(in char key)
         {
             if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
@@ -2538,7 +2538,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int GetKeyPressFrameCount(in char key)
         {
             if (key.TryGetKey(out var code) && m_Context.InputKey.TryGetKeyTrace(code, out var trace))
@@ -2549,7 +2549,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public GcAvailability GetOnlineTextAsync(in string url, out string? text)
         {
             m_Context.Network.TryGetOnlineText(url, out var availability, out text);
@@ -2557,102 +2557,102 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetPointerDistance(in int i)
             => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Distance : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetPointerDuration(in int i)
             => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.Duration : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public int GetPointerFrameCount(in int i)
             => m_Context.InputPointer.TryGetPointerTrace(i, out var t) ? t.FrameCount : 0;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetPointerX(in int i)
             => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.x : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float GetPointerY(in int i)
             => m_Context.InputPointer.TryGetPointerEvent(0, out var e) ? e.Point.y : 0f;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyDown(in char key)
             => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyDown(code);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyDown(in KeyCode key)
             => m_Context.InputKey.IsKeyDown(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyHold(in char key)
             => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyHold(code);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyHold(in KeyCode key)
             => m_Context.InputKey.IsKeyHold(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyPress(in char key)
             => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyPress(code);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyPress(in KeyCode key)
             => m_Context.InputKey.IsKeyPress(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyUp(in char key)
             => key.TryGetKey(out var code)
             && m_Context.InputKey.IsKeyUp(code);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool IsKeyUp(in KeyCode key)
                     => m_Context.InputKey.IsKeyUp(key.ToKey());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public float2 Rotate(in float2 vector, in float degree)
             => GcMath.RotateVector(vector, degree);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void SetResolution(in int width, in int height)
             => m_Context.Graphics.ChangeCanvasSize(new int2(width, height));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void SetSeed(in int seed) => GcMath.SetRandomSeed((uint)seed);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void SetTapSensitivity(in float maxDuration, in float maxDistance)
             => m_Context.InputPointer.TapSettings = new GcTapSettings(maxDistance, maxDuration);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count)
             => m_Context.InputAcceleration.TryGetAccelerationEvents(out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
         {
             if (m_CurrentScene != null)
@@ -2664,7 +2664,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEvent(in char key, out GcKeyEvent e)
         {
             if (key.TryGetKey(out var code))
@@ -2676,24 +2676,24 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEvent(in KeyCode key, out GcKeyEvent e)
                     => m_Context.InputKey.TryGetKeyEvent(key.ToKey(), out e);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
             => m_Context.InputKey.TryGetKeyEventArray(out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
             => m_Context.InputKey.TryGetKeyEventArray(phase, out array, out count);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTrace(in char key, out GcKeyTrace trace)
         {
             if (key.TryGetKey(out var code))
@@ -2705,54 +2705,54 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTrace(in KeyCode key, out GcKeyTrace trace)
                     => m_Context.InputKey.TryGetKeyTrace(key.ToKey(), out trace);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
             => m_Context.InputKey.TryGetKeyTraceArray(out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
             => m_Context.InputKey.TryGetKeyTraceArray(phase, out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
             => m_Context.InputPointer.TryGetPointerEventArray(out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
             => m_Context.InputPointer.TryGetPointerEventArray(phase, out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count)
             => m_Context.InputPointer.TryGetPointerTapPointArray(out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
             => m_Context.InputPointer.TryGetPointerTraceArray(out array, out count);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
             => m_Context.InputPointer.TryGetPointerTraceArray(phase, out array, out count);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [System.Obsolete, EditorBrowsable(EditorBrowsableState.Never)]
+        [System.Obsolete("Will be removed in v8.0."), EditorBrowsable(EditorBrowsableState.Never)]
         public void WriteScreenImage(in string _)
             => m_Context.Storage.SaveScreenshotAsync();
         #endregion

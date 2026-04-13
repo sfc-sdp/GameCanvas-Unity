@@ -88,7 +88,7 @@ namespace GameCanvas
 
     public interface IStorageEx : IStorage
     {
-        [System.Obsolete("Use to `SaveScreenshotAsync` instead.")]
+        [System.Obsolete("Use to `SaveScreenshotAsync` instead. Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         void WriteScreenImage(in string file);
     }

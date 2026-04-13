@@ -132,7 +132,7 @@ namespace GameCanvas
             return false;
         }
 
-        [System.Obsolete]
+        [System.Obsolete("Will be removed in v8.0.")]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
         {
