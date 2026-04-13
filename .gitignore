@@ -1,0 +1,21 @@
+# docs/vitepress ブランチ用 .gitignore (Unity 関連ルール無し)
+# このブランチには Unity 本体のソースは含まれず、VitePress + Roslyn API 生成ツールだけを置く。
+# 利用者 (学生) が clone するのは `master` ブランチのみで、このブランチは
+# CI (.github/workflows/build-docs.yml) からのみ checkout される。
+
+# Node.js / npm
+node_modules/
+
+# .NET / MSBuild
+bin/
+obj/
+
+# OS / editor
+.DS_Store
+[Tt]humbs.db
+.vs/
+.vscode/
+
+# Claude Code
+.claude/
+CLAUDE.local.md

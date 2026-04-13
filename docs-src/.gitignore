@@ -1,0 +1,6 @@
+node_modules/
+.vitepress/cache/
+dist/
+
+# 自動生成 (gen-api-docs の出力)
+api/
