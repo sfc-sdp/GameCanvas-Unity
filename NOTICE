@@ -1,12 +1,19 @@
 GameCanvas for Unity is built using open source software:
 
  * CsprojModifier (MIT License)
+ * Unity Bridge (MIT License)
  * PixelMplus (M+ FONT LICENSE)
 
 --
 CsprojModifier is:
 
 Copyright (c) 2021 Cysharp, Inc.
+
+--
+Unity Bridge is:
+
+Copyright (c) 2025 bigdra50
+https://github.com/bigdra50/unity-cli
 
 --
 PixelMplus is:
