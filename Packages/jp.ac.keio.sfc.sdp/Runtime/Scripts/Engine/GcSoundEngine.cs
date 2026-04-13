@@ -33,6 +33,11 @@ namespace GameCanvas.Engine
         readonly GcSound[] m_PlayingId;
         readonly Dictionary<GcSound, GcReferenceSound> m_Sound;
         readonly AudioSource[] m_Sources;
+        // AudioMixer.SetFloat は AudioMixer がオーディオシステムにロードされる前
+        // (constructor / InitGame 等) に呼ばれると無視される既知の問題への対策。
+        // 全ての mixer 書き込みをここに保存し、OnBeforeUpdate で読み戻し検証して
+        // 値が反映されていなければ再送信する。
+        readonly Dictionary<string, float> m_PendingMixerFloat = new();
         #endregion
 
         //----------------------------------------------------------
@@ -100,18 +105,21 @@ namespace GameCanvas.Engine
                 }
             }
 
-            var mixer = m_Mixer.Get()!;
-            mixer.SetFloat("VolumeBGM1", 0f);
-            mixer.SetFloat("VolumeBGM2", 0f);
-            mixer.SetFloat("VolumeBGM3", 0f);
-            mixer.SetFloat("VolumeSE", 0f);
-            mixer.SetFloat("VolumeMaster", 0f);
+            WriteMixerFloat("VolumeBGM1", 0f);
+            WriteMixerFloat("VolumeBGM2", 0f);
+            WriteMixerFloat("VolumeBGM3", 0f);
+            WriteMixerFloat("VolumeSE", 0f);
+            WriteMixerFloat("VolumeMaster", 0f);
         }
 
         public float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master)
         {
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key)) throw new System.ArgumentException("invalid value", nameof(track));
+
+            // 初期化前に SetSoundLevel/ClearSound で書き込まれた値は mixer に未反映の
+            // 可能性があるため、pending dict を優先して返す (#160)
+            if (m_PendingMixerFloat.TryGetValue(key, out var pending)) return pending;
 
             m_Mixer.Get()!.GetFloat(key, out var decibel);
             return decibel;
@@ -226,7 +234,7 @@ namespace GameCanvas.Engine
             var key = track.GetVolumeKey();
             if (string.IsNullOrEmpty(key) || float.IsNaN(decibel)) return;
 
-            m_Mixer.Get()!.SetFloat(key, math.clamp(decibel, k_MinDecibel, k_MaxDecibel));
+            WriteMixerFloat(key, math.clamp(decibel, k_MinDecibel, k_MaxDecibel));
         }
 
         public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)
@@ -278,6 +286,50 @@ namespace GameCanvas.Engine
                 {
                     m_PlayingId[i] = GcSound.Null;
                 }
+            }
+
+            // 反映されていない pending mixer 値を再送信し、確認できたものを除去する。
+            // Unity の AudioMixer.SetFloat は初期化前 (constructor / InitGame 等) では
+            // 無視されるため、確認できるまで毎フレーム replay する (#160)。
+            FlushPendingMixerFloats();
+        }
+
+        /// <summary>
+        /// AudioMixer に値を書き込む。pending dict にも記録し、後で読み戻し検証する。
+        /// </summary>
+        private void WriteMixerFloat(in string key, in float value)
+        {
+            m_PendingMixerFloat[key] = value;
+            m_Mixer.Get()?.SetFloat(key, value);
+        }
+
+        /// <summary>
+        /// pending mixer 値を確認・再送信する。
+        /// AudioMixer.GetFloat は SetFloat が反映済みの場合に正しい値を返すため、
+        /// それを使って flush 完了判定する。
+        /// </summary>
+        private void FlushPendingMixerFloats()
+        {
+            if (m_PendingMixerFloat.Count == 0) return;
+
+            var mixer = m_Mixer.Get();
+            if (mixer == null) return;
+
+            var confirmed = new List<string>(m_PendingMixerFloat.Count);
+            foreach (var kv in m_PendingMixerFloat)
+            {
+                if (mixer.GetFloat(kv.Key, out var current) && math.abs(current - kv.Value) < 0.01f)
+                {
+                    confirmed.Add(kv.Key);
+                }
+                else
+                {
+                    mixer.SetFloat(kv.Key, kv.Value);
+                }
+            }
+            for (var i = 0; i < confirmed.Count; i++)
+            {
+                m_PendingMixerFloat.Remove(confirmed[i]);
             }
         }
 
