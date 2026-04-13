@@ -377,20 +377,73 @@ namespace GameCanvas.Engine
         {
             if (!m_IsInit || line.IsZero()) return;
 
-            if (!line.IsSegment())
+            GcLine effectiveLine;
+            if (line.IsSegment())
             {
-                // todo: 直線の描画
-                throw new System.NotImplementedException();
+                effectiveLine = line;
+            }
+            else
+            {
+                // 無限直線はキャンバス矩形とのクリッピングで線分に変換する
+                if (!TryClipInfiniteLineToCanvas(line, out effectiveLine)) return;
             }
 
-            var s = new float2(line.Length, line.Length);
-            var mtx = GcAffine.FromTRS(line.Origin, line.Radian(), s).Mul(m_CurrentMatrix);
+            var s = new float2(effectiveLine.Length, effectiveLine.Length);
+            var mtx = GcAffine.FromTRS(effectiveLine.Origin, effectiveLine.Radian(), s).Mul(m_CurrentMatrix);
 
             var mesh = m_MeshPool.GetOrCreate();
             var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
             if (TrySetupMeshAsLine(mesh, m_CurrentStyle.LineCap, lineWidth, mtx))
             {
                 DrawMeshDirect(mesh, m_CurrentStyle.Color);
+            }
+        }
+
+        /// <summary>
+        /// 無限直線をキャンバス矩形とのクリッピング (Liang-Barsky) で線分に変換する
+        /// </summary>
+        private bool TryClipInfiniteLineToCanvas(in GcLine line, out GcLine segment)
+        {
+            // キャンバス矩形 [0, 0, CanvasSize.x, CanvasSize.y] との交差区間を求める
+            var dx = line.Direction.x;
+            var dy = line.Direction.y;
+            var ox = line.Origin.x;
+            var oy = line.Origin.y;
+            var w = (float)m_CanvasSize.x;
+            var h = (float)m_CanvasSize.y;
+
+            float tMin = float.NegativeInfinity;
+            float tMax = float.PositiveInfinity;
+
+            if (!ClipAxis(-dx, ox, ref tMin, ref tMax)) { segment = default; return false; }
+            if (!ClipAxis(dx, w - ox, ref tMin, ref tMax)) { segment = default; return false; }
+            if (!ClipAxis(-dy, oy, ref tMin, ref tMax)) { segment = default; return false; }
+            if (!ClipAxis(dy, h - oy, ref tMin, ref tMax)) { segment = default; return false; }
+
+            var begin = line.Origin + tMin * line.Direction;
+            var end = line.Origin + tMax * line.Direction;
+            segment = GcLine.Segment(begin, end);
+            return !segment.IsZero();
+
+            static bool ClipAxis(float p, float q, ref float tMin, ref float tMax)
+            {
+                if (math.abs(p) < math.EPSILON)
+                {
+                    // 辺と平行。q < 0 なら区間外
+                    return q >= 0f;
+                }
+                var t = q / p;
+                if (p < 0f)
+                {
+                    if (t > tMax) return false;
+                    if (t > tMin) tMin = t;
+                }
+                else
+                {
+                    if (t < tMin) return false;
+                    if (t < tMax) tMax = t;
+                }
+                return true;
             }
         }
 
@@ -909,6 +962,9 @@ namespace GameCanvas.Engine
             vertices.Dispose();
         }
 
+        // TODO(phase-later): SetupMeshAsFillRoundedRect と SetupMeshAsWiredRoundedRect は
+        // pad 配列の初期化とコーナー円弧の sin/cos 計算を共有できる。視覚回帰テストが
+        // 整備されたあと、共通の ComputeRoundedCornerPad/ArcPoint ヘルパーに抽出する。
         private static void SetupMeshAsFillRoundedRect(in Mesh mesh, in GcAnchor anchor, in int resolution, in float2 cornerRadius, in float2x3 matrix)
         {
             var cornerResolution = math.max(1, resolution / 4);
@@ -1300,6 +1356,35 @@ namespace GameCanvas.Engine
             m_IsInit = false;
         }
 
+        private const float k_DrawOrderZStep = 0.001f;
+
+        /// <summary>
+        /// キャンバス座標系からスクリーン座標系への変換行列 (Y軸反転) を計算する
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private float4x4 BuildDrawMatrix(in float2x3 mtx)
+        {
+            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
+                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
+                .Mul(mtx)
+                .ToFloat4x4();
+            matrix.c3.z = m_DrawCount++ * k_DrawOrderZStep;
+            return matrix;
+        }
+
+        /// <summary>
+        /// モデル行列を省略したキャンバス座標系変換行列を計算する
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private float4x4 BuildDrawMatrixDirect()
+        {
+            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
+                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
+                .ToFloat4x4();
+            matrix.c3.z = m_DrawCount++ * k_DrawOrderZStep;
+            return matrix;
+        }
+
         private void DrawMesh(in Mesh mesh, in Color color, in float2x3 mtx)
         {
             m_MPBlock.Clear();
@@ -1308,27 +1393,14 @@ namespace GameCanvas.Engine
             var hasAlpha = color.a != 1f;
             var buffer = GetCommandBuffer(hasAlpha);
             var material = GetMaterial(hasAlpha);
-            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
-                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
-                .Mul(mtx)
-                .ToFloat4x4();
-            matrix.c3.z = m_DrawCount++ * 0.001f;
-
-            buffer!.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
+            buffer!.DrawMesh(mesh, BuildDrawMatrix(mtx), material, 0, -1, m_MPBlock);
         }
 
         private void DrawMesh(in Mesh mesh, in Texture tex, in float2x3 mtx)
         {
             m_MPBlock.Clear();
             m_MPBlock.SetTexture(k_ShaderPropMainTex, tex);
-
-            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
-                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
-                .Mul(mtx)
-                .ToFloat4x4();
-            matrix.c3.z = m_DrawCount++ * 0.001f;
-
-            m_CommandBufferTransparent!.DrawMesh(mesh, matrix, m_MaterialImage, 0, -1, m_MPBlock);
+            m_CommandBufferTransparent!.DrawMesh(mesh, BuildDrawMatrix(mtx), m_MaterialImage, 0, -1, m_MPBlock);
         }
 
         private void DrawMeshDirect(in Mesh mesh, in Color color)
@@ -1339,12 +1411,7 @@ namespace GameCanvas.Engine
             var hasAlpha = color.a != 1f;
             var buffer = GetCommandBuffer(hasAlpha);
             var material = GetMaterial(hasAlpha);
-            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
-                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
-                .ToFloat4x4();
-            matrix.c3.z = m_DrawCount++ * 0.001f;
-
-            buffer!.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
+            buffer!.DrawMesh(mesh, BuildDrawMatrixDirect(), material, 0, -1, m_MPBlock);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
