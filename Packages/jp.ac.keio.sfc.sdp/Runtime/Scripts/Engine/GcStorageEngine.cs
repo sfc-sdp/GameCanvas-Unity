@@ -21,6 +21,8 @@ namespace GameCanvas.Engine
         #region 変数
         //----------------------------------------------------------
 
+        const int k_ScreenshotPollMaxFrames = 300;
+
         readonly GcContext m_Context;
         #endregion
 
@@ -35,44 +37,26 @@ namespace GameCanvas.Engine
 
         public void Save(in string key, string? value)
         {
-            if (value != null)
-            {
-                PlayerPrefs.SetString(key, value);
-                PlayerPrefs.Save();
-            }
-            else if (PlayerPrefs.HasKey(key))
-            {
-                PlayerPrefs.DeleteKey(key);
-                PlayerPrefs.Save();
-            }
+            if (value != null) PlayerPrefs.SetString(key, value);
+            else if (!PlayerPrefs.HasKey(key)) return;
+            else PlayerPrefs.DeleteKey(key);
+            PlayerPrefs.Save();
         }
 
         public void Save(in string key, float? value)
         {
-            if (value.HasValue)
-            {
-                PlayerPrefs.SetFloat(key, value.Value);
-                PlayerPrefs.Save();
-            }
-            else if (PlayerPrefs.HasKey(key))
-            {
-                PlayerPrefs.DeleteKey(key);
-                PlayerPrefs.Save();
-            }
+            if (value.HasValue) PlayerPrefs.SetFloat(key, value.Value);
+            else if (!PlayerPrefs.HasKey(key)) return;
+            else PlayerPrefs.DeleteKey(key);
+            PlayerPrefs.Save();
         }
 
         public void Save(in string key, int? value)
         {
-            if (value.HasValue)
-            {
-                PlayerPrefs.SetInt(key, value.Value);
-                PlayerPrefs.Save();
-            }
-            else if (PlayerPrefs.HasKey(key))
-            {
-                PlayerPrefs.DeleteKey(key);
-                PlayerPrefs.Save();
-            }
+            if (value.HasValue) PlayerPrefs.SetInt(key, value.Value);
+            else if (!PlayerPrefs.HasKey(key)) return;
+            else PlayerPrefs.DeleteKey(key);
+            PlayerPrefs.Save();
         }
 
         public void SaveScreenshotAsync(System.Action<string?>? onComplete = null)
@@ -136,7 +120,7 @@ namespace GameCanvas.Engine
             ScreenCapture.CaptureScreenshot(path);
 
             var success = false;
-            for (var i = 0; i < 300; i++)
+            for (var i = 0; i < k_ScreenshotPollMaxFrames; i++)
             {
                 yield return null;
 

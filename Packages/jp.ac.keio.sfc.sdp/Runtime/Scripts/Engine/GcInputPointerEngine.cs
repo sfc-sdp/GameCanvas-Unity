@@ -331,6 +331,17 @@ namespace GameCanvas.Engine
             m_PointerTraceDict = new NativeHashMap<int, GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
             m_TapSettings = GcTapSettings.Default;
 
+            // Persistent allocations — reused every frame via Clear() instead of
+            // per-frame new/dispose (avoids GC pressure at 60fps).
+            m_PointerList = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Persistent);
+            m_PointerListBegin = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Persistent);
+            m_PointerListHold = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Persistent);
+            m_PointerListEnd = new NativeList<GcPointerEvent>(k_EventNumMax, Allocator.Persistent);
+            m_PointerTraceList = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
+            m_PointerTraceListHold = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
+            m_PointerTraceListEnd = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
+            m_TapPointList = new NativeList<float2>(k_EventNumMax, Allocator.Persistent);
+
             if (!k_IsTouchSupported)
             {
                 TouchSimulation.Enable();
@@ -359,18 +370,20 @@ namespace GameCanvas.Engine
 
         void IEngine.OnAfterDraw()
         {
-            if (m_PointerList.IsCreated) m_PointerList.Dispose();
-            if (m_PointerListBegin.IsCreated) m_PointerListBegin.Dispose();
-            if (m_PointerListHold.IsCreated) m_PointerListHold.Dispose();
-            if (m_PointerListEnd.IsCreated) m_PointerListEnd.Dispose();
-            if (m_PointerTraceList.IsCreated) m_PointerTraceList.Dispose();
-            if (m_PointerTraceListHold.IsCreated) m_PointerTraceListHold.Dispose();
-            if (m_PointerTraceListEnd.IsCreated) m_PointerTraceListEnd.Dispose();
-            if (m_TapPointList.IsCreated) m_TapPointList.Dispose();
+            // No-op — persistent collections are cleared at the start of each frame in OnBeforeUpdate.
         }
 
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now)
         {
+            m_PointerList.Clear();
+            m_PointerListBegin.Clear();
+            m_PointerListHold.Clear();
+            m_PointerListEnd.Clear();
+            m_PointerTraceList.Clear();
+            m_PointerTraceListHold.Clear();
+            m_PointerTraceListEnd.Clear();
+            m_TapPointList.Clear();
+
             using var canditates = new NativeList<GcPointerEvent>(Allocator.Temp);
 
             foreach (var record in m_History)
@@ -380,16 +393,6 @@ namespace GameCanvas.Engine
                 canditates.Add(GcPointerEvent.FromTouch(m_Context, touch, time));
             }
             m_History.Clear();
-
-            var capacity = math.min(canditates.Length, k_EventNumMax);
-            m_PointerList = new NativeList<GcPointerEvent>(canditates.Length, Allocator.Temp);
-            m_PointerListBegin = new NativeList<GcPointerEvent>(capacity, Allocator.Temp);
-            m_PointerListHold = new NativeList<GcPointerEvent>(capacity, Allocator.Temp);
-            m_PointerListEnd = new NativeList<GcPointerEvent>(capacity, Allocator.Temp);
-            m_PointerTraceList = new NativeList<GcPointerTrace>(capacity, Allocator.Temp);
-            m_PointerTraceListHold = new NativeList<GcPointerTrace>(capacity, Allocator.Temp);
-            m_PointerTraceListEnd = new NativeList<GcPointerTrace>(capacity, Allocator.Temp);
-            m_TapPointList = new NativeList<float2>(capacity, Allocator.Temp);
 
             for (var i = 0; i < canditates.Length; i++)
             {

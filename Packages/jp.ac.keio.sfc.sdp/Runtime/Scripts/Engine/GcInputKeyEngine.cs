@@ -36,7 +36,7 @@ namespace GameCanvas.Engine
         NativeList<GcKeyEvent> m_KeyEventListOnlyDown;
         NativeList<GcKeyEvent> m_KeyEventListOnlyHold;
         NativeList<GcKeyEvent> m_KeyEventListOnlyUp;
-        NativeArray<GcKeyTrace> m_KeyTraceArray;
+        NativeList<GcKeyTrace> m_KeyTraceList;
         NativeHashMap<int, GcKeyTrace> m_KeyTraceDict;
         NativeList<GcKeyTrace> m_KeyTraceListOnlyHold;
         NativeList<GcKeyTrace> m_KeyTraceListOnlyUp;
@@ -192,8 +192,8 @@ namespace GameCanvas.Engine
 
         public bool TryGetKeyTraceAll(out System.ReadOnlySpan<GcKeyTrace> traces)
         {
-            traces = m_KeyTraceArray.AsReadOnlySpan();
-            return (m_KeyTraceArray.Length != 0);
+            traces = m_KeyTraceList.AsReadOnlySpan();
+            return (m_KeyTraceList.Length != 0);
         }
 
         public bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyTrace> traces)
@@ -205,7 +205,7 @@ namespace GameCanvas.Engine
                     return (m_KeyTraceListOnlyHold.Length != 0);
 
                 case GcKeyEventPhase.Up:
-                    traces = m_KeyTraceListOnlyHold.AsReadOnlySpan();
+                    traces = m_KeyTraceListOnlyUp.AsReadOnlySpan();
                     return (m_KeyTraceListOnlyUp.Length != 0);
             }
             traces = System.ReadOnlySpan<GcKeyTrace>.Empty;
@@ -216,10 +216,10 @@ namespace GameCanvas.Engine
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
         {
-            count = m_KeyTraceArray.Length;
+            count = m_KeyTraceList.Length;
             if (count != 0)
             {
-                array = m_KeyTraceArray.AsReadOnly();
+                array = m_KeyTraceList.AsArray().AsReadOnly();
                 return true;
             }
             array = default;
@@ -281,6 +281,17 @@ namespace GameCanvas.Engine
             m_Context = context;
             m_KeyTraceDict = new NativeHashMap<int, GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
 
+            // Persistent allocations — reused every frame via Clear() instead of
+            // per-frame new/dispose (avoids ~900 alloc/sec GC pressure at 60fps).
+            m_KeyCodeToKeyEventIndex = new NativeHashMap<int, int>(k_EventNumMax, Allocator.Persistent);
+            m_KeyEventList = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
+            m_KeyEventListOnlyDown = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
+            m_KeyEventListOnlyHold = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
+            m_KeyEventListOnlyUp = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
+            m_KeyTraceListOnlyHold = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
+            m_KeyTraceListOnlyUp = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
+            m_KeyTraceList = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
+
             //InputSystem.onEvent += (ptr, dev) =>
             //{
             //    if (ptr.IsA<TextEvent>())
@@ -307,7 +318,7 @@ namespace GameCanvas.Engine
             if (m_KeyEventListOnlyUp.IsCreated) m_KeyEventListOnlyUp.Dispose();
             if (m_KeyTraceListOnlyHold.IsCreated) m_KeyTraceListOnlyHold.Dispose();
             if (m_KeyTraceListOnlyUp.IsCreated) m_KeyTraceListOnlyUp.Dispose();
-            if (m_KeyTraceArray.IsCreated) m_KeyTraceArray.Dispose();
+            if (m_KeyTraceList.IsCreated) m_KeyTraceList.Dispose();
             if (m_KeyCodeToKeyEventIndex.IsCreated) m_KeyCodeToKeyEventIndex.Dispose();
 
             if (m_KeyTraceDict.IsCreated) m_KeyTraceDict.Dispose();
@@ -317,25 +328,19 @@ namespace GameCanvas.Engine
 
         void IEngine.OnAfterDraw()
         {
-            if (m_KeyEventList.IsCreated) m_KeyEventList.Dispose();
-            if (m_KeyEventListOnlyDown.IsCreated) m_KeyEventListOnlyDown.Dispose();
-            if (m_KeyEventListOnlyHold.IsCreated) m_KeyEventListOnlyHold.Dispose();
-            if (m_KeyEventListOnlyUp.IsCreated) m_KeyEventListOnlyUp.Dispose();
-            if (m_KeyTraceListOnlyHold.IsCreated) m_KeyTraceListOnlyHold.Dispose();
-            if (m_KeyTraceListOnlyUp.IsCreated) m_KeyTraceListOnlyUp.Dispose();
-            if (m_KeyTraceArray.IsCreated) m_KeyTraceArray.Dispose();
-            if (m_KeyCodeToKeyEventIndex.IsCreated) m_KeyCodeToKeyEventIndex.Dispose();
+            // No-op — persistent collections are cleared at the start of each frame in OnBeforeUpdate.
         }
 
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now)
         {
-            m_KeyCodeToKeyEventIndex = new NativeHashMap<int, int>(k_EventNumMax, Allocator.Temp);
-            m_KeyEventList = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Temp);
-            m_KeyEventListOnlyDown = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Temp);
-            m_KeyEventListOnlyHold = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Temp);
-            m_KeyEventListOnlyUp = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Temp);
-            m_KeyTraceListOnlyHold = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Temp);
-            m_KeyTraceListOnlyUp = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Temp);
+            m_KeyCodeToKeyEventIndex.Clear();
+            m_KeyEventList.Clear();
+            m_KeyEventListOnlyDown.Clear();
+            m_KeyEventListOnlyHold.Clear();
+            m_KeyEventListOnlyUp.Clear();
+            m_KeyTraceListOnlyHold.Clear();
+            m_KeyTraceListOnlyUp.Clear();
+            m_KeyTraceList.Clear();
 
             var frame = m_Context.Time.CurrentFrame;
 
@@ -391,6 +396,22 @@ namespace GameCanvas.Engine
                 t.Duration = t.Begin.Time - time;
                 m_KeyTraceDict[(int)key] = t;
                 m_KeyTraceListOnlyHold.Add(t);
+            }
+
+            // Populate m_KeyTraceList with all traces updated this frame for
+            // TryGetKeyTraceAll. Active traces (Down/Hold) come from the dict snapshot.
+            // Terminated traces (Up) were already removed from the dict but must also
+            // be included, so append m_KeyTraceListOnlyUp.
+            // Previously m_KeyTraceArray was declared but never assigned, causing the
+            // method to always return empty.
+            using var snapshot = m_KeyTraceDict.GetValueArray(Allocator.Temp);
+            for (var i = 0; i < snapshot.Length; i++)
+            {
+                m_KeyTraceList.Add(snapshot[i]);
+            }
+            for (var i = 0; i < m_KeyTraceListOnlyUp.Length; i++)
+            {
+                m_KeyTraceList.Add(m_KeyTraceListOnlyUp[i]);
             }
 
             void AddKeyEvent(GcKeyEvent e)

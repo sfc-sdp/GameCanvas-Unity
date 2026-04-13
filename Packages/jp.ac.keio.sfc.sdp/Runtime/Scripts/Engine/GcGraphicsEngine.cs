@@ -377,20 +377,109 @@ namespace GameCanvas.Engine
         {
             if (!m_IsInit || line.IsZero()) return;
 
-            if (!line.IsSegment())
-            {
-                // todo: 直線の描画
-                throw new System.NotImplementedException();
-            }
+            float2x3 mtx;
+            float length;
 
-            var s = new float2(line.Length, line.Length);
-            var mtx = GcAffine.FromTRS(line.Origin, line.Radian(), s).Mul(m_CurrentMatrix);
+            if (line.IsSegment())
+            {
+                length = line.Length;
+                var s = new float2(length, length);
+                mtx = GcAffine.FromTRS(line.Origin, line.Radian(), s).Mul(m_CurrentMatrix);
+            }
+            else
+            {
+                // 無限直線はキャンバス空間に変換してからキャンバス矩形でクリッピングする。
+                // これにより m_CurrentMatrix による回転/平行移動を考慮した上で画面上に
+                // 収まる線分として描画できる。
+                var originCanvas = m_CurrentMatrix.Mul(line.Origin);
+                var pointCanvas = m_CurrentMatrix.Mul(line.Origin + line.Direction);
+                var directionCanvas = pointCanvas - originCanvas;
+                if (math.lengthsq(directionCanvas) < math.EPSILON) return;
+                directionCanvas = math.normalize(directionCanvas);
+
+                if (!TryClipInfiniteLineToCanvas(originCanvas, directionCanvas,
+                    out var beginCanvas, out var endCanvas)) return;
+
+                var delta = endCanvas - beginCanvas;
+                length = math.length(delta);
+                if (length < math.EPSILON) return;
+
+                var radianCanvas = math.atan2(delta.y, delta.x);
+                // キャンバス空間座標を直接使うため m_CurrentMatrix は掛けない
+                mtx = GcAffine.FromTRS(beginCanvas, radianCanvas, new float2(length, length));
+            }
 
             var mesh = m_MeshPool.GetOrCreate();
             var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
             if (TrySetupMeshAsLine(mesh, m_CurrentStyle.LineCap, lineWidth, mtx))
             {
                 DrawMeshDirect(mesh, m_CurrentStyle.Color);
+            }
+        }
+
+        /// <summary>
+        /// キャンバス空間の無限直線をキャンバス矩形とのクリッピング (Liang-Barsky) で
+        /// 線分の端点に変換する
+        /// </summary>
+        private bool TryClipInfiniteLineToCanvas(in float2 origin, in float2 direction,
+            out float2 begin, out float2 end)
+        {
+            // 方向ベクトルが極小の場合は NaN/Infinity を避けるため早期 return
+            if (math.lengthsq(direction) < math.EPSILON)
+            {
+                begin = default;
+                end = default;
+                return false;
+            }
+
+            // キャンバス矩形 [0, 0, CanvasSize.x, CanvasSize.y] との交差区間を求める
+            var dx = direction.x;
+            var dy = direction.y;
+            var ox = origin.x;
+            var oy = origin.y;
+            var w = (float)m_CanvasSize.x;
+            var h = (float)m_CanvasSize.y;
+
+            float tMin = float.NegativeInfinity;
+            float tMax = float.PositiveInfinity;
+
+            if (!ClipAxis(-dx, ox, ref tMin, ref tMax)) { begin = end = default; return false; }
+            if (!ClipAxis(dx, w - ox, ref tMin, ref tMax)) { begin = end = default; return false; }
+            if (!ClipAxis(-dy, oy, ref tMin, ref tMax)) { begin = end = default; return false; }
+            if (!ClipAxis(dy, h - oy, ref tMin, ref tMax)) { begin = end = default; return false; }
+
+            // tMin/tMax のどちらかが無限のまま残ったら失敗扱い
+            // (通常 4 方向クリップで有限になるはずだが、数値誤差への保険)
+            if (float.IsInfinity(tMin) || float.IsInfinity(tMax))
+            {
+                begin = default;
+                end = default;
+                return false;
+            }
+
+            begin = origin + tMin * direction;
+            end = origin + tMax * direction;
+            return math.lengthsq(end - begin) >= math.EPSILON;
+
+            static bool ClipAxis(float p, float q, ref float tMin, ref float tMax)
+            {
+                if (math.abs(p) < math.EPSILON)
+                {
+                    // 辺と平行。q < 0 なら区間外
+                    return q >= 0f;
+                }
+                var t = q / p;
+                if (p < 0f)
+                {
+                    if (t > tMax) return false;
+                    if (t > tMin) tMin = t;
+                }
+                else
+                {
+                    if (t < tMin) return false;
+                    if (t < tMax) tMax = t;
+                }
+                return true;
             }
         }
 
@@ -909,6 +998,9 @@ namespace GameCanvas.Engine
             vertices.Dispose();
         }
 
+        // TODO(phase-later): SetupMeshAsFillRoundedRect と SetupMeshAsWiredRoundedRect は
+        // pad 配列の初期化とコーナー円弧の sin/cos 計算を共有できる。視覚回帰テストが
+        // 整備されたあと、共通の ComputeRoundedCornerPad/ArcPoint ヘルパーに抽出する。
         private static void SetupMeshAsFillRoundedRect(in Mesh mesh, in GcAnchor anchor, in int resolution, in float2 cornerRadius, in float2x3 matrix)
         {
             var cornerResolution = math.max(1, resolution / 4);
@@ -1300,6 +1392,35 @@ namespace GameCanvas.Engine
             m_IsInit = false;
         }
 
+        private const float k_DrawOrderZStep = 0.001f;
+
+        /// <summary>
+        /// キャンバス座標系からスクリーン座標系への変換行列 (Y軸反転) を計算する
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private float4x4 BuildDrawMatrix(in float2x3 mtx)
+        {
+            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
+                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
+                .Mul(mtx)
+                .ToFloat4x4();
+            matrix.c3.z = m_DrawCount++ * k_DrawOrderZStep;
+            return matrix;
+        }
+
+        /// <summary>
+        /// モデル行列を省略したキャンバス座標系変換行列を計算する
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private float4x4 BuildDrawMatrixDirect()
+        {
+            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
+                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
+                .ToFloat4x4();
+            matrix.c3.z = m_DrawCount++ * k_DrawOrderZStep;
+            return matrix;
+        }
+
         private void DrawMesh(in Mesh mesh, in Color color, in float2x3 mtx)
         {
             m_MPBlock.Clear();
@@ -1308,27 +1429,14 @@ namespace GameCanvas.Engine
             var hasAlpha = color.a != 1f;
             var buffer = GetCommandBuffer(hasAlpha);
             var material = GetMaterial(hasAlpha);
-            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
-                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
-                .Mul(mtx)
-                .ToFloat4x4();
-            matrix.c3.z = m_DrawCount++ * 0.001f;
-
-            buffer!.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
+            buffer!.DrawMesh(mesh, BuildDrawMatrix(mtx), material, 0, -1, m_MPBlock);
         }
 
         private void DrawMesh(in Mesh mesh, in Texture tex, in float2x3 mtx)
         {
             m_MPBlock.Clear();
             m_MPBlock.SetTexture(k_ShaderPropMainTex, tex);
-
-            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
-                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
-                .Mul(mtx)
-                .ToFloat4x4();
-            matrix.c3.z = m_DrawCount++ * 0.001f;
-
-            m_CommandBufferTransparent!.DrawMesh(mesh, matrix, m_MaterialImage, 0, -1, m_MPBlock);
+            m_CommandBufferTransparent!.DrawMesh(mesh, BuildDrawMatrix(mtx), m_MaterialImage, 0, -1, m_MPBlock);
         }
 
         private void DrawMeshDirect(in Mesh mesh, in Color color)
@@ -1339,12 +1447,7 @@ namespace GameCanvas.Engine
             var hasAlpha = color.a != 1f;
             var buffer = GetCommandBuffer(hasAlpha);
             var material = GetMaterial(hasAlpha);
-            var matrix = GcAffine.FromTranslate(new float2(0f, m_CanvasSize.y))
-                .Mul(GcAffine.FromScale(new float2(1f, -1f)))
-                .ToFloat4x4();
-            matrix.c3.z = m_DrawCount++ * 0.001f;
-
-            buffer!.DrawMesh(mesh, matrix, material, 0, -1, m_MPBlock);
+            buffer!.DrawMesh(mesh, BuildDrawMatrixDirect(), material, 0, -1, m_MPBlock);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

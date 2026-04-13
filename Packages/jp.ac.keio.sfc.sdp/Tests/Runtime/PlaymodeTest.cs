@@ -144,7 +144,6 @@ namespace GameCanvas.Tests
         }
 
         [UnityTest]
-        [Ignore("PointerCount/KeyDownCount access fails between frames due to Allocator.Temp NativeList disposal. Re-enable after Phase 4.1 (NativeList persistent allocation).")]
         public IEnumerator PointerCount_IsZero_Initially()
         {
             yield return null;
@@ -154,7 +153,6 @@ namespace GameCanvas.Tests
         }
 
         [UnityTest]
-        [Ignore("PointerCount/KeyDownCount access fails between frames due to Allocator.Temp NativeList disposal. Re-enable after Phase 4.1 (NativeList persistent allocation).")]
         public IEnumerator KeyDownCount_IsZero_Initially()
         {
             yield return null;
