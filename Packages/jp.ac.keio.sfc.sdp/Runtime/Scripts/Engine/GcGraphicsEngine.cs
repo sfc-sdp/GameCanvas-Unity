@@ -377,19 +377,37 @@ namespace GameCanvas.Engine
         {
             if (!m_IsInit || line.IsZero()) return;
 
-            GcLine effectiveLine;
+            float2x3 mtx;
+            float length;
+
             if (line.IsSegment())
             {
-                effectiveLine = line;
+                length = line.Length;
+                var s = new float2(length, length);
+                mtx = GcAffine.FromTRS(line.Origin, line.Radian(), s).Mul(m_CurrentMatrix);
             }
             else
             {
-                // 無限直線はキャンバス矩形とのクリッピングで線分に変換する
-                if (!TryClipInfiniteLineToCanvas(line, out effectiveLine)) return;
-            }
+                // 無限直線はキャンバス空間に変換してからキャンバス矩形でクリッピングする。
+                // これにより m_CurrentMatrix による回転/平行移動を考慮した上で画面上に
+                // 収まる線分として描画できる。
+                var originCanvas = m_CurrentMatrix.Mul(line.Origin);
+                var pointCanvas = m_CurrentMatrix.Mul(line.Origin + line.Direction);
+                var directionCanvas = pointCanvas - originCanvas;
+                if (math.lengthsq(directionCanvas) < math.EPSILON) return;
+                directionCanvas = math.normalize(directionCanvas);
 
-            var s = new float2(effectiveLine.Length, effectiveLine.Length);
-            var mtx = GcAffine.FromTRS(effectiveLine.Origin, effectiveLine.Radian(), s).Mul(m_CurrentMatrix);
+                if (!TryClipInfiniteLineToCanvas(originCanvas, directionCanvas,
+                    out var beginCanvas, out var endCanvas)) return;
+
+                var delta = endCanvas - beginCanvas;
+                length = math.length(delta);
+                if (length < math.EPSILON) return;
+
+                var radianCanvas = math.atan2(delta.y, delta.x);
+                // キャンバス空間座標を直接使うため m_CurrentMatrix は掛けない
+                mtx = GcAffine.FromTRS(beginCanvas, radianCanvas, new float2(length, length));
+            }
 
             var mesh = m_MeshPool.GetOrCreate();
             var lineWidth = math.max(m_CurrentStyle.LineWidth, m_PixelSizeMin);
@@ -400,52 +418,48 @@ namespace GameCanvas.Engine
         }
 
         /// <summary>
-        /// 無限直線をキャンバス矩形とのクリッピング (Liang-Barsky) で線分に変換する
+        /// キャンバス空間の無限直線をキャンバス矩形とのクリッピング (Liang-Barsky) で
+        /// 線分の端点に変換する
         /// </summary>
-        /// <remarks>
-        /// 現在の座標変換 (m_CurrentMatrix) が適用される前のキャンバス座標系で
-        /// クリッピングを行うため、座標変換を掛けている場合に想定外の端点になる
-        /// 可能性がある。教育用途の基本パスで変換済み無限直線を描くケースは稀。
-        /// 変換考慮版が必要になったら、canvas aabb を逆変換してローカル空間で
-        /// クリップするように拡張する。
-        /// </remarks>
-        private bool TryClipInfiniteLineToCanvas(in GcLine line, out GcLine segment)
+        private bool TryClipInfiniteLineToCanvas(in float2 origin, in float2 direction,
+            out float2 begin, out float2 end)
         {
             // 方向ベクトルが極小の場合は NaN/Infinity を避けるため早期 return
-            if (math.lengthsq(line.Direction) < math.EPSILON)
+            if (math.lengthsq(direction) < math.EPSILON)
             {
-                segment = default;
+                begin = default;
+                end = default;
                 return false;
             }
 
             // キャンバス矩形 [0, 0, CanvasSize.x, CanvasSize.y] との交差区間を求める
-            var dx = line.Direction.x;
-            var dy = line.Direction.y;
-            var ox = line.Origin.x;
-            var oy = line.Origin.y;
+            var dx = direction.x;
+            var dy = direction.y;
+            var ox = origin.x;
+            var oy = origin.y;
             var w = (float)m_CanvasSize.x;
             var h = (float)m_CanvasSize.y;
 
             float tMin = float.NegativeInfinity;
             float tMax = float.PositiveInfinity;
 
-            if (!ClipAxis(-dx, ox, ref tMin, ref tMax)) { segment = default; return false; }
-            if (!ClipAxis(dx, w - ox, ref tMin, ref tMax)) { segment = default; return false; }
-            if (!ClipAxis(-dy, oy, ref tMin, ref tMax)) { segment = default; return false; }
-            if (!ClipAxis(dy, h - oy, ref tMin, ref tMax)) { segment = default; return false; }
+            if (!ClipAxis(-dx, ox, ref tMin, ref tMax)) { begin = end = default; return false; }
+            if (!ClipAxis(dx, w - ox, ref tMin, ref tMax)) { begin = end = default; return false; }
+            if (!ClipAxis(-dy, oy, ref tMin, ref tMax)) { begin = end = default; return false; }
+            if (!ClipAxis(dy, h - oy, ref tMin, ref tMax)) { begin = end = default; return false; }
 
             // tMin/tMax のどちらかが無限のまま残ったら失敗扱い
             // (通常 4 方向クリップで有限になるはずだが、数値誤差への保険)
             if (float.IsInfinity(tMin) || float.IsInfinity(tMax))
             {
-                segment = default;
+                begin = default;
+                end = default;
                 return false;
             }
 
-            var begin = line.Origin + tMin * line.Direction;
-            var end = line.Origin + tMax * line.Direction;
-            segment = GcLine.Segment(begin, end);
-            return !segment.IsZero();
+            begin = origin + tMin * direction;
+            end = origin + tMax * direction;
+            return math.lengthsq(end - begin) >= math.EPSILON;
 
             static bool ClipAxis(float p, float q, ref float tMin, ref float tMax)
             {
