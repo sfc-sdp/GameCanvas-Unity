@@ -9,7 +9,7 @@
       }
     },
     "com.cysharp.csprojmodifier": {
-      "version": "file:CsprojModifier",
+      "version": "file:com.cysharp.csprojmodifier",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -122,7 +122,7 @@
       }
     },
     "jp.ac.keio.sfc.sdp": {
-      "version": "file:GameCanvas",
+      "version": "file:jp.ac.keio.sfc.sdp",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
