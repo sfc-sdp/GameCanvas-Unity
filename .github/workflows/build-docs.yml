@@ -1,0 +1,83 @@
+name: Build docs
+
+# 発火条件:
+#   - master への push (フレームワーク本体の変更で API が変わった可能性)
+#   - docs/vitepress への push (手書き MD・サイト設定・生成ツールの変更)
+#   - 手動トリガー
+#
+# `paths-ignore: [docs/**]` で自動生成コミット自身による無限ループを防ぐ
+# (自動コミットは `docs/**` のみを変更するので、それ単独の push では本 workflow が再発火しない)。
+on:
+  push:
+    branches:
+      - master
+      - docs/vitepress
+    paths-ignore:
+      - 'docs/**'
+  workflow_dispatch:
+
+concurrency:
+  group: build-docs
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout master (ソース + コミット先)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: main
+          fetch-depth: 0
+
+      - name: Checkout docs/vitepress (VitePress + Roslyn ツール)
+        uses: actions/checkout@v4
+        with:
+          ref: docs/vitepress
+          path: docs-branch
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: docs-branch/docs-src/package-lock.json
+
+      - name: Generate API markdown (Roslyn)
+        run: |
+          dotnet run --project docs-branch/scripts/gen-api-docs -- \
+            --source main/Packages/jp.ac.keio.sfc.sdp/Runtime/Scripts \
+            --output docs-branch/docs-src/api
+
+      - name: Install VitePress deps
+        working-directory: docs-branch/docs-src
+        run: npm ci
+
+      - name: Build VitePress
+        working-directory: docs-branch/docs-src
+        env:
+          # master 側の作業コピー (`main/docs`) に直接吐く
+          VITEPRESS_OUT_DIR: ${{ github.workspace }}/main/docs
+        # npm run build は prebuild で dotnet run を走らせるためここでは直接 vitepress を呼ぶ
+        run: npx vitepress build
+
+      - name: Commit to master
+        working-directory: main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/
+          if git diff --cached --quiet; then
+            echo "No docs changes; skipping commit."
+            exit 0
+          fi
+          git commit -m "chore(docs): auto-generated"
+          git push origin master
