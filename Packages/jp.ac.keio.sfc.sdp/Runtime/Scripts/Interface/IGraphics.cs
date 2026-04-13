@@ -50,7 +50,7 @@ namespace GameCanvas
         /// <summary>
         /// <see cref="PushCoordinate"/> と <see cref="PopCoordinate"/> が自動的に呼び出されるスコープ
         /// </summary>
-        CoordianteScope CoordinateScope { get; }
+        CoordinateScope CoordinateScope { get; }
 
         /// <summary>
         /// 角丸の半径
