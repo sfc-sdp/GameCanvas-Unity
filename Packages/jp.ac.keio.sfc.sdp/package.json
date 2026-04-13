@@ -1,0 +1,49 @@
+{
+  "name": "jp.ac.keio.sfc.sdp",
+  "version": "7.0.0",
+  "displayName": "GameCanvas",
+  "description": "GameCanvas for Unity",
+  "unity": "6000.0",
+  "author": {
+    "name": "Smart Device Programing (Seibe Takahashi)",
+    "email": "t@seibe.jp",
+    "url": "https://github.com/sfc-sdp/GameCanvas-Unity"
+  },
+  "dependencies": {
+    "com.unity.collections": "2.4.0",
+    "com.unity.inputsystem": "1.11.2",
+    "com.unity.mathematics": "1.3.2",
+    "com.unity.scriptablebuildpipeline": "2.1.3",
+    "com.unity.test-framework": "1.4.5",
+    "com.unity.ugui": "2.0.0",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.screencapture": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.unitywebrequestaudio": "1.0.0",
+    "com.unity.modules.unitywebrequesttexture": "1.0.0",
+    "com.unity.modules.video": "1.0.0"
+  },
+  "license": "MIT License",
+  "samples": [
+      {
+          "displayName": "Acceleration",
+          "description": "An example of accelerometer.",
+          "path": "Samples~/Acceleration"
+      },
+      {
+          "displayName": "DeviceCamera",
+          "description": "An example of device camera.",
+          "path": "Samples~/DeviceCamera"
+      },
+      {
+          "displayName": "Geolocation",
+          "description": "An example of GNSS positioning.",
+          "path": "Samples~/Geolocation"
+      },
+      {
+          "displayName": "Networking",
+          "description": "An example of network communication.",
+          "path": "Samples~/Networking"
+      }
+  ]
+}
