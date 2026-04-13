@@ -667,7 +667,7 @@ namespace GameCanvas
                 case Key.OEM3:
                 case Key.OEM4:
                 case Key.OEM5:
-                case Key.IMESelected:
+                // Key.IMESelected は obsolete のためリストから除外
                 default:
                     c = default;
                     return false;
