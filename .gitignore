@@ -92,3 +92,13 @@ UserSettings/
 
 # Nodejs, npm
 node_modules/
+
+# Claude Code
+.claude/
+CLAUDE.local.md
+
+# Unity Bridge screenshots
+Screenshots/
+
+# Unity 6 auto-generated
+ProjectSettings/MultiplayerManager.asset
