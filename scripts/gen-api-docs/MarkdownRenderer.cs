@@ -31,7 +31,21 @@ public static class MarkdownRenderer
 
         RenderDocBody(sb, t.Doc, byFullSimple, bySimpleName);
 
-        // メンバーをカテゴリごとに
+        // 継承元一覧 (IGameCanvas のように多数の interface を束ねる型向け)
+        if (t.BaseTypes.Count > 0)
+        {
+            sb.AppendLine("**継承元**");
+            sb.AppendLine();
+            foreach (var bn in t.BaseTypes)
+                sb.AppendLine($"- {FormatTypeRef(bn, byFullSimple, bySimpleName)}");
+            sb.AppendLine();
+        }
+
+        // 直接メンバー + 継承メンバーをまとめてカテゴリ別に表示
+        var all = t.Members.Select(m => (Member: m, Origin: (ApiType?)null))
+            .Concat(t.InheritedMembers.Select(im => (im.Member, (ApiType?)im.Origin)))
+            .ToArray();
+
         var groups = new (string Title, MemberKind[] Kinds)[]
         {
             ("列挙値", new[] { MemberKind.EnumValue }),
@@ -45,15 +59,29 @@ public static class MarkdownRenderer
 
         foreach (var (title, kinds) in groups)
         {
-            var ms = t.Members.Where(m => kinds.Contains(m.Kind)).OrderBy(m => m.SortKey).ToArray();
+            var ms = all.Where(x => kinds.Contains(x.Member.Kind))
+                .OrderBy(x => x.Member.SortKey).ToArray();
             if (ms.Length == 0) continue;
             sb.AppendLine($"## {title}");
             sb.AppendLine();
-            foreach (var m in ms)
-                RenderMember(sb, m, byFullSimple, bySimpleName);
+            foreach (var (m, origin) in ms)
+                RenderMember(sb, m, origin, byFullSimple, bySimpleName);
         }
 
         return sb.ToString();
+    }
+
+    static string FormatTypeRef(string typeRef,
+        IReadOnlyDictionary<string, ApiType> byFullSimple,
+        IReadOnlyDictionary<string, ApiType> bySimpleName)
+    {
+        var simple = typeRef;
+        var lt = simple.IndexOf('<');
+        if (lt >= 0) simple = simple[..lt];
+        simple = simple.Split('.').Last();
+        if (bySimpleName.TryGetValue(simple, out var t))
+            return $"[`{typeRef}`](./{t.FileName}.md)";
+        return $"`{typeRef}`";
     }
 
     public static string RenderIndex(ApiType[] types,
@@ -121,13 +149,18 @@ public static class MarkdownRenderer
         return sb.ToString();
     }
 
-    static void RenderMember(StringBuilder sb, ApiMember m,
+    static void RenderMember(StringBuilder sb, ApiMember m, ApiType? origin,
         IReadOnlyDictionary<string, ApiType> byFullSimple,
         IReadOnlyDictionary<string, ApiType> bySimpleName)
     {
         // オーバーロード同士でアンカーが衝突しないように DisplayName (引数型付き) で見出しを立てる
         sb.AppendLine($"### {EscapeHeading(m.DisplayName)}");
         sb.AppendLine();
+        if (origin != null)
+        {
+            sb.AppendLine($"*継承元: [`{origin.Name}`](./{origin.FileName}.md)*");
+            sb.AppendLine();
+        }
         sb.AppendLine("```csharp");
         sb.AppendLine(m.Signature);
         sb.AppendLine("```");

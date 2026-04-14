@@ -48,6 +48,10 @@ public static class Program
 
         // 重複型名 (partial の複数ファイル分) をマージ
         var merged = MergePartials(all);
+
+        // 継承メンバーを各型に展開 (IGameCanvas のような集約インターフェイス向け)
+        ResolveInheritedMembers(merged);
+
         Console.WriteLine($"generating {merged.Length} type pages → {output}");
 
         // リンク解決用インデックス
@@ -98,6 +102,55 @@ public static class Program
             result.Add(first);
         }
         return result.ToArray();
+    }
+
+    /// <summary>
+    /// 各型について、基底型・継承インターフェイスを BFS で辿り、直接定義に無いメンバーを
+    /// <see cref="ApiType.InheritedMembers"/> に収集する。Id で重複を排除しつつ、最初に到達した
+    /// 基底を継承元として記録する (= より浅い継承元が優先される)。
+    /// </summary>
+    static void ResolveInheritedMembers(ApiType[] all)
+    {
+        var bySimple = all.GroupBy(t => t.SimpleName).ToDictionary(g => g.Key, g => g.First());
+
+        foreach (var t in all)
+        {
+            var seenIds = new HashSet<string>(t.Members.Select(m => m.Id));
+            var visited = new HashSet<ApiType> { t };
+            var queue = new Queue<ApiType>();
+            EnqueueBases(queue, t, bySimple);
+
+            while (queue.Count > 0)
+            {
+                var cur = queue.Dequeue();
+                if (!visited.Add(cur)) continue;
+
+                foreach (var m in cur.Members)
+                {
+                    // コンストラクターは継承されないので展開対象から除外する
+                    if (m.Kind == MemberKind.Constructor) continue;
+                    if (seenIds.Add(m.Id))
+                        t.InheritedMembers.Add((m, cur));
+                }
+                EnqueueBases(queue, cur, bySimple);
+            }
+        }
+    }
+
+    static void EnqueueBases(Queue<ApiType> queue, ApiType t, Dictionary<string, ApiType> bySimple)
+    {
+        foreach (var bn in t.BaseTypes)
+        {
+            var simple = StripGenericArgs(bn).Split('.').Last();
+            if (bySimple.TryGetValue(simple, out var bt))
+                queue.Enqueue(bt);
+        }
+    }
+
+    static string StripGenericArgs(string name)
+    {
+        var lt = name.IndexOf('<');
+        return lt >= 0 ? name[..lt] : name;
     }
 
     static void PrintUsage()

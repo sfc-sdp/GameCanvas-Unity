@@ -16,6 +16,12 @@ public sealed class ApiType
     public List<string> BaseTypes { get; } = new();
     public XmlDoc Doc { get; set; } = new();
     public List<ApiMember> Members { get; } = new();
+    /// <summary>
+    /// 基底型・継承インターフェイスから来るメンバー (BFS 収集後、直接定義と重複するものは除外)。
+    /// `IGameCanvas` のように直接メンバーを持たない型でも、継承経由で利用可能なメンバーを
+    /// ページ上に展開するために使う。
+    /// </summary>
+    public List<(ApiMember Member, ApiType Origin)> InheritedMembers { get; } = new();
     public string FullName => $"{Namespace}.{Name}";
     public string FullNameSimple => $"{Namespace}.{SimpleName}";
 }
