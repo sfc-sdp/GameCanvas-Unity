@@ -388,7 +388,8 @@ namespace GameCanvas
 
             foreach (var assetPath in assetPaths)
             {
-                var importer = (TextureImporter)AssetImporter.GetAtPath(assetPath);
+                var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+                if (importer == null) continue;
                 if (OnPreprocessTexture(importer))
                 {
                     importer.SaveAndReimport();
