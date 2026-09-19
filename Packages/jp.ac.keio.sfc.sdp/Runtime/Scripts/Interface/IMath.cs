@@ -94,21 +94,14 @@ namespace GameCanvas
         /// <returns>ランダムな値</returns>
         float Random();
 
-        /// <summary>
-        /// <paramref name="min"/>以上<paramref name="max"/>未満のランダムな値を算出します
-        /// </summary>
-        /// <param name="min">最小値</param>
-        /// <param name="max">最大値</param>
-        /// <returns>ランダムな値</returns>
-        float Random(in float min, in float max);
+        /// <summary>0以上maxExclusive未満の整数を返します。</summary>
+        int Random(int maxExclusive);
 
-        /// <summary>
-        /// <paramref name="min"/>以上<paramref name="max"/>以下のランダムな値を算出します
-        /// </summary>
-        /// <param name="min">最小値</param>
-        /// <param name="max">最大値</param>
-        /// <returns>ランダムな値</returns>
-        int Random(in int min, in int max);
+        /// <summary>min以上maxExclusive未満の値を返します。範囲は有限で、minよりmaxExclusiveが大きい必要があります。</summary>
+        float Random(in float min, in float maxExclusive);
+
+        /// <summary>min以上maxExclusive未満の整数を返します。空の範囲は指定できません。</summary>
+        int Random(in int min, in int maxExclusive);
 
         /// <summary>
         /// 値を 0 から <paramref name="max"/> までの範囲を繰り返すよう値を丸めます

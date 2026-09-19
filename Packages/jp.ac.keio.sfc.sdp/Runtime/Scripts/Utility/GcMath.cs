@@ -103,11 +103,29 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Min(in float a, in float b) => math.min(a, b);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Random(in int min, in int max) => s_Random.NextInt(min, max + 1);
+        /// <summary>0以上maxExclusive未満の整数を返します。</summary>
+        public static int Random(int maxExclusive) => Random(0, maxExclusive);
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Random(in float min, in float max) => s_Random.NextFloat(min, max);
+        /// <summary>min以上maxExclusive未満の整数を返します。空の範囲は指定できません。</summary>
+        public static int Random(in int min, in int maxExclusive)
+        {
+            if (min >= maxExclusive) throw new System.ArgumentOutOfRangeException(nameof(maxExclusive));
+            return s_Random.NextInt(min, maxExclusive);
+        }
+
+        /// <summary>min以上maxExclusive未満の値を返します。範囲は有限で、minよりmaxExclusiveが大きい必要があります。</summary>
+        public static float Random(in float min, in float maxExclusive)
+        {
+            if (!math.isfinite(min)) throw new System.ArgumentOutOfRangeException(nameof(min));
+            if (!math.isfinite(maxExclusive) || min >= maxExclusive)
+                throw new System.ArgumentOutOfRangeException(nameof(maxExclusive));
+            // Interpolate in double to avoid overflow for finite float endpoints.
+            float value = (float)(min + ((double)maxExclusive - min) * s_Random.NextFloat());
+            if (value < maxExclusive) return value;
+            // Rounding must not turn an exclusive upper bound into an inclusive one.
+            return maxExclusive == 0f ? -float.Epsilon :
+                math.asfloat(maxExclusive > 0 ? math.asuint(maxExclusive) - 1u : math.asuint(maxExclusive) + 1u);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Random() => s_Random.NextFloat();

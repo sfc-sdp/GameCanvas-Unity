@@ -1297,11 +1297,14 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Random(in int min, in int max) => GcMath.Random(min, max);
+        public int Random(in int min, in int maxExclusive) => GcMath.Random(min, maxExclusive);
+
+        /// <inheritdoc/>
+        public int Random(int maxExclusive) => GcMath.Random(maxExclusive);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float Random(in float min, in float max) => GcMath.Random(min, max);
+        public float Random(in float min, in float maxExclusive) => GcMath.Random(min, maxExclusive);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
