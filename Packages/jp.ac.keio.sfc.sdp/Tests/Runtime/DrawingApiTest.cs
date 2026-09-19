@@ -44,7 +44,7 @@ namespace GameCanvas.Tests
                             case 1: gc.DrawImage(image, 350, 400, 120, 90, rotation: 30); break;
                             default:
                                 var original = rect;
-                                gc.DrawImage(image, rect);
+                                gc.DrawImage(image, new GcRect(350, 400, 120, 90) { Rotation = 30 });
                                 Assert.That(rect, Is.EqualTo(original));
                                 break;
                         }

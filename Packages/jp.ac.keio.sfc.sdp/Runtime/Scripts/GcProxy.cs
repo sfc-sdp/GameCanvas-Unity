@@ -717,7 +717,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float degree = 0, bool autoPlay = false)
+        public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0, bool autoPlay = false)
         {
             var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
             if (texture != null)
@@ -728,7 +728,7 @@ namespace GameCanvas
                 }
 
                 var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
-                mtx = GcAffine.FromTRS(position, math.radians(degree), new float2(1f, 1f)).Mul(mtx);
+                mtx = GcAffine.FromTRS(position, math.radians(rotation), new float2(1f, 1f)).Mul(mtx);
                 m_Context.Graphics.DrawTexture(texture, mtx);
             }
         }
@@ -753,13 +753,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = false)
-            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)), autoPlay);
+        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false)
+            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(rotation)), autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = false)
-            => DrawCameraImage(camera, new float2(x, y), degree, autoPlay);
+        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0, bool autoPlay = false)
+            => DrawCameraImage(camera, new float2(x, y), rotation, autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -873,22 +873,22 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in float2 position, float degree = 0f)
+        public GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f)
         {
             if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
-                m_Context.Graphics.DrawTexture(tex, position, degree);
+                m_Context.Graphics.DrawTexture(tex, position, rotation);
             }
             return ret;
         }
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float degree = 0f)
+        public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f)
         {
             if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
-                m_Context.Graphics.DrawTexture(tex, new float2(x, y), degree);
+                m_Context.Graphics.DrawTexture(tex, new float2(x, y), rotation);
             }
             return ret;
         }
@@ -906,11 +906,11 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float degree = 0f)
+        public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f)
         {
             if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
             {
-                m_Context.Graphics.DrawTexture(tex, new GcRect(x, y, width, height, math.radians(degree)));
+                m_Context.Graphics.DrawTexture(tex, new GcRect(x, y, width, height, math.radians(rotation)));
             }
             return ret;
         }
@@ -922,13 +922,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawRect(in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.DrawRect(new GcRect(x, y, width, height, math.radians(degree)));
+        public void DrawRect(in float x, in float y, in float width, in float height, float rotation = 0f)
+            => m_Context.Graphics.DrawRect(new GcRect(x, y, width, height, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawRect(in float2 position, in float2 size, float degree = 0f)
-            => m_Context.Graphics.DrawRect(new GcRect(position, size, math.radians(degree)));
+        public void DrawRect(in float2 position, in float2 size, float rotation = 0f)
+            => m_Context.Graphics.DrawRect(new GcRect(position, size, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -942,23 +942,23 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(degree)));
+        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)
-            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(degree)), cornerRadius);
+        public void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(x, y, width, height, math.radians(rotation)), cornerRadius);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f)
-            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(degree)));
+        public void DrawRoundedRect(in float2 position, in float2 size, float rotation = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)
-            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(degree)), cornerRadius);
+        public void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f)
+            => m_Context.Graphics.DrawRoundedRect(new GcRect(position, size, math.radians(rotation)), cornerRadius);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1001,13 +1001,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawTexture(in Texture texture, in float2 position, float degree = 0f)
-            => m_Context.Graphics.DrawTexture(texture, position, degree);
+        public void DrawTexture(in Texture texture, in float2 position, float rotation = 0f)
+            => m_Context.Graphics.DrawTexture(texture, position, rotation);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.DrawTexture(texture, new GcRect(x, y, width, height, math.radians(degree)));
+        public void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float rotation = 0f)
+            => m_Context.Graphics.DrawTexture(texture, new GcRect(x, y, width, height, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1051,13 +1051,13 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FillRect(in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.FillRect(new GcRect(x, y, width, height, math.radians(degree)));
+        public void FillRect(in float x, in float y, in float width, in float height, float rotation = 0f)
+            => m_Context.Graphics.FillRect(new GcRect(x, y, width, height, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FillRect(in float2 position, in float2 size, float degree = 0f)
-            => m_Context.Graphics.FillRect(new GcRect(position, size, math.radians(degree)));
+        public void FillRect(in float2 position, in float2 size, float rotation = 0f)
+            => m_Context.Graphics.FillRect(new GcRect(position, size, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1071,23 +1071,23 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FillRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.FillRoundedRect(new GcRect(x, y, width, height, math.radians(degree)));
+        public void FillRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(x, y, width, height, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)
-            => m_Context.Graphics.FillRoundedRect(new GcRect(x, y, width, height, math.radians(degree)), cornerRadius);
+        public void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(x, y, width, height, math.radians(rotation)), cornerRadius);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FillRoundedRect(in float2 position, in float2 size, float degree = 0f)
-            => m_Context.Graphics.FillRoundedRect(new GcRect(position, size, math.radians(degree)));
+        public void FillRoundedRect(in float2 position, in float2 size, float rotation = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(position, size, math.radians(rotation)));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)
-            => m_Context.Graphics.FillRoundedRect(new GcRect(position, size, math.radians(degree)), cornerRadius);
+        public void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f)
+            => m_Context.Graphics.FillRoundedRect(new GcRect(position, size, math.radians(rotation)), cornerRadius);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1334,18 +1334,18 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RotateCoordinate(in float degree)
-            => m_Context.Graphics.RotateCoordinate(degree);
+        public void RotateCoordinate(in float rotation)
+            => m_Context.Graphics.RotateCoordinate(rotation);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RotateCoordinate(in float degree, in float originX, in float originY)
-            => m_Context.Graphics.RotateCoordinate(degree, new float2(originX, originY));
+        public void RotateCoordinate(in float rotation, in float originX, in float originY)
+            => m_Context.Graphics.RotateCoordinate(rotation, new float2(originX, originY));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RotateCoordinate(in float degree, in float2 origin)
-            => m_Context.Graphics.RotateCoordinate(degree, origin);
+        public void RotateCoordinate(in float rotation, in float2 origin)
+            => m_Context.Graphics.RotateCoordinate(rotation, origin);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1616,8 +1616,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)
-            => m_Context.InputCamera.TryGetCameraImageRotation(camera, out degree);
+        public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)
+            => m_Context.InputCamera.TryGetCameraImageRotation(camera, out rotation);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

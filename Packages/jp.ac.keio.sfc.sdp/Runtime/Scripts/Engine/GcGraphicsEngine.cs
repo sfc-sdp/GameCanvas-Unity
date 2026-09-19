@@ -320,7 +320,7 @@ namespace GameCanvas.Engine
             DrawImageCore(image, position, rotation);
         }
 
-        void DrawImageCore(in GcImage image, in float2 position, float degree = 0f)
+        void DrawImageCore(in GcImage image, in float2 position, float rotation = 0f)
         {
             if (!m_IsInit || image.Invalid) return;
 
@@ -334,7 +334,7 @@ namespace GameCanvas.Engine
                 m_TexImage.Add(image.m_Path, sprite.texture);
             }
 
-            var r = math.radians(degree);
+            var r = math.radians(rotation);
             var s = new float2(1f, 1f);
             var mtx = GcAffine.FromTRS(position, r, s).Mul(m_CurrentMatrix);
             if (m_CurrentStyle.RectAnchor != GcAnchor.UpperLeft)
@@ -563,11 +563,11 @@ namespace GameCanvas.Engine
             DrawStringCore(str, position, rotation);
         }
 
-        void DrawStringCore(in string str, in float2 position, float degree = 0f)
+        void DrawStringCore(in string str, in float2 position, float rotation = 0f)
         {
             GetOrCreateTextMesh(str, out var mesh, out var texture);
 
-            var r = math.radians(degree);
+            var r = math.radians(rotation);
             var s = new float2(1f, 1f);
             var mtx = GcAffine.FromTRS(position, r, s).Mul(m_CurrentMatrix);
 
@@ -604,11 +604,11 @@ namespace GameCanvas.Engine
             DrawMesh(m_MeshRect, texture, mtx);
         }
 
-        public void DrawTexture(in Texture texture, in float2 position, float degree = 0f)
+        public void DrawTexture(in Texture texture, in float2 position, float rotation = 0f)
         {
             if (!m_IsInit || texture == null) return;
 
-            var r = math.radians(degree);
+            var r = math.radians(rotation);
             var s = new float2(texture.width, texture.height);
             var mtx = GcAffine.FromTRS(position, r, s).Mul(m_CurrentMatrix);
             if (m_CurrentStyle.RectAnchor != GcAnchor.UpperLeft)
@@ -765,15 +765,15 @@ namespace GameCanvas.Engine
             m_RebuildFontTextureFlag = true;
         }
 
-        public void RotateCoordinate(in float degree)
+        public void RotateCoordinate(in float rotation)
         {
-            m_CurrentMatrix = GcAffine.FromRotate(math.radians(degree)).Mul(m_CurrentMatrix);
+            m_CurrentMatrix = GcAffine.FromRotate(math.radians(rotation)).Mul(m_CurrentMatrix);
         }
 
-        public void RotateCoordinate(in float degree, in float2 origin)
+        public void RotateCoordinate(in float rotation, in float2 origin)
         {
             m_CurrentMatrix = GcAffine.FromTranslate(origin)
-                .Mul(GcAffine.FromRotate(math.radians(degree)))
+                .Mul(GcAffine.FromRotate(math.radians(rotation)))
                 .Mul(GcAffine.FromTranslate(-origin))
                 .Mul(m_CurrentMatrix);
         }

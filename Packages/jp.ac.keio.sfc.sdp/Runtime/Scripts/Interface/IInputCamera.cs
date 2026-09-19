@@ -144,9 +144,9 @@ namespace GameCanvas
         /// 指定されたカメラ（外部入力映像）の回転角度取得を試みます
         /// </summary>
         /// <param name="camera">カメラ（外部入力映像）</param>
-        /// <param name="degree">回転角度</param>
+        /// <param name="rotation">回転角度</param>
         /// <returns>取得できたかどうか</returns>
-        bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree);
+        bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation);
 
         /// <summary>
         /// 指定されたカメラ（外部入力映像）の解像度取得を試みます
@@ -181,9 +181,9 @@ namespace GameCanvas
         /// </summary>
         /// <param name="camera">カメラ（外部入力映像）</param>
         /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="rotation">回転（度数法）</param>
         /// <param name="autoPlay">カメラ（外部入力映像）が停止していた場合、内部で<see cref="PlayCameraImage"/>を呼び出すかどうか</param>
-        void DrawCameraImage(in GcCameraDevice camera, in float2 position, float degree = 0f, bool autoPlay = false);
+        void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0f, bool autoPlay = false);
 
         /// <summary>
         /// カメラ（外部入力映像）を描画します
@@ -191,9 +191,9 @@ namespace GameCanvas
         /// <param name="camera">カメラ（外部入力映像）</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="rotation">回転（度数法）</param>
         /// <param name="autoPlay">カメラ（外部入力映像）が停止していた場合、内部で<see cref="PlayCameraImage"/>を呼び出すかどうか</param>
-        void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0f, bool autoPlay = false);
+        void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0f, bool autoPlay = false);
 
         /// <summary>
         /// カメラ（外部入力映像）を拡縮して描画します
@@ -211,9 +211,9 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅。映像の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。映像の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="rotation">回転（度数法）</param>
         /// <param name="autoPlay">カメラ（外部入力映像）が停止していた場合、内部で<see cref="PlayCameraImage"/>を呼び出すかどうか</param>
-        void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = false);
+        void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false);
 
         /// <summary>
         /// 指定されたカメラ（外部入力映像）の推奨解像度を取得します

@@ -85,9 +85,9 @@ namespace GameCanvas
         /// </summary>
         /// <param name="url">リソースURL</param>
         /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="rotation">回転（度数法）</param>
         /// <returns>オンラインリソースの可用性</returns>
-        GcAvailability DrawOnlineImage(in string url, in float2 position, float degree = 0f);
+        GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f);
 
         /// <summary>
         /// オンライン画像リソースを描画します
@@ -95,9 +95,9 @@ namespace GameCanvas
         /// <param name="url">リソースURL</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
-        /// <param name="degree">回転（度数法）</param>
+        /// <param name="rotation">回転（度数法）</param>
         /// <returns>オンラインリソースの可用性</returns>
-        GcAvailability DrawOnlineImage(in string url, in float x, in float y, float degree = 0f);
+        GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f);
 
         /// <summary>
         /// オンライン画像リソースを拡縮して描画します
@@ -114,8 +114,8 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅。画像の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。画像の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
-        GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// オンライン画像リソースの縦幅を取得します

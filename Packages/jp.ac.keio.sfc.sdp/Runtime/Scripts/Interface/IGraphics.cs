@@ -281,8 +281,8 @@ namespace GameCanvas
         /// </summary>
         /// <param name="texture">描画するテクスチャー</param>
         /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawTexture(in Texture texture, in float2 position, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawTexture(in Texture texture, in float2 position, float rotation = 0f);
 
         /// <summary>
         /// テクスチャーを拡縮して描画します
@@ -370,15 +370,15 @@ namespace GameCanvas
         /// <summary>
         /// 座標系（変換行列）を回転させます
         /// </summary>
-        /// <param name="degree">回転量（度数法）</param>
-        void RotateCoordinate(in float degree);
+        /// <param name="rotation">回転量（度数法）</param>
+        void RotateCoordinate(in float rotation);
 
         /// <summary>
         /// 座標系（変換行列）を指定した座標を中心に回転させます
         /// </summary>
-        /// <param name="degree">回転量（度数法）</param>
+        /// <param name="rotation">回転量（度数法）</param>
         /// <param name="origin">回転中心</param>
-        void RotateCoordinate(in float degree, in float2 origin);
+        void RotateCoordinate(in float rotation, in float2 origin);
 
         /// <summary>
         /// 座標系（変換行列）を拡縮させます
@@ -583,16 +583,16 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawRect(in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawRect(in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// 矩形を線で描画します
         /// </summary>
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawRect(in float2 position, in float2 size, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawRect(in float2 position, in float2 size, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を線で描画します
@@ -601,8 +601,8 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を線で描画します
@@ -612,16 +612,16 @@ namespace GameCanvas
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="cornerRadius">角丸の半径</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を線で描画します
         /// </summary>
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawRoundedRect(in float2 position, in float2 size, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を線で描画します
@@ -629,8 +629,8 @@ namespace GameCanvas
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
         /// <param name="cornerRadius">角丸の半径</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f);
 
         /// <summary>
         /// 文字列を描画します
@@ -660,8 +660,8 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅。画像の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。画像の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// 円を塗りで描画します
@@ -685,16 +685,16 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
-        /// <param name="degree">回転（度数法）</param>
-        void FillRect(in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void FillRect(in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// 矩形を塗りで描画します
         /// </summary>
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
-        /// <param name="degree">回転（度数法）</param>
-        void FillRect(in float2 position, in float2 size, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void FillRect(in float2 position, in float2 size, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を塗りで描画します
@@ -703,8 +703,8 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
-        /// <param name="degree">回転（度数法）</param>
-        void FillRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void FillRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を塗りで描画します
@@ -714,16 +714,16 @@ namespace GameCanvas
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="cornerRadius">角丸の半径</param>
-        /// <param name="degree">回転（度数法）</param>
-        void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を塗りで描画します
         /// </summary>
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
-        /// <param name="degree">回転（度数法）</param>
-        void FillRoundedRect(in float2 position, in float2 size, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void FillRoundedRect(in float2 position, in float2 size, float rotation = 0f);
 
         /// <summary>
         /// 角丸矩形を塗りで描画します
@@ -731,8 +731,8 @@ namespace GameCanvas
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
         /// <param name="cornerRadius">角丸の半径</param>
-        /// <param name="degree">回転（度数法）</param>
-        void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f);
 
         /// <summary>
         /// 画像の縦幅を取得します
@@ -758,10 +758,10 @@ namespace GameCanvas
         /// <summary>
         /// 座標系（変換行列）を回転させます
         /// </summary>
-        /// <param name="degree">回転量（度数法）</param>
+        /// <param name="rotation">回転量（度数法）</param>
         /// <param name="originX">回転中心のX座標</param>
         /// <param name="originY">回転中心のY座標</param>
-        void RotateCoordinate(in float degree, in float originX, in float originY);
+        void RotateCoordinate(in float rotation, in float originX, in float originY);
 
         /// <summary>
         /// 座標系（変換行列）を拡縮させます

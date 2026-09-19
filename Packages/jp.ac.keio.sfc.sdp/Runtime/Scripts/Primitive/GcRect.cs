@@ -30,7 +30,14 @@ namespace GameCanvas
         /// <summary>
         /// 回転（弧度法）
         /// </summary>
-        public float Radian;
+        internal float Radian;
+
+        /// <summary>時計回りの回転角度（度数法）。</summary>
+        public float Rotation
+        {
+            readonly get => math.degrees(Radian);
+            set => Radian = math.radians(value);
+        }
 
         #endregion
 
@@ -38,13 +45,18 @@ namespace GameCanvas
         #region 公開関数
         //----------------------------------------------------------
 
+        public GcRect(in float2 position, in float2 size) : this(position, size, 0f) { }
+        public GcRect(in float2 position, in float width, in float height) : this(position, width, height, 0f) { }
+        public GcRect(in float x, in float y, in float width, in float height) : this(x, y, width, height, 0f) { }
+        public GcRect(in Rect rect) : this(rect, 0f) { }
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="position">位置</param>
         /// <param name="size">大きさ</param>
         /// <param name="radian">回転（弧度法）</param>
-        public GcRect(in float2 position, in float2 size, in float radian = 0f)
+        internal GcRect(in float2 position, in float2 size, in float radian)
         {
             Position = position;
             Size = size;
@@ -58,7 +70,7 @@ namespace GameCanvas
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="radian">回転（弧度法）</param>
-        public GcRect(in float2 position, in float width, in float height, in float radian = 0f)
+        internal GcRect(in float2 position, in float width, in float height, in float radian)
         {
             Position = position;
             Size = new float2(width, height);
@@ -73,7 +85,7 @@ namespace GameCanvas
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="radian">回転（弧度法）</param>
-        public GcRect(in float x, in float y, in float width, in float height, in float radian = 0f)
+        internal GcRect(in float x, in float y, in float width, in float height, in float radian)
         {
             Position = new float2(x, y);
             Size = new float2(width, height);
@@ -85,7 +97,7 @@ namespace GameCanvas
         /// </summary>
         /// <param name="rect">矩形</param>
         /// <param name="radian">回転（弧度法）</param>
-        public GcRect(in Rect rect, in float radian = 0f)
+        internal GcRect(in Rect rect, in float radian)
         {
             Position = rect.position;
             Size = rect.size;
@@ -127,7 +139,7 @@ namespace GameCanvas
             => Position.GetHashCode() ^ Size.GetHashCode() ^ Radian.GetHashCode();
 
         public override readonly string ToString()
-            => $"{nameof(GcRect)}: {{ x: {Position.x}, y: {Position.y}, w: {Size.x}, h: {Size.y}, angle: {this.Degree()} }}";
+            => $"{nameof(GcRect)}: {{ x: {Position.x}, y: {Position.y}, w: {Size.x}, h: {Size.y}, angle: {Rotation} }}";
 
         #endregion
     }

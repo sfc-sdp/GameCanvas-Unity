@@ -216,14 +216,14 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)
+        public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)
         {
             if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
             {
-                degree = Mathf.Repeat(-texture.videoRotationAngle, 360f);
+                rotation = Mathf.Repeat(-texture.videoRotationAngle, 360f);
                 return true;
             }
-            degree = default;
+            rotation = default;
             return false;
         }
 
