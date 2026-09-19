@@ -69,9 +69,14 @@ public sealed class GeolocationSample : GameBase
                 }
             }
 
-            gc.DrawImage("MapPin.png", m_Point.x + k_TileSize, m_Point.y + k_TileSize, anchor: GcAnchor.LowerCenter);
-            gc.SetColor(0, 0, 0);
-            gc.DrawString("出典：国土地理院", k_CanvasW, k_CanvasH, anchor: GcAnchor.LowerRight);
+            using (gc.StyleScope)
+            {
+                gc.SetRectAnchor(GcAnchor.LowerCenter);
+                gc.DrawImage("MapPin.png", m_Point.x + k_TileSize, m_Point.y + k_TileSize);
+                gc.SetColor(0, 0, 0);
+                gc.SetStringAnchor(GcAnchor.LowerRight);
+                gc.DrawString("出典：国土地理院", k_CanvasW, k_CanvasH);
+            }
         }
 
         gc.SetColor(0, 0, 0);

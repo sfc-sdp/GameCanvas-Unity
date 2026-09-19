@@ -315,12 +315,9 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, m_TexImage[image.m_Path], mtx);
         }
 
-        public void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+        public void DrawImage(in GcImage image, in float2 position, float rotation = 0f)
         {
-            var previous = RectAnchor;
-            RectAnchor = anchor;
-            try { DrawImageCore(image, position, rotation); }
-            finally { RectAnchor = previous; }
+            DrawImageCore(image, position, rotation);
         }
 
         void DrawImageCore(in GcImage image, in float2 position, float degree = 0f)
@@ -348,13 +345,10 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, m_TexImage[image.m_Path], mtx);
         }
 
-        public void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+        public void DrawImage(in GcImage image, in GcRect rect, float rotation = 0)
         {
-            var previous = RectAnchor;
-            RectAnchor = anchor;
             var area = rect; area.Radian += math.radians(rotation);
-            try { DrawImageCore(image, area); }
-            finally { RectAnchor = previous; }
+            DrawImageCore(image, area);
         }
 
         void DrawImageCore(in GcImage image, in GcRect rect)
@@ -564,12 +558,9 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, texture, m_CurrentMatrix);
         }
 
-        public void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+        public void DrawString(in string str, in float2 position, float rotation = 0f)
         {
-            var previous = StringAnchor;
-            StringAnchor = anchor;
-            try { DrawStringCore(str, position, rotation); }
-            finally { StringAnchor = previous; }
+            DrawStringCore(str, position, rotation);
         }
 
         void DrawStringCore(in string str, in float2 position, float degree = 0f)
@@ -583,13 +574,10 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, texture, mtx);
         }
 
-        public void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+        public void DrawString(in string str, in GcRect rect, float rotation = 0)
         {
-            var previous = StringAnchor;
-            StringAnchor = anchor;
             var area = rect; area.Radian += math.radians(rotation);
-            try { DrawStringCore(str, area); }
-            finally { StringAnchor = previous; }
+            DrawStringCore(str, area);
         }
 
         void DrawStringCore(in string str, in GcRect rect)

@@ -20,6 +20,7 @@ public sealed class AccelerationSample : GameBase
     {
         gc.ChangeCanvasSize(720, 1280);
         gc.SetFontSize(36);
+        gc.SetRectAnchor(GcAnchor.MiddleCenter);
         m_Supported = gc.IsAccelerometerSupported;
         if (m_Supported) gc.IsAccelerometerEnabled = true;
 
@@ -62,7 +63,7 @@ public sealed class AccelerationSample : GameBase
     public override void DrawGame()
     {
         gc.ClearScreen();
-        gc.DrawImage("BallRed.png", m_Ball.Point.x, m_Ball.Point.y, anchor: GcAnchor.MiddleCenter);
+        gc.DrawImage("BallRed.png", m_Ball.Point.x, m_Ball.Point.y);
         gc.SetColor(m_Color);
         gc.DrawString(m_DebugText, 20, 20);
     }

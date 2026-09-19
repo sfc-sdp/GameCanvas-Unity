@@ -23,6 +23,14 @@ namespace GameCanvas.Editor.Tests
                     if (parameters.Length >= 3) Assert.That(parameters[0].ParameterType, Is.EqualTo(typeof(int)));
                 }
         }
+        [Test] public void DrawingAnchorsBelongToStyleRatherThanCallArguments()
+        {
+            foreach (var type in new[] { typeof(GcProxy), typeof(IGraphics), typeof(IGraphicsEx) })
+                foreach (var method in type.GetMethods())
+                    if (method.Name == "DrawImage" || method.Name == "DrawString")
+                        foreach (var parameter in method.GetParameters())
+                            Assert.That(parameter.Name, Is.Not.EqualTo("anchor"), type.Name + "." + method.Name);
+        }
         [Test] public void DrawingACameraDoesNotStartItByDefault()
         {
             foreach (var type in new[] { typeof(GcProxy), typeof(IInputCameraEx) })

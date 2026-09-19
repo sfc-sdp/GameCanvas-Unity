@@ -200,16 +200,14 @@ namespace GameCanvas
         /// <param name="image">描画する画像</param>
         /// <param name="position">位置</param>
         /// <param name="rotation">回転（度数法）</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(in GcImage image, in float2 position, float rotation = 0f);
 
         /// <summary>
         /// 画像を拡縮して描画します
         /// </summary>
         /// <param name="image">描画する画像</param>
         /// <param name="rect">画像をフィッティングする矩形領域</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(in GcImage image, in GcRect rect, float rotation = 0);
 
         /// <summary>
         /// 線を描画します
@@ -263,16 +261,14 @@ namespace GameCanvas
         /// <param name="str">描画する文字列</param>
         /// <param name="position">位置</param>
         /// <param name="rotation">回転（度数法）</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawString(in string str, in float2 position, float rotation = 0f);
 
         /// <summary>
         /// 文字列を拡縮して描画します
         /// </summary>
         /// <param name="str">描画する文字列</param>
         /// <param name="rect">文字列をフィッティングする矩形領域</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawString(in string str, in GcRect rect, float rotation = 0);
 
         /// <summary>
         /// テクスチャーを描画します
@@ -414,18 +410,16 @@ namespace GameCanvas
     public interface IGraphicsEx : IGraphics
     {
         /// <summary>キャンバス座標に画像を描きます。</summary>
-        void DrawImage(string path, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(string path, in GcPoint position, float rotation = 0);
         /// <summary>キャンバス座標に画像を描きます。</summary>
-        void DrawImage(in GcImage image, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(in GcImage image, in GcPoint position, float rotation = 0);
         /// <summary>キャンバス座標に文字を描きます。</summary>
-        void DrawString(string text, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawString(string text, in GcPoint position, float rotation = 0);
 
         /// <summary>Assets/Resからの相対パスで画像を描きます。rotationは時計回りの度数です。</summary>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(string path, float x, float y, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(string path, float x, float y, float rotation = 0);
         /// <summary>指定した領域に画像を描きます。rotationは矩形の回転へ加える度数です。</summary>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(string path, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(string path, in GcRect rect, float rotation = 0);
 
         /// <summary>
         /// キャンバスのAABB
@@ -553,8 +547,7 @@ namespace GameCanvas
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="rotation">回転（度数法）</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f);
 
         /// <summary>
         /// 画像を拡縮して描画します
@@ -565,8 +558,7 @@ namespace GameCanvas
         /// <param name="width">横幅。画像の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。画像の縦幅がこれになるように拡縮される</param>
         /// <param name="rotation">回転（度数法）</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// 線を描画します
@@ -647,8 +639,7 @@ namespace GameCanvas
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
         /// <param name="rotation">回転（度数法）</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawString(in string str, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawString(in string str, in float x, in float y, float rotation = 0f);
 
         /// <summary>
         /// 文字列を拡縮して描画します
@@ -659,8 +650,7 @@ namespace GameCanvas
         /// <param name="width">横幅。文字列の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。文字列の縦幅がこれになるように拡縮される</param>
         /// <param name="rotation">回転（度数法）</param>
-        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f);
 
         /// <summary>
         /// テクスチャーを拡縮して描画します
