@@ -1574,7 +1574,7 @@
       {
         "id": "Field.Key",
         "name": "Key",
-        "signature": "public readonly Key Key"
+        "signature": "public readonly GcKey Key"
       },
       {
         "id": "Field.Null",
@@ -1589,7 +1589,7 @@
       {
         "id": "Field.Time",
         "name": "Time",
-        "signature": "public readonly float Time"
+        "signature": "public readonly double Time"
       },
       {
         "id": "Method.CompareTo(GcKeyEvent)",
@@ -1644,11 +1644,6 @@
         "signature": "Down"
       },
       {
-        "id": "Value.Hold",
-        "name": "Hold",
-        "signature": "Hold"
-      },
-      {
         "id": "Value.Up",
         "name": "Up",
         "signature": "Up"
@@ -1673,7 +1668,7 @@
       {
         "id": "Property.Duration",
         "name": "Duration",
-        "signature": "public float Duration { get; }"
+        "signature": "public double Duration { get; }"
       },
       {
         "id": "Property.Held",
@@ -1684,58 +1679,6 @@
         "id": "Property.Up",
         "name": "Up",
         "signature": "public bool Up { get; }"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.GcKeyTrace",
-    "kind": "Struct",
-    "declaration": "public struct GcKeyTrace : System.IEquatable\u003CGcKeyTrace\u003E",
-    "members": [
-      {
-        "id": "Field.Begin",
-        "name": "Begin",
-        "signature": "public readonly GcKeyEvent Begin"
-      },
-      {
-        "id": "Field.Current",
-        "name": "Current",
-        "signature": "public GcKeyEvent Current"
-      },
-      {
-        "id": "Field.Duration",
-        "name": "Duration",
-        "signature": "public float Duration"
-      },
-      {
-        "id": "Field.FrameCount",
-        "name": "FrameCount",
-        "signature": "public int FrameCount"
-      },
-      {
-        "id": "Method.Equals(GcKeyTrace)",
-        "name": "Equals",
-        "signature": "public readonly bool Equals(GcKeyTrace other)"
-      },
-      {
-        "id": "Method.Equals(object)",
-        "name": "Equals",
-        "signature": "public override readonly bool Equals(object obj)"
-      },
-      {
-        "id": "Method.GetHashCode()",
-        "name": "GetHashCode",
-        "signature": "public override readonly int GetHashCode()"
-      },
-      {
-        "id": "Operator.!=(GcKeyTrace,GcKeyTrace)",
-        "name": "operator !=",
-        "signature": "public static bool operator !=(GcKeyTrace left, GcKeyTrace right)"
-      },
-      {
-        "id": "Operator.==(GcKeyTrace,GcKeyTrace)",
-        "name": "operator ==",
-        "signature": "public static bool operator ==(GcKeyTrace left, GcKeyTrace right)"
       }
     ]
   },
@@ -2131,12 +2074,17 @@
       {
         "id": "Method.Random(float,float)",
         "name": "Random",
-        "signature": "public static float Random(in float min, in float max)"
+        "signature": "public static float Random(in float min, in float maxExclusive)"
       },
       {
         "id": "Method.Random(int,int)",
         "name": "Random",
-        "signature": "public static int Random(in int min, in int max)"
+        "signature": "public static int Random(in int min, in int maxExclusive)"
+      },
+      {
+        "id": "Method.Random(int)",
+        "name": "Random",
+        "signature": "public static int Random(int maxExclusive)"
       },
       {
         "id": "Method.Repeat(float,float)",
@@ -2342,7 +2290,7 @@
       {
         "id": "Field.Time",
         "name": "Time",
-        "signature": "public readonly float Time"
+        "signature": "public readonly double Time"
       },
       {
         "id": "Method.CompareTo(GcPointerEvent)",
@@ -2435,43 +2383,6 @@
         "id": "Value.Invalid",
         "name": "Invalid",
         "signature": "Invalid"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.GcPointerTrace",
-    "kind": "Struct",
-    "declaration": "public struct GcPointerTrace : System.IEquatable\u003CGcPointerTrace\u003E",
-    "members": [
-      {
-        "id": "Field.Begin",
-        "name": "Begin",
-        "signature": "public GcPointerEvent Begin"
-      },
-      {
-        "id": "Field.Current",
-        "name": "Current",
-        "signature": "public GcPointerEvent Current"
-      },
-      {
-        "id": "Field.Distance",
-        "name": "Distance",
-        "signature": "public float Distance"
-      },
-      {
-        "id": "Field.Duration",
-        "name": "Duration",
-        "signature": "public float Duration"
-      },
-      {
-        "id": "Field.FrameCount",
-        "name": "FrameCount",
-        "signature": "public int FrameCount"
-      },
-      {
-        "id": "Method.Equals(GcPointerTrace)",
-        "name": "Equals",
-        "signature": "public readonly bool Equals(GcPointerTrace other)"
       }
     ]
   },
@@ -2675,17 +2586,17 @@
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,bool)",
         "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = false)"
+        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0, bool autoPlay = false)"
       },
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,float,float,bool)",
         "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = false)"
+        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false)"
       },
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,float2,float,bool)",
         "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float degree = 0, bool autoPlay = false)"
+        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0, bool autoPlay = false)"
       },
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,GcRect,bool)",
@@ -2780,17 +2691,17 @@
       {
         "id": "Method.DrawOnlineImage(string,float,float,float,float,float)",
         "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawOnlineImage(string,float,float,float)",
         "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float degree = 0f)"
+        "signature": "public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f)"
       },
       {
         "id": "Method.DrawOnlineImage(string,float2,float)",
         "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in float2 position, float degree = 0f)"
+        "signature": "public GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f)"
       },
       {
         "id": "Method.DrawOnlineImage(string,GcRect)",
@@ -2810,12 +2721,12 @@
       {
         "id": "Method.DrawRect(float,float,float,float,float)",
         "name": "DrawRect",
-        "signature": "public void DrawRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "public void DrawRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRect(float2,float2,float)",
         "name": "DrawRect",
-        "signature": "public void DrawRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "public void DrawRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRect(GcRect)",
@@ -2830,22 +2741,22 @@
       {
         "id": "Method.DrawRoundedRect(float,float,float,float,float,float)",
         "name": "DrawRoundedRect",
-        "signature": "public void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)"
+        "signature": "public void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float,float,float,float,float)",
         "name": "DrawRoundedRect",
-        "signature": "public void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "public void DrawRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float2,float2,float,float)",
         "name": "DrawRoundedRect",
-        "signature": "public void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)"
+        "signature": "public void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float2,float2,float)",
         "name": "DrawRoundedRect",
-        "signature": "public void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "public void DrawRoundedRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(GcRect,float)",
@@ -2890,12 +2801,12 @@
       {
         "id": "Method.DrawTexture(Texture,float,float,float,float,float)",
         "name": "DrawTexture",
-        "signature": "public void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "public void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawTexture(Texture,float2,float)",
         "name": "DrawTexture",
-        "signature": "public void DrawTexture(in Texture texture, in float2 position, float degree = 0f)"
+        "signature": "public void DrawTexture(in Texture texture, in float2 position, float rotation = 0f)"
       },
       {
         "id": "Method.DrawTexture(Texture,float2x3)",
@@ -2945,12 +2856,12 @@
       {
         "id": "Method.FillRect(float,float,float,float,float)",
         "name": "FillRect",
-        "signature": "public void FillRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "public void FillRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.FillRect(float2,float2,float)",
         "name": "FillRect",
-        "signature": "public void FillRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "public void FillRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.FillRect(GcRect)",
@@ -2965,22 +2876,22 @@
       {
         "id": "Method.FillRoundedRect(float,float,float,float,float,float)",
         "name": "FillRoundedRect",
-        "signature": "public void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)"
+        "signature": "public void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float,float,float,float,float)",
         "name": "FillRoundedRect",
-        "signature": "public void FillRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "public void FillRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float2,float2,float,float)",
         "name": "FillRoundedRect",
-        "signature": "public void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)"
+        "signature": "public void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float2,float2,float)",
         "name": "FillRoundedRect",
-        "signature": "public void FillRoundedRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "public void FillRoundedRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(GcRect,float)",
@@ -3031,16 +2942,6 @@
         "id": "Method.GetImageWidth(GcImage)",
         "name": "GetImageWidth",
         "signature": "public int GetImageWidth(in GcImage image)"
-      },
-      {
-        "id": "Method.GetKeyPressDuration(Key)",
-        "name": "GetKeyPressDuration",
-        "signature": "public float GetKeyPressDuration(in Key key)"
-      },
-      {
-        "id": "Method.GetKeyPressFrameCount(Key)",
-        "name": "GetKeyPressFrameCount",
-        "signature": "public int GetKeyPressFrameCount(in Key key)"
       },
       {
         "id": "Method.GetOnlineImageHeight(string)",
@@ -3108,36 +3009,6 @@
         "signature": "public bool IsFlippedCameraImage(in GcCameraDevice camera)"
       },
       {
-        "id": "Method.IsKeyDown(Key)",
-        "name": "IsKeyDown",
-        "signature": "public bool IsKeyDown(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyHold(Key,GcKeyTrace)",
-        "name": "IsKeyHold",
-        "signature": "public bool IsKeyHold(in Key key, out GcKeyTrace trace)"
-      },
-      {
-        "id": "Method.IsKeyHold(Key)",
-        "name": "IsKeyHold",
-        "signature": "public bool IsKeyHold(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyPress(Key)",
-        "name": "IsKeyPress",
-        "signature": "public bool IsKeyPress(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyUp(Key,GcKeyTrace)",
-        "name": "IsKeyUp",
-        "signature": "public bool IsKeyUp(in Key key, out GcKeyTrace trace)"
-      },
-      {
-        "id": "Method.IsKeyUp(Key)",
-        "name": "IsKeyUp",
-        "signature": "public bool IsKeyUp(in Key key)"
-      },
-      {
         "id": "Method.IsPlayingCameraImage(GcCameraDevice)",
         "name": "IsPlayingCameraImage",
         "signature": "public bool IsPlayingCameraImage(in GcCameraDevice camera)"
@@ -3146,131 +3017,6 @@
         "id": "Method.IsPlayingSound(GcSoundTrack)",
         "name": "IsPlayingSound",
         "signature": "public bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)"
-      },
-      {
-        "id": "Method.IsTapped()",
-        "name": "IsTapped",
-        "signature": "public bool IsTapped()"
-      },
-      {
-        "id": "Method.IsTapped(float,float,float,float,float,float)",
-        "name": "IsTapped",
-        "signature": "public bool IsTapped(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTapped(float,float)",
-        "name": "IsTapped",
-        "signature": "public bool IsTapped(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTapped(float2)",
-        "name": "IsTapped",
-        "signature": "public bool IsTapped(out float2 point)"
-      },
-      {
-        "id": "Method.IsTapped(GcAABB,float2)",
-        "name": "IsTapped",
-        "signature": "public bool IsTapped(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchBegan()",
-        "name": "IsTouchBegan",
-        "signature": "public bool IsTouchBegan()"
-      },
-      {
-        "id": "Method.IsTouchBegan(float,float,float,float,float,float)",
-        "name": "IsTouchBegan",
-        "signature": "public bool IsTouchBegan(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTouchBegan(float,float)",
-        "name": "IsTouchBegan",
-        "signature": "public bool IsTouchBegan(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTouchBegan(float2)",
-        "name": "IsTouchBegan",
-        "signature": "public bool IsTouchBegan(out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchBegan(GcAABB,float2)",
-        "name": "IsTouchBegan",
-        "signature": "public bool IsTouchBegan(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchBegan(GcPointerEvent)",
-        "name": "IsTouchBegan",
-        "signature": "public bool IsTouchBegan(out GcPointerEvent pointer)"
-      },
-      {
-        "id": "Method.IsTouched()",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched()"
-      },
-      {
-        "id": "Method.IsTouched(float,float,float,float,float,float)",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTouched(float,float)",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTouched(float2)",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched(out float2 point)"
-      },
-      {
-        "id": "Method.IsTouched(GcAABB,float2)",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouched(GcPointerEvent)",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched(out GcPointerEvent pointer)"
-      },
-      {
-        "id": "Method.IsTouched(GcPointerTrace)",
-        "name": "IsTouched",
-        "signature": "public bool IsTouched(out GcPointerTrace pointer)"
-      },
-      {
-        "id": "Method.IsTouchEnded()",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded()"
-      },
-      {
-        "id": "Method.IsTouchEnded(float,float,float,float,float,float)",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTouchEnded(float,float)",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTouchEnded(float2)",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded(out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchEnded(GcAABB,float2)",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchEnded(GcPointerEvent)",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded(out GcPointerEvent pointer)"
-      },
-      {
-        "id": "Method.IsTouchEnded(GcPointerTrace)",
-        "name": "IsTouchEnded",
-        "signature": "public bool IsTouchEnded(out GcPointerTrace pointer)"
       },
       {
         "id": "Method.Key(GcKey)",
@@ -3360,12 +3106,17 @@
       {
         "id": "Method.Random(float,float)",
         "name": "Random",
-        "signature": "public float Random(in float min, in float max)"
+        "signature": "public float Random(in float min, in float maxExclusive)"
       },
       {
         "id": "Method.Random(int,int)",
         "name": "Random",
-        "signature": "public int Random(in int min, in int max)"
+        "signature": "public int Random(in int min, in int maxExclusive)"
+      },
+      {
+        "id": "Method.Random(int)",
+        "name": "Random",
+        "signature": "public int Random(int maxExclusive)"
       },
       {
         "id": "Method.RebuildFontTexture()",
@@ -3400,17 +3151,17 @@
       {
         "id": "Method.RotateCoordinate(float,float,float)",
         "name": "RotateCoordinate",
-        "signature": "public void RotateCoordinate(in float degree, in float originX, in float originY)"
+        "signature": "public void RotateCoordinate(in float rotation, in float originX, in float originY)"
       },
       {
         "id": "Method.RotateCoordinate(float,float2)",
         "name": "RotateCoordinate",
-        "signature": "public void RotateCoordinate(in float degree, in float2 origin)"
+        "signature": "public void RotateCoordinate(in float rotation, in float2 origin)"
       },
       {
         "id": "Method.RotateCoordinate(float)",
         "name": "RotateCoordinate",
-        "signature": "public void RotateCoordinate(in float degree)"
+        "signature": "public void RotateCoordinate(in float rotation)"
       },
       {
         "id": "Method.RotateVector(float2,float)",
@@ -3665,42 +3416,12 @@
       {
         "id": "Method.TryGetCameraImageRotation(GcCameraDevice,float)",
         "name": "TryGetCameraImageRotation",
-        "signature": "public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)"
+        "signature": "public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)"
       },
       {
         "id": "Method.TryGetCameraImageSize(GcCameraDevice,int2)",
         "name": "TryGetCameraImageSize",
         "signature": "public bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)"
-      },
-      {
-        "id": "Method.TryGetKeyEvent(Key,GcKeyEvent)",
-        "name": "TryGetKeyEvent",
-        "signature": "public bool TryGetKeyEvent(in Key key, out GcKeyEvent e)"
-      },
-      {
-        "id": "Method.TryGetKeyEventAll(GcKeyEventPhase,System.ReadOnlySpan\u003CGcKeyEvent\u003E)",
-        "name": "TryGetKeyEventAll",
-        "signature": "public bool TryGetKeyEventAll(in GcKeyEventPhase phase, out System.ReadOnlySpan\u003CGcKeyEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetKeyEventAll(System.ReadOnlySpan\u003CGcKeyEvent\u003E)",
-        "name": "TryGetKeyEventAll",
-        "signature": "public bool TryGetKeyEventAll(out System.ReadOnlySpan\u003CGcKeyEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetKeyTrace(Key,GcKeyTrace)",
-        "name": "TryGetKeyTrace",
-        "signature": "public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)"
-      },
-      {
-        "id": "Method.TryGetKeyTraceAll(GcKeyEventPhase,System.ReadOnlySpan\u003CGcKeyTrace\u003E)",
-        "name": "TryGetKeyTraceAll",
-        "signature": "public bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan\u003CGcKeyTrace\u003E traces)"
-      },
-      {
-        "id": "Method.TryGetKeyTraceAll(System.ReadOnlySpan\u003CGcKeyTrace\u003E)",
-        "name": "TryGetKeyTraceAll",
-        "signature": "public bool TryGetKeyTraceAll(out System.ReadOnlySpan\u003CGcKeyTrace\u003E traces)"
       },
       {
         "id": "Method.TryGetOnlineImage(string,GcAvailability,Texture2D?)",
@@ -3726,56 +3447,6 @@
         "id": "Method.TryGetOnlineText(string,GcAvailability,string?)",
         "name": "TryGetOnlineText",
         "signature": "public bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)"
-      },
-      {
-        "id": "Method.TryGetPointerEvent(GcPointerEventPhase,int,GcPointerEvent)",
-        "name": "TryGetPointerEvent",
-        "signature": "public bool TryGetPointerEvent(in GcPointerEventPhase phase, in int i, out GcPointerEvent e)"
-      },
-      {
-        "id": "Method.TryGetPointerEvent(int,GcPointerEvent)",
-        "name": "TryGetPointerEvent",
-        "signature": "public bool TryGetPointerEvent(in int i, out GcPointerEvent e)"
-      },
-      {
-        "id": "Method.TryGetPointerEventAll(GcPointerEventPhase,System.ReadOnlySpan\u003CGcPointerEvent\u003E)",
-        "name": "TryGetPointerEventAll",
-        "signature": "public bool TryGetPointerEventAll(in GcPointerEventPhase phase, out System.ReadOnlySpan\u003CGcPointerEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetPointerEventAll(System.ReadOnlySpan\u003CGcPointerEvent\u003E)",
-        "name": "TryGetPointerEventAll",
-        "signature": "public bool TryGetPointerEventAll(out System.ReadOnlySpan\u003CGcPointerEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetPointerTapPoint(int,float2)",
-        "name": "TryGetPointerTapPoint",
-        "signature": "public bool TryGetPointerTapPoint(in int i, out float2 point)"
-      },
-      {
-        "id": "Method.TryGetPointerTapPointAll(System.ReadOnlySpan\u003Cfloat2\u003E)",
-        "name": "TryGetPointerTapPointAll",
-        "signature": "public bool TryGetPointerTapPointAll(out System.ReadOnlySpan\u003Cfloat2\u003E points)"
-      },
-      {
-        "id": "Method.TryGetPointerTrace(GcPointerEventPhase,int,GcPointerTrace)",
-        "name": "TryGetPointerTrace",
-        "signature": "public bool TryGetPointerTrace(in GcPointerEventPhase phase, in int i, out GcPointerTrace trace)"
-      },
-      {
-        "id": "Method.TryGetPointerTrace(int,GcPointerTrace)",
-        "name": "TryGetPointerTrace",
-        "signature": "public bool TryGetPointerTrace(in int i, out GcPointerTrace history)"
-      },
-      {
-        "id": "Method.TryGetPointerTraceAll(GcPointerEventPhase,System.ReadOnlySpan\u003CGcPointerTrace\u003E)",
-        "name": "TryGetPointerTraceAll",
-        "signature": "public bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan\u003CGcPointerTrace\u003E traces)"
-      },
-      {
-        "id": "Method.TryGetPointerTraceAll(System.ReadOnlySpan\u003CGcPointerTrace\u003E)",
-        "name": "TryGetPointerTraceAll",
-        "signature": "public bool TryGetPointerTraceAll(out System.ReadOnlySpan\u003CGcPointerTrace\u003E traces)"
       },
       {
         "id": "Method.TryGetScreenKeyboardArea(GcAABB)",
@@ -4068,31 +3739,6 @@
         "signature": "public bool IsAccelerometerSupported { get; }"
       },
       {
-        "id": "Property.IsAnyKey",
-        "name": "IsAnyKey",
-        "signature": "public bool IsAnyKey { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyDown",
-        "name": "IsAnyKeyDown",
-        "signature": "public bool IsAnyKeyDown { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyHold",
-        "name": "IsAnyKeyHold",
-        "signature": "public bool IsAnyKeyHold { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyPress",
-        "name": "IsAnyKeyPress",
-        "signature": "public bool IsAnyKeyPress { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyUp",
-        "name": "IsAnyKeyUp",
-        "signature": "public bool IsAnyKeyUp { get; }"
-      },
-      {
         "id": "Property.IsScreenKeyboardSupported",
         "name": "IsScreenKeyboardSupported",
         "signature": "public bool IsScreenKeyboardSupported { get; }"
@@ -4113,64 +3759,14 @@
         "signature": "public bool IsTouchSupported { get; }"
       },
       {
-        "id": "Property.KeyDownCount",
-        "name": "KeyDownCount",
-        "signature": "public int KeyDownCount { get; }"
-      },
-      {
-        "id": "Property.KeyEscape",
-        "name": "KeyEscape",
-        "signature": "public Key KeyEscape { get; }"
-      },
-      {
-        "id": "Property.KeyHoldCount",
-        "name": "KeyHoldCount",
-        "signature": "public int KeyHoldCount { get; }"
-      },
-      {
-        "id": "Property.KeyPressCount",
-        "name": "KeyPressCount",
-        "signature": "public int KeyPressCount { get; }"
-      },
-      {
-        "id": "Property.KeyUpCount",
-        "name": "KeyUpCount",
-        "signature": "public int KeyUpCount { get; }"
+        "id": "Property.KeyEvents",
+        "name": "KeyEvents",
+        "signature": "public GcReadOnlyList\u003CGcKeyEvent\u003E KeyEvents { get; }"
       },
       {
         "id": "Property.LastAccelerationEvent",
         "name": "LastAccelerationEvent",
         "signature": "public GcAccelerationEvent LastAccelerationEvent { get; }"
-      },
-      {
-        "id": "Property.LastPointerEvent",
-        "name": "LastPointerEvent",
-        "signature": "public GcPointerEvent LastPointerEvent { get; }"
-      },
-      {
-        "id": "Property.LastPointerFrame",
-        "name": "LastPointerFrame",
-        "signature": "public int LastPointerFrame { get; }"
-      },
-      {
-        "id": "Property.LastPointerPoint",
-        "name": "LastPointerPoint",
-        "signature": "public float2 LastPointerPoint { get; }"
-      },
-      {
-        "id": "Property.LastPointerTime",
-        "name": "LastPointerTime",
-        "signature": "public float LastPointerTime { get; }"
-      },
-      {
-        "id": "Property.LastPointerX",
-        "name": "LastPointerX",
-        "signature": "public float LastPointerX { get; }"
-      },
-      {
-        "id": "Property.LastPointerY",
-        "name": "LastPointerY",
-        "signature": "public float LastPointerY { get; }"
       },
       {
         "id": "Property.LineCap",
@@ -4198,21 +3794,6 @@
         "signature": "public GcPointer Pointer { get; }"
       },
       {
-        "id": "Property.PointerBeginCount",
-        "name": "PointerBeginCount",
-        "signature": "public int PointerBeginCount { get; }"
-      },
-      {
-        "id": "Property.PointerCount",
-        "name": "PointerCount",
-        "signature": "public int PointerCount { get; }"
-      },
-      {
-        "id": "Property.PointerEndCount",
-        "name": "PointerEndCount",
-        "signature": "public int PointerEndCount { get; }"
-      },
-      {
         "id": "Property.PointerEvents",
         "name": "PointerEvents",
         "signature": "public GcReadOnlyList\u003CGcPointerEvent\u003E PointerEvents { get; }"
@@ -4221,11 +3802,6 @@
         "id": "Property.Pointers",
         "name": "Pointers",
         "signature": "public GcReadOnlyList\u003CGcPointer\u003E Pointers { get; }"
-      },
-      {
-        "id": "Property.PointerTapCount",
-        "name": "PointerTapCount",
-        "signature": "public int PointerTapCount { get; }"
       },
       {
         "id": "Property.RectAnchor",
@@ -4241,6 +3817,11 @@
         "id": "Property.StyleScope",
         "name": "StyleScope",
         "signature": "public StyleScope StyleScope { get; }"
+      },
+      {
+        "id": "Property.Taps",
+        "name": "Taps",
+        "signature": "public GcReadOnlyList\u003CGcPoint\u003E Taps { get; }"
       },
       {
         "id": "Property.TapSettings",
@@ -4265,7 +3846,7 @@
       {
         "id": "Property.TimeSinceStartup",
         "name": "TimeSinceStartup",
-        "signature": "public float TimeSinceStartup { get; }"
+        "signature": "public double TimeSinceStartup { get; }"
       },
       {
         "id": "Property.VSyncEnabled",
@@ -4329,24 +3910,24 @@
     "declaration": "public struct GcRect : IPrimitive\u003CGcRect\u003E",
     "members": [
       {
-        "id": "Constructor(float,float,float,float,float)",
+        "id": "Constructor(float,float,float,float)",
         "name": "GcRect",
-        "signature": "public GcRect(in float x, in float y, in float width, in float height, in float radian = 0f)"
+        "signature": "public GcRect(in float x, in float y, in float width, in float height)"
       },
       {
-        "id": "Constructor(float2,float,float,float)",
+        "id": "Constructor(float2,float,float)",
         "name": "GcRect",
-        "signature": "public GcRect(in float2 position, in float width, in float height, in float radian = 0f)"
+        "signature": "public GcRect(in float2 position, in float width, in float height)"
       },
       {
-        "id": "Constructor(float2,float2,float)",
+        "id": "Constructor(float2,float2)",
         "name": "GcRect",
-        "signature": "public GcRect(in float2 position, in float2 size, in float radian = 0f)"
+        "signature": "public GcRect(in float2 position, in float2 size)"
       },
       {
-        "id": "Constructor(Rect,float)",
+        "id": "Constructor(Rect)",
         "name": "GcRect",
-        "signature": "public GcRect(in Rect rect, in float radian = 0f)"
+        "signature": "public GcRect(in Rect rect)"
       },
       {
         "id": "Conversion.explicit_GcRect(Rect)",
@@ -4357,11 +3938,6 @@
         "id": "Field.Position",
         "name": "Position",
         "signature": "public float2 Position"
-      },
-      {
-        "id": "Field.Radian",
-        "name": "Radian",
-        "signature": "public float Radian"
       },
       {
         "id": "Field.Size",
@@ -4407,18 +3983,11 @@
         "id": "Operator.==(GcRect,GcRect)",
         "name": "operator ==",
         "signature": "public static bool operator ==(GcRect lh, GcRect rh)"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.GcRectExtensions",
-    "kind": "Class",
-    "declaration": "public static class GcRectExtensions",
-    "members": [
+      },
       {
-        "id": "Method.Degree(GcRect)",
-        "name": "Degree",
-        "signature": "public static float Degree(this in GcRect self)"
+        "id": "Property.Rotation",
+        "name": "Rotation",
+        "signature": "public float Rotation { readonly get; set; }"
       }
     ]
   },
@@ -5004,7 +4573,7 @@
   {
     "name": "GameCanvas.IGameCanvas",
     "kind": "Interface",
-    "declaration": "public interface IGameCanvas : IGraphicsEx, ISoundEx, INetworkEx, ISceneManagementEx, ITimeEx, IPhysicsEx, IStorageEx, IMathEx, IInputPointerEx, IInputKeyEx, IInputAccelerationEx, IInputCameraEx",
+    "declaration": "public interface IGameCanvas : IGraphicsEx, ISoundEx, INetworkEx, ISceneManagementEx, ITimeEx, IPhysicsEx, IStorageEx, IMathEx, IInputPointer, IInputKey, IInputAccelerationEx, IInputCameraEx",
     "members": [
       {
         "id": "Property.Location",
@@ -5146,7 +4715,7 @@
       {
         "id": "Method.DrawTexture(Texture,float2,float)",
         "name": "DrawTexture",
-        "signature": "void DrawTexture(in Texture texture, in float2 position, float degree = 0f)"
+        "signature": "void DrawTexture(in Texture texture, in float2 position, float rotation = 0f)"
       },
       {
         "id": "Method.DrawTexture(Texture,float2x3)",
@@ -5226,12 +4795,12 @@
       {
         "id": "Method.RotateCoordinate(float,float2)",
         "name": "RotateCoordinate",
-        "signature": "void RotateCoordinate(in float degree, in float2 origin)"
+        "signature": "void RotateCoordinate(in float rotation, in float2 origin)"
       },
       {
         "id": "Method.RotateCoordinate(float)",
         "name": "RotateCoordinate",
-        "signature": "void RotateCoordinate(in float degree)"
+        "signature": "void RotateCoordinate(in float rotation)"
       },
       {
         "id": "Method.ScaleCoordinate(float2)",
@@ -5408,32 +4977,32 @@
       {
         "id": "Method.DrawRect(float,float,float,float,float)",
         "name": "DrawRect",
-        "signature": "void DrawRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "void DrawRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRect(float2,float2,float)",
         "name": "DrawRect",
-        "signature": "void DrawRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "void DrawRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float,float,float,float,float,float)",
         "name": "DrawRoundedRect",
-        "signature": "void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)"
+        "signature": "void DrawRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float,float,float,float,float)",
         "name": "DrawRoundedRect",
-        "signature": "void DrawRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "void DrawRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float2,float2,float,float)",
         "name": "DrawRoundedRect",
-        "signature": "void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)"
+        "signature": "void DrawRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.DrawRoundedRect(float2,float2,float)",
         "name": "DrawRoundedRect",
-        "signature": "void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "void DrawRoundedRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.DrawString(string,float,float,float,float,float)",
@@ -5453,7 +5022,7 @@
       {
         "id": "Method.DrawTexture(Texture,float,float,float,float,float)",
         "name": "DrawTexture",
-        "signature": "void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "void DrawTexture(in Texture texture, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.FillCircle(float,float,float)",
@@ -5468,32 +5037,32 @@
       {
         "id": "Method.FillRect(float,float,float,float,float)",
         "name": "FillRect",
-        "signature": "void FillRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "void FillRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.FillRect(float2,float2,float)",
         "name": "FillRect",
-        "signature": "void FillRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "void FillRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float,float,float,float,float,float)",
         "name": "FillRoundedRect",
-        "signature": "void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float degree = 0f)"
+        "signature": "void FillRoundedRect(in float x, in float y, in float width, in float height, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float,float,float,float,float)",
         "name": "FillRoundedRect",
-        "signature": "void FillRoundedRect(in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "void FillRoundedRect(in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float2,float2,float,float)",
         "name": "FillRoundedRect",
-        "signature": "void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float degree = 0f)"
+        "signature": "void FillRoundedRect(in float2 position, in float2 size, float cornerRadius, float rotation = 0f)"
       },
       {
         "id": "Method.FillRoundedRect(float2,float2,float)",
         "name": "FillRoundedRect",
-        "signature": "void FillRoundedRect(in float2 position, in float2 size, float degree = 0f)"
+        "signature": "void FillRoundedRect(in float2 position, in float2 size, float rotation = 0f)"
       },
       {
         "id": "Method.GetImageHeight(GcImage)",
@@ -5513,7 +5082,7 @@
       {
         "id": "Method.RotateCoordinate(float,float,float)",
         "name": "RotateCoordinate",
-        "signature": "void RotateCoordinate(in float degree, in float originX, in float originY)"
+        "signature": "void RotateCoordinate(in float rotation, in float originX, in float originY)"
       },
       {
         "id": "Method.ScaleCoordinate(float,float)",
@@ -5818,7 +5387,7 @@
       {
         "id": "Method.TryGetCameraImageRotation(GcCameraDevice,float)",
         "name": "TryGetCameraImageRotation",
-        "signature": "bool TryGetCameraImageRotation(in GcCameraDevice camera, out float degree)"
+        "signature": "bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)"
       },
       {
         "id": "Method.TryGetCameraImageSize(GcCameraDevice,int2)",
@@ -5860,17 +5429,17 @@
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,bool)",
         "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0f, bool autoPlay = false)"
+        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0f, bool autoPlay = false)"
       },
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,float,float,bool)",
         "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = false)"
+        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false)"
       },
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,float2,float,bool)",
         "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float2 position, float degree = 0f, bool autoPlay = false)"
+        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0f, bool autoPlay = false)"
       },
       {
         "id": "Method.DrawCameraImage(GcCameraDevice,GcRect,bool)",
@@ -5905,26 +5474,6 @@
         "signature": "void HideScreenKeyboard()"
       },
       {
-        "id": "Method.IsKeyDown(Key)",
-        "name": "IsKeyDown",
-        "signature": "bool IsKeyDown(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyHold(Key)",
-        "name": "IsKeyHold",
-        "signature": "bool IsKeyHold(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyPress(Key)",
-        "name": "IsKeyPress",
-        "signature": "bool IsKeyPress(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyUp(Key)",
-        "name": "IsKeyUp",
-        "signature": "bool IsKeyUp(in Key key)"
-      },
-      {
         "id": "Method.Key(GcKey)",
         "name": "Key",
         "signature": "GcKeyState Key(GcKey key)"
@@ -5933,36 +5482,6 @@
         "id": "Method.ShowScreenKeyboard()",
         "name": "ShowScreenKeyboard",
         "signature": "bool ShowScreenKeyboard()"
-      },
-      {
-        "id": "Method.TryGetKeyEvent(Key,GcKeyEvent)",
-        "name": "TryGetKeyEvent",
-        "signature": "bool TryGetKeyEvent(in Key key, out GcKeyEvent e)"
-      },
-      {
-        "id": "Method.TryGetKeyEventAll(GcKeyEventPhase,System.ReadOnlySpan\u003CGcKeyEvent\u003E)",
-        "name": "TryGetKeyEventAll",
-        "signature": "bool TryGetKeyEventAll(in GcKeyEventPhase phase, out System.ReadOnlySpan\u003CGcKeyEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetKeyEventAll(System.ReadOnlySpan\u003CGcKeyEvent\u003E)",
-        "name": "TryGetKeyEventAll",
-        "signature": "bool TryGetKeyEventAll(out System.ReadOnlySpan\u003CGcKeyEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetKeyTrace(Key,GcKeyTrace)",
-        "name": "TryGetKeyTrace",
-        "signature": "bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)"
-      },
-      {
-        "id": "Method.TryGetKeyTraceAll(GcKeyEventPhase,System.ReadOnlySpan\u003CGcKeyTrace\u003E)",
-        "name": "TryGetKeyTraceAll",
-        "signature": "bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan\u003CGcKeyTrace\u003E traces)"
-      },
-      {
-        "id": "Method.TryGetKeyTraceAll(System.ReadOnlySpan\u003CGcKeyTrace\u003E)",
-        "name": "TryGetKeyTraceAll",
-        "signature": "bool TryGetKeyTraceAll(out System.ReadOnlySpan\u003CGcKeyTrace\u003E traces)"
       },
       {
         "id": "Method.TryGetScreenKeyboardArea(GcAABB)",
@@ -5980,81 +5499,9 @@
         "signature": "bool IsScreenKeyboardVisible { get; }"
       },
       {
-        "id": "Property.KeyDownCount",
-        "name": "KeyDownCount",
-        "signature": "int KeyDownCount { get; }"
-      },
-      {
-        "id": "Property.KeyHoldCount",
-        "name": "KeyHoldCount",
-        "signature": "int KeyHoldCount { get; }"
-      },
-      {
-        "id": "Property.KeyUpCount",
-        "name": "KeyUpCount",
-        "signature": "int KeyUpCount { get; }"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.IInputKeyEx",
-    "kind": "Interface",
-    "declaration": "public interface IInputKeyEx : IInputKey",
-    "members": [
-      {
-        "id": "Method.GetKeyPressDuration(Key)",
-        "name": "GetKeyPressDuration",
-        "signature": "float GetKeyPressDuration(in Key key)"
-      },
-      {
-        "id": "Method.GetKeyPressFrameCount(Key)",
-        "name": "GetKeyPressFrameCount",
-        "signature": "int GetKeyPressFrameCount(in Key key)"
-      },
-      {
-        "id": "Method.IsKeyHold(Key,GcKeyTrace)",
-        "name": "IsKeyHold",
-        "signature": "bool IsKeyHold(in Key key, out GcKeyTrace trace)"
-      },
-      {
-        "id": "Method.IsKeyUp(Key,GcKeyTrace)",
-        "name": "IsKeyUp",
-        "signature": "bool IsKeyUp(in Key key, out GcKeyTrace trace)"
-      },
-      {
-        "id": "Property.IsAnyKey",
-        "name": "IsAnyKey",
-        "signature": "bool IsAnyKey { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyDown",
-        "name": "IsAnyKeyDown",
-        "signature": "bool IsAnyKeyDown { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyHold",
-        "name": "IsAnyKeyHold",
-        "signature": "bool IsAnyKeyHold { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyPress",
-        "name": "IsAnyKeyPress",
-        "signature": "bool IsAnyKeyPress { get; }"
-      },
-      {
-        "id": "Property.IsAnyKeyUp",
-        "name": "IsAnyKeyUp",
-        "signature": "bool IsAnyKeyUp { get; }"
-      },
-      {
-        "id": "Property.KeyEscape",
-        "name": "KeyEscape",
-        "signature": "Key KeyEscape { get; }"
-      },
-      {
-        "id": "Property.KeyPressCount",
-        "name": "KeyPressCount",
-        "signature": "int KeyPressCount { get; }"
+        "id": "Property.KeyEvents",
+        "name": "KeyEvents",
+        "signature": "GcReadOnlyList\u003CGcKeyEvent\u003E KeyEvents { get; }"
       }
     ]
   },
@@ -6063,56 +5510,6 @@
     "kind": "Interface",
     "declaration": "public interface IInputPointer",
     "members": [
-      {
-        "id": "Method.TryGetPointerEvent(GcPointerEventPhase,int,GcPointerEvent)",
-        "name": "TryGetPointerEvent",
-        "signature": "bool TryGetPointerEvent(in GcPointerEventPhase phase, in int i, out GcPointerEvent e)"
-      },
-      {
-        "id": "Method.TryGetPointerEvent(int,GcPointerEvent)",
-        "name": "TryGetPointerEvent",
-        "signature": "bool TryGetPointerEvent(in int i, out GcPointerEvent e)"
-      },
-      {
-        "id": "Method.TryGetPointerEventAll(GcPointerEventPhase,System.ReadOnlySpan\u003CGcPointerEvent\u003E)",
-        "name": "TryGetPointerEventAll",
-        "signature": "bool TryGetPointerEventAll(in GcPointerEventPhase phase, out System.ReadOnlySpan\u003CGcPointerEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetPointerEventAll(System.ReadOnlySpan\u003CGcPointerEvent\u003E)",
-        "name": "TryGetPointerEventAll",
-        "signature": "bool TryGetPointerEventAll(out System.ReadOnlySpan\u003CGcPointerEvent\u003E events)"
-      },
-      {
-        "id": "Method.TryGetPointerTapPoint(int,float2)",
-        "name": "TryGetPointerTapPoint",
-        "signature": "bool TryGetPointerTapPoint(in int i, out float2 point)"
-      },
-      {
-        "id": "Method.TryGetPointerTapPointAll(System.ReadOnlySpan\u003Cfloat2\u003E)",
-        "name": "TryGetPointerTapPointAll",
-        "signature": "bool TryGetPointerTapPointAll(out System.ReadOnlySpan\u003Cfloat2\u003E points)"
-      },
-      {
-        "id": "Method.TryGetPointerTrace(GcPointerEventPhase,int,GcPointerTrace)",
-        "name": "TryGetPointerTrace",
-        "signature": "bool TryGetPointerTrace(in GcPointerEventPhase phase, in int i, out GcPointerTrace trace)"
-      },
-      {
-        "id": "Method.TryGetPointerTrace(int,GcPointerTrace)",
-        "name": "TryGetPointerTrace",
-        "signature": "bool TryGetPointerTrace(in int i, out GcPointerTrace trace)"
-      },
-      {
-        "id": "Method.TryGetPointerTraceAll(GcPointerEventPhase,System.ReadOnlySpan\u003CGcPointerTrace\u003E)",
-        "name": "TryGetPointerTraceAll",
-        "signature": "bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan\u003CGcPointerTrace\u003E traces)"
-      },
-      {
-        "id": "Method.TryGetPointerTraceAll(System.ReadOnlySpan\u003CGcPointerTrace\u003E)",
-        "name": "TryGetPointerTraceAll",
-        "signature": "bool TryGetPointerTraceAll(out System.ReadOnlySpan\u003CGcPointerTrace\u003E traces)"
-      },
       {
         "id": "Property.IsTouchPressureSupported",
         "name": "IsTouchPressureSupported",
@@ -6124,29 +5521,9 @@
         "signature": "bool IsTouchSupported { get; }"
       },
       {
-        "id": "Property.LastPointerEvent",
-        "name": "LastPointerEvent",
-        "signature": "GcPointerEvent LastPointerEvent { get; }"
-      },
-      {
         "id": "Property.Pointer",
         "name": "Pointer",
         "signature": "GcPointer Pointer { get; }"
-      },
-      {
-        "id": "Property.PointerBeginCount",
-        "name": "PointerBeginCount",
-        "signature": "int PointerBeginCount { get; }"
-      },
-      {
-        "id": "Property.PointerCount",
-        "name": "PointerCount",
-        "signature": "int PointerCount { get; }"
-      },
-      {
-        "id": "Property.PointerEndCount",
-        "name": "PointerEndCount",
-        "signature": "int PointerEndCount { get; }"
       },
       {
         "id": "Property.PointerEvents",
@@ -6159,171 +5536,14 @@
         "signature": "GcReadOnlyList\u003CGcPointer\u003E Pointers { get; }"
       },
       {
-        "id": "Property.PointerTapCount",
-        "name": "PointerTapCount",
-        "signature": "int PointerTapCount { get; }"
+        "id": "Property.Taps",
+        "name": "Taps",
+        "signature": "GcReadOnlyList\u003CGcPoint\u003E Taps { get; }"
       },
       {
         "id": "Property.TapSettings",
         "name": "TapSettings",
         "signature": "GcTapSettings TapSettings { get; set; }"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.IInputPointerEx",
-    "kind": "Interface",
-    "declaration": "public interface IInputPointerEx : IInputPointer",
-    "members": [
-      {
-        "id": "Method.IsTapped()",
-        "name": "IsTapped",
-        "signature": "bool IsTapped()"
-      },
-      {
-        "id": "Method.IsTapped(float,float,float,float,float,float)",
-        "name": "IsTapped",
-        "signature": "bool IsTapped(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTapped(float,float)",
-        "name": "IsTapped",
-        "signature": "bool IsTapped(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTapped(float2)",
-        "name": "IsTapped",
-        "signature": "bool IsTapped(out float2 point)"
-      },
-      {
-        "id": "Method.IsTapped(GcAABB,float2)",
-        "name": "IsTapped",
-        "signature": "bool IsTapped(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchBegan()",
-        "name": "IsTouchBegan",
-        "signature": "bool IsTouchBegan()"
-      },
-      {
-        "id": "Method.IsTouchBegan(float,float,float,float,float,float)",
-        "name": "IsTouchBegan",
-        "signature": "bool IsTouchBegan(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTouchBegan(float,float)",
-        "name": "IsTouchBegan",
-        "signature": "bool IsTouchBegan(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTouchBegan(float2)",
-        "name": "IsTouchBegan",
-        "signature": "bool IsTouchBegan(out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchBegan(GcAABB,float2)",
-        "name": "IsTouchBegan",
-        "signature": "bool IsTouchBegan(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchBegan(GcPointerEvent)",
-        "name": "IsTouchBegan",
-        "signature": "bool IsTouchBegan(out GcPointerEvent pointer)"
-      },
-      {
-        "id": "Method.IsTouched()",
-        "name": "IsTouched",
-        "signature": "bool IsTouched()"
-      },
-      {
-        "id": "Method.IsTouched(float,float,float,float,float,float)",
-        "name": "IsTouched",
-        "signature": "bool IsTouched(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTouched(float,float)",
-        "name": "IsTouched",
-        "signature": "bool IsTouched(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTouched(float2)",
-        "name": "IsTouched",
-        "signature": "bool IsTouched(out float2 point)"
-      },
-      {
-        "id": "Method.IsTouched(GcAABB,float2)",
-        "name": "IsTouched",
-        "signature": "bool IsTouched(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouched(GcPointerEvent)",
-        "name": "IsTouched",
-        "signature": "bool IsTouched(out GcPointerEvent e)"
-      },
-      {
-        "id": "Method.IsTouched(GcPointerTrace)",
-        "name": "IsTouched",
-        "signature": "bool IsTouched(out GcPointerTrace trace)"
-      },
-      {
-        "id": "Method.IsTouchEnded()",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded()"
-      },
-      {
-        "id": "Method.IsTouchEnded(float,float,float,float,float,float)",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py)"
-      },
-      {
-        "id": "Method.IsTouchEnded(float,float)",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded(out float x, out float y)"
-      },
-      {
-        "id": "Method.IsTouchEnded(float2)",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded(out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchEnded(GcAABB,float2)",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded(in GcAABB aabb, out float2 point)"
-      },
-      {
-        "id": "Method.IsTouchEnded(GcPointerEvent)",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded(out GcPointerEvent e)"
-      },
-      {
-        "id": "Method.IsTouchEnded(GcPointerTrace)",
-        "name": "IsTouchEnded",
-        "signature": "bool IsTouchEnded(out GcPointerTrace trace)"
-      },
-      {
-        "id": "Property.LastPointerFrame",
-        "name": "LastPointerFrame",
-        "signature": "int LastPointerFrame { get; }"
-      },
-      {
-        "id": "Property.LastPointerPoint",
-        "name": "LastPointerPoint",
-        "signature": "float2 LastPointerPoint { get; }"
-      },
-      {
-        "id": "Property.LastPointerTime",
-        "name": "LastPointerTime",
-        "signature": "float LastPointerTime { get; }"
-      },
-      {
-        "id": "Property.LastPointerX",
-        "name": "LastPointerX",
-        "signature": "float LastPointerX { get; }"
-      },
-      {
-        "id": "Property.LastPointerY",
-        "name": "LastPointerY",
-        "signature": "float LastPointerY { get; }"
       }
     ]
   },
@@ -6400,12 +5620,17 @@
       {
         "id": "Method.Random(float,float)",
         "name": "Random",
-        "signature": "float Random(in float min, in float max)"
+        "signature": "float Random(in float min, in float maxExclusive)"
       },
       {
         "id": "Method.Random(int,int)",
         "name": "Random",
-        "signature": "int Random(in int min, in int max)"
+        "signature": "int Random(in int min, in int maxExclusive)"
+      },
+      {
+        "id": "Method.Random(int)",
+        "name": "Random",
+        "signature": "int Random(int maxExclusive)"
       },
       {
         "id": "Method.Repeat(float,float)",
@@ -6511,17 +5736,17 @@
       {
         "id": "Method.DrawOnlineImage(string,float,float,float,float,float)",
         "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float degree = 0f)"
+        "signature": "GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
         "id": "Method.DrawOnlineImage(string,float,float,float)",
         "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in float x, in float y, float degree = 0f)"
+        "signature": "GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f)"
       },
       {
         "id": "Method.DrawOnlineImage(string,float2,float)",
         "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in float2 position, float degree = 0f)"
+        "signature": "GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f)"
       },
       {
         "id": "Method.DrawOnlineImage(string,GcRect)",
@@ -6920,7 +6145,7 @@
       {
         "id": "Property.TimeSinceStartup",
         "name": "TimeSinceStartup",
-        "signature": "float TimeSinceStartup { get; }"
+        "signature": "double TimeSinceStartup { get; }"
       },
       {
         "id": "Property.VSyncEnabled",
