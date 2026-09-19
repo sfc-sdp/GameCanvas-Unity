@@ -348,11 +348,12 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, m_TexImage[image.m_Path], mtx);
         }
 
-        public void DrawImage(in GcImage image, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
+        public void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
         {
             var previous = RectAnchor;
             RectAnchor = anchor;
-            try { DrawImageCore(image, rect); }
+            var area = rect; area.Radian += math.radians(rotation);
+            try { DrawImageCore(image, area); }
             finally { RectAnchor = previous; }
         }
 
@@ -582,11 +583,12 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, texture, mtx);
         }
 
-        public void DrawString(in string str, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
+        public void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
         {
             var previous = StringAnchor;
             StringAnchor = anchor;
-            try { DrawStringCore(str, rect); }
+            var area = rect; area.Radian += math.radians(rotation);
+            try { DrawStringCore(str, area); }
             finally { StringAnchor = previous; }
         }
 

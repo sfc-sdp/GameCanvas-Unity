@@ -209,7 +209,7 @@ namespace GameCanvas
         /// <param name="image">描画する画像</param>
         /// <param name="rect">画像をフィッティングする矩形領域</param>
         /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawImage(in GcImage image, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 線を描画します
@@ -272,7 +272,7 @@ namespace GameCanvas
         /// <param name="str">描画する文字列</param>
         /// <param name="rect">文字列をフィッティングする矩形領域</param>
         /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
-        void DrawString(in string str, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft);
+        void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// テクスチャーを描画します
@@ -413,6 +413,13 @@ namespace GameCanvas
 
     public interface IGraphicsEx : IGraphics
     {
+        /// <summary>キャンバス座標に画像を描きます。</summary>
+        void DrawImage(string path, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        /// <summary>キャンバス座標に画像を描きます。</summary>
+        void DrawImage(in GcImage image, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        /// <summary>キャンバス座標に文字を描きます。</summary>
+        void DrawString(string text, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+
         /// <summary>Assets/Resからの相対パスで画像を描きます。rotationは時計回りの度数です。</summary>
         /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
         void DrawImage(string path, float x, float y, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);

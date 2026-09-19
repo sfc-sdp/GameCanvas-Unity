@@ -968,9 +968,19 @@ namespace GameCanvas
         public void DrawImage(string path, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
         {
             var area = rect; area.Radian += math.radians(rotation);
-            if (GcAssets.TryGetImage(path, out var image)) DrawImage(image, area, anchor);
+            if (GcAssets.TryGetImage(path, out var image)) DrawImage(image, area, anchor: anchor);
             else DrawMissingImage(path, area, anchor);
         }
+        /// <summary>キャンバス座標に画像を描きます。</summary>
+        public void DrawImage(string path, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+            => DrawImage(path, position.X, position.Y, rotation, anchor);
+        /// <summary>キャンバス座標に画像を描きます。</summary>
+        public void DrawImage(in GcImage image, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+            => DrawImage(image, position.X, position.Y, rotation, anchor);
+        /// <summary>キャンバス座標に文字を描きます。</summary>
+        public void DrawString(string text, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+            => DrawString(text, position.X, position.Y, rotation, anchor);
+
         void DrawMissingImage(string path, in GcRect area, GcAnchor anchor)
         {
             GcAssets.ReportMissingImage(path);
@@ -995,7 +1005,7 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
-            => m_Context.Graphics.DrawImage(image, new GcRect(x, y, width, height, math.radians(rotation)), anchor);
+            => m_Context.Graphics.DrawImage(image, new GcRect(x, y, width, height, math.radians(rotation)), anchor: anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1004,8 +1014,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawImage(in GcImage image, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
-            => m_Context.Graphics.DrawImage(image, rect, anchor);
+        public void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawImage(image, rect, rotation, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1150,7 +1160,7 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
-            => m_Context.Graphics.DrawString(str, new GcRect(x, y, width, height, math.radians(rotation)), anchor);
+            => m_Context.Graphics.DrawString(str, new GcRect(x, y, width, height, math.radians(rotation)), anchor: anchor);
 
         /// <inheritdoc/>
         public void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
@@ -1158,8 +1168,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawString(in string str, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
-            => m_Context.Graphics.DrawString(str, rect, anchor);
+        public void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawString(str, rect, rotation, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

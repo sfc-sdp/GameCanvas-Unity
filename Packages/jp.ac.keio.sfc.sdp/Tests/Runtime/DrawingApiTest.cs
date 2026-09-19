@@ -39,7 +39,7 @@ namespace GameCanvas.Tests
                     if (modern) gc.DrawImage("BallRed.png", new GcRect(350, 400, 120, 90), rotation: 30, anchor: anchor);
                     else core.Invoke(renderer, new object[] { image, rect });
                     gc.SetColor(0, 0, 0); gc.SetFontSize(28);
-                    if (modern) gc.DrawString("日本語ABC", 350, 700, rotation: 15, anchor: anchor);
+                    if (modern) gc.DrawString("日本語ABC", new GcPoint(350, 700), rotation: 15, anchor: anchor);
                     else textCore.Invoke(renderer, new object[] { "日本語ABC", new float2(350, 700), 15f });
                     camera.Render(); RenderTexture.active = target;
                     readback.ReadPixels(new Rect(0, 0, target.width, target.height), 0, 0); readback.Apply();
@@ -56,7 +56,7 @@ namespace GameCanvas.Tests
                     CollectionAssert.AreEqual(expected, actual, anchor.ToString());
                 }
                 gc.SetRectAnchor(GcAnchor.MiddleCenter); gc.SetStringAnchor(GcAnchor.LowerRight);
-                gc.DrawImage("BallRed.png", 0, 0); gc.DrawString("既定は左上", 0, 0);
+                gc.DrawImage("BallRed.png", new GcPoint(0, 0)); gc.DrawImage(image, new GcPoint(0, 0)); gc.DrawString("既定は左上", 0, 0);
                 Assert.That(renderer.RectAnchor, Is.EqualTo(GcAnchor.MiddleCenter));
                 Assert.That(renderer.StringAnchor, Is.EqualTo(GcAnchor.LowerRight));
                 int component = 128; gc.SetColor(component, 64, 32);
