@@ -18,7 +18,7 @@ Assets/Res/背景/青空.png      →  背景/青空.png
 ```csharp
 gc.DrawImage("BlueSky.png", 0, 0);
 gc.DrawImage("BlueSky.png", gc.Pointer.Position);
-gc.DrawImage("BlueSky.png", new GcRect(40, 800, 320, 240), rotation: 15);
+gc.DrawImage("BlueSky.png", new GcRect(40, 800, 320, 240) { Rotation = 15 });
 ```
 
 `rotation` は時計回りの度数です。省略すると 0 です。基準点は `SetRectAnchor` です。既定は左上です。回転の中心もこの点です。`GcPoint` も渡せます。`gc.Pointer.Position` がそのまま使えます。
@@ -28,7 +28,9 @@ gc.SetRectAnchor(GcAnchor.MiddleCenter);
 gc.DrawImage("BlueSky.png", 360, 640, rotation: 30);
 ```
 
-`GcRect` の `Radian` は弧度法です。パスでもハンドルでも、矩形指定の `rotation` は既定 0 です。`rotation` は矩形の回転へ加える度数で、渡した `GcRect` 自体は変わりません。矩形指定でも `SetRectAnchor` を見ます。
+`GcRect` の公開コンストラクタは位置とサイズだけです。回転は `Rotation` に度数で入れます。`GcRect.FromDegrees(40, 800, 320, 240, 15)` でも同じです。ラジアンの公開の入口はありません。
+
+パスでもハンドルでも、矩形指定の `rotation` は既定 0 です。`rotation` は矩形の回転へ加える度数で、渡した `GcRect` 自体は変わりません。矩形指定でも `SetRectAnchor` を見ます。
 
 `SetRectAnchor` は図形、画像、Texture、カメラ画像、オンライン画像に効きます。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。
 
@@ -41,7 +43,7 @@ if (GcAssets.TryGetImage("BlueSky.png", out var sky))
 {
     gc.DrawImage(sky, 0, 0);
     gc.DrawImage(sky, gc.Pointer.Position);
-    gc.DrawImage(sky, new GcRect(40, 800, 320, 240), rotation: 15);
+    gc.DrawImage(sky, new GcRect(40, 800, 320, 240) { Rotation = 15 });
 }
 ```
 
@@ -66,6 +68,12 @@ gc.DrawString("ここ", gc.Pointer.Position);
 ```
 
 引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の `SetStringAnchor` を使います。文字の矩形指定も、`rotation` は矩形の回転へ加える度数です。渡した `GcRect` 自体は変わりません。
+
+```csharp
+gc.DrawString("枠に入れる", new GcRect(40, 800, 320, 80) { Rotation = 10 }, rotation: 5);
+```
+
+この例では、矩形の 10 度に引数の 5 度を足して描きます。
 
 色は 0 から 255 の整数です。`int` の変数でも同じ単位です。範囲外は端の値へ丸めます。0 から 1 で作りたいときは `GcColor.FromNormalized` を使い、NaN は渡せません。
 

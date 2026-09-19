@@ -2,7 +2,14 @@
 ## 8.0.0-pre.1
 プレリリースです。正式版ではありません。
 ### 仕様変更
-- 入力の基本は `gc.Pointer` / `gc.Pointers` / `gc.PointerEvents` と `gc.Key(GcKey)`
+- 入力の基本は `gc.Pointer` / `gc.Pointers` / `gc.PointerEvents` / `gc.Taps` と `gc.Key(GcKey)` / `gc.KeyEvents`
+- `IsTouchBegan` / `IsTouched` / `IsTouchEnded` / `IsTapped`、`IsKeyDown` / `Hold` / `Press` / `Up`、`IsAnyKey*`、`TryGetPointer*` / `TryGetKey*`、`PointerCount` / `BeginCount` / `EndCount` / `TapCount`、`Key*Count`、`LastPointer*`、`KeyEscape`、`GetKeyPress*`、`GcPointerTrace` / `GcKeyTrace` を削除
+- `gc.KeyEvents` は `GcReadOnlyList<GcKeyEvent>`。`Phase` は `Down` / `Up` / `Cancelled`。押し続けは `gc.Key(...).Held`
+- `gc.Taps` は成立したタップの押し始め位置。`gc.TapSettings` の `MaxDistance` は途中の移動を足した距離、`MaxDuration` は秒。既定は 25 と 0.125
+- `Pointer.Duration`、`Key(...).Duration`、イベントの `Time`、`gc.TimeSinceStartup` は `double` の秒。`gc.TimeSincePrevFrame` は `float` の秒
+- 描画と座標回転の引数名は `rotation`。単位は時計回りの度。カメラの取得角度も `rotation`。`Sin` / `Cos` の `degree` はそのまま
+- `GcRect` の公開回転は `Rotation`（度）。公開コンストラクタは位置とサイズだけ。`Degree()` を削除
+- `Random()` は 0 以上 1 未満。`Random(int maxExclusive)` を追加。整数・小数とも上限は含まない。以前の整数は上限を含んでいた。空や逆の範囲、NaN / Infinity は `ArgumentOutOfRangeException`
 - 画像はパス指定の `DrawImage`。基準点は状態。図形・画像・Texture・カメラ画像・オンライン画像は `SetRectAnchor`、文字は `SetStringAnchor`。引数なし、`GcPoint`、数値の位置、`GcRect` でも状態を見る
 - `SetColor(int, int, int, int = 255)` は 0 から 255。範囲外は丸める
 - 位置情報は `gc.Location` に統一。旧 Geolocation API を削除

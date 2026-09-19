@@ -61,7 +61,7 @@ public sealed class DeviceCameraSample : GameBase
         playing = true;
         message = $"{device.DeviceName}\n({size.x}x{size.y})";
         if (gc.IsFlippedCameraImage(device)) message += "\nFlipped";
-        if (gc.TryGetCameraImageRotation(device, out var deg) && deg != 0f) message += $"\nRotate {deg}";
+        if (gc.TryGetCameraImageRotation(device, out var rotation) && rotation != 0f) message += $"\nrotation {rotation}";
     }
 
     public override void DrawGame()

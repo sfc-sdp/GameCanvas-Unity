@@ -13,5 +13,6 @@ This software is released under the MIT License, see [LICENSE](LICENSE.md).
 - 文字: `gc.DrawString(text, x, y)`
 - 基準点: 図形・画像は `gc.SetRectAnchor`、文字は `gc.SetStringAnchor`
 - 色: `gc.SetColor(r, g, b)` （0 から 255）
-- 入力: `gc.Pointer` / `gc.Pointers` / `gc.Key(GcKey.Space)`
+- 入力: `gc.Pointer` / `gc.Pointers` / `gc.Taps` / `gc.Key(GcKey.Space)`
+- 乱数: `gc.Random()` は 0 以上 1 未満。整数は上限を含まない。サイコロは `gc.Random(1, 7)`
 - 位置情報: `gc.Location.Start` / `Stop` / `TryGetSample`

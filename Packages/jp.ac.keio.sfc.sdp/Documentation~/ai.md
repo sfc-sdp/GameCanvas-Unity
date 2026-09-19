@@ -10,7 +10,7 @@ GameCanvas の編集をAIに頼むときは、バージョンと、触ってよ�
 
 > このプロジェクトは Unity 6000.6.2f1 に固定しています。作業ルールと `scripts/doctor.py --json` を先に読んでください。素材は `Assets/GameCanvas/asset-catalog.json` にあるものだけを使い、`Assets/Game.cs` を変更してください。コンパイル、テスト、再生で目に見えた結果を分けて報告してください。既存の変更と素材は消さないでください。
 
-入力なら [ポインターで操作する](pointer-input.md)、画像なら [画像と日本語](images-and-text.md) を読ませてから頼んでください。`LastPointerX` や `StartGeolocationService`、`TryGetImage` を必須にした最初の表示は、今の入口ではありません。
+入力なら [ポインターで操作する](pointer-input.md)、画像なら [画像と日本語](images-and-text.md) を読ませてから頼んでください。`IsTouchBegan`、`IsTapped`、`IsKeyDown`、`LastPointerX`、`StartGeolocationService`、`TryGetImage` を必須にした最初の表示は、今の入口ではありません。入力は `gc.Pointer` / `gc.Pointers` / `gc.Taps` / `gc.Key(GcKey)` です。
 
 ## エディタを操作する
 
