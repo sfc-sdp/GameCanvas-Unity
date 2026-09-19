@@ -33,7 +33,11 @@ namespace GameCanvas
         /// <summary>
         /// 離した瞬間
         /// </summary>
-        End
+        End,
+        /// <summary>OSやフォーカス喪失による中断。タップには数えない。</summary>
+        Cancelled,
+        /// <summary>マウス・ペンの非押下時の位置変化。</summary>
+        Hover
     }
 
     static class UnityTouchPhaseExtension
@@ -46,7 +50,7 @@ namespace GameCanvas
                 TouchPhase.Moved => GcPointerEventPhase.Hold,
                 TouchPhase.Stationary => GcPointerEventPhase.Hold,
                 TouchPhase.Ended => GcPointerEventPhase.End,
-                TouchPhase.Canceled => GcPointerEventPhase.End,
+                TouchPhase.Canceled => GcPointerEventPhase.Cancelled,
                 _ => GcPointerEventPhase.Invalid,
             };
         }

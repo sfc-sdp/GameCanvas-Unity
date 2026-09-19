@@ -14,7 +14,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-using UnityEngine.InputSystem.EnhancedTouch;
+using System.Collections.Generic;
 using UnityEngine.InputSystem.LowLevel;
 
 namespace GameCanvas.Engine
@@ -25,12 +25,12 @@ namespace GameCanvas.Engine
         #region 変数
         //----------------------------------------------------------
 
-        static readonly bool k_IsTouchSupported = (Touchscreen.current != null) && (Application.platform != RuntimePlatform.WindowsEditor);
-        static readonly bool k_IsTouchPressureSupported = k_IsTouchSupported && Input.touchPressureSupported;
-        static readonly int k_EventNumMax = (k_IsTouchSupported && Input.multiTouchEnabled) ? 10 : 3;
-
+        const int k_EventNumMax = 16;
         readonly GcContext m_Context;
-        readonly InputStateHistory m_History;
+        readonly GcPointerSource m_Source;
+        readonly GcPointerTracker m_Tracker = new();
+        readonly List<int> m_ActiveIds = new(16);
+        bool m_Paused, m_Focused = true;
         GcPointerEvent m_LastPointer = GcPointerEvent.Null;
         NativeList<GcPointerEvent> m_PointerList;
         NativeList<GcPointerEvent> m_PointerListBegin;
@@ -48,9 +48,15 @@ namespace GameCanvas.Engine
         #region 公開関数
         //----------------------------------------------------------
 
-        public bool IsTouchPressureSupported => k_IsTouchPressureSupported;
+        public bool IsTouchPressureSupported => IsTouchSupported && Input.touchPressureSupported;
 
-        public bool IsTouchSupported => k_IsTouchSupported;
+        public bool IsTouchSupported => Touchscreen.current != null;
+
+        public GcPointer Pointer => m_Tracker.Pointer;
+        public GcReadOnlyList<GcPointer> Pointers => m_Tracker.Pointers;
+        public GcReadOnlyList<GcPointerEvent> PointerEvents => m_Tracker.Events;
+        internal void SetPaused(bool paused) { m_Paused = paused; m_Source.SetSuspended(m_Paused || !m_Focused); }
+        internal void SetFocused(bool focused) { m_Focused = focused; m_Source.SetSuspended(m_Paused || !m_Focused); }
 
         public GcPointerEvent LastPointerEvent => m_LastPointer;
 
@@ -342,14 +348,7 @@ namespace GameCanvas.Engine
             m_PointerTraceListEnd = new NativeList<GcPointerTrace>(k_EventNumMax, Allocator.Persistent);
             m_TapPointList = new NativeList<float2>(k_EventNumMax, Allocator.Persistent);
 
-            if (!k_IsTouchSupported)
-            {
-                TouchSimulation.Enable();
-            }
-
-            GcAssert.IsNotNull(Touchscreen.current);
-            m_History = new InputStateHistory(Touchscreen.current.touches);
-            m_History.StartRecording();
+            m_Source = new GcPointerSource();
         }
 
         void System.IDisposable.Dispose()
@@ -365,7 +364,7 @@ namespace GameCanvas.Engine
 
             if (m_PointerTraceDict.IsCreated) m_PointerTraceDict.Dispose();
 
-            m_History.Dispose();
+            m_Source.Dispose();
         }
 
         void IEngine.OnAfterDraw()
@@ -384,19 +383,26 @@ namespace GameCanvas.Engine
             m_PointerTraceListEnd.Clear();
             m_TapPointList.Clear();
 
-            using var canditates = new NativeList<GcPointerEvent>(Allocator.Temp);
-
-            foreach (var record in m_History)
+            double time = m_Context.Time.TimeSinceStartup;
+            double inputTime = InputState.currentTime;
+            m_Tracker.BeginFrame(m_Context.Time.CurrentFrame, time);
+            for (int i = 0; i < m_Source.Pending.Count; i++)
             {
-                var touch = (TouchControl)record.control;
-                var time = (float)record.time;
-                canditates.Add(GcPointerEvent.FromTouch(m_Context, touch, time));
+                var raw = m_Source.Pending[i];
+                m_Context.Graphics.ScreenToCanvasPoint(raw.Screen, out float2 point);
+                var record = new GcPointerRecord(raw.Device, raw.Contact, raw.Kind, raw.Phase,
+                    raw.Screen, time - System.Math.Max(0, inputTime - raw.Time), raw.Present, raw.CancelDevice);
+                var size = m_Context.Graphics.CanvasSize;
+                m_Tracker.Accept(record, new GcPoint(point.x, point.y),
+                    point.x >= 0 && point.y >= 0 && point.x < size.x && point.y < size.y);
             }
-            m_History.Clear();
+            m_Source.Pending.Clear();
+            m_Tracker.EndFrame();
 
-            for (var i = 0; i < canditates.Length; i++)
+            // 従来のイベント・軌跡APIも同じ入力記録から更新する。
+            for (var i = 0; i < PointerEvents.Count; i++)
             {
-                var e = canditates[i];
+                var e = PointerEvents[i];
                 switch (e.Phase)
                 {
                     case GcPointerEventPhase.Begin:
@@ -405,6 +411,7 @@ namespace GameCanvas.Engine
                         if (m_PointerTraceDict.TryAdd(e.Id, t))
                         {
                             m_PointerList.Add(e);
+                            m_ActiveIds.Add(e.Id);
                             m_PointerListBegin.Add(e);
                             m_PointerTraceList.Add(t);
                         }
@@ -425,18 +432,20 @@ namespace GameCanvas.Engine
                     }
                     break;
 
+                    case GcPointerEventPhase.Cancelled:
                     case GcPointerEventPhase.End:
                     {
                         if (m_PointerTraceDict.TryGetValue(e.Id, out var t))
                         {
                             UpdateTrace(ref t, e);
                             m_PointerList.Add(e);
-                            m_PointerListEnd.Add(e);
+                            if (e.Phase == GcPointerEventPhase.End) m_PointerListEnd.Add(e);
                             m_PointerTraceList.Add(t);
-                            m_PointerTraceListEnd.Add(t);
+                            if (e.Phase == GcPointerEventPhase.End) m_PointerTraceListEnd.Add(t);
                             m_PointerTraceDict.Remove(e.Id);
+                            m_ActiveIds.Remove(e.Id);
 
-                            if (m_TapSettings.IsTap(t))
+                            if (e.Phase == GcPointerEventPhase.End && m_TapSettings.IsTap(t))
                             {
                                 m_TapPointList.Add(t.Begin.Point);
                             }
@@ -447,21 +456,17 @@ namespace GameCanvas.Engine
             }
 
             // 欠損したHoldイベントを補う
-            using (var traceArray = m_PointerTraceDict.GetValueArray(Allocator.Temp))
+            for (var i = 0; i < m_ActiveIds.Count; i++)
             {
-                for (var i = 0; i < traceArray.Length; i++)
-                {
-                    var t = traceArray[i];
-                    if (t.Current.Frame == m_Context.Time.CurrentFrame) continue;
-
-                    var e = GcPointerEvent.FromTrace(m_Context, t);
-                    UpdateTrace(ref t, e);
-                    m_PointerList.Add(e);
-                    m_PointerListHold.Add(e);
-                    m_PointerTraceList.Add(t);
-                    m_PointerTraceListHold.Add(t);
-                    m_PointerTraceDict[e.Id] = t;
-                }
+                var t = m_PointerTraceDict[m_ActiveIds[i]];
+                if (t.Current.Frame == m_Context.Time.CurrentFrame) continue;
+                var e = GcPointerEvent.FromTrace(m_Context, t);
+                UpdateTrace(ref t, e);
+                m_PointerList.Add(e);
+                m_PointerListHold.Add(e);
+                m_PointerTraceList.Add(t);
+                m_PointerTraceListHold.Add(t);
+                m_PointerTraceDict[e.Id] = t;
             }
 
             if (m_PointerList.Length != 0)

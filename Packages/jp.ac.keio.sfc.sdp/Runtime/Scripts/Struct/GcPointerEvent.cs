@@ -54,6 +54,11 @@ namespace GameCanvas
         /// 時間（起動からの経過秒数）
         /// </summary>
         public readonly float Time;
+
+        public GcPointerType Kind { get; }
+        public GcPoint Position => new(Point.x, Point.y);
+        public float X => Point.x;
+        public float Y => Point.y;
         #endregion
 
         //----------------------------------------------------------
@@ -87,8 +92,9 @@ namespace GameCanvas
         #region 内部関数
         //----------------------------------------------------------
 
-        internal GcPointerEvent(in int frame, in float time, in int id, in GcPointerEventPhase phase, in float2 point, in float2 pointScreen)
+        internal GcPointerEvent(in int frame, in float time, in int id, in GcPointerEventPhase phase, in float2 point, in float2 pointScreen, GcPointerType kind = GcPointerType.Touch)
         {
+            Kind = kind;
             Time = time;
             Frame = frame;
             Id = id;
@@ -115,7 +121,7 @@ namespace GameCanvas
             var phase = GcPointerEventPhase.Hold;
             var point = trace.Current.Point;
             var pointScreen = trace.Current.PointScreen;
-            return new GcPointerEvent(frame, time, id, phase, point, pointScreen);
+            return new GcPointerEvent(frame, time, id, phase, point, pointScreen, trace.Current.Kind);
         }
         #endregion
     }

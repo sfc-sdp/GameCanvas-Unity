@@ -549,6 +549,13 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
+        public GcPointer Pointer => m_Context.InputPointer.Pointer;
+        /// <inheritdoc/>
+        public GcReadOnlyList<GcPointer> Pointers => m_Context.InputPointer.Pointers;
+        /// <inheritdoc/>
+        public GcReadOnlyList<GcPointerEvent> PointerEvents => m_Context.InputPointer.PointerEvents;
+
+        /// <inheritdoc/>
         public GcPointerEvent LastPointerEvent
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2810,15 +2817,20 @@ namespace GameCanvas
         internal void OnEnable() => m_Context.Graphics?.Init();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal void OnFocus(bool focus) => m_Context.InputPointer.SetFocused(focus);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnPause()
         {
             Location.Stop();
+            m_Context.InputPointer.SetPaused(true);
             m_Context.InputAcceleration.OnPause();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnUnpause()
         {
+            m_Context.InputPointer.SetPaused(false);
             m_Context.InputAcceleration.OnUnpause();
         }
 

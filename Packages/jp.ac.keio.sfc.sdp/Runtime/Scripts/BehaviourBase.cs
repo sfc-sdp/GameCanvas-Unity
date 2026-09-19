@@ -47,6 +47,7 @@ namespace GameCanvas
 
         private void OnApplicationFocus(bool focus)
         {
+            m_Proxy.OnFocus(focus);
             if (focus)
             {
                 OnFocusOnce?.Invoke();

@@ -16,6 +16,13 @@ namespace GameCanvas
 {
     public interface IInputPointer
     {
+        /// <summary>代表のポインター。接触終了後に残った指へ乗り移らない。</summary>
+        GcPointer Pointer { get; }
+        /// <summary>このフレームの状態一覧。終了した接触も含む。添字はIDではない。</summary>
+        GcReadOnlyList<GcPointer> Pointers { get; }
+        /// <summary>入力変化の順序付き一覧。通常の解放と中断を区別する。</summary>
+        GcReadOnlyList<GcPointerEvent> PointerEvents { get; }
+
         /// <summary>
         /// 実行端末でタッチ圧力がサポートされているかどうか
         /// </summary>

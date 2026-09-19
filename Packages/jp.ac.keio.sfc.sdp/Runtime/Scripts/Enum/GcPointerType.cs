@@ -31,6 +31,8 @@ namespace GameCanvas
         /// <summary>
         /// マウス、その他
         /// </summary>
-        Others
+        Others,
+        /// <summary>マウス。基本の押下は左ボタン。</summary>
+        Mouse
     }
 }
