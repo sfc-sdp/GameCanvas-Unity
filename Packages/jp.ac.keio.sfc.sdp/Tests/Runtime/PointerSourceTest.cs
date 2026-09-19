@@ -60,6 +60,16 @@ namespace GameCanvas.Tests
             Assert.That(records.Exists(r => r.Phase == GcPointerEventPhase.Begin && r.Screen.x == 10));
             Assert.That(records.Exists(r => r.Phase == GcPointerEventPhase.End && r.Screen.x == 90));
         }
+        [Test] public void RegisteringAnUnusedMouseDoesNotInventAHoverAtTheOrigin()
+        {
+            var unused = InputSystem.AddDevice<Mouse>();
+            try
+            {
+                InputSystem.Update();
+                Assert.That(source.Pending.Exists(r => r.Device == unused.deviceId), Is.False);
+            }
+            finally { InputSystem.RemoveDevice(unused); }
+        }
         [Test] public void ResetCancelsInsteadOfReleasingAndHotplugIsObserved()
         {
             Mouse(true, 10); source.Pending.Clear(); InputSystem.ResetDevice(mouse);

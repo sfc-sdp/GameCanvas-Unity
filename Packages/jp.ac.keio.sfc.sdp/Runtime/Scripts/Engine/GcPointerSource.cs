@@ -56,7 +56,8 @@ namespace GameCanvas.Engine
                 cursors[device.deviceId] = new Cursor { Position = pointer.position.ReadValue(),
                     Suppressed = pointer.press.isPressed };
                 Watch(device);
-                CaptureCursor(pointer, InputState.currentTime);
+                // Androidが登録する未使用のMouseもある。登録だけで原点に
+                // ホバーを作らず、実際に届いた状態変更から座標を公開する。
             }
         }
         void Watch(InputControl control)

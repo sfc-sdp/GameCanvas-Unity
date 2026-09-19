@@ -54,6 +54,11 @@ namespace GameCanvas.Diagnostics
                 if (e.Phase != GcPointerEventPhase.Begin && e.Phase != GcPointerEventPhase.End && e.Phase != GcPointerEventPhase.Cancelled) continue;
                 lastEvent = $"{e.Kind} ID {e.Id} / {e.Phase} / ({e.X:F0}, {e.Y:F0})";
                 Debug.Log($"GC_POINTER_EVENT frame={e.Frame} id={e.Id} kind={e.Kind} phase={e.Phase} x={e.X:F1} y={e.Y:F1}");
+                for (int j = 0; j < gc.Pointers.Count; j++)
+                {
+                    var p = gc.Pointers[j];
+                    Debug.Log($"GC_POINTER_STATE id={p.Id} kind={p.Kind} held={p.Held} present={p.Present}");
+                }
             }
         }
         internal void Draw(IGameCanvas gc)
