@@ -958,6 +958,30 @@ namespace GameCanvas
         public void DrawCircle(in GcCircle circle)
             => m_Context.Graphics.DrawCircle(circle);
 
+        /// <summary>Assets/Resからの相対パスで画像を描きます。</summary>
+        public void DrawImage(string path, float x, float y, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+        {
+            if (GcAssets.TryGetImage(path, out var image)) DrawImage(image, x, y, rotation, anchor);
+            else DrawMissingImage(path, new GcRect(x, y, 64, 64, math.radians(rotation)), anchor);
+        }
+        /// <summary>画像を指定した領域へ拡大・縮小します。rotationは矩形の回転へ加える度数です。</summary>
+        public void DrawImage(string path, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)
+        {
+            var area = rect; area.Radian += math.radians(rotation);
+            if (GcAssets.TryGetImage(path, out var image)) DrawImage(image, area, anchor);
+            else DrawMissingImage(path, area, anchor);
+        }
+        void DrawMissingImage(string path, in GcRect area, GcAnchor anchor)
+        {
+            GcAssets.ReportMissingImage(path);
+            using (StyleScope)
+            {
+                SetRectAnchor(anchor); SetColor(255, 0, 255); FillRect(area);
+                SetColor(0, 0, 0); SetFontSize(16);
+                DrawString(path ?? "<null>", area.Position.x, area.Position.y, anchor: anchor);
+            }
+        }
+
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawImage(in GcImage image)
@@ -965,23 +989,23 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawImage(in GcImage image, in float x, in float y, float degree = 0f)
-            => m_Context.Graphics.DrawImage(image, new float2(x, y), degree);
+        public void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawImage(image, new float2(x, y), rotation, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.DrawImage(image, new GcRect(x, y, width, height, math.radians(degree)));
+        public void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawImage(image, new GcRect(x, y, width, height, math.radians(rotation)), anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawImage(in GcImage image, in float2 position, float degree = 0f)
-            => m_Context.Graphics.DrawImage(image, position, degree);
+        public void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawImage(image, position, rotation, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawImage(in GcImage image, in GcRect rect)
-            => m_Context.Graphics.DrawImage(image, rect);
+        public void DrawImage(in GcImage image, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawImage(image, rect, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1120,22 +1144,22 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawString(in string str, in float x, in float y, float degree = 0f)
-            => m_Context.Graphics.DrawString(str, new float2(x, y), degree);
+        public void DrawString(in string str, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawString(str, new float2(x, y), rotation, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawString(in string str, in float x, in float y, in float width, in float height, float degree = 0f)
-            => m_Context.Graphics.DrawString(str, new GcRect(x, y, width, height, math.radians(degree)));
+        public void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawString(str, new GcRect(x, y, width, height, math.radians(rotation)), anchor);
 
         /// <inheritdoc/>
-        public void DrawString(in string str, in float2 position, float degree = 0f)
-            => m_Context.Graphics.DrawString(str, position, degree);
+        public void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawString(str, position, rotation, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawString(in string str, in GcRect rect)
-            => m_Context.Graphics.DrawString(str, rect);
+        public void DrawString(in string str, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
+            => m_Context.Graphics.DrawString(str, rect, anchor);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1886,8 +1910,11 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetBackgroundColor(in float r, in float g, in float b)
-            => m_Context.Graphics.BackgroundColor = new Color(r, g, b);
+        public void SetBackgroundColor(int r, int g, int b)
+            => m_Context.Graphics.BackgroundColor = new GcColor(r, g, b).ToUnity();
+
+        public void SetBackgroundColor(in GcColor color)
+            => m_Context.Graphics.BackgroundColor = color.ToUnity();
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1896,8 +1923,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetColor(in float r, in float g, in float b, float a = 1f)
-            => m_Context.Graphics.Color = new Color(r, g, b, a);
+        public void SetColor(in GcColor color)
+            => m_Context.Graphics.Color = color.ToUnity();
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1911,8 +1938,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetColor(in byte r, in byte g, in byte b, byte a = 255)
-            => m_Context.Graphics.Color = new Color32(r, g, b, a);
+        public void SetColor(int r, int g, int b, int a = 255)
+            => SetColor(new GcColor(r, g, b, a));
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

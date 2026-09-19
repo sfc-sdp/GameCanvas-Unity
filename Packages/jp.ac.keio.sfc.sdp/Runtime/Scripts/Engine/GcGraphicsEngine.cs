@@ -315,7 +315,15 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, m_TexImage[image.m_Path], mtx);
         }
 
-        public void DrawImage(in GcImage image, in float2 position, float degree = 0f)
+        public void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+        {
+            var previous = RectAnchor;
+            RectAnchor = anchor;
+            try { DrawImageCore(image, position, rotation); }
+            finally { RectAnchor = previous; }
+        }
+
+        void DrawImageCore(in GcImage image, in float2 position, float degree = 0f)
         {
             if (!m_IsInit || image.Invalid) return;
 
@@ -340,7 +348,15 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, m_TexImage[image.m_Path], mtx);
         }
 
-        public void DrawImage(in GcImage image, in GcRect rect)
+        public void DrawImage(in GcImage image, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
+        {
+            var previous = RectAnchor;
+            RectAnchor = anchor;
+            try { DrawImageCore(image, rect); }
+            finally { RectAnchor = previous; }
+        }
+
+        void DrawImageCore(in GcImage image, in GcRect rect)
         {
             if (!m_IsInit || image.Invalid) return;
 
@@ -547,7 +563,15 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, texture, m_CurrentMatrix);
         }
 
-        public void DrawString(in string str, in float2 position, float degree = 0f)
+        public void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)
+        {
+            var previous = StringAnchor;
+            StringAnchor = anchor;
+            try { DrawStringCore(str, position, rotation); }
+            finally { StringAnchor = previous; }
+        }
+
+        void DrawStringCore(in string str, in float2 position, float degree = 0f)
         {
             GetOrCreateTextMesh(str, out var mesh, out var texture);
 
@@ -558,7 +582,15 @@ namespace GameCanvas.Engine
             DrawMesh(mesh, texture, mtx);
         }
 
-        public void DrawString(in string str, in GcRect rect)
+        public void DrawString(in string str, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft)
+        {
+            var previous = StringAnchor;
+            StringAnchor = anchor;
+            try { DrawStringCore(str, rect); }
+            finally { StringAnchor = previous; }
+        }
+
+        void DrawStringCore(in string str, in GcRect rect)
         {
             GetOrCreateTextMesh(str, out var mesh, out var texture);
 

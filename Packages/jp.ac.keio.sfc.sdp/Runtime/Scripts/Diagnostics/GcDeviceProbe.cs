@@ -34,7 +34,7 @@ namespace GameCanvas.Diagnostics
         public override void DrawGame()
         {
             gc.ClearScreen();
-            gc.DrawImage(sky, 0, 0);
+            gc.DrawImage("BlueSky.png", 0, 0);
             gc.SetColor(0, 0, 0);
             gc.SetFontSize(36);
             gc.SetStringAnchor(GcAnchor.UpperLeft);
@@ -47,6 +47,9 @@ namespace GameCanvas.Diagnostics
         public override void UpdateGame()
         {
             if (pointerMode) pointerDemo.Update(gc);
+            var key = gc.Key(GcKey.Space);
+            if (key.Down || key.Up || key.Cancelled)
+                Log("key.space", $"down={key.Down}; held={key.Held}; up={key.Up}; cancelled={key.Cancelled}; duration={key.Duration:F3}");
             if (cameraTexture != null && cameraTexture.didUpdateThisFrame && cameraTexture.width > 16)
             {
                 if (cameraFrames++ == 0) Log("camera.frame", $"{cameraTexture.width}x{cameraTexture.height}; rotation={cameraTexture.videoRotationAngle}; mirrored={cameraTexture.videoVerticallyMirrored}");

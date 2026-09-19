@@ -199,15 +199,17 @@ namespace GameCanvas
         /// </summary>
         /// <param name="image">描画する画像</param>
         /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawImage(in GcImage image, in float2 position, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 画像を拡縮して描画します
         /// </summary>
         /// <param name="image">描画する画像</param>
         /// <param name="rect">画像をフィッティングする矩形領域</param>
-        void DrawImage(in GcImage image, in GcRect rect);
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawImage(in GcImage image, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 線を描画します
@@ -260,15 +262,17 @@ namespace GameCanvas
         /// </summary>
         /// <param name="str">描画する文字列</param>
         /// <param name="position">位置</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawString(in string str, in float2 position, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 文字列を拡縮して描画します
         /// </summary>
         /// <param name="str">描画する文字列</param>
         /// <param name="rect">文字列をフィッティングする矩形領域</param>
-        void DrawString(in string str, in GcRect rect);
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawString(in string str, in GcRect rect, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// テクスチャーを描画します
@@ -409,6 +413,13 @@ namespace GameCanvas
 
     public interface IGraphicsEx : IGraphics
     {
+        /// <summary>Assets/Resからの相対パスで画像を描きます。rotationは時計回りの度数です。</summary>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawImage(string path, float x, float y, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+        /// <summary>指定した領域に画像を描きます。rotationは矩形の回転へ加える度数です。</summary>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawImage(string path, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft);
+
         /// <summary>
         /// キャンバスのAABB
         /// </summary>
@@ -534,8 +545,9 @@ namespace GameCanvas
         /// <param name="image">描画する画像</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawImage(in GcImage image, in float x, in float y, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 画像を拡縮して描画します
@@ -545,8 +557,9 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅。画像の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。画像の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 線を描画します
@@ -626,8 +639,9 @@ namespace GameCanvas
         /// <param name="str">描画する文字列</param>
         /// <param name="x">X座標</param>
         /// <param name="y">Y座標</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawString(in string str, in float x, in float y, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawString(in string str, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// 文字列を拡縮して描画します
@@ -637,8 +651,9 @@ namespace GameCanvas
         /// <param name="y">Y座標</param>
         /// <param name="width">横幅。文字列の横幅がこれになるように拡縮される</param>
         /// <param name="height">縦幅。文字列の縦幅がこれになるように拡縮される</param>
-        /// <param name="degree">回転（度数法）</param>
-        void DrawString(in string str, in float x, in float y, in float width, in float height, float degree = 0f);
+        /// <param name="rotation">回転（度数法）</param>
+        /// <param name="anchor">指定位置に置く基準点。回転はこの点を中心に時計回りで行います。</param>
+        void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft);
 
         /// <summary>
         /// テクスチャーを拡縮して描画します
@@ -770,7 +785,13 @@ namespace GameCanvas
         /// <param name="r">背景色の赤成分</param>
         /// <param name="g">背景色の緑成分</param>
         /// <param name="b">背景色の青成分</param>
-        void SetBackgroundColor(in float r, in float g, in float b);
+        void SetBackgroundColor(int r, int g, int b);
+
+        void SetBackgroundColor(in GcColor color);
+
+        /// <summary>指定した色を描画に使います。</summary>
+        /// <param name="color">色</param>
+        void SetColor(in GcColor color);
 
         /// <summary>
         /// 描画色を指定します
@@ -779,16 +800,7 @@ namespace GameCanvas
         /// <param name="g">描画色の緑成分</param>
         /// <param name="b">描画色の青成分</param>
         /// <param name="a">描画色の不透明度</param>
-        void SetColor(in float r, in float g, in float b, float a = 1f);
-
-        /// <summary>
-        /// 描画色を指定します
-        /// </summary>
-        /// <param name="r">描画色の赤成分</param>
-        /// <param name="g">描画色の緑成分</param>
-        /// <param name="b">描画色の青成分</param>
-        /// <param name="a">描画色の不透明度</param>
-        void SetColor(in byte r, in byte g, in byte b, byte a = 255);
+        void SetColor(int r, int g, int b, int a = 255);
 
         /// <summary>
         /// 描画色を指定します

@@ -1,5 +1,6 @@
 #nullable enable
 using System.Text;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameCanvas
@@ -9,14 +10,25 @@ namespace GameCanvas
     {
         internal const string Prefix = "catalog:";
         static GcAssetCatalog? catalog;
+        const int CacheLimit = 256;
+        static readonly Dictionary<string, GcImage> images = new(System.StringComparer.Ordinal);
+        static readonly HashSet<string> reportedMissing = new(System.StringComparer.Ordinal);
+        static bool missingLimitReported;
+        static bool catalogLoaded;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        internal static void Reset() => catalog = null;
+        internal static void Reset()
+        {
+            if (catalog != null) catalog.Invalidate();
+            catalog = null; catalogLoaded = false;
+            images.Clear(); reportedMissing.Clear(); missingLimitReported = false;
+        }
 
         internal static string Normalize(string key) => key.Replace('\\', '/').Normalize(NormalizationForm.FormC);
         internal static T? Find<T>(string key) where T : Object
         {
             if (string.IsNullOrEmpty(key)) return null;
-            if (catalog == null) catalog = Resources.Load<GcAssetCatalog>("GcAssetCatalog");
+            if (!catalogLoaded)
+            { catalog = Resources.Load<GcAssetCatalog>("GcAssetCatalog"); catalogLoaded = true; }
             return catalog == null ? null : catalog.Find<T>(Normalize(key));
         }
         internal static T? Resolve<T>(string path) where T : Object
@@ -24,9 +36,26 @@ namespace GameCanvas
 
         public static bool TryGetImage(string key, out GcImage image)
         {
+            if (string.IsNullOrEmpty(key)) { image = default; return false; }
+            if (images.TryGetValue(key, out image)) return !image.Invalid;
             var sprite = Find<Sprite>(key);
             image = sprite == null ? default : new GcImage(Prefix + Normalize(key), (int)sprite.rect.width, (int)sprite.rect.height);
+            // 画像は複製しない。文字列と小さなハンドルだけを上限付きで保持する。
+            if (images.Count >= CacheLimit) images.Clear();
+            images[key] = image;
             return sprite != null;
+        }
+        internal static void ReportMissingImage(string key)
+        {
+            key ??= "<null>";
+            if (reportedMissing.Contains(key)) return;
+            if (reportedMissing.Count >= CacheLimit)
+            {
+                if (!missingLimitReported) UnityEngine.Debug.LogWarning("[GameCanvas] GC_ASSET_MISSING: further missing image paths suppressed.");
+                missingLimitReported = true; return;
+            }
+            reportedMissing.Add(key);
+            UnityEngine.Debug.LogWarning($"[GameCanvas] GC_ASSET_MISSING: '{key}'. Add this image to Assets/Res and check the asset catalog.");
         }
         public static bool TryGetSound(string key, out GcSound sound)
         {
