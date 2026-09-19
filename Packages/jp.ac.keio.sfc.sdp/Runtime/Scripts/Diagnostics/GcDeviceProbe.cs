@@ -15,6 +15,8 @@ namespace GameCanvas.Diagnostics
         GUIStyle? label, button;
         GcImage sky;
         Coroutine? locationRoutine, cameraRoutine, networkRoutine;
+        bool pointerMode;
+        readonly GcPointerDragDemo pointerDemo = new();
         int cameraFrames;
         double cameraDeadline;
 
@@ -39,10 +41,12 @@ namespace GameCanvas.Diagnostics
             gc.DrawString("画像と日本語の表示確認", 28, 60);
             gc.DrawString("青空・漢字・ひらがな・カタカナ", 28, 115);
             gc.DrawString($"時刻 {gc.TimeSinceStartup:F1} 秒", 28, 165);
+            if (pointerMode) pointerDemo.Draw(gc);
         }
 
         public override void UpdateGame()
         {
+            if (pointerMode) pointerDemo.Update(gc);
             if (cameraTexture != null && cameraTexture.didUpdateThisFrame && cameraTexture.width > 16)
             {
                 if (cameraFrames++ == 0) Log("camera.frame", $"{cameraTexture.width}x{cameraTexture.height}; rotation={cameraTexture.videoRotationAngle}; mirrored={cameraTexture.videoVerticallyMirrored}");
@@ -66,6 +70,12 @@ namespace GameCanvas.Diagnostics
             }
             var scale = Mathf.Min(Screen.width / 720f, Screen.height / 1280f);
             GUI.matrix = Matrix4x4.TRS(new Vector3((Screen.width - 720 * scale) / 2, (Screen.height - 1280 * scale) / 2, 0), Quaternion.identity, new Vector3(scale, scale, 1));
+            if (GUI.Button(new Rect(370, 190, 320, 60), pointerMode ? "端末機能へ戻る" : "ポインターを確認", button))
+            {
+                pointerDemo.Reset();
+                pointerMode = !pointerMode;
+            }
+            if (pointerMode) return;
             GUI.Box(new Rect(12, 260, 696, 1008), "");
             if (GUI.Button(new Rect(28, 280, 320, 65), "位置情報を取得", button) && !locationBusy && !cameraBusy)
                 locationRoutine = StartCoroutine(Location());
