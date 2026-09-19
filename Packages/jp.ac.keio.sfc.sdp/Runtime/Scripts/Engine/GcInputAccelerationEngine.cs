@@ -116,21 +116,6 @@ namespace GameCanvas.Engine
             events = m_EventList.AsReadOnlySpan();
             return (m_EventList.Length > 0);
         }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetAccelerationEvents(out NativeArray<GcAccelerationEvent>.ReadOnly array, out int count)
-        {
-            count = m_EventList.Length;
-
-            if (count > 0)
-            {
-                array = m_EventList.AsArray().AsReadOnly();
-                return true;
-            }
-            array = default;
-            return false;
-        }
         #endregion
 
         //----------------------------------------------------------

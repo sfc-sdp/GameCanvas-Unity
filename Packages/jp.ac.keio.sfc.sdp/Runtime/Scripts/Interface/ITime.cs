@@ -87,33 +87,6 @@ namespace GameCanvas
 
     public interface ITimeEx : ITime
     {
-        [System.Obsolete("Use to `CurrentTimeDay` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentDay { get; }
-
-        [System.Obsolete("Use to `CurrentTimeDayOfWeek` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        System.DayOfWeek CurrentDayOfWeek { get; }
-
-        [System.Obsolete("Use to `CurrentTimeHour` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentHour { get; }
-
-        [System.Obsolete("Use to `CurrentTimeMillisecond` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentMillisecond { get; }
-
-        [System.Obsolete("Use to `CurrentTimeMinute` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentMinute { get; }
-
-        [System.Obsolete("Use to `CurrentTimeMonth` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentMonth { get; }
-
-        [System.Obsolete("Use to `CurrentTimeSecond` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentSecond { get; }
 
         /// <summary>
         /// 現在フレームの日付（1～31）
@@ -154,9 +127,5 @@ namespace GameCanvas
         /// 現在フレームの日付の西暦部分
         /// </summary>
         int CurrentTimeYear { get; }
-
-        [System.Obsolete("Use to `CurrentTimeYear` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        int CurrentYear { get; }
     }
 }

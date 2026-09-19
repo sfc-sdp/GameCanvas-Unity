@@ -143,58 +143,6 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetPointerEventArray(out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
-        {
-            count = m_PointerList.Length;
-            if (count != 0)
-            {
-                array = m_PointerList.AsArray().AsReadOnly();
-                return true;
-            }
-            array = default;
-            return false;
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetPointerEventArray(in GcPointerEventPhase phase, out NativeArray<GcPointerEvent>.ReadOnly array, out int count)
-        {
-            switch (phase)
-            {
-                case GcPointerEventPhase.Begin:
-                    count = m_PointerListBegin.Length;
-                    if (count != 0)
-                    {
-                        array = m_PointerListBegin.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-
-                case GcPointerEventPhase.Hold:
-                    count = m_PointerListHold.Length;
-                    if (count != 0)
-                    {
-                        array = m_PointerListHold.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-
-                case GcPointerEventPhase.End:
-                    count = m_PointerListEnd.Length;
-                    if (count != 0)
-                    {
-                        array = m_PointerListEnd.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-            }
-            array = default;
-            count = 0;
-            return false;
-        }
-
         public bool TryGetPointerTapPoint(in int i, out float2 point)
         {
             if (i >= 0 && i < m_TapPointList.Length)
@@ -210,20 +158,6 @@ namespace GameCanvas.Engine
         {
             points = m_TapPointList.AsReadOnlySpan();
             return (m_TapPointList.Length != 0);
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetPointerTapPointArray(out NativeArray<float2>.ReadOnly array, out int count)
-        {
-            count = m_TapPointList.Length;
-            if (count != 0)
-            {
-                array = m_TapPointList.AsArray().AsReadOnly();
-                return true;
-            }
-            array = default;
-            return false;
         }
 
         public bool TryGetPointerTrace(in int i, out GcPointerTrace trace)
@@ -280,49 +214,6 @@ namespace GameCanvas.Engine
                     return (m_PointerTraceListEnd.Length != 0);
             }
             traces = System.ReadOnlySpan<GcPointerTrace>.Empty;
-            return false;
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetPointerTraceArray(out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
-        {
-            count = m_PointerTraceList.Length;
-            if (count != 0)
-            {
-                array = m_PointerTraceList.AsArray().AsReadOnly();
-                return true;
-            }
-            array = default;
-            return false;
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetPointerTraceArray(in GcPointerEventPhase phase, out NativeArray<GcPointerTrace>.ReadOnly array, out int count)
-        {
-            switch (phase)
-            {
-                case GcPointerEventPhase.Hold:
-                    count = m_PointerTraceListHold.Length;
-                    if (count != 0)
-                    {
-                        array = m_PointerTraceListHold.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-
-                case GcPointerEventPhase.End:
-                    count = m_PointerTraceListEnd.Length;
-                    if (count != 0)
-                    {
-                        array = m_PointerTraceListEnd.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-            }
-            array = default;
-            count = 0;
             return false;
         }
         #endregion

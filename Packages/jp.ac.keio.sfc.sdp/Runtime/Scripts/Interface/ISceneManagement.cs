@@ -80,9 +80,6 @@ namespace GameCanvas
         bool TryRemoveActor(in GcActor actor);
 
         #region Obsolete
-        [System.Obsolete("Use to `TryGetActorAll` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor;
         #endregion
     }
 
@@ -112,12 +109,7 @@ namespace GameCanvas
         /// <returns>取得できたアクター</returns>
         T? GetActor<T>() where T : GcActor;
 
-        /// <summary>
-        /// シーンに登録されているアクターのうち、指定した型のものを取得します
-        /// </summary>
-        /// <typeparam name="T">取得するアクターの型</typeparam>
-        /// <returns>取得したアクターのリスト</returns>
-        ReadOnlyActorList<T> GetActorList<T>() where T : GcActor;
+
 
         /// <summary>
         /// 新たなシーンを登録します

@@ -132,19 +132,6 @@ namespace GameCanvas
             return false;
         }
 
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetActorList<T>(out ReadOnlyActorList<T> list) where T : GcActor
-        {
-            if (m_TypeToActors.TryGetValue(typeof(T), out var actors))
-            {
-                list = new ReadOnlyActorList<T>(actors);
-                return true;
-            }
-            list = default;
-            return false;
-        }
-
         /// <inheritdoc/>
         public bool TryRemoveActor(in GcActor actor)
         {

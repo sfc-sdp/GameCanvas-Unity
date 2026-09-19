@@ -135,58 +135,6 @@ namespace GameCanvas.Engine
             return false;
         }
 
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyEventArray(out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
-        {
-            count = m_KeyEventList.Length;
-            if (count != 0)
-            {
-                array = m_KeyEventList.AsArray().AsReadOnly();
-                return true;
-            }
-            array = default;
-            return false;
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyEventArray(in GcKeyEventPhase phase, out NativeArray<GcKeyEvent>.ReadOnly array, out int count)
-        {
-            switch (phase)
-            {
-                case GcKeyEventPhase.Down:
-                    count = m_KeyEventListOnlyDown.Length;
-                    if (count != 0)
-                    {
-                        array = m_KeyEventListOnlyDown.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-
-                case GcKeyEventPhase.Hold:
-                    count = m_KeyEventListOnlyHold.Length;
-                    if (count != 0)
-                    {
-                        array = m_KeyEventListOnlyHold.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-
-                case GcKeyEventPhase.Up:
-                    count = m_KeyEventListOnlyUp.Length;
-                    if (count != 0)
-                    {
-                        array = m_KeyEventListOnlyUp.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-            }
-            count = 0;
-            array = default;
-            return false;
-        }
-
         public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)
             => m_KeyTraceDict.TryGetValue((int)key, out trace);
 
@@ -209,49 +157,6 @@ namespace GameCanvas.Engine
                     return (m_KeyTraceListOnlyUp.Length != 0);
             }
             traces = System.ReadOnlySpan<GcKeyTrace>.Empty;
-            return false;
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyTraceArray(out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
-        {
-            count = m_KeyTraceList.Length;
-            if (count != 0)
-            {
-                array = m_KeyTraceList.AsArray().AsReadOnly();
-                return true;
-            }
-            array = default;
-            return false;
-        }
-
-        [System.Obsolete("Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool TryGetKeyTraceArray(in GcKeyEventPhase phase, out NativeArray<GcKeyTrace>.ReadOnly array, out int count)
-        {
-            switch (phase)
-            {
-                case GcKeyEventPhase.Hold:
-                    count = m_KeyTraceListOnlyHold.Length;
-                    if (count != 0)
-                    {
-                        array = m_KeyTraceListOnlyHold.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-
-                case GcKeyEventPhase.Up:
-                    count = m_KeyTraceListOnlyUp.Length;
-                    if (count != 0)
-                    {
-                        array = m_KeyTraceListOnlyUp.AsArray().AsReadOnly();
-                        return true;
-                    }
-                    break;
-            }
-            count = 0;
-            array = default;
             return false;
         }
 

@@ -181,13 +181,5 @@ namespace GameCanvas
         /// <param name="y">ベクトルのY軸の大きさ</param>
         /// <returns>角度（度数法）</returns>
         float Atan2(in float x, in float y);
-
-        [System.Obsolete("Use to `RotateVector` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        float2 Rotate(in float2 vector, in float degree);
-
-        [System.Obsolete("Use to `SetRandomSeed` instead. Will be removed in v8.0.")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        void SetSeed(in int seed);
     }
 }
