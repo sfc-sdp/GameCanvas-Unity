@@ -801,7 +801,6 @@ namespace GameCanvas.Engine
             m_MeshPool = new ObjectPool<Mesh>();
             m_TextFont = new Dictionary<string, GcReferenceFont>();
             m_TextMesh = new DictWithLife<TextGenKey, Mesh>();
-            m_TextMesh = new DictWithLife<TextGenKey, Mesh>();
             m_TextGenerator = new DictWithLife<TextGenKey, TextGenerator>();
             m_TextMeshVerticesCache = new List<UIVertex>();
 
@@ -1484,8 +1483,6 @@ namespace GameCanvas.Engine
         private void GetOrCreateTextMesh(in string str, out Mesh mesh, out Texture texture)
         {
             GetOrLoadFont(m_Font, out var font);
-            texture = font.material.mainTexture;
-
             SetupTextGeneratorSettings(m_CurrentStyle, font, out var settings);
             var key = new TextGenKey(str, settings);
 
@@ -1498,10 +1495,15 @@ namespace GameCanvas.Engine
             {
                 m_TextMesh.Issue(key, out mesh);
 
+                // プールへ戻したTextGeneratorも古いUVを保持している。
+                // キャッシュを作り直す際は同じ文字列でも必ず再生成する。
+                gen.Invalidate();
                 gen.Populate(str, settings);
                 SetupMeshAsText(mesh, gen, m_TextMeshVerticesCache);
                 m_TextMeshVerticesCache.Clear();
             }
+            // Populate中にアトラスが再生成される場合がある。
+            texture = font.material.mainTexture;
         }
 
         private void GetOrLoadFont(in GcFont fontName, out Font font)
@@ -1521,8 +1523,9 @@ namespace GameCanvas.Engine
 
         private void OnFontTextureRebuild(Font font)
         {
-            m_TextMesh.ReleaseAll();
-            m_TextGenerator.ReleaseAll();
+            // 描画中に解放すると、コマンドバッファが参照しているMeshを
+            // 同じフレームの別の文字列へ再利用してしまう。次フレームで破棄する。
+            m_RebuildFontTextureFlag = true;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

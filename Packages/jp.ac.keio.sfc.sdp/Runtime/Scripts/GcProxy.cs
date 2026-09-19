@@ -2830,6 +2830,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnUnpause()
         {
+            m_Context.Graphics.RebuildFontTexture();
             m_Context.InputPointer.SetPaused(false);
             m_Context.InputAcceleration.OnUnpause();
         }
