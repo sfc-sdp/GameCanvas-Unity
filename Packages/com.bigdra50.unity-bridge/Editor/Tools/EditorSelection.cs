@@ -43,7 +43,7 @@ namespace UnityBridge.Tools
                 ["activeGameObject"] = activeGameObject != null
                     ? SerializeGameObject(activeGameObject)
                     : null,
-                ["activeInstanceID"] = Selection.activeInstanceID,
+                ["activeInstanceID"] = UnityEngine.EntityId.ToULong(Selection.activeEntityId),
                 ["objects"] = new JArray(
                     selectedObjects.Select(SerializeObject)),
                 ["gameObjects"] = new JArray(
@@ -71,7 +71,7 @@ namespace UnityBridge.Tools
             var result = new JObject
             {
                 ["name"] = obj.name,
-                ["instanceID"] = obj.GetInstanceID(),
+                ["instanceID"] = UnityEngine.EntityId.ToULong(obj.GetEntityId()),
                 ["type"] = obj.GetType().Name
             };
 
@@ -91,7 +91,7 @@ namespace UnityBridge.Tools
             return new JObject
             {
                 ["name"] = go.name,
-                ["instanceID"] = go.GetInstanceID(),
+                ["instanceID"] = UnityEngine.EntityId.ToULong(go.GetEntityId()),
                 ["tag"] = go.tag,
                 ["layer"] = go.layer,
                 ["layerName"] = LayerMask.LayerToName(go.layer),

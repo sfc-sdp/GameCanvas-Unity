@@ -168,7 +168,7 @@ namespace UnityBridge.Helpers
                 return new JObject
                 {
                     ["name"] = obj.name,
-                    ["instanceID"] = obj.GetInstanceID(),
+                    ["instanceID"] = UnityEngine.EntityId.ToULong(obj.GetEntityId()),
                     ["type"] = obj.GetType().Name
                 };
             }

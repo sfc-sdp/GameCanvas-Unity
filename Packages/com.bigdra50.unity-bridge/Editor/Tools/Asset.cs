@@ -34,7 +34,7 @@ namespace UnityBridge.Tools
         private static JObject CreatePrefab(JObject parameters)
         {
             var sourceName = parameters["source"]?.Value<string>();
-            var sourceId = parameters["sourceId"]?.Value<int>();
+            var sourceId = parameters["sourceId"]?.Value<ulong>();
             var path = parameters["path"]?.Value<string>();
 
             if (string.IsNullOrEmpty(sourceName) && sourceId == null)
@@ -170,7 +170,7 @@ namespace UnityBridge.Tools
                 ["path"] = path,
                 ["name"] = asset.name,
                 ["type"] = asset.GetType().FullName,
-                ["instanceID"] = asset.GetInstanceID(),
+                ["instanceID"] = UnityEngine.EntityId.ToULong(asset.GetEntityId()),
                 ["guid"] = AssetDatabase.AssetPathToGUID(path)
             };
         }
@@ -253,7 +253,7 @@ namespace UnityBridge.Tools
             };
         }
 
-        private static GameObject FindGameObject(string name, int? instanceId)
+        private static GameObject FindGameObject(string name, ulong? instanceId)
             => GameObjectFinder.Find(name, instanceId);
 
         private static Type FindType(string typeName)

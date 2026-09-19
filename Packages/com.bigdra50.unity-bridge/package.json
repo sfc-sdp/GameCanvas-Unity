@@ -3,7 +3,7 @@
   "version": "3.10.1",
   "displayName": "Unity Bridge",
   "description": "Bridge client enabling CLI and automation tools to control Unity Editor via TCP",
-  "unity": "2022.3",
+  "unity": "6000.6",
   "author": {
     "name": "bigdra50",
     "url": "https://github.com/bigdra50"

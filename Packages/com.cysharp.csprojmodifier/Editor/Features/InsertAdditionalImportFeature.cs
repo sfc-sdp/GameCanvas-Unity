@@ -144,8 +144,9 @@ namespace CsprojModifier.Editor.Features
 
                 var baseDir = Path.GetDirectoryName(path);
                 var xDoc = XDocument.Parse(content);
-                var nsMsbuild = (XNamespace)"http://schemas.microsoft.com/developer/msbuild/2003";
-                var projectE = xDoc.Element(nsMsbuild + "Project");
+                var projectE = xDoc.Root;
+                if (projectE == null) return content;
+                var nsMsbuild = projectE.Name.Namespace;
 
                 foreach (var target in settings.AdditionalImports)
                 {

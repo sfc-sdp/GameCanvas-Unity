@@ -155,7 +155,7 @@ namespace GameCanvas.Editor
                 case GcRuntimePlatform.iOS:
                     PlayerSettings.iOS.sdkVersion = option.m_SdkType;
                     PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
-                    PlayerSettings.iOS.targetOSVersionString = string.Empty;
+                    PlayerSettings.iOS.targetOSVersionString = "15.0";
                     PlayerSettings.SetScriptingBackend(NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
                     PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.iOS, ApiCompatibilityLevel.NET_Standard);
                     if (string.IsNullOrEmpty(PlayerSettings.iOS.cameraUsageDescription)) PlayerSettings.iOS.cameraUsageDescription = "GameCanvas";
@@ -213,7 +213,7 @@ namespace GameCanvas.Editor
 
         internal static void OnLaunch()
         {
-            if (!GcEditorSettings.CurrentSettings.CheckBuildTargetOnLaunchEditor) return;
+            if (Application.isBatchMode || !GcEditorSettings.CurrentSettings.CheckBuildTargetOnLaunchEditor) return;
 
             switch (EditorUserBuildSettings.activeBuildTarget)
             {
@@ -294,8 +294,8 @@ namespace GameCanvas.Editor
             m_Option.m_CompanyName = PlayerSettings.companyName;
             m_Option.m_OutputFolderPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../Build"));
             m_Option.m_BuildAndRun = false;
-            m_Option.m_TargetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
-            m_Option.m_MinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel24;
+            m_Option.m_TargetSdkVersion = (AndroidSdkVersions)36;
+            m_Option.m_MinimumSdkVersion = AndroidSdkVersions.AndroidApiLevel26;
             m_Option.m_SdkType = iOSSdkVersion.DeviceSDK;
             m_Option.m_Platform = EditorUserBuildSettings.activeBuildTarget.ToRuntimePlatform();
         }

@@ -16,11 +16,11 @@ namespace UnityBridge.Helpers
         /// Find a GameObject by name or instanceID.
         /// If instanceID resolves to a Component, returns its gameObject.
         /// </summary>
-        public static GameObject Find(string name, int? instanceId)
+        public static GameObject Find(string name, ulong? instanceId)
         {
             if (instanceId.HasValue)
             {
-                var obj = EditorUtility.InstanceIDToObject(instanceId.Value);
+                var obj = EditorUtility.EntityIdToObject(UnityEngine.EntityId.FromULong(instanceId.Value));
                 if (obj is GameObject go)
                     return go;
                 if (obj is Component comp)

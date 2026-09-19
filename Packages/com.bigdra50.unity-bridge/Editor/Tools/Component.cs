@@ -52,14 +52,14 @@ namespace UnityBridge.Tools
                 componentList.Add(new JObject
                 {
                     ["typeName"] = component.GetType().FullName,
-                    ["instanceID"] = component.GetInstanceID()
+                    ["instanceID"] = UnityEngine.EntityId.ToULong(component.GetEntityId())
                 });
             }
 
             return new JObject
             {
                 ["gameObject"] = gameObject.name,
-                ["gameObjectId"] = gameObject.GetInstanceID(),
+                ["gameObjectId"] = UnityEngine.EntityId.ToULong(gameObject.GetEntityId()),
                 ["components"] = componentList
             };
         }
@@ -100,7 +100,7 @@ namespace UnityBridge.Tools
             return new JObject
             {
                 ["typeName"] = component.GetType().FullName,
-                ["instanceID"] = component.GetInstanceID(),
+                ["instanceID"] = UnityEngine.EntityId.ToULong(component.GetEntityId()),
                 ["properties"] = properties
             };
         }
@@ -149,11 +149,11 @@ namespace UnityBridge.Tools
             {
                 ["message"] = $"Added {componentType.Name} to {gameObject.name}",
                 ["gameObject"] = gameObject.name,
-                ["gameObjectId"] = gameObject.GetInstanceID(),
+                ["gameObjectId"] = UnityEngine.EntityId.ToULong(gameObject.GetEntityId()),
                 ["component"] = new JObject
                 {
                     ["typeName"] = componentType.FullName,
-                    ["instanceID"] = component.GetInstanceID()
+                    ["instanceID"] = UnityEngine.EntityId.ToULong(component.GetEntityId())
                 }
             };
         }
@@ -204,7 +204,7 @@ namespace UnityBridge.Tools
             {
                 ["message"] = $"Removed {componentType.Name} from {gameObject.name}",
                 ["gameObject"] = gameObject.name,
-                ["gameObjectId"] = gameObject.GetInstanceID()
+                ["gameObjectId"] = UnityEngine.EntityId.ToULong(gameObject.GetEntityId())
             };
         }
 
@@ -285,7 +285,7 @@ namespace UnityBridge.Tools
             {
                 ["message"] = $"Modified {typeName}.{propName} on {gameObject.name}",
                 ["gameObject"] = gameObject.name,
-                ["gameObjectId"] = gameObject.GetInstanceID(),
+                ["gameObjectId"] = UnityEngine.EntityId.ToULong(gameObject.GetEntityId()),
                 ["property"] = propName,
                 ["propertyType"] = sp.propertyType.ToString()
             };
@@ -345,7 +345,7 @@ namespace UnityBridge.Tools
                     }
                     else if (value.Type == JTokenType.Integer)
                     {
-                        var obj = EditorUtility.InstanceIDToObject(value.Value<int>());
+                        var obj = EditorUtility.EntityIdToObject(UnityEngine.EntityId.FromULong(value.Value<ulong>()));
                         sp.objectReferenceValue = obj;
                     }
                     else
@@ -423,7 +423,7 @@ namespace UnityBridge.Tools
         private static UnityEngine.GameObject ResolveTargetGameObject(JObject parameters)
         {
             var target = parameters["target"]?.Value<string>();
-            var targetId = parameters["targetId"]?.Value<int>();
+            var targetId = parameters["targetId"]?.Value<ulong>();
 
             if (string.IsNullOrEmpty(target) && targetId == null)
             {
@@ -618,7 +618,7 @@ namespace UnityBridge.Tools
                 return new JObject
                 {
                     ["name"] = unityObj.name,
-                    ["instanceID"] = unityObj.GetInstanceID(),
+                    ["instanceID"] = UnityEngine.EntityId.ToULong(unityObj.GetEntityId()),
                     ["type"] = unityObj.GetType().Name
                 };
             }
@@ -656,7 +656,7 @@ namespace UnityBridge.Tools
                 ["parent"] = tr.parent != null ? new JObject
                 {
                     ["name"] = tr.parent.name,
-                    ["instanceID"] = tr.parent.gameObject.GetInstanceID()
+                    ["instanceID"] = UnityEngine.EntityId.ToULong(tr.parent.gameObject.GetEntityId())
                 } : null
             };
         }

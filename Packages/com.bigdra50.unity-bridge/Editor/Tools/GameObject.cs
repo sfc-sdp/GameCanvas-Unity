@@ -39,7 +39,7 @@ namespace UnityBridge.Tools
         private static JObject Find(JObject parameters)
         {
             var name = parameters["name"]?.Value<string>();
-            var id = parameters["id"]?.Value<int>();
+            var id = parameters["id"]?.Value<ulong>();
 
             if (string.IsNullOrEmpty(name) && !id.HasValue)
             {
@@ -169,7 +169,7 @@ namespace UnityBridge.Tools
             }
 
             var goName = targetGo.name;
-            var goId = targetGo.GetInstanceID();
+            var goId = UnityEngine.EntityId.ToULong(targetGo.GetEntityId());
 
             Undo.DestroyObjectImmediate(targetGo);
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
@@ -223,7 +223,7 @@ namespace UnityBridge.Tools
 
         private static GameObject ResolveTarget(JObject parameters)
         {
-            var id = parameters["id"]?.Value<int>();
+            var id = parameters["id"]?.Value<ulong>();
             var name = parameters["name"]?.Value<string>();
             return GameObjectFinder.Find(name, id);
         }
@@ -323,7 +323,7 @@ namespace UnityBridge.Tools
             return new JObject
             {
                 ["name"] = go.name,
-                ["instanceID"] = go.GetInstanceID(),
+                ["instanceID"] = UnityEngine.EntityId.ToULong(go.GetEntityId()),
                 ["active"] = go.activeSelf,
                 ["tag"] = go.tag,
                 ["layer"] = go.layer,
@@ -344,7 +344,7 @@ namespace UnityBridge.Tools
                     ? new JObject
                     {
                         ["name"] = transform.parent.name,
-                        ["instanceID"] = transform.parent.gameObject.GetInstanceID()
+                        ["instanceID"] = UnityEngine.EntityId.ToULong(transform.parent.gameObject.GetEntityId())
                     }
                     : null,
                 ["childCount"] = transform.childCount

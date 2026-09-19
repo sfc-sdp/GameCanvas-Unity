@@ -106,7 +106,7 @@ namespace UnityBridge.Tools
             items.Add(new JObject
             {
                 ["name"] = obj.name,
-                ["instanceID"] = obj.GetInstanceID(),
+                ["instanceID"] = UnityEngine.EntityId.ToULong(obj.GetEntityId()),
                 ["childCount"] = obj.transform.childCount,
                 ["activeSelf"] = obj.activeSelf,
                 ["tag"] = obj.tag,
