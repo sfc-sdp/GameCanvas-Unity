@@ -123,9 +123,11 @@ namespace GameCanvas
         /// <inheritdoc/>
         public bool TryGetActorAll<T>(out System.ReadOnlySpan<T> actors) where T : GcActor
         {
-            if (m_TypeToActors.TryGetValue(typeof(T), out var value))
+            if (m_TypeToActors.TryGetValue(typeof(T), out var value) && value.Count != 0)
             {
-                actors = (T[])value.ToArray();
+                var snapshot = new T[value.Count];
+                for (int i = 0; i < snapshot.Length; i++) snapshot[i] = (T)value[i];
+                actors = snapshot;
                 return true;
             }
             actors = default;
@@ -139,6 +141,7 @@ namespace GameCanvas
 
             if (m_AddActorList.Remove(actor))
             {
+                if (m_TypeToActors.TryGetValue(actor.GetType(), out var pending)) pending.Remove(actor);
                 actor.m_Scene = null;
                 return true;
             }
