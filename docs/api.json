@@ -2713,29 +2713,29 @@
         "signature": "public void DrawCircle(in GcCircle circle)"
       },
       {
-        "id": "Method.DrawImage(GcImage,float,float,float,float,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,float,float,float,float,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawImage(GcImage,float,float,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,float,float,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawImage(GcImage,float2,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,float2,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(in GcImage image, in float2 position, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawImage(GcImage,GcPoint,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,GcPoint,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(in GcImage image, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(in GcImage image, in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.DrawImage(GcImage,GcRect,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,GcRect,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(in GcImage image, in GcRect rect, float rotation = 0)"
       },
       {
         "id": "Method.DrawImage(GcImage)",
@@ -2743,19 +2743,19 @@
         "signature": "public void DrawImage(in GcImage image)"
       },
       {
-        "id": "Method.DrawImage(string,float,float,float,GcAnchor)",
+        "id": "Method.DrawImage(string,float,float,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(string path, float x, float y, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(string path, float x, float y, float rotation = 0)"
       },
       {
-        "id": "Method.DrawImage(string,GcPoint,float,GcAnchor)",
+        "id": "Method.DrawImage(string,GcPoint,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(string path, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(string path, in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.DrawImage(string,GcRect,float,GcAnchor)",
+        "id": "Method.DrawImage(string,GcRect,float)",
         "name": "DrawImage",
-        "signature": "public void DrawImage(string path, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawImage(string path, in GcRect rect, float rotation = 0)"
       },
       {
         "id": "Method.DrawLine()",
@@ -2858,29 +2858,29 @@
         "signature": "public void DrawRoundedRect(in GcRect rect)"
       },
       {
-        "id": "Method.DrawString(string,float,float,float,float,float,GcAnchor)",
+        "id": "Method.DrawString(string,float,float,float,float,float)",
         "name": "DrawString",
-        "signature": "public void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawString(string,float,float,float,GcAnchor)",
+        "id": "Method.DrawString(string,float,float,float)",
         "name": "DrawString",
-        "signature": "public void DrawString(in string str, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawString(in string str, in float x, in float y, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawString(string,float2,float,GcAnchor)",
+        "id": "Method.DrawString(string,float2,float)",
         "name": "DrawString",
-        "signature": "public void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawString(in string str, in float2 position, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawString(string,GcPoint,float,GcAnchor)",
+        "id": "Method.DrawString(string,GcPoint,float)",
         "name": "DrawString",
-        "signature": "public void DrawString(string text, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawString(string text, in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.DrawString(string,GcRect,float,GcAnchor)",
+        "id": "Method.DrawString(string,GcRect,float)",
         "name": "DrawString",
-        "signature": "public void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "public void DrawString(in string str, in GcRect rect, float rotation = 0)"
       },
       {
         "id": "Method.DrawString(string)",
@@ -5079,14 +5079,14 @@
         "signature": "void DrawCircle(in GcCircle circle)"
       },
       {
-        "id": "Method.DrawImage(GcImage,float2,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,float2,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(in GcImage image, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(in GcImage image, in float2 position, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawImage(GcImage,GcRect,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,GcRect,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(in GcImage image, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(in GcImage image, in GcRect rect, float rotation = 0)"
       },
       {
         "id": "Method.DrawImage(GcImage)",
@@ -5129,14 +5129,14 @@
         "signature": "void DrawRoundedRect(in GcRect rect)"
       },
       {
-        "id": "Method.DrawString(string,float2,float,GcAnchor)",
+        "id": "Method.DrawString(string,float2,float)",
         "name": "DrawString",
-        "signature": "void DrawString(in string str, in float2 position, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawString(in string str, in float2 position, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawString(string,GcRect,float,GcAnchor)",
+        "id": "Method.DrawString(string,GcRect,float)",
         "name": "DrawString",
-        "signature": "void DrawString(in string str, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawString(in string str, in GcRect rect, float rotation = 0)"
       },
       {
         "id": "Method.DrawString(string)",
@@ -5366,34 +5366,34 @@
         "signature": "void DrawCircle(in float2 position, in float radius)"
       },
       {
-        "id": "Method.DrawImage(GcImage,float,float,float,float,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,float,float,float,float,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(in GcImage image, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawImage(GcImage,float,float,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,float,float,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(in GcImage image, in float x, in float y, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawImage(GcImage,GcPoint,float,GcAnchor)",
+        "id": "Method.DrawImage(GcImage,GcPoint,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(in GcImage image, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(in GcImage image, in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.DrawImage(string,float,float,float,GcAnchor)",
+        "id": "Method.DrawImage(string,float,float,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(string path, float x, float y, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(string path, float x, float y, float rotation = 0)"
       },
       {
-        "id": "Method.DrawImage(string,GcPoint,float,GcAnchor)",
+        "id": "Method.DrawImage(string,GcPoint,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(string path, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(string path, in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.DrawImage(string,GcRect,float,GcAnchor)",
+        "id": "Method.DrawImage(string,GcRect,float)",
         "name": "DrawImage",
-        "signature": "void DrawImage(string path, in GcRect rect, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawImage(string path, in GcRect rect, float rotation = 0)"
       },
       {
         "id": "Method.DrawLine(float,float,float,float)",
@@ -5436,19 +5436,19 @@
         "signature": "void DrawRoundedRect(in float2 position, in float2 size, float degree = 0f)"
       },
       {
-        "id": "Method.DrawString(string,float,float,float,float,float,GcAnchor)",
+        "id": "Method.DrawString(string,float,float,float,float,float)",
         "name": "DrawString",
-        "signature": "void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawString(in string str, in float x, in float y, in float width, in float height, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawString(string,float,float,float,GcAnchor)",
+        "id": "Method.DrawString(string,float,float,float)",
         "name": "DrawString",
-        "signature": "void DrawString(in string str, in float x, in float y, float rotation = 0f, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawString(in string str, in float x, in float y, float rotation = 0f)"
       },
       {
-        "id": "Method.DrawString(string,GcPoint,float,GcAnchor)",
+        "id": "Method.DrawString(string,GcPoint,float)",
         "name": "DrawString",
-        "signature": "void DrawString(string text, in GcPoint position, float rotation = 0, GcAnchor anchor = GcAnchor.UpperLeft)"
+        "signature": "void DrawString(string text, in GcPoint position, float rotation = 0)"
       },
       {
         "id": "Method.DrawTexture(Texture,float,float,float,float,float)",
