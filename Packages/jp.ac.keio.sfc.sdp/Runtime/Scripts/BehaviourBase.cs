@@ -78,6 +78,9 @@ namespace GameCanvas
 
         private void OnDisable()
         {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.playModeStateChanged -= OnChangedPlayMode;
+#endif
             m_Proxy.OnDisable();
             OnFocusOnce = null;
         }
@@ -89,19 +92,19 @@ namespace GameCanvas
 
             UnityEditor.EditorApplication.playModeStateChanged += OnChangedPlayMode;
 
-            void OnChangedPlayMode(UnityEditor.PlayModeStateChange change)
-            {
-                if (change == UnityEditor.PlayModeStateChange.ExitingPlayMode)
-                {
-                    UnityEditor.EditorApplication.playModeStateChanged -= OnChangedPlayMode;
-                    OnDisable();
-                    StopAllCoroutines();
-                }
-            }
 #endif // UNITY_EDITOR
 
             StartCoroutine(GameLoop());
         }
+
+#if UNITY_EDITOR
+        private void OnChangedPlayMode(UnityEditor.PlayModeStateChange change)
+        {
+            if (change != UnityEditor.PlayModeStateChange.ExitingPlayMode) return;
+            OnDisable();
+            if (this != null) StopAllCoroutines();
+        }
+#endif
 
         private Sequence GameLoop()
         {

@@ -370,21 +370,9 @@ namespace GameCanvas.Engine
         /// <remarks><see href="https://qiita.com/utibenkei/items/65b56c13f43ce5809561">参考記事</see></remarks>
         private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
         {
-#if UNITY_ANDROID
-            if (HasUserAuthorizedPermissionCamera)
-            {
-                yield return null;
-                callback?.Invoke(true);
-            }
-            else
-            {
-                var onFocus = false;
-                m_Context.Behaviour.OnFocusOnce += () => onFocus = true;
-                UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.Camera);
-                while (!onFocus) yield return null;
-                yield return null;
-                callback?.Invoke(HasUserAuthorizedPermissionCamera);
-            }
+#if UNITY_ANDROID && !UNITY_EDITOR
+            yield return GcAndroidPermission.Request(new[] { UnityEngine.Android.Permission.Camera });
+            callback?.Invoke(HasUserAuthorizedPermissionCamera);
 #elif UNITY_IOS
             if (HasUserAuthorizedPermissionCamera)
             {

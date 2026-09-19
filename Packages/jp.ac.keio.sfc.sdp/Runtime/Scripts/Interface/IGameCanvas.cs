@@ -15,5 +15,8 @@ namespace GameCanvas
         , ITimeEx, IPhysicsEx, IStorageEx, IMathEx
         , IInputPointerEx, IInputKeyEx, IInputAccelerationEx
         , IInputGeolocationEx, IInputCameraEx
-    { }
+    {
+        /// <summary>位置情報の新API試作。対応状況はLocation.IsSupportedを確認する。</summary>
+        GcLocationService Location { get; }
+    }
 }

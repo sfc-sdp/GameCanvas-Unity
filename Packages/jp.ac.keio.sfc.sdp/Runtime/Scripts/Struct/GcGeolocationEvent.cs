@@ -92,7 +92,7 @@ namespace GameCanvas
             Altitude = src.altitude;
             Latitude = src.latitude;
             Longitude = src.longitude;
-            Time = EpocTime.AddMinutes(src.timestamp);
+            Time = EpocTime.AddSeconds(src.timestamp);
         }
 
         #endregion

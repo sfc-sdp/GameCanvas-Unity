@@ -28,6 +28,8 @@ namespace GameCanvas
         #region 変数
         //----------------------------------------------------------
 
+        public GcLocationService Location { get; }
+
         readonly GcContext m_Context;
         readonly Dictionary<System.Type, GcScene> m_SceneDict;
 
@@ -922,12 +924,12 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = true)
-            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)));
+            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)), autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = true)
-            => DrawCameraImage(camera, new float2(x, y), degree);
+            => DrawCameraImage(camera, new float2(x, y), degree, autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2765,6 +2767,7 @@ namespace GameCanvas
         internal GcProxy(in BehaviourBase behaviour)
         {
             m_Context = new GcContext(behaviour);
+            Location = new GcLocationService(behaviour);
             m_SceneDict = new Dictionary<System.Type, GcScene>();
 
             GcScene.Inject(this);
@@ -2793,6 +2796,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnBeforeUpdate(in System.DateTimeOffset now)
         {
+            Location.Tick();
             foreach (var engine in m_Context.EngineArray)
             {
                 engine.OnBeforeUpdate(now);
@@ -2800,7 +2804,7 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnDisable() => m_Context.Dispose();
+        internal void OnDisable() { Location.Stop(); m_Context.Dispose(); }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnEnable() => m_Context.Graphics?.Init();
@@ -2808,6 +2812,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnPause()
         {
+            Location.Stop();
             m_Context.InputAcceleration.OnPause();
         }
 

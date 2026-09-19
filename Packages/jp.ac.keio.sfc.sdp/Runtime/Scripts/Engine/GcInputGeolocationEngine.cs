@@ -52,7 +52,8 @@ namespace GameCanvas.Engine
 
         public bool HasUserAuthorizedPermissionGeolocation
 #if UNITY_ANDROID
-            => UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation);
+            => UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation)
+            || UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.CoarseLocation);
 #else
             => m_Service.isEnabledByUser;
 #endif // UNITY_ANDROID
@@ -92,7 +93,7 @@ namespace GameCanvas.Engine
         #region 内部関数
         //----------------------------------------------------------
 
-        void System.IDisposable.Dispose() { }
+        void System.IDisposable.Dispose() => StopGeolocationService();
 
         void IEngine.OnAfterDraw() { }
 
@@ -100,9 +101,8 @@ namespace GameCanvas.Engine
         {
             m_DidUpdateThisFrame = false;
 
-            if (!m_Service.isEnabledByUser) return;
-
             m_Status = m_Service.status;
+            if (!m_Service.isEnabledByUser) return;
             if (m_Status != LocationServiceStatus.Running) return;
 
             var e = new GcGeolocationEvent(m_Service.lastData);
@@ -115,21 +115,9 @@ namespace GameCanvas.Engine
 
         private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
         {
-#if UNITY_ANDROID
-            if (HasUserAuthorizedPermissionGeolocation)
-            {
-                yield return null;
-                callback?.Invoke(true);
-            }
-            else
-            {
-                var onFocus = false;
-                m_Context.Behaviour.OnFocusOnce += () => onFocus = true;
-                UnityEngine.Android.Permission.RequestUserPermission(UnityEngine.Android.Permission.FineLocation);
-                while (!onFocus) yield return null;
-                yield return null;
-                callback?.Invoke(HasUserAuthorizedPermissionGeolocation);
-            }
+#if UNITY_ANDROID && !UNITY_EDITOR
+            yield return GcAndroidPermission.Request(new[] { UnityEngine.Android.Permission.CoarseLocation, UnityEngine.Android.Permission.FineLocation });
+            callback?.Invoke(HasUserAuthorizedPermissionGeolocation);
 #elif UNITY_IOS
             if (HasUserAuthorizedPermissionGeolocation)
             {
