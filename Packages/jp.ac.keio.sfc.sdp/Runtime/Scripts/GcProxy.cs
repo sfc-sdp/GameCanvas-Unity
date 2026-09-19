@@ -15,7 +15,6 @@ using System.Runtime.CompilerServices;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace GameCanvas
 {
@@ -408,44 +407,6 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public bool IsAnyKey
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => (m_Context.InputKey.KeyDownCount != 0)
-                || (m_Context.InputKey.KeyHoldCount != 0)
-                || (m_Context.InputKey.KeyUpCount != 0);
-        }
-
-        /// <inheritdoc/>
-        public bool IsAnyKeyDown
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => (m_Context.InputKey.KeyDownCount != 0);
-        }
-
-        /// <inheritdoc/>
-        public bool IsAnyKeyHold
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => (m_Context.InputKey.KeyHoldCount != 0);
-        }
-
-        /// <inheritdoc/>
-        public bool IsAnyKeyPress
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => (m_Context.InputKey.KeyDownCount != 0)
-                || (m_Context.InputKey.KeyHoldCount != 0);
-        }
-
-        /// <inheritdoc/>
-        public bool IsAnyKeyUp
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => (m_Context.InputKey.KeyUpCount != 0);
-        }
-
-        /// <inheritdoc/>
         public bool IsScreenKeyboardSupported
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -474,41 +435,6 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public int KeyDownCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputKey.KeyDownCount;
-        }
-
-        /// <inheritdoc/>
-        public Key KeyEscape
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => UnityEngine.InputSystem.Key.Escape;
-        }
-
-        /// <inheritdoc/>
-        public int KeyHoldCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputKey.KeyHoldCount;
-        }
-
-        /// <inheritdoc/>
-        public int KeyPressCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputKey.KeyDownCount + m_Context.InputKey.KeyHoldCount;
-        }
-
-        /// <inheritdoc/>
-        public int KeyUpCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputKey.KeyUpCount;
-        }
-
-        /// <inheritdoc/>
         public GcAccelerationEvent LastAccelerationEvent
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -521,48 +447,6 @@ namespace GameCanvas
         public GcReadOnlyList<GcPointer> Pointers => m_Context.InputPointer.Pointers;
         /// <inheritdoc/>
         public GcReadOnlyList<GcPointerEvent> PointerEvents => m_Context.InputPointer.PointerEvents;
-
-        /// <inheritdoc/>
-        public GcPointerEvent LastPointerEvent
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.LastPointerEvent;
-        }
-
-        /// <inheritdoc/>
-        public int LastPointerFrame
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.LastPointerEvent.Frame;
-        }
-
-        /// <inheritdoc/>
-        public float2 LastPointerPoint
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.LastPointerEvent.Point;
-        }
-
-        /// <inheritdoc/>
-        public float LastPointerTime
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.LastPointerEvent.Time;
-        }
-
-        /// <inheritdoc/>
-        public float LastPointerX
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.LastPointerEvent.Point.x;
-        }
-
-        /// <inheritdoc/>
-        public float LastPointerY
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.LastPointerEvent.Point.y;
-        }
 
         /// <inheritdoc/>
         public GcLineCap LineCap
@@ -587,34 +471,6 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.NowTime;
-        }
-
-        /// <inheritdoc/>
-        public int PointerBeginCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.PointerBeginCount;
-        }
-
-        /// <inheritdoc/>
-        public int PointerCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.PointerCount;
-        }
-
-        /// <inheritdoc/>
-        public int PointerEndCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.PointerEndCount;
-        }
-
-        /// <inheritdoc/>
-        public int PointerTapCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputPointer.PointerTapCount;
         }
 
         /// <inheritdoc/>
@@ -673,7 +529,7 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public float TimeSinceStartup
+        public double TimeSinceStartup
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Time.TimeSinceStartup;
@@ -1282,28 +1138,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float GetKeyPressDuration(in Key key)
-        {
-            if (m_Context.InputKey.TryGetKeyTrace(key, out var trace))
-            {
-                return trace.Duration;
-            }
-            return 0f;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetKeyPressFrameCount(in Key key)
-        {
-            if (m_Context.InputKey.TryGetKeyTrace(key, out var trace))
-            {
-                return trace.FrameCount;
-            }
-            return 0;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetOnlineImageHeight(in string url)
             => m_Context.Network.TryGetOnlineImageSize(url, out var size) ? size.y : 0;
 
@@ -1371,37 +1205,8 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcKeyState Key(GcKey key) => m_Context.InputKey.Key(key);
-
-        /// <inheritdoc/>
-        public bool IsKeyDown(in Key key)
-            => m_Context.InputKey.IsKeyDown(key);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyHold(in Key key, out GcKeyTrace trace)
-            => m_Context.InputKey.TryGetKeyTrace(key, out trace)
-            && (trace.Current.Phase == GcKeyEventPhase.Hold);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyHold(in Key key)
-            => m_Context.InputKey.IsKeyHold(key);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyPress(in Key key)
-            => m_Context.InputKey.IsKeyPress(key);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyUp(in Key key, out GcKeyTrace trace)
-            => m_Context.InputKey.TryGetKeyTrace(key, out trace)
-            && (trace.Current.Phase == GcKeyEventPhase.Up);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsKeyUp(in Key key)
-            => m_Context.InputKey.IsKeyUp(key);
+        public GcReadOnlyList<GcKeyEvent> KeyEvents => m_Context.InputKey.KeyEvents;
+        public GcReadOnlyList<GcPoint> Taps => m_Context.InputPointer.Taps;
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1412,291 +1217,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.IsPlayingSound(track);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTapped()
-            => (m_Context.InputPointer.PointerTapCount != 0);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTapped(out float2 point)
-            => m_Context.InputPointer.TryGetPointerTapPoint(0, out point);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTapped(out float x, out float y)
-        {
-            if (m_Context.InputPointer.TryGetPointerTapPoint(0, out var point))
-            {
-                x = point.x;
-                y = point.y;
-                return true;
-            }
-            x = 0;
-            y = 0;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTapped(in GcAABB aabb, out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerTapPointAll(out var points))
-            {
-                foreach (var p in points)
-                {
-                    if (aabb.Contains(p))
-                    {
-                        point = p;
-                        return true;
-                    }
-                }
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTapped(in float x, in float y, in float width, in float height, out float px, out float py)
-        {
-            if (IsTapped(GcAABB.XYWH(x, y, width, height), out var point))
-            {
-                px = point.x;
-                py = point.y;
-                return true;
-            }
-            px = 0f;
-            py = 0f;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchBegan()
-            => (m_Context.InputPointer.PointerBeginCount != 0);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchBegan(out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerEvent(GcPointerEventPhase.Begin, 0, out var e))
-            {
-                point = e.Point;
-                return true;
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchBegan(out GcPointerEvent pointer)
-            => m_Context.InputPointer.TryGetPointerEvent(GcPointerEventPhase.Begin, 0, out pointer);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchBegan(out float x, out float y)
-        {
-            if (m_Context.InputPointer.TryGetPointerEvent(GcPointerEventPhase.Begin, 0, out var e))
-            {
-                x = e.Point.x;
-                y = e.Point.y;
-                return true;
-            }
-            x = 0f;
-            y = 0f;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchBegan(in GcAABB aabb, out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerEventAll(GcPointerEventPhase.Begin, out var events))
-            {
-                foreach (var e in events)
-                {
-                    if (aabb.Contains(e.Point))
-                    {
-                        point = e.Point;
-                        return true;
-                    }
-                }
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchBegan(in float x, in float y, in float width, in float height, out float px, out float py)
-        {
-            if (IsTouchBegan(GcAABB.XYWH(x, y, width, height), out var point))
-            {
-                px = point.x;
-                py = point.y;
-                return true;
-            }
-            px = 0f;
-            py = 0f;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched()
-            => (m_Context.InputPointer.PointerCount != 0);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched(out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerEvent(0, out GcPointerEvent pointer))
-            {
-                point = pointer.Point;
-                return true;
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched(out GcPointerEvent pointer)
-            => m_Context.InputPointer.TryGetPointerEvent(0, out pointer);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched(out GcPointerTrace pointer)
-            => m_Context.InputPointer.TryGetPointerTrace(0, out pointer);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched(out float x, out float y)
-        {
-            if (m_Context.InputPointer.TryGetPointerEvent(0, out var e))
-            {
-                x = e.Point.x;
-                y = e.Point.y;
-                return true;
-            }
-            x = 0f;
-            y = 0f;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched(in GcAABB aabb, out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerEventAll(out var events))
-            {
-                foreach (var e in events)
-                {
-                    if (aabb.Contains(e.Point))
-                    {
-                        point = e.Point;
-                        return true;
-                    }
-                }
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouched(in float x, in float y, in float width, in float height, out float px, out float py)
-        {
-            if (IsTouched(GcAABB.XYWH(x, y, width, height), out var point))
-            {
-                px = point.x;
-                py = point.y;
-                return true;
-            }
-            px = 0f;
-            py = 0f;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded()
-            => (m_Context.InputPointer.PointerEndCount != 0);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded(out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerEvent(GcPointerEventPhase.End, 0, out var e))
-            {
-                point = e.Point;
-                return true;
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded(out GcPointerEvent pointer)
-            => m_Context.InputPointer.TryGetPointerEvent(GcPointerEventPhase.End, 0, out pointer);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded(out GcPointerTrace pointer)
-            => m_Context.InputPointer.TryGetPointerTrace(GcPointerEventPhase.End, 0, out pointer);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded(out float x, out float y)
-        {
-            if (m_Context.InputPointer.TryGetPointerEvent(GcPointerEventPhase.End, 0, out var e))
-            {
-                x = e.Point.x;
-                y = e.Point.y;
-                return true;
-            }
-            x = 0f;
-            y = 0f;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded(in GcAABB aabb, out float2 point)
-        {
-            if (m_Context.InputPointer.TryGetPointerEventAll(GcPointerEventPhase.End, out var events))
-            {
-                foreach (var e in events)
-                {
-                    if (aabb.Contains(e.Point))
-                    {
-                        point = e.Point;
-                        return true;
-                    }
-                }
-            }
-            point = default;
-            return false;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py)
-        {
-            if (IsTouchEnded(GcAABB.XYWH(x, y, width, height), out var point))
-            {
-                px = point.x;
-                py = point.y;
-                return true;
-            }
-            px = 0f;
-            py = 0f;
-            return false;
-        }
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2106,36 +1626,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyEvent(in Key key, out GcKeyEvent e)
-            => m_Context.InputKey.TryGetKeyEvent(key, out e);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyEventAll(out System.ReadOnlySpan<GcKeyEvent> events)
-            => m_Context.InputKey.TryGetKeyEventAll(out events);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyEventAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyEvent> events)
-            => m_Context.InputKey.TryGetKeyEventAll(phase, out events);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyTrace(in Key key, out GcKeyTrace trace)
-            => m_Context.InputKey.TryGetKeyTrace(key, out trace);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyTraceAll(out System.ReadOnlySpan<GcKeyTrace> traces)
-            => m_Context.InputKey.TryGetKeyTraceAll(out traces);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetKeyTraceAll(in GcKeyEventPhase phase, out System.ReadOnlySpan<GcKeyTrace> traces)
-            => m_Context.InputKey.TryGetKeyTraceAll(phase, out traces);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture)
             => m_Context.Network.TryGetOnlineImage(url, out availability, out texture);
 
@@ -2158,56 +1648,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)
             => m_Context.Network.TryGetOnlineText(url, out availability, out str);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerEvent(in int i, out GcPointerEvent e)
-            => m_Context.InputPointer.TryGetPointerEvent(i, out e);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerEvent(in GcPointerEventPhase phase, in int i, out GcPointerEvent e)
-            => m_Context.InputPointer.TryGetPointerEvent(phase, i, out e);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerEventAll(out System.ReadOnlySpan<GcPointerEvent> events)
-            => m_Context.InputPointer.TryGetPointerEventAll(out events);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerEventAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerEvent> events)
-            => m_Context.InputPointer.TryGetPointerEventAll(phase, out events);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTapPoint(in int i, out float2 point)
-            => m_Context.InputPointer.TryGetPointerTapPoint(i, out point);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTapPointAll(out System.ReadOnlySpan<float2> points)
-            => m_Context.InputPointer.TryGetPointerTapPointAll(out points);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTrace(in int i, out GcPointerTrace history)
-            => m_Context.InputPointer.TryGetPointerTrace(i, out history);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTrace(in GcPointerEventPhase phase, in int i, out GcPointerTrace trace)
-            => m_Context.InputPointer.TryGetPointerTrace(phase, i, out trace);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTraceAll(out System.ReadOnlySpan<GcPointerTrace> traces)
-            => m_Context.InputPointer.TryGetPointerTraceAll(out traces);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerTrace> traces)
-            => m_Context.InputPointer.TryGetPointerTraceAll(phase, out traces);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

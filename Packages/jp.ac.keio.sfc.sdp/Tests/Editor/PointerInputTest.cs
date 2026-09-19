@@ -146,6 +146,48 @@ namespace GameCanvas.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => { var p = t.Pointers[1]; });
             Assert.That(default(GcReadOnlyList<GcPointer>).Count, Is.Zero);
         }
+        [Test]
+        public void TapsKeepStartPositionAndOrderAndClearNextFrame()
+        {
+            var t = new GcPointerTracker(); t.BeginFrame(1, 1.1);
+            Feed(t, GcPointerEventPhase.Begin, 10, 20, time: 1);
+            Feed(t, GcPointerEventPhase.End, 12, 22, time: 1.05);
+            Feed(t, GcPointerEventPhase.Begin, 50, 60, time: 1.06);
+            Feed(t, GcPointerEventPhase.End, 51, 60, time: 1.1); t.EndFrame();
+            Assert.That(t.Taps.Count, Is.EqualTo(2));
+            Assert.That(t.Taps[0], Is.EqualTo(new GcPoint(10, 20)));
+            Assert.That(t.Taps[1], Is.EqualTo(new GcPoint(50, 60)));
+            t.BeginFrame(2, 2); t.EndFrame(); Assert.That(t.Taps.Count, Is.Zero);
+        }
+        [TestCase(GcPointerEventPhase.Cancelled, 1.05, 0)]
+        [TestCase(GcPointerEventPhase.End, 1.5, 0)]
+        [TestCase(GcPointerEventPhase.End, 1.05, 20)]
+        public void InterruptedLongOrWanderingContactIsNotATap(GcPointerEventPhase end, double time, float excursion)
+        {
+            var t = new GcPointerTracker(); t.BeginFrame(1, time);
+            Feed(t, GcPointerEventPhase.Begin, 10, 10, time: 1);
+            Feed(t, GcPointerEventPhase.Hold, 10 + excursion, 10, time: 1.01);
+            Feed(t, end, 10, 10, time: time); t.EndFrame();
+            Assert.That(t.Taps.Count, Is.Zero);
+        }
+        [Test]
+        public void TapThresholdsAreInclusiveAndConfigurable()
+        {
+            var t = new GcPointerTracker { TapSettings = new GcTapSettings(10, .5f) };
+            t.BeginFrame(1, 1.5);
+            Feed(t, GcPointerEventPhase.Begin, 0, 0, time: 1);
+            Feed(t, GcPointerEventPhase.End, 10, 0, time: 1.5); t.EndFrame();
+            Assert.That(t.Taps.Count, Is.EqualTo(1));
+        }
+        [Test]
+        public void PointerEventsAndDurationKeepPrecisionAfterLongUptime()
+        {
+            var t = new GcPointerTracker(); t.BeginFrame(1, 86400.01);
+            Feed(t, GcPointerEventPhase.Begin, 10, 10, time: 86400.001);
+            Feed(t, GcPointerEventPhase.End, 10, 10, time: 86400.003); t.EndFrame();
+            Assert.That(t.Pointer.Duration, Is.EqualTo(.002).Within(1e-9));
+            Assert.That(t.Events[1].Time - t.Events[0].Time, Is.EqualTo(.002).Within(1e-9));
+        }
     }
 
 }

@@ -144,21 +144,21 @@ namespace GameCanvas.Tests
         }
 
         [UnityTest]
-        public IEnumerator PointerCount_IsZero_Initially()
+        public IEnumerator PointerEvents_AreEmpty_Initially()
         {
             yield return null;
 
-            Assert.AreEqual(0, _behaviour!.GcProxy.PointerCount,
-                "PointerCount should be 0 when no input");
+            Assert.AreEqual(0, _behaviour!.GcProxy.PointerEvents.Count,
+                "PointerEvents should be empty when no input");
         }
 
         [UnityTest]
-        public IEnumerator KeyDownCount_IsZero_Initially()
+        public IEnumerator KeyEvents_AreEmpty_Initially()
         {
             yield return null;
 
-            Assert.AreEqual(0, _behaviour!.GcProxy.KeyDownCount,
-                "KeyDownCount should be 0 when no keys pressed");
+            Assert.AreEqual(0, _behaviour!.GcProxy.KeyEvents.Count,
+                "KeyEvents should be empty when no keys pressed");
         }
 
         // ----------------------------------------------------------------

@@ -16,10 +16,14 @@ namespace GameCanvas.Engine
             public GcPoint Position, Start, Previous;
             public float2 Screen;
             public double Began, Ended;
+            public float Distance;
         }
         readonly List<Entry> entries = new(16);
         readonly List<GcPointer> pointers = new(16);
         readonly List<GcPointerEvent> events = new(64);
+        readonly List<GcPoint> taps = new(16);
+        public GcReadOnlyList<GcPoint> Taps => new(taps);
+        public GcTapSettings TapSettings { get; set; } = GcTapSettings.Default;
         int nextId, primaryId, frame;
         double time;
         public GcReadOnlyList<GcPointer> Pointers => new(pointers);
@@ -29,7 +33,7 @@ namespace GameCanvas.Engine
         internal void BeginFrame(int frame, double time)
         {
             this.frame = frame; this.time = time;
-            events.Clear(); pointers.Clear(); Pointer = default;
+            events.Clear(); pointers.Clear(); taps.Clear(); Pointer = default;
             for (int i = entries.Count - 1; i >= 0; i--)
             {
                 var e = entries[i];
@@ -96,12 +100,14 @@ namespace GameCanvas.Engine
                 e = new Entry { Device = record.Device, Contact = record.Contact,
                     Id = checked(++nextId), Kind = record.Kind, Previous = position, Start = position };
             }
+            if (e.Held) e.Distance += math.distance(new float2(e.Position.X, e.Position.Y), new float2(position.X, position.Y));
             e.Position = position; e.Screen = record.Screen; e.Present = record.Present; e.Inside = inside;
             if (record.Phase == GcPointerEventPhase.End || record.Phase == GcPointerEventPhase.Cancelled)
             {
                 if (!e.Held) return;
                 e.Held = false; e.Up = record.Phase == GcPointerEventPhase.End;
                 e.Cancelled = record.Phase == GcPointerEventPhase.Cancelled; e.Ended = record.Time;
+                if (e.Up && TapSettings.IsTap(Math.Max(0, e.Ended - e.Began), e.Distance)) taps.Add(e.Start);
             }
             if (index < 0) entries.Add(e); else entries[index] = e;
             AddEvent(e, record.Phase, record.Time);
@@ -126,7 +132,7 @@ namespace GameCanvas.Engine
         }
 
         void AddEvent(in Entry e, GcPointerEventPhase phase, double eventTime) =>
-            events.Add(new GcPointerEvent(frame, (float)eventTime, e.Id, phase,
+            events.Add(new GcPointerEvent(frame, eventTime, e.Id, phase,
                 new float2(e.Position.X, e.Position.Y), e.Screen, e.Kind));
     }
 }

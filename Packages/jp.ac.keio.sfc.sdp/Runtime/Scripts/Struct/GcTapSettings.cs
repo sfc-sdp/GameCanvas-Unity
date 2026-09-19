@@ -53,8 +53,8 @@ namespace GameCanvas
         #region 内部関数
         //----------------------------------------------------------
 
-        internal readonly bool IsTap(in GcPointerTrace trace)
-            => (trace.Duration <= MaxDuration) && (trace.Distance <= MaxDistance);
+        internal readonly bool IsTap(double duration, float distance)
+            => (duration <= MaxDuration) && (distance <= MaxDistance);
 
         #endregion
     }

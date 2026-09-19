@@ -24,7 +24,7 @@ namespace GameCanvas.Engine
         System.DateTimeOffset m_CurrentTime;
         int m_FrameCount;
         float m_SincePrevFrame;
-        float m_SinceStartup;
+        double m_SinceStartup;
         readonly System.DateTimeOffset m_StartupTime;
         double m_TargetFrameInterval;
         bool m_VSyncEnabled;
@@ -49,7 +49,7 @@ namespace GameCanvas.Engine
 
         public float TimeSincePrevFrame => m_SincePrevFrame;
 
-        public float TimeSinceStartup => m_SinceStartup;
+        public double TimeSinceStartup => m_SinceStartup;
 
         public bool VSyncEnabled => m_VSyncEnabled;
 
@@ -96,7 +96,7 @@ namespace GameCanvas.Engine
         {
             var prev = m_CurrentTime;
             m_CurrentTime = now;
-            m_SinceStartup = (float)m_CurrentTime.Subtract(m_StartupTime).TotalSeconds;
+            m_SinceStartup = m_CurrentTime.Subtract(m_StartupTime).TotalSeconds;
             m_SincePrevFrame = (float)m_CurrentTime.Subtract(prev).TotalSeconds;
             m_FrameCount++;
         }

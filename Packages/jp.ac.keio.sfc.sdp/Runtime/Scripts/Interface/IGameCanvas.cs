@@ -13,7 +13,7 @@ namespace GameCanvas
     public interface IGameCanvas
         : IGraphicsEx, ISoundEx, INetworkEx, ISceneManagementEx
         , ITimeEx, IPhysicsEx, IStorageEx, IMathEx
-        , IInputPointerEx, IInputKeyEx, IInputAccelerationEx
+        , IInputPointer, IInputKey, IInputAccelerationEx
         , IInputCameraEx
     {
         /// <summary>位置情報。対応状況はLocation.IsSupportedを確認する。</summary>

@@ -9,7 +9,6 @@
 /*------------------------------------------------------------*/
 #nullable enable
 using Unity.Mathematics;
-using UnityEngine.InputSystem.Controls;
 
 namespace GameCanvas
 {
@@ -53,7 +52,7 @@ namespace GameCanvas
         /// <summary>
         /// 時間（起動からの経過秒数）
         /// </summary>
-        public readonly float Time;
+        public readonly double Time;
 
         public GcPointerType Kind { get; }
         public GcPoint Position => new(Point.x, Point.y);
@@ -74,14 +73,15 @@ namespace GameCanvas
         public readonly bool Equals(GcPointerEvent other)
             => Id == other.Id
             && Phase == other.Phase
-            && GcMath.AlmostSame(PointScreen, other.PointScreen)
-            && GcMath.AlmostSame(Time, other.Time);
+            && Frame == other.Frame && Kind == other.Kind
+            && Point.Equals(other.Point) && PointScreen.Equals(other.PointScreen)
+            && Time.Equals(other.Time);
 
         public override readonly bool Equals(object obj) => (obj is GcPointerEvent other) && Equals(other);
 
         public override readonly int GetHashCode()
         {
-            return System.HashCode.Combine(Id, Phase, PointScreen, Time);
+            return System.HashCode.Combine(Id, Phase, Frame, Kind, Point, PointScreen, Time);
         }
 
         public override readonly string ToString()
@@ -92,7 +92,7 @@ namespace GameCanvas
         #region 内部関数
         //----------------------------------------------------------
 
-        internal GcPointerEvent(in int frame, in float time, in int id, in GcPointerEventPhase phase, in float2 point, in float2 pointScreen, GcPointerType kind = GcPointerType.Touch)
+        internal GcPointerEvent(in int frame, in double time, in int id, in GcPointerEventPhase phase, in float2 point, in float2 pointScreen, GcPointerType kind = GcPointerType.Touch)
         {
             Kind = kind;
             Time = time;
@@ -103,26 +103,6 @@ namespace GameCanvas
             PointScreen = pointScreen;
         }
 
-        internal static GcPointerEvent FromTouch(in GcContext ctx, in TouchControl touch, in float time)
-        {
-            var frame = ctx.Time.CurrentFrame;
-            var id = touch.touchId.ReadValue();
-            var phase = touch.phase.ReadValue().ToGcPointerPhase();
-            var pointScreen = touch.position.ReadValue();
-            ctx.Graphics.ScreenToCanvasPoint(pointScreen, out float2 point);
-            return new GcPointerEvent(frame, time, id, phase, point, pointScreen);
-        }
-
-        internal static GcPointerEvent FromTrace(in GcContext ctx, in GcPointerTrace trace)
-        {
-            var frame = ctx.Time.CurrentFrame;
-            var time = ctx.Time.TimeSinceStartup;
-            var id = trace.Current.Id;
-            var phase = GcPointerEventPhase.Hold;
-            var point = trace.Current.Point;
-            var pointScreen = trace.Current.PointScreen;
-            return new GcPointerEvent(frame, time, id, phase, point, pointScreen, trace.Current.Kind);
-        }
         #endregion
     }
 }

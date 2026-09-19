@@ -32,8 +32,8 @@ namespace GameCanvas.Tests
             Send(keyboard, Key.Space); Send(keyboard); Frame();
             var key = gc.Key(GcKey.Space);
             Assert.That(key.Down && key.Up && !key.Held && !key.Cancelled);
-            Assert.That(gc.TryGetKeyEventAll(out var events));
-            Assert.That(events.Length, Is.EqualTo(2));
+            var events = gc.KeyEvents;
+            Assert.That(events.Count, Is.EqualTo(2));
             Assert.That(events[0].Phase, Is.EqualTo(GcKeyEventPhase.Down));
             Assert.That(events[1].Phase, Is.EqualTo(GcKeyEventPhase.Up));
             Frame(); Assert.That(gc.Key(GcKey.Space), Is.EqualTo(default(GcKeyState)));
@@ -42,9 +42,8 @@ namespace GameCanvas.Tests
         {
             Send(keyboard, Key.A); Frame(); Assert.That(gc.Key(GcKey.A).Down && gc.Key(GcKey.A).Held);
             Frame(); Assert.That(gc.Key(GcKey.A).Held && !gc.Key(GcKey.A).Down);
-            Assert.That(gc.TryGetKeyTrace(Key.A, out var trace));
-            Assert.That(trace.Duration, Is.GreaterThanOrEqualTo(0));
-            Assert.That(trace.FrameCount, Is.GreaterThanOrEqualTo(1));
+            Assert.That(gc.Key(GcKey.A).Duration, Is.GreaterThanOrEqualTo(0));
+            Assert.That(gc.KeyEvents.Count, Is.Zero, "Holding does not create a new input change");
             Send(keyboard); Frame(); Assert.That(gc.Key(GcKey.A).Up && !gc.Key(GcKey.A).Held);
         }
         [Test] public void RepeatedClickInOneFrameDoesNotDuplicateDictionaryKeys()
@@ -63,15 +62,12 @@ namespace GameCanvas.Tests
         {
             Send(keyboard, Key.Space); Frame(); InputSystem.ResetDevice(keyboard); Frame();
             Assert.That(gc.Key(GcKey.Space).Cancelled && !gc.Key(GcKey.Space).Up && !gc.Key(GcKey.Space).Held);
-            Assert.That(gc.TryGetKeyEventAll(GcKeyEventPhase.Cancelled, out var events));
-            Assert.That(events.Length, Is.EqualTo(1));
-            Assert.That(events[0].Key, Is.EqualTo(Key.Space));
-            Assert.That(gc.TryGetKeyTraceAll(GcKeyEventPhase.Cancelled, out var traces));
-            Assert.That(traces.Length, Is.EqualTo(1));
-            Assert.That(traces[0].Current.Phase, Is.EqualTo(GcKeyEventPhase.Cancelled));
+            var events = gc.KeyEvents;
+            Assert.That(events.Count, Is.EqualTo(1));
+            Assert.That(events[0].Key, Is.EqualTo(GcKey.Space));
+            Assert.That(events[0].Phase, Is.EqualTo(GcKeyEventPhase.Cancelled));
             Frame();
-            Assert.That(gc.TryGetKeyEventAll(GcKeyEventPhase.Cancelled, out _), Is.False);
-            Assert.That(gc.TryGetKeyTraceAll(GcKeyEventPhase.Cancelled, out _), Is.False);
+            Assert.That(gc.KeyEvents.Count, Is.Zero);
             Send(keyboard, Key.Space); Frame();
             InputSystem.RemoveDevice(keyboard); Frame();
             Assert.That(gc.Key(GcKey.Space).Cancelled && !gc.Key(GcKey.Space).Up);
@@ -107,6 +103,30 @@ namespace GameCanvas.Tests
             var second = InputSystem.AddDevice<Keyboard>(); Send(second, Key.Enter); Frame();
             Assert.That(gc.Key(GcKey.Enter).Down);
             Assert.That(gc.Key((GcKey)(-1)), Is.EqualTo(default(GcKeyState)));
+        }
+        [Test] public void ShortKeyPressKeepsPrecisionAfterLongUptime()
+        {
+            currentTime = 86400.01;
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Space), time: 86400.001);
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(), time: 86400.003);
+            InputSystem.Update(); Frame();
+            Assert.That(gc.Key(GcKey.Space).Duration, Is.EqualTo(.002).Within(1e-9));
+            Assert.That(gc.KeyEvents[1].Time - gc.KeyEvents[0].Time, Is.EqualTo(.002).Within(1e-9));
+            Assert.That(gc.KeyEvents[0].Key, Is.EqualTo(GcKey.Space));
+        }
+        [Test] public void InputEnginesReuseCollectionsAfterWarmup()
+        {
+            var context = (GcContext)typeof(GcProxy).GetField("m_Context", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(gc);
+            var keys = (IEngine)context.InputKey;
+            var pointers = (IEngine)context.InputPointer;
+            var now = DateTimeOffset.Now;
+            Send(keyboard, Key.A);
+            for (int i = 0; i < 20; i++) { keys.OnBeforeUpdate(now); pointers.OnBeforeUpdate(now); }
+            long before = GC.GetAllocatedBytesForCurrentThread();
+            for (int i = 0; i < 1000; i++) { keys.OnBeforeUpdate(now); pointers.OnBeforeUpdate(now); }
+            long bytes = GC.GetAllocatedBytesForCurrentThread() - before;
+            Assert.That(bytes, Is.Zero);
+            Assert.That(gc.Key(GcKey.A).Held);
         }
     }
 }

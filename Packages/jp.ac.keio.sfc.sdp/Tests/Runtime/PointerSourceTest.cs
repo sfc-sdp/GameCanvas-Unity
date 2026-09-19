@@ -119,7 +119,7 @@ namespace GameCanvas.Tests
                 Touch(UnityEngine.InputSystem.TouchPhase.Canceled, 30);
                 gc.OnBeforeUpdate(DateTimeOffset.Now);
                 Assert.That(gc.Pointer.Cancelled && !gc.Pointer.Up);
-                Assert.That(gc.IsTapped(), Is.False);
+                Assert.That(gc.Taps.Count, Is.Zero);
             }
             finally { UnityEngine.Object.DestroyImmediate(go); }
         }

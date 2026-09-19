@@ -52,7 +52,7 @@ namespace GameCanvas
         /// <summary>
         /// 現在フレームのアプリ起動からの経過時間（秒）
         /// </summary>
-        float TimeSinceStartup { get; }
+        double TimeSinceStartup { get; }
 
         /// <summary>
         /// 垂直同期の有無

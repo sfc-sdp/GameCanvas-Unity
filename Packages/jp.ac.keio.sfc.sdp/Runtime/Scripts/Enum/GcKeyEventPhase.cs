@@ -21,10 +21,6 @@ namespace GameCanvas
         /// </summary>
         Down,
         /// <summary>
-        /// キーを押し続けている（押した瞬間を除く）
-        /// </summary>
-        Hold,
-        /// <summary>
         /// キーを離した瞬間
         /// </summary>
         Up,

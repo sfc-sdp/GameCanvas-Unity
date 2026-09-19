@@ -8,7 +8,6 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-using UnityEngine.InputSystem;
 
 namespace GameCanvas
 {
@@ -31,7 +30,7 @@ namespace GameCanvas
         /// <summary>
         /// キーコード
         /// </summary>
-        public readonly Key Key;
+        public readonly GcKey Key;
 
         /// <summary>
         /// 段階
@@ -41,7 +40,7 @@ namespace GameCanvas
         /// <summary>
         /// 時間（起動からの経過秒数）
         /// </summary>
-        public readonly float Time;
+        public readonly double Time;
         #endregion
 
         //----------------------------------------------------------
@@ -57,7 +56,8 @@ namespace GameCanvas
         public bool Equals(GcKeyEvent other)
             => Key == other.Key
             && Phase == other.Phase
-            && Frame == other.Frame;
+            && Frame == other.Frame
+            && Time.Equals(other.Time);
 
         public override bool Equals(object obj)
             => (obj is GcKeyEvent other) && Equals(other);
@@ -73,7 +73,7 @@ namespace GameCanvas
         #region 内部関数
         //----------------------------------------------------------
 
-        internal GcKeyEvent(in Key key, in GcKeyEventPhase phase, in int frame, in float time)
+        internal GcKeyEvent(in GcKey key, in GcKeyEventPhase phase, in int frame, in double time)
         {
             Key = key;
             Phase = phase;
