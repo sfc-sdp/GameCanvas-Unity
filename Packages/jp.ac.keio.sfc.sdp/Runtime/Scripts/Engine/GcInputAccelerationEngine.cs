@@ -36,7 +36,7 @@ namespace GameCanvas.Engine
             => m_EventList.IsCreated ? m_EventList.Length : 0;
 
         public System.ReadOnlySpan<GcAccelerationEvent> AccelerationEvents
-            => m_EventList.AsReadOnlySpan();
+            => m_EventList.IsCreated ? m_EventList.AsReadOnlySpan() : System.ReadOnlySpan<GcAccelerationEvent>.Empty;
 
         public bool DidUpdateAccelerationThisFrame
             => m_EventList.IsCreated && m_EventList.Length != 0;
@@ -102,7 +102,7 @@ namespace GameCanvas.Engine
 
         public bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)
         {
-            if (i >= 0 && i < m_EventList.Length)
+            if (m_EventList.IsCreated && i >= 0 && i < m_EventList.Length)
             {
                 e = m_EventList[i];
                 return true;
@@ -113,8 +113,8 @@ namespace GameCanvas.Engine
 
         public bool TryGetAccelerationEventAll(out System.ReadOnlySpan<GcAccelerationEvent> events)
         {
-            events = m_EventList.AsReadOnlySpan();
-            return (m_EventList.Length > 0);
+            events = AccelerationEvents;
+            return !events.IsEmpty;
         }
         #endregion
 

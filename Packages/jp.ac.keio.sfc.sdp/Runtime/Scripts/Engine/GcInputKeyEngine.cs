@@ -42,10 +42,12 @@ namespace GameCanvas.Engine
         NativeList<GcKeyEvent> m_KeyEventListOnlyDown;
         NativeList<GcKeyEvent> m_KeyEventListOnlyHold;
         NativeList<GcKeyEvent> m_KeyEventListOnlyUp;
+        NativeList<GcKeyEvent> m_KeyEventListOnlyCancelled;
         NativeList<GcKeyTrace> m_KeyTraceList;
         NativeHashMap<int, GcKeyTrace> m_KeyTraceDict;
         NativeList<GcKeyTrace> m_KeyTraceListOnlyHold;
         NativeList<GcKeyTrace> m_KeyTraceListOnlyUp;
+        NativeList<GcKeyTrace> m_KeyTraceListOnlyCancelled;
         TouchScreenKeyboard? m_ScreenKeyboard;
         #endregion
 
@@ -119,6 +121,10 @@ namespace GameCanvas.Engine
                 case GcKeyEventPhase.Up:
                     events = m_KeyEventListOnlyUp.AsReadOnlySpan();
                     return (m_KeyEventListOnlyUp.Length != 0);
+
+                case GcKeyEventPhase.Cancelled:
+                    events = m_KeyEventListOnlyCancelled.AsReadOnlySpan();
+                    return (m_KeyEventListOnlyCancelled.Length != 0);
             }
             events = System.ReadOnlySpan<GcKeyEvent>.Empty;
             return false;
@@ -144,6 +150,10 @@ namespace GameCanvas.Engine
                 case GcKeyEventPhase.Up:
                     traces = m_KeyTraceListOnlyUp.AsReadOnlySpan();
                     return (m_KeyTraceListOnlyUp.Length != 0);
+
+                case GcKeyEventPhase.Cancelled:
+                    traces = m_KeyTraceListOnlyCancelled.AsReadOnlySpan();
+                    return (m_KeyTraceListOnlyCancelled.Length != 0);
             }
             traces = System.ReadOnlySpan<GcKeyTrace>.Empty;
             return false;
@@ -182,8 +192,10 @@ namespace GameCanvas.Engine
             m_KeyEventListOnlyDown = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
             m_KeyEventListOnlyHold = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
             m_KeyEventListOnlyUp = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
+            m_KeyEventListOnlyCancelled = new NativeList<GcKeyEvent>(k_EventNumMax, Allocator.Persistent);
             m_KeyTraceListOnlyHold = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
             m_KeyTraceListOnlyUp = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
+            m_KeyTraceListOnlyCancelled = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
             m_KeyTraceList = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
 
 
@@ -197,8 +209,10 @@ namespace GameCanvas.Engine
             if (m_KeyEventListOnlyDown.IsCreated) m_KeyEventListOnlyDown.Dispose();
             if (m_KeyEventListOnlyHold.IsCreated) m_KeyEventListOnlyHold.Dispose();
             if (m_KeyEventListOnlyUp.IsCreated) m_KeyEventListOnlyUp.Dispose();
+            if (m_KeyEventListOnlyCancelled.IsCreated) m_KeyEventListOnlyCancelled.Dispose();
             if (m_KeyTraceListOnlyHold.IsCreated) m_KeyTraceListOnlyHold.Dispose();
             if (m_KeyTraceListOnlyUp.IsCreated) m_KeyTraceListOnlyUp.Dispose();
+            if (m_KeyTraceListOnlyCancelled.IsCreated) m_KeyTraceListOnlyCancelled.Dispose();
             if (m_KeyTraceList.IsCreated) m_KeyTraceList.Dispose();
             if (m_KeyCodeToKeyEventIndex.IsCreated) m_KeyCodeToKeyEventIndex.Dispose();
 
@@ -216,8 +230,8 @@ namespace GameCanvas.Engine
         {
             m_KeyCodeToKeyEventIndex.Clear();
             m_KeyEventList.Clear(); m_KeyEventListOnlyDown.Clear();
-            m_KeyEventListOnlyHold.Clear(); m_KeyEventListOnlyUp.Clear();
-            m_KeyTraceList.Clear(); m_KeyTraceListOnlyHold.Clear(); m_KeyTraceListOnlyUp.Clear();
+            m_KeyEventListOnlyHold.Clear(); m_KeyEventListOnlyUp.Clear(); m_KeyEventListOnlyCancelled.Clear();
+            m_KeyTraceList.Clear(); m_KeyTraceListOnlyHold.Clear(); m_KeyTraceListOnlyUp.Clear(); m_KeyTraceListOnlyCancelled.Clear();
             m_KeyTraceDict.Clear();
             int frame = m_Context.Time.CurrentFrame;
             float time = (float)InputState.currentTime;
@@ -243,6 +257,7 @@ namespace GameCanvas.Engine
                 AddEvent(e);
                 if (down) m_KeyEventListOnlyDown.Add(e);
                 else if (up) { m_KeyEventListOnlyUp.Add(e); m_KeyTraceListOnlyUp.Add(trace); }
+                else if (cancelled) { m_KeyEventListOnlyCancelled.Add(e); m_KeyTraceListOnlyCancelled.Add(trace); }
             }
             m_Source.Pending.Clear();
             for (int i = 0; i < m_States.Length; i++)

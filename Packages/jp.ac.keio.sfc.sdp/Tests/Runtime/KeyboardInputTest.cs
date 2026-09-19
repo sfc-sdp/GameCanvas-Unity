@@ -63,6 +63,15 @@ namespace GameCanvas.Tests
         {
             Send(keyboard, Key.Space); Frame(); InputSystem.ResetDevice(keyboard); Frame();
             Assert.That(gc.Key(GcKey.Space).Cancelled && !gc.Key(GcKey.Space).Up && !gc.Key(GcKey.Space).Held);
+            Assert.That(gc.TryGetKeyEventAll(GcKeyEventPhase.Cancelled, out var events));
+            Assert.That(events.Length, Is.EqualTo(1));
+            Assert.That(events[0].Key, Is.EqualTo(Key.Space));
+            Assert.That(gc.TryGetKeyTraceAll(GcKeyEventPhase.Cancelled, out var traces));
+            Assert.That(traces.Length, Is.EqualTo(1));
+            Assert.That(traces[0].Current.Phase, Is.EqualTo(GcKeyEventPhase.Cancelled));
+            Frame();
+            Assert.That(gc.TryGetKeyEventAll(GcKeyEventPhase.Cancelled, out _), Is.False);
+            Assert.That(gc.TryGetKeyTraceAll(GcKeyEventPhase.Cancelled, out _), Is.False);
             Send(keyboard, Key.Space); Frame();
             InputSystem.RemoveDevice(keyboard); Frame();
             Assert.That(gc.Key(GcKey.Space).Cancelled && !gc.Key(GcKey.Space).Up);
@@ -75,6 +84,18 @@ namespace GameCanvas.Tests
             Assert.That(gc.Key(GcKey.A).Down, Is.False);
             gc.OnUnpause(); Send(keyboard); Send(keyboard, Key.A); Frame();
             Assert.That(gc.Key(GcKey.A).Down);
+        }
+        [Test] public void AccelerationWithoutASensorReturnsAnEmptyCollection()
+        {
+            Frame();
+            Assert.That(gc.IsAccelerometerSupported, Is.False);
+            Assert.That(gc.AccelerationEventCount, Is.Zero);
+            Assert.That(gc.AccelerationEvents.Length, Is.Zero);
+            Assert.That(gc.TryGetAccelerationEvent(0, out _), Is.False);
+            Assert.That(gc.TryGetAccelerationEventAll(out var events), Is.False);
+            Assert.That(events.Length, Is.Zero);
+            gc.OnAterDraw();
+            Assert.That(gc.AccelerationEvents.Length, Is.Zero);
         }
         [Test] public void NoKeyboardThenHotplugWorks()
         {
