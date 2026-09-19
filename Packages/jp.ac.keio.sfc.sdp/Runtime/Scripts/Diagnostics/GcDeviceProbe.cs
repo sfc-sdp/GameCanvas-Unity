@@ -94,7 +94,7 @@ namespace GameCanvas.Diagnostics
 #if UNITY_WEBGL && !UNITY_EDITOR
             location = "この検証アプリのWeb測位は未対応です"; locationBusy = false; yield break;
 #endif
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
             gc.Location.Start();
             while (gc.Location.Status == GcLocationState.RequestingPermission || gc.Location.Status == GcLocationState.Waiting)
             {
@@ -103,7 +103,7 @@ namespace GameCanvas.Diagnostics
             }
             if (gc.Location.TryGetSample(out var sample))
             {
-                location = $"測位成功 / {gc.Location.Permission} / 精度 {sample.AccuracyMeters:F1} m";
+                location = $"{(sample.IsMock ? "模擬測位成功" : "測位成功")} / {gc.Location.Permission} / 精度 {sample.AccuracyMeters:F1} m";
                 Log("location.sample", $"permission={gc.Location.Permission}; accuracy={sample.AccuracyMeters}; timestamp={sample.UnixTimeSeconds}; mock={sample.IsMock}");
             }
             else
@@ -118,7 +118,7 @@ namespace GameCanvas.Diagnostics
             if (Input.location.status == LocationServiceStatus.Running)
             {
                 var data = Input.location.lastData;
-                location = $"{(simulatorSmoke ? "模擬測位成功" : "測位成功")} / 精度 {data.horizontalAccuracy:F1} m";
+                location = $"測位成功 / 精度 {data.horizontalAccuracy:F1} m";
                 Log("location.legacy.sample", $"accuracy={data.horizontalAccuracy}; timestamp={data.timestamp}");
             }
             else
@@ -140,9 +140,13 @@ namespace GameCanvas.Diagnostics
         {
             yield return new WaitForSeconds(1);
             Log("simulator.smoke", "開始。位置はsimctlによる模擬データであり、実測ではありません");
-            gc.Location.Start();
-            Log("simulator.new-location", gc.Location.Status.ToString());
             yield return Location();
+            var firstRunning = gc.Location.Status == GcLocationState.Running;
+            gc.Location.Stop();
+            Log("simulator.stop", $"wasRunning={firstRunning}; hasSample={gc.Location.TryGetSample(out _)}; status={gc.Location.Status}");
+            yield return Location();
+            var hasRestarted = gc.Location.TryGetSample(out var restarted);
+            Log("simulator.restart", $"status={gc.Location.Status}; hasSample={hasRestarted}; mock={(hasRestarted && restarted.IsMock)}");
             yield return Network();
             Log("simulator.camera", $"devices={WebCamTexture.devices.Length}; 実カメラの検証ではありません");
             Log("simulator.smoke", "完了");

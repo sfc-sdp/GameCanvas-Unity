@@ -1,6 +1,10 @@
 #nullable enable
+using System;
+using System.Collections;
+using GameCanvas.Engine;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 namespace GameCanvas.Editor.Tests
 {
@@ -21,11 +25,12 @@ namespace GameCanvas.Editor.Tests
                 service.Stop();
                 Assert.That(service.Status, Is.EqualTo(GcLocationState.Stopped));
                 Assert.That(service.Start(), Is.GreaterThan(first));
-                Assert.Throws<System.ArgumentOutOfRangeException>(() => service.Start(double.NaN));
-                Assert.Throws<System.ArgumentOutOfRangeException>(() => service.Start(0));
+                Assert.Throws<ArgumentOutOfRangeException>(() => service.Start(double.NaN));
+                Assert.Throws<ArgumentOutOfRangeException>(() => service.Start(0));
             }
-            finally { Object.DestroyImmediate(obj); }
+            finally { UnityEngine.Object.DestroyImmediate(obj); }
         }
+
         [Test]
         public void Sample_PreservesNativePrecisionAndMilliseconds()
         {
@@ -35,6 +40,23 @@ namespace GameCanvas.Editor.Tests
             Assert.That(value.UnixTimeSeconds, Is.EqualTo(1789776000.125));
             Assert.That(value.IsMock, Is.True);
         }
+
+        [Test]
+        public void IosAuthorization_MapsPreciseApproximateRestrictedDenied()
+        {
+            Assert.That(GcIosLocationMap.ToPermission(GcIosLocationMap.AuthWhenInUse, GcIosLocationMap.AccuracyFull), Is.EqualTo(GcLocationPermission.Precise));
+            Assert.That(GcIosLocationMap.ToPermission(GcIosLocationMap.AuthWhenInUse, GcIosLocationMap.AccuracyReduced), Is.EqualTo(GcLocationPermission.Approximate));
+            Assert.That(GcIosLocationMap.ToPermission(GcIosLocationMap.AuthAlways, GcIosLocationMap.AccuracyFull), Is.EqualTo(GcLocationPermission.Precise));
+            Assert.That(GcIosLocationMap.ToPermission(GcIosLocationMap.AuthDenied, GcIosLocationMap.AccuracyFull), Is.EqualTo(GcLocationPermission.NotGranted));
+            Assert.That(GcIosLocationMap.ToPermission(GcIosLocationMap.AuthRestricted, GcIosLocationMap.AccuracyFull), Is.EqualTo(GcLocationPermission.NotGranted));
+            Assert.That(GcIosLocationMap.ToPermission(GcIosLocationMap.AuthNotDetermined, GcIosLocationMap.AccuracyFull), Is.EqualTo(GcLocationPermission.Unknown));
+            Assert.That(GcIosLocationMap.IsRestricted(GcIosLocationMap.AuthRestricted), Is.True);
+            Assert.That(GcIosLocationMap.IsRestricted(GcIosLocationMap.AuthDenied), Is.False);
+            Assert.That(GcIosLocationMap.NeedsRequest(GcIosLocationMap.AuthNotDetermined), Is.True);
+            Assert.That(GcIosLocationMap.NeedsRequest(GcIosLocationMap.AuthDenied), Is.False);
+        }
+
     }
+
     public sealed class LocationTestHost : MonoBehaviour { }
 }

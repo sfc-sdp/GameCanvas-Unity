@@ -1,13 +1,14 @@
 #nullable enable
 #if UNITY_ANDROID && !UNITY_EDITOR
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Scripting;
 
 namespace GameCanvas.Engine
 {
     // Androidのdouble座標をfloatへ変換せずに受け取る。呼び出し元が権限と期限を管理する。
-    internal sealed class GcAndroidLocation : IDisposable
+    internal sealed class GcAndroidLocation : IGcLocationBackend
     {
         readonly AndroidJavaObject manager;
         readonly Listener listener = new();
@@ -49,6 +50,13 @@ namespace GameCanvas.Engine
             }
             return started;
         }
+        public bool NeedsPermissionRequest => ReadPermission() == GcLocationPermission.NotGranted;
+        public bool IsRestricted => false;
+        public GcLocationPermission ReadPermission() => UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.FineLocation)
+            ? GcLocationPermission.Precise : UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.CoarseLocation)
+            ? GcLocationPermission.Approximate : GcLocationPermission.NotGranted;
+        public IEnumerator RequestPermission(Action<bool> timedOut)
+            => GcAndroidPermission.Request(new[] { UnityEngine.Android.Permission.CoarseLocation, UnityEngine.Android.Permission.FineLocation }, timedOut);
         public bool TryRead(out GcLocationSample sample) => listener.TryRead(out sample);
         public void Dispose()
         {
