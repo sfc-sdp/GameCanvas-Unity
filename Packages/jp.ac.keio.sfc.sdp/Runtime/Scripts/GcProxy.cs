@@ -510,7 +510,7 @@ namespace GameCanvas
         public Key KeyEscape
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => Key.Escape;
+            get => UnityEngine.InputSystem.Key.Escape;
         }
 
         /// <inheritdoc/>
@@ -1369,6 +1369,9 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public GcKeyState Key(GcKey key) => m_Context.InputKey.Key(key);
+
+        /// <inheritdoc/>
         public bool IsKeyDown(in Key key)
             => m_Context.InputKey.IsKeyDown(key);
 
@@ -2343,13 +2346,18 @@ namespace GameCanvas
         internal void OnEnable() => m_Context.Graphics?.Init();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnFocus(bool focus) => m_Context.InputPointer.SetFocused(focus);
+        internal void OnFocus(bool focus)
+        {
+            m_Context.InputPointer.SetFocused(focus);
+            m_Context.InputKey.SetFocused(focus);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnPause()
         {
             Location.Stop();
             m_Context.InputPointer.SetPaused(true);
+            m_Context.InputKey.SetPaused(true);
             m_Context.InputAcceleration.OnPause();
         }
 
@@ -2358,6 +2366,7 @@ namespace GameCanvas
         {
             m_Context.Graphics.RebuildFontTexture();
             m_Context.InputPointer.SetPaused(false);
+            m_Context.InputKey.SetPaused(false);
             m_Context.InputAcceleration.OnUnpause();
         }
 

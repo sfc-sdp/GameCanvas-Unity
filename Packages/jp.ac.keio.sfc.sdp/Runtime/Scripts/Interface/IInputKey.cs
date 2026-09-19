@@ -17,6 +17,9 @@ namespace GameCanvas
 {
     public interface IInputKey
     {
+        /// <summary>指定したキーの、このフレームの状態を取得します。</summary>
+        GcKeyState Key(GcKey key);
+
         /// <summary>
         /// スクリーンキーボードがサポートされているかどうか
         /// </summary>
@@ -139,9 +142,7 @@ namespace GameCanvas
         /// <returns>取得できたかどうか</returns>
         bool TryGetScreenKeyboardArea(out GcAABB area);
 
-        #region Obsolete
-        #endregion
-    }
+}
 
     public interface IInputKeyEx : IInputKey
     {
@@ -210,7 +211,5 @@ namespace GameCanvas
         /// <returns>離されたかどうか</returns>
         bool IsKeyUp(in Key key, out GcKeyTrace trace);
 
-        #region Obsolete
-        #endregion
-    }
+}
 }

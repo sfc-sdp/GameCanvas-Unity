@@ -27,6 +27,8 @@ namespace GameCanvas
         /// <summary>
         /// キーを離した瞬間
         /// </summary>
-        Up
+        Up,
+        /// <summary>端末の切断、フォーカス喪失などによる中断。</summary>
+        Cancelled
     }
 }

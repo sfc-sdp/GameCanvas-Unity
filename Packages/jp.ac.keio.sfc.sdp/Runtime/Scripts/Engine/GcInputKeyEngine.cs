@@ -26,11 +26,17 @@ namespace GameCanvas.Engine
         #region 変数
         //----------------------------------------------------------
 
-        const int k_EventNumMax = 10;
+        const int k_EventNumMax = 32;
         static readonly bool k_IsScreenKeyboardSupported = TouchScreenKeyboard.isSupported;
 
         readonly GcContext m_Context;
-        readonly InputStateHistory m_History;
+        readonly GcKeySource m_Source = new();
+        readonly GcKeyState[] m_States = new GcKeyState[GcKeySource.Capacity];
+        readonly GcKeyTrace[] m_Traces = new GcKeyTrace[GcKeySource.Capacity];
+        bool m_Focused = true, m_Paused;
+        public GcKeyState Key(GcKey key) => (uint)key < m_States.Length ? m_States[(int)key] : default;
+        internal void SetFocused(bool value) { m_Focused = value; m_Source.SetSuspended(!m_Focused || m_Paused); }
+        internal void SetPaused(bool value) { m_Paused = value; m_Source.SetSuspended(!m_Focused || m_Paused); }
         NativeHashMap<int, int> m_KeyCodeToKeyEventIndex;
         NativeList<GcKeyEvent> m_KeyEventList;
         NativeList<GcKeyEvent> m_KeyEventListOnlyDown;
@@ -67,27 +73,10 @@ namespace GameCanvas.Engine
             }
         }
 
-        public bool IsKeyDown(in Key key)
-            => m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index)
-            && (m_KeyEventList[index].Phase == GcKeyEventPhase.Down);
-
-        public bool IsKeyHold(in Key key)
-            => m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index)
-            && (m_KeyEventList[index].Phase == GcKeyEventPhase.Hold);
-
-        public bool IsKeyPress(in Key key)
-        {
-            if (m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index))
-            {
-                var phase = m_KeyEventList[index].Phase;
-                return (phase == GcKeyEventPhase.Down || phase == GcKeyEventPhase.Hold);
-            }
-            return false;
-        }
-
-        public bool IsKeyUp(in Key key)
-            => m_KeyCodeToKeyEventIndex.TryGetValue((int)key, out var index)
-            && (m_KeyEventList[index].Phase == GcKeyEventPhase.Up);
+        public bool IsKeyDown(in Key key) => Key((GcKey)key).Down;
+        public bool IsKeyHold(in Key key) => Key((GcKey)key).Held && !Key((GcKey)key).Down;
+        public bool IsKeyPress(in Key key) => Key((GcKey)key).Held;
+        public bool IsKeyUp(in Key key) => Key((GcKey)key).Up;
 
         public bool ShowScreenKeyboard()
         {
@@ -197,20 +186,7 @@ namespace GameCanvas.Engine
             m_KeyTraceListOnlyUp = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
             m_KeyTraceList = new NativeList<GcKeyTrace>(k_EventNumMax, Allocator.Persistent);
 
-            //InputSystem.onEvent += (ptr, dev) =>
-            //{
-            //    if (ptr.IsA<TextEvent>())
-            //    {
-            //        unsafe
-            //        {
-            //            var data = (TextEvent*)ptr.data;
-            //            Debug.Log($"{ptr.time}: {(char)data->character}");
-            //        }
-            //    }
-            //};
 
-            m_History = new InputStateHistory(Keyboard.current.allKeys);
-            m_History.StartRecording();
         }
 
         void System.IDisposable.Dispose()
@@ -228,7 +204,7 @@ namespace GameCanvas.Engine
 
             if (m_KeyTraceDict.IsCreated) m_KeyTraceDict.Dispose();
 
-            m_History.Dispose();
+            m_Source.Dispose();
         }
 
         void IEngine.OnAfterDraw()
@@ -239,91 +215,61 @@ namespace GameCanvas.Engine
         void IEngine.OnBeforeUpdate(in System.DateTimeOffset now)
         {
             m_KeyCodeToKeyEventIndex.Clear();
-            m_KeyEventList.Clear();
-            m_KeyEventListOnlyDown.Clear();
-            m_KeyEventListOnlyHold.Clear();
-            m_KeyEventListOnlyUp.Clear();
-            m_KeyTraceListOnlyHold.Clear();
-            m_KeyTraceListOnlyUp.Clear();
-            m_KeyTraceList.Clear();
+            m_KeyEventList.Clear(); m_KeyEventListOnlyDown.Clear();
+            m_KeyEventListOnlyHold.Clear(); m_KeyEventListOnlyUp.Clear();
+            m_KeyTraceList.Clear(); m_KeyTraceListOnlyHold.Clear(); m_KeyTraceListOnlyUp.Clear();
+            m_KeyTraceDict.Clear();
+            int frame = m_Context.Time.CurrentFrame;
+            float time = (float)InputState.currentTime;
+            for (int i = 0; i < m_States.Length; i++)
+                m_States[i] = new GcKeyState(false, m_States[i].Held, false, false, 0);
 
-            var frame = m_Context.Time.CurrentFrame;
-
-            foreach (var record in m_History)
+            foreach (var record in m_Source.Pending)
             {
-                var control = (KeyControl)record.control;
-                var key = control.keyCode;
-                var time = (float)record.time;
-
-                if (control.isPressed)
+                int i = (int)record.Key;
+                var previous = m_States[i];
+                var e = new GcKeyEvent(record.Key, record.Phase, frame, (float)record.Time);
+                bool down = record.Phase == GcKeyEventPhase.Down;
+                bool up = record.Phase == GcKeyEventPhase.Up;
+                bool cancelled = record.Phase == GcKeyEventPhase.Cancelled;
+                if (down) m_Traces[i] = new GcKeyTrace(e);
+                var trace = m_Traces[i];
+                trace.Current = e;
+                trace.Duration = System.Math.Max(0, e.Time - trace.Begin.Time);
+                trace.FrameCount = System.Math.Max(1, frame - trace.Begin.Frame + 1);
+                m_Traces[i] = trace;
+                m_States[i] = new GcKeyState(previous.Down || down, down,
+                    previous.Up || up, previous.Cancelled || cancelled, trace.Duration);
+                AddEvent(e);
+                if (down) m_KeyEventListOnlyDown.Add(e);
+                else if (up) { m_KeyEventListOnlyUp.Add(e); m_KeyTraceListOnlyUp.Add(trace); }
+            }
+            m_Source.Pending.Clear();
+            for (int i = 0; i < m_States.Length; i++)
+            {
+                var state = m_States[i];
+                if (!state.Held && !state.Up && !state.Cancelled) continue;
+                var trace = m_Traces[i];
+                if (state.Held)
                 {
-                    // Down Event
-                    var e = new GcKeyEvent(key, GcKeyEventPhase.Down, frame, time);
-                    AddKeyEvent(e);
-                    m_KeyEventListOnlyDown.Add(e);
-                    m_KeyTraceDict.Add((int)key, new GcKeyTrace(e));
+                    trace.Duration = System.Math.Max(0, time - trace.Begin.Time);
+                    trace.FrameCount = System.Math.Max(1, frame - trace.Begin.Frame + 1);
+                    m_States[i] = new GcKeyState(state.Down, true, state.Up, state.Cancelled, trace.Duration);
+                    if (!state.Down)
+                    {
+                        trace.Current = new GcKeyEvent((Key)i, GcKeyEventPhase.Hold, frame, time);
+                        AddEvent(trace.Current); m_KeyEventListOnlyHold.Add(trace.Current); m_KeyTraceListOnlyHold.Add(trace);
+                    }
+                    m_KeyTraceDict[i] = trace;
                 }
-                else if (m_KeyTraceDict.TryGetValue((int)key, out var t))
-                {
-                    // Up Event
-                    var e = new GcKeyEvent(key, GcKeyEventPhase.Up, frame, time);
-                    AddKeyEvent(e);
-                    m_KeyEventListOnlyUp.Add(e);
-
-                    t.Current = e;
-                    t.FrameCount = t.Begin.Frame - frame + 1;
-                    t.Duration = t.Begin.Time - time;
-                    m_KeyTraceDict.Remove((int)key);
-                    m_KeyTraceListOnlyUp.Add(t);
-                }
-                else
-                {
-                    Debug.LogWarning($"[{nameof(GcInputKeyEngine)}] missed '{key}' press event.\n");
-                }
+                m_Traces[i] = trace;
+                m_KeyTraceList.Add(trace);
             }
-            m_History.Clear();
-
-            using var activeArray = m_KeyTraceDict.GetValueArray(Allocator.Temp);
-            for (var i = 0; i < activeArray.Length; i++)
-            {
-                var t = activeArray[i];
-                if (t.Begin.Frame == frame) continue;
-
-                // Hold Event
-                var key = t.Begin.Key;
-                var time = m_Context.Time.TimeSinceStartup;
-                var e = new GcKeyEvent(key, GcKeyEventPhase.Hold, frame, time);
-                AddKeyEvent(e);
-                m_KeyEventListOnlyHold.Add(e);
-
-                t.Current = e;
-                t.FrameCount = t.Begin.Frame - frame + 1;
-                t.Duration = t.Begin.Time - time;
-                m_KeyTraceDict[(int)key] = t;
-                m_KeyTraceListOnlyHold.Add(t);
-            }
-
-            // Populate m_KeyTraceList with all traces updated this frame for
-            // TryGetKeyTraceAll. Active traces (Down/Hold) come from the dict snapshot.
-            // Terminated traces (Up) were already removed from the dict but must also
-            // be included, so append m_KeyTraceListOnlyUp.
-            // Previously m_KeyTraceArray was declared but never assigned, causing the
-            // method to always return empty.
-            using var snapshot = m_KeyTraceDict.GetValueArray(Allocator.Temp);
-            for (var i = 0; i < snapshot.Length; i++)
-            {
-                m_KeyTraceList.Add(snapshot[i]);
-            }
-            for (var i = 0; i < m_KeyTraceListOnlyUp.Length; i++)
-            {
-                m_KeyTraceList.Add(m_KeyTraceListOnlyUp[i]);
-            }
-
-            void AddKeyEvent(GcKeyEvent e)
-            {
-                m_KeyCodeToKeyEventIndex.Add((int)e.Key, m_KeyEventList.Length);
-                m_KeyEventList.Add(e);
-            }
+        }
+        void AddEvent(GcKeyEvent e)
+        {
+            m_KeyCodeToKeyEventIndex[(int)e.Key] = m_KeyEventList.Length;
+            m_KeyEventList.Add(e);
         }
         #endregion
     }
