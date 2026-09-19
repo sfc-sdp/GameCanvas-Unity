@@ -1,0 +1,36 @@
+{
+    "valid": true,
+    "assets": [
+        {
+            "key": "BallRed.png",
+            "type": "Sprite",
+            "path": "Assets/Res/BallRed.png"
+        },
+        {
+            "key": "BallYellow.png",
+            "type": "Sprite",
+            "path": "Assets/Res/BallYellow.png"
+        },
+        {
+            "key": "BlueSky.png",
+            "type": "Sprite",
+            "path": "Assets/Res/BlueSky.png"
+        },
+        {
+            "key": "Click1.wav",
+            "type": "AudioClip",
+            "path": "Assets/Res/Click1.wav"
+        },
+        {
+            "key": "Click2.wav",
+            "type": "AudioClip",
+            "path": "Assets/Res/Click2.wav"
+        },
+        {
+            "key": "MapPin.png",
+            "type": "Sprite",
+            "path": "Assets/Res/MapPin.png"
+        }
+    ],
+    "errors": []
+}

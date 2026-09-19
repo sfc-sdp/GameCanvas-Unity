@@ -53,7 +53,7 @@ namespace GameCanvas.Editor
                 }
                 else
                 {
-                    File.Create(k_LaunchFlagPath);
+                    File.Create(k_LaunchFlagPath).Dispose();
 
                     // editor launch event
                     OnLaunch();
@@ -79,7 +79,7 @@ namespace GameCanvas.Editor
 
         void IPreprocessBuildWithReport.OnPreprocessBuild(BuildReport report)
         {
-            GcEditorResourceBuilder.Build();
+            GcAssetCatalogBuilder.Refresh();
         }
 
         static void OnLaunch()
@@ -97,7 +97,7 @@ namespace GameCanvas.Editor
                     break;
 
                 case PlayModeStateChange.ExitingEditMode:
-                    GcEditorResourceBuilder.Build();
+                    GcAssetCatalogBuilder.Refresh();
                     break;
 
                 case PlayModeStateChange.EnteredPlayMode:

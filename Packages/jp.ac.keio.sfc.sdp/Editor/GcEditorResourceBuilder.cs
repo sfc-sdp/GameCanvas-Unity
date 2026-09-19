@@ -151,7 +151,7 @@ namespace GameCanvas.Editor
                 .Append(k_DefaultFontPath)
                 .ToArray();
 
-            var removeList = AssetDatabase.FindAssets($"t:{nameof(GcReferenceFont)}")
+            var removeList = AssetDatabase.FindAssets($"t:{nameof(GcReferenceFont)}", new[] { k_GcResourcesDir })
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .ToList();
             var fontDict = new Dictionary<string, string>();
@@ -187,7 +187,7 @@ namespace GameCanvas.Editor
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .ToArray();
 
-            var removeList = AssetDatabase.FindAssets($"t:{nameof(GcReferenceSound)}")
+            var removeList = AssetDatabase.FindAssets($"t:{nameof(GcReferenceSound)}", new[] { k_GcResourcesDir })
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .ToList();
             var soundDict = new Dictionary<string, string>();
@@ -234,7 +234,7 @@ namespace GameCanvas.Editor
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .ToArray();
 
-            var removeList = AssetDatabase.FindAssets($"t:{nameof(GcReferenceText)}")
+            var removeList = AssetDatabase.FindAssets($"t:{nameof(GcReferenceText)}", new[] { k_GcResourcesDir })
                 .Select(AssetDatabase.GUIDToAssetPath)
                 .ToList();
             var fontDict = new Dictionary<string, string>();
@@ -388,12 +388,15 @@ namespace GameCanvas
 
             foreach (var assetPath in assetPaths)
             {
-                var importer = (TextureImporter)AssetImporter.GetAtPath(assetPath);
+                if (AssetImporter.GetAtPath(assetPath) is not TextureImporter importer)
+                {
+                    Debug.LogWarning($"[GC-ASSET-IMPORTER] {assetPath}: 通常の画像ではありません。PNG/JPEGなどの画像ファイルをAssets/Resに置いてください。");
+                    continue;
+                }
                 if (OnPreprocessTexture(importer))
                 {
                     importer.SaveAndReimport();
                 }
-                Resources.UnloadAsset(importer);
             }
         }
 
@@ -406,12 +409,15 @@ namespace GameCanvas
             foreach (var assetPath in assetPaths)
             {
                 var clip = AssetDatabase.LoadAssetAtPath<AudioClip>(assetPath);
-                var importer = (AudioImporter)AssetImporter.GetAtPath(assetPath);
+                if (AssetImporter.GetAtPath(assetPath) is not AudioImporter importer)
+                {
+                    Debug.LogWarning($"[GC-ASSET-IMPORTER] {assetPath}: 音声ファイルとして取り込めません。WAV/OGGなどへ変換してください。");
+                    continue;
+                }
                 if (OnPostprocessAudio(importer, clip))
                 {
                     importer.SaveAndReimport();
                 }
-                Resources.UnloadAsset(importer);
                 Resources.UnloadAsset(clip);
             }
         }

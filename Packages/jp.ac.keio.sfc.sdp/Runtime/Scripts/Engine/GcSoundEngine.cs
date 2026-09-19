@@ -53,7 +53,7 @@ namespace GameCanvas.Engine
             m_Mixer = GcReferenceMixer.Load("GcAudioMixer");
             m_PlayingId = new GcSound[k_TrackBgmNum];
             m_PausingId = new GcSound[k_TrackBgmNum];
-            m_Sound = new Dictionary<GcSound, GcReferenceSound>(GcSound.__Length__);
+            m_Sound = new Dictionary<GcSound, GcReferenceSound>();
             m_Sources = new AudioSource[k_TrackNum];
 
             var sources = m_Context.Behaviour.GetComponents<AudioSource>();
@@ -357,6 +357,8 @@ namespace GameCanvas.Engine
                 return false;
             }
 
+            clip = GcAssets.Resolve<AudioClip>(sound.m_Path);
+            if (sound.m_Path.StartsWith(GcAssets.Prefix, System.StringComparison.Ordinal)) return clip != null;
             if (!m_Sound.TryGetValue(sound, out var res))
             {
                 res = GcReferenceSound.Load(sound.m_Path);

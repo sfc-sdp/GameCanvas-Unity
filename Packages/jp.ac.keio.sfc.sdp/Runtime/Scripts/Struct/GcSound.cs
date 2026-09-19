@@ -16,7 +16,7 @@ namespace GameCanvas
         internal static readonly GcSound Null = default;
         internal readonly string m_Path;
 
-        private GcSound(in string path) { m_Path = path; }
+        internal GcSound(in string path) { m_Path = path; }
 
         public bool Invalid => string.IsNullOrEmpty(m_Path);
         public static bool operator !=(GcSound lhs, GcSound rhs) => !lhs.Equals(rhs);

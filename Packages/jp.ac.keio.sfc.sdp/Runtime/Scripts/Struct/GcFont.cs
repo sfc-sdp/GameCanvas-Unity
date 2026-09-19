@@ -14,7 +14,7 @@ namespace GameCanvas
     {
         internal readonly string m_Path;
 
-        private GcFont(in string path) { m_Path = path; }
+        internal GcFont(in string path) { m_Path = path; }
 
         public bool Invalid => string.IsNullOrEmpty(m_Path);
         public static bool operator !=(GcFont lhs, GcFont rhs) => !lhs.Equals(rhs);

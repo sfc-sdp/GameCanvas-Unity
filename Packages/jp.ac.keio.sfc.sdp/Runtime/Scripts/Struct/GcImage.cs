@@ -17,7 +17,7 @@ namespace GameCanvas
         internal readonly string m_Path;
         internal readonly int2 m_Size;
 
-        private GcImage(in string path, in int w, in int h) { m_Path = path; m_Size = new int2(w, h); }
+        internal GcImage(in string path, in int w, in int h) { m_Path = path; m_Size = new int2(w, h); }
 
         public bool Invalid => string.IsNullOrEmpty(m_Path);
         public static bool operator !=(GcImage lhs, GcImage rhs) => !lhs.Equals(rhs);

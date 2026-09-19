@@ -300,7 +300,8 @@ namespace GameCanvas.Engine
 
             if (!m_MeshImage.TryGetValue(image.m_Path, out Mesh mesh))
             {
-                if (!m_Atlas.TryGet(image.m_Path, out Sprite? sprite)) return;
+                var sprite = GcAssets.Resolve<Sprite>(image.m_Path);
+                if (sprite == null && (image.m_Path.StartsWith(GcAssets.Prefix, System.StringComparison.Ordinal) || !m_Atlas.TryGet(image.m_Path, out sprite))) return;
 
                 SetupMeshAsSprite(out mesh, sprite);
                 m_MeshImage.Add(image.m_Path, mesh);
@@ -320,7 +321,8 @@ namespace GameCanvas.Engine
 
             if (!m_MeshImage.TryGetValue(image.m_Path, out Mesh mesh))
             {
-                if (!m_Atlas.TryGet(image.m_Path, out Sprite? sprite)) return;
+                var sprite = GcAssets.Resolve<Sprite>(image.m_Path);
+                if (sprite == null && (image.m_Path.StartsWith(GcAssets.Prefix, System.StringComparison.Ordinal) || !m_Atlas.TryGet(image.m_Path, out sprite))) return;
 
                 SetupMeshAsSprite(out mesh, sprite);
                 m_MeshImage.Add(image.m_Path, mesh);
@@ -344,7 +346,8 @@ namespace GameCanvas.Engine
 
             if (!m_MeshImage.TryGetValue(image.m_Path, out Mesh mesh))
             {
-                if (!m_Atlas.TryGet(image.m_Path, out Sprite? sprite)) return;
+                var sprite = GcAssets.Resolve<Sprite>(image.m_Path);
+                if (sprite == null && (image.m_Path.StartsWith(GcAssets.Prefix, System.StringComparison.Ordinal) || !m_Atlas.TryGet(image.m_Path, out sprite))) return;
 
                 SetupMeshAsSprite(out mesh, sprite);
                 m_MeshImage.Add(image.m_Path, mesh);
@@ -793,8 +796,8 @@ namespace GameCanvas.Engine
             m_MaterialImage = new Material(Shader.Find("GameCanvas/TransparentImage"));
             m_MeshRect = new Mesh();
             m_MeshCircle = new DictWithLife<int, Mesh>(2);
-            m_MeshImage = new Dictionary<string, Mesh>(GcImage.__Length__);
-            m_TexImage = new Dictionary<string, Texture2D>(GcImage.__Length__);
+            m_MeshImage = new Dictionary<string, Mesh>();
+            m_TexImage = new Dictionary<string, Texture2D>();
             m_MeshPool = new ObjectPool<Mesh>();
             m_TextFont = new Dictionary<string, GcReferenceFont>();
             m_TextMesh = new DictWithLife<TextGenKey, Mesh>();
@@ -1503,6 +1506,12 @@ namespace GameCanvas.Engine
 
         private void GetOrLoadFont(in GcFont fontName, out Font font)
         {
+            var catalogFont = GcAssets.Resolve<Font>(fontName.m_Path);
+            if (fontName.m_Path.StartsWith(GcAssets.Prefix, System.StringComparison.Ordinal))
+            {
+                if (catalogFont != null) { font = catalogFont; return; }
+                GetOrLoadFont(GcFont.DefaultFont, out font); return;
+            }
             if (!m_TextFont.TryGetValue(fontName.m_Path, out var value))
             {
                 value = GcReferenceFont.Load(fontName.m_Path);

@@ -1,8 +1,5 @@
 #nullable enable
 using GameCanvas;
-using Unity.Mathematics;
-using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// ゲームクラス。
@@ -12,6 +9,7 @@ public sealed class Game : GameBase
 {
     // 変数の宣言
     int sec = 0;
+    GcImage sky;
 
     /// <summary>
     /// 初期化処理
@@ -20,6 +18,7 @@ public sealed class Game : GameBase
     {
         // キャンバスの大きさを設定します
         gc.ChangeCanvasSize(720, 1280);
+        GcAssets.TryGetImage("BlueSky.png", out sky);
     }
 
     /// <summary>
@@ -40,7 +39,7 @@ public sealed class Game : GameBase
         gc.ClearScreen();
 
         // 青空の画像を描画します
-        gc.DrawImage(GcImage.BlueSky, 0, 0);
+        gc.DrawImage(sky, 0, 0);
 
         // 黒の文字を描画します
         gc.SetColor(0, 0, 0);
