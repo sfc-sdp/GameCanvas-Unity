@@ -1,0 +1,16 @@
+{
+  "name": "gamecanvas-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "dotnet run --project ../scripts/gen-api-docs -- --source ../Packages/jp.ac.keio.sfc.sdp/Runtime/Scripts --output api",
+    "predev": "npm run generate",
+    "prebuild": "npm run generate",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "~1.6.4"
+  }
+}

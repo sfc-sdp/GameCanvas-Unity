@@ -102,3 +102,10 @@ Screenshots/
 
 # Unity 6 solution format
 *.slnx
+
+# Documentation generator build outputs
+scripts/gen-api-docs/bin/
+scripts/gen-api-docs/obj/
+
+# Hand-written API generator project
+!scripts/gen-api-docs/GenApiDocs.csproj
