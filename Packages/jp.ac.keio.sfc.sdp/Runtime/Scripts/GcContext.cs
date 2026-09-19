@@ -23,7 +23,6 @@ namespace GameCanvas
         public readonly GcGraphicsEngine Graphics;
         public readonly GcInputAccelerationEngine InputAcceleration;
         public readonly GcInputCameraEngine InputCamera;
-        public readonly GcInputGeolocationEngine InputGeolocation;
         public readonly GcInputKeyEngine InputKey;
         public readonly GcInputPointerEngine InputPointer;
         public readonly Camera MainCamera;
@@ -52,7 +51,6 @@ namespace GameCanvas
             InputPointer = new GcInputPointerEngine(this);
             InputKey = new GcInputKeyEngine(this);
             InputAcceleration = new GcInputAccelerationEngine();
-            InputGeolocation = new GcInputGeolocationEngine(this);
             InputCamera = new GcInputCameraEngine(this);
 
             EngineArray = new IEngine[]
@@ -65,7 +63,6 @@ namespace GameCanvas
                 InputPointer,
                 InputKey,
                 InputAcceleration,
-                InputGeolocation,
                 InputCamera
             };
         }

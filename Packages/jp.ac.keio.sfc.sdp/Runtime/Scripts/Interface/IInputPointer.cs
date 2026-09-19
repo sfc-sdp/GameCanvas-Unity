@@ -150,8 +150,6 @@ namespace GameCanvas
         /// <returns>1つ以上 取得できたかどうか</returns>
         bool TryGetPointerTraceAll(in GcPointerEventPhase phase, out System.ReadOnlySpan<GcPointerTrace> traces);
 
-        #region Obsolete
-        #endregion
     }
 
     public interface IInputPointerEx : IInputPointer
@@ -380,7 +378,5 @@ namespace GameCanvas
         /// <returns>指定した領域がタッチされ終えたかどうか</returns>
         bool IsTouchEnded(in float x, in float y, in float width, in float height, out float px, out float py);
 
-        #region Obsolete
-        #endregion
     }
 }

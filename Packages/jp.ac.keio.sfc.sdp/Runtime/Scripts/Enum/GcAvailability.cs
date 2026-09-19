@@ -17,7 +17,7 @@ namespace GameCanvas
     public enum GcAvailability
     {
         /// <summary>
-        /// 未初期化 (Null の新しい推奨名)
+        /// 未初期化
         /// </summary>
         Uninitialized = 0,
         /// <summary>

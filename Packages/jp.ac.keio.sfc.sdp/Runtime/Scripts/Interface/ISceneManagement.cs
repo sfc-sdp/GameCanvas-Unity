@@ -79,8 +79,6 @@ namespace GameCanvas
         /// <returns>登録解除できたかどうか</returns>
         bool TryRemoveActor(in GcActor actor);
 
-        #region Obsolete
-        #endregion
     }
 
     public interface ISceneManagementEx : ISceneManagement

@@ -367,13 +367,6 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public bool DidUpdateGeolocationThisFrame
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.DidUpdateGeolocationThisFrame;
-        }
-
-        /// <inheritdoc/>
         public GcFont Font
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -396,13 +389,6 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputCamera.HasUserAuthorizedPermissionCamera;
-        }
-
-        /// <inheritdoc/>
-        public bool HasUserAuthorizedPermissionGeolocation
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.HasUserAuthorizedPermissionGeolocation;
         }
 
         /// <inheritdoc/>
@@ -457,18 +443,6 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => (m_Context.InputKey.KeyUpCount != 0);
-        }
-
-        /// <inheritdoc/>
-        public bool IsGeolocationRunning
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                var status = m_Context.InputGeolocation.GeolocationStatus;
-                return (status == LocationServiceStatus.Initializing)
-                    || (status == LocationServiceStatus.Running);
-            }
         }
 
         /// <inheritdoc/>
@@ -539,13 +513,6 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputAcceleration.LastAccelerationEvent;
-        }
-
-        /// <inheritdoc/>
-        public GcGeolocationEvent LastGeolocationEvent
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputGeolocation.LastGeolocationEvent;
         }
 
         /// <inheritdoc/>
@@ -877,7 +844,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, bool autoPlay = true)
+        public void DrawCameraImage(in GcCameraDevice camera, bool autoPlay = false)
         {
             var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
             if (texture != null)
@@ -894,7 +861,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float degree = 0, bool autoPlay = true)
+        public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float degree = 0, bool autoPlay = false)
         {
             var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
             if (texture != null)
@@ -912,7 +879,7 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in GcRect rect, bool autoPlay = true)
+        public void DrawCameraImage(in GcCameraDevice camera, in GcRect rect, bool autoPlay = false)
         {
             var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
             if (texture != null)
@@ -930,12 +897,12 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = true)
+        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float degree = 0f, bool autoPlay = false)
             => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(degree)), autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = true)
+        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float degree = 0, bool autoPlay = false)
             => DrawCameraImage(camera, new float2(x, y), degree, autoPlay);
 
         /// <inheritdoc/>
@@ -1847,11 +1814,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RequestUserAuthorizedPermissionGeolocationAsync(in System.Action<bool> callback)
-            => m_Context.InputGeolocation.RequestUserAuthorizedPermissionGeolocationAsync(callback);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RotateCoordinate(in float degree)
             => m_Context.Graphics.RotateCoordinate(degree);
 
@@ -2038,18 +2000,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void StartGeolocationService(float desiredAccuracy = 10, float updateDistance = 10)
-            => m_Context.InputGeolocation.StartGeolocationService(desiredAccuracy, updateDistance);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void StopCameraImage(in GcCameraDevice camera)
             => m_Context.InputCamera.StopCameraImage(camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void StopGeolocationService()
-            => m_Context.InputGeolocation.StopGeolocationService();
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -2151,11 +2103,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)
             => m_Context.InputCamera.TryGetCameraImageSize(camera, out resolution);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetGeolocationEvent(out GcGeolocationEvent data)
-            => m_Context.InputGeolocation.TryGetGeolocationEvent(out data);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

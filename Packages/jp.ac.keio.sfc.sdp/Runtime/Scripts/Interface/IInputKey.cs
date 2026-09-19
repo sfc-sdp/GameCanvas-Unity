@@ -142,7 +142,7 @@ namespace GameCanvas
         /// <returns>取得できたかどうか</returns>
         bool TryGetScreenKeyboardArea(out GcAABB area);
 
-}
+    }
 
     public interface IInputKeyEx : IInputKey
     {
@@ -211,5 +211,5 @@ namespace GameCanvas
         /// <returns>離されたかどうか</returns>
         bool IsKeyUp(in Key key, out GcKeyTrace trace);
 
-}
+    }
 }

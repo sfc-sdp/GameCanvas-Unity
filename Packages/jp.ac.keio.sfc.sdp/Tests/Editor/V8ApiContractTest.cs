@@ -23,6 +23,14 @@ namespace GameCanvas.Editor.Tests
                     if (parameters.Length >= 3) Assert.That(parameters[0].ParameterType, Is.EqualTo(typeof(int)));
                 }
         }
+        [Test] public void DrawingACameraDoesNotStartItByDefault()
+        {
+            foreach (var type in new[] { typeof(GcProxy), typeof(IInputCameraEx) })
+                foreach (var method in type.GetMethods())
+                    if (method.Name == "DrawCameraImage")
+                        foreach (var parameter in method.GetParameters())
+                            if (parameter.Name == "autoPlay") Assert.That(parameter.DefaultValue, Is.EqualTo(false));
+        }
         [Test] public void ColorsUseExplicitUnitsAndClampAtTheirBoundaries()
         {
             Assert.That(new GcColor(128, 0, 255).R, Is.EqualTo(128 / 255f));
