@@ -1,4 +1,15 @@
 # CHANGE LOG
+## 8.0.0-pre.1
+プレリリースです。正式版ではありません。
+### 仕様変更
+- 入力の基本は `gc.Pointer` / `gc.Pointers` / `gc.PointerEvents` と `gc.Key(GcKey)`
+- 画像はパス指定の `DrawImage`。位置指定の `DrawImage` / `DrawString` は呼び出しごとの `anchor`（既定は左上）。`GcPoint` を渡せる
+- `SetColor(int, int, int, int = 255)` は 0 から 255。範囲外は丸める
+- 位置情報は `gc.Location` に統一。旧 Geolocation API を削除
+- `DrawCameraImage` の `autoPlay` 既定値を偽に変更。先に `PlayCameraImage`
+- 廃止予定だった宣言と `GetActorList` / `ReadOnlyActorList<T>` を削除
+- 推奨エディタは Unity 6000.6.2f1
+
 ## 7.0.2
 ### 不具合修正
 - [#160](https://github.com/sfc-sdp/GameCanvas-Unity/issues/160) InitGame 内で SetSoundVolume/SetSoundLevel が無視される問題を修正 (AudioMixer の初期化タイミング問題への対策)

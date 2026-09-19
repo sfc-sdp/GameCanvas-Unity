@@ -1,100 +1,54 @@
 #nullable enable
+using System;
 using GameCanvas;
 using Unity.Mathematics;
-using UnityEngine;
 
 public sealed class GeolocationSample : GameBase
 {
-    enum State
-    {
-        Init,
-        Running,
-        Success,
-        Fail
-    }
-
     const int k_TileSize = 256;
     const int k_CanvasW = k_TileSize * 3;
     const int k_CanvasH = k_TileSize * 3;
     const int k_ZoomLv = 18;
 
-    private State m_State;
-    private string m_StateMessage = "";
-    private int2 m_TileId;
-    private float2 m_Point;
+    string m_StateMessage = "画面を押すと位置情報を取ります";
+    bool m_HasFix;
+    bool m_IsMock;
+    int2 m_TileId;
+    float2 m_Point;
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(k_CanvasW, k_CanvasH);
-        gc.SetRectAnchor(GcAnchor.UpperLeft);
         gc.SetFontSize(36);
-
-#if UNITY_EDITOR
-        var lat = 35.38818385259218f;
-        var lng = 139.42752479544862f;
-        m_State = State.Success;
-        m_StateMessage = $"lat: {lat:0.000000}, lng: {lng:0.000000}";
-        CalcTileId(lat, lng, k_ZoomLv, out m_TileId, out m_Point);
-#else
-        m_State = State.Init;
-        m_StateMessage = "初期化中...";
-
-        if (gc.HasUserAuthorizedPermissionGeolocation)
-        {
-            StartGeolocationService();
-        }
-        else
-        {
-            gc.RequestUserAuthorizedPermissionGeolocationAsync(success =>
-            {
-                if (success)
-                {
-                    StartGeolocationService();
-                }
-                else
-                {
-                    m_State = State.Fail;
-                    m_StateMessage = "Error: no permission";
-                }
-            });
-        }
-
-        void StartGeolocationService()
-        {
-            m_State = State.Running;
-            m_StateMessage = "計測中...";
-
-            gc.StartGeolocationService();
-        }
-#endif // UNITY_EDITOR
     }
 
     public override void UpdateGame()
     {
-        if (m_State == State.Running)
+        if (gc.Pointer.Down)
         {
-            switch (gc.GeolocationStatus)
+            var s = gc.Location.Status;
+            if (s == GcLocationState.Idle || s == GcLocationState.Stopped ||
+                s == GcLocationState.Failed || s == GcLocationState.TimedOut ||
+                s == GcLocationState.NotGranted || s == GcLocationState.Disabled ||
+                s == GcLocationState.Unsupported)
             {
-                case LocationServiceStatus.Stopped:
-                    m_State = State.Fail;
-                    m_StateMessage = "Error: geolocation service stopped";
-                    break;
-
-                case LocationServiceStatus.Running:
-                    if (gc.TryGetGeolocationEvent(out var e))
-                    {
-                        m_State = State.Success;
-                        m_StateMessage = $"lat: {e.Latitude:0.000000}, lng: {e.Longitude:0.000000}";
-                        CalcTileId(e.Latitude, e.Longitude, k_ZoomLv, out m_TileId, out m_Point);
-                        gc.StopGeolocationService();
-                    }
-                    break;
-
-                case LocationServiceStatus.Failed:
-                    m_State = State.Fail;
-                    m_StateMessage = "Error: geolocation service failed";
-                    break;
+                m_HasFix = false;
+                gc.Location.Start();
             }
+        }
+
+        if (gc.Location.TryGetSample(out var sample))
+        {
+            m_HasFix = true;
+            m_IsMock = sample.IsMock;
+            m_StateMessage = $"緯度 {sample.Latitude:F6}、経度 {sample.Longitude:F6}";
+            if (m_IsMock) m_StateMessage += "\n模擬の位置です";
+            CalcTileId(sample.Latitude, sample.Longitude, k_ZoomLv, out m_TileId, out m_Point);
+            gc.Location.Stop();
+        }
+        else if (!m_HasFix)
+        {
+            m_StateMessage = ShowState(gc.Location.Status);
         }
     }
 
@@ -102,7 +56,7 @@ public sealed class GeolocationSample : GameBase
     {
         gc.ClearScreen();
 
-        if (m_State == State.Success)
+        if (m_HasFix)
         {
             for (var i = 0; i < 3; i++)
             {
@@ -115,31 +69,41 @@ public sealed class GeolocationSample : GameBase
                 }
             }
 
-            using (gc.StyleScope)
-            {
-                gc.SetRectAnchor(GcAnchor.LowerCenter);
-                gc.DrawImage(GcImage.MapPin, m_Point + new float2(k_TileSize, k_TileSize));
-
-                gc.SetStringAnchor(GcAnchor.LowerRight);
-                gc.DrawString("出典：国土地理院", k_CanvasW, k_CanvasH);
-            }
+            gc.DrawImage("MapPin.png", m_Point.x + k_TileSize, m_Point.y + k_TileSize, anchor: GcAnchor.LowerCenter);
+            gc.SetColor(0, 0, 0);
+            gc.DrawString("出典：国土地理院", k_CanvasW, k_CanvasH, anchor: GcAnchor.LowerRight);
         }
 
+        gc.SetColor(0, 0, 0);
         gc.DrawString(m_StateMessage, 10, 15);
     }
 
     /// <summary>緯度経度からタイル座標への変換</summary>
     /// <remarks><see href="https://www.trail-note.net/tech/coordinate/"/></remarks>
-    private static void CalcTileId(in float lat, in float lng, in int zoom, out int2 tileId, out float2 point)
+    static void CalcTileId(in double lat, in double lng, in int zoom, out int2 tileId, out float2 point)
     {
         const double L = 85.05112878;
-        var a = (int)math.pow(2, zoom + 7);
-        var b = math.PI_DBL / 180;
-        var x = (int)(a * (lng / 180 + 1));
-        var y = (int)((a / math.PI) * (-Atanh(math.sin(b * lat)) + Atanh(math.sin(b * L))));
+        var a = (int)Math.Pow(2, zoom + 7);
+        var b = Math.PI / 180.0;
+        var x = (int)(a * (lng / 180.0 + 1.0));
+        var y = (int)((a / Math.PI) * (-Atanh(Math.Sin(b * lat)) + Atanh(Math.Sin(b * L))));
         tileId = new int2(x / k_TileSize, y / k_TileSize);
         point = new float2(x % k_TileSize, y % k_TileSize);
 
-        static double Atanh(in double x) => 0.5 * math.log((1 + x) / (1 - x));
+        static double Atanh(in double value) => 0.5 * Math.Log((1 + value) / (1 - value));
     }
+
+    static string ShowState(GcLocationState state) => state switch
+    {
+        GcLocationState.RequestingPermission => "位置情報の許可を確認中です",
+        GcLocationState.Waiting => "位置情報を取得中です",
+        GcLocationState.NotGranted => "位置情報が許可されていません",
+        GcLocationState.Disabled => "端末の位置情報がオフです",
+        GcLocationState.TimedOut => "時間内に位置情報を取得できませんでした",
+        GcLocationState.Unsupported => "この環境では位置情報を使えません",
+        GcLocationState.Failed => "位置情報の取得に失敗しました",
+        GcLocationState.Stopped => "停止中です。画面を押すと再開できます",
+        GcLocationState.Idle => "画面を押してください",
+        _ => "位置情報を確認中です"
+    };
 }

@@ -1,90 +1,93 @@
 #nullable enable
 using GameCanvas;
-using Unity.Collections;
-using Unity.Mathematics;
-using UnityEngine;
 
 public sealed class DeviceCameraSample : GameBase
 {
-    enum State
-    {
-        Init,
-        Playing,
-        NotFound,
-        Fail
-    }
-
-    GcCameraDevice? m_Camera;
-    State m_State;
-    string m_StateMessage = "";
+    GcCameraDevice? camera;
+    bool asking;
+    bool playing;
+    int requestId;
+    string message = "画面を押すとカメラを開始します";
 
     public override void InitGame()
     {
+        gc.ChangeCanvasSize(720, 1280);
         gc.SetFontSize(36);
+    }
 
-        m_State = State.Init;
-        m_StateMessage = "初期化中...";
-
+    public override void UpdateGame()
+    {
+        if (asking || playing || !gc.Pointer.Down) return;
+        asking = true;
+        var id = ++requestId;
         if (gc.HasUserAuthorizedPermissionCamera)
         {
-            PlayCamera();
+            Play(id);
+            return;
         }
-        else
+        gc.RequestUserAuthorizedPermissionCameraAsync(ok =>
         {
-            gc.RequestUserAuthorizedPermissionCameraAsync(success =>
+            if (id != requestId) return;
+            if (ok) Play(id);
+            else
             {
-                if (success)
-                {
-                    PlayCamera();
-                }
-                else
-                {
-                    m_State = State.Fail;
-                    m_StateMessage = "Error: no permission";
-                }
-            });
+                asking = false;
+                message = "カメラが許可されていません。画面を押すと再試行できます";
+            }
+        });
+    }
+
+    void Play(int id)
+    {
+        if (id != requestId) return;
+        asking = false;
+        if (!gc.TryGetCameraImage(out var device))
+        {
+            camera = null;
+            playing = false;
+            message = "カメラがありません";
+            return;
         }
+        camera = device;
+        if (!gc.PlayCameraImage(device, out var size))
+        {
+            gc.StopCameraImage(device);
+            camera = null;
+            playing = false;
+            message = "カメラを開始できませんでした。画面を押すと再試行できます";
+            return;
+        }
+        gc.ChangeCanvasSize(size.x, size.y);
+        playing = true;
+        message = $"{device.DeviceName}\n({size.x}x{size.y})";
+        if (gc.IsFlippedCameraImage(device)) message += "\nFlipped";
+        if (gc.TryGetCameraImageRotation(device, out var deg) && deg != 0f) message += $"\nRotate {deg}";
     }
 
     public override void DrawGame()
     {
-        if (m_State == State.Playing)
+        gc.ClearScreen();
+        if (playing && camera != null) gc.DrawCameraImage(camera);
+        if (playing)
         {
-            GcAssert.IsNotNull(m_Camera);
-            if (!gc.DidUpdateCameraImageThisFrame(m_Camera)) return;
-
-            gc.ClearScreen();
-            gc.DrawCameraImage(m_Camera);
             gc.SetColor(gc.ColorBlack);
-            gc.DrawString(m_StateMessage, 12, 18);
+            gc.DrawString(message, 12, 18);
             gc.SetColor(gc.ColorWhite);
-            gc.DrawString(m_StateMessage, 10, 15);
+            gc.DrawString(message, 10, 15);
         }
         else
         {
-            gc.ClearScreen();
             gc.SetColor(gc.ColorBlack);
-            gc.DrawString(m_StateMessage, 10, 15);
+            gc.DrawString(message, 10, 15);
         }
     }
 
-    void PlayCamera()
+    public override void PauseGame()
     {
-        if (gc.TryGetCameraImageAll(out var devices))
-        {
-            m_Camera = devices[0];
-            gc.PlayCameraImage(m_Camera, new GcResolution(1280, 720, 30), out var size);
-            gc.ChangeCanvasSize(size.x, size.y);
-
-            m_State = State.Playing;
-            m_StateMessage = $"{m_Camera.DeviceName}\n({size.x}x{size.y})";
-            if (gc.IsFlippedCameraImage(m_Camera)) m_StateMessage += "\nFlipped";
-            if (gc.TryGetCameraImageRotation(m_Camera, out var deg) && deg != 0f) m_StateMessage += $"\nRotate {deg}";
-        }
-        else
-        {
-            m_State = State.NotFound;
-            m_StateMessage = "Warn: no camera";
-        }
+        requestId++;
+        if (camera != null) gc.StopCameraImage(camera);
+        playing = false;
+        asking = false;
+        message = "中断しました。画面を押すと再開できます";
     }
 }

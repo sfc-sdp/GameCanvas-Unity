@@ -1,6 +1,6 @@
 {
   "name": "jp.ac.keio.sfc.sdp",
-  "version": "7.0.2",
+  "version": "8.0.0-pre.1",
   "displayName": "GameCanvas",
   "description": "GameCanvas for Unity",
   "unity": "6000.6",
@@ -44,6 +44,11 @@
       "displayName": "Networking",
       "description": "An example of network communication.",
       "path": "Samples~/Networking"
+    },
+    {
+      "displayName": "Tutorial",
+      "description": "Examples for pointer, keyboard and location lessons.",
+      "path": "Samples~/Tutorial"
     }
   ]
 }

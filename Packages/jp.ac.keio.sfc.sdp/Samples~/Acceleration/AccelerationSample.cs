@@ -1,9 +1,7 @@
 #nullable enable
 using GameCanvas;
-using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public sealed class AccelerationSample : GameBase
 {
@@ -16,26 +14,33 @@ public sealed class AccelerationSample : GameBase
     Ball m_Ball;
     Color m_Color;
     string m_DebugText = "";
+    bool m_Supported;
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(720, 1280);
         gc.SetFontSize(36);
-        gc.SetRectAnchor(GcAnchor.MiddleCenter);
-        gc.IsAccelerometerEnabled = true;
+        m_Supported = gc.IsAccelerometerSupported;
+        if (m_Supported) gc.IsAccelerometerEnabled = true;
 
         m_Ball = new Ball
         {
             Point = gc.CanvasCenter,
             Speed = float2.zero
         };
+        m_Color = gc.ColorBlack;
+        if (!m_Supported) m_DebugText = "この端末では加速度計を使えません";
     }
 
     public override void UpdateGame()
     {
+        if (!m_Supported) return;
+
         var accel = float2.zero;
-        foreach (var e in gc.AccelerationEvents)
+        var events = gc.AccelerationEvents;
+        for (int i = 0; i < events.Length; i++)
         {
+            var e = events[i];
             accel += new float2(e.Acceleration.x, e.Acceleration.y) * e.DeltaTime;
         }
         m_Ball.Speed += accel * 20;
@@ -57,9 +62,7 @@ public sealed class AccelerationSample : GameBase
     public override void DrawGame()
     {
         gc.ClearScreen();
-
-        gc.DrawImage(GcImage.BallRed, m_Ball.Point);
-
+        gc.DrawImage("BallRed.png", m_Ball.Point.x, m_Ball.Point.y, anchor: GcAnchor.MiddleCenter);
         gc.SetColor(m_Color);
         gc.DrawString(m_DebugText, 20, 20);
     }
