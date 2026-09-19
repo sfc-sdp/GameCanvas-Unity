@@ -17,14 +17,20 @@ Assets/Res/背景/青空.png      →  背景/青空.png
 
 ```csharp
 gc.DrawImage("BlueSky.png", 0, 0);
-gc.DrawImage("BlueSky.png", 360, 640, rotation: 30, anchor: GcAnchor.MiddleCenter);
 gc.DrawImage("BlueSky.png", gc.Pointer.Position);
 gc.DrawImage("BlueSky.png", new GcRect(40, 800, 320, 240), rotation: 15);
 ```
 
-`rotation` は時計回りの度数です。回転の中心は `anchor` で指定した点です。省略すると左上、回転 0 です。位置を指定した `DrawImage` は `SetRectAnchor` を見ません。`GcPoint` も渡せます。`gc.Pointer.Position` がそのまま使えます。
+`rotation` は時計回りの度数です。省略すると 0 です。基準点は `SetRectAnchor` です。既定は左上です。回転の中心もこの点です。`GcPoint` も渡せます。`gc.Pointer.Position` がそのまま使えます。
 
-`GcRect` の `Radian` は弧度法です。パスでもハンドルでも文字でも、矩形指定の `rotation` は既定 0、`anchor` は既定で左上です。`rotation` は矩形の回転へ加える度数で、渡した `GcRect` 自体は変わりません。文字の矩形指定も同じです。
+```csharp
+gc.SetRectAnchor(GcAnchor.MiddleCenter);
+gc.DrawImage("BlueSky.png", 360, 640, rotation: 30);
+```
+
+`GcRect` の `Radian` は弧度法です。パスでもハンドルでも、矩形指定の `rotation` は既定 0 です。`rotation` は矩形の回転へ加える度数で、渡した `GcRect` 自体は変わりません。矩形指定でも `SetRectAnchor` を見ます。
+
+`SetRectAnchor` は図形、画像、Texture、カメラ画像、オンライン画像に効きます。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。
 
 画像が見つからないときは、マゼンタの四角とパスを画面に出します。Console には `GC_ASSET_MISSING` が、同じキーについて一度だけ出ます。警告の記録は 256 件で打ち切ります。
 
@@ -45,18 +51,21 @@ if (GcAssets.TryGetImage("BlueSky.png", out var sky))
 
 ## 日本語を置く
 
-既定のフォントで日本語を描けます。基準点は「指定した座標に、文字のどの角を乗せるか」です。複数行の行揃えとは別です。
+既定のフォントで日本語を描けます。基準点は、指定した座標に文字のどの位置を乗せるかです。文字は `SetStringAnchor` です。既定は左上です。
 
 ```csharp
 gc.SetColor(0, 0, 0);
 gc.SetFontSize(48);
 gc.DrawString("左上を基準にする", 40, 160);
-gc.DrawString("右上を基準にする", 680, 160, anchor: GcAnchor.UpperRight);
-gc.DrawString("30度回す", 360, 400, rotation: 30, anchor: GcAnchor.MiddleCenter);
+gc.SetStringAnchor(GcAnchor.UpperRight);
+gc.DrawString("右上を基準にする", 680, 160);
+gc.SetStringAnchor(GcAnchor.MiddleCenter);
+gc.DrawString("30度回す", 360, 400, rotation: 30);
+gc.SetStringAnchor(GcAnchor.UpperLeft);
 gc.DrawString("ここ", gc.Pointer.Position);
 ```
 
-位置を指定した `DrawString` は `SetStringAnchor` を見ません。呼び出しごとに `anchor` を渡し、省略すると左上です。位置を省略した `DrawString(text)` だけが、直前の `SetStringAnchor` を使います。
+引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の `SetStringAnchor` を使います。文字の矩形指定も、`rotation` は矩形の回転へ加える度数です。渡した `GcRect` 自体は変わりません。
 
 色は 0 から 255 の整数です。`int` の変数でも同じ単位です。範囲外は端の値へ丸めます。0 から 1 で作りたいときは `GcColor.FromNormalized` を使い、NaN は渡せません。
 
@@ -69,6 +78,22 @@ gc.SetBackgroundColor(255, 255, 255);
 Unity の `Color` を渡す入口は、Unity 側との連携用に残しています。フォントの大きさは `SetFontSize` です。幅だけ先に知りたいときは `gc.CalcStringWidth(text)` があります。
 
 最初の完成例は `Assets/Game.cs` です。
+
+## 基準点を一時的に変える
+
+基準点は次の変更まで残ります。毎フレームの最初で戻す必要はありません。一部だけ変えたいときは、次のように書きます。ブロックを抜けると、基準点だけでなく色やフォントも元に戻ります。
+
+```csharp
+gc.DrawImage("BlueSky.png", 0, 0);
+using (gc.StyleScope)
+{
+    gc.SetRectAnchor(GcAnchor.MiddleCenter);
+    gc.DrawImage("BlueSky.png", 360, 640, rotation: 30);
+}
+gc.DrawImage("BlueSky.png", gc.Pointer.Position);
+```
+
+文字なら `SetStringAnchor` を同じブロックの中で使います。ピンと出典を重ねる例は `Samples~/Geolocation/GeolocationSample.cs` です。
 
 ## 音
 

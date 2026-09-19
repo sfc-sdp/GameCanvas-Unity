@@ -204,7 +204,7 @@ public sealed class Game : GameBase
 }
 ```
 
-`DrawCameraImage` の `autoPlay` は既定で偽です。先に `PlayCameraImage` が成功してから描きます。戻り値が偽なら開始できていません。アプリが背面に回ると `PauseGame` で止め、そのときに進めていた権限の要求も無効にします。あとに届いた応答では再生しません。許可の画面で中断した場合も、復帰後にもう一度画面を押して開始します。描画のついでに再生したい従来の書き方だけ、`autoPlay: true` を明示します。iOSシミュレータに実カメラは無いので、映像の確認は実機です。
+`DrawCameraImage` の `autoPlay` は既定で偽です。先に `PlayCameraImage` が成功してから描きます。基準点は `SetRectAnchor` です。戻り値が偽なら開始できていません。アプリが背面に回ると `PauseGame` で止め、そのときに進めていた権限の要求も無効にします。あとに届いた応答では再生しません。許可の画面で中断した場合も、復帰後にもう一度画面を押して開始します。描画のついでに再生したい従来の書き方だけ、`autoPlay: true` を明示します。iOSシミュレータに実カメラは無いので、映像の確認は実機です。
 
 ## 通信
 
@@ -217,4 +217,4 @@ if (state == GcAvailability.NotReady) gc.DrawString("読み込み中", 40, 40);
 if (state == GcAvailability.NotAvailable) gc.DrawString("取得できません", 40, 40);
 ```
 
-`url` は実際の画像アドレスに差し替えてください。音声やテキストは `TryGetOnlineText`、`TryGetOnlineSound` です。キャッシュを消すときは `ClearDownloadCache(url)` です。
+`url` は実際の画像アドレスに差し替えてください。`DrawOnlineImage` も `SetRectAnchor` を見ます。音声やテキストは `TryGetOnlineText`、`TryGetOnlineSound` です。キャッシュを消すときは `ClearDownloadCache(url)` です。

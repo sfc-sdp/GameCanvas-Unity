@@ -40,14 +40,16 @@ public sealed class Game : GameBase
         gc.SetFontSize(48);
         gc.DrawString("この文字と青空の画像が", 40, 160);
         gc.DrawString("見えていれば成功です", 40, 270);
-        gc.DrawString($"{sec}s", 630, 10, anchor: GcAnchor.UpperRight);
+        gc.SetStringAnchor(GcAnchor.UpperRight);
+        gc.DrawString($"{sec}s", 630, 10);
+        gc.SetStringAnchor(GcAnchor.UpperLeft);
     }
 }
 ```
 
 `gc` が GameCanvas の入口です。キャンバスの初期サイズは 720×1280 です。端末の画面と縦横比が違うと、上下か左右に帯が付きます。
 
-画像は `Assets/Res` からの相対パスで描きます。最初の表示に `TryGetImage` は不要です。文字の `anchor` は、その呼び出しだけの基準点です。省略すると左上です。
+画像は `Assets/Res` からの相対パスで描きます。最初の表示に `TryGetImage` は不要です。秒数は右上を基準にしているので、描いたあと左上へ戻しています。基準点は次の変更まで残ります。
 
 ## 座標
 
@@ -61,7 +63,7 @@ gc.SetRectAnchor(GcAnchor.UpperLeft);
 gc.FillRect(80, 400, 200, 120);
 ```
 
-`FillRect` のような図形は、直前の `SetRectAnchor` を使います。位置を指定した `DrawImage` と `DrawString` は、その呼び出しの `anchor` だけを見ます。
+`SetRectAnchor` は図形と画像の基準点です。文字は `SetStringAnchor` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。毎フレームの最初で戻す必要はありません。
 
 ## 次に進む
 

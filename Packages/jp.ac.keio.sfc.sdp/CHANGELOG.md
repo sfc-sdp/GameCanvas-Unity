@@ -3,7 +3,7 @@
 プレリリースです。正式版ではありません。
 ### 仕様変更
 - 入力の基本は `gc.Pointer` / `gc.Pointers` / `gc.PointerEvents` と `gc.Key(GcKey)`
-- 画像はパス指定の `DrawImage`。位置指定の `DrawImage` / `DrawString` は呼び出しごとの `anchor`（既定は左上）。`GcPoint` を渡せる
+- 画像はパス指定の `DrawImage`。基準点は状態。図形・画像・Texture・カメラ画像・オンライン画像は `SetRectAnchor`、文字は `SetStringAnchor`。引数なし、`GcPoint`、数値の位置、`GcRect` でも状態を見る
 - `SetColor(int, int, int, int = 255)` は 0 から 255。範囲外は丸める
 - 位置情報は `gc.Location` に統一。旧 Geolocation API を削除
 - `DrawCameraImage` の `autoPlay` 既定値を偽に変更。先に `PlayCameraImage`

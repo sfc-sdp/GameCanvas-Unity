@@ -44,14 +44,12 @@ v8 では、よく使う入力・描画・位置情報の入口を足し、廃�
 | 以前 | 今 |
 | --- | --- |
 | `TryGetImage` してから `DrawImage` | `gc.DrawImage("BlueSky.png", x, y)` |
-| `SetStringAnchor` のあと `DrawString` | `gc.DrawString(text, x, y, anchor: GcAnchor.UpperRight)` |
-| `SetRectAnchor` を画像にも引き継ぐ | 位置指定の `DrawImage` / `DrawString` は呼び出しの `anchor` だけを見る |
-| `DrawRightString` / `DrawCenterString` | `DrawString(..., anchor: ...)` |
+| `DrawRightString` / `DrawCenterString` | `gc.SetStringAnchor(...)` のあと `DrawString` |
 | `SetColor` の float と byte の取り違え | `SetColor(int, int, int, int = 255)`。0 から 255。範囲外は丸める |
 | 0 から 1 の色 | `GcColor.FromNormalized`。NaN は不可 |
 | `DrawCameraImage` が止まっているカメラを再生する | 既定は再生しない。先に `PlayCameraImage`。従来の連携だけ `autoPlay: true` |
 
-図形の `FillRect` や、位置を省略した `DrawImage(image)` / `DrawString(text)` は、これまでどおり `SetRectAnchor` / `SetStringAnchor` を使います。任意の画像の有無で分岐するときや、同じハンドルを繰り返すときだけ `TryGetImage` を使います。
+図形、画像、Texture、カメラ画像、オンライン画像は `SetRectAnchor` です。文字は `SetStringAnchor` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。任意の画像の有無で分岐するときや、同じハンドルを繰り返すときだけ `TryGetImage` を使います。
 
 ## アクター
 

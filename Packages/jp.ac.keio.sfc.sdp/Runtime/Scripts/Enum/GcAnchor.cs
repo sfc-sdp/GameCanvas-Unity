@@ -29,7 +29,7 @@ namespace GameCanvas
         /// </summary>
         UpperRight,
         /// <summary>
-        /// 右
+        /// 左
         /// </summary>
         MiddleLeft,
         /// <summary>
@@ -37,7 +37,7 @@ namespace GameCanvas
         /// </summary>
         MiddleCenter,
         /// <summary>
-        /// 左
+        /// 右
         /// </summary>
         MiddleRight,
         /// <summary>

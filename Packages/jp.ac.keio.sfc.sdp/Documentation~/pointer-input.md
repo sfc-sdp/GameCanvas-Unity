@@ -65,7 +65,7 @@ public sealed class Game : GameBase
 
 当たり判定には `StartX` と `StartY` を使います。押下と移動が同じフレームに届くことがあるため、最後の位置 `X`・`Y` で掴むと、指が乗っていない対象を掴むことがあります。離す直前の移動を取りこぼさないように、位置の反映は `Held` だけでなく `Up` でも行います。
 
-`FillRect` は図形なので `SetRectAnchor` を使います。
+`FillRect` は図形なので `SetRectAnchor` を使います。画像も同じです。文字は `SetStringAnchor` です。
 
 代表の指を離しても、`gc.Pointer` はすでに押している別の指へ乗り移りません。次の新しい押下を待ちます。残った指を追い続けるなら、次の一覧を使います。
 

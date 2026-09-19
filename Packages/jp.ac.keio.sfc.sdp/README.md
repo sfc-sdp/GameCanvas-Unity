@@ -10,7 +10,8 @@ This software is released under the MIT License, see [LICENSE](LICENSE.md).
 よく使う入口は次のとおりです。
 
 - 画像: `gc.DrawImage("BlueSky.png", x, y)`
-- 文字: `gc.DrawString(text, x, y, anchor: GcAnchor.UpperLeft)`
+- 文字: `gc.DrawString(text, x, y)`
+- 基準点: 図形・画像は `gc.SetRectAnchor`、文字は `gc.SetStringAnchor`
 - 色: `gc.SetColor(r, g, b)` （0 から 255）
 - 入力: `gc.Pointer` / `gc.Pointers` / `gc.Key(GcKey.Space)`
 - 位置情報: `gc.Location.Start` / `Stop` / `TryGetSample`

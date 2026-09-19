@@ -19,7 +19,7 @@ namespace GameCanvas
     public static class GcRectExtensions
     {
         /// <summary>
-        /// 傾き（弧度法）
+        /// 傾き（度数法）
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Degree(this in GcRect self) => math.degrees(self.Radian);
