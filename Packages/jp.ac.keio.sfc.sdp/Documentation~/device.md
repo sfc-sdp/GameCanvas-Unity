@@ -307,7 +307,7 @@ if (gc.Camera.Status == GcCameraState.Running)
 
 許可のあと `Devices` に一覧が入ります。`Count` と添字で読みます。使用中のカメラは `Device` です。選んだカメラを `Start(device)` すると、そのときもう一度確認し、外されていたら `NoDevice` です。同時に複数の映像を流す入口と、デプスカメラの入口はありません。デプスカメラは一覧に出ません。`GcCameraDevice` の欄は以前どおり `DeviceName`、`IsFront`、`CanFocusPoint`、`Resolutions`、`IsDepth` です。ピントは左下を (0, 0)、右上を (1, 1) として `Focus` します。非対応や起動前は偽を返します。解除は `ResetFocus` です。`IsSupported` は実装した環境かどうかで、許可やカメラの有無ではありません。
 
-iOS シミュレータに実カメラは無く、機器が無い状態の確認だけです。実機の iOS カメラは未確認です。Editor の実カメラは確認していません。Web のカメラとブラウザ、Windows のカメラ、macOS のカメラは未確認です。
+iOS シミュレータに実カメラは無く、機器が無い状態の確認だけです。実機の iOS カメラは未確認です。Editor の実カメラは確認していません。Web のカメラは許可待ちから `NotGranted`、`Stop` で `Stopped` までを確認し、実映像は未確認です。確認した範囲は [Web で開く](web.md) です。Windows のカメラ、macOS のカメラは未確認です。
 
 ## 通信
 
