@@ -27,6 +27,11 @@ namespace GameCanvas
         internal event System.Action? OnFocusOnce;
 
         private bool m_IsPause;
+        private bool m_ApplicationPaused;
+        private bool m_WebHidden;
+#if UNITY_WEBGL && !UNITY_EDITOR
+        private int m_WebVisibilityOwner;
+#endif
         private GcProxy m_Proxy = null!;
 
         #endregion
@@ -60,8 +65,20 @@ namespace GameCanvas
 
         private void OnApplicationPause(bool pause)
         {
+            m_ApplicationPaused = pause;
+            UpdatePause();
+        }
+
+        internal void OnWebVisibility(bool hidden)
+        {
+            m_WebHidden = hidden;
+            UpdatePause();
+        }
+
+        private void UpdatePause()
+        {
             if (proxyNeedsRebuild || m_Proxy == null) return;
-            if (pause)
+            if (m_ApplicationPaused || m_WebHidden)
             {
                 if (!m_IsPause)
                 {
@@ -83,6 +100,9 @@ namespace GameCanvas
 
         private void OnDisable()
         {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            GcWebVisibility.Unregister(m_WebVisibilityOwner);
+#endif
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged -= OnChangedPlayMode;
 #endif
@@ -108,6 +128,12 @@ namespace GameCanvas
                 m_IsPause = false;
             }
             StartCoroutine(GameLoop());
+#if UNITY_WEBGL && !UNITY_EDITOR
+            m_WebVisibilityOwner = GcWebVisibility.Register(OnWebVisibility, out bool hidden);
+            OnWebVisibility(hidden);
+#else
+            UpdatePause();
+#endif
         }
 
 #if UNITY_EDITOR
@@ -144,6 +170,7 @@ namespace GameCanvas
             while (enabled)
             {
                 yield return null;
+                if (m_IsPause) continue;
 
                 samplers[0].Begin();
                 {
