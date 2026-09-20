@@ -10,7 +10,7 @@ GameCanvas の編集をAIに頼むときは、バージョンと、触ってよ�
 
 > このプロジェクトは Unity 6000.6.2f1 に固定しています。作業ルールと `scripts/doctor.py --json` を先に読んでください。素材は `Assets/GameCanvas/asset-catalog.json` にあるものだけを使い、`Assets/Game.cs` を変更してください。コンパイル、テスト、再生で目に見えた結果を分けて報告してください。既存の変更と素材は消さないでください。
 
-入力なら [ポインターで操作する](pointer-input.md)、画像なら [画像と日本語](images-and-text.md) を読ませてから頼んでください。`IsTouchBegan`、`IsTapped`、`IsKeyDown`、`LastPointerX`、`StartGeolocationService`、`TryGetImage` を必須にした最初の表示は、今の入口ではありません。入力は `gc.Pointer` / `gc.Pointers` / `gc.Taps` / `gc.Key(GcKey)` です。
+入力なら [ポインターで操作する](pointer-input.md)、画像なら [画像と日本語](images-and-text.md) を読ませてから頼んでください。`IsTouchBegan`、`IsTapped`、`IsKeyDown`、`LastPointerX`、`StartGeolocationService`、`PlayCameraImage`、`DrawCameraImage`、`RequestUserAuthorizedPermissionCameraAsync`、`TryGetImage` を必須にした最初の表示は、今の入口ではありません。入力は `gc.Pointer` / `gc.Pointers` / `gc.Taps` / `gc.Key(GcKey)` です。カメラは `gc.Camera.Start` と `gc.DrawCamera` です。
 
 ## エディタを操作する
 
@@ -53,4 +53,4 @@ python3 scripts/validate-examples.py
 - エディタの再生で、期待した絵が出た
 - 実機で同じ操作ができた
 
-位置情報は Editor では `Unsupported` です。シミュレータの模擬位置は `IsMock` で区別します。実機の結果とエディタの再生を取り違えないでください。
+位置情報は Editor では `Unsupported` です。シミュレータの模擬位置は `IsMock` で区別します。実機の結果とエディタの再生を取り違えないでください。iOS シミュレータに実カメラは無く、機器が無い状態の確認だけです。実機の iOS カメラは未確認です。Web のカメラとブラウザ、Windows のカメラ、macOS のカメラは未確認です。

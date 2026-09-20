@@ -32,7 +32,7 @@ gc.DrawImage("BlueSky.png", 360, 640, rotation: 30);
 
 パスでもハンドルでも、矩形指定の `rotation` は既定 0 です。`rotation` は矩形の回転へ加える度数で、渡した `GcRect` 自体は変わりません。矩形指定でも `SetRectAnchor` を見ます。
 
-`SetRectAnchor` は図形、画像、Texture、カメラ画像、オンライン画像に効きます。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。
+`SetRectAnchor` は図形、画像、Texture、カメラ映像、オンライン画像に効きます。カメラは `gc.DrawCamera` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。
 
 画像が見つからないときは、マゼンタの四角とパスを画面に出します。Console には `GC_ASSET_MISSING` が、同じキーについて一度だけ出ます。警告の記録は 256 件で打ち切ります。
 

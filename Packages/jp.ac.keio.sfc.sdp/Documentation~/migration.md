@@ -1,6 +1,6 @@
 # 以前の書き方から移る
 
-v8 では、よく使う入力・描画・乱数・位置情報の入口を足し、廃止予定だった宣言と旧い入口を削除しました。新しい課題は、削除した名前に戻さないでください。
+v8 では、よく使う入力・描画・乱数・位置情報・カメラの入口を足し、廃止予定だった宣言と旧い入口を削除しました。新しい課題は、削除した名前に戻さないでください。
 
 機械生成のAPIページは、ソースより遅れていることがあります。移したあとの正しさは `Runtime/Scripts` で確認します。
 
@@ -92,6 +92,37 @@ v8 では、よく使う入力・描画・乱数・位置情報の入口を足�
 
 値の有無は `TryGetSample` で一度に判断します。Editor では未対応です。緯度経度は `double` です。Editor 用の固定座標を、測位の成功として出さないでください。
 
+## カメラ
+
+旧いカメラの入口は削除しました。`IInputCamera` は残っており、新しいメンバーは `Camera` と `DrawCamera` です。旧いメンバーと `IInputCameraEx` はありません。コールバック、`requestId`、許可待ちの変数、`PauseGame`、再生中フラグは、簡単な例では不要です。
+
+| 以前 | 今 |
+| --- | --- |
+| `PlayCameraImage` | `gc.Camera.Start()`。許可から入る。希望の幅・高さ・fps は引数 |
+| `StopCameraImage` | `gc.Camera.Stop()`。許可待ちも取り消す |
+| `RequestUserAuthorizedPermissionCameraAsync` | 削除。`Start` が許可の確認から入る |
+| `HasUserAuthorizedPermissionCamera` | `gc.Camera.Permission` |
+| `PauseCameraImage` | 一時停止の入口はない。止めるなら `Stop`。背面では GameCanvas が止める |
+| `IsPlayingCameraImage` | `gc.Camera.Status == GcCameraState.Running`。最初の有効な映像を受け取ったとき。`PlayCameraImage` の成功とは違う |
+| `DidUpdateCameraImageThisFrame` | `gc.Camera.Updated` |
+| `TryGetCameraImage` / `TryGetCameraImageAll` / `CameraDevices` / `CameraDeviceCount` | 許可のあと `gc.Camera.Devices`。使用中のカメラは `gc.Camera.Device`。`Count` と添字で読む |
+| `TryGetCameraImage(deviceName)` | `Devices` から名前で探すか、`Start(device)` |
+| `UpdateCameraDevice` | 削除。`Start` の許可のあと調べる |
+| `TryGetCameraImageSize` | `gc.Camera.Width` / `Height`。向きを補正した整数。`Running` 以外は 0 |
+| `TryGetCameraImageRotation` | `gc.Camera.Rotation`。以前は `Repeat(-nativeAngle, 360)`。今は `Repeat(nativeAngle, 360)` の時計回りの補正です。符号と向きが逆です。`DrawCamera` は自動で直します |
+| `IsFlippedCameraImage` | `gc.Camera.IsMirrored` |
+| `TryChangeCameraImageResolution` | `Start` の希望値。実際の大きさは映像のあと |
+| `GetPrimaryCameraResolution` | 削除。希望値は `Start` の引数 |
+| `FocusCameraImage` | `gc.Camera.Focus(x, y)`。左下 (0, 0)、右上 (1, 1)。解除は `ResetFocus` |
+| `DrawCameraImage` | `gc.DrawCamera`。基準点は `SetRectAnchor`。描画は開始しない。`GcPoint` と `float2` の位置もある。`DrawCamera(GcRect)` は `rect.Rotation` を使う。追加の回転は数値や点の引数だけ |
+| `DrawCameraImage(..., autoPlay)` | 削除。描画のついでに開始しない |
+| `DrawCameraImage` の width / height | 今は描く先の大きさ。以前は元映像の解像度が掛かっていた。引数なしの実寸はこの修正の対象外です |
+| `GetOrCreateCameraTexture` | 削除。低レベルのテクスチャは出さない |
+| 複数カメラの同時再生 | このサービスでは非対応 |
+| デプスカメラ | このサービスでは非対応。デプスカメラは一覧に出ません |
+
+`Start` は操作のときに呼びます。呼び直すと前の処理を止めて始め直します。`Running` は最初の有効な映像を受け取った状態です。アプリが背面に回ると GameCanvas が止め、自動では再開しません。許可の画面で中断した場合も、戻ってからもう一度 `Start` します。
+
 ## 画像と文字と矩形
 
 | 以前 | 今 |
@@ -100,14 +131,12 @@ v8 では、よく使う入力・描画・乱数・位置情報の入口を足�
 | `DrawRightString` / `DrawCenterString` | `gc.SetStringAnchor(...)` のあと `DrawString` |
 | `SetColor` の float と byte の取り違え | `SetColor(int, int, int, int = 255)`。0 から 255。範囲外は丸める |
 | 0 から 1 の色 | `GcColor.FromNormalized`。NaN は不可 |
-| `DrawCameraImage` が止まっているカメラを再生する | 既定は再生しない。先に `PlayCameraImage`。従来の連携だけ `autoPlay: true` |
 | `GcRect` の `Radian` | 公開しない。`Rotation` に度数を入れる |
 | `rect.Degree()` | `rect.Rotation` |
 | `new GcRect(x, y, w, h, radian)` | `new GcRect(x, y, w, h)`。回転は `{ Rotation = 30 }` か `GcRect.FromDegrees(x, y, w, h, 30)` |
 | 描画や座標回転の `degree` 引数 | `rotation`。時計回りの度。`Sin` / `Cos` の `degree` はそのまま |
-| カメラの取得角度 | `TryGetCameraImageRotation(..., out var rotation)` |
 
-図形、画像、Texture、カメラ画像、オンライン画像は `SetRectAnchor` です。文字は `SetStringAnchor` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。任意の画像の有無で分岐するときや、同じハンドルを繰り返すときだけ `TryGetImage` を使います。
+図形、画像、Texture、カメラ映像、オンライン画像は `SetRectAnchor` です。文字は `SetStringAnchor` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。任意の画像の有無で分岐するときや、同じハンドルを繰り返すときだけ `TryGetImage` を使います。カメラ映像は `gc.DrawCamera` です。幅と高さは描く先の大きさです。
 
 矩形指定の `DrawImage` / `DrawString` の `rotation` は、矩形の回転へ加算します。渡した `GcRect` 自体は変わりません。
 

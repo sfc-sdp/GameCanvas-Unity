@@ -7,13 +7,14 @@
 - `gc.KeyEvents` は `GcReadOnlyList<GcKeyEvent>`。`Phase` は `Down` / `Up` / `Cancelled`。押し続けは `gc.Key(...).Held`
 - `gc.Taps` は成立したタップの押し始め位置。`gc.TapSettings` の `MaxDistance` は途中の移動を足した距離、`MaxDuration` は秒。既定は 25 と 0.125
 - `Pointer.Duration`、`Key(...).Duration`、イベントの `Time`、`gc.TimeSinceStartup` は `double` の秒。`gc.TimeSincePrevFrame` は `float` の秒
-- 描画と座標回転の引数名は `rotation`。単位は時計回りの度。カメラの取得角度も `rotation`。`Sin` / `Cos` の `degree` はそのまま
+- 描画と座標回転の引数名は `rotation`。単位は時計回りの度。カメラの補正角度は `gc.Camera.Rotation`。以前の `TryGetCameraImageRotation` は `Repeat(-nativeAngle, 360)`、今は `Repeat(nativeAngle, 360)` の時計回りで、符号と向きが逆。`DrawCamera` は自動で直す。`Sin` / `Cos` の `degree` はそのまま
 - `GcRect` の公開回転は `Rotation`（度）。公開コンストラクタは位置とサイズだけ。`Degree()` を削除
 - `Random()` は 0 以上 1 未満。`Random(int maxExclusive)` を追加。整数・小数とも上限は含まない。以前の整数は上限を含んでいた。空や逆の範囲、NaN / Infinity は `ArgumentOutOfRangeException`
-- 画像はパス指定の `DrawImage`。基準点は状態。図形・画像・Texture・カメラ画像・オンライン画像は `SetRectAnchor`、文字は `SetStringAnchor`。引数なし、`GcPoint`、数値の位置、`GcRect` でも状態を見る
+- 画像はパス指定の `DrawImage`。基準点は状態。図形・画像・Texture・カメラ映像・オンライン画像は `SetRectAnchor`、文字は `SetStringAnchor`。引数なし、`GcPoint`、数値の位置、`GcRect` でも状態を見る
 - `SetColor(int, int, int, int = 255)` は 0 から 255。範囲外は丸める
 - 位置情報は `gc.Location` に統一。旧 Geolocation API を削除
-- `DrawCameraImage` の `autoPlay` 既定値を偽に変更。先に `PlayCameraImage`
+- カメラは `gc.Camera` に統一。開始は `Start`、描画は `gc.DrawCamera`。`IInputCamera` は残し、旧いメンバーと `IInputCameraEx` を削除
+- `DrawCamera` の幅と高さは描く先の大きさ。以前の `DrawCameraImage` は元映像の解像度が掛かっていた。引数なしの実寸はこの修正の対象外
 - 廃止予定だった宣言と `GetActorList` / `ReadOnlyActorList<T>` を削除
 - 推奨エディタは Unity 6000.6.2f1
 
