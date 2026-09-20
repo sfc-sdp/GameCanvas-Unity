@@ -205,64 +205,163 @@
     ]
   },
   {
-    "name": "GameCanvas.GcAccelerationEvent",
+    "name": "GameCanvas.GcAccelerationSample",
     "kind": "Struct",
-    "declaration": "public readonly struct GcAccelerationEvent : System.IEquatable\u003CGcAccelerationEvent\u003E",
+    "declaration": "public readonly struct GcAccelerationSample",
     "members": [
       {
-        "id": "Field.Acceleration",
-        "name": "Acceleration",
-        "signature": "public readonly float3 Acceleration"
+        "id": "Constructor(float,float,float,float,float,float,double,double)",
+        "name": "GcAccelerationSample",
+        "signature": "public GcAccelerationSample(float x, float y, float z, float rawX, float rawY, float rawZ, double time, double deltaTime)"
       },
       {
-        "id": "Field.DeltaTime",
+        "id": "Property.DeltaTime",
         "name": "DeltaTime",
-        "signature": "public readonly float DeltaTime"
+        "signature": "public double DeltaTime { get; }"
       },
       {
-        "id": "Field.Null",
-        "name": "Null",
-        "signature": "public static readonly GcAccelerationEvent Null = default"
+        "id": "Property.RawX",
+        "name": "RawX",
+        "signature": "public float RawX { get; }"
       },
       {
-        "id": "Field.RawAcceleration",
-        "name": "RawAcceleration",
-        "signature": "public readonly float3 RawAcceleration"
+        "id": "Property.RawY",
+        "name": "RawY",
+        "signature": "public float RawY { get; }"
       },
       {
-        "id": "Field.Time",
+        "id": "Property.RawZ",
+        "name": "RawZ",
+        "signature": "public float RawZ { get; }"
+      },
+      {
+        "id": "Property.Time",
         "name": "Time",
-        "signature": "public readonly float Time"
+        "signature": "public double Time { get; }"
       },
       {
-        "id": "Method.Equals(GcAccelerationEvent)",
-        "name": "Equals",
-        "signature": "public bool Equals(GcAccelerationEvent other)"
+        "id": "Property.X",
+        "name": "X",
+        "signature": "public float X { get; }"
       },
       {
-        "id": "Method.Equals(object)",
-        "name": "Equals",
-        "signature": "public override bool Equals(object obj)"
+        "id": "Property.Y",
+        "name": "Y",
+        "signature": "public float Y { get; }"
       },
       {
-        "id": "Method.GetHashCode()",
-        "name": "GetHashCode",
-        "signature": "public override int GetHashCode()"
+        "id": "Property.Z",
+        "name": "Z",
+        "signature": "public float Z { get; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcAccelerationService",
+    "kind": "Class",
+    "declaration": "public sealed class GcAccelerationService",
+    "members": [
+      {
+        "id": "Method.Start(float)",
+        "name": "Start",
+        "signature": "public void Start(float samplingRate = 60)"
       },
       {
-        "id": "Method.ToString()",
-        "name": "ToString",
-        "signature": "public override string ToString()"
+        "id": "Method.Stop()",
+        "name": "Stop",
+        "signature": "public void Stop()"
       },
       {
-        "id": "Operator.!=(GcAccelerationEvent,GcAccelerationEvent)",
-        "name": "operator !=",
-        "signature": "public static bool operator !=(GcAccelerationEvent lh, GcAccelerationEvent rh)"
+        "id": "Property.DeltaTime",
+        "name": "DeltaTime",
+        "signature": "public double DeltaTime { get; }"
       },
       {
-        "id": "Operator.==(GcAccelerationEvent,GcAccelerationEvent)",
-        "name": "operator ==",
-        "signature": "public static bool operator ==(GcAccelerationEvent lh, GcAccelerationEvent rh)"
+        "id": "Property.Events",
+        "name": "Events",
+        "signature": "public GcReadOnlyList\u003CGcAccelerationSample\u003E Events { get; }"
+      },
+      {
+        "id": "Property.HasValue",
+        "name": "HasValue",
+        "signature": "public bool HasValue { get; }"
+      },
+      {
+        "id": "Property.IsSupported",
+        "name": "IsSupported",
+        "signature": "public bool IsSupported { get; }"
+      },
+      {
+        "id": "Property.Last",
+        "name": "Last",
+        "signature": "public GcAccelerationSample Last { get; }"
+      },
+      {
+        "id": "Property.Status",
+        "name": "Status",
+        "signature": "public GcAccelerationState Status { get; }"
+      },
+      {
+        "id": "Property.Time",
+        "name": "Time",
+        "signature": "public double Time { get; }"
+      },
+      {
+        "id": "Property.Updated",
+        "name": "Updated",
+        "signature": "public bool Updated { get; }"
+      },
+      {
+        "id": "Property.X",
+        "name": "X",
+        "signature": "public float X { get; }"
+      },
+      {
+        "id": "Property.Y",
+        "name": "Y",
+        "signature": "public float Y { get; }"
+      },
+      {
+        "id": "Property.Z",
+        "name": "Z",
+        "signature": "public float Z { get; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcAccelerationState",
+    "kind": "Enum",
+    "declaration": "public enum GcAccelerationState",
+    "members": [
+      {
+        "id": "Value.Failed",
+        "name": "Failed",
+        "signature": "Failed"
+      },
+      {
+        "id": "Value.Idle",
+        "name": "Idle",
+        "signature": "Idle"
+      },
+      {
+        "id": "Value.Running",
+        "name": "Running",
+        "signature": "Running"
+      },
+      {
+        "id": "Value.Stopped",
+        "name": "Stopped",
+        "signature": "Stopped"
+      },
+      {
+        "id": "Value.Unsupported",
+        "name": "Unsupported",
+        "signature": "Unsupported"
+      },
+      {
+        "id": "Value.Waiting",
+        "name": "Waiting",
+        "signature": "Waiting"
       }
     ]
   },
@@ -510,33 +609,6 @@
         "id": "Method.TryGetText(string,string)",
         "name": "TryGetText",
         "signature": "public static bool TryGetText(string key, out string text)"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.GcAvailability",
-    "kind": "Enum",
-    "declaration": "public enum GcAvailability",
-    "members": [
-      {
-        "id": "Value.NotAvailable",
-        "name": "NotAvailable",
-        "signature": "NotAvailable = 1"
-      },
-      {
-        "id": "Value.NotReady",
-        "name": "NotReady",
-        "signature": "NotReady = 2"
-      },
-      {
-        "id": "Value.Ready",
-        "name": "Ready",
-        "signature": "Ready = 3"
-      },
-      {
-        "id": "Value.Uninitialized",
-        "name": "Uninitialized",
-        "signature": "Uninitialized = 0"
       }
     ]
   },
@@ -942,6 +1014,43 @@
     ]
   },
   {
+    "name": "GameCanvas.GcDrag",
+    "kind": "Class",
+    "declaration": "public sealed class GcDrag",
+    "members": [
+      {
+        "id": "Method.Cancel(GcRect)",
+        "name": "Cancel",
+        "signature": "public void Cancel(ref GcRect rect)"
+      },
+      {
+        "id": "Property.Active",
+        "name": "Active",
+        "signature": "public bool Active { get; }"
+      },
+      {
+        "id": "Property.Cancelled",
+        "name": "Cancelled",
+        "signature": "public bool Cancelled { get; }"
+      },
+      {
+        "id": "Property.Ended",
+        "name": "Ended",
+        "signature": "public bool Ended { get; }"
+      },
+      {
+        "id": "Property.PointerId",
+        "name": "PointerId",
+        "signature": "public int? PointerId { get; }"
+      },
+      {
+        "id": "Property.Started",
+        "name": "Started",
+        "signature": "public bool Started { get; }"
+      }
+    ]
+  },
+  {
     "name": "GameCanvas.GcFont",
     "kind": "Struct",
     "declaration": "public readonly struct GcFont : System.IEquatable\u003CGcFont\u003E",
@@ -1074,6 +1183,33 @@
         "id": "Property.Invalid",
         "name": "Invalid",
         "signature": "public bool Invalid { get; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcImageRequest",
+    "kind": "Class",
+    "declaration": "public sealed class GcImageRequest : GcRequest",
+    "members": [
+      {
+        "id": "Method.Read(UnityWebRequest)",
+        "name": "Read",
+        "signature": "protected override void Read(UnityWebRequest native)"
+      },
+      {
+        "id": "Method.ReleaseData()",
+        "name": "ReleaseData",
+        "signature": "protected override void ReleaseData()"
+      },
+      {
+        "id": "Property.Height",
+        "name": "Height",
+        "signature": "public int Height { get; }"
+      },
+      {
+        "id": "Property.Width",
+        "name": "Width",
+        "signature": "public int Width { get; }"
       }
     ]
   },
@@ -2312,6 +2448,48 @@
     ]
   },
   {
+    "name": "GameCanvas.GcNetworkService",
+    "kind": "Class",
+    "declaration": "public sealed class GcNetworkService : IDisposable, IEngine",
+    "members": [
+      {
+        "id": "Method.CancelAll()",
+        "name": "CancelAll",
+        "signature": "public void CancelAll()"
+      },
+      {
+        "id": "Method.Dispose()",
+        "name": "Dispose",
+        "signature": "public void Dispose()"
+      },
+      {
+        "id": "Method.GetImage(string,double)",
+        "name": "GetImage",
+        "signature": "public GcImageRequest GetImage(string url, double timeoutSeconds = 30)"
+      },
+      {
+        "id": "Method.GetSound(string,GcSoundFormat,double)",
+        "name": "GetSound",
+        "signature": "public GcSoundRequest GetSound(string url, GcSoundFormat format, double timeoutSeconds = 30)"
+      },
+      {
+        "id": "Method.GetText(string,double)",
+        "name": "GetText",
+        "signature": "public GcTextRequest GetText(string url, double timeoutSeconds = 30)"
+      },
+      {
+        "id": "Method.PostForm(string,IReadOnlyDictionary\u003Cstring, string\u003E,double)",
+        "name": "PostForm",
+        "signature": "public GcTextRequest PostForm(string url, IReadOnlyDictionary\u003Cstring, string\u003E fields, double timeoutSeconds = 30)"
+      },
+      {
+        "id": "Method.PostText(string,string,string,double)",
+        "name": "PostText",
+        "signature": "public GcTextRequest PostText(string url, string text, string contentType = \u0022text/plain; charset=utf-8\u0022, double timeoutSeconds = 30)"
+      }
+    ]
+  },
+  {
     "name": "GameCanvas.GcPoint",
     "kind": "Struct",
     "declaration": "public readonly struct GcPoint : System.IEquatable\u003CGcPoint\u003E",
@@ -2707,16 +2885,6 @@
         "signature": "public void ClearCoordinate()"
       },
       {
-        "id": "Method.ClearDownloadCache(string)",
-        "name": "ClearDownloadCache",
-        "signature": "public void ClearDownloadCache(in string url)"
-      },
-      {
-        "id": "Method.ClearDownloadCacheAll()",
-        "name": "ClearDownloadCacheAll",
-        "signature": "public void ClearDownloadCacheAll()"
-      },
-      {
         "id": "Method.ClearScreen()",
         "name": "ClearScreen",
         "signature": "public void ClearScreen()"
@@ -2730,6 +2898,11 @@
         "id": "Method.ClearStyle()",
         "name": "ClearStyle",
         "signature": "public void ClearStyle()"
+      },
+      {
+        "id": "Method.Contains(GcRect,GcPoint)",
+        "name": "Contains",
+        "signature": "public bool Contains(in GcRect rect, in GcPoint point)"
       },
       {
         "id": "Method.Cos(float)",
@@ -2760,6 +2933,11 @@
         "id": "Method.Dot(float2,float2)",
         "name": "Dot",
         "signature": "public float Dot(in float2 a, in float2 b)"
+      },
+      {
+        "id": "Method.Drag(GcDrag,GcRect)",
+        "name": "Drag",
+        "signature": "public void Drag(GcDrag drag, ref GcRect rect)"
       },
       {
         "id": "Method.DrawCamera()",
@@ -2842,6 +3020,31 @@
         "signature": "public void DrawImage(in GcImage image)"
       },
       {
+        "id": "Method.DrawImage(GcImageRequest,float,float,float,float,float)",
+        "name": "DrawImage",
+        "signature": "public void DrawImage(GcImageRequest image, float x, float y, float width, float height, float rotation = 0)"
+      },
+      {
+        "id": "Method.DrawImage(GcImageRequest,float,float,float)",
+        "name": "DrawImage",
+        "signature": "public void DrawImage(GcImageRequest image, float x, float y, float rotation = 0)"
+      },
+      {
+        "id": "Method.DrawImage(GcImageRequest,GcPoint,float)",
+        "name": "DrawImage",
+        "signature": "public void DrawImage(GcImageRequest image, in GcPoint position, float rotation = 0)"
+      },
+      {
+        "id": "Method.DrawImage(GcImageRequest,GcRect)",
+        "name": "DrawImage",
+        "signature": "public void DrawImage(GcImageRequest image, in GcRect rect)"
+      },
+      {
+        "id": "Method.DrawImage(GcImageRequest)",
+        "name": "DrawImage",
+        "signature": "public void DrawImage(GcImageRequest image)"
+      },
+      {
         "id": "Method.DrawImage(string,float,float,float)",
         "name": "DrawImage",
         "signature": "public void DrawImage(string path, float x, float y, float rotation = 0)"
@@ -2875,31 +3078,6 @@
         "id": "Method.DrawLine(GcLine)",
         "name": "DrawLine",
         "signature": "public void DrawLine(in GcLine line)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,float,float,float,float,float)",
-        "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,float,float,float)",
-        "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,float2,float)",
-        "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,GcRect)",
-        "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url, in GcRect rect)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string)",
-        "name": "DrawOnlineImage",
-        "signature": "public GcAvailability DrawOnlineImage(in string url)"
       },
       {
         "id": "Method.DrawRect()",
@@ -3127,16 +3305,6 @@
         "signature": "public int GetImageWidth(in GcImage image)"
       },
       {
-        "id": "Method.GetOnlineImageHeight(string)",
-        "name": "GetOnlineImageHeight",
-        "signature": "public int GetOnlineImageHeight(in string url)"
-      },
-      {
-        "id": "Method.GetOnlineImageWidth(string)",
-        "name": "GetOnlineImageWidth",
-        "signature": "public int GetOnlineImageWidth(in string url)"
-      },
-      {
         "id": "Method.GetRandomState()",
         "name": "GetRandomState",
         "signature": "public uint GetRandomState()"
@@ -3220,6 +3388,11 @@
         "id": "Method.PlaySound(GcSound,GcSoundTrack,bool)",
         "name": "PlaySound",
         "signature": "public void PlaySound(in GcSound sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)"
+      },
+      {
+        "id": "Method.PlaySound(GcSoundRequest,GcSoundTrack,bool)",
+        "name": "PlaySound",
+        "signature": "public bool PlaySound(GcSoundRequest sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)"
       },
       {
         "id": "Method.PopCoordinate()",
@@ -3502,16 +3675,6 @@
         "signature": "public void TranslateCoordinate(in float2 translation)"
       },
       {
-        "id": "Method.TryGetAccelerationEvent(int,GcAccelerationEvent)",
-        "name": "TryGetAccelerationEvent",
-        "signature": "public bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)"
-      },
-      {
-        "id": "Method.TryGetAccelerationEventAll(System.ReadOnlySpan\u003CGcAccelerationEvent\u003E)",
-        "name": "TryGetAccelerationEventAll",
-        "signature": "public bool TryGetAccelerationEventAll(out System.ReadOnlySpan\u003CGcAccelerationEvent\u003E events)"
-      },
-      {
         "id": "Method.TryGetActor(int,GcActor?)",
         "name": "TryGetActor",
         "signature": "public bool TryGetActor(in int i, [NotNullWhen(true)] out GcActor? actor)"
@@ -3525,31 +3688,6 @@
         "id": "Method.TryGetActorAll\u003CT\u003E(System.ReadOnlySpan\u003CT\u003E)",
         "name": "TryGetActorAll",
         "signature": "public bool TryGetActorAll\u003CT\u003E(out System.ReadOnlySpan\u003CT\u003E actors) where T : GcActor"
-      },
-      {
-        "id": "Method.TryGetOnlineImage(string,GcAvailability,Texture2D?)",
-        "name": "TryGetOnlineImage",
-        "signature": "public bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture)"
-      },
-      {
-        "id": "Method.TryGetOnlineImageSize(string,int2)",
-        "name": "TryGetOnlineImageSize",
-        "signature": "public bool TryGetOnlineImageSize(in string url, out int2 size)"
-      },
-      {
-        "id": "Method.TryGetOnlineSound(string,AudioType,GcAvailability,AudioClip?)",
-        "name": "TryGetOnlineSound",
-        "signature": "public bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)"
-      },
-      {
-        "id": "Method.TryGetOnlineSound(string,GcAvailability,AudioClip?)",
-        "name": "TryGetOnlineSound",
-        "signature": "public bool TryGetOnlineSound(in string url, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)"
-      },
-      {
-        "id": "Method.TryGetOnlineText(string,GcAvailability,string?)",
-        "name": "TryGetOnlineText",
-        "signature": "public bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)"
       },
       {
         "id": "Method.TryGetScreenKeyboardArea(GcAABB)",
@@ -3592,19 +3730,9 @@
         "signature": "public void UnregisterScene\u003CT\u003E() where T : GcScene"
       },
       {
-        "id": "Property.AccelerationEventCount",
-        "name": "AccelerationEventCount",
-        "signature": "public int AccelerationEventCount { get; }"
-      },
-      {
-        "id": "Property.AccelerationEvents",
-        "name": "AccelerationEvents",
-        "signature": "public System.ReadOnlySpan\u003CGcAccelerationEvent\u003E AccelerationEvents { get; }"
-      },
-      {
-        "id": "Property.AccelerometerSamplingRate",
-        "name": "AccelerometerSamplingRate",
-        "signature": "public float AccelerometerSamplingRate { get; set; }"
+        "id": "Property.Acceleration",
+        "name": "Acceleration",
+        "signature": "public GcAccelerationService Acceleration { get; }"
       },
       {
         "id": "Property.BackgroundColor",
@@ -3802,11 +3930,6 @@
         "signature": "public int DeviceScreenWidth { get; }"
       },
       {
-        "id": "Property.DidUpdateAccelerationThisFrame",
-        "name": "DidUpdateAccelerationThisFrame",
-        "signature": "public bool DidUpdateAccelerationThisFrame { get; }"
-      },
-      {
         "id": "Property.Font",
         "name": "Font",
         "signature": "public GcFont Font { get; set; }"
@@ -3815,16 +3938,6 @@
         "id": "Property.FontSize",
         "name": "FontSize",
         "signature": "public int FontSize { get; set; }"
-      },
-      {
-        "id": "Property.IsAccelerometerEnabled",
-        "name": "IsAccelerometerEnabled",
-        "signature": "public bool IsAccelerometerEnabled { get; set; }"
-      },
-      {
-        "id": "Property.IsAccelerometerSupported",
-        "name": "IsAccelerometerSupported",
-        "signature": "public bool IsAccelerometerSupported { get; }"
       },
       {
         "id": "Property.IsScreenKeyboardSupported",
@@ -3852,11 +3965,6 @@
         "signature": "public GcReadOnlyList\u003CGcKeyEvent\u003E KeyEvents { get; }"
       },
       {
-        "id": "Property.LastAccelerationEvent",
-        "name": "LastAccelerationEvent",
-        "signature": "public GcAccelerationEvent LastAccelerationEvent { get; }"
-      },
-      {
         "id": "Property.LineCap",
         "name": "LineCap",
         "signature": "public GcLineCap LineCap { get; set; }"
@@ -3870,6 +3978,11 @@
         "id": "Property.Location",
         "name": "Location",
         "signature": "public GcLocationService Location { get; }"
+      },
+      {
+        "id": "Property.Network",
+        "name": "Network",
+        "signature": "public GcNetworkService Network { get; }"
       },
       {
         "id": "Property.NowTime",
@@ -4033,6 +4146,16 @@
         "signature": "public float2 Size"
       },
       {
+        "id": "Method.Contains(float,float)",
+        "name": "Contains",
+        "signature": "public readonly bool Contains(float x, float y)"
+      },
+      {
+        "id": "Method.Contains(GcPoint)",
+        "name": "Contains",
+        "signature": "public readonly bool Contains(in GcPoint point)"
+      },
+      {
         "id": "Method.Equals(GcRect)",
         "name": "Equals",
         "signature": "public readonly bool Equals(GcRect other)"
@@ -4073,9 +4196,118 @@
         "signature": "public static bool operator ==(GcRect lh, GcRect rh)"
       },
       {
+        "id": "Property.Height",
+        "name": "Height",
+        "signature": "public float Height { readonly get; set; }"
+      },
+      {
         "id": "Property.Rotation",
         "name": "Rotation",
         "signature": "public float Rotation { readonly get; set; }"
+      },
+      {
+        "id": "Property.Width",
+        "name": "Width",
+        "signature": "public float Width { readonly get; set; }"
+      },
+      {
+        "id": "Property.X",
+        "name": "X",
+        "signature": "public float X { readonly get; set; }"
+      },
+      {
+        "id": "Property.Y",
+        "name": "Y",
+        "signature": "public float Y { readonly get; set; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcRequest",
+    "kind": "Class",
+    "declaration": "public abstract class GcRequest : IDisposable",
+    "members": [
+      {
+        "id": "Method.Cancel()",
+        "name": "Cancel",
+        "signature": "public void Cancel()"
+      },
+      {
+        "id": "Method.Dispose()",
+        "name": "Dispose",
+        "signature": "public void Dispose()"
+      },
+      {
+        "id": "Method.Read(UnityWebRequest)",
+        "name": "Read",
+        "signature": "protected abstract void Read(UnityWebRequest native)"
+      },
+      {
+        "id": "Method.ReleaseData()",
+        "name": "ReleaseData",
+        "signature": "protected abstract void ReleaseData()"
+      },
+      {
+        "id": "Property.ErrorCode",
+        "name": "ErrorCode",
+        "signature": "public string ErrorCode { get; }"
+      },
+      {
+        "id": "Property.IsDone",
+        "name": "IsDone",
+        "signature": "public bool IsDone { get; }"
+      },
+      {
+        "id": "Property.ResponseCode",
+        "name": "ResponseCode",
+        "signature": "public long ResponseCode { get; }"
+      },
+      {
+        "id": "Property.Status",
+        "name": "Status",
+        "signature": "public GcRequestState Status { get; }"
+      },
+      {
+        "id": "Property.Url",
+        "name": "Url",
+        "signature": "public string Url { get; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcRequestState",
+    "kind": "Enum",
+    "declaration": "public enum GcRequestState",
+    "members": [
+      {
+        "id": "Value.Cancelled",
+        "name": "Cancelled",
+        "signature": "Cancelled"
+      },
+      {
+        "id": "Value.Disposed",
+        "name": "Disposed",
+        "signature": "Disposed"
+      },
+      {
+        "id": "Value.Failed",
+        "name": "Failed",
+        "signature": "Failed"
+      },
+      {
+        "id": "Value.Pending",
+        "name": "Pending",
+        "signature": "Pending"
+      },
+      {
+        "id": "Value.Succeeded",
+        "name": "Succeeded",
+        "signature": "Succeeded"
+      },
+      {
+        "id": "Value.TimedOut",
+        "name": "TimedOut",
+        "signature": "TimedOut"
       }
     ]
   },
@@ -4309,6 +4541,50 @@
         "id": "Property.Invalid",
         "name": "Invalid",
         "signature": "public bool Invalid { get; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcSoundFormat",
+    "kind": "Enum",
+    "declaration": "public enum GcSoundFormat",
+    "members": [
+      {
+        "id": "Value.Mp3",
+        "name": "Mp3",
+        "signature": "Mp3"
+      },
+      {
+        "id": "Value.Ogg",
+        "name": "Ogg",
+        "signature": "Ogg"
+      },
+      {
+        "id": "Value.Wav",
+        "name": "Wav",
+        "signature": "Wav"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcSoundRequest",
+    "kind": "Class",
+    "declaration": "public sealed class GcSoundRequest : GcRequest",
+    "members": [
+      {
+        "id": "Method.Read(UnityWebRequest)",
+        "name": "Read",
+        "signature": "protected override void Read(UnityWebRequest native)"
+      },
+      {
+        "id": "Method.ReleaseData()",
+        "name": "ReleaseData",
+        "signature": "protected override void ReleaseData()"
+      },
+      {
+        "id": "Property.Duration",
+        "name": "Duration",
+        "signature": "public float Duration { get; }"
       }
     ]
   },
@@ -4598,6 +4874,28 @@
     ]
   },
   {
+    "name": "GameCanvas.GcTextRequest",
+    "kind": "Class",
+    "declaration": "public sealed class GcTextRequest : GcRequest",
+    "members": [
+      {
+        "id": "Method.Read(UnityWebRequest)",
+        "name": "Read",
+        "signature": "protected override void Read(UnityWebRequest native)"
+      },
+      {
+        "id": "Method.ReleaseData()",
+        "name": "ReleaseData",
+        "signature": "protected override void ReleaseData()"
+      },
+      {
+        "id": "Property.Text",
+        "name": "Text",
+        "signature": "public string Text { get; }"
+      }
+    ]
+  },
+  {
     "name": "GameCanvas.GcUtil",
     "kind": "Class",
     "declaration": "public static class GcUtil",
@@ -4661,8 +4959,23 @@
   {
     "name": "GameCanvas.IGameCanvas",
     "kind": "Interface",
-    "declaration": "public interface IGameCanvas : IGraphicsEx, ISoundEx, INetworkEx, ISceneManagementEx, ITimeEx, IPhysicsEx, IStorageEx, IMathEx, IInputPointer, IInputKey, IInputAccelerationEx, IInputCamera",
+    "declaration": "public interface IGameCanvas : IGraphicsEx, ISoundEx, INetwork, ISceneManagementEx, ITimeEx, IPhysicsEx, IStorageEx, IMathEx, IInputPointer, IInputKey, IInputCamera",
     "members": [
+      {
+        "id": "Method.Contains(GcRect,GcPoint)",
+        "name": "Contains",
+        "signature": "bool Contains(in GcRect rect, in GcPoint point)"
+      },
+      {
+        "id": "Method.Drag(GcDrag,GcRect)",
+        "name": "Drag",
+        "signature": "void Drag(GcDrag drag, ref GcRect rect)"
+      },
+      {
+        "id": "Property.Acceleration",
+        "name": "Acceleration",
+        "signature": "GcAccelerationService Acceleration { get; }"
+      },
       {
         "id": "Property.Location",
         "name": "Location",
@@ -5345,64 +5658,6 @@
     ]
   },
   {
-    "name": "GameCanvas.IInputAcceleration",
-    "kind": "Interface",
-    "declaration": "public interface IInputAcceleration",
-    "members": [
-      {
-        "id": "Method.TryGetAccelerationEvent(int,GcAccelerationEvent)",
-        "name": "TryGetAccelerationEvent",
-        "signature": "bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)"
-      },
-      {
-        "id": "Method.TryGetAccelerationEventAll(System.ReadOnlySpan\u003CGcAccelerationEvent\u003E)",
-        "name": "TryGetAccelerationEventAll",
-        "signature": "bool TryGetAccelerationEventAll(out System.ReadOnlySpan\u003CGcAccelerationEvent\u003E events)"
-      },
-      {
-        "id": "Property.AccelerationEventCount",
-        "name": "AccelerationEventCount",
-        "signature": "int AccelerationEventCount { get; }"
-      },
-      {
-        "id": "Property.AccelerationEvents",
-        "name": "AccelerationEvents",
-        "signature": "System.ReadOnlySpan\u003CGcAccelerationEvent\u003E AccelerationEvents { get; }"
-      },
-      {
-        "id": "Property.AccelerometerSamplingRate",
-        "name": "AccelerometerSamplingRate",
-        "signature": "float AccelerometerSamplingRate { get; set; }"
-      },
-      {
-        "id": "Property.DidUpdateAccelerationThisFrame",
-        "name": "DidUpdateAccelerationThisFrame",
-        "signature": "bool DidUpdateAccelerationThisFrame { get; }"
-      },
-      {
-        "id": "Property.IsAccelerometerEnabled",
-        "name": "IsAccelerometerEnabled",
-        "signature": "bool IsAccelerometerEnabled { get; set; }"
-      },
-      {
-        "id": "Property.IsAccelerometerSupported",
-        "name": "IsAccelerometerSupported",
-        "signature": "bool IsAccelerometerSupported { get; }"
-      },
-      {
-        "id": "Property.LastAccelerationEvent",
-        "name": "LastAccelerationEvent",
-        "signature": "GcAccelerationEvent LastAccelerationEvent { get; }"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.IInputAccelerationEx",
-    "kind": "Interface",
-    "declaration": "public interface IInputAccelerationEx : IInputAcceleration",
-    "members": []
-  },
-  {
     "name": "GameCanvas.IInputCamera",
     "kind": "Interface",
     "declaration": "public interface IInputCamera",
@@ -5673,81 +5928,39 @@
     "declaration": "public interface INetwork",
     "members": [
       {
-        "id": "Method.ClearDownloadCache(string)",
-        "name": "ClearDownloadCache",
-        "signature": "void ClearDownloadCache(in string url)"
+        "id": "Method.DrawImage(GcImageRequest,float,float,float,float,float)",
+        "name": "DrawImage",
+        "signature": "void DrawImage(GcImageRequest image, float x, float y, float width, float height, float rotation = 0)"
       },
       {
-        "id": "Method.ClearDownloadCacheAll()",
-        "name": "ClearDownloadCacheAll",
-        "signature": "void ClearDownloadCacheAll()"
+        "id": "Method.DrawImage(GcImageRequest,float,float,float)",
+        "name": "DrawImage",
+        "signature": "void DrawImage(GcImageRequest image, float x, float y, float rotation = 0)"
       },
       {
-        "id": "Method.TryGetOnlineImage(string,GcAvailability,Texture2D?)",
-        "name": "TryGetOnlineImage",
-        "signature": "bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture)"
+        "id": "Method.DrawImage(GcImageRequest,GcPoint,float)",
+        "name": "DrawImage",
+        "signature": "void DrawImage(GcImageRequest image, in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.TryGetOnlineImageSize(string,int2)",
-        "name": "TryGetOnlineImageSize",
-        "signature": "bool TryGetOnlineImageSize(in string url, out int2 size)"
+        "id": "Method.DrawImage(GcImageRequest,GcRect)",
+        "name": "DrawImage",
+        "signature": "void DrawImage(GcImageRequest image, in GcRect rect)"
       },
       {
-        "id": "Method.TryGetOnlineSound(string,AudioType,GcAvailability,AudioClip?)",
-        "name": "TryGetOnlineSound",
-        "signature": "bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)"
+        "id": "Method.DrawImage(GcImageRequest)",
+        "name": "DrawImage",
+        "signature": "void DrawImage(GcImageRequest image)"
       },
       {
-        "id": "Method.TryGetOnlineSound(string,GcAvailability,AudioClip?)",
-        "name": "TryGetOnlineSound",
-        "signature": "bool TryGetOnlineSound(in string url, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)"
+        "id": "Method.PlaySound(GcSoundRequest,GcSoundTrack,bool)",
+        "name": "PlaySound",
+        "signature": "bool PlaySound(GcSoundRequest sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)"
       },
       {
-        "id": "Method.TryGetOnlineText(string,GcAvailability,string?)",
-        "name": "TryGetOnlineText",
-        "signature": "bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.INetworkEx",
-    "kind": "Interface",
-    "declaration": "public interface INetworkEx : INetwork",
-    "members": [
-      {
-        "id": "Method.DrawOnlineImage(string,float,float,float,float,float)",
-        "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,float,float,float)",
-        "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,float2,float)",
-        "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string,GcRect)",
-        "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url, in GcRect rect)"
-      },
-      {
-        "id": "Method.DrawOnlineImage(string)",
-        "name": "DrawOnlineImage",
-        "signature": "GcAvailability DrawOnlineImage(in string url)"
-      },
-      {
-        "id": "Method.GetOnlineImageHeight(string)",
-        "name": "GetOnlineImageHeight",
-        "signature": "int GetOnlineImageHeight(in string url)"
-      },
-      {
-        "id": "Method.GetOnlineImageWidth(string)",
-        "name": "GetOnlineImageWidth",
-        "signature": "int GetOnlineImageWidth(in string url)"
+        "id": "Property.Network",
+        "name": "Network",
+        "signature": "GcNetworkService Network { get; }"
       }
     ]
   },
