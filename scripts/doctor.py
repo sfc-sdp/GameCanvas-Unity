@@ -58,7 +58,9 @@ def diagnose():
         env = dict(os.environ, DEVELOPER_DIR=developer_dir)
         xcode = run(["xcodebuild", "-version"], env)
         check("xcode", xcode is not None, xcode, "Xcodeを導入し、一度開いて初期設定を完了してください。")
-        check("xcode_selection", run(["xcode-select", "-p"]) == developer_dir, run(["xcode-select", "-p"]), f"この作業ではDEVELOPER_DIR={developer_dir}を使います。")
+        check("xcode_effective_directory", xcode is not None,
+              {"effective": developer_dir, "system": run(["xcode-select", "-p"])},
+              f"DEVELOPER_DIR={developer_dir}のXcodeを確認してください。")
     return dict(schema_version=1, unity_required=VERSION, host=dict(os=platform.platform(), architecture=platform.machine()), checks=checks)
 
 

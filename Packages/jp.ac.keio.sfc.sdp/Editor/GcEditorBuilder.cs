@@ -136,7 +136,7 @@ namespace GameCanvas.Editor
             switch (option.m_Platform)
             {
                 case GcRuntimePlatform.Android:
-                    if (Path.GetExtension(outFilePath) != "apk") outFilePath += ".apk";
+                    if (Path.GetExtension(outFilePath) != ".apk") outFilePath += ".apk";
 
                     PlayerSettings.Android.minSdkVersion = option.m_MinimumSdkVersion;
                     PlayerSettings.Android.targetSdkVersion = option.m_TargetSdkVersion;
@@ -154,13 +154,15 @@ namespace GameCanvas.Editor
 
                 case GcRuntimePlatform.iOS:
                     PlayerSettings.iOS.sdkVersion = option.m_SdkType;
+                    if (option.m_SdkType == iOSSdkVersion.SimulatorSDK &&
+                        System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture == System.Runtime.InteropServices.Architecture.Arm64)
+                        PlayerSettings.iOS.simulatorSdkArchitecture = AppleMobileArchitectureSimulator.ARM64;
                     PlayerSettings.iOS.targetDevice = iOSTargetDevice.iPhoneAndiPad;
                     PlayerSettings.iOS.targetOSVersionString = "15.0";
                     PlayerSettings.SetScriptingBackend(NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
                     PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.iOS, ApiCompatibilityLevel.NET_Standard);
                     if (string.IsNullOrEmpty(PlayerSettings.iOS.cameraUsageDescription)) PlayerSettings.iOS.cameraUsageDescription = "GameCanvas";
                     if (string.IsNullOrEmpty(PlayerSettings.iOS.locationUsageDescription)) PlayerSettings.iOS.locationUsageDescription = "GameCanvas";
-                    if (string.IsNullOrEmpty(PlayerSettings.iOS.microphoneUsageDescription)) PlayerSettings.iOS.microphoneUsageDescription = "GameCanvas";
                     EditorUserBuildSettings.symlinkSources = true;
                     break;
 

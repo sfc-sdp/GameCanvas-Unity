@@ -77,5 +77,52 @@ namespace GameCanvas.Editor.Tests
                 yield return null;
             Assert.That(GcAssets.TryGetImage("__GcCatalogTests/a/automatic.png", out _), Is.True);
         }
+        [Test] public void ReimportChangesImageDimensionsAndTextWithoutChangingKeys()
+        {
+            AddImage("a/update.png");
+            File.WriteAllText(Root + "/update.txt", "first");
+            AssetDatabase.ImportAsset(Root + "/update.txt", ImportAssetOptions.ForceSynchronousImport);
+            GcAssetCatalogBuilder.Refresh();
+            Assert.That(GcAssets.TryGetImage("__GcCatalogTests/a/update.png", out var before), Is.True);
+            var image = new Texture2D(32, 16); var png = image.EncodeToPNG(); Object.DestroyImmediate(image);
+            File.WriteAllBytes(Root + "/a/update.png", png);
+            File.WriteAllText(Root + "/update.txt", "日本語に更新");
+            AssetDatabase.ImportAsset(Root + "/a/update.png", ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+            AssetDatabase.ImportAsset(Root + "/update.txt", ImportAssetOptions.ForceSynchronousImport | ImportAssetOptions.ForceUpdate);
+            GcAssetCatalogBuilder.Refresh();
+            Assert.That(GcAssets.TryGetImage("__GcCatalogTests/a/update.png", out var after), Is.True);
+            Assert.That(after.m_Size.x, Is.EqualTo(32)); Assert.That(after.m_Size.y, Is.EqualTo(16));
+            Assert.That(after.m_Path, Is.EqualTo(before.m_Path));
+            Assert.That(GcAssets.TryGetText("__GcCatalogTests/update.txt", out var text), Is.True);
+            Assert.That(text, Is.EqualTo("日本語に更新"));
+        }
+        [Test] public void CorruptImageInvalidatesCatalog_AndRecoveryRestoresIt()
+        {
+            var original = LogAssert.ignoreFailingMessages;
+            try
+            {
+                LogAssert.ignoreFailingMessages = true; // Unity importer emits platform-specific error wording.
+                File.WriteAllBytes(Root + "/a/corrupt.png", new byte[]{1,2,3,4});
+                AssetDatabase.ImportAsset(Root + "/a/corrupt.png", ImportAssetOptions.ForceSynchronousImport);
+                Assert.Throws<BuildFailedException>(() => GcAssetCatalogBuilder.Refresh());
+                Assert.That(GcAssets.TryGetImage("BlueSky.png", out _), Is.False);
+                AssetDatabase.DeleteAsset(Root + "/a/corrupt.png");
+                GcAssetCatalogBuilder.Refresh();
+                Assert.That(GcAssets.TryGetImage("BlueSky.png", out _), Is.True);
+            }
+            finally { LogAssert.ignoreFailingMessages = original; }
+        }
+        [UnityTest] public IEnumerator MoveAndDeleteAutomaticallyRefreshCatalog()
+        {
+            AddImage("a/automatic-move.png"); GcAssetCatalogBuilder.Refresh();
+            Assert.That(AssetDatabase.MoveAsset(Root + "/a/automatic-move.png", Root + "/b/automatic-moved.png"), Is.Empty);
+            var deadline = EditorApplication.timeSinceStartup + 10;
+            while (!GcAssets.TryGetImage("__GcCatalogTests/b/automatic-moved.png", out _) && EditorApplication.timeSinceStartup < deadline) yield return null;
+            Assert.That(GcAssets.TryGetImage("__GcCatalogTests/a/automatic-move.png", out _), Is.False);
+            Assert.That(GcAssets.TryGetImage("__GcCatalogTests/b/automatic-moved.png", out _), Is.True);
+            AssetDatabase.DeleteAsset(Root + "/b/automatic-moved.png"); deadline = EditorApplication.timeSinceStartup + 10;
+            while (GcAssets.TryGetImage("__GcCatalogTests/b/automatic-moved.png", out _) && EditorApplication.timeSinceStartup < deadline) yield return null;
+            Assert.That(GcAssets.TryGetImage("__GcCatalogTests/b/automatic-moved.png", out _), Is.False);
+        }
     }
 }

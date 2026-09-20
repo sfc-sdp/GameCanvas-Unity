@@ -28,6 +28,7 @@ namespace GameCanvas.Editor
         public static void IOS() => Build(BuildTarget.iOS, "Build/Validation/iOS");
         public static void IOSSimulator() => Build(BuildTarget.iOS, "Build/Validation/iOSSimulator", true);
         public static void Web() => Build(BuildTarget.WebGL, "Build/Validation/Web");
+        public static void Mac() => Build(BuildTarget.StandaloneOSX, "Build/Validation/GameCanvasProbe.app");
 
         static void Build(BuildTarget target, string path, bool simulator = false)
         {
@@ -40,6 +41,14 @@ namespace GameCanvas.Editor
             var originalSdk = PlayerSettings.iOS.sdkVersion;
             var originalSimulatorArchitecture = PlayerSettings.iOS.simulatorSdkArchitecture;
             var originalIdentifier = PlayerSettings.GetApplicationIdentifier(named);
+            var backend = PlayerSettings.GetScriptingBackend(named);
+            var minSdk = PlayerSettings.Android.minSdkVersion; var targetSdk = PlayerSettings.Android.targetSdkVersion;
+            var arch = PlayerSettings.Android.targetArchitectures;
+            var os = PlayerSettings.iOS.targetOSVersionString;
+            var camera = PlayerSettings.iOS.cameraUsageDescription; var location = PlayerSettings.iOS.locationUsageDescription;
+            var microphone = PlayerSettings.iOS.microphoneUsageDescription;
+            var http = PlayerSettings.insecureHttpOption; var compression = PlayerSettings.WebGL.compressionFormat;
+            var export = EditorUserBuildSettings.exportAsGoogleAndroidProject; var bundle = EditorUserBuildSettings.buildAppBundle;
             try
             {
                 PlayerSettings.SetApplicationIdentifier(named, "jp.ac.keio.sfc.gamecanvas.probe");
@@ -82,6 +91,14 @@ namespace GameCanvas.Editor
                 PlayerSettings.iOS.sdkVersion = originalSdk;
                 PlayerSettings.iOS.simulatorSdkArchitecture = originalSimulatorArchitecture;
                 PlayerSettings.SetApplicationIdentifier(named, originalIdentifier);
+                PlayerSettings.SetScriptingBackend(named, backend);
+                PlayerSettings.Android.minSdkVersion = minSdk; PlayerSettings.Android.targetSdkVersion = targetSdk;
+                PlayerSettings.Android.targetArchitectures = arch; PlayerSettings.iOS.targetOSVersionString = os;
+                PlayerSettings.iOS.cameraUsageDescription = camera; PlayerSettings.iOS.locationUsageDescription = location;
+                PlayerSettings.iOS.microphoneUsageDescription = microphone;
+                PlayerSettings.insecureHttpOption = http; PlayerSettings.WebGL.compressionFormat = compression;
+                EditorUserBuildSettings.exportAsGoogleAndroidProject = export; EditorUserBuildSettings.buildAppBundle = bundle;
+                AssetDatabase.SaveAssets();
             }
         }
         static void RequireVersion()

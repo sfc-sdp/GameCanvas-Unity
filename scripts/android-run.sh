@@ -12,4 +12,4 @@ apk="$project_dir/Build/Validation/GameCanvasProbe.apk"
 "$adb_bin" -s "$1" install -r "$apk"
 # 更新直後にOSがActivityを復元する経路でも、Unityを同じプロセスで二重初期化しない。
 "$adb_bin" -s "$1" shell am force-stop "$package"
-"$adb_bin" -s "$1" shell am start -W -n "$package/com.unity3d.player.UnityPlayerActivity"
+"$adb_bin" -s "$1" shell am start -W -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10008000 -n "$package/com.unity3d.player.UnityPlayerActivity"

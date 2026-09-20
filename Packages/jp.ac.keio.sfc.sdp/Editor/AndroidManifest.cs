@@ -89,8 +89,9 @@ namespace GameCanvas.Editor
         {
             if (TryGetMetaDataElement(target, prefix, key, out var elem))
             {
-                var attr = elem.GetAttributeNode("value");
-                attr.Value = value;
+                var attr = elem.GetAttributeNode("value", ns);
+                if (attr != null) attr.Value = value;
+                else elem.SetAttribute("value", ns, value);
             }
             else
             {
@@ -107,7 +108,7 @@ namespace GameCanvas.Editor
 
         bool TryGetMetaDataElement(in XmlElement parent, in string prefix, in string name, [NotNullWhen(true)] out XmlElement? elem)
         {
-            elem = parent.SelectSingleNode($"/meta-data[@{prefix}:name='{name}']", m_NamespaceManager) as XmlElement;
+            elem = parent.SelectSingleNode($"meta-data[@{prefix}:name='{name}']", m_NamespaceManager) as XmlElement;
             return (elem != null);
         }
         #endregion

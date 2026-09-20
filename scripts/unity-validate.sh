@@ -12,6 +12,7 @@ case "$mode" in
   ios) target=iOS; method=IOS ;;
   ios-simulator) target=iOS; method=IOSSimulator ;;
   web) target=WebGL; method=Web ;;
+  mac) target=StandaloneOSX; method=Mac ;;
   editmode|playmode)
     if [ "$mode" = editmode ]; then suite=EditMode; else suite=PlayMode; fi
     result_file="$project_dir/Build/Validation/$mode.xml"
@@ -25,7 +26,7 @@ if root.get('result') != 'Passed' or int(root.get('testcasecount', '0')) == 0:
 print('Tests:', root.attrib)
 PY
     exit 0 ;;
-  *) echo 'Usage: scripts/unity-validate.sh prepare|android|ios|ios-simulator|web|editmode|playmode' >&2; exit 2 ;;
+  *) echo 'Usage: scripts/unity-validate.sh prepare|android|ios|ios-simulator|web|mac|editmode|playmode' >&2; exit 2 ;;
 esac
 report_file=""
 if [ "$mode" != prepare ]; then
