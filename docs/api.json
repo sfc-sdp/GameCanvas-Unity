@@ -578,6 +578,194 @@
     ]
   },
   {
+    "name": "GameCanvas.GcCameraFacing",
+    "kind": "Enum",
+    "declaration": "public enum GcCameraFacing",
+    "members": [
+      {
+        "id": "Value.Any",
+        "name": "Any",
+        "signature": "Any"
+      },
+      {
+        "id": "Value.Front",
+        "name": "Front",
+        "signature": "Front"
+      },
+      {
+        "id": "Value.Rear",
+        "name": "Rear",
+        "signature": "Rear"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcCameraPermission",
+    "kind": "Enum",
+    "declaration": "public enum GcCameraPermission",
+    "members": [
+      {
+        "id": "Value.Granted",
+        "name": "Granted",
+        "signature": "Granted"
+      },
+      {
+        "id": "Value.NotGranted",
+        "name": "NotGranted",
+        "signature": "NotGranted"
+      },
+      {
+        "id": "Value.Unknown",
+        "name": "Unknown",
+        "signature": "Unknown"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcCameraService",
+    "kind": "Class",
+    "declaration": "public sealed class GcCameraService",
+    "members": [
+      {
+        "id": "Method.Focus(float,float)",
+        "name": "Focus",
+        "signature": "public bool Focus(float x, float y)"
+      },
+      {
+        "id": "Method.ResetFocus()",
+        "name": "ResetFocus",
+        "signature": "public bool ResetFocus()"
+      },
+      {
+        "id": "Method.Start(GcCameraDevice,int,int,int,double)",
+        "name": "Start",
+        "signature": "public void Start(GcCameraDevice device, int width = 640, int height = 480, int fps = 30, double timeoutSeconds = 30)"
+      },
+      {
+        "id": "Method.Start(GcCameraFacing,int,int,int,double)",
+        "name": "Start",
+        "signature": "public void Start(GcCameraFacing facing = GcCameraFacing.Any, int width = 640, int height = 480, int fps = 30, double timeoutSeconds = 30)"
+      },
+      {
+        "id": "Method.Stop()",
+        "name": "Stop",
+        "signature": "public void Stop()"
+      },
+      {
+        "id": "Property.Device",
+        "name": "Device",
+        "signature": "public GcCameraDevice? Device { get; }"
+      },
+      {
+        "id": "Property.Devices",
+        "name": "Devices",
+        "signature": "public IReadOnlyList\u003CGcCameraDevice\u003E Devices { get; }"
+      },
+      {
+        "id": "Property.ErrorCode",
+        "name": "ErrorCode",
+        "signature": "public string ErrorCode { get; }"
+      },
+      {
+        "id": "Property.Height",
+        "name": "Height",
+        "signature": "public int Height { get; }"
+      },
+      {
+        "id": "Property.IsMirrored",
+        "name": "IsMirrored",
+        "signature": "public bool IsMirrored { get; }"
+      },
+      {
+        "id": "Property.IsSupported",
+        "name": "IsSupported",
+        "signature": "public bool IsSupported { get; }"
+      },
+      {
+        "id": "Property.Permission",
+        "name": "Permission",
+        "signature": "public GcCameraPermission Permission { get; }"
+      },
+      {
+        "id": "Property.Rotation",
+        "name": "Rotation",
+        "signature": "public float Rotation { get; }"
+      },
+      {
+        "id": "Property.Status",
+        "name": "Status",
+        "signature": "public GcCameraState Status { get; }"
+      },
+      {
+        "id": "Property.Updated",
+        "name": "Updated",
+        "signature": "public bool Updated { get; }"
+      },
+      {
+        "id": "Property.Width",
+        "name": "Width",
+        "signature": "public int Width { get; }"
+      }
+    ]
+  },
+  {
+    "name": "GameCanvas.GcCameraState",
+    "kind": "Enum",
+    "declaration": "public enum GcCameraState",
+    "members": [
+      {
+        "id": "Value.Failed",
+        "name": "Failed",
+        "signature": "Failed"
+      },
+      {
+        "id": "Value.Idle",
+        "name": "Idle",
+        "signature": "Idle"
+      },
+      {
+        "id": "Value.NoDevice",
+        "name": "NoDevice",
+        "signature": "NoDevice"
+      },
+      {
+        "id": "Value.NotGranted",
+        "name": "NotGranted",
+        "signature": "NotGranted"
+      },
+      {
+        "id": "Value.RequestingPermission",
+        "name": "RequestingPermission",
+        "signature": "RequestingPermission"
+      },
+      {
+        "id": "Value.Running",
+        "name": "Running",
+        "signature": "Running"
+      },
+      {
+        "id": "Value.Stopped",
+        "name": "Stopped",
+        "signature": "Stopped"
+      },
+      {
+        "id": "Value.TimedOut",
+        "name": "TimedOut",
+        "signature": "TimedOut"
+      },
+      {
+        "id": "Value.Unsupported",
+        "name": "Unsupported",
+        "signature": "Unsupported"
+      },
+      {
+        "id": "Value.Waiting",
+        "name": "Waiting",
+        "signature": "Waiting"
+      }
+    ]
+  },
+  {
     "name": "GameCanvas.GcCircle",
     "kind": "Struct",
     "declaration": "public struct GcCircle : IPrimitive\u003CGcCircle\u003E",
@@ -2569,39 +2757,39 @@
         "signature": "public bool CrossTest(in GcLine a, in GcLine b)"
       },
       {
-        "id": "Method.DidUpdateCameraImageThisFrame(GcCameraDevice)",
-        "name": "DidUpdateCameraImageThisFrame",
-        "signature": "public bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)"
-      },
-      {
         "id": "Method.Dot(float2,float2)",
         "name": "Dot",
         "signature": "public float Dot(in float2 a, in float2 b)"
       },
       {
-        "id": "Method.DrawCameraImage(GcCameraDevice,bool)",
-        "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, bool autoPlay = false)"
+        "id": "Method.DrawCamera()",
+        "name": "DrawCamera",
+        "signature": "public void DrawCamera()"
       },
       {
-        "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,bool)",
-        "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0, bool autoPlay = false)"
+        "id": "Method.DrawCamera(float,float,float,float,float)",
+        "name": "DrawCamera",
+        "signature": "public void DrawCamera(float x, float y, float width, float height, float rotation = 0)"
       },
       {
-        "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,float,float,bool)",
-        "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false)"
+        "id": "Method.DrawCamera(float,float,float)",
+        "name": "DrawCamera",
+        "signature": "public void DrawCamera(float x, float y, float rotation = 0)"
       },
       {
-        "id": "Method.DrawCameraImage(GcCameraDevice,float2,float,bool)",
-        "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0, bool autoPlay = false)"
+        "id": "Method.DrawCamera(float2,float)",
+        "name": "DrawCamera",
+        "signature": "public void DrawCamera(in float2 position, float rotation = 0)"
       },
       {
-        "id": "Method.DrawCameraImage(GcCameraDevice,GcRect,bool)",
-        "name": "DrawCameraImage",
-        "signature": "public void DrawCameraImage(in GcCameraDevice camera, in GcRect rect, bool autoPlay = false)"
+        "id": "Method.DrawCamera(GcPoint,float)",
+        "name": "DrawCamera",
+        "signature": "public void DrawCamera(in GcPoint position, float rotation = 0)"
+      },
+      {
+        "id": "Method.DrawCamera(GcRect)",
+        "name": "DrawCamera",
+        "signature": "public void DrawCamera(in GcRect rect)"
       },
       {
         "id": "Method.DrawCircle()",
@@ -2904,11 +3092,6 @@
         "signature": "public void FillRoundedRect(in GcRect rect)"
       },
       {
-        "id": "Method.FocusCameraImage(GcCameraDevice,float2?)",
-        "name": "FocusCameraImage",
-        "signature": "public void FocusCameraImage(in GcCameraDevice camera, in float2? uv)"
-      },
-      {
         "id": "Method.GetActor()",
         "name": "GetActor",
         "signature": "public GcActor? GetActor()"
@@ -2954,16 +3137,6 @@
         "signature": "public int GetOnlineImageWidth(in string url)"
       },
       {
-        "id": "Method.GetOrCreateCameraTexture(GcCameraDevice,GcResolution)",
-        "name": "GetOrCreateCameraTexture",
-        "signature": "public WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)"
-      },
-      {
-        "id": "Method.GetPrimaryCameraResolution(GcCameraDevice)",
-        "name": "GetPrimaryCameraResolution",
-        "signature": "public GcResolution GetPrimaryCameraResolution(in GcCameraDevice camera)"
-      },
-      {
         "id": "Method.GetRandomState()",
         "name": "GetRandomState",
         "signature": "public uint GetRandomState()"
@@ -3004,16 +3177,6 @@
         "signature": "public bool HitTest(in GcCircle circle1, in GcCircle circle2)"
       },
       {
-        "id": "Method.IsFlippedCameraImage(GcCameraDevice)",
-        "name": "IsFlippedCameraImage",
-        "signature": "public bool IsFlippedCameraImage(in GcCameraDevice camera)"
-      },
-      {
-        "id": "Method.IsPlayingCameraImage(GcCameraDevice)",
-        "name": "IsPlayingCameraImage",
-        "signature": "public bool IsPlayingCameraImage(in GcCameraDevice camera)"
-      },
-      {
         "id": "Method.IsPlayingSound(GcSoundTrack)",
         "name": "IsPlayingSound",
         "signature": "public bool IsPlayingSound(GcSoundTrack track = GcSoundTrack.BGM1)"
@@ -3034,29 +3197,9 @@
         "signature": "public float Min(in float a, in float b)"
       },
       {
-        "id": "Method.PauseCameraImage(GcCameraDevice)",
-        "name": "PauseCameraImage",
-        "signature": "public bool PauseCameraImage(in GcCameraDevice camera)"
-      },
-      {
         "id": "Method.PauseSound(GcSoundTrack)",
         "name": "PauseSound",
         "signature": "public void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1)"
-      },
-      {
-        "id": "Method.PlayCameraImage(GcCameraDevice,GcResolution,int2)",
-        "name": "PlayCameraImage",
-        "signature": "public bool PlayCameraImage(in GcCameraDevice camera, in GcResolution request, out int2 resolution)"
-      },
-      {
-        "id": "Method.PlayCameraImage(GcCameraDevice,int2)",
-        "name": "PlayCameraImage",
-        "signature": "public bool PlayCameraImage(in GcCameraDevice camera, out int2 resolution)"
-      },
-      {
-        "id": "Method.PlayCameraImage(GcCameraDevice)",
-        "name": "PlayCameraImage",
-        "signature": "public bool PlayCameraImage(in GcCameraDevice camera)"
       },
       {
         "id": "Method.PlaySE(AudioClip)",
@@ -3142,11 +3285,6 @@
         "id": "Method.Repeat(float,float)",
         "name": "Repeat",
         "signature": "public float Repeat(in float value, in float max)"
-      },
-      {
-        "id": "Method.RequestUserAuthorizedPermissionCameraAsync(System.Action\u003Cbool\u003E)",
-        "name": "RequestUserAuthorizedPermissionCameraAsync",
-        "signature": "public void RequestUserAuthorizedPermissionCameraAsync(in System.Action\u003Cbool\u003E callback)"
       },
       {
         "id": "Method.RotateCoordinate(float,float,float)",
@@ -3339,11 +3477,6 @@
         "signature": "public float Sqrt(in float value)"
       },
       {
-        "id": "Method.StopCameraImage(GcCameraDevice)",
-        "name": "StopCameraImage",
-        "signature": "public void StopCameraImage(in GcCameraDevice camera)"
-      },
-      {
         "id": "Method.StopSound(GcSoundTrack)",
         "name": "StopSound",
         "signature": "public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)"
@@ -3369,11 +3502,6 @@
         "signature": "public void TranslateCoordinate(in float2 translation)"
       },
       {
-        "id": "Method.TryChangeCameraImageResolution(GcCameraDevice,GcResolution)",
-        "name": "TryChangeCameraImageResolution",
-        "signature": "public int2 TryChangeCameraImageResolution(in GcCameraDevice camera, in GcResolution request)"
-      },
-      {
         "id": "Method.TryGetAccelerationEvent(int,GcAccelerationEvent)",
         "name": "TryGetAccelerationEvent",
         "signature": "public bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)"
@@ -3397,31 +3525,6 @@
         "id": "Method.TryGetActorAll\u003CT\u003E(System.ReadOnlySpan\u003CT\u003E)",
         "name": "TryGetActorAll",
         "signature": "public bool TryGetActorAll\u003CT\u003E(out System.ReadOnlySpan\u003CT\u003E actors) where T : GcActor"
-      },
-      {
-        "id": "Method.TryGetCameraImage(GcCameraDevice?)",
-        "name": "TryGetCameraImage",
-        "signature": "public bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera)"
-      },
-      {
-        "id": "Method.TryGetCameraImage(string,GcCameraDevice?)",
-        "name": "TryGetCameraImage",
-        "signature": "public bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera)"
-      },
-      {
-        "id": "Method.TryGetCameraImageAll(System.ReadOnlySpan\u003CGcCameraDevice\u003E)",
-        "name": "TryGetCameraImageAll",
-        "signature": "public bool TryGetCameraImageAll(out System.ReadOnlySpan\u003CGcCameraDevice\u003E devices)"
-      },
-      {
-        "id": "Method.TryGetCameraImageRotation(GcCameraDevice,float)",
-        "name": "TryGetCameraImageRotation",
-        "signature": "public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)"
-      },
-      {
-        "id": "Method.TryGetCameraImageSize(GcCameraDevice,int2)",
-        "name": "TryGetCameraImageSize",
-        "signature": "public bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)"
       },
       {
         "id": "Method.TryGetOnlineImage(string,GcAvailability,Texture2D?)",
@@ -3489,11 +3592,6 @@
         "signature": "public void UnregisterScene\u003CT\u003E() where T : GcScene"
       },
       {
-        "id": "Method.UpdateCameraDevice()",
-        "name": "UpdateCameraDevice",
-        "signature": "public int UpdateCameraDevice()"
-      },
-      {
         "id": "Property.AccelerationEventCount",
         "name": "AccelerationEventCount",
         "signature": "public int AccelerationEventCount { get; }"
@@ -3519,14 +3617,9 @@
         "signature": "public Color BorderColor { get; }"
       },
       {
-        "id": "Property.CameraDeviceCount",
-        "name": "CameraDeviceCount",
-        "signature": "public int CameraDeviceCount { get; }"
-      },
-      {
-        "id": "Property.CameraDevices",
-        "name": "CameraDevices",
-        "signature": "public System.ReadOnlySpan\u003CGcCameraDevice\u003E CameraDevices { get; }"
+        "id": "Property.Camera",
+        "name": "Camera",
+        "signature": "public GcCameraService Camera { get; }"
       },
       {
         "id": "Property.CanvasAABB",
@@ -3722,11 +3815,6 @@
         "id": "Property.FontSize",
         "name": "FontSize",
         "signature": "public int FontSize { get; set; }"
-      },
-      {
-        "id": "Property.HasUserAuthorizedPermissionCamera",
-        "name": "HasUserAuthorizedPermissionCamera",
-        "signature": "public bool HasUserAuthorizedPermissionCamera { get; }"
       },
       {
         "id": "Property.IsAccelerometerEnabled",
@@ -4573,7 +4661,7 @@
   {
     "name": "GameCanvas.IGameCanvas",
     "kind": "Interface",
-    "declaration": "public interface IGameCanvas : IGraphicsEx, ISoundEx, INetworkEx, ISceneManagementEx, ITimeEx, IPhysicsEx, IStorageEx, IMathEx, IInputPointer, IInputKey, IInputAccelerationEx, IInputCameraEx",
+    "declaration": "public interface IGameCanvas : IGraphicsEx, ISoundEx, INetworkEx, ISceneManagementEx, ITimeEx, IPhysicsEx, IStorageEx, IMathEx, IInputPointer, IInputKey, IInputAccelerationEx, IInputCamera",
     "members": [
       {
         "id": "Property.Location",
@@ -5320,146 +5408,39 @@
     "declaration": "public interface IInputCamera",
     "members": [
       {
-        "id": "Method.DidUpdateCameraImageThisFrame(GcCameraDevice)",
-        "name": "DidUpdateCameraImageThisFrame",
-        "signature": "bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)"
+        "id": "Method.DrawCamera()",
+        "name": "DrawCamera",
+        "signature": "void DrawCamera()"
       },
       {
-        "id": "Method.FocusCameraImage(GcCameraDevice,float2?)",
-        "name": "FocusCameraImage",
-        "signature": "void FocusCameraImage(in GcCameraDevice camera, in float2? uv)"
+        "id": "Method.DrawCamera(float,float,float,float,float)",
+        "name": "DrawCamera",
+        "signature": "void DrawCamera(float x, float y, float width, float height, float rotation = 0)"
       },
       {
-        "id": "Method.GetOrCreateCameraTexture(GcCameraDevice,GcResolution)",
-        "name": "GetOrCreateCameraTexture",
-        "signature": "WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)"
+        "id": "Method.DrawCamera(float,float,float)",
+        "name": "DrawCamera",
+        "signature": "void DrawCamera(float x, float y, float rotation = 0)"
       },
       {
-        "id": "Method.IsFlippedCameraImage(GcCameraDevice)",
-        "name": "IsFlippedCameraImage",
-        "signature": "bool IsFlippedCameraImage(in GcCameraDevice camera)"
+        "id": "Method.DrawCamera(float2,float)",
+        "name": "DrawCamera",
+        "signature": "void DrawCamera(in float2 position, float rotation = 0)"
       },
       {
-        "id": "Method.IsPlayingCameraImage(GcCameraDevice)",
-        "name": "IsPlayingCameraImage",
-        "signature": "bool IsPlayingCameraImage(in GcCameraDevice camera)"
+        "id": "Method.DrawCamera(GcPoint,float)",
+        "name": "DrawCamera",
+        "signature": "void DrawCamera(in GcPoint position, float rotation = 0)"
       },
       {
-        "id": "Method.PauseCameraImage(GcCameraDevice)",
-        "name": "PauseCameraImage",
-        "signature": "bool PauseCameraImage(in GcCameraDevice camera)"
+        "id": "Method.DrawCamera(GcRect)",
+        "name": "DrawCamera",
+        "signature": "void DrawCamera(in GcRect rect)"
       },
       {
-        "id": "Method.PlayCameraImage(GcCameraDevice,GcResolution,int2)",
-        "name": "PlayCameraImage",
-        "signature": "bool PlayCameraImage(in GcCameraDevice camera, in GcResolution request, out int2 resolution)"
-      },
-      {
-        "id": "Method.RequestUserAuthorizedPermissionCameraAsync(System.Action\u003Cbool\u003E)",
-        "name": "RequestUserAuthorizedPermissionCameraAsync",
-        "signature": "void RequestUserAuthorizedPermissionCameraAsync(in System.Action\u003Cbool\u003E callback)"
-      },
-      {
-        "id": "Method.StopCameraImage(GcCameraDevice)",
-        "name": "StopCameraImage",
-        "signature": "void StopCameraImage(in GcCameraDevice camera)"
-      },
-      {
-        "id": "Method.TryChangeCameraImageResolution(GcCameraDevice,GcResolution)",
-        "name": "TryChangeCameraImageResolution",
-        "signature": "int2 TryChangeCameraImageResolution(in GcCameraDevice camera, in GcResolution request)"
-      },
-      {
-        "id": "Method.TryGetCameraImage(GcCameraDevice?)",
-        "name": "TryGetCameraImage",
-        "signature": "bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera)"
-      },
-      {
-        "id": "Method.TryGetCameraImage(string,GcCameraDevice?)",
-        "name": "TryGetCameraImage",
-        "signature": "bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera)"
-      },
-      {
-        "id": "Method.TryGetCameraImageAll(System.ReadOnlySpan\u003CGcCameraDevice\u003E)",
-        "name": "TryGetCameraImageAll",
-        "signature": "bool TryGetCameraImageAll(out System.ReadOnlySpan\u003CGcCameraDevice\u003E devices)"
-      },
-      {
-        "id": "Method.TryGetCameraImageRotation(GcCameraDevice,float)",
-        "name": "TryGetCameraImageRotation",
-        "signature": "bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)"
-      },
-      {
-        "id": "Method.TryGetCameraImageSize(GcCameraDevice,int2)",
-        "name": "TryGetCameraImageSize",
-        "signature": "bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)"
-      },
-      {
-        "id": "Method.UpdateCameraDevice()",
-        "name": "UpdateCameraDevice",
-        "signature": "int UpdateCameraDevice()"
-      },
-      {
-        "id": "Property.CameraDeviceCount",
-        "name": "CameraDeviceCount",
-        "signature": "int CameraDeviceCount { get; }"
-      },
-      {
-        "id": "Property.CameraDevices",
-        "name": "CameraDevices",
-        "signature": "System.ReadOnlySpan\u003CGcCameraDevice\u003E CameraDevices { get; }"
-      },
-      {
-        "id": "Property.HasUserAuthorizedPermissionCamera",
-        "name": "HasUserAuthorizedPermissionCamera",
-        "signature": "bool HasUserAuthorizedPermissionCamera { get; }"
-      }
-    ]
-  },
-  {
-    "name": "GameCanvas.IInputCameraEx",
-    "kind": "Interface",
-    "declaration": "public interface IInputCameraEx : IInputCamera",
-    "members": [
-      {
-        "id": "Method.DrawCameraImage(GcCameraDevice,bool)",
-        "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, bool autoPlay = false)"
-      },
-      {
-        "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,bool)",
-        "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0f, bool autoPlay = false)"
-      },
-      {
-        "id": "Method.DrawCameraImage(GcCameraDevice,float,float,float,float,float,bool)",
-        "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false)"
-      },
-      {
-        "id": "Method.DrawCameraImage(GcCameraDevice,float2,float,bool)",
-        "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0f, bool autoPlay = false)"
-      },
-      {
-        "id": "Method.DrawCameraImage(GcCameraDevice,GcRect,bool)",
-        "name": "DrawCameraImage",
-        "signature": "void DrawCameraImage(in GcCameraDevice camera, in GcRect rect, bool autoPlay = false)"
-      },
-      {
-        "id": "Method.GetPrimaryCameraResolution(GcCameraDevice)",
-        "name": "GetPrimaryCameraResolution",
-        "signature": "GcResolution GetPrimaryCameraResolution(in GcCameraDevice camera)"
-      },
-      {
-        "id": "Method.PlayCameraImage(GcCameraDevice,int2)",
-        "name": "PlayCameraImage",
-        "signature": "bool PlayCameraImage(in GcCameraDevice camera, out int2 resolution)"
-      },
-      {
-        "id": "Method.PlayCameraImage(GcCameraDevice)",
-        "name": "PlayCameraImage",
-        "signature": "bool PlayCameraImage(in GcCameraDevice camera)"
+        "id": "Property.Camera",
+        "name": "Camera",
+        "signature": "GcCameraService Camera { get; }"
       }
     ]
   },
