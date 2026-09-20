@@ -56,11 +56,14 @@ namespace GameCanvas.Editor.Tests
         [Test]
         public void OnBeforeUpdate_Twice_TimeSincePrevFrameReflectsDelta()
         {
+            double clock = 100;
+            m_Engine = new GcTimeEngine(() => clock);
             var engine = (IEngine)m_Engine;
             var t1 = new System.DateTimeOffset(2026, 1, 1, 12, 0, 0, System.TimeSpan.Zero);
             engine.OnBeforeUpdate(t1);
 
             var t2 = t1.AddSeconds(0.05);
+            clock += .05;
             engine.OnBeforeUpdate(t2);
 
             Assert.AreEqual(2, m_Engine.CurrentFrame);
@@ -98,8 +101,8 @@ namespace GameCanvas.Editor.Tests
             engine.OnBeforeUpdate(fixedTime);
 
             var ts = m_Engine.CurrentTimestamp;
-            // Compute expected value using the same local-epoch logic as the engine
-            var expected = (long)((fixedTime - GcTimeEngine.k_UnixZero).TotalSeconds);
+            // UNIX seconds use UTC regardless of the Mac timezone.
+            var expected = fixedTime.ToUnixTimeSeconds();
             Assert.AreEqual(expected, ts);
         }
 
@@ -112,6 +115,27 @@ namespace GameCanvas.Editor.Tests
 
             var current = m_Engine.CurrentTime;
             Assert.AreEqual(fixedTime, current);
+        }
+        [Test] public void MonotonicTimeIgnoresWallClockChangesAndResetsDeltaAfterPause()
+        {
+            double clock = 100; m_Engine = new GcTimeEngine(() => clock); var engine = (IEngine)m_Engine;
+            var wall = System.DateTimeOffset.UtcNow; engine.OnBeforeUpdate(wall);
+            clock += 86400.002; engine.OnBeforeUpdate(wall.AddHours(-1));
+            Assert.That(m_Engine.TimeSinceStartup, Is.EqualTo(86400.002).Within(.000001));
+            m_Engine.ResetDelta(); clock += 300; engine.OnBeforeUpdate(wall.AddHours(2));
+            Assert.That(m_Engine.TimeSincePrevFrame, Is.Zero);
+            clock += .002; engine.OnBeforeUpdate(wall);
+            Assert.That(m_Engine.TimeSincePrevFrame, Is.EqualTo(.002).Within(.000001));
+            Assert.That(m_Engine.CurrentTimestamp, Is.EqualTo(wall.ToUnixTimeSeconds()));
+        }
+        [Test] public void InvalidRatesKeepConfigurationAndUnSyncedRateUsesUnityPacing()
+        {
+            foreach (double value in new[]{0,-1,double.NaN,double.PositiveInfinity,2})
+                Assert.Throws<System.ArgumentOutOfRangeException>(() => m_Engine.SetFrameInterval(value));
+            Assert.Throws<System.ArgumentOutOfRangeException>(() => m_Engine.SetFrameRate(0));
+            Assert.That(m_Engine.TargetFrameRate, Is.EqualTo(60));
+            m_Engine.SetFrameRate(30, false);
+            Assert.That(Application.targetFrameRate, Is.EqualTo(30)); Assert.That(QualitySettings.vSyncCount, Is.Zero);
         }
     }
 

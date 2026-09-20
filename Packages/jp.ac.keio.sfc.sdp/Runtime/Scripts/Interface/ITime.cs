@@ -45,12 +45,12 @@ namespace GameCanvas
         int TargetFrameRate { get; }
 
         /// <summary>
-        /// ひとつ前のフレームからの経過時間（秒）
+        /// ひとつ前のフレームからの経過時間（秒）。初回と中断からの復帰直後は0。
         /// </summary>
         float TimeSincePrevFrame { get; }
 
         /// <summary>
-        /// 現在フレームのアプリ起動からの経過時間（秒）
+        /// 現在フレームの起動からの経過時間（秒）。端末の日時変更には影響されない。
         /// </summary>
         double TimeSinceStartup { get; }
 
@@ -65,22 +65,22 @@ namespace GameCanvas
         /// <summary>
         /// UpdateGame や DrawGame が呼び出される時間間隔を設定します。
         /// </summary>
-        /// <param name="targetDeltaTime">フレーム更新間隔の目標値（秒）</param>
+        /// <param name="targetDeltaTime">フレーム更新間隔の目標値（秒）。1/int.MaxValue以上、1以下の有限値。</param>
         /// <param name="vSyncEnabled">垂直同期の有無</param>
         /// <remarks>
-        /// 垂直同期を無効にした場合、間隔の揺らぎは減少しますが、ディスプレイのリフレッシュレートを常に無視して描画するため、画面のちらつきが発生する場合があります。
+        /// 待機はUnityへ委ねます。秒指定は最も近い整数fpsへ丸めます。デスクトップで垂直同期が有効な場合は画面の更新頻度を優先し、モバイルではfps指定を使います。
         /// </remarks>
         void SetFrameInterval(in double targetDeltaTime, bool vSyncEnabled = true);
 
         /// <summary>
         /// フレームレートの目標値を設定します。
         ///
-        /// 小数点以下を指定したい場合は、この関数の代わりに <see cref="SetFrameInterval"/> を使用してください。
+        /// 実際の更新頻度はOS、画面のリフレッシュレート、負荷によって変わります。
         /// </summary>
         /// <param name="targetFrameRate">フレームレート（1秒あたりのフレーム数）の目標値</param>
         /// <param name="vSyncEnabled">垂直同期の有無</param>
         /// <remarks>
-        /// 垂直同期を無効にした場合、間隔の揺らぎは減少しますが、ディスプレイのリフレッシュレートを常に無視して描画するため、画面のちらつきが発生する場合があります。
+        /// 待機はUnityへ委ねます。秒指定は最も近い整数fpsへ丸めます。デスクトップで垂直同期が有効な場合は画面の更新頻度を優先し、モバイルではfps指定を使います。
         /// </remarks>
         void SetFrameRate(in int targetFrameRate, bool vSyncEnabled = true);
     }

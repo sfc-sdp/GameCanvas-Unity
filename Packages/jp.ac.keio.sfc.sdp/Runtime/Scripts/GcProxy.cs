@@ -1506,6 +1506,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnUnpause()
         {
+            m_Context.Time.ResetDelta();
             Camera.SetPaused(false);
             Acceleration.SetPaused(false);
             m_Context.Graphics.RebuildFontTexture();

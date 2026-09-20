@@ -35,6 +35,8 @@ namespace GameCanvas
         #region  Unity イベント関数
         //----------------------------------------------------------
 
+        bool proxyNeedsRebuild;
+
         private void Awake()
         {
             m_Camera = GetComponent<Camera>() ?? Camera.main;
@@ -47,6 +49,7 @@ namespace GameCanvas
 
         private void OnApplicationFocus(bool focus)
         {
+            if (proxyNeedsRebuild || m_Proxy == null) return;
             m_Proxy.OnFocus(focus);
             if (focus)
             {
@@ -57,6 +60,7 @@ namespace GameCanvas
 
         private void OnApplicationPause(bool pause)
         {
+            if (proxyNeedsRebuild || m_Proxy == null) return;
             if (pause)
             {
                 if (!m_IsPause)
@@ -82,7 +86,9 @@ namespace GameCanvas
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged -= OnChangedPlayMode;
 #endif
-            m_Proxy.OnDisable();
+            StopAllCoroutines();
+            if (!proxyNeedsRebuild && m_Proxy != null) m_Proxy.OnDisable();
+            proxyNeedsRebuild = true;
             OnFocusOnce = null;
         }
 
@@ -95,6 +101,12 @@ namespace GameCanvas
 
 #endif // UNITY_EDITOR
 
+            if (proxyNeedsRebuild)
+            {
+                m_Proxy = new GcProxy(this);
+                proxyNeedsRebuild = false;
+                m_IsPause = false;
+            }
             StartCoroutine(GameLoop());
         }
 
@@ -121,9 +133,6 @@ namespace GameCanvas
             DrawGame();
 
             var samplers = new[] {
-                UnityEngine.Profiling.CustomSampler.Create("WaitForNextFrame"),
-                UnityEngine.Profiling.CustomSampler.Create("Sleep"),
-                UnityEngine.Profiling.CustomSampler.Create("BusyWait"),
                 UnityEngine.Profiling.CustomSampler.Create("GameCanvas"),
                 UnityEngine.Profiling.CustomSampler.Create("EngineUpdate"),
                 UnityEngine.Profiling.CustomSampler.Create("UpdateGame"),
@@ -131,83 +140,41 @@ namespace GameCanvas
                 UnityEngine.Profiling.CustomSampler.Create("DrawGame")
             };
             var isRunning = true;
-            var targetFrameTime = System.DateTimeOffset.Now;
-            var w4ef = new WaitForEndOfFrame();
-
+            // Unity owns frame pacing on native platforms and in the browser.
             while (enabled)
             {
-                if (!m_Proxy.VSyncEnabled)
-                {
-                    //
-                    // https://blogs.unity3d.com/jp/2019/06/03/precise-framerates-in-unity/
-                    //
-                    yield return w4ef;
-
-                    samplers[0].Begin();
-                    {
-                        targetFrameTime += System.TimeSpan.FromSeconds(m_Proxy.TargetFrameInterval);
-                        now = System.DateTimeOffset.Now;
-
-                        var diff = (targetFrameTime - now).TotalMilliseconds;
-                        if (diff > 0)
-                        {
-                            if (diff > 1)
-                            {
-                                samplers[1].Begin();
-                                {
-                                    var sleepTime = Mathf.Max(0, (int)(diff - 1));
-                                    System.Threading.Thread.Sleep(sleepTime);
-                                }
-                                samplers[1].End();
-                            }
-
-                            samplers[2].Begin();
-                            {
-                                do { now = System.DateTimeOffset.Now; }
-                                while (now < targetFrameTime);
-                            }
-                            samplers[2].End();
-                        }
-                        else if (diff < 0)
-                        {
-                            targetFrameTime = now;
-                        }
-                    }
-                    samplers[0].End();
-                }
-
                 yield return null;
 
-                samplers[3].Begin();
+                samplers[0].Begin();
                 {
-                    samplers[4].Begin();
+                    samplers[1].Begin();
                     {
                         m_Proxy.OnBeforeUpdate(System.DateTimeOffset.Now);
                     }
-                    samplers[4].End();
+                    samplers[1].End();
 
-                    samplers[5].Begin();
+                    samplers[2].Begin();
                     {
                         m_Proxy.UpdateCurrentScene();
                         UpdateGame();
                     }
-                    samplers[5].End();
+                    samplers[2].End();
 
-                    samplers[6].Begin();
+                    samplers[3].Begin();
                     {
                         isRunning = isRunning && sequence.MoveNext();
                     }
-                    samplers[6].End();
+                    samplers[3].End();
 
-                    samplers[7].Begin();
+                    samplers[4].Begin();
                     {
                         m_Proxy.DrawCurrentScene();
                         DrawGame();
                         m_Proxy.OnAterDraw();
                     }
-                    samplers[7].End();
+                    samplers[4].End();
                 }
-                samplers[3].End();
+                samplers[0].End();
             }
         }
 
