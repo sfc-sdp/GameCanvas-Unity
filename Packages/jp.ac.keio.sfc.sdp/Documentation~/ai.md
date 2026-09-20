@@ -42,7 +42,9 @@ python3 scripts/validate-examples.py
 
 サイトを出すときはリポジトリの根から `bash scripts/build-docs.sh` です。
 
-`scripts/doctor.py` は、Unity の版やモジュールの不足を出します。`--json` はAIからも同じ内容を読めます。認証情報や端末の識別子を渡す必要はありません。Windows向けの診断結果は、このリポジトリでは確認していません。
+`scripts/doctor.py` は、Unity の版やモジュールの不足を出します。`--json` はAIからも同じ内容を読めます。認証情報や端末の識別子を渡す必要はありません。Windows 11 向けの診断結果は、このリポジトリでは確認していません。
+
+配布 ZIP はコミット済みのファイルだけから作ります。`python3 scripts/package-project.py` です。未コミットの変更や未追跡ファイル、追跡されている `design/` や `scripts/rendering/` があると拒否します。出力は ZIP と SHA256 と `release-info.json` です。Unity は 6000.6.2f1、パッケージ版は 8.0.0-pre.1 です。
 
 ## 成功の分け方
 

@@ -6,11 +6,11 @@
 
 `Game` は `GameBase` を継承します。毎フレーム、次の順で呼ばれます。
 
-- `InitGame` — 起動時に一度だけ。キャンバスの大きさなど
+- `InitGame` — 起動時と、無効化してから再有効化したとき。キャンバスの大きさや、フィールドの初期化
 - `UpdateGame` — 位置や入力など、状態を進める
 - `DrawGame` — そのフレームの絵を描く
 
-入力は `UpdateGame` で読み、描画は `DrawGame` で行います。同じフレームなら、どちらから読んでも入力の中身は同じです。
+入力は `UpdateGame` で読み、描画は `DrawGame` で行います。同じフレームなら、どちらから読んでも入力の中身は同じです。`Game` のフィールドは無効化しても残ります。内部の `gc` は作り直されるので、通信の操作などは `InitGame` で捨てて、変数を戻してください。
 
 最初から入っている `Assets/Game.cs` は次の形です。
 
@@ -51,7 +51,9 @@ public sealed class Game : GameBase
 
 画像は `Assets/Res` からの相対パスで描きます。最初の表示に `TryGetImage` は不要です。秒数は右上を基準にしているので、描いたあと左上へ戻しています。基準点は次の変更まで残ります。
 
-`gc.TimeSinceStartup` は起動からの秒数で、型は `double` です。入力の `Duration` や `PointerEvents` / `KeyEvents` の `Time` も同じです。位置を前フレームからの経過で進めるときは `gc.TimeSincePrevFrame` を使います。こちらは `float` の秒です。長い経過どうしの差を `float` で取らないでください。
+`gc.TimeSinceStartup` は起動からの秒数で、型は `double` です。Unity の単調時計なので、端末の日時を変えても増え続けます。入力の `Duration` や `PointerEvents` / `KeyEvents` の `Time` も同じです。位置を前フレームからの経過で進めるときは `gc.TimeSincePrevFrame` を使います。こちらは `float` の秒です。最初のフレームと、アプリが背面から戻った直後は 0 です。長い経過どうしの差を `float` で取らないでください。壁時計の UNIX 秒は `gc.CurrentTimestamp` です。UTC です。
+
+フレームの間隔は Unity に任せます。`Thread.Sleep` や待ちループでフレームを作らないでください。希望する速さは `gc.SetFrameRate(60)` です。正の整数だけを渡せます。秒で書くなら `gc.SetFrameInterval(1.0 / 30)` です。`1.0 / int.MaxValue` 以上 1 以下の有限の秒で、最も近い整数 fps に丸めます。実際の fps は約束しません。デスクトップで垂直同期が有効なときは画面の更新を優先します。モバイルでは fps の希望値です。
 
 ## 座標
 

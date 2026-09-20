@@ -4,7 +4,7 @@
 
 ## 位置情報
 
-`gc.Location` が入口です。Android と iOS の実機向けです。Editor と Web では `IsSupported` が偽で、`Start` すると `Unsupported` になります。同じ例は `Samples~/Tutorial/LocationTap.cs` にあります。地図付きの例は `Samples~/Geolocation/GeolocationSample.cs` です。
+`gc.Location` が入口です。Android と iOS の実機向けです。Editor と Web では `IsSupported` が偽で、`Start` すると `Unsupported` になります。同じ例は `Samples~/Tutorial/LocationTap.cs` にあります。
 
 ```csharp
 #nullable enable
@@ -68,6 +68,8 @@ public sealed class Game : GameBase
 }
 ```
 
+地図付きの例は `Samples~/Geolocation/GeolocationSample.cs` です。タイル画像は、新しい位置が決まったときだけ取りにいきます。毎フレーム 9 個の URL を作りません。できた画像だけ描き、背景は白です。停止や再要求では不要な通信を `Dispose` します。前の位置の通信が、今の地図を上書きすることはありません。`InitGame` でタイルを捨て、取得フラグを戻します。
+
 `Start` はボタンやタップから一度呼びます。毎フレーム呼ばないでください。権限待ちは 30 秒、最初の測位待ちは `Start` の引数（初期値 30 秒）で打ち切ります。
 
 `TryGetSample` が真のときは、その標本を使います。偽のときは `Status` を見て理由を出します。緯度経度は `double` の度です。値が 0 でも、それだけで失敗とは限りません。Editor 用の固定座標を、測位できたかのように出さないでください。シミュレータやソフトウェアが作った位置は `IsMock` が真です。
@@ -92,17 +94,118 @@ if (gc.TryLoad("score", out int score))
 
 ## 加速度
 
-加速度計がある端末では、対応を確認してから有効にします。無い環境で有効にすると警告が出ます。ボールが傾きに応じて動く例は `Samples~/Acceleration/AccelerationSample.cs` です。
+`gc.Acceleration` が入口です。画面を押してから開始します。起動時には要求しません。同じ内容は `Samples~/Acceleration/AccelerationSample.cs` です。`Game.cs` に移すときはクラス名を `Game` に変えます。
+
+値は重力を含む g です。止まっていても、およそ 1g がかかります。向きはキャンバスに合わせ、生の値の X はそのまま、Y と Z は符号を反転します。Input System の画面向き補正（`compensateForScreenOrientation`、既定で有効）が先にかかり、そのあとにこの反転をします。Unity の型は使いません。
+
+Android と iOS の実機向けです。Web では `IsSupported` が偽で、`Start` すると `Unsupported` になります。Editor は Input System に加速度計があれば使えますが、通常は無く、`Start` すると `Unsupported` になります。実測していない環境の値を、測れたかのように出さないでください。
 
 ```csharp
-if (gc.IsAccelerometerSupported)
+#nullable enable
+using GameCanvas;
+
+public sealed class Game : GameBase
 {
-    gc.IsAccelerometerEnabled = true;
-    var a = gc.LastAccelerationEvent.Acceleration;
+    float x, y, vx, vy;
+    string message = "画面を押すと加速度計を開始します";
+
+    public override void InitGame()
+    {
+        gc.ChangeCanvasSize(720, 1280);
+        gc.SetFontSize(36);
+        gc.SetRectAnchor(GcAnchor.MiddleCenter);
+        gc.SetStringAnchor(GcAnchor.UpperLeft);
+        x = gc.CanvasWidth * 0.5f;
+        y = gc.CanvasHeight * 0.5f;
+        vx = 0;
+        vy = 0;
+        message = "画面を押すと加速度計を開始します";
+    }
+
+    public override void UpdateGame()
+    {
+        if (gc.Pointer.Down)
+        {
+            var state = gc.Acceleration.Status;
+            if (state == GcAccelerationState.Running || state == GcAccelerationState.Waiting)
+            {
+                gc.Acceleration.Stop();
+            }
+            else
+            {
+                gc.Acceleration.Start();
+            }
+        }
+
+        if (gc.Acceleration.HasValue)
+        {
+            var dt = gc.TimeSincePrevFrame;
+            vx += gc.Acceleration.X * 400f * dt;
+            vy += gc.Acceleration.Y * 400f * dt;
+            var decay = (float)System.Math.Pow(0.98, dt * 60);
+            vx *= decay;
+            vy *= decay;
+            x += vx * dt;
+            y += vy * dt;
+            x = gc.Repeat(x, gc.CanvasWidth);
+            y = gc.Repeat(y, gc.CanvasHeight);
+
+            var last = gc.Acceleration.Last;
+            var events = gc.Acceleration.Events;
+            message = $"x {last.X:F2}\ny {last.Y:F2}\nz {last.Z:F2}\n標本 {events.Count}";
+            for (int i = 0; i < events.Count; i++)
+            {
+                if (i >= 3)
+                {
+                    message += $"\nほか {events.Count - 3} 件";
+                    break;
+                }
+                var e = events[i];
+                message += $"\n[{i}] {e.Time:F3} dt {e.DeltaTime:F3}";
+            }
+        }
+        else
+        {
+            vx = 0;
+            vy = 0;
+            message = ShowState(gc.Acceleration.Status);
+        }
+    }
+
+    public override void DrawGame()
+    {
+        gc.ClearScreen();
+        gc.SetColor(255, 255, 255);
+        gc.DrawImage("BallRed.png", x, y);
+        gc.SetColor(0, 0, 0);
+        gc.DrawString(message, 40, 80);
+    }
+
+    static string ShowState(GcAccelerationState state) => state switch
+    {
+        GcAccelerationState.Waiting => "加速度の標本を待っています\n画面を押すと停止します",
+        GcAccelerationState.Unsupported => "この環境では加速度計を使えません",
+        GcAccelerationState.Failed => "加速度計が切れました\n画面を押すと再試行できます",
+        GcAccelerationState.Stopped => "停止中です。画面を押すと再開できます",
+        GcAccelerationState.Idle => "画面を押すと加速度計を開始します",
+        _ => "加速度計を確認中です"
+    };
 }
 ```
 
-`Acceleration` はキャンバスで使いやすいよう、Y と Z を反転した値です。生の値は `RawAcceleration` です。そのフレームに新しい値が来たかは `DidUpdateAccelerationThisFrame` で分かります。複数の標本を順に読むなら `gc.AccelerationEvents` があります。
+`Start` はタップやボタンから一度呼びます。毎フレーム呼ばないでください。呼び直すと、進めていた処理を止めて始め直します。希望の周波数は `gc.Acceleration.Start(60)` のようにHzで渡します。0 以下、NaN、Infinity は例外で、今の状態は変わりません。
+
+画面を押すと、`Running` か `Waiting` なら `Stop`、それ以外なら `Start` です。`Stop` は値と履歴を消します。アプリが背面に回るか無効になると、GameCanvas が止めます。復帰しても自動では再開しません。戻ってからもう一度画面を押して `Start` してください。
+
+`Start` しただけでは足りません。最初の標本を受け取ると `Status` が `Running` になります。値が 0 でも、それだけで失敗とは限りません。有無は `HasValue` です。そのフレームに新しい標本が届いたかは `Updated` です。最新の値は `X` / `Y` / `Z` と `Last` です。時刻は入力の秒で、`Time` と `DeltaTime` は `double` です。最初の標本の `DeltaTime` は 0 です。球の移動にはフレーム秒 `gc.TimeSincePrevFrame` を掛けます。摩擦は `vx *= (float)System.Math.Pow(0.98, dt * 60)` です。毎フレーム `0.98` を掛けると、フレームレートで止まり方が変わります。
+
+無効化のあと再有効化すると `InitGame` がもう一度走るので、位置と速度とメッセージを戻します。
+
+このフレームの標本は `gc.Acceleration.Events` です。`Count` と添字で順に読みます。画面に出す文字列は先頭の 3 件までにして、残りは件数にします。`foreach` も書けますが、糖衣構文です。まずは `for` で書いてください。生の値は `RawX` / `RawY` / `RawZ` です。
+
+`IsSupported` は実装した環境か、実際に加速度計があるかです。Web では機器があっても `IsSupported` は偽で、`Start` すると `Unsupported` になります。許可の入口はありません。Android と iOS の実機向けです。Editor は加速度計があれば使えますが、通常はありません。iOS シミュレータにセンサーは無く、`Start` すると `Unsupported` になります。
+
+`ClearScreen` は色を戻さないので、画像の前に `SetColor(255, 255, 255)` を呼びます。
 
 ## カメラ
 
@@ -208,13 +311,4 @@ iOS シミュレータに実カメラは無く、機器が無い状態の確認�
 
 ## 通信
 
-ネット上の画像は、URL を渡して描きます。準備中、成功、失敗は戻り値で分かります。通信の例は `Samples~/Networking/NetworkingSample.cs` です。
-
-```csharp
-var url = "https://example.com/image.png";
-var state = gc.DrawOnlineImage(url, 0, 0);
-if (state == GcAvailability.NotReady) gc.DrawString("読み込み中", 40, 40);
-if (state == GcAvailability.NotAvailable) gc.DrawString("取得できません", 40, 40);
-```
-
-`url` は実際の画像アドレスに差し替えてください。`DrawOnlineImage` も `SetRectAnchor` を見ます。音声やテキストは `TryGetOnlineText`、`TryGetOnlineSound` です。キャッシュを消すときは `ClearDownloadCache(url)` です。
+ネットから取る入口は `gc.Network` です。呼び出すたびに新しい通信が始まります。返ってきた操作を残し、毎フレーム同じ呼び出しをしないでください。書き方は [通信する](networking.md) です。画像と音を取る例は `Samples~/Networking/NetworkingSample.cs` です。

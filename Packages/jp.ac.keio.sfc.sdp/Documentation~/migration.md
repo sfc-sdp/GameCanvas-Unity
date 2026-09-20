@@ -56,10 +56,16 @@ v8 では、よく使う入力・描画・乱数・位置情報・カメラの�
 
 | 以前 | 今 |
 | --- | --- |
-| `TimeSinceStartup` が `float` | `double` の秒 |
+| `TimeSinceStartup` が `float` | `double` の秒。Unity の単調時計。端末の日時変更には影響されない |
 | ポインター / キーの `Duration` | どちらも `double` の秒 |
 | イベントの `Time` | `double` の秒 |
-| `TimeSincePrevFrame` | `float` の秒のまま。座標の更新に使う |
+| `TimeSincePrevFrame` | `float` の秒のまま。座標の更新に使う。初回とアプリが背面から戻った直後は 0 |
+| `CurrentTimestamp` | UTC の UNIX 秒 |
+| `Thread.Sleep` や待ちループでフレームを待つ | しない。待機は Unity へ |
+| `SetFrameRate` | 正の整数 |
+| `SetFrameInterval` | `1.0 / int.MaxValue` 以上 1 以下の有限秒。最寄り整数 fps へ丸める |
+| 実 fps の保証、以前の手動待機の精度 | 保証しない。デスクトップで垂直同期が有効なときは画面の更新を優先。モバイルでは fps の希望値 |
+| 無効化して再有効化 | 内部サービスを再生成し、`InitGame` を再実行する。`Game` のフィールドは残る |
 
 長い経過どうしの差を `float` で取らないでください。
 
@@ -123,6 +129,57 @@ v8 では、よく使う入力・描画・乱数・位置情報・カメラの�
 
 `Start` は操作のときに呼びます。呼び直すと前の処理を止めて始め直します。`Running` は最初の有効な映像を受け取った状態です。アプリが背面に回ると GameCanvas が止め、自動では再開しません。許可の画面で中断した場合も、戻ってからもう一度 `Start` します。
 
+## 加速度
+
+旧い加速度の入口は削除しました。`IInputAcceleration` / `IInputAccelerationEx`、`GcAccelerationEvent`、`IsAccelerometerEnabled`、`AccelerationEvents` はありません。入口は `gc.Acceleration` です。
+
+| 以前 | 今 |
+| --- | --- |
+| `IsAccelerometerEnabled = true` | `gc.Acceleration.Start()`。希望の周波数は引数のHz |
+| `IsAccelerometerEnabled = false` | `gc.Acceleration.Stop()`。値と履歴を消す |
+| `IsAccelerometerSupported` | `gc.Acceleration.IsSupported` |
+| `LastAccelerationEvent.Acceleration` | `gc.Acceleration.X` / `Y` / `Z`。有無は `HasValue` |
+| `LastAccelerationEvent.RawAcceleration` | `gc.Acceleration.Last` の `RawX` / `RawY` / `RawZ` |
+| `LastAccelerationEvent.Time` / `DeltaTime` | `gc.Acceleration.Time` / `DeltaTime`。どちらも `double` の秒。最初の `DeltaTime` は 0 |
+| `DidUpdateAccelerationThisFrame` | `gc.Acceleration.Updated` |
+| `AccelerationEvents` / `AccelerationEventCount` / `TryGetAccelerationEvent` | `gc.Acceleration.Events`。`Count` と添字で読む |
+| `AccelerometerSamplingRate` | `Start` の引数 |
+| `GcAccelerationEvent` の `float3` | 削除。Unity の型は出さない |
+| 有効にしたまま背面から戻る | 自動では再開しない。もう一度 `Start` |
+
+`Start` は操作のときに呼びます。呼び直すと前の処理を止めて始め直します。`Running` は最初の標本を受け取った状態です。値は重力を含む g です。キャンバス向きの X,-Y,-Z は以前と同じです。アプリが背面に回ると GameCanvas が止め、自動では再開しません。Editor と、Input System がセンサーを登録していない Web では未対応です。実測していない値を、測れたかのように出さないでください。
+## 通信
+
+旧い通信の入口は削除しました。`TryGetOnlineImage`、`TryGetOnlineSound`、`TryGetOnlineText`、`DrawOnlineImage`、`GetOnlineImageSize`、`ClearDownloadCache`、`GcAvailability` はありません。
+
+| 以前 | 今 |
+| --- | --- |
+| `TryGetOnlineImage` | `gc.Network.GetImage(url)`。戻りは `GcImageRequest` |
+| `TryGetOnlineSound` | `gc.Network.GetSound(url, GcSoundFormat)`。戻りは `GcSoundRequest` |
+| `TryGetOnlineText` | `gc.Network.GetText(url)`。戻りは `GcTextRequest` |
+| `DrawOnlineImage` | 取得は `GetImage`、描画は `gc.DrawImage(request, x, y)` |
+| `GetOnlineImageSize` | `request.Width` / `Height`。成功前と破棄後は 0 |
+| `ClearDownloadCache` / `ClearDownloadCacheAll` | 削除。成功データは `request.Dispose` まで残る |
+| `GcAvailability` | `GcRequestState`。`Pending` / `Succeeded` / `Failed` / `Cancelled` / `TimedOut` / `Disposed` |
+| 同じ URL を毎フレーム渡して進める | 返った request を残す。呼び出しのたびに新しい通信が始まる |
+| POST の自動再試行 | しない。やり直すなら先に `Dispose` してから新しい操作 |
+| pause で `Cancelled` になった GET | タップで `Dispose` してから新しい GET。毎フレーム再試行しない |
+| 無効化して再有効化 | 新しい `gc` になる。`InitGame` で古い操作を `Dispose` し、変数を `null` へ戻す |
+
+アプリが背面に回ると、待ち中の通信は `CancelAll` されます。成功済みのデータは残ります。サーバ側の処理まで止まったとは限りません。
+
+## ドラッグと当たり判定
+
+| 以前 | 今 |
+| --- | --- |
+| `StartX` / `StartY` の範囲比較 | `rect.Contains` か `gc.Contains(rect, point)` |
+| 手で ID とずれを覚える導入 | 1個なら `gc.Drag(drag, ref rect)`。操作ごとにインスタンスを1つ |
+| 右端・下端を含む判定 | 含まない |
+| 残った指へ乗り移る | 乗り移らない。中断や消失では開始位置へ戻る |
+| 重なりの手前を自動で掴む | 自動ではない。手前は自分で決める |
+
+`rect.Contains` は左上基準の幾何です。描画と同じ `RectAnchor` と座標系で見るときは `gc.Contains` です。`gc.Drag` も `gc.Contains` と同じ判定です。`UpdateGame` で対象ごとに1回呼びます。
+
 ## 画像と文字と矩形
 
 | 以前 | 今 |
@@ -136,7 +193,7 @@ v8 では、よく使う入力・描画・乱数・位置情報・カメラの�
 | `new GcRect(x, y, w, h, radian)` | `new GcRect(x, y, w, h)`。回転は `{ Rotation = 30 }` か `GcRect.FromDegrees(x, y, w, h, 30)` |
 | 描画や座標回転の `degree` 引数 | `rotation`。時計回りの度。`Sin` / `Cos` の `degree` はそのまま |
 
-図形、画像、Texture、カメラ映像、オンライン画像は `SetRectAnchor` です。文字は `SetStringAnchor` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。任意の画像の有無で分岐するときや、同じハンドルを繰り返すときだけ `TryGetImage` を使います。カメラ映像は `gc.DrawCamera` です。幅と高さは描く先の大きさです。
+図形、画像、Texture、カメラ映像、通信で取った画像は `SetRectAnchor` です。文字は `SetStringAnchor` です。引数なし、`GcPoint`、数値の x,y、`GcRect` のどれでも、直前の設定を使います。任意の画像の有無で分岐するときや、同じハンドルを繰り返すときだけ `TryGetImage` を使います。カメラ映像は `gc.DrawCamera` です。幅と高さは描く先の大きさです。
 
 矩形指定の `DrawImage` / `DrawString` の `rotation` は、矩形の回転へ加算します。渡した `GcRect` 自体は変わりません。
 

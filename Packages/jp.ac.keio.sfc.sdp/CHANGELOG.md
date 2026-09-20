@@ -6,17 +6,24 @@
 - `IsTouchBegan` / `IsTouched` / `IsTouchEnded` / `IsTapped`、`IsKeyDown` / `Hold` / `Press` / `Up`、`IsAnyKey*`、`TryGetPointer*` / `TryGetKey*`、`PointerCount` / `BeginCount` / `EndCount` / `TapCount`、`Key*Count`、`LastPointer*`、`KeyEscape`、`GetKeyPress*`、`GcPointerTrace` / `GcKeyTrace` を削除
 - `gc.KeyEvents` は `GcReadOnlyList<GcKeyEvent>`。`Phase` は `Down` / `Up` / `Cancelled`。押し続けは `gc.Key(...).Held`
 - `gc.Taps` は成立したタップの押し始め位置。`gc.TapSettings` の `MaxDistance` は途中の移動を足した距離、`MaxDuration` は秒。既定は 25 と 0.125
-- `Pointer.Duration`、`Key(...).Duration`、イベントの `Time`、`gc.TimeSinceStartup` は `double` の秒。`gc.TimeSincePrevFrame` は `float` の秒
+- `Pointer.Duration`、`Key(...).Duration`、イベントの `Time`、`gc.TimeSinceStartup` は `double` の秒。`TimeSinceStartup` は Unity の単調時計で、端末の日時変更には影響されない。`gc.TimeSincePrevFrame` は `float` の秒。初回とアプリ pause 復帰直後は 0。`CurrentTimestamp` は UTC の UNIX 秒
+- フレーム待機は `Thread.Sleep` や待ちループを使わず Unity へ委ねる。`SetFrameRate` は正の整数。`SetFrameInterval` は `1.0 / int.MaxValue` 以上 1 以下の有限秒で、最寄り整数 fps へ丸める。実 fps は保証しない。デスクトップで垂直同期が有効なときは画面更新を優先し、モバイルでは fps の希望値。以前の手動待機の精度は保証しない
+- 無効化して再有効化すると内部サービスを再生成し、`InitGame` を再実行する。`Game` のフィールドは残るので、通信の操作は `InitGame` で `Dispose` して変数を戻す
 - 描画と座標回転の引数名は `rotation`。単位は時計回りの度。カメラの補正角度は `gc.Camera.Rotation`。以前の `TryGetCameraImageRotation` は `Repeat(-nativeAngle, 360)`、今は `Repeat(nativeAngle, 360)` の時計回りで、符号と向きが逆。`DrawCamera` は自動で直す。`Sin` / `Cos` の `degree` はそのまま
 - `GcRect` の公開回転は `Rotation`（度）。公開コンストラクタは位置とサイズだけ。`Degree()` を削除
 - `Random()` は 0 以上 1 未満。`Random(int maxExclusive)` を追加。整数・小数とも上限は含まない。以前の整数は上限を含んでいた。空や逆の範囲、NaN / Infinity は `ArgumentOutOfRangeException`
-- 画像はパス指定の `DrawImage`。基準点は状態。図形・画像・Texture・カメラ映像・オンライン画像は `SetRectAnchor`、文字は `SetStringAnchor`。引数なし、`GcPoint`、数値の位置、`GcRect` でも状態を見る
+- 画像はパス指定の `DrawImage`。基準点は状態。図形・画像・Texture・カメラ映像・通信で取った画像は `SetRectAnchor`、文字は `SetStringAnchor`。引数なし、`GcPoint`、数値の位置、`GcRect` でも状態を見る
 - `SetColor(int, int, int, int = 255)` は 0 から 255。範囲外は丸める
 - 位置情報は `gc.Location` に統一。旧 Geolocation API を削除
+- 通信は `gc.Network.GetText` / `GetImage` / `GetSound(url, GcSoundFormat)` / `PostText` / `PostForm`。呼び出しのたびに新しい操作が返る。状態は `GcRequestState`。描画は `gc.DrawImage(request, ...)`、再生は `gc.PlaySound(request, track, loop)`。旧 `TryGetOnlineImage` / `TryGetOnlineSound` / `TryGetOnlineText` / `DrawOnlineImage` / `GetOnlineImageSize` / `ClearDownloadCache` / `GcAvailability` を削除
+- アプリが背面に回ると、待ち中の通信は `CancelAll`。成功済みのデータは `Dispose` まで残る。サーバ側の処理まで取り消せるとは限らない。`Cancelled` / `Failed` / `TimedOut` の GET はタップで `Dispose` してからやり直す。毎フレーム再試行と POST の自動再試行はしない
+- 矩形の移動は `gc.Drag(GcDrag, ref GcRect)`。当たり判定は `rect.Contains`（左上基準）と `gc.Contains`（今の Anchor と座標系）。右端と下端は含まない。`GcRect` に `X` / `Y` / `Width` / `Height` を追加
 - カメラは `gc.Camera` に統一。開始は `Start`、描画は `gc.DrawCamera`。`IInputCamera` は残し、旧いメンバーと `IInputCameraEx` を削除
 - `DrawCamera` の幅と高さは描く先の大きさ。以前の `DrawCameraImage` は元映像の解像度が掛かっていた。引数なしの実寸はこの修正の対象外
 - 廃止予定だった宣言と `GetActorList` / `ReadOnlyActorList<T>` を削除
 - 推奨エディタは Unity 6000.6.2f1
+### その他
+- 配布 ZIP は `scripts/package-project.py` がコミット済みファイルだけから作る。未コミットの配布ファイルや追跡されている `design/` があると拒否する
 
 ## 7.0.2
 ### 不具合修正
@@ -265,7 +272,7 @@
 - [#133](https://github.com/sfc-sdp/GameCanvas-Unity/issues/133) エディタ挙動のカスタマイズ機能
 ## 4.1.0
 - [#53](https://github.com/sfc-sdp/GameCanvas-Unity/issues/53) 一時停止イベントと再開イベントの追加 (`PauseGame`, `ResumeGame`)
-- [#127](https://github.com/sfc-sdp/GameCanvas-Unity/issues/127) より正確なフレームレートの実現 (`gc.SetFrameInterval`)
+- [#127](https://github.com/sfc-sdp/GameCanvas-Unity/issues/127) `gc.SetFrameInterval` の追加
 - [#128](https://github.com/sfc-sdp/GameCanvas-Unity/issues/128) タップイベントの追加 (`gc.IsTapped`)
 - [#129](https://github.com/sfc-sdp/GameCanvas-Unity/issues/129) ローカルストレージAPIの変更 (`gc.TryLoad`, `gc.Save`)
 - [#130](https://github.com/sfc-sdp/GameCanvas-Unity/issues/130) 描画不具合の修正 (`gc.DrawScaledRotatedImage`)

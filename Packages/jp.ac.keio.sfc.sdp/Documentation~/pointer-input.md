@@ -6,7 +6,7 @@
 
 ## まず1本で動かす
 
-`gc.Pointer` で代表の1本を読みます。次の例は、四角形を押した位置のずれを保ったまま動かします。マウスなら左ボタンでドラッグできます。
+四角形を動かすなら、操作ごとに `GcDrag` を1つ用意します。`UpdateGame` で `gc.Drag` を1回呼びます。描画と同じ `SetRectAnchor` と座標系を使ってください。マウスなら左ボタンでドラッグできます。
 
 ```csharp
 #nullable enable
@@ -14,60 +14,55 @@ using GameCanvas;
 
 public sealed class Game : GameBase
 {
-    float x = 100, y = 300;
-    float offsetX, offsetY, originalX, originalY;
-    int? dragId;
+    GcRect box = new GcRect(100, 300, 180, 180);
+    GcDrag drag = new GcDrag();
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(720, 1280);
+        gc.SetRectAnchor(GcAnchor.UpperLeft);
     }
 
     public override void UpdateGame()
     {
-        var p = gc.Pointer;
-        if (p.Down && p.StartX >= x && p.StartX < x + 180 &&
-                      p.StartY >= y && p.StartY < y + 180)
-        {
-            dragId = p.Id;
-            offsetX = p.StartX - x;
-            offsetY = p.StartY - y;
-            originalX = x;
-            originalY = y;
-        }
-        if (dragId != p.Id) return;
-        if (p.Held || p.Up)
-        {
-            x = p.X - offsetX;
-            y = p.Y - offsetY;
-        }
-        if (p.Cancelled)
-        {
-            x = originalX;
-            y = originalY;
-        }
-        if (p.Up || p.Cancelled) dragId = null;
+        gc.Drag(drag, ref box);
     }
 
     public override void DrawGame()
     {
         gc.ClearScreen();
-        gc.SetRectAnchor(GcAnchor.UpperLeft);
         gc.SetColor(40, 100, 230);
-        gc.FillRect(x, y, 180, 180);
+        gc.FillRect(box);
     }
 }
 ```
 
-`Down` はこのフレームに押し始めたこと、`Held` はフレーム末に押していること、`Up` は普通に離したことです。`Cancelled` は、アプリの中断や接続解除などで操作が取り消された状態です。この例では中断すると、四角形を押し始める前の位置へ戻します。
+`gc.Drag` は、押した指の ID だけを追います。短い押下で同じフレームに離しても、最後の位置まで動かします。中断や指の消失では、押し始める前の位置へ戻します。残っている別の指へ乗り移りません。
 
-押し始めたフレームでも `Held` は真です。ただし、次の更新までのあいだに押して離すと、`Down` と `Up` が両方真になり、`Held` は偽になります。その場合も開始位置と最後の位置は残るので、短い操作は抜けません。
+重なった複数の対象から、手前のものを自動では選びません。手前を自分で決めてから、その `GcDrag` だけを進めてください。
 
-当たり判定には `StartX` と `StartY` を使います。押下と移動が同じフレームに届くことがあるため、最後の位置 `X`・`Y` で掴むと、指が乗っていない対象を掴むことがあります。離す直前の移動を取りこぼさないように、位置の反映は `Held` だけでなく `Up` でも行います。
+`GcDrag` の `Started` / `Ended` / `Cancelled` は、そのフレームだけ真です。`Active` は操作中ずっと真です。`PointerId` は掴んでいる指の番号で、掴んでいなければ空です。途中でやめたいときは `drag.Cancel(ref box)` です。矩形の位置は `box.X` / `box.Y`、大きさは `box.Width` / `box.Height` です。
+
+`Down` はこのフレームに押し始めたこと、`Held` はフレーム末に押していること、`Up` は普通に離したことです。`Cancelled` は、アプリの中断や接続解除などで操作が取り消された状態です。押し始めたフレームでも `Held` は真です。ただし、次の更新までのあいだに押して離すと、`Down` と `Up` が両方真になり、`Held` は偽になります。その場合も開始位置と最後の位置は残るので、短い操作は抜けません。
+
+当たり判定には押し始めの位置を使います。押下と移動が同じフレームに届くことがあるため、最後の位置 `X`・`Y` で掴むと、指が乗っていない対象を掴むことがあります。離す直前の移動を取りこぼさないように、位置の反映は `Held` だけでなく `Up` でも行います。`gc.Drag` も同じです。
 
 `FillRect` は図形なので `SetRectAnchor` を使います。画像も同じです。文字は `SetStringAnchor` です。
 
-代表の指を離しても、`gc.Pointer` はすでに押している別の指へ乗り移りません。次の新しい押下を待ちます。残った指を追い続けるなら、次の一覧を使います。
+代表の指を離しても、`gc.Pointer` はすでに押している別の指へ乗り移りません。次の新しい押下を待ちます。残った指を追い続けるなら、次の一覧を使います。手で指を追う1本の例は `PointerOne.cs` です。
+
+## 当たり判定
+
+`rect.Contains(point)` と `rect.Contains(x, y)` は、左上を基準にした矩形の内側です。回転は見ます。今の `RectAnchor` や座標系は見ません。右端と下端は含みません。
+
+```csharp
+var box = new GcRect(100, 300, 180, 180);
+box.Contains(100, 300); // 内側
+box.Contains(280, 300); // 右端なので外側
+box.Contains(100, 480); // 下端なので外側
+```
+
+描画と同じ基準点と座標系で判定するときは `gc.Contains(rect, point)` です。`gc.Drag` もこちらと同じ判定です。
 
 ## 複数の指を順に読む
 
@@ -199,7 +194,7 @@ foreach (var p in gc.Pointers)
 
 マウスとペンの位置は、機器の登録だけでは原点に作りません。最初の入力通知から公開します。マウスの基本の押下は左ボタン、ペンはペン先です。タッチにホバーはありません。
 
-位置を前フレームからの経過で進めるときは `gc.TimeSincePrevFrame` を使います。こちらは `float` の秒です。押している長さや起動からの時刻は `double` の秒です。長い経過どうしの差を `float` で取らないでください。
+位置を前フレームからの経過で進めるときは `gc.TimeSincePrevFrame` を使います。こちらは `float` の秒です。最初のフレームと、アプリが背面から戻った直後は 0 です。押している長さや起動からの時刻は `double` の秒です。長い経過どうしの差を `float` で取らないでください。
 
 ## タップ
 

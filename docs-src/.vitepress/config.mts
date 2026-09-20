@@ -76,6 +76,7 @@ export default defineConfig({
             { text: 'インストール', link: '/guide/installation' },
             { text: '画像と日本語', link: '/guide/images-and-text' },
             { text: 'ポインターで操作する', link: '/guide/pointer-input' },
+            { text: '通信する', link: '/guide/networking' },
             { text: '端末の機能', link: '/guide/device' },
             { text: 'AIに頼む', link: '/guide/ai' }
           ]
