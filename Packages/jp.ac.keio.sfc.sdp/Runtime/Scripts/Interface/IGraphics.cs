@@ -239,13 +239,13 @@ namespace GameCanvas
         /// <summary>
         /// 角丸矩形を線で描画します
         /// </summary>
-        /// <param name="rect">二等辺三角形が収まる矩形</param>
+        /// <param name="rect">角丸矩形が収まる矩形</param>
         void DrawRoundedRect(in GcRect rect);
 
         /// <summary>
         /// 角丸矩形を線で描画します
         /// </summary>
-        /// <param name="rect">二等辺三角形が収まる矩形</param>
+        /// <param name="rect">角丸矩形が収まる矩形</param>
         /// <param name="cornerRadius">角丸の半径</param>
         void DrawRoundedRect(in GcRect rect, float cornerRadius);
 
@@ -328,13 +328,13 @@ namespace GameCanvas
         /// <summary>
         /// 角丸矩形を塗りで描画します
         /// </summary>
-        /// <param name="rect">二等辺三角形が収まる矩形</param>
+        /// <param name="rect">角丸矩形が収まる矩形</param>
         void FillRoundedRect(in GcRect rect);
 
         /// <summary>
         /// 角丸矩形を塗りで描画します
         /// </summary>
-        /// <param name="rect">二等辺三角形が収まる矩形</param>
+        /// <param name="rect">角丸矩形が収まる矩形</param>
         /// <param name="cornerRadius">角丸の半径</param>
         void FillRoundedRect(in GcRect rect, float cornerRadius);
 

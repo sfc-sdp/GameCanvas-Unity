@@ -29,6 +29,37 @@ namespace GameCanvas
 
         public GcLocationService Location { get; }
         public GcCameraService Camera { get; }
+        public GcNetworkService Network => m_Context.Network;
+        public bool Contains(in GcRect rect, in GcPoint point) => GcHitTest.Contains(rect, point, RectAnchor, CurrentCoordinate);
+        public void Drag(GcDrag drag, ref GcRect rect)
+        {
+            if (drag == null) throw new System.ArgumentNullException(nameof(drag));
+            drag.Update(Pointers, ref rect, RectAnchor, CurrentCoordinate);
+        }
+        public void DrawImage(GcImageRequest image) => DrawImage(image, 0, 0);
+        public void DrawImage(GcImageRequest image, float x, float y, float rotation = 0)
+        {
+            if (image == null) throw new System.ArgumentNullException(nameof(image));
+            if (image.Status == GcRequestState.Succeeded && image.Texture != null)
+                m_Context.Graphics.DrawTexture(image.Texture, new float2(x, y), rotation);
+        }
+        public void DrawImage(GcImageRequest image, in GcPoint position, float rotation = 0)
+            => DrawImage(image, position.X, position.Y, rotation);
+        public void DrawImage(GcImageRequest image, float x, float y, float width, float height, float rotation = 0)
+            => DrawImage(image, GcRect.FromDegrees(x, y, width, height, rotation));
+        public void DrawImage(GcImageRequest image, in GcRect rect)
+        {
+            if (image == null) throw new System.ArgumentNullException(nameof(image));
+            if (image.Status == GcRequestState.Succeeded && image.Texture != null)
+                m_Context.Graphics.DrawTexture(image.Texture, rect);
+        }
+        public bool PlaySound(GcSoundRequest sound, GcSoundTrack track = GcSoundTrack.BGM1, bool loop = false)
+        {
+            if (sound == null) throw new System.ArgumentNullException(nameof(sound));
+            if (sound.Status != GcRequestState.Succeeded || sound.Clip == null) return false;
+            m_Context.Sound.PlaySound(sound.Clip, track, loop); return true;
+        }
+        public GcAccelerationService Acceleration { get; }
 
         readonly GcContext m_Context;
         readonly Dictionary<System.Type, GcScene> m_SceneDict;
@@ -43,29 +74,6 @@ namespace GameCanvas
         //----------------------------------------------------------
         #region 公開関数
         //----------------------------------------------------------
-
-        /// <inheritdoc/>
-        public int AccelerationEventCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.AccelerationEventCount;
-        }
-
-        /// <inheritdoc/>
-        public System.ReadOnlySpan<GcAccelerationEvent> AccelerationEvents
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.AccelerationEvents;
-        }
-
-        /// <inheritdoc/>
-        public float AccelerometerSamplingRate
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.AccelerometerSamplingRate;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            set => m_Context.InputAcceleration.AccelerometerSamplingRate = value;
-        }
 
         /// <inheritdoc/>
         public Color BackgroundColor
@@ -346,13 +354,6 @@ namespace GameCanvas
         }
 
         /// <inheritdoc/>
-        public bool DidUpdateAccelerationThisFrame
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.DidUpdateAccelerationThisFrame;
-        }
-
-        /// <inheritdoc/>
         public GcFont Font
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -368,22 +369,6 @@ namespace GameCanvas
             get => m_Context.Graphics.FontSize;
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { m_Context.Graphics.FontSize = value; }
-        }
-
-        /// <inheritdoc/>
-        public bool IsAccelerometerEnabled
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.IsAccelerometerEnabled;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            set => m_Context.InputAcceleration.IsAccelerometerEnabled = value;
-        }
-
-        /// <inheritdoc/>
-        public bool IsAccelerometerSupported
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.IsAccelerometerSupported;
         }
 
         /// <inheritdoc/>
@@ -412,13 +397,6 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.InputPointer.IsTouchSupported;
-        }
-
-        /// <inheritdoc/>
-        public GcAccelerationEvent LastAccelerationEvent
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputAcceleration.LastAccelerationEvent;
         }
 
         /// <inheritdoc/>
@@ -625,14 +603,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ClearDownloadCache(in string url)
-            => m_Context.Network.ClearDownloadCache(url);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ClearDownloadCacheAll()
-            => m_Context.Network.ClearDownloadCacheAll();
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ClearScreen()
             => m_Context.Graphics.ClearScreen();
 
@@ -794,61 +764,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void DrawLine(in GcLine line)
             => m_Context.Graphics.DrawLine(line);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url)
-        {
-            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
-            {
-                m_Context.Graphics.DrawTexture(tex);
-            }
-            return ret;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in float2 position, float rotation = 0f)
-        {
-            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
-            {
-                m_Context.Graphics.DrawTexture(tex, position, rotation);
-            }
-            return ret;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in float x, in float y, float rotation = 0f)
-        {
-            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
-            {
-                m_Context.Graphics.DrawTexture(tex, new float2(x, y), rotation);
-            }
-            return ret;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in GcRect rect)
-        {
-            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
-            {
-                m_Context.Graphics.DrawTexture(tex, rect);
-            }
-            return ret;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcAvailability DrawOnlineImage(in string url, in float x, in float y, in float width, in float height, float rotation = 0f)
-        {
-            if (m_Context.Network.TryGetOnlineImage(url, out var ret, out var tex))
-            {
-                m_Context.Graphics.DrawTexture(tex, new GcRect(x, y, width, height, math.radians(rotation)));
-            }
-            return ret;
-        }
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1065,16 +980,6 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetImageWidth(in GcImage image) => image.m_Size.x;
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetOnlineImageHeight(in string url)
-            => m_Context.Network.TryGetOnlineImageSize(url, out var size) ? size.y : 0;
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetOnlineImageWidth(in string url)
-            => m_Context.Network.TryGetOnlineImageSize(url, out var size) ? size.x : 0;
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1427,16 +1332,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetAccelerationEvent(int i, out GcAccelerationEvent e)
-            => m_Context.InputAcceleration.TryGetAccelerationEvent(i, out e);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetAccelerationEventAll(out System.ReadOnlySpan<GcAccelerationEvent> events)
-            => m_Context.InputAcceleration.TryGetAccelerationEventAll(out events);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetActor(in int i, [NotNullWhen(true)] out GcActor? actor)
         {
             if (m_CurrentScene != null)
@@ -1470,31 +1365,6 @@ namespace GameCanvas
             actors = default;
             return false;
         }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetOnlineImage(in string url, out GcAvailability availability, [NotNullWhen(true)] out Texture2D? texture)
-            => m_Context.Network.TryGetOnlineImage(url, out availability, out texture);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetOnlineImageSize(in string url, out int2 size)
-            => m_Context.Network.TryGetOnlineImageSize(url, out size);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetOnlineSound(in string url, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)
-            => m_Context.Network.TryGetOnlineSound(url, out availability, out clip);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetOnlineSound(in string url, in AudioType type, out GcAvailability availability, [NotNullWhen(true)] out AudioClip? clip)
-            => m_Context.Network.TryGetOnlineSound(url, type, out availability, out clip);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetOnlineText(in string url, out GcAvailability availability, [NotNullWhen(true)] out string? str)
-            => m_Context.Network.TryGetOnlineText(url, out availability, out str);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1571,6 +1441,7 @@ namespace GameCanvas
             m_Context = new GcContext(behaviour);
             Location = new GcLocationService(behaviour);
             Camera = camera ?? new GcCameraService();
+            Acceleration = new GcAccelerationService();
             m_SceneDict = new Dictionary<System.Type, GcScene>();
 
             GcScene.Inject(this);
@@ -1601,6 +1472,7 @@ namespace GameCanvas
         {
             Location.Tick();
             Camera.Tick();
+            Acceleration.Tick();
             foreach (var engine in m_Context.EngineArray)
             {
                 engine.OnBeforeUpdate(now);
@@ -1608,10 +1480,10 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnDisable() { Camera.SetPaused(true); Location.Stop(); m_Context.Dispose(); }
+        internal void OnDisable() { Camera.SetPaused(true); Location.Stop(); Acceleration.SetPaused(true); Acceleration.Dispose(); m_Context.Dispose(); }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnEnable() { Camera.SetPaused(false); m_Context.Graphics?.Init(); }
+        internal void OnEnable() { Camera.SetPaused(false); Acceleration.SetPaused(false); m_Context.Graphics?.Init(); }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnFocus(bool focus)
@@ -1623,21 +1495,22 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnPause()
         {
+            Network.CancelAll();
             Camera.SetPaused(true);
             Location.Stop();
+            Acceleration.SetPaused(true);
             m_Context.InputPointer.SetPaused(true);
             m_Context.InputKey.SetPaused(true);
-            m_Context.InputAcceleration.OnPause();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnUnpause()
         {
             Camera.SetPaused(false);
+            Acceleration.SetPaused(false);
             m_Context.Graphics.RebuildFontTexture();
             m_Context.InputPointer.SetPaused(false);
             m_Context.InputKey.SetPaused(false);
-            m_Context.InputAcceleration.OnUnpause();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

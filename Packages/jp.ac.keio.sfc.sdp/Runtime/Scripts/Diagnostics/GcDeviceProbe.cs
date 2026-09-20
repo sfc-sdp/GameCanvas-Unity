@@ -1,7 +1,6 @@
 #nullable enable
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace GameCanvas.Diagnostics
 {
@@ -25,6 +24,10 @@ namespace GameCanvas.Diagnostics
             Log("asset.image", GcAssets.TryGetImage("BlueSky.png", out sky) ? "catalog-loaded" : "missing");
             Log("startup", $"Unity={Application.unityVersion}; OS={SystemInfo.operatingSystem}; model={SystemInfo.deviceModel}");
             if (CameraSmokeRequested()) StartCoroutine(CameraSmoke());
+            if (FeatureSmokeRequested()) StartCoroutine(FeatureSmoke());
+#if UNITY_ANDROID && !UNITY_EDITOR
+            if (AndroidFlag("gcLocationSmoke")) locationRoutine = StartCoroutine(Location());
+#endif
 #if UNITY_IOS && !UNITY_EDITOR
             simulatorSmoke = GcProbeShouldRunSimulatorSmoke() != 0;
             if (simulatorSmoke) StartCoroutine(SimulatorSmoke());
@@ -34,6 +37,8 @@ namespace GameCanvas.Diagnostics
         public override void DrawGame()
         {
             gc.ClearScreen();
+            gc.SetColor(255, 255, 255);
+            gc.SetRectAnchor(GcAnchor.UpperLeft);
             gc.DrawImage("BlueSky.png", 0, 0);
             gc.SetColor(0, 0, 0);
             gc.SetFontSize(36);
@@ -103,7 +108,8 @@ namespace GameCanvas.Diagnostics
             if (GUI.Button(new Rect(28, 910, 655, 65), "HTTPS通信を確認", button) && !networkBusy)
                 networkRoutine = StartCoroutine(Network());
             GUI.Label(new Rect(28, 985, 655, 100), network, label);
-            GUI.Label(new Rect(28, 1110, 655, 140), "権限は各ボタンから要求します。\n映像の向きと日本語は目で確認してください。\n検証用アプリ / Unity " + Application.unityVersion, label);
+            if (GUI.Button(new Rect(28, 1090, 655, 65), "音を確認", button)) PlayProbeSound();
+            GUI.Label(new Rect(28, 1170, 655, 110), "権限は各ボタンから要求します。\n映像の向きと日本語は目で確認してください。\n検証用アプリ / Unity " + Application.unityVersion, label);
         }
 
         IEnumerator Location()
@@ -155,6 +161,8 @@ namespace GameCanvas.Diagnostics
         static extern int GcProbeShouldRunSimulatorSmoke();
         [System.Runtime.InteropServices.DllImport("__Internal")]
         static extern int GcProbeShouldRunCameraSmoke();
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        static extern int GcProbeShouldRunFeatureSmoke();
 
         // simctlで許可と模擬座標を設定した専用シミュレータからだけ明示的に実行する。
         IEnumerator SimulatorSmoke()
@@ -216,11 +224,69 @@ namespace GameCanvas.Diagnostics
         IEnumerator Network()
         {
             networkBusy = true; network = "通信中";
-            using var request = UnityWebRequest.Get("https://example.com/");
-            request.timeout = 15;
-            yield return request.SendWebRequest();
-            network = $"{request.result} / HTTP {request.responseCode}\n{request.error ?? "HTTPSで受信しました"}";
+            using var request = gc.Network.GetText("https://httpbingo.org/get", timeoutSeconds: 15);
+            while (!request.IsDone) yield return null;
+            network = $"{request.Status} / HTTP {request.ResponseCode}\n{request.ErrorCode}";
             Log("network.result", network); networkBusy = false;
+        }
+
+        public void PlayProbeSound()
+        {
+            if (!GcAssets.TryGetSound("Click1.wav", out var sound)) { Log("audio.result", "missing"); return; }
+            gc.PlaySound(sound, GcSoundTrack.SE);
+            Log("audio.result", $"started={gc.IsPlayingSound(GcSoundTrack.SE)}; clip=Click1.wav");
+        }
+#if UNITY_ANDROID && !UNITY_EDITOR
+        static bool AndroidFlag(string key)
+        {
+            using var player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            using var activity = player.GetStatic<AndroidJavaObject>("currentActivity");
+            using var intent = activity.Call<AndroidJavaObject>("getIntent");
+            return intent.Call<bool>("getBooleanExtra", key, false);
+        }
+#endif
+        bool FeatureSmokeRequested()
+        {
+#if UNITY_ANDROID && !UNITY_EDITOR
+            using var player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            using var activity = player.GetStatic<AndroidJavaObject>("currentActivity");
+            using var intent = activity.Call<AndroidJavaObject>("getIntent");
+            return intent.Call<bool>("getBooleanExtra", "gcFeatureSmoke", false);
+#elif UNITY_IOS && !UNITY_EDITOR
+            return GcProbeShouldRunFeatureSmoke() != 0;
+#elif UNITY_WEBGL && !UNITY_EDITOR
+            return Application.absoluteURL.Contains("gcFeatureSmoke=1");
+#else
+            return System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-gcFeatureSmoke") >= 0;
+#endif
+        }
+        IEnumerator FeatureSmoke()
+        {
+            yield return null;
+            Log("feature.start", "network/storage/acceleration; no synthetic input");
+            const string key = "__gc_validation_reload_count";
+            gc.TryLoad(key, out int stored); gc.Save(key, stored + 1);
+            gc.TryLoad(key, out int loaded);
+            Log("storage.roundtrip", $"previous={stored}; current={loaded}; equal={loaded == stored + 1}");
+            using var text = gc.Network.GetText("https://httpbingo.org/get", timeoutSeconds: 15);
+            using var image = gc.Network.GetImage("https://httpbingo.org/image/png", timeoutSeconds: 15);
+            using var bad = gc.Network.GetText("https://httpbingo.org/status/404", timeoutSeconds: 15);
+            using var cancelled = gc.Network.GetText("https://httpbingo.org/delay/2", timeoutSeconds: 5);
+            cancelled.Cancel();
+            using var timed = gc.Network.GetText("https://httpbingo.org/delay/2", timeoutSeconds: .25);
+            while (!text.IsDone || !image.IsDone || !bad.IsDone || !timed.IsDone) yield return null;
+            network = $"GET {text.Status} / image {image.Status}\n404 {bad.ResponseCode} / timeout {timed.Status}";
+            Log("network.smoke", $"text={text.Status}/{text.ResponseCode}; image={image.Status}/{image.Width}x{image.Height}; bad={bad.Status}/{bad.ResponseCode}; cancel={cancelled.Status}; timeout={timed.Status}");
+            gc.Acceleration.Start();
+            int samples = 0; double until = Time.realtimeSinceStartupAsDouble + 3;
+            while (Time.realtimeSinceStartupAsDouble < until)
+            {
+                samples += gc.Acceleration.Events.Count; yield return null;
+            }
+            Log("acceleration.smoke", $"status={gc.Acceleration.Status}; samples={samples}; x={gc.Acceleration.X:F3}; y={gc.Acceleration.Y:F3}; z={gc.Acceleration.Z:F3}; time={gc.Acceleration.Time:F6}; dt={gc.Acceleration.DeltaTime:F6}");
+            gc.Acceleration.Stop();
+            Log("acceleration.stop", $"status={gc.Acceleration.Status}; hasValue={gc.Acceleration.HasValue}; events={gc.Acceleration.Events.Count}");
+            Log("feature.complete", "done");
         }
 
         void StopCamera()

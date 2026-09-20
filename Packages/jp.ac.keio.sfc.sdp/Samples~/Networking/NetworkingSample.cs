@@ -1,7 +1,5 @@
 #nullable enable
 using GameCanvas;
-using Unity.Mathematics;
-using UnityEngine;
 
 public sealed class NetworkingSample : GameBase
 {
@@ -14,34 +12,51 @@ public sealed class NetworkingSample : GameBase
     /// </summary>
     const string k_SoundUrl = "https://freesound.org/data/previews/545/545403_9497060-lq.mp3";
 
-    static readonly float2 k_LabelPos1 = new float2(12, 12);
-    static readonly float2 k_LabelPos2 = new float2(12, 60);
-
-    Texture2D? m_OnlineImage;
-    GcAvailability m_OnlineImageState;
-    AudioClip? m_OnlineSound;
-    GcAvailability m_OnlineSoundState;
+    GcImageRequest? image;
+    GcSoundRequest? sound;
+    bool playing;
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(720, 1280);
-        gc.SetColor(gc.ColorBlack);
         gc.SetFontSize(32);
+        gc.StopSound(GcSoundTrack.BGM1);
+        image?.Dispose();
+        sound?.Dispose();
+        image = null;
+        sound = null;
+        playing = false;
     }
 
     public override void UpdateGame()
     {
-        if (m_OnlineImage == null && m_OnlineImageState != GcAvailability.NotAvailable)
+        if (image == null) image = gc.Network.GetImage(k_ImageUrl);
+        if (sound == null) sound = gc.Network.GetSound(k_SoundUrl, GcSoundFormat.Mp3);
+
+        if (!gc.Pointer.Down) return;
+
+        if (image != null &&
+            (image.Status == GcRequestState.Failed ||
+             image.Status == GcRequestState.Cancelled ||
+             image.Status == GcRequestState.TimedOut))
         {
-            gc.TryGetOnlineImage(k_ImageUrl, out m_OnlineImageState, out m_OnlineImage);
+            image.Dispose();
+            image = gc.Network.GetImage(k_ImageUrl);
         }
 
-        if (m_OnlineSound == null && m_OnlineSoundState != GcAvailability.NotAvailable)
+        if (sound != null &&
+            (sound.Status == GcRequestState.Failed ||
+             sound.Status == GcRequestState.Cancelled ||
+             sound.Status == GcRequestState.TimedOut))
         {
-            if (gc.TryGetOnlineSound(k_SoundUrl, out m_OnlineSoundState, out m_OnlineSound))
-            {
-                gc.PlaySound(m_OnlineSound, GcSoundTrack.BGM1, true);
-            }
+            gc.StopSound(GcSoundTrack.BGM1);
+            sound.Dispose();
+            sound = gc.Network.GetSound(k_SoundUrl, GcSoundFormat.Mp3);
+            playing = false;
+        }
+        else if (sound != null && sound.Status == GcRequestState.Succeeded)
+        {
+            playing = gc.PlaySound(sound, GcSoundTrack.BGM1, loop: true);
         }
     }
 
@@ -49,36 +64,45 @@ public sealed class NetworkingSample : GameBase
     {
         gc.ClearScreen();
 
-        switch (m_OnlineImageState)
+        if (image != null && image.Status == GcRequestState.Succeeded)
         {
-            case GcAvailability.NotAvailable:
-                gc.DrawString("画像 DL失敗", k_LabelPos1);
-                break;
-
-            case GcAvailability.NotReady:
-                gc.DrawString("画像 DL中...", k_LabelPos1);
-                break;
-
-            case GcAvailability.Ready:
-                GcAssert.IsNotNull(m_OnlineImage);
-                gc.DrawTexture(m_OnlineImage);
-                gc.DrawString("画像 表示中", k_LabelPos1);
-                break;
+            gc.SetColor(255, 255, 255);
+            gc.DrawImage(image, 0, 0);
         }
 
-        switch (m_OnlineSoundState)
+        gc.SetColor(0, 0, 0);
+        gc.DrawString(ShowImage(), 12, 12);
+        gc.DrawString(ShowSound(), 12, 60);
+    }
+
+    string ShowImage()
+    {
+        if (image == null) return "画像を準備しています";
+        return image.Status switch
         {
-            case GcAvailability.NotAvailable:
-                gc.DrawString("音声 DL失敗", k_LabelPos2);
-                break;
+            GcRequestState.Pending => "画像を読み込み中です",
+            GcRequestState.Succeeded => $"画像 {image.Width}x{image.Height}",
+            GcRequestState.Failed => "画像を取得できません。画面を押すとやり直します",
+            GcRequestState.Cancelled => "画像を取り消しました。画面を押すとやり直します",
+            GcRequestState.TimedOut => "画像が時間切れです。画面を押すとやり直します",
+            GcRequestState.Disposed => "画像を破棄しました",
+            _ => "画像を確認中です"
+        };
+    }
 
-            case GcAvailability.NotReady:
-                gc.DrawString("音声 DL中...", k_LabelPos2);
-                break;
-
-            case GcAvailability.Ready:
-                gc.DrawString("音声 再生中", k_LabelPos2);
-                break;
-        }
+    string ShowSound()
+    {
+        if (sound == null) return "音声を準備しています";
+        if (playing) return $"音声を再生中です {sound.Duration:0.0} 秒";
+        return sound.Status switch
+        {
+            GcRequestState.Pending => "音声を読み込み中です",
+            GcRequestState.Succeeded => "画面を押すと音声を再生します",
+            GcRequestState.Failed => "音声を取得できません。画面を押すとやり直します",
+            GcRequestState.Cancelled => "音声を取り消しました。画面を押すとやり直します",
+            GcRequestState.TimedOut => "音声が時間切れです。画面を押すとやり直します",
+            GcRequestState.Disposed => "音声を破棄しました",
+            _ => "音声を確認中です"
+        };
     }
 }

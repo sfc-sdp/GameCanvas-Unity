@@ -81,18 +81,6 @@ namespace GameCanvas.Tests
             gc.OnUnpause(); Send(keyboard); Send(keyboard, Key.A); Frame();
             Assert.That(gc.Key(GcKey.A).Down);
         }
-        [Test] public void AccelerationWithoutASensorReturnsAnEmptyCollection()
-        {
-            Frame();
-            Assert.That(gc.IsAccelerometerSupported, Is.False);
-            Assert.That(gc.AccelerationEventCount, Is.Zero);
-            Assert.That(gc.AccelerationEvents.Length, Is.Zero);
-            Assert.That(gc.TryGetAccelerationEvent(0, out _), Is.False);
-            Assert.That(gc.TryGetAccelerationEventAll(out var events), Is.False);
-            Assert.That(events.Length, Is.Zero);
-            gc.OnAterDraw();
-            Assert.That(gc.AccelerationEvents.Length, Is.Zero);
-        }
         [Test] public void NoKeyboardThenHotplugWorks()
         {
             UnityEngine.Object.DestroyImmediate(go);

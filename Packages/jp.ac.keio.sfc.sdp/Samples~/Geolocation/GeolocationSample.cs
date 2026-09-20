@@ -1,7 +1,6 @@
 #nullable enable
 using System;
 using GameCanvas;
-using Unity.Mathematics;
 
 public sealed class GeolocationSample : GameBase
 {
@@ -13,13 +12,21 @@ public sealed class GeolocationSample : GameBase
     string m_StateMessage = "画面を押すと位置情報を取ります";
     bool m_HasFix;
     bool m_IsMock;
-    int2 m_TileId;
-    float2 m_Point;
+    int m_TileX;
+    int m_TileY;
+    float m_PointX;
+    float m_PointY;
+    readonly GcImageRequest?[] m_Tiles = new GcImageRequest?[9];
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(k_CanvasW, k_CanvasH);
         gc.SetFontSize(36);
+        gc.SetBackgroundColor(255, 255, 255);
+        ClearTiles();
+        m_HasFix = false;
+        m_IsMock = false;
+        m_StateMessage = "画面を押すと位置情報を取ります";
     }
 
     public override void UpdateGame()
@@ -33,6 +40,7 @@ public sealed class GeolocationSample : GameBase
                 s == GcLocationState.Unsupported)
             {
                 m_HasFix = false;
+                ClearTiles();
                 gc.Location.Start();
             }
         }
@@ -43,8 +51,9 @@ public sealed class GeolocationSample : GameBase
             m_IsMock = sample.IsMock;
             m_StateMessage = $"緯度 {sample.Latitude:F6}、経度 {sample.Longitude:F6}";
             if (m_IsMock) m_StateMessage += "\n模擬の位置です";
-            CalcTileId(sample.Latitude, sample.Longitude, k_ZoomLv, out m_TileId, out m_Point);
+            CalcTileId(sample.Latitude, sample.Longitude, k_ZoomLv, out m_TileX, out m_TileY, out m_PointX, out m_PointY);
             gc.Location.Stop();
+            UpdateTiles();
         }
         else if (!m_HasFix)
         {
@@ -58,21 +67,21 @@ public sealed class GeolocationSample : GameBase
 
         if (m_HasFix)
         {
+            gc.SetColor(255, 255, 255);
             for (var i = 0; i < 3; i++)
             {
                 for (var j = 0; j < 3; j++)
                 {
-                    var x = m_TileId.x - 1 + i;
-                    var y = m_TileId.y - 1 + j;
-                    var url = $"https://cyberjapandata.gsi.go.jp/xyz/std/{k_ZoomLv}/{x}/{y}.png";
-                    gc.DrawOnlineImage(url, i * k_TileSize, j * k_TileSize);
+                    var tile = m_Tiles[i + j * 3];
+                    if (tile == null || tile.Status != GcRequestState.Succeeded) continue;
+                    gc.DrawImage(tile, i * k_TileSize, j * k_TileSize);
                 }
             }
 
             using (gc.StyleScope)
             {
                 gc.SetRectAnchor(GcAnchor.LowerCenter);
-                gc.DrawImage("MapPin.png", m_Point.x + k_TileSize, m_Point.y + k_TileSize);
+                gc.DrawImage("MapPin.png", m_PointX + k_TileSize, m_PointY + k_TileSize);
                 gc.SetColor(0, 0, 0);
                 gc.SetStringAnchor(GcAnchor.LowerRight);
                 gc.DrawString("出典：国土地理院", k_CanvasW, k_CanvasH);
@@ -83,17 +92,52 @@ public sealed class GeolocationSample : GameBase
         gc.DrawString(m_StateMessage, 10, 15);
     }
 
+    void UpdateTiles()
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            for (var j = 0; j < 3; j++)
+            {
+                var index = i + j * 3;
+                var x = m_TileX - 1 + i;
+                var y = m_TileY - 1 + j;
+                var url = $"https://cyberjapandata.gsi.go.jp/xyz/std/{k_ZoomLv}/{x}/{y}.png";
+                var current = m_Tiles[index];
+                if (current != null && current.Url != url)
+                {
+                    current.Dispose();
+                    m_Tiles[index] = null;
+                }
+                if (m_Tiles[index] == null)
+                {
+                    m_Tiles[index] = gc.Network.GetImage(url);
+                }
+            }
+        }
+    }
+
+    void ClearTiles()
+    {
+        for (var i = 0; i < m_Tiles.Length; i++)
+        {
+            m_Tiles[i]?.Dispose();
+            m_Tiles[i] = null;
+        }
+    }
+
     /// <summary>緯度経度からタイル座標への変換</summary>
     /// <remarks><see href="https://www.trail-note.net/tech/coordinate/"/></remarks>
-    static void CalcTileId(in double lat, in double lng, in int zoom, out int2 tileId, out float2 point)
+    static void CalcTileId(in double lat, in double lng, in int zoom, out int tileX, out int tileY, out float pointX, out float pointY)
     {
         const double L = 85.05112878;
         var a = (int)Math.Pow(2, zoom + 7);
         var b = Math.PI / 180.0;
         var x = (int)(a * (lng / 180.0 + 1.0));
         var y = (int)((a / Math.PI) * (-Atanh(Math.Sin(b * lat)) + Atanh(Math.Sin(b * L))));
-        tileId = new int2(x / k_TileSize, y / k_TileSize);
-        point = new float2(x % k_TileSize, y % k_TileSize);
+        tileX = x / k_TileSize;
+        tileY = y / k_TileSize;
+        pointX = x % k_TileSize;
+        pointY = y % k_TileSize;
 
         static double Atanh(in double value) => 0.5 * Math.Log((1 + value) / (1 - value));
     }

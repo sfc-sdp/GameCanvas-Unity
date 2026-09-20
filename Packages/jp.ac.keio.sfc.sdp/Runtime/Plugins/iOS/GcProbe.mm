@@ -19,3 +19,12 @@ extern "C" int GcProbeShouldRunCameraSmoke()
     return 0;
 #endif
 }
+
+extern "C" int GcProbeShouldRunFeatureSmoke()
+{
+#if TARGET_OS_SIMULATOR
+    return [[[NSProcessInfo processInfo] arguments] containsObject:@"-gcFeatureSmoke"] ? 1 : 0;
+#else
+    return 0;
+#endif
+}

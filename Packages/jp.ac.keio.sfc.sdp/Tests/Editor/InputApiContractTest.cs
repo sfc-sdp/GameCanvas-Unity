@@ -19,10 +19,14 @@ namespace GameCanvas.Editor.Tests
                 "PointerCount", "PointerBeginCount", "PointerEndCount", "PointerTapCount", "LastPointerEvent",
                 "LastPointerFrame", "LastPointerPoint", "LastPointerTime", "LastPointerX", "LastPointerY",
                 "TryGetPointerEvent", "TryGetPointerEventAll", "TryGetPointerTrace", "TryGetPointerTraceAll",
-                "TryGetPointerTapPoint", "TryGetPointerTapPointAll", "IsTapped", "IsTouchBegan", "IsTouched", "IsTouchEnded" })
+                "TryGetPointerTapPoint", "TryGetPointerTapPointAll", "IsTapped", "IsTouchBegan", "IsTouched", "IsTouchEnded",
+                "AccelerationEventCount", "AccelerationEvents", "AccelerometerSamplingRate",
+                "DidUpdateAccelerationThisFrame", "IsAccelerometerEnabled", "IsAccelerometerSupported",
+                "LastAccelerationEvent", "TryGetAccelerationEvent", "TryGetAccelerationEventAll" })
                 Assert.That(names, Does.Not.Contain(name));
             var assembly = typeof(GcProxy).Assembly;
-            foreach (var name in new[] { "GcKeyTrace", "GcPointerTrace", "IInputKeyEx", "IInputPointerEx" })
+            foreach (var name in new[] { "GcKeyTrace", "GcPointerTrace", "IInputKeyEx", "IInputPointerEx",
+                "GcAccelerationEvent", "IInputAcceleration", "IInputAccelerationEx" })
                 Assert.That(assembly.GetType("GameCanvas." + name), Is.Null);
             Assert.That(typeof(GcKeyEvent).GetField("Key")!.FieldType, Is.EqualTo(typeof(GcKey)));
             Assert.That(Enum.GetNames(typeof(GcKeyEventPhase)), Is.EquivalentTo(new[] { "Down", "Up", "Cancelled" }));
@@ -35,6 +39,8 @@ namespace GameCanvas.Editor.Tests
             Assert.That(typeof(GcPointer).GetProperty("Duration")!.PropertyType, Is.EqualTo(typeof(double)));
             Assert.That(typeof(GcKeyEvent).GetField("Time")!.FieldType, Is.EqualTo(typeof(double)));
             Assert.That(typeof(GcPointerEvent).GetField("Time")!.FieldType, Is.EqualTo(typeof(double)));
+            Assert.That(typeof(GcAccelerationSample).GetProperty("Time")!.PropertyType, Is.EqualTo(typeof(double)));
+            Assert.That(typeof(GcAccelerationSample).GetProperty("DeltaTime")!.PropertyType, Is.EqualTo(typeof(double)));
             Assert.That(typeof(ITime).GetProperty("TimeSinceStartup")!.PropertyType, Is.EqualTo(typeof(double)));
         }
 

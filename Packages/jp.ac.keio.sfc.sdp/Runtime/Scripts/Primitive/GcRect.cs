@@ -124,6 +124,17 @@ namespace GameCanvas
         public static GcRect FromDegrees(in float x, in float y, in float width, in float height, in float degree)
             => new(new float2(x, y), new float2(width, height), math.radians(degree));
 
+        /// <summary>左上を基準とする矩形の内部を判定する。回転を含み、右端と下端は含まない。
+        /// 描画状態も使う場合はgc.Containsを使う。</summary>
+        public readonly bool Contains(in GcPoint point) => GcHitTest.Contains(this, point, GcAnchor.UpperLeft, GcAffine.Identity);
+        public readonly bool Contains(float x, float y) => Contains(new GcPoint(x, y));
+        /// <summary>矩形の基準点のX座標。</summary>
+        public float X { readonly get => Position.x; set => Position.x = value; }
+        /// <summary>矩形の基準点のY座標。</summary>
+        public float Y { readonly get => Position.y; set => Position.y = value; }
+        public float Width { readonly get => Size.x; set => Size.x = value; }
+        public float Height { readonly get => Size.y; set => Size.y = value; }
+
         public static explicit operator GcRect(Rect rect) => new(rect);
 
         public static bool operator !=(GcRect lh, GcRect rh) => !lh.Equals(rh);

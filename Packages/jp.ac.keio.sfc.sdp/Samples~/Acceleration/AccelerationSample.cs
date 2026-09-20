@@ -1,70 +1,90 @@
 #nullable enable
 using GameCanvas;
-using Unity.Mathematics;
-using UnityEngine;
 
 public sealed class AccelerationSample : GameBase
 {
-    struct Ball
-    {
-        public float2 Point;
-        public float2 Speed;
-    }
-
-    Ball m_Ball;
-    Color m_Color;
-    string m_DebugText = "";
-    bool m_Supported;
+    float x, y, vx, vy;
+    string message = "画面を押すと加速度計を開始します";
 
     public override void InitGame()
     {
         gc.ChangeCanvasSize(720, 1280);
         gc.SetFontSize(36);
         gc.SetRectAnchor(GcAnchor.MiddleCenter);
-        m_Supported = gc.IsAccelerometerSupported;
-        if (m_Supported) gc.IsAccelerometerEnabled = true;
-
-        m_Ball = new Ball
-        {
-            Point = gc.CanvasCenter,
-            Speed = float2.zero
-        };
-        m_Color = gc.ColorBlack;
-        if (!m_Supported) m_DebugText = "この端末では加速度計を使えません";
+        gc.SetStringAnchor(GcAnchor.UpperLeft);
+        x = gc.CanvasWidth * 0.5f;
+        y = gc.CanvasHeight * 0.5f;
+        vx = 0;
+        vy = 0;
+        message = "画面を押すと加速度計を開始します";
     }
 
     public override void UpdateGame()
     {
-        if (!m_Supported) return;
-
-        var accel = float2.zero;
-        var events = gc.AccelerationEvents;
-        for (int i = 0; i < events.Length; i++)
+        if (gc.Pointer.Down)
         {
-            var e = events[i];
-            accel += new float2(e.Acceleration.x, e.Acceleration.y) * e.DeltaTime;
+            var state = gc.Acceleration.Status;
+            if (state == GcAccelerationState.Running || state == GcAccelerationState.Waiting)
+            {
+                gc.Acceleration.Stop();
+            }
+            else
+            {
+                gc.Acceleration.Start();
+            }
         }
-        m_Ball.Speed += accel * 20;
 
-        m_Ball.Point += m_Ball.Speed;
-        m_Ball.Point.x = gc.Repeat(m_Ball.Point.x, gc.CanvasWidth);
-        m_Ball.Point.y = gc.Repeat(m_Ball.Point.y, gc.CanvasHeight);
+        if (gc.Acceleration.HasValue)
+        {
+            var dt = gc.TimeSincePrevFrame;
+            vx += gc.Acceleration.X * 400f * dt;
+            vy += gc.Acceleration.Y * 400f * dt;
+            var decay = (float)System.Math.Pow(0.98, dt * 60);
+            vx *= decay;
+            vy *= decay;
+            x += vx * dt;
+            y += vy * dt;
+            x = gc.Repeat(x, gc.CanvasWidth);
+            y = gc.Repeat(y, gc.CanvasHeight);
 
-        m_Ball.Speed *= 0.9f;
-
-        m_Color = gc.DidUpdateAccelerationThisFrame
-            ? gc.ColorBlack
-            : gc.ColorGray;
-
-        var last = gc.LastAccelerationEvent;
-        m_DebugText = $" x: {last.Acceleration.x:+0.00;-0.00;0}\n y: {last.Acceleration.y:+0.00;-0.00;0}\n z: {last.Acceleration.z:+0.00;-0.00;0}\ndt: {last.DeltaTime:0.000}";
+            var last = gc.Acceleration.Last;
+            var events = gc.Acceleration.Events;
+            message = $"x {last.X:F2}\ny {last.Y:F2}\nz {last.Z:F2}\n標本 {events.Count}";
+            for (int i = 0; i < events.Count; i++)
+            {
+                if (i >= 3)
+                {
+                    message += $"\nほか {events.Count - 3} 件";
+                    break;
+                }
+                var e = events[i];
+                message += $"\n[{i}] {e.Time:F3} dt {e.DeltaTime:F3}";
+            }
+        }
+        else
+        {
+            vx = 0;
+            vy = 0;
+            message = ShowState(gc.Acceleration.Status);
+        }
     }
 
     public override void DrawGame()
     {
         gc.ClearScreen();
-        gc.DrawImage("BallRed.png", m_Ball.Point.x, m_Ball.Point.y);
-        gc.SetColor(m_Color);
-        gc.DrawString(m_DebugText, 20, 20);
+        gc.SetColor(255, 255, 255);
+        gc.DrawImage("BallRed.png", x, y);
+        gc.SetColor(0, 0, 0);
+        gc.DrawString(message, 40, 80);
     }
+
+    static string ShowState(GcAccelerationState state) => state switch
+    {
+        GcAccelerationState.Waiting => "加速度の標本を待っています\n画面を押すと停止します",
+        GcAccelerationState.Unsupported => "この環境では加速度計を使えません",
+        GcAccelerationState.Failed => "加速度計が切れました\n画面を押すと再試行できます",
+        GcAccelerationState.Stopped => "停止中です。画面を押すと再開できます",
+        GcAccelerationState.Idle => "画面を押すと加速度計を開始します",
+        _ => "加速度計を確認中です"
+    };
 }
