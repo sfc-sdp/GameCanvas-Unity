@@ -35,10 +35,24 @@ namespace GameCanvas.Engine
         readonly List<InputControl> controls = new(24);
         readonly Dictionary<int, Cursor> cursors = new();
         internal readonly List<GcPointerRecord> Pending = new(64);
+        sealed class MergeSetting
+        {
+            internal int Users;
+            internal bool Previous;
+        }
+        static readonly Dictionary<InputSettings, MergeSetting> mergeSettings = new();
+        readonly InputSettings settings;
         bool suspended, disposed;
 
         internal GcPointerSource()
         {
+            // UnityはDownと後続の移動も統合するため、短いドラッグの開始位置が失われる。
+            // 複数のGameCanvasで共有し、最後の利用者が破棄されたときだけ元へ戻す。
+            settings = InputSystem.settings;
+            if (!mergeSettings.TryGetValue(settings, out var merge))
+                mergeSettings.Add(settings, merge = new MergeSetting { Previous = settings.disableRedundantEventsMerging });
+            merge.Users++;
+            settings.disableRedundantEventsMerging = true;
             InputSystem.onDeviceChange += OnDeviceChange;
             foreach (var device in InputSystem.devices) AddDevice(device);
         }
@@ -144,6 +158,13 @@ namespace GameCanvas.Engine
             InputSystem.onDeviceChange -= OnDeviceChange;
             foreach (var control in controls) InputState.RemoveChangeMonitor(control, this);
             controls.Clear(); cursors.Clear(); Pending.Clear();
+            var merge = mergeSettings[settings];
+            if (--merge.Users == 0)
+            {
+                if (settings.disableRedundantEventsMerging)
+                    settings.disableRedundantEventsMerging = merge.Previous;
+                mergeSettings.Remove(settings);
+            }
         }
     }
 }

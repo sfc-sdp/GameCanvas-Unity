@@ -60,6 +60,32 @@ namespace GameCanvas.Tests
             Assert.That(records.Exists(r => r.Phase == GcPointerEventPhase.Begin && r.Screen.x == 10));
             Assert.That(records.Exists(r => r.Phase == GcPointerEventPhase.End && r.Screen.x == 90));
         }
+        [Test] public void MouseDragWithinOneInputUpdateKeepsItsStartPosition()
+        {
+            InputSystem.QueueStateEvent(mouse, new MouseState { position = new Vector2(10, 50) }.WithButton(MouseButton.Left));
+            InputSystem.QueueStateEvent(mouse, new MouseState { position = new Vector2(60, 50) }.WithButton(MouseButton.Left));
+            InputSystem.QueueStateEvent(mouse, new MouseState { position = new Vector2(90, 50) });
+            InputSystem.Update();
+            var records = source.Pending.FindAll(r => r.Device == mouse.deviceId);
+            Assert.That(records.Exists(r => r.Phase == GcPointerEventPhase.Begin && r.Screen.x == 10));
+            Assert.That(records.Exists(r => r.Phase == GcPointerEventPhase.End && r.Screen.x == 90));
+        }
+        [TestCase(false)]
+        [TestCase(true)]
+        public void EventMergingSettingIsRestoredAfterLastSourceIsDisposed(bool previous)
+        {
+            source.Dispose();
+            InputSystem.settings.disableRedundantEventsMerging = previous;
+            source = new GcPointerSource();
+            using (var second = new GcPointerSource())
+            {
+                Assert.That(InputSystem.settings.disableRedundantEventsMerging, Is.True);
+                source.Dispose();
+                source.Dispose();
+                Assert.That(InputSystem.settings.disableRedundantEventsMerging, Is.True);
+            }
+            Assert.That(InputSystem.settings.disableRedundantEventsMerging, Is.EqualTo(previous));
+        }
         [Test] public void RegisteringAnUnusedMouseDoesNotInventAHoverAtTheOrigin()
         {
             var unused = InputSystem.AddDevice<Mouse>();
