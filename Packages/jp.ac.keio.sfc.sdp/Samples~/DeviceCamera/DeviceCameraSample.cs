@@ -3,10 +3,6 @@ using GameCanvas;
 
 public sealed class DeviceCameraSample : GameBase
 {
-    GcCameraDevice? camera;
-    bool asking;
-    bool playing;
-    int requestId;
     string message = "画面を押すとカメラを開始します";
 
     public override void InitGame()
@@ -17,77 +13,62 @@ public sealed class DeviceCameraSample : GameBase
 
     public override void UpdateGame()
     {
-        if (asking || playing || !gc.Pointer.Down) return;
-        asking = true;
-        var id = ++requestId;
-        if (gc.HasUserAuthorizedPermissionCamera)
+        if (gc.Pointer.Down)
         {
-            Play(id);
-            return;
-        }
-        gc.RequestUserAuthorizedPermissionCameraAsync(ok =>
-        {
-            if (id != requestId) return;
-            if (ok) Play(id);
+            var state = gc.Camera.Status;
+            if (state == GcCameraState.Running ||
+                state == GcCameraState.RequestingPermission ||
+                state == GcCameraState.Waiting)
+            {
+                gc.Camera.Stop();
+            }
             else
             {
-                asking = false;
-                message = "カメラが許可されていません。画面を押すと再試行できます";
+                gc.Camera.Start();
             }
-        });
-    }
+        }
 
-    void Play(int id)
-    {
-        if (id != requestId) return;
-        asking = false;
-        if (!gc.TryGetCameraImage(out var device))
+        if (gc.Camera.Status == GcCameraState.Running)
         {
-            camera = null;
-            playing = false;
-            message = "カメラがありません";
-            return;
+            message = $"{gc.Camera.Width}x{gc.Camera.Height}";
+            var device = gc.Camera.Device;
+            if (device != null) message = $"{device.DeviceName}\n{message}";
+            message += "\n画面を押すと停止します";
         }
-        camera = device;
-        if (!gc.PlayCameraImage(device, out var size))
+        else
         {
-            gc.StopCameraImage(device);
-            camera = null;
-            playing = false;
-            message = "カメラを開始できませんでした。画面を押すと再試行できます";
-            return;
+            message = ShowState(gc.Camera.Status);
         }
-        gc.ChangeCanvasSize(size.x, size.y);
-        playing = true;
-        message = $"{device.DeviceName}\n({size.x}x{size.y})";
-        if (gc.IsFlippedCameraImage(device)) message += "\nFlipped";
-        if (gc.TryGetCameraImageRotation(device, out var rotation) && rotation != 0f) message += $"\nrotation {rotation}";
     }
 
     public override void DrawGame()
     {
         gc.ClearScreen();
-        if (playing && camera != null) gc.DrawCameraImage(camera);
-        if (playing)
+        if (gc.Camera.Status == GcCameraState.Running)
         {
-            gc.SetColor(gc.ColorBlack);
-            gc.DrawString(message, 12, 18);
-            gc.SetColor(gc.ColorWhite);
-            gc.DrawString(message, 10, 15);
+            gc.SetColor(255, 255, 255);
+            var scale = 680f / gc.Camera.Width;
+            if (gc.Camera.Height * scale > 980f)
+            {
+                scale = 980f / gc.Camera.Height;
+            }
+            gc.DrawCamera(20, 240, gc.Camera.Width * scale, gc.Camera.Height * scale);
         }
-        else
-        {
-            gc.SetColor(gc.ColorBlack);
-            gc.DrawString(message, 10, 15);
-        }
+        gc.SetColor(0, 0, 0);
+        gc.DrawString(message, 40, 80);
     }
 
-    public override void PauseGame()
+    static string ShowState(GcCameraState state) => state switch
     {
-        requestId++;
-        if (camera != null) gc.StopCameraImage(camera);
-        playing = false;
-        asking = false;
-        message = "中断しました。画面を押すと再開できます";
-    }
+        GcCameraState.RequestingPermission => "カメラの許可を確認中です\n画面を押すと取り消します",
+        GcCameraState.Waiting => "カメラ映像を待っています\n画面を押すと取り消します",
+        GcCameraState.NotGranted => "カメラが許可されていません\n画面を押すと再試行できます",
+        GcCameraState.NoDevice => "カメラがありません",
+        GcCameraState.TimedOut => "時間内にカメラを開始できませんでした\n画面を押すと再試行できます",
+        GcCameraState.Unsupported => "この環境ではカメラを使えません",
+        GcCameraState.Failed => "カメラの開始に失敗しました\n画面を押すと再試行できます",
+        GcCameraState.Stopped => "停止中です。画面を押すと再開できます",
+        GcCameraState.Idle => "画面を押すとカメラを開始します",
+        _ => "カメラを確認中です"
+    };
 }

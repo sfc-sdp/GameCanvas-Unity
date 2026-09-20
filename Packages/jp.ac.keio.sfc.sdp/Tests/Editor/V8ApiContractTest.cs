@@ -33,11 +33,11 @@ namespace GameCanvas.Editor.Tests
         }
         [Test] public void DrawingACameraDoesNotStartItByDefault()
         {
-            foreach (var type in new[] { typeof(GcProxy), typeof(IInputCameraEx) })
+            foreach (var type in new[] { typeof(GcProxy), typeof(IInputCamera) })
                 foreach (var method in type.GetMethods())
-                    if (method.Name == "DrawCameraImage")
+                    if (method.Name == "DrawCamera")
                         foreach (var parameter in method.GetParameters())
-                            if (parameter.Name == "autoPlay") Assert.That(parameter.DefaultValue, Is.EqualTo(false));
+                            Assert.That(parameter.Name, Is.Not.EqualTo("autoPlay"));
         }
         [Test] public void ColorsUseExplicitUnitsAndClampAtTheirBoundaries()
         {

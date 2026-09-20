@@ -28,6 +28,7 @@ namespace GameCanvas
         //----------------------------------------------------------
 
         public GcLocationService Location { get; }
+        public GcCameraService Camera { get; }
 
         readonly GcContext m_Context;
         readonly Dictionary<System.Type, GcScene> m_SceneDict;
@@ -80,20 +81,6 @@ namespace GameCanvas
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get => m_Context.Graphics.BorderColor;
-        }
-
-        /// <inheritdoc/>
-        public int CameraDeviceCount
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputCamera.CameraDeviceCount;
-        }
-
-        /// <inheritdoc/>
-        public System.ReadOnlySpan<GcCameraDevice> CameraDevices
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputCamera.CameraDevices;
         }
 
         /// <inheritdoc/>
@@ -381,13 +368,6 @@ namespace GameCanvas
             get => m_Context.Graphics.FontSize;
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { m_Context.Graphics.FontSize = value; }
-        }
-
-        /// <inheritdoc/>
-        public bool HasUserAuthorizedPermissionCamera
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_Context.InputCamera.HasUserAuthorizedPermissionCamera;
         }
 
         /// <inheritdoc/>
@@ -691,75 +671,30 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)
-            => m_Context.InputCamera.DidUpdateCameraImageThisFrame(camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float Dot(in float2 a, in float2 b) => GcMath.Dot(a, b);
 
         /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, bool autoPlay = false)
+        public void DrawCamera() => DrawCamera(0, 0);
+        /// <inheritdoc/>
+        public void DrawCamera(in GcPoint position, float rotation = 0) => DrawCamera(position.X, position.Y, rotation);
+        /// <inheritdoc/>
+        public void DrawCamera(in float2 position, float rotation = 0) => DrawCamera(position.x, position.y, rotation);
+        /// <inheritdoc/>
+        public void DrawCamera(float x, float y, float rotation = 0)
+            => DrawCamera(new GcRect(x, y, Camera.Width, Camera.Height) { Rotation = rotation });
+        /// <inheritdoc/>
+        public void DrawCamera(float x, float y, float width, float height, float rotation = 0)
+            => DrawCamera(new GcRect(x, y, width, height) { Rotation = rotation });
+        /// <inheritdoc/>
+        public void DrawCamera(in GcRect rect)
         {
-            var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
-            if (texture != null)
-            {
-                if (autoPlay && !texture.isPlaying)
-                {
-                    texture.Play();
-                }
-
-                var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
-                m_Context.Graphics.DrawTexture(texture, mtx);
-            }
+            var texture = Camera.Texture;
+            if (texture == null || Camera.Width == 0 || Camera.Height == 0) return;
+            var frame = Camera.Frame;
+            var matrix = Engine.GcInputCameraEngine.CalcCameraMatrix(new float2(frame.Width, frame.Height), frame.Rotation, frame.Mirrored, RectAnchor);
+            matrix = GcAffine.FromTRS(rect.Position, rect.Radian, rect.Size / new float2(Camera.Width, Camera.Height)).Mul(matrix);
+            m_Context.Graphics.DrawTexture(texture, matrix);
         }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float2 position, float rotation = 0, bool autoPlay = false)
-        {
-            var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
-            if (texture != null)
-            {
-                if (autoPlay && !texture.isPlaying)
-                {
-                    texture.Play();
-                }
-
-                var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
-                mtx = GcAffine.FromTRS(position, math.radians(rotation), new float2(1f, 1f)).Mul(mtx);
-                m_Context.Graphics.DrawTexture(texture, mtx);
-            }
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in GcRect rect, bool autoPlay = false)
-        {
-            var texture = m_Context.InputCamera.GetOrCreateCameraTexture(camera, GetPrimaryCameraResolution(camera));
-            if (texture != null)
-            {
-                if (autoPlay && !texture.isPlaying)
-                {
-                    texture.Play();
-                }
-
-                var mtx = m_Context.InputCamera.CalcCameraMatrix(texture, RectAnchor);
-                mtx = GcAffine.FromTRS(rect.Position, rect.Radian, rect.Size).Mul(mtx);
-                m_Context.Graphics.DrawTexture(texture, mtx);
-            }
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, in float width, in float height, float rotation = 0f, bool autoPlay = false)
-            => DrawCameraImage(camera, new GcRect(x, y, width, height, math.radians(rotation)), autoPlay);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void DrawCameraImage(in GcCameraDevice camera, in float x, in float y, float rotation = 0, bool autoPlay = false)
-            => DrawCameraImage(camera, new float2(x, y), rotation, autoPlay);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1101,11 +1036,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void FocusCameraImage(in GcCameraDevice camera, in float2? uv)
-            => m_Context.InputCamera.FocusCameraImage(camera, uv);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcActor? GetActor()
             => (m_CurrentScene != null) && m_CurrentScene.TryGetActor(0, out var actor) ? actor : null;
 
@@ -1148,22 +1078,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
-            => m_Context.InputCamera.GetOrCreateCameraTexture(camera, request);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public GcResolution GetPrimaryCameraResolution(in GcCameraDevice camera)
-        {
-            if (camera.Resolutions == null || camera.Resolutions.Length == 0)
-            {
-                return CanvasResolution;
-            }
-            return camera.Resolutions[0];
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetSoundLevel(GcSoundTrack track = GcSoundTrack.Master)
             => m_Context.Sound.GetSoundLevel(track);
 
@@ -1199,19 +1113,9 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsFlippedCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.IsFlippedCameraImage(camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public GcKeyState Key(GcKey key) => m_Context.InputKey.Key(key);
         public GcReadOnlyList<GcKeyEvent> KeyEvents => m_Context.InputKey.KeyEvents;
         public GcReadOnlyList<GcPoint> Taps => m_Context.InputPointer.Taps;
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool IsPlayingCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.IsPlayingCameraImage(camera);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1228,28 +1132,8 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool PauseCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.PauseCameraImage(camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void PauseSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.PauseSound(track);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool PlayCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.PlayCameraImage(camera, GetPrimaryCameraResolution(camera), out _);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool PlayCameraImage(in GcCameraDevice camera, out int2 resolution)
-            => m_Context.InputCamera.PlayCameraImage(camera, GetPrimaryCameraResolution(camera), out resolution);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool PlayCameraImage(in GcCameraDevice camera, in GcResolution request, out int2 resolution)
-            => m_Context.InputCamera.PlayCameraImage(camera, request, out resolution);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1329,11 +1213,6 @@ namespace GameCanvas
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float Repeat(in float value, in float max) => GcMath.Repeat(value, max);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RequestUserAuthorizedPermissionCameraAsync(in System.Action<bool> callback)
-            => m_Context.InputCamera.RequestUserAuthorizedPermissionCameraAsync(callback);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1523,11 +1402,6 @@ namespace GameCanvas
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void StopCameraImage(in GcCameraDevice camera)
-            => m_Context.InputCamera.StopCameraImage(camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void StopSound(GcSoundTrack track = GcSoundTrack.BGM1)
             => m_Context.Sound.StopSound(track);
 
@@ -1550,11 +1424,6 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void TranslateCoordinate(in float2 translation)
             => m_Context.Graphics.TranslateCoordinate(translation);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int2 TryChangeCameraImageResolution(in GcCameraDevice camera, in GcResolution request)
-            => m_Context.InputCamera.TryChangeCameraImageResolution(camera, request);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1601,31 +1470,6 @@ namespace GameCanvas
             actors = default;
             return false;
         }
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera)
-            => m_Context.InputCamera.TryGetCameraImage(out camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera)
-            => m_Context.InputCamera.TryGetCameraImage(deviceName, out camera);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImageAll(out System.ReadOnlySpan<GcCameraDevice> devices)
-            => m_Context.InputCamera.TryGetCameraImageAll(out devices);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)
-            => m_Context.InputCamera.TryGetCameraImageRotation(camera, out rotation);
-
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)
-            => m_Context.InputCamera.TryGetCameraImageSize(camera, out resolution);
 
         /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1713,11 +1557,6 @@ namespace GameCanvas
             }
         }
 
-        /// <inheritdoc/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int UpdateCameraDevice()
-            => m_Context.InputCamera.UpdateCameraDevice();
-
         #endregion
         #region 公開関数（廃止）
         #endregion
@@ -1727,10 +1566,11 @@ namespace GameCanvas
         //----------------------------------------------------------
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal GcProxy(in BehaviourBase behaviour)
+        internal GcProxy(in BehaviourBase behaviour, GcCameraService? camera = null)
         {
             m_Context = new GcContext(behaviour);
             Location = new GcLocationService(behaviour);
+            Camera = camera ?? new GcCameraService();
             m_SceneDict = new Dictionary<System.Type, GcScene>();
 
             GcScene.Inject(this);
@@ -1760,6 +1600,7 @@ namespace GameCanvas
         internal void OnBeforeUpdate(in System.DateTimeOffset now)
         {
             Location.Tick();
+            Camera.Tick();
             foreach (var engine in m_Context.EngineArray)
             {
                 engine.OnBeforeUpdate(now);
@@ -1767,10 +1608,10 @@ namespace GameCanvas
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnDisable() { Location.Stop(); m_Context.Dispose(); }
+        internal void OnDisable() { Camera.SetPaused(true); Location.Stop(); m_Context.Dispose(); }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void OnEnable() => m_Context.Graphics?.Init();
+        internal void OnEnable() { Camera.SetPaused(false); m_Context.Graphics?.Init(); }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnFocus(bool focus)
@@ -1782,6 +1623,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnPause()
         {
+            Camera.SetPaused(true);
             Location.Stop();
             m_Context.InputPointer.SetPaused(true);
             m_Context.InputKey.SetPaused(true);
@@ -1791,6 +1633,7 @@ namespace GameCanvas
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void OnUnpause()
         {
+            Camera.SetPaused(false);
             m_Context.Graphics.RebuildFontTexture();
             m_Context.InputPointer.SetPaused(false);
             m_Context.InputKey.SetPaused(false);

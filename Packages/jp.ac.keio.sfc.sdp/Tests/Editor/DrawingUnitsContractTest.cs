@@ -20,7 +20,7 @@ namespace GameCanvas.Editor.Tests
             var rect = new GcRect(10, 20, 30, 40) { Rotation = 90 };
             Assert.That(rect, Is.EqualTo(GcRect.FromDegrees(10, 20, 30, 40, 90)));
             Assert.That(rect.Rotation, Is.EqualTo(90).Within(.00001));
-            foreach (var type in new[] { typeof(GcProxy), typeof(IGraphics), typeof(IGraphicsEx), typeof(INetworkEx), typeof(IInputCameraEx) })
+            foreach (var type in new[] { typeof(GcProxy), typeof(IGraphics), typeof(IGraphicsEx), typeof(INetworkEx), typeof(IInputCamera) })
                 foreach (var method in type.GetMethods())
                     if (method.Name.StartsWith("Draw") || method.Name.StartsWith("Fill") || method.Name == "RotateCoordinate")
                         foreach (var parameter in method.GetParameters())

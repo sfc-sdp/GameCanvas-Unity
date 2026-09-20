@@ -8,319 +8,85 @@
 // </remarks>
 /*------------------------------------------------------------*/
 #nullable enable
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
+using System;
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-using Coroutine = System.Collections.IEnumerator;
 
 namespace GameCanvas.Engine
 {
-    sealed class GcInputCameraEngine : IInputCamera, IEngine
+    // One native stream per service. Mobile Unity does not support simultaneous WebCamTextures.
+    internal sealed class GcInputCameraEngine : IGcCameraBackend
     {
-        //----------------------------------------------------------
-        #region 変数
-        //----------------------------------------------------------
-
-        readonly GcContext m_Context;
-        readonly List<GcCameraDevice> m_DeviceList;
-        readonly Dictionary<string, WebCamTexture> m_TextureDict;
-        bool m_IsDeviceListInitialized;
-        #endregion
-
-        //----------------------------------------------------------
-        #region 公開関数
-        //----------------------------------------------------------
-
-        public int CameraDeviceCount
-        {
-            get
-            {
-                InitCameraDevice();
-                return m_DeviceList.Count;
-            }
-        }
-
-        public bool HasUserAuthorizedPermissionCamera
-#if UNITY_EDITOR
-            => true;
-#elif UNITY_ANDROID
-            =>  UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.Camera);
-#elif UNITY_IOS
-            =>  Application.HasUserAuthorization(UserAuthorization.WebCam);
+        WebCamTexture? texture;
+        public bool Authorized =>
+#if UNITY_ANDROID && !UNITY_EDITOR
+            UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.Camera);
+#elif UNITY_IOS || UNITY_WEBGL || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
+            Application.HasUserAuthorization(UserAuthorization.WebCam);
 #else
-            => false;
-#endif // UNITY_EDITOR
-
-        public System.ReadOnlySpan<GcCameraDevice> CameraDevices => m_DeviceList.ToArray();
-
-        public bool DidUpdateCameraImageThisFrame(in GcCameraDevice camera)
+            true;
+#endif
+        public Texture? Texture => texture;
+        public bool IsPlaying => texture != null && texture.isPlaying;
+        public IEnumerator RequestPermission()
         {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
+#if UNITY_ANDROID && !UNITY_EDITOR
+            return GcAndroidPermission.Request(new[] { UnityEngine.Android.Permission.Camera });
+#else
+            return RequestUnityPermission();
+#endif
+        }
+        static IEnumerator RequestUnityPermission()
+        {
+            var request = Application.RequestUserAuthorization(UserAuthorization.WebCam);
+            while (!request.isDone) yield return null;
+        }
+        public GcCameraDevice[] GetDevices()
+        {
+            var devices = WebCamTexture.devices;
+            var result = new GcCameraDevice[devices.Length];
+            var count = 0;
+            for (var i = 0; i < devices.Length; i++)
             {
-                return texture.didUpdateThisFrame;
+                var device = devices[i];
+                if (string.IsNullOrEmpty(device.name) || device.name == device.depthCameraName) continue;
+                var resolutions = device.availableResolutions;
+                var values = new GcResolution[resolutions?.Length ?? 0];
+                for (var j = 0; j < values.Length; j++) values[j] = (GcResolution)resolutions![j];
+                result[count++] = new GcCameraDevice(device.name, false, values, device.isFrontFacing, device.isAutoFocusPointSupported);
             }
-            return false;
+            if (count != result.Length) Array.Resize(ref result, count);
+            return result;
+        }
+        public void Play(GcCameraDevice device, int width, int height, int fps)
+        {
+            texture = new WebCamTexture(device.DeviceName, width, height, fps);
+            texture.Play();
+        }
+        public bool TryReadFrame(out GcCameraFrame frame)
+        {
+            frame = default;
+            if (texture == null || !texture.didUpdateThisFrame || texture.width <= 16 || texture.height <= 16) return false;
+            frame = new GcCameraFrame(texture.width, texture.height, texture.videoRotationAngle, texture.videoVerticallyMirrored);
+            return true;
+        }
+        public void Focus(float2? point) { if (texture != null) texture.autoFocusPoint = point; }
+        public void Dispose()
+        {
+            var previous = texture;
+            texture = null;
+            if (previous == null) return;
+            try { previous.Stop(); }
+            finally { UnityEngine.Object.Destroy(previous); }
         }
 
-        public void FocusCameraImage(in GcCameraDevice camera, in float2? uv)
+        internal static float2x3 CalcCameraMatrix(float2 size, float rotation, bool mirrored, GcAnchor anchor)
         {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                texture.autoFocusPoint = uv;
-            }
-        }
-
-        public WebCamTexture? GetOrCreateCameraTexture(in GcCameraDevice camera, in GcResolution request)
-        {
-            if (string.IsNullOrEmpty(camera.DeviceName)) return null;
-
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                return texture;
-            }
-
-            if (!HasUserAuthorizedPermissionCamera)
-            {
-                return null;
-            }
-
-            texture = new WebCamTexture(camera.DeviceName, request.Size.x, request.Size.y, Mathf.RoundToInt((float)request.RefreshRate.value));
-            if (texture != null)
-            {
-                m_TextureDict.Add(camera.DeviceName, texture);
-            }
-            return texture;
-        }
-
-        public bool IsFlippedCameraImage(in GcCameraDevice camera)
-        {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                return texture.videoVerticallyMirrored;
-            }
-            return false;
-        }
-
-        public bool IsPlayingCameraImage(in GcCameraDevice camera)
-        {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                return texture.isPlaying;
-            }
-            return false;
-        }
-
-        public bool PauseCameraImage(in GcCameraDevice camera)
-        {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                if (texture.isPlaying)
-                {
-                    texture.Pause();
-                    return !texture.isPlaying;
-                }
-            }
-            return false;
-        }
-
-        public bool PlayCameraImage(in GcCameraDevice camera, in GcResolution request, out int2 resolution)
-        {
-            if (string.IsNullOrEmpty(camera.DeviceName))
-            {
-                resolution = default;
-                return false;
-            }
-
-            var texture = GetOrCreateCameraTexture(camera, request);
-            if (texture != null)
-            {
-                if (!texture.isPlaying)
-                {
-                    texture.Play();
-                }
-                resolution = GetRotatedCameraSize(texture);
-                return texture.isPlaying;
-            }
-            resolution = default;
-            return false;
-        }
-
-        public void RequestUserAuthorizedPermissionCameraAsync(in System.Action<bool> callback)
-        {
-            var coroutine = RequestUserAuthorizedPermissionCoroutine(callback);
-            m_Context.Behaviour.StartCoroutine(coroutine);
-        }
-
-        public void StopCameraImage(in GcCameraDevice camera)
-        {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                texture.Stop();
-            }
-        }
-
-        public int2 TryChangeCameraImageResolution(in GcCameraDevice camera, in GcResolution request)
-        {
-            if (string.IsNullOrEmpty(camera.DeviceName)) return int2.zero;
-
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out WebCamTexture? texture))
-            {
-                m_TextureDict.Remove(camera.DeviceName);
-                texture.Stop();
-                Object.Destroy(texture);
-            }
-
-            texture = GetOrCreateCameraTexture(camera, request);
-            if (texture != null)
-            {
-                return GetRotatedCameraSize(texture);
-            }
-            return int2.zero;
-        }
-
-        public bool TryGetCameraImage([NotNullWhen(true)] out GcCameraDevice? camera)
-        {
-            InitCameraDevice();
-            if (m_DeviceList.Count > 0)
-            {
-                camera = m_DeviceList[0];
-                return true;
-            }
-            camera = null;
-            return false;
-        }
-
-        public bool TryGetCameraImage(in string deviceName, [NotNullWhen(true)] out GcCameraDevice? camera)
-        {
-            InitCameraDevice();
-            for (var i = 0; i < m_DeviceList.Count; i++)
-            {
-                camera = m_DeviceList[i];
-                if (camera.DeviceName == deviceName) return true;
-            }
-            camera = null;
-            return false;
-        }
-
-        public bool TryGetCameraImageAll(out System.ReadOnlySpan<GcCameraDevice> devices)
-        {
-            InitCameraDevice();
-            if (m_DeviceList.Count > 0)
-            {
-                devices = m_DeviceList.ToArray();
-                return true;
-            }
-            devices = default;
-            return false;
-        }
-
-        public bool TryGetCameraImageRotation(in GcCameraDevice camera, out float rotation)
-        {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                rotation = Mathf.Repeat(-texture.videoRotationAngle, 360f);
-                return true;
-            }
-            rotation = default;
-            return false;
-        }
-
-        public bool TryGetCameraImageSize(in GcCameraDevice camera, out int2 resolution)
-        {
-            if (m_TextureDict.TryGetValue(camera.DeviceName, out var texture))
-            {
-                resolution = GetRotatedCameraSize(texture);
-                return true;
-            }
-            resolution = default;
-            return false;
-        }
-
-        public int UpdateCameraDevice()
-        {
-            foreach (var tex in m_TextureDict.Values)
-            {
-                tex.Stop();
-                Object.Destroy(tex);
-            }
-            m_TextureDict.Clear();
-            m_DeviceList.Clear();
-
-            foreach (var device in WebCamTexture.devices)
-            {
-                var colorName = device.name;
-                var depthName = device.depthCameraName;
-                var isFront = device.isFrontFacing;
-
-                var resArray = device.availableResolutions;
-                var gcResArray = new GcResolution[resArray?.Length ?? 0];
-                if (resArray != null)
-                {
-                    for (var i = 0; i < gcResArray.Length; i++)
-                    {
-                        gcResArray[i] = (GcResolution)resArray[i];
-                    }
-                }
-
-                if (colorName != depthName)
-                {
-                    m_DeviceList.Add(new GcCameraDevice(colorName, false, gcResArray, isFront, device.isAutoFocusPointSupported));
-                }
-                if (!string.IsNullOrEmpty(depthName))
-                {
-                    m_DeviceList.Add(new GcCameraDevice(depthName, true, gcResArray, isFront, false));
-                }
-            }
-
-            return m_DeviceList.Count;
-        }
-        #endregion
-
-        //----------------------------------------------------------
-        #region 内部関数
-        //----------------------------------------------------------
-
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
-        internal GcInputCameraEngine(in GcContext context)
-        {
-            m_Context = context;
-            m_DeviceList = new List<GcCameraDevice>();
-            m_TextureDict = new Dictionary<string, WebCamTexture>();
-        }
-
-        void System.IDisposable.Dispose()
-        {
-            if (m_TextureDict != null)
-            {
-                foreach (var tex in m_TextureDict.Values)
-                {
-                    if (tex)
-                    {
-                        tex.Stop();
-                        Object.Destroy(tex);
-                    }
-                }
-                m_TextureDict.Clear();
-            }
-
-            m_DeviceList.Clear();
-        }
-
-        void IEngine.OnAfterDraw() { }
-
-        void IEngine.OnBeforeUpdate(in System.DateTimeOffset now) { }
-
-        internal float2x3 CalcCameraMatrix(in WebCamTexture tex, in GcAnchor anchor)
-        {
-            var size = new float2(tex.width, tex.height);
             var mtx = GcAffine.FromScale(size);
             var offset = GcGraphicsEngine.GetOffset(anchor) - GcGraphicsEngine.GetOffset(GcAnchor.MiddleCenter);
 
-            if (tex.videoVerticallyMirrored)
+            if (mirrored)
             {
                 var t = size * offset;
                 mtx = GcAffine.FromTranslate(t)
@@ -329,7 +95,7 @@ namespace GameCanvas.Engine
                     .Mul(mtx);
             }
 
-            var deg = GcMath.Repeat(tex.videoRotationAngle, 360f);
+            var deg = GcMath.Repeat(rotation, 360f);
             if (GcMath.AlmostSame(deg, 90f) || GcMath.AlmostSame(deg, 270f))
             {
                 mtx = GcAffine.FromTranslate(new float2(size.y, size.x) * offset)
@@ -349,60 +115,5 @@ namespace GameCanvas.Engine
             return mtx;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static int2 GetRotatedCameraSize(in WebCamTexture texture)
-        {
-            var deg = Mathf.Repeat(-texture.videoRotationAngle, 360f);
-            return (GcMath.AlmostSame(deg, 90f) || GcMath.AlmostSame(deg, 270f))
-                ? new int2(texture.height, texture.width)
-                : new int2(texture.width, texture.height);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        void InitCameraDevice()
-        {
-            if (m_IsDeviceListInitialized) return;
-
-            UpdateCameraDevice();
-            m_IsDeviceListInitialized = true;
-        }
-
-        /// <remarks><see href="https://qiita.com/utibenkei/items/65b56c13f43ce5809561">参考記事</see></remarks>
-        private Coroutine RequestUserAuthorizedPermissionCoroutine(System.Action<bool> callback)
-        {
-#if UNITY_ANDROID && !UNITY_EDITOR
-            yield return GcAndroidPermission.Request(new[] { UnityEngine.Android.Permission.Camera });
-            callback?.Invoke(HasUserAuthorizedPermissionCamera);
-#elif UNITY_IOS
-            if (HasUserAuthorizedPermissionCamera)
-            {
-                yield return null;
-                callback?.Invoke(true);
-            }
-            else
-            {
-                var finish = false;
-                System.Action cbInternal = () =>
-                {
-                    finish = true;
-                    callback?.Invoke(HasUserAuthorizedPermissionCamera);
-                };
-                m_Context.Behaviour.OnFocusOnce += cbInternal;
-                yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
-
-                // タイムアウト処理
-                yield return new WaitForSecondsRealtime(0.5f);
-                if (!finish)
-                {
-                    m_Context.Behaviour.OnFocusOnce -= cbInternal;
-                    callback?.Invoke(HasUserAuthorizedPermissionCamera);
-                }
-            }
-#else
-            yield return null;
-            callback?.Invoke(true);
-#endif // UNITY_ANDROID
-        }
-        #endregion
     }
 }

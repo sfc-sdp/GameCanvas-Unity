@@ -22,7 +22,6 @@ namespace GameCanvas
         public readonly BehaviourBase Behaviour;
         public readonly GcGraphicsEngine Graphics;
         public readonly GcInputAccelerationEngine InputAcceleration;
-        public readonly GcInputCameraEngine InputCamera;
         public readonly GcInputKeyEngine InputKey;
         public readonly GcInputPointerEngine InputPointer;
         public readonly Camera MainCamera;
@@ -51,7 +50,6 @@ namespace GameCanvas
             InputPointer = new GcInputPointerEngine(this);
             InputKey = new GcInputKeyEngine(this);
             InputAcceleration = new GcInputAccelerationEngine();
-            InputCamera = new GcInputCameraEngine(this);
 
             EngineArray = new IEngine[]
             {
@@ -62,8 +60,7 @@ namespace GameCanvas
                 Sound,
                 InputPointer,
                 InputKey,
-                InputAcceleration,
-                InputCamera
+                InputAcceleration
             };
         }
 

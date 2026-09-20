@@ -11,20 +11,20 @@ namespace GameCanvas.Diagnostics
         public Font UiFont = null!;
         string location = "未要求", camera = "未要求", network = "未実行";
         bool locationBusy, cameraBusy, networkBusy, simulatorSmoke;
-        WebCamTexture? cameraTexture;
         GUIStyle? label, button;
         GcImage sky;
-        Coroutine? locationRoutine, cameraRoutine, networkRoutine;
+        Coroutine? locationRoutine, networkRoutine;
         bool pointerMode;
         readonly GcPointerDragDemo pointerDemo = new();
         int cameraFrames;
-        double cameraDeadline;
+        GcCameraState lastCameraState;
 
         public override void InitGame()
         {
             gc.ChangeCanvasSize(720, 1280);
             Log("asset.image", GcAssets.TryGetImage("BlueSky.png", out sky) ? "catalog-loaded" : "missing");
             Log("startup", $"Unity={Application.unityVersion}; OS={SystemInfo.operatingSystem}; model={SystemInfo.deviceModel}");
+            if (CameraSmokeRequested()) StartCoroutine(CameraSmoke());
 #if UNITY_IOS && !UNITY_EDITOR
             simulatorSmoke = GcProbeShouldRunSimulatorSmoke() != 0;
             if (simulatorSmoke) StartCoroutine(SimulatorSmoke());
@@ -42,6 +42,13 @@ namespace GameCanvas.Diagnostics
             gc.DrawString("青空・漢字・ひらがな・カタカナ", 28, 115);
             gc.DrawString($"時刻 {gc.TimeSinceStartup:F1} 秒", 28, 165);
             if (pointerMode) pointerDemo.Draw(gc);
+            else if (gc.Camera.Status == GcCameraState.Running)
+            {
+                gc.SetColor(255, 255, 255);
+                gc.SetRectAnchor(GcAnchor.UpperLeft);
+                var scale = Mathf.Min(320f / gc.Camera.Width, 260f / gc.Camera.Height);
+                gc.DrawCamera(28, 640, gc.Camera.Width * scale, gc.Camera.Height * scale);
+            }
         }
 
         public override void UpdateGame()
@@ -50,17 +57,18 @@ namespace GameCanvas.Diagnostics
             var key = gc.Key(GcKey.Space);
             if (key.Down || key.Up || key.Cancelled)
                 Log("key.space", $"down={key.Down}; held={key.Held}; up={key.Up}; cancelled={key.Cancelled}; duration={key.Duration:F3}");
-            if (cameraTexture != null && cameraTexture.didUpdateThisFrame && cameraTexture.width > 16)
+            cameraBusy = gc.Camera.Status == GcCameraState.RequestingPermission || gc.Camera.Status == GcCameraState.Waiting;
+            if (lastCameraState != gc.Camera.Status)
             {
-                if (cameraFrames++ == 0) Log("camera.frame", $"{cameraTexture.width}x{cameraTexture.height}; rotation={cameraTexture.videoRotationAngle}; mirrored={cameraTexture.videoVerticallyMirrored}");
-                camera = $"映像を取得 {cameraTexture.width}x{cameraTexture.height} / {cameraFrames}";
+                lastCameraState = gc.Camera.Status;
+                Log("camera.state", $"{gc.Camera.Status}; permission={gc.Camera.Permission}; error={gc.Camera.ErrorCode}");
             }
-            if (cameraTexture != null && cameraFrames == 0 && Time.realtimeSinceStartupAsDouble > cameraDeadline)
+            camera = $"{gc.Camera.Status} / {gc.Camera.Permission}\n{gc.Camera.ErrorCode}";
+            if (gc.Camera.Updated)
             {
-                StopCamera();
-                camera = "映像待ちが30秒を超えました";
-                Log("camera.timeout", camera);
+                if (cameraFrames++ == 0) Log("camera.frame", $"{gc.Camera.Width}x{gc.Camera.Height}; rotation={gc.Camera.Rotation}; mirrored={gc.Camera.IsMirrored}; device={gc.Camera.Device?.DeviceName}");
             }
+            if (gc.Camera.Status == GcCameraState.Running) camera = $"映像を取得 {gc.Camera.Width}x{gc.Camera.Height} / {cameraFrames}";
         }
 
         void OnGUI()
@@ -79,7 +87,7 @@ namespace GameCanvas.Diagnostics
                 pointerMode = !pointerMode;
             }
             if (pointerMode) return;
-            GUI.Box(new Rect(12, 260, 696, 1008), "");
+
             if (GUI.Button(new Rect(28, 280, 320, 65), "位置情報を取得", button) && !locationBusy && !cameraBusy)
                 locationRoutine = StartCoroutine(Location());
             if (GUI.Button(new Rect(370, 280, 320, 65), "位置情報を停止", button))
@@ -89,11 +97,9 @@ namespace GameCanvas.Diagnostics
             }
             GUI.Label(new Rect(28, 355, 655, 115), location, label);
             if (GUI.Button(new Rect(28, 480, 320, 65), "カメラを開始", button) && !cameraBusy)
-                cameraRoutine = StartCoroutine(Camera());
+                StartCamera();
             if (GUI.Button(new Rect(370, 480, 320, 65), "カメラを停止", button)) StopCamera();
             GUI.Label(new Rect(28, 555, 655, 80), camera, label);
-            if (cameraTexture != null && cameraFrames > 0)
-                GUI.DrawTexture(new Rect(28, 640, 320, 240), cameraTexture, ScaleMode.ScaleToFit);
             if (GUI.Button(new Rect(28, 910, 655, 65), "HTTPS通信を確認", button) && !networkBusy)
                 networkRoutine = StartCoroutine(Network());
             GUI.Label(new Rect(28, 985, 655, 100), network, label);
@@ -147,6 +153,8 @@ namespace GameCanvas.Diagnostics
 #if UNITY_IOS && !UNITY_EDITOR
         [System.Runtime.InteropServices.DllImport("__Internal")]
         static extern int GcProbeShouldRunSimulatorSmoke();
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        static extern int GcProbeShouldRunCameraSmoke();
 
         // simctlで許可と模擬座標を設定した専用シミュレータからだけ明示的に実行する。
         IEnumerator SimulatorSmoke()
@@ -166,26 +174,43 @@ namespace GameCanvas.Diagnostics
         }
 #endif
 
-        IEnumerator Camera()
+        void StartCamera()
         {
-            cameraBusy = true;
-            camera = "権限を確認中";
+            cameraFrames = 0;
+            gc.Camera.Start();
+        }
+
+        // Explicit diagnostic launch only. Exercises the public service; does not synthesize UI input.
+        IEnumerator CameraSmoke()
+        {
+            yield return null;
+            foreach (var facing in new[] { GcCameraFacing.Rear, GcCameraFacing.Front, GcCameraFacing.Front })
+            {
+                cameraFrames = 0;
+                gc.Camera.Start(facing);
+                var deadline = Time.realtimeSinceStartupAsDouble + 35;
+                while ((gc.Camera.Status == GcCameraState.RequestingPermission || gc.Camera.Status == GcCameraState.Waiting) && Time.realtimeSinceStartupAsDouble < deadline) yield return null;
+                Log("camera.smoke.started", $"facing={facing}; status={gc.Camera.Status}; size={gc.Camera.Width}x{gc.Camera.Height}; device={gc.Camera.Device?.DeviceName}");
+                yield return new WaitForSecondsRealtime(10);
+                var frames = cameraFrames;
+                gc.Camera.Stop();
+                Log("camera.smoke.stopped", $"facing={facing}; frames={frames}; status={gc.Camera.Status}; size={gc.Camera.Width}x{gc.Camera.Height}; updated={gc.Camera.Updated}");
+                yield return new WaitForSecondsRealtime(1);
+            }
+            Log("camera.smoke.complete", "done");
+        }
+        static bool CameraSmokeRequested()
+        {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            yield return Engine.GcAndroidPermission.Request(new[] { UnityEngine.Android.Permission.Camera });
-            var granted = UnityEngine.Android.Permission.HasUserAuthorizedPermission(UnityEngine.Android.Permission.Camera);
+            using var player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            using var activity = player.GetStatic<AndroidJavaObject>("currentActivity");
+            using var intent = activity.Call<AndroidJavaObject>("getIntent");
+            return intent.Call<bool>("getBooleanExtra", "gcCameraSmoke", false);
+#elif UNITY_IOS && !UNITY_EDITOR
+            return GcProbeShouldRunCameraSmoke() != 0;
 #else
-            var request = Application.RequestUserAuthorization(UserAuthorization.WebCam);
-            var deadline = Time.realtimeSinceStartupAsDouble + 30;
-            while (!request.isDone && Time.realtimeSinceStartupAsDouble < deadline) yield return null;
-            var granted = request.isDone && Application.HasUserAuthorization(UserAuthorization.WebCam);
+            return System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-gcCameraSmoke") >= 0;
 #endif
-            if (!granted) { camera = "カメラが未許可です"; Log("camera.permission", camera); cameraBusy = false; yield break; }
-            var devices = WebCamTexture.devices;
-            if (devices.Length == 0) { camera = "カメラがありません"; cameraBusy = false; yield break; }
-            StopCamera();
-            cameraTexture = new WebCamTexture(devices[0].name, 640, 480, 30);
-            cameraFrames = 0; cameraDeadline = Time.realtimeSinceStartupAsDouble + 30;
-            cameraTexture.Play(); camera = "映像待ち"; cameraBusy = false;
         }
 
         IEnumerator Network()
@@ -200,18 +225,17 @@ namespace GameCanvas.Diagnostics
 
         void StopCamera()
         {
-            if (cameraTexture != null) { cameraTexture.Stop(); Destroy(cameraTexture); cameraTexture = null; }
+            gc.Camera.Stop();
             camera = "停止"; Log("camera.stop", camera);
         }
 
         public override void PauseGame()
         {
             if (locationRoutine != null) StopCoroutine(locationRoutine);
-            if (cameraRoutine != null) StopCoroutine(cameraRoutine);
             if (networkRoutine != null) StopCoroutine(networkRoutine);
             locationBusy = cameraBusy = networkBusy = false;
             gc.Location.Stop(); Input.location.Stop(); location = "中断しました。再度取得してください";
-            StopCamera(); Log("lifecycle.pause", "stopped");
+            Log("lifecycle.pause", "stopped");
         }
         public override void ResumeGame() => Log("lifecycle.resume", "操作で再開してください");
 
